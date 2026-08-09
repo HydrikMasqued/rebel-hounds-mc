@@ -348,6 +348,85 @@ body {
   margin: 0 auto;
 }
 
+.about-text {
+  max-width: 820px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.15rem;
+}
+
+.about-text p {
+  margin-bottom: 1.2rem;
+  color: var(--muted);
+}
+
+.about-quote {
+  max-width: 820px;
+  margin: 0 auto 2.5rem;
+  padding: 2rem 2.2rem;
+  border-left: 4px solid var(--primary);
+  border-radius: 4px;
+  background: var(--dark-3);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.principles {
+  max-width: 820px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.principles h3,
+.about-bylaws h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.principle-card {
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.principle-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.principle-card h4 {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.principle-card p {
+  color: var(--muted);
+}
+
+.about-bylaws {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.about-bylaws p {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
 .about-card {
   background: var(--dark-3);
   border: 1px solid var(--border);
