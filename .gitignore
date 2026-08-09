@@ -1,0 +1,6 @@
+# OS / editor files
+Thumbs.db
+.DS_Store
+*.swp
+.vscode/
+.idea/
