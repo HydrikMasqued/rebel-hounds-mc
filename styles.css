@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC — Styles ===== */
+/* ===== Rebel Hounds MC â€” Styles ===== */
 
 :root {
   --primary: #c0392b;
@@ -177,6 +177,15 @@ body {
 
 .hero-video.hidden {
   display: none;
+}
+
+.hero-banner {
+  width: min(860px, 92%);
+  margin: 0 auto 1.75rem;
+  display: block;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
 }
 
 .hero-content {
@@ -597,7 +606,7 @@ body {
 }
 
 .recruit-requirements li::before {
-  content: '›';
+  content: 'â€º';
   position: absolute;
   left: 0;
   color: var(--primary);
