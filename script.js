@@ -141,12 +141,12 @@ const patchNav = document.getElementById('patchNav');
 
 function setPatchAuth(authed) {
   if (authed) {
-    sessionStorage.setItem(PATCH_KEY, '1');
+    try { sessionStorage.setItem(PATCH_KEY, '1'); } catch (e) {}
     patchGate.classList.add('hidden');
     patchArea.classList.remove('hidden');
     if (patchNav) patchNav.classList.remove('hidden');
   } else {
-    sessionStorage.removeItem(PATCH_KEY);
+    try { sessionStorage.removeItem(PATCH_KEY); } catch (e) {}
     patchGate.classList.remove('hidden');
     patchArea.classList.add('hidden');
     if (patchNav) patchNav.classList.add('hidden');
@@ -182,4 +182,6 @@ if (patchLogout) {
   });
 }
 
-setPatchAuth(sessionStorage.getItem(PATCH_KEY) === '1');
+let patchAuthed = false;
+try { patchAuthed = sessionStorage.getItem(PATCH_KEY) === '1'; } catch (e) {}
+setPatchAuth(patchAuthed);
