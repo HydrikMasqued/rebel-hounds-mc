@@ -127,6 +127,7 @@ const cyrb53 = (str, seed = 0) => {
 
 const PATCH_USER = '6326359510258827';   // HFFH
 const PATCH_PASS = '179402082180785';    // HoundsForever
+const PATCH_KEY = 'rh_patch_auth';
 
 const patchGate = document.getElementById('patchGate');
 const patchArea = document.getElementById('patchArea');
@@ -138,16 +139,14 @@ const patchLogout = document.getElementById('patchLogout');
 const patchLogMsg = document.getElementById('patchLogMsg');
 const patchNav = document.getElementById('patchNav');
 
-// In-memory only: every fresh page load starts logged out.
-let patchAuthed = false;
-
 function setPatchAuth(authed) {
-  patchAuthed = authed;
   if (authed) {
+    sessionStorage.setItem(PATCH_KEY, '1');
     patchGate.classList.add('hidden');
     patchArea.classList.remove('hidden');
     if (patchNav) patchNav.classList.remove('hidden');
   } else {
+    sessionStorage.removeItem(PATCH_KEY);
     patchGate.classList.remove('hidden');
     patchArea.classList.add('hidden');
     if (patchNav) patchNav.classList.add('hidden');
@@ -183,4 +182,4 @@ if (patchLogout) {
   });
 }
 
-setPatchAuth(patchAuthed);
+setPatchAuth(sessionStorage.getItem(PATCH_KEY) === '1');
