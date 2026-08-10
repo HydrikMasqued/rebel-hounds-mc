@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patch Holders Portal — Rebel Hounds MC</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="portal-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="brand-logo">
+        <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#rules">Patch Rules</a></li>
+        <li><a href="index.html#recruitment">Recruitment</a></li>
+        <li><a href="index.html#events">Events</a></li>
+        <li><a href="portal.html" class="active">Portal</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ===== PORTAL HERO ===== -->
+  <header class="portal-hero">
+    <div class="portal-hero-inner">
+      <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="portal-hero-logo">
+      <h1 class="hero-title">PATCH HOLDERS<br><span class="accent">PORTAL</span></h1>
+      <p class="hero-sub">Members-only area. Credentials are issued by club leadership.</p>
+    </div>
+  </header>
+
+  <!-- ===== LOGIN GATE ===== -->
+  <section class="section patch" id="patch">
+    <div class="patch-gate" id="patchGate">
+      <div class="patch-gate-card">
+        <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="patch-gate-logo">
+        <h3>Members Only</h3>
+        <p class="patch-gate-sub">Enter your issued credentials to access the patch holder section.</p>
+        <form id="patchForm" class="patch-form" autocomplete="off">
+          <div class="form-group">
+            <label for="patchUser">Username</label>
+            <input type="text" id="patchUser" name="patchUser" required placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="patchPass">Password</label>
+            <input type="password" id="patchPass" name="patchPass" required placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enter Portal</button>
+        </form>
+        <p class="form-msg" id="patchMsg"></p>
+      </div>
+    </div>
+
+    <!-- ===== MEMBERS AREA ===== -->
+    <div class="patch-area hidden" id="patchArea">
+      <div class="patch-area-head">
+        <h3>Welcome back, <span class="accent">Patched</span>.</h3>
+        <p class="section-sub">Club business, resources and upcoming run intel.</p>
+      </div>
+      <div class="patch-grid">
+        <div class="patch-card">
+          <h4>Directives Recap</h4>
+          <p>Full chain-of-command and the Five Directives, restated for patched members.</p>
+          <a href="index.html#rules" class="btn btn-outline btn-sm">Review Directives</a>
+        </div>
+        <div class="patch-card">
+          <h4>Run Intel</h4>
+          <p>Meeting point and time for the current club run are posted here before each event.</p>
+          <a href="index.html#events" class="btn btn-outline btn-sm">View Events</a>
+        </div>
+        <div class="patch-card">
+          <h4>The Bylaws</h4>
+          <p>Full scrollable copy of the club bylaws below. Download or open in a new tab if you prefer.</p>
+          <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm" id="bylawsOpen">Open in New Tab</a>
+        </div>
+        <div class="patch-card">
+          <h4>Club Discord</h4>
+          <p>Private patched-members channel access is granted by the Secretary.</p>
+          <a href="#" class="btn btn-outline btn-sm">Open Discord</a>
+        </div>
+      </div>
+      <div class="patch-bylaws" id="patchBylaws">
+        <div class="patch-bylaws-head">
+          <h4>The Bylaws</h4>
+          <p class="section-sub">Official club bylaws — scroll to read, or download a copy.</p>
+        </div>
+        <div class="patch-pdf">
+          <iframe title="Rebel Hounds MC Bylaws" loading="lazy" id="bylawsFrame"></iframe>
+        </div>
+        <a href="#" download class="btn btn-primary btn-sm" id="bylawsDownload">Download PDF</a>
+      </div>
+      <div class="patch-area-foot">
+        <p class="form-msg" id="patchLogMsg"></p>
+        <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
+        <p>&copy; 2026 Rebel Hounds MC. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#rules">Rules</a></li>
+        <li><a href="index.html#recruitment">Recruitment</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="portal.js"></script>
+</body>
+</html>
