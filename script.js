@@ -128,6 +128,7 @@ const cyrb53 = (str, seed = 0) => {
 const PATCH_USER = '6326359510258827';   // HFFH
 const PATCH_PASS = '179402082180785';    // HoundsForever
 const PATCH_KEY = 'rh_patch_auth';
+const BYLAWS_URL = 'rhmc-bylaws-q8k2x7.pdf';
 
 const patchGate = document.getElementById('patchGate');
 const patchArea = document.getElementById('patchArea');
@@ -138,6 +139,9 @@ const patchPass = document.getElementById('patchPass');
 const patchLogout = document.getElementById('patchLogout');
 const patchLogMsg = document.getElementById('patchLogMsg');
 const patchNav = document.getElementById('patchNav');
+const bylawsFrame = document.getElementById('bylawsFrame');
+const bylawsOpen = document.getElementById('bylawsOpen');
+const bylawsDownload = document.getElementById('bylawsDownload');
 
 function setPatchAuth(authed) {
   if (authed) {
@@ -145,11 +149,17 @@ function setPatchAuth(authed) {
     patchGate.classList.add('hidden');
     patchArea.classList.remove('hidden');
     if (patchNav) patchNav.classList.remove('hidden');
+    if (bylawsFrame) bylawsFrame.src = BYLAWS_URL;
+    if (bylawsOpen) bylawsOpen.href = BYLAWS_URL;
+    if (bylawsDownload) bylawsDownload.href = BYLAWS_URL;
   } else {
     try { sessionStorage.removeItem(PATCH_KEY); } catch (e) {}
     patchGate.classList.remove('hidden');
     patchArea.classList.add('hidden');
     if (patchNav) patchNav.classList.add('hidden');
+    if (bylawsFrame) bylawsFrame.src = '';
+    if (bylawsOpen) bylawsOpen.href = '#';
+    if (bylawsDownload) bylawsDownload.href = '#';
   }
 }
 
