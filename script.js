@@ -137,16 +137,19 @@ const patchUser = document.getElementById('patchUser');
 const patchPass = document.getElementById('patchPass');
 const patchLogout = document.getElementById('patchLogout');
 const patchLogMsg = document.getElementById('patchLogMsg');
+const patchNav = document.getElementById('patchNav');
 
 function setPatchAuth(authed) {
   if (authed) {
     sessionStorage.setItem(PATCH_KEY, '1');
     patchGate.classList.add('hidden');
     patchArea.classList.remove('hidden');
+    if (patchNav) patchNav.classList.remove('hidden');
   } else {
     sessionStorage.removeItem(PATCH_KEY);
     patchGate.classList.remove('hidden');
     patchArea.classList.add('hidden');
+    if (patchNav) patchNav.classList.add('hidden');
   }
 }
 
