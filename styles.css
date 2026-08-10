@@ -176,7 +176,7 @@ body {
 }
 
 .hero-video.hidden {
-  display: none;
+  display: none !important;
 }
 
 .hero-banner {
