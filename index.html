@@ -25,6 +25,7 @@
         <li><a href="#recruitment">Recruitment</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#patch">Patch Holders</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
     </div>
@@ -240,6 +241,67 @@
       <a href="#" class="contact-card"><span class="contact-icon">&#128172;</span><h4>Discord</h4><p>discord.gg/rebelhounds</p></a>
       <a href="#" class="contact-card"><span class="contact-icon">&#127760;</span><h4>Server</h4><p>Join via CFX.re — "Rebel Hounds MC RP"</p></a>
       <a href="#" class="contact-card"><span class="contact-icon">&#128279;</span><h4>Forum</h4><p>rebelhoundsmc.net/forum</p></a>
+    </div>
+  </section>
+
+  <!-- ===== PATCH HOLDERS ===== -->
+  <section class="section patch" id="patch">
+    <div class="section-head">
+      <h2 class="section-title">PATCH HOLDERS</h2>
+      <p class="section-sub">Members-only area. Credentials are issued by club leadership.</p>
+    </div>
+
+    <div class="patch-gate" id="patchGate">
+      <div class="patch-gate-card">
+        <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="patch-gate-logo">
+        <h3>Members Only</h3>
+        <p class="patch-gate-sub">Enter your issued credentials to access the patch holder section.</p>
+        <form id="patchForm" class="patch-form" autocomplete="off">
+          <div class="form-group">
+            <label for="patchUser">Username</label>
+            <input type="text" id="patchUser" name="patchUser" required placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="patchPass">Password</label>
+            <input type="password" id="patchPass" name="patchPass" required placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enter</button>
+        </form>
+        <p class="form-msg" id="patchMsg"></p>
+      </div>
+    </div>
+
+    <div class="patch-area hidden" id="patchArea">
+      <div class="patch-area-head">
+        <h3>Welcome back, <span class="accent">Patched</span>.</h3>
+        <p class="section-sub">Club business, resources and upcoming run intel.</p>
+      </div>
+      <div class="patch-grid">
+        <div class="patch-card">
+          <h4>Directives Recap</h4>
+          <p>Full chain-of-command and the Five Directives, restated for patched members.</p>
+          <a href="#rules" class="btn btn-outline btn-sm">Review Directives</a>
+        </div>
+        <div class="patch-card">
+          <h4>Run Intel</h4>
+          <p>Meeting point and time for the current club run are posted here before each event.</p>
+          <a href="#events" class="btn btn-outline btn-sm">View Events</a>
+        </div>
+        <div class="patch-card">
+          <h4>The Bylaws</h4>
+          <p>Official member copy of the club bylaws governing conduct and expectations.</p>
+          <a href="#" class="btn btn-outline btn-sm">Read Bylaws</a>
+        </div>
+        <div class="patch-card">
+          <h4>Club Discord</h4>
+          <p>Private patched-members channel access is granted by the Secretary.</p>
+          <a href="#" class="btn btn-outline btn-sm">Open Discord</a>
+        </div>
+      </div>
+      <div class="patch-area-foot">
+        <p class="form-msg" id="patchLogMsg"></p>
+        <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
+      </div>
     </div>
   </section>
 

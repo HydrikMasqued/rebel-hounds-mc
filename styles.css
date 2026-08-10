@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC Ã¢â‚¬â€ Styles ===== */
+/* ===== Rebel Hounds MC ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Styles ===== */
 
 :root {
   --primary: #c0392b;
@@ -613,7 +613,7 @@ body {
 }
 
 .recruit-requirements li::before {
-  content: 'Ã¢â‚¬Âº';
+  content: 'ÃƒÂ¢Ã¢â€šÂ¬Ã‚Âº';
   position: absolute;
   left: 0;
   color: var(--primary);
@@ -819,6 +819,105 @@ body {
   color: var(--primary);
 }
 
+/* ===== PATCH HOLDERS ===== */
+.patch-gate {
+  display: flex;
+  justify-content: center;
+}
+
+.patch-gate-card {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.patch-gate-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.patch-gate-card h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.patch-gate-sub {
+  color: var(--muted);
+  margin: 0.5rem 0 1.5rem;
+}
+
+.patch-form {
+  text-align: left;
+}
+
+.patch-area {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.patch-area-head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.patch-area-head h3 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  letter-spacing: 2px;
+}
+
+.patch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.patch-card {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.patch-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.patch-card p {
+  color: var(--muted);
+  flex: 1;
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+}
+
+.patch-area-foot {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .nav-links {
