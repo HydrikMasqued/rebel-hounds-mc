@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patch Holders Hub — Rebel Hounds MC</title>
+  <title>Interactive Map — Rebel Hounds MC</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="portal.html" class="active">Portal Hub</a></li>
-        <li><a href="portal-map.html">Map</a></li>
+        <li><a href="portal.html">Portal Hub</a></li>
+        <li><a href="portal-map.html" class="active">Map</a></li>
         <li><a href="portal-bots.html">Bots</a></li>
         <li><a href="portal-inventory.html">Inventory</a></li>
         <li><a href="portal-finance.html">Finance</a></li>
@@ -30,7 +30,7 @@
     </div>
   </nav>
 
-  <!-- ===== LOGIN GATE (with background) ===== -->
+  <!-- ===== LOGIN GATE ===== -->
   <div class="portal-login-bg" id="patchLoginBg">
     <div class="patch-gate" id="patchGate">
       <div class="patch-gate-card">
@@ -59,8 +59,8 @@
     <!-- Portal Sub-Nav -->
     <div class="portal-sub-nav">
       <div class="portal-sub-nav-inner">
-        <a href="portal.html" class="active">Dashboard</a>
-        <a href="portal-map.html">Map</a>
+        <a href="portal.html">Dashboard</a>
+        <a href="portal-map.html" class="active">Map</a>
         <a href="portal-bots.html">Bots</a>
         <a href="portal-inventory.html">Inventory</a>
         <a href="portal-finance.html">Finance</a>
@@ -69,52 +69,23 @@
     </div>
 
     <section class="section">
-      <!-- Welcome Banner -->
-      <div class="portal-banner">
-        <div class="portal-banner-text">
-          <h3>Welcome back, <span class="accent">Patched</span>.</h3>
-          <p>Club business, resources and upcoming run intel.</p>
-        </div>
-        <span class="portal-banner-badge">Patch Holder</span>
+      <div class="section-head">
+        <h2 class="section-title">INTERACTIVE MAP</h2>
+        <p class="section-sub">GTA V map with blips, markers and drawing tools.</p>
       </div>
 
-      <!-- Dashboard Grid -->
-      <div class="portal-dash-grid">
-        <a href="portal-map.html" class="portal-dash-card">
-          <div class="portal-dash-icon">&#128506;</div>
-          <h4>Interactive Map</h4>
-          <p>GTA V map with blips, markers and drawing tools.</p>
-        </a>
-        <a href="portal-bots.html" class="portal-dash-card">
-          <div class="portal-dash-icon">&#129302;</div>
-          <h4>Bot Centralisation</h4>
-          <p>Discord bot management and configuration.</p>
-        </a>
-        <a href="portal-inventory.html" class="portal-dash-card">
-          <div class="portal-dash-icon">&#128188;</div>
-          <h4>Inventory</h4>
-          <p>Club assets, weapons and vehicle inventory.</p>
-        </a>
-        <a href="portal-finance.html" class="portal-dash-card">
-          <div class="portal-dash-icon">&#128176;</div>
-          <h4>Finance</h4>
-          <p>Treasury, dues and financial tracking.</p>
-        </a>
-        <a href="portal-bylaws.html" class="portal-dash-card">
-          <div class="portal-dash-icon">&#128220;</div>
-          <h4>The Bylaws</h4>
-          <p>Official club bylaws — scroll or download.</p>
-        </a>
-        <a href="media.html" class="portal-dash-card">
-          <div class="portal-dash-icon">&#127909;</div>
-          <h4>Club Media</h4>
-          <p>Gallery, photos and videos from the road.</p>
-        </a>
+      <div class="map-container">
+        <!-- Placeholder URL — replace with your actual map server URL -->
+        <iframe src="https://loved-pioneer-cardiac-federal.trycloudflare.com" title="Rebel Hounds Infomap" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="map-placeholder" id="mapPlaceholder" style="display: none;">
+        <h3>MAP SERVER OFFLINE</h3>
+        <p>The interactive map server is currently unavailable. Contact club leadership to start the map server.</p>
       </div>
 
       <!-- Logout -->
       <div class="patch-area-foot">
-        <p class="form-msg" id="patchLogMsg"></p>
         <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
       </div>
     </section>

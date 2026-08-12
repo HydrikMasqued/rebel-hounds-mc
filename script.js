@@ -19,6 +19,19 @@ navLinks.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
+// Handle dropdown toggles on mobile
+navLinks.querySelectorAll('.nav-item').forEach((item) => {
+  const link = item.querySelector('a');
+  if (link) {
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900 && item.querySelector('.dropdown')) {
+        e.preventDefault();
+        item.classList.toggle('dropdown-open');
+      }
+    });
+  }
+});
+
 // Animated hero counters
 const counters = document.querySelectorAll('.stat-num');
 
@@ -41,29 +54,33 @@ function animateCounter(el) {
 const hero = document.querySelector('.hero');
 let countersRun = false;
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !countersRun) {
-        countersRun = true;
-        counters.forEach(animateCounter);
-      }
-    });
-  },
-  { threshold: 0.3 }
-);
+if (hero) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !countersRun) {
+          countersRun = true;
+          counters.forEach(animateCounter);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
 
-observer.observe(hero);
+  observer.observe(hero);
+}
 
 // Recruitment form handler
 const recruitForm = document.getElementById('recruitForm');
 const formMsg = document.getElementById('formMsg');
 
-recruitForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  formMsg.textContent = 'Application received. A club officer will reach out on Discord within 48 hours. Ride safe.';
-  recruitForm.reset();
-});
+if (recruitForm) {
+  recruitForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (formMsg) formMsg.textContent = 'Application received. A club officer will reach out on Discord within 48 hours. Ride safe.';
+    recruitForm.reset();
+  });
+}
 
 /* ===== YouTube background video =====
    Change this ID to swap the hero background video.
@@ -75,6 +92,7 @@ const YT_VIDEO_ID = 'I5lX2OmPJtI';
 const heroVideo = document.getElementById('heroVideo');
 
 function onYouTubeIframeAPIReady() {
+  if (!heroVideo) return;
   try {
     new YT.Player('heroVideo', {
       videoId: YT_VIDEO_ID,

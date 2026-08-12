@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC — Patch Holders Portal ===== */
+/* ===== Rebel Hounds MC — Portal (shared across all portal pages) ===== */
 
 // Sticky navbar shadow
 const navbar = document.getElementById('navbar');
@@ -20,11 +20,22 @@ if (navToggle && navLinks) {
   navLinks.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
   });
+
+  // Handle dropdown toggles on mobile
+  navLinks.querySelectorAll('.nav-item').forEach((item) => {
+    const link = item.querySelector('a');
+    if (link) {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900 && item.querySelector('.dropdown')) {
+          e.preventDefault();
+          item.classList.toggle('dropdown-open');
+        }
+      });
+    }
+  });
 }
 
 /* ===== Login gate ===== */
-// Hash-checked against precomputed values so plaintext credentials
-// are not stored in the source. This gates casual visitors only.
 const cyrb53 = (str, seed = 0) => {
   let h1 = 0xdeadbeef ^ seed;
   let h2 = 0x41c6ce57 ^ seed;
@@ -53,6 +64,7 @@ const patchUser = document.getElementById('patchUser');
 const patchPass = document.getElementById('patchPass');
 const patchLogout = document.getElementById('patchLogout');
 const patchLogMsg = document.getElementById('patchLogMsg');
+const patchLoginBg = document.getElementById('patchLoginBg');
 const bylawsFrame = document.getElementById('bylawsFrame');
 const bylawsOpen = document.getElementById('bylawsOpen');
 const bylawsDownload = document.getElementById('bylawsDownload');
@@ -61,6 +73,7 @@ function setPatchAuth(authed) {
   if (authed) {
     try { sessionStorage.setItem(PATCH_KEY, '1'); } catch (e) {}
     if (patchGate) patchGate.classList.add('hidden');
+    if (patchLoginBg) patchLoginBg.style.display = 'none';
     if (patchArea) patchArea.classList.remove('hidden');
     if (bylawsFrame) bylawsFrame.src = BYLAWS_URL;
     if (bylawsOpen) bylawsOpen.href = BYLAWS_URL;
@@ -68,6 +81,7 @@ function setPatchAuth(authed) {
   } else {
     try { sessionStorage.removeItem(PATCH_KEY); } catch (e) {}
     if (patchGate) patchGate.classList.remove('hidden');
+    if (patchLoginBg) patchLoginBg.style.display = '';
     if (patchArea) patchArea.classList.add('hidden');
     if (bylawsFrame) bylawsFrame.src = '';
     if (bylawsOpen) bylawsOpen.href = '#';
@@ -101,7 +115,11 @@ if (patchLogout) {
   patchLogout.addEventListener('click', () => {
     setPatchAuth(false);
     if (patchLogMsg) patchLogMsg.textContent = 'Logged out. Ride safe.';
-    if (patchGate) patchGate.scrollIntoView({ behavior: 'smooth' });
+    if (patchLoginBg) {
+      patchLoginBg.scrollIntoView({ behavior: 'smooth' });
+    } else if (patchGate) {
+      patchGate.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 }
 

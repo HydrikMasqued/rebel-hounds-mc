@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment — Rebel Hounds MC</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="brand-logo">
+        <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#rules">Patch Rules</a></li>
+        <li class="nav-item">
+          <a href="media.html">Media</a>
+          <ul class="dropdown">
+            <li><a href="media.html#gallery">Gallery</a></li>
+            <li><a href="media.html#videos">Videos</a></li>
+          </ul>
+        </li>
+        <li><a href="recruitment.html" class="active">Recruitment</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="portal.html">Patch Holders</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="portal-hero">
+    <div class="portal-hero-inner">
+      <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="portal-hero-logo">
+      <h1 class="hero-title">RECRUITMENT</h1>
+      <p class="hero-sub">Thinking about wearing the patch? Here's what it takes.</p>
+    </div>
+  </header>
+
+  <!-- ===== RECRUITMENT ===== -->
+  <section class="section">
+    <div class="recruit-wrap">
+      <div class="recruit-requirements">
+        <h3>Requirements</h3>
+        <ul>
+          <li>Age 18+ and 16+ in character</li>
+          <li>Own a motorcycle and know how to ride it</li>
+          <li>No recent criminal record in the state (in character)</li>
+          <li>Able to attend at least 2 club runs per week</li>
+          <li>Willing to start as a Prospect</li>
+          <li>Voice chat required, no combat logging</li>
+        </ul>
+      </div>
+      <div class="recruit-form">
+        <h3>Apply to Prospect</h3>
+        <form id="recruitForm">
+          <div class="form-group">
+            <label for="name">In-Game Name</label>
+            <input type="text" id="name" name="name" required placeholder="e.g. Jack 'Rebel' Thompson">
+          </div>
+          <div class="form-group">
+            <label for="discord">Discord Tag</label>
+            <input type="text" id="discord" name="discord" required placeholder="e.g. rebel#0001">
+          </div>
+          <div class="form-group">
+            <label for="hours">Hours Played (approx)</label>
+            <input type="number" id="hours" name="hours" min="0" required placeholder="e.g. 500">
+          </div>
+          <div class="form-group">
+            <label for="why">Why do you want to join?</label>
+            <textarea id="why" name="why" rows="4" required placeholder="Tell us a little about yourself..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+        </form>
+        <p class="form-msg" id="formMsg"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
+        <p>&copy; 2026 Rebel Hounds MC. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#rules">Rules</a></li>
+        <li><a href="recruitment.html">Recruitment</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

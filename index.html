@@ -21,10 +21,15 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#rules">Patch Rules</a></li>
-        <li><a href="#roster">Roster</a></li>
-        <li><a href="#recruitment">Recruitment</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li class="nav-item">
+          <a href="media.html">Media</a>
+          <ul class="dropdown">
+            <li><a href="media.html#gallery">Gallery</a></li>
+            <li><a href="media.html#videos">Videos</a></li>
+          </ul>
+        </li>
+        <li><a href="recruitment.html">Recruitment</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="portal.html">Patch Holders</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
@@ -105,130 +110,6 @@
       <div class="rule-card"><span class="rule-num">V</span><h4>Never Bring Shame or Danger to the Club</h4><p>Each member's actions reflect the club's reputation. Conduct yourself with honor and discipline at all times.</p></div>
     </div>
     <p class="rules-note">Violation of any Directive results in immediate disciplinary action, up to and including permanent removal from the Club.</p>
-  </section>
-
-  <!-- ===== ROSTER ===== -->
-  <section class="section roster" id="roster">
-    <div class="section-head">
-      <h2 class="section-title">THE CHAPTER COUNCIL</h2>
-      <p class="section-sub">The leadership running the club.</p>
-    </div>
-    <div class="roster-grid">
-      <div class="member">
-        <div class="member-pic" style="--mh: #c0392b"><span>JC</span></div>
-        <h4>Jonathan 'Jay' Charles</h4>
-        <p class="member-title">President &amp; Founder</p>
-      </div>
-      <div class="member">
-        <div class="member-pic" style="--mh: #2c3e50"><span>EC</span></div>
-        <h4>Jason 'Escobar' Castle</h4>
-        <p class="member-title">Vice President</p>
-      </div>
-      <div class="member">
-        <div class="member-pic" style="--mh: #7f8c8d"><span>SS</span></div>
-        <h4>Tristan 'Shepard' Slater</h4>
-        <p class="member-title">Sergeant at Arms</p>
-      </div>
-      <div class="member">
-        <div class="member-pic" style="--mh: #b7950b"><span>ED</span></div>
-        <h4>Ember Davis</h4>
-        <p class="member-title">Secretary</p>
-      </div>
-      <div class="member">
-        <div class="member-pic" style="--mh: #16a085"><span>CR</span></div>
-        <h4>William 'Crashout' Reks</h4>
-        <p class="member-title">Treasurer</p>
-      </div>
-      <div class="member">
-        <div class="member-pic" style="--mh: #8e44ad"><span>ON</span></div>
-        <h4>Olivia Newton</h4>
-        <p class="member-title">Road Captain</p>
-      </div>
-      <div class="member">
-        <div class="member-pic" style="--mh: #1f618d"><span>MD</span></div>
-        <h4>Sid 'Mouth-on-Him' Dempsey</h4>
-        <p class="member-title">Tailgunner</p>
-      </div>
-    </div>
-    <p class="roster-note">Full member and prospect list available in-game.</p>
-  </section>
-
-  <!-- ===== RECRUITMENT ===== -->
-  <section class="section recruitment" id="recruitment">
-    <div class="section-head">
-      <h2 class="section-title">RECRUITMENT</h2>
-      <p class="section-sub">Thinking about wearing the patch? Here's what it takes.</p>
-    </div>
-    <div class="recruit-wrap">
-      <div class="recruit-requirements">
-        <h3>Requirements</h3>
-        <ul>
-          <li>Age 18+ and 16+ in character</li>
-          <li>Own a motorcycle and know how to ride it</li>
-          <li>No recent criminal record in the state (in character)</li>
-          <li>Able to attend at least 2 club runs per week</li>
-          <li>Willing to start as a Prospect</li>
-          <li>Voice chat required, no combat logging</li>
-        </ul>
-      </div>
-      <div class="recruit-form">
-        <h3>Apply to Prospect</h3>
-        <form id="recruitForm">
-          <div class="form-group">
-            <label for="name">In-Game Name</label>
-            <input type="text" id="name" name="name" required placeholder="e.g. Jack 'Rebel' Thompson">
-          </div>
-          <div class="form-group">
-            <label for="discord">Discord Tag</label>
-            <input type="text" id="discord" name="discord" required placeholder="e.g. rebel#0001">
-          </div>
-          <div class="form-group">
-            <label for="hours">Hours Played (approx)</label>
-            <input type="number" id="hours" name="hours" min="0" required placeholder="e.g. 500">
-          </div>
-          <div class="form-group">
-            <label for="why">Why do you want to join?</label>
-            <textarea id="why" name="why" rows="4" required placeholder="Tell us a little about yourself..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
-        </form>
-        <p class="form-msg" id="formMsg"></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== EVENTS ===== -->
-  <section class="section events" id="events">
-    <div class="section-head">
-      <h2 class="section-title">UPCOMING RUNS & EVENTS</h2>
-      <p class="section-sub">Weekly schedule — patch members and invited clubs only.</p>
-    </div>
-    <div class="events-list">
-      <div class="event">
-        <div class="event-date"><span class="date-day">FRI</span><span class="date-num">14</span></div>
-        <div class="event-info">
-          <h4>Friday Night Convoy Run</h4>
-          <p>Paleto Bay to Sandy Shores — full patch ride, meet at clubhouse at 21:00.</p>
-        </div>
-        <span class="event-badge">Club Run</span>
-      </div>
-      <div class="event">
-        <div class="event-date"><span class="date-day">SAT</span><span class="date-num">15</span></div>
-        <div class="event-info">
-          <h4>Canyon Run & Bike Show</h4>
-          <p>Zancudo river run then show at the clubhouse. Bring your best build.</p>
-        </div>
-        <span class="event-badge">Show & Shine</span>
-      </div>
-      <div class="event">
-        <div class="event-date"><span class="date-day">SUN</span><span class="date-num">16</span></div>
-        <div class="event-info">
-          <h4>Poker Run</h4>
-          <p>Five stops, best hand wins the pot. Prospect helpers needed.</p>
-        </div>
-        <span class="event-badge">Poker Run</span>
-      </div>
-    </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
