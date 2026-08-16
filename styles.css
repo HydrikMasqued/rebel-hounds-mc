@@ -1553,6 +1553,209 @@ body {
 }
 
 /* ===== INVENTORY ===== */
+
+/* --- Toolbar --- */
+.inv-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.inv-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.inv-search-icon {
+  color: var(--muted);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.inv-search {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.inv-search:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.inv-search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: none;
+  line-height: 1;
+}
+
+.inv-search-clear.visible {
+  display: block;
+}
+
+.inv-sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.inv-sort-label {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+}
+
+.inv-sort-btn {
+  padding: 0.3rem 0.6rem;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.inv-sort-btn:hover {
+  color: var(--text);
+  border-color: var(--primary);
+}
+
+.inv-sort-btn.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* --- Drag and Drop --- */
+.inv-item[draggable="true"] {
+  cursor: grab;
+}
+
+.inv-item[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.inv-item.dragging {
+  opacity: 0.4;
+  border-color: var(--gold);
+  border-style: dashed;
+}
+
+.inv-items.drag-over {
+  background: rgba(191, 64, 64, 0.06);
+  border-radius: 6px;
+  outline: 2px dashed var(--primary);
+  outline-offset: 4px;
+}
+
+.inv-drop-placeholder {
+  border: 2px dashed var(--gold);
+  border-radius: 8px;
+  min-height: 52px;
+  background: rgba(212, 175, 55, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  grid-column: 1 / -1;
+}
+
+/* --- Move button on item --- */
+.inv-btn-move {
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.inv-btn-move:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* --- Move Modal extras --- */
+.inv-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.inv-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.inv-move-item-preview {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.inv-move-item-preview .inv-move-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.inv-move-item-preview .inv-move-qty {
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+/* --- Search hidden item --- */
+.inv-item.search-hidden {
+  display: none !important;
+}
+
+.inv-storage.search-hidden,
+.inv-section.search-hidden {
+  display: none !important;
+}
+
 .inv-storage {
   margin-bottom: 2.5rem;
 }
@@ -1898,4 +2101,324 @@ body {
   .hero-stats {
     gap: 2rem;
   }
+}
+
+/* ===== SPREADSHEET INVENTORY — Card Panel Layout ===== */
+.portal-page .section:has(.ss-storage) {
+  max-width: 1600px;
+  padding: 2rem 2.5rem;
+}
+
+/* -- Storage Card -- */
+.ss-storage {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.ss-storage-header {
+  background: linear-gradient(135deg, var(--dark-3) 0%, var(--dark-2) 100%);
+  border-bottom: 2px solid var(--primary);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ss-storage-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin: 0;
+}
+
+.ss-storage-body {
+  padding: 1.25rem 1.5rem;
+}
+
+/* -- Sections Grid (side by side) -- */
+.ss-sections-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.ss-section {
+  flex: 1 1 0;
+  min-width: 280px;
+  max-width: 500px;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ss-section-header {
+  background: var(--dark-3);
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.ss-section-header h4 {
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 600;
+}
+
+.ss-table-wrap {
+  overflow-x: auto;
+}
+
+.ss-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ss-table thead th {
+  background: var(--dark-2);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.ss-table tbody tr {
+  border-bottom: 1px solid rgba(51, 51, 51, 0.4);
+  transition: background 0.15s ease;
+}
+
+.ss-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.ss-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.ss-table tbody tr:hover {
+  background: rgba(191, 64, 64, 0.07);
+}
+
+.ss-table tbody tr.dragging {
+  opacity: 0.3;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.ss-table.drag-over {
+  outline: 2px dashed var(--primary);
+  outline-offset: -2px;
+}
+
+/* Columns */
+.ss-col-drag { width: 28px; }
+.ss-col-name { }
+.ss-col-qty { width: 70px; text-align: center; }
+.ss-col-actions { width: 60px; text-align: center; }
+
+/* Cells */
+.ss-cell-drag {
+  text-align: center;
+  padding: 0;
+  width: 28px;
+}
+
+.ss-handle {
+  cursor: grab;
+  color: var(--muted);
+  font-size: 0.9rem;
+  user-select: none;
+  padding: 0.5rem 0;
+  transition: color 0.15s ease;
+  display: block;
+  opacity: 0.4;
+}
+
+.ss-table tbody tr:hover .ss-handle {
+  opacity: 1;
+}
+
+.ss-handle:hover {
+  color: var(--gold);
+}
+
+.ss-handle:active {
+  cursor: grabbing;
+}
+
+.ss-cell {
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  position: relative;
+  min-height: 38px;
+  vertical-align: middle;
+}
+
+.ss-cell:hover {
+  background: rgba(191, 64, 64, 0.06);
+}
+
+.ss-cell-name {
+  min-width: 140px;
+}
+
+.ss-cell-qty {
+  text-align: center;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.ss-display {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+/* Inline edit input */
+.ss-edit-input {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  background: var(--dark-2);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ss-cell-qty .ss-edit-input {
+  text-align: center;
+  width: 65px;
+}
+
+/* Action buttons */
+.ss-cell-actions {
+  text-align: center;
+  padding: 0.3rem 0.4rem;
+  white-space: nowrap;
+}
+
+.ss-btn {
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+  opacity: 0;
+}
+
+.ss-table tbody tr:hover .ss-btn {
+  opacity: 1;
+}
+
+.ss-btn:hover {
+  color: var(--text);
+  border-color: var(--primary);
+}
+
+.ss-btn-del:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.ss-btn-move:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* Add row */
+.ss-add-row {
+  border-top: 1px dashed var(--border) !important;
+  cursor: pointer;
+}
+
+.ss-add-row:hover {
+  background: rgba(191, 64, 64, 0.04) !important;
+}
+
+.ss-add-cell {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.ss-add-placeholder {
+  opacity: 0.5;
+  transition: all 0.15s ease;
+}
+
+.ss-add-row:hover .ss-add-placeholder {
+  opacity: 1;
+  color: var(--primary);
+}
+
+/* Section add button */
+.ss-add-section-row {
+  padding: 0.75rem 0 0.25rem;
+}
+
+/* Storage add button */
+.ss-add-storage-row {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Responsive — stack sections vertically on small screens */
+@media (max-width: 900px) {
+  .portal-page .section:has(.ss-storage) {
+    padding: 1.5rem 1rem;
+  }
+
+  .ss-storage-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .ss-storage-body {
+    padding: 1rem;
+  }
+
+  .ss-sections-grid {
+    flex-direction: column;
+  }
+
+  .ss-section {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .ss-col-drag { display: none; }
+  .ss-cell-drag { display: none; }
+  .ss-col-actions { width: 55px; }
+  .ss-cell { padding: 0.4rem 0.5rem; }
+  .ss-btn { opacity: 1; }
 }

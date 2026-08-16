@@ -87,6 +87,8 @@ function setPatchAuth(authed) {
     if (bylawsOpen) bylawsOpen.href = '#';
     if (bylawsDownload) bylawsDownload.href = '#';
   }
+  // Notify other scripts (e.g. inventory.js) of auth change
+  window.dispatchEvent(new CustomEvent('patchAuthChange', { detail: { authed } }));
 }
 
 function clearPatchMsg() {

@@ -30,72 +30,64 @@
     </div>
   </nav>
 
-  <!-- ===== INVENTORY CONTENT (always visible) ===== -->
-  <header class="portal-hero">
-    <div class="portal-hero-inner">
-      <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="portal-hero-logo">
-      <h1 class="hero-title">INVENTORY</h1>
-      <p class="hero-sub">Club storage locations, weapons, supplies and gear.</p>
-    </div>
-  </header>
-
-  <!-- ===== LOGIN GATE (inline, not full-screen) ===== -->
-  <div class="inv-login-bar" id="patchLoginBg">
-    <div class="inv-login-inner">
-      <form id="patchForm" class="inv-login-form" autocomplete="off">
-        <span class="inv-login-label">Members — login to edit:</span>
-        <input type="text" id="patchUser" name="patchUser" placeholder="Username" required>
-        <input type="password" id="patchPass" name="patchPass" placeholder="Password" required>
-        <button type="submit" class="btn btn-primary btn-sm">Login</button>
-      </form>
-      <p class="form-msg" id="patchMsg"></p>
-    </div>
-  </div>
-
-  <!-- Portal Sub-Nav -->
-  <div class="portal-sub-nav">
-    <div class="portal-sub-nav-inner">
-      <a href="portal.html">Dashboard</a>
-      <a href="portal-map.html">Map</a>
-      <a href="portal-bots.html">Bots</a>
-      <a href="portal-inventory.html" class="active">Inventory</a>
-      <a href="portal-finance.html">Finance</a>
-      <a href="portal-bylaws.html">Bylaws</a>
-    </div>
-  </div>
-
-  <section class="section">
-    <div id="inventoryContainer"></div>
-
-    <div class="patch-area-foot" id="invControls" style="display: none;">
-      <button type="button" class="btn btn-outline btn-sm" id="invResetBtn">Reset to Default</button>
-      <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
-    </div>
-  </section>
-
-  <!-- ===== ITEM MODAL ===== -->
-  <div class="inv-modal" id="invModal">
-    <div class="inv-modal-card">
-      <div class="inv-modal-head">
-        <h3 id="invModalTitle">Add Item</h3>
-        <button class="inv-modal-close" id="invModalClose">&times;</button>
+  <!-- ===== LOGIN GATE ===== -->
+  <div class="portal-login-bg" id="patchLoginBg">
+    <div class="patch-gate" id="patchGate">
+      <div class="patch-gate-card">
+        <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="patch-gate-logo">
+        <h3>MEMBERS ONLY</h3>
+        <p class="patch-gate-sub">Enter your issued credentials to access the Patch Holders Hub.</p>
+        <form id="patchForm" class="patch-form" autocomplete="off">
+          <div class="form-group">
+            <label for="patchUser">Username</label>
+            <input type="text" id="patchUser" name="patchUser" required placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="patchPass">Password</label>
+            <input type="password" id="patchPass" name="patchPass" required placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enter Portal</button>
+        </form>
+        <p class="form-msg" id="patchMsg"></p>
       </div>
-      <form id="invForm">
-        <div class="form-group">
-          <label for="invItemName">Item Name</label>
-          <input type="text" id="invItemName" required placeholder="e.g. Cement">
-        </div>
-        <div class="form-group">
-          <label for="invItemQty">Quantity</label>
-          <input type="number" id="invItemQty" min="0" value="1" required>
-        </div>
-        <div class="form-group">
-          <label for="invItemImage">Image URL (optional)</label>
-          <input type="url" id="invItemImage" placeholder="https://...">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Save Item</button>
-      </form>
     </div>
+  </div>
+
+  <!-- ===== MEMBERS AREA ===== -->
+  <div class="patch-area hidden" id="patchArea">
+
+    <!-- Portal Sub-Nav -->
+    <div class="portal-sub-nav">
+      <div class="portal-sub-nav-inner">
+        <a href="portal.html">Dashboard</a>
+        <a href="portal-map.html">Map</a>
+        <a href="portal-bots.html">Bots</a>
+        <a href="portal-inventory.html" class="active">Inventory</a>
+        <a href="portal-finance.html">Finance</a>
+        <a href="portal-bylaws.html">Bylaws</a>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">INVENTORY</h2>
+        <p class="section-sub">Club storage locations, weapons, supplies and gear.</p>
+      </div>
+
+      <div class="patch-bylaws">
+        <div class="patch-pdf">
+          <iframe title="RHMC Storages" loading="lazy" id="inventoryFrame" src="https://docs.google.com/spreadsheets/d/1M6-sdeUXr9rINkwv14-JIXy3AU9ZdBf_-iVvVi_RcSM/edit?gid=392008481#gid=392008481"></iframe>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="https://docs.google.com/spreadsheets/d/1M6-sdeUXr9rINkwv14-JIXy3AU9ZdBf_-iVvVi_RcSM/edit?gid=392008481#gid=392008481" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open in New Tab</a>
+        </div>
+      </div>
+
+      <!-- Logout -->
+      <div class="patch-area-foot">
+        <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
+      </div>
+    </section>
   </div>
 
   <!-- ===== FOOTER ===== -->
@@ -115,6 +107,5 @@
   </footer>
 
   <script src="portal.js"></script>
-  <script src="inventory.js"></script>
 </body>
 </html>
