@@ -148,7 +148,7 @@ function resetAllData() {
   financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
   
   renderDashboard();
-  showFormMessage('All data has been reset to defaults.', 'success');
+  alert('All data has been reset to defaults.');
 }
 
 // ============================================================
