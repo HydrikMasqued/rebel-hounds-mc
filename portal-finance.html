@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finance — Rebel Hounds MC</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="finance-styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body class="portal-page">
 
@@ -68,35 +73,153 @@
       </div>
     </div>
 
-    <section class="section">
+    <section class="section finance-dashboard">
       <div class="section-head">
-        <h2 class="section-title">FINANCE</h2>
-        <p class="section-sub">Treasury, dues and financial tracking.</p>
+        <h2 class="section-title">TREASURY</h2>
+        <p class="section-sub">Club finances, budgets and transaction history.</p>
       </div>
 
-      <div class="content-card">
-        <h3>Club Treasury</h3>
-        <p>Total funds available for club operations, events and support.</p>
+      <!-- Loading State -->
+      <div class="fin-loading" id="finLoading">
+        <div class="fin-spinner"></div>
+        <p>Loading treasury data...</p>
       </div>
 
-      <div class="content-card">
-        <h3>Dues & Contributions</h3>
-        <p>Monthly dues and member contribution tracking.</p>
-        <ul>
-          <li>Patch Holders — Monthly dues required</li>
-          <li>Prospects — Reduced rate during prospecting</li>
-          <li>Special Assessments — Voted by membership</li>
-        </ul>
+      <!-- Error State -->
+      <div class="fin-error hidden" id="finError">
+        <p>Failed to load finance data. Please try again later.</p>
+        <button class="btn btn-outline btn-sm" id="finRetry">Retry</button>
       </div>
 
-      <div class="content-card">
-        <h3>Expenses</h3>
-        <p>Recent club expenditures and approved spending.</p>
-        <ul>
-          <li>Event Costs — Venue, supplies, prizes</li>
-          <li>Equipment — Club gear and maintenance</li>
-          <li>Support — Member assistance fund</li>
-        </ul>
+      <!-- Dashboard Content (hidden until data loads) -->
+      <div class="fin-dashboard hidden" id="finDashboard">
+        
+        <!-- Balance Overview Cards -->
+        <div class="fin-overview-grid">
+          <div class="fin-card fin-balance">
+            <h4>Current Balance</h4>
+            <p class="fin-amount" id="finBalance">$0.00</p>
+          </div>
+          <div class="fin-card fin-income">
+            <h4>Monthly Income</h4>
+            <p class="fin-amount" id="finMonthlyIncome">$0.00</p>
+          </div>
+          <div class="fin-card fin-expense">
+            <h4>Monthly Expenses</h4>
+            <p class="fin-amount" id="finMonthlyExpenses">$0.00</p>
+          </div>
+          <div class="fin-card fin-budget">
+            <h4>Budget Remaining</h4>
+            <p class="fin-amount" id="finBudgetRemaining">$0.00</p>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="fin-charts-grid">
+          <div class="fin-chart-card">
+            <h3>Income vs Expenses</h3>
+            <canvas id="finIncomeExpenseChart"></canvas>
+          </div>
+          <div class="fin-chart-card">
+            <h3>Spending by Category</h3>
+            <canvas id="finCategoryChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Budget Progress -->
+        <div class="fin-budget-section">
+          <h3>Budget Progress</h3>
+          <div class="fin-budget-grid" id="finBudgetGrid">
+            <!-- Dynamic budget progress bars -->
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="fin-transactions-section">
+          <div class="fin-transactions-header">
+            <h3>Recent Transactions</h3>
+            <div class="fin-filters">
+              <select id="finFilterCategory">
+                <option value="">All Categories</option>
+                <option value="Dues & Fees">Dues & Fees</option>
+                <option value="Events & Activities">Events & Activities</option>
+                <option value="Equipment & Gear">Equipment & Gear</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Other">Other</option>
+              </select>
+              <select id="finFilterType">
+                <option value="">All Types</option>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+              </select>
+            </div>
+          </div>
+          <div class="ss-table-wrap">
+            <table class="ss-table fin-transactions-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Description</th>
+                  <th>Member</th>
+                </tr>
+              </thead>
+              <tbody id="finTransactionsBody">
+                <!-- Dynamic rows -->
+              </tbody>
+            </table>
+          </div>
+          <div class="fin-transactions-footer" id="finTransactionsFooter">
+            <p class="fin-transactions-count" id="finTransactionsCount">Showing 0 transactions</p>
+          </div>
+        </div>
+
+        <!-- Add Transaction Form (Officers Only) -->
+        <div class="fin-add-section" id="finAddSection">
+          <h3>Add Transaction</h3>
+          <form id="finTransactionForm" class="fin-form">
+            <div class="fin-form-grid">
+              <div class="form-group">
+                <label for="finDate">Date</label>
+                <input type="date" id="finDate" required>
+              </div>
+              <div class="form-group">
+                <label for="finType">Type</label>
+                <select id="finType" required>
+                  <option value="Income">Income</option>
+                  <option value="Expense">Expense</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="finCategory">Category</label>
+                <select id="finCategory" required>
+                  <option value="Dues & Fees">Dues & Fees</option>
+                  <option value="Events & Activities">Events & Activities</option>
+                  <option value="Equipment & Gear">Equipment & Gear</option>
+                  <option value="Maintenance">Maintenance</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="finAmount">Amount ($)</label>
+                <input type="number" id="finAmount" step="0.01" min="0" required>
+              </div>
+              <div class="form-group fin-form-full">
+                <label for="finDescription">Description</label>
+                <input type="text" id="finDescription" required placeholder="What was this transaction for?">
+              </div>
+              <div class="form-group">
+                <label for="finMember">Member</label>
+                <input type="text" id="finMember" placeholder="Who paid/received">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Transaction</button>
+            <p class="form-msg" id="finFormMsg"></p>
+          </form>
+        </div>
+
       </div>
 
       <!-- Logout -->
@@ -123,5 +246,7 @@
   </footer>
 
   <script src="portal.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="portal-finance.js"></script>
 </body>
 </html>
