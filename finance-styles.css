@@ -1,5 +1,10 @@
 /* ===== Rebel Hounds MC — Finance Dashboard Styles ===== */
 
+/* Global utility */
+.hidden {
+  display: none !important;
+}
+
 /* Loading & Error States */
 .fin-loading {
   text-align: center;
