@@ -128,9 +128,49 @@
 
         <!-- Budget Progress -->
         <div class="fin-budget-section">
-          <h3>Budget Progress</h3>
+          <div class="fin-section-header">
+            <h3>Budget Progress</h3>
+          </div>
           <div class="fin-budget-grid" id="finBudgetGrid">
             <!-- Dynamic budget progress bars -->
+          </div>
+          
+          <!-- Add Budget Form -->
+          <div class="fin-add-budget">
+            <h4>Add Budget</h4>
+            <div class="fin-form-grid">
+              <div class="form-group">
+                <label for="finBudgetCategory">Category</label>
+                <select id="finBudgetCategory" required>
+                  <option value="">Select category...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="finBudgetMonthly">Monthly Limit ($)</label>
+                <input type="number" id="finBudgetMonthly" step="0.01" min="0" placeholder="0.00">
+              </div>
+              <div class="form-group">
+                <label for="finBudgetAnnual">Annual Limit ($)</label>
+                <input type="number" id="finBudgetAnnual" step="0.01" min="0" placeholder="0.00">
+              </div>
+              <div class="form-group fin-form-btn">
+                <button type="button" class="btn btn-primary" id="finAddBudget">Add Budget</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Manager -->
+        <div class="fin-category-section">
+          <div class="fin-section-header">
+            <h3>Manage Categories</h3>
+          </div>
+          <div class="fin-category-list" id="finCategoryList">
+            <!-- Dynamic category items -->
+          </div>
+          <div class="fin-add-category">
+            <input type="text" id="finNewCategory" placeholder="New category name...">
+            <button type="button" class="btn btn-primary" id="finAddCategory">Add Category</button>
           </div>
         </div>
 
@@ -141,11 +181,6 @@
             <div class="fin-filters">
               <select id="finFilterCategory">
                 <option value="">All Categories</option>
-                <option value="Dues & Fees">Dues & Fees</option>
-                <option value="Events & Activities">Events & Activities</option>
-                <option value="Equipment & Gear">Equipment & Gear</option>
-                <option value="Maintenance">Maintenance</option>
-                <option value="Other">Other</option>
               </select>
               <select id="finFilterType">
                 <option value="">All Types</option>
@@ -196,11 +231,7 @@
               <div class="form-group">
                 <label for="finCategory">Category</label>
                 <select id="finCategory" required>
-                  <option value="Dues & Fees">Dues & Fees</option>
-                  <option value="Events & Activities">Events & Activities</option>
-                  <option value="Equipment & Gear">Equipment & Gear</option>
-                  <option value="Maintenance">Maintenance</option>
-                  <option value="Other">Other</option>
+                  <option value="">Select category...</option>
                 </select>
               </div>
               <div class="form-group">
@@ -254,11 +285,7 @@
             <div class="form-group">
               <label for="editTransCategory">Category</label>
               <select id="editTransCategory" required>
-                <option value="Dues & Fees">Dues & Fees</option>
-                <option value="Events & Activities">Events & Activities</option>
-                <option value="Equipment & Gear">Equipment & Gear</option>
-                <option value="Maintenance">Maintenance</option>
-                <option value="Other">Other</option>
+                <option value="">Select category...</option>
               </select>
             </div>
             <div class="form-group">
