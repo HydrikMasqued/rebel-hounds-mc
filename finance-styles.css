@@ -448,3 +448,159 @@
     padding: 0.5rem;
   }
 }
+
+/* ============================================================
+   ACTION BUTTONS
+   ============================================================ */
+
+.fin-actions {
+  white-space: nowrap;
+}
+
+.fin-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.fin-action-btn:hover {
+  background: var(--dark-3);
+}
+
+.fin-edit-btn:hover {
+  color: #3498db;
+}
+
+.fin-delete-btn:hover {
+  color: #c0392b;
+}
+
+.fin-edit-budget-btn {
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+
+.fin-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.fin-modal.active {
+  display: flex;
+}
+
+.fin-modal-content {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.fin-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.fin-modal-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 1.5px;
+  color: var(--text);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.fin-modal-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.fin-modal-close:hover {
+  color: var(--text);
+}
+
+.fin-modal-body {
+  padding: 1.5rem;
+}
+
+.fin-modal-body .form-group {
+  margin-bottom: 1rem;
+}
+
+.fin-modal-body .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.fin-modal-body label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.fin-modal-body input,
+.fin-modal-body select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.fin-modal-body input:focus,
+.fin-modal-body select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.fin-modal-body input[readonly] {
+  background: var(--dark-3);
+  cursor: not-allowed;
+}
+
+.fin-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.fin-modal-footer .btn {
+  min-width: 120px;
+}
+}

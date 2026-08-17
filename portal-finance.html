@@ -164,6 +164,7 @@
                   <th>Amount</th>
                   <th>Description</th>
                   <th>Member</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody id="finTransactionsBody">
@@ -224,9 +225,93 @@
 
       <!-- Logout -->
       <div class="patch-area-foot">
+        <button type="button" class="btn btn-outline btn-sm" id="finResetBtn">Reset All Data</button>
         <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
       </div>
     </section>
+
+    <!-- Edit Transaction Modal -->
+    <div class="fin-modal" id="editTransactionModal">
+      <div class="fin-modal-content">
+        <div class="fin-modal-header">
+          <h3>Edit Transaction</h3>
+          <button class="fin-modal-close">&times;</button>
+        </div>
+        <div class="fin-modal-body">
+          <input type="hidden" id="editTransId">
+          <div class="fin-form-grid">
+            <div class="form-group">
+              <label for="editTransDate">Date</label>
+              <input type="date" id="editTransDate" required>
+            </div>
+            <div class="form-group">
+              <label for="editTransType">Type</label>
+              <select id="editTransType" required>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editTransCategory">Category</label>
+              <select id="editTransCategory" required>
+                <option value="Dues & Fees">Dues & Fees</option>
+                <option value="Events & Activities">Events & Activities</option>
+                <option value="Equipment & Gear">Equipment & Gear</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editTransAmount">Amount ($)</label>
+              <input type="number" id="editTransAmount" step="0.01" min="0" required>
+            </div>
+            <div class="form-group fin-form-full">
+              <label for="editTransDescription">Description</label>
+              <input type="text" id="editTransDescription" required>
+            </div>
+            <div class="form-group">
+              <label for="editTransMember">Member</label>
+              <input type="text" id="editTransMember">
+            </div>
+          </div>
+        </div>
+        <div class="fin-modal-footer">
+          <button type="button" class="btn btn-outline fin-modal-close">Cancel</button>
+          <button type="button" class="btn btn-primary" id="saveEditTransaction">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Budget Modal -->
+    <div class="fin-modal" id="editBudgetModal">
+      <div class="fin-modal-content">
+        <div class="fin-modal-header">
+          <h3>Edit Budget</h3>
+          <button class="fin-modal-close">&times;</button>
+        </div>
+        <div class="fin-modal-body">
+          <input type="hidden" id="editBudgetId">
+          <div class="form-group">
+            <label for="editBudgetCategory">Category</label>
+            <input type="text" id="editBudgetCategory" readonly>
+          </div>
+          <div class="fin-form-grid">
+            <div class="form-group">
+              <label for="editBudgetMonthly">Monthly Limit ($)</label>
+              <input type="number" id="editBudgetMonthly" step="0.01" min="0">
+            </div>
+            <div class="form-group">
+              <label for="editBudgetAnnual">Annual Limit ($)</label>
+              <input type="number" id="editBudgetAnnual" step="0.01" min="0">
+            </div>
+          </div>
+        </div>
+        <div class="fin-modal-footer">
+          <button type="button" class="btn btn-outline fin-modal-close">Cancel</button>
+          <button type="button" class="btn btn-primary" id="saveEditBudget">Save Changes</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ===== FOOTER ===== -->

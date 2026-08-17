@@ -6,41 +6,39 @@
 let financeData = {
   transactions: [],
   budgets: [],
-  summary: {},
-  lastFetch: 0
+  summary: {}
 };
 
 // Chart instances
 let incomeExpenseChart = null;
 let categoryChart = null;
 
-// Firebase references
-let db = null;
-let unsubscribeTransactions = null;
-let unsubscribeBudgets = null;
+// Storage keys
+const STORAGE_KEY_TRANSACTIONS = 'rh_finance_transactions';
+const STORAGE_KEY_BUDGETS = 'rh_finance_budgets';
 
 // ============================================================
-// DEMO DATA - Used when DEMO_MODE is true
+// DEFAULT DATA - Used for reset and initial load
 // ============================================================
-const DEMO_TRANSACTIONS = [
-  { id: '1', date: '2026-08-15', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'John Smith', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-15') },
-  { id: '2', date: '2026-08-14', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'Mike Johnson', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-14') },
-  { id: '3', date: '2026-08-13', type: 'Expense', category: 'Events & Activities', amount: 275.50, description: 'Ride supplies and refreshments', member: 'Event Committee', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-13') },
-  { id: '4', date: '2026-08-12', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'Sarah Williams', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-12') },
-  { id: '5', date: '2026-08-10', type: 'Expense', category: 'Equipment & Gear', amount: 89.99, description: 'New safety vests (x4)', member: 'Gear Master', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-10') },
-  { id: '6', date: '2026-08-08', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'Tom Brown', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-08') },
-  { id: '7', date: '2026-08-05', type: 'Expense', category: 'Maintenance', amount: 125, description: 'Club storage unit rent', member: 'Facilities', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-05') },
-  { id: '8', date: '2026-08-03', type: 'Income', category: 'Events & Activities', amount: 200, description: 'Charity ride registration fees', member: 'Event Committee', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-03') },
-  { id: '9', date: '2026-08-01', type: 'Expense', category: 'Other', amount: 45, description: 'Office supplies', member: 'Admin', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-08-01') },
-  { id: '10', date: '2026-07-28', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - July', member: 'John Smith', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-07-28') },
-  { id: '11', date: '2026-07-25', type: 'Expense', category: 'Events & Activities', amount: 320, description: 'Summer gathering venue rental', member: 'Event Committee', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-07-25') },
-  { id: '12', date: '2026-07-20', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - July', member: 'Mike Johnson', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-07-20') },
-  { id: '13', date: '2026-07-15', type: 'Expense', category: 'Equipment & Gear', amount: 175, description: 'First aid kit restocking', member: 'Gear Master', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-07-15') },
-  { id: '14', date: '2026-07-10', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - July', member: 'Sarah Williams', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-07-10') },
-  { id: '15', date: '2026-07-05', type: 'Expense', category: 'Maintenance', amount: 85, description: 'Storage unit maintenance', member: 'Facilities', status: 'Approved', addedBy: 'Treasurer', createdAt: new Date('2026-07-05') }
+const DEFAULT_TRANSACTIONS = [
+  { id: '1', date: '2026-08-15', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'John Smith', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '2', date: '2026-08-14', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'Mike Johnson', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '3', date: '2026-08-13', type: 'Expense', category: 'Events & Activities', amount: 275.50, description: 'Ride supplies and refreshments', member: 'Event Committee', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '4', date: '2026-08-12', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'Sarah Williams', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '5', date: '2026-08-10', type: 'Expense', category: 'Equipment & Gear', amount: 89.99, description: 'New safety vests (x4)', member: 'Gear Master', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '6', date: '2026-08-08', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - August', member: 'Tom Brown', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '7', date: '2026-08-05', type: 'Expense', category: 'Maintenance', amount: 125, description: 'Club storage unit rent', member: 'Facilities', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '8', date: '2026-08-03', type: 'Income', category: 'Events & Activities', amount: 200, description: 'Charity ride registration fees', member: 'Event Committee', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '9', date: '2026-08-01', type: 'Expense', category: 'Other', amount: 45, description: 'Office supplies', member: 'Admin', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '10', date: '2026-07-28', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - July', member: 'John Smith', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '11', date: '2026-07-25', type: 'Expense', category: 'Events & Activities', amount: 320, description: 'Summer gathering venue rental', member: 'Event Committee', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '12', date: '2026-07-20', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - July', member: 'Mike Johnson', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '13', date: '2026-07-15', type: 'Expense', category: 'Equipment & Gear', amount: 175, description: 'First aid kit restocking', member: 'Gear Master', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '14', date: '2026-07-10', type: 'Income', category: 'Dues & Fees', amount: 150, description: 'Monthly dues - July', member: 'Sarah Williams', status: 'Approved', addedBy: 'Treasurer' },
+  { id: '15', date: '2026-07-05', type: 'Expense', category: 'Maintenance', amount: 85, description: 'Storage unit maintenance', member: 'Facilities', status: 'Approved', addedBy: 'Treasurer' }
 ];
 
-const DEMO_BUDGETS = [
+const DEFAULT_BUDGETS = [
   { id: '1', category: 'Dues & Fees', monthlyLimit: 600, annualLimit: 7200, spent: 450 },
   { id: '2', category: 'Events & Activities', monthlyLimit: 500, annualLimit: 6000, spent: 595.50 },
   { id: '3', category: 'Equipment & Gear', monthlyLimit: 200, annualLimit: 2400, spent: 264.99 },
@@ -52,7 +50,6 @@ const DEMO_BUDGETS = [
 // INITIALIZATION
 // ============================================================
 
-// Listen for auth changes from portal.js
 window.addEventListener('patchAuthChange', (e) => {
   if (e.detail.authed) {
     initFinanceDashboard();
@@ -61,7 +58,6 @@ window.addEventListener('patchAuthChange', (e) => {
   }
 });
 
-// Check on page load
 if (sessionStorage.getItem('rh_patch_auth') === '1') {
   setTimeout(() => {
     if (sessionStorage.getItem('rh_patch_auth') === '1') {
@@ -72,151 +68,87 @@ if (sessionStorage.getItem('rh_patch_auth') === '1') {
 
 function initFinanceDashboard() {
   console.log('Finance dashboard initializing...');
-  
   showLoading(true);
-  showError(false);
   setDefaultDate();
   setupEventListeners();
-  
-  if (DEMO_MODE) {
-    loadDemoData();
-  } else {
-    initFirebase();
-  }
+  loadData();
 }
 
 function cleanupFinanceDashboard() {
-  // Unsubscribe from Firestore listeners
-  if (unsubscribeTransactions) unsubscribeTransactions();
-  if (unsubscribeBudgets) unsubscribeBudgets();
-  
-  // Destroy charts
-  if (incomeExpenseChart) {
-    incomeExpenseChart.destroy();
-    incomeExpenseChart = null;
-  }
-  if (categoryChart) {
-    categoryChart.destroy();
-    categoryChart = null;
-  }
-  
-  financeData = { transactions: [], budgets: [], summary: {}, lastFetch: 0 };
-  
+  if (incomeExpenseChart) { incomeExpenseChart.destroy(); incomeExpenseChart = null; }
+  if (categoryChart) { categoryChart.destroy(); categoryChart = null; }
+  financeData = { transactions: [], budgets: [], summary: {} };
   const dashboard = document.getElementById('finDashboard');
   if (dashboard) dashboard.classList.add('hidden');
 }
 
 // ============================================================
-// DEMO MODE
+// DATA PERSISTENCE (localStorage)
 // ============================================================
 
-function loadDemoData() {
-  console.log('Loading demo data...');
-  
-  setTimeout(() => {
-    financeData = {
-      transactions: DEMO_TRANSACTIONS,
-      budgets: DEMO_BUDGETS,
-      summary: calculateSummary(DEMO_TRANSACTIONS, DEMO_BUDGETS),
-      lastFetch: Date.now()
-    };
+function loadData() {
+  try {
+    const storedTransactions = localStorage.getItem(STORAGE_KEY_TRANSACTIONS);
+    const storedBudgets = localStorage.getItem(STORAGE_KEY_BUDGETS);
     
+    if (storedTransactions) {
+      financeData.transactions = JSON.parse(storedTransactions);
+    } else {
+      financeData.transactions = [...DEFAULT_TRANSACTIONS];
+      saveTransactions();
+    }
+    
+    if (storedBudgets) {
+      financeData.budgets = JSON.parse(storedBudgets);
+    } else {
+      financeData.budgets = [...DEFAULT_BUDGETS];
+      saveBudgets();
+    }
+    
+    financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
     renderDashboard();
     showLoading(false);
-    showError(false);
-    
-    console.log('Demo data loaded successfully');
-  }, 500);
+    console.log('Data loaded successfully');
+  } catch (error) {
+    console.error('Error loading data:', error);
+    financeData.transactions = [...DEFAULT_TRANSACTIONS];
+    financeData.budgets = [...DEFAULT_BUDGETS];
+    financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+    renderDashboard();
+    showLoading(false);
+  }
 }
 
-// ============================================================
-// FIREBASE FIRESTORE
-// ============================================================
+function saveTransactions() {
+  try {
+    localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(financeData.transactions));
+  } catch (e) {
+    console.error('Error saving transactions:', e);
+  }
+}
 
-function initFirebase() {
-  // Check if Firebase is loaded
-  if (typeof firebase === 'undefined') {
-    console.error('Firebase SDK not loaded');
-    showError(true);
-    showLoading(false);
+function saveBudgets() {
+  try {
+    localStorage.setItem(STORAGE_KEY_BUDGETS, JSON.stringify(financeData.budgets));
+  } catch (e) {
+    console.error('Error saving budgets:', e);
+  }
+}
+
+function resetAllData() {
+  if (!confirm('Are you sure you want to reset ALL data? This will restore default sample data and cannot be undone.')) {
     return;
   }
   
-  // Initialize Firebase
-  firebase.initializeApp(FIREBASE_CONFIG);
-  db = firebase.firestore();
+  localStorage.removeItem(STORAGE_KEY_TRANSACTIONS);
+  localStorage.removeItem(STORAGE_KEY_BUDGETS);
   
-  console.log('Firebase initialized');
+  financeData.transactions = [...DEFAULT_TRANSACTIONS];
+  financeData.budgets = [...DEFAULT_BUDGETS];
+  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
   
-  // Subscribe to real-time updates
-  subscribeToTransactions();
-  subscribeToBudgets();
-}
-
-function subscribeToTransactions() {
-  unsubscribeTransactions = db.collection('transactions')
-    .orderBy('date', 'desc')
-    .onSnapshot(snapshot => {
-      financeData.transactions = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      
-      financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
-      financeData.lastFetch = Date.now();
-      
-      renderDashboard();
-      showLoading(false);
-      showError(false);
-      
-      console.log('Transactions updated:', financeData.transactions.length);
-    }, error => {
-      console.error('Error fetching transactions:', error);
-      showLoading(false);
-      if (financeData.transactions.length === 0) {
-        showError(true);
-      }
-    });
-}
-
-function subscribeToBudgets() {
-  unsubscribeBudgets = db.collection('budgets')
-    .onSnapshot(snapshot => {
-      financeData.budgets = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      
-      financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
-      
-      renderBudgetProgress();
-      renderOverviewCards();
-      
-      console.log('Budgets updated:', financeData.budgets.length);
-    }, error => {
-      console.error('Error fetching budgets:', error);
-    });
-}
-
-async function addTransactionToFirestore(data) {
-  if (DEMO_MODE) {
-    // Demo mode - add to local array
-    const newTransaction = {
-      id: Date.now().toString(),
-      ...data,
-      createdAt: new Date()
-    };
-    DEMO_TRANSACTIONS.unshift(newTransaction);
-    financeData.transactions = [...DEMO_TRANSACTIONS];
-    financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
-    renderDashboard();
-    return Promise.resolve();
-  }
-  
-  return db.collection('transactions').add({
-    ...data,
-    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-  });
+  renderDashboard();
+  showFormMessage('All data has been reset to defaults.', 'success');
 }
 
 // ============================================================
@@ -231,25 +163,19 @@ function calculateSummary(transactions, budgets) {
   let balance = 0;
   let monthlyIncome = 0;
   let monthlyExpenses = 0;
-  let yearToDateIncome = 0;
-  let yearToDateExpenses = 0;
   
   transactions.forEach(t => {
     const amount = parseFloat(t.amount) || 0;
     const date = new Date(t.date);
-    const transactionMonth = date.getMonth();
-    const transactionYear = date.getFullYear();
     
     if (t.type === 'Income') {
       balance += amount;
-      yearToDateIncome += amount;
-      if (transactionMonth === currentMonth && transactionYear === currentYear) {
+      if (date.getMonth() === currentMonth && date.getFullYear() === currentYear) {
         monthlyIncome += amount;
       }
     } else if (t.type === 'Expense') {
       balance -= amount;
-      yearToDateExpenses += amount;
-      if (transactionMonth === currentMonth && transactionYear === currentYear) {
+      if (date.getMonth() === currentMonth && date.getFullYear() === currentYear) {
         monthlyExpenses += amount;
       }
     }
@@ -257,7 +183,7 @@ function calculateSummary(transactions, budgets) {
   
   const budgetRemaining = calculateBudgetRemaining(budgets);
   
-  return { balance, monthlyIncome, monthlyExpenses, yearToDateIncome, yearToDateExpenses, budgetRemaining };
+  return { balance, monthlyIncome, monthlyExpenses, budgetRemaining };
 }
 
 function calculateBudgetRemaining(budgets) {
@@ -277,8 +203,7 @@ function getMonthlyData(months) {
     const date = new Date();
     date.setMonth(date.getMonth() - i);
     
-    const monthName = date.toLocaleDateString('en-US', { month: 'short' });
-    labels.push(monthName);
+    labels.push(date.toLocaleDateString('en-US', { month: 'short' }));
     
     let monthIncome = 0;
     let monthExpenses = 0;
@@ -288,11 +213,8 @@ function getMonthlyData(months) {
       const amount = parseFloat(t.amount) || 0;
       
       if (tDate.getMonth() === date.getMonth() && tDate.getFullYear() === date.getFullYear()) {
-        if (t.type === 'Income') {
-          monthIncome += amount;
-        } else if (t.type === 'Expense') {
-          monthExpenses += amount;
-        }
+        if (t.type === 'Income') monthIncome += amount;
+        else if (t.type === 'Expense') monthExpenses += amount;
       }
     });
     
@@ -320,15 +242,10 @@ function getCategoryBreakdown() {
 function getFilteredTransactions(filters = {}) {
   let filtered = [...financeData.transactions];
   
-  if (filters.category) {
-    filtered = filtered.filter(t => t.category === filters.category);
-  }
-  if (filters.type) {
-    filtered = filtered.filter(t => t.type === filters.type);
-  }
+  if (filters.category) filtered = filtered.filter(t => t.category === filters.category);
+  if (filters.type) filtered = filtered.filter(t => t.type === filters.type);
   
   filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-  
   return filtered;
 }
 
@@ -348,7 +265,6 @@ function renderDashboard() {
 
 function renderOverviewCards() {
   const summary = financeData.summary;
-  
   updateElement('finBalance', formatCurrency(summary.balance));
   updateElement('finMonthlyIncome', formatCurrency(summary.monthlyIncome));
   updateElement('finMonthlyExpenses', formatCurrency(summary.monthlyExpenses));
@@ -364,9 +280,7 @@ function renderIncomeExpenseChart() {
   const canvas = document.getElementById('finIncomeExpenseChart');
   if (!canvas) return;
   
-  if (incomeExpenseChart) {
-    incomeExpenseChart.destroy();
-  }
+  if (incomeExpenseChart) incomeExpenseChart.destroy();
   
   const ctx = canvas.getContext('2d');
   const monthlyData = getMonthlyData(6);
@@ -398,33 +312,12 @@ function renderIncomeExpenseChart() {
       responsive: true,
       maintainAspectRatio: true,
       plugins: {
-        legend: {
-          labels: {
-            color: '#e8e8e8',
-            font: { family: "'Rajdhani', sans-serif", size: 12 }
-          }
-        },
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              return context.dataset.label + ': $' + context.parsed.y.toLocaleString();
-            }
-          }
-        }
+        legend: { labels: { color: '#e8e8e8', font: { family: "'Rajdhani', sans-serif", size: 12 } } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString() } }
       },
       scales: {
-        x: {
-          ticks: { color: '#9a9a9a', font: { family: "'Rajdhani', sans-serif" } },
-          grid: { color: 'rgba(51, 51, 51, 0.3)' }
-        },
-        y: {
-          ticks: { 
-            color: '#9a9a9a',
-            callback: value => '$' + value.toLocaleString(),
-            font: { family: "'Rajdhani', sans-serif" }
-          },
-          grid: { color: 'rgba(51, 51, 51, 0.3)' }
-        }
+        x: { ticks: { color: '#9a9a9a' }, grid: { color: 'rgba(51, 51, 51, 0.3)' } },
+        y: { ticks: { color: '#9a9a9a', callback: v => '$' + v.toLocaleString() }, grid: { color: 'rgba(51, 51, 51, 0.3)' } }
       }
     }
   });
@@ -434,19 +327,14 @@ function renderCategoryChart() {
   const canvas = document.getElementById('finCategoryChart');
   if (!canvas) return;
   
-  if (categoryChart) {
-    categoryChart.destroy();
-  }
+  if (categoryChart) categoryChart.destroy();
   
   const ctx = canvas.getContext('2d');
   const categoryData = getCategoryBreakdown();
   const labels = Object.keys(categoryData);
   const data = Object.values(categoryData);
   
-  if (labels.length === 0) {
-    labels.push('No Data');
-    data.push(1);
-  }
+  if (labels.length === 0) { labels.push('No Data'); data.push(1); }
   
   const colors = ['#c0392b', '#d4a017', '#27ae60', '#3498db', '#9b59b6', '#e67e22', '#1abc9c'];
   
@@ -454,36 +342,14 @@ function renderCategoryChart() {
     type: 'doughnut',
     data: {
       labels: labels,
-      datasets: [{
-        data: data,
-        backgroundColor: colors.slice(0, labels.length),
-        borderColor: 'rgba(20, 20, 20, 1)',
-        borderWidth: 2
-      }]
+      datasets: [{ data: data, backgroundColor: colors.slice(0, labels.length), borderColor: 'rgba(20, 20, 20, 1)', borderWidth: 2 }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: true,
       plugins: {
-        legend: {
-          position: 'right',
-          labels: {
-            color: '#e8e8e8',
-            font: { family: "'Rajdhani', sans-serif", size: 12 },
-            padding: 15,
-            usePointStyle: true,
-            pointStyleWidth: 12
-          }
-        },
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              const total = context.dataset.data.reduce((a, b) => a + b, 0);
-              const percentage = ((context.parsed / total) * 100).toFixed(1);
-              return context.label + ': $' + context.parsed.toLocaleString() + ' (' + percentage + '%)';
-            }
-          }
-        }
+        legend: { position: 'right', labels: { color: '#e8e8e8', font: { family: "'Rajdhani', sans-serif", size: 12 }, padding: 15, usePointStyle: true } },
+        tooltip: { callbacks: { label: ctx => { const total = ctx.dataset.data.reduce((a, b) => a + b, 0); return ctx.label + ': $' + ctx.parsed.toLocaleString() + ' (' + ((ctx.parsed / total) * 100).toFixed(1) + '%)'; } } }
       },
       cutout: '60%'
     }
@@ -504,7 +370,6 @@ function renderBudgetProgress() {
     const monthlyLimit = parseFloat(budget.monthlyLimit) || 0;
     const annualLimit = parseFloat(budget.annualLimit) || 0;
     const spent = parseFloat(budget.spent) || 0;
-    
     const limit = annualLimit > 0 ? annualLimit : monthlyLimit;
     const percentage = limit > 0 ? Math.min((spent / limit) * 100, 100) : 0;
     const remaining = limit - spent;
@@ -514,7 +379,7 @@ function renderBudgetProgress() {
     else if (percentage >= 75) statusClass = 'fin-budget-warning';
     
     return `
-      <div class="fin-budget-item">
+      <div class="fin-budget-item" data-id="${budget.id}">
         <div class="fin-budget-header">
           <span class="fin-budget-category">${escapeHtml(category)}</span>
           <span class="fin-budget-amounts">$${spent.toLocaleString()} / $${limit.toLocaleString()}</span>
@@ -526,6 +391,7 @@ function renderBudgetProgress() {
           <span>${percentage.toFixed(1)}% used</span>
           <span>$${remaining.toLocaleString()} remaining</span>
         </div>
+        <button class="fin-edit-budget-btn btn btn-outline btn-sm" onclick="editBudget('${budget.id}')">Edit</button>
       </div>
     `;
   }).join('');
@@ -540,7 +406,7 @@ function renderTransactions(filters = {}) {
   const display = filtered.slice(0, 50);
   
   if (display.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" class="fin-no-data">No transactions found</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" class="fin-no-data">No transactions found</td></tr>';
     if (countEl) countEl.textContent = 'No transactions';
     return;
   }
@@ -548,13 +414,17 @@ function renderTransactions(filters = {}) {
   tbody.innerHTML = display.map(t => {
     const typeClass = t.type === 'Income' ? 'fin-type-income' : 'fin-type-expense';
     return `
-      <tr>
+      <tr data-id="${t.id}">
         <td>${formatDate(t.date)}</td>
         <td><span class="fin-type-badge ${typeClass}">${escapeHtml(t.type)}</span></td>
         <td>${escapeHtml(t.category)}</td>
         <td class="${typeClass}">${formatCurrency(t.amount)}</td>
         <td>${escapeHtml(t.description)}</td>
         <td>${escapeHtml(t.member)}</td>
+        <td class="fin-actions">
+          <button class="fin-action-btn fin-edit-btn" onclick="editTransaction('${t.id}')" title="Edit">✏️</button>
+          <button class="fin-action-btn fin-delete-btn" onclick="deleteTransaction('${t.id}')" title="Delete">🗑️</button>
+        </td>
       </tr>
     `;
   }).join('');
@@ -562,10 +432,113 @@ function renderTransactions(filters = {}) {
   if (countEl) {
     const total = filtered.length;
     const showing = display.length;
-    countEl.textContent = total > showing 
-      ? `Showing ${showing} of ${total} transactions`
-      : `Showing ${total} transaction${total !== 1 ? 's' : ''}`;
+    countEl.textContent = total > showing ? `Showing ${showing} of ${total} transactions` : `Showing ${total} transaction${total !== 1 ? 's' : ''}`;
   }
+}
+
+// ============================================================
+// TRANSACTION CRUD
+// ============================================================
+
+function addTransaction(data) {
+  const newTransaction = {
+    id: Date.now().toString(),
+    ...data
+  };
+  
+  financeData.transactions.unshift(newTransaction);
+  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  updateBudgetSpent();
+  saveTransactions();
+  saveBudgets();
+  renderDashboard();
+}
+
+function editTransaction(id) {
+  const transaction = financeData.transactions.find(t => t.id === id);
+  if (!transaction) return;
+  
+  document.getElementById('editTransId').value = transaction.id;
+  document.getElementById('editTransDate').value = transaction.date;
+  document.getElementById('editTransType').value = transaction.type;
+  document.getElementById('editTransCategory').value = transaction.category;
+  document.getElementById('editTransAmount').value = transaction.amount;
+  document.getElementById('editTransDescription').value = transaction.description;
+  document.getElementById('editTransMember').value = transaction.member;
+  
+  document.getElementById('editTransactionModal').classList.add('active');
+}
+
+function saveEditedTransaction() {
+  const id = document.getElementById('editTransId').value;
+  const transaction = financeData.transactions.find(t => t.id === id);
+  if (!transaction) return;
+  
+  transaction.date = document.getElementById('editTransDate').value;
+  transaction.type = document.getElementById('editTransType').value;
+  transaction.category = document.getElementById('editTransCategory').value;
+  transaction.amount = parseFloat(document.getElementById('editTransAmount').value);
+  transaction.description = document.getElementById('editTransDescription').value;
+  transaction.member = document.getElementById('editTransMember').value;
+  
+  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  updateBudgetSpent();
+  saveTransactions();
+  saveBudgets();
+  renderDashboard();
+  
+  document.getElementById('editTransactionModal').classList.remove('active');
+}
+
+function deleteTransaction(id) {
+  if (!confirm('Are you sure you want to delete this transaction?')) return;
+  
+  financeData.transactions = financeData.transactions.filter(t => t.id !== id);
+  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  updateBudgetSpent();
+  saveTransactions();
+  saveBudgets();
+  renderDashboard();
+}
+
+// ============================================================
+// BUDGET CRUD
+// ============================================================
+
+function editBudget(id) {
+  const budget = financeData.budgets.find(b => b.id === id);
+  if (!budget) return;
+  
+  document.getElementById('editBudgetId').value = budget.id;
+  document.getElementById('editBudgetCategory').value = budget.category;
+  document.getElementById('editBudgetMonthly').value = budget.monthlyLimit;
+  document.getElementById('editBudgetAnnual').value = budget.annualLimit;
+  
+  document.getElementById('editBudgetModal').classList.add('active');
+}
+
+function saveEditedBudget() {
+  const id = document.getElementById('editBudgetId').value;
+  const budget = financeData.budgets.find(b => b.id === id);
+  if (!budget) return;
+  
+  budget.monthlyLimit = parseFloat(document.getElementById('editBudgetMonthly').value) || 0;
+  budget.annualLimit = parseFloat(document.getElementById('editBudgetAnnual').value) || 0;
+  
+  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  saveBudgets();
+  renderDashboard();
+  
+  document.getElementById('editBudgetModal').classList.remove('active');
+}
+
+function updateBudgetSpent() {
+  financeData.budgets.forEach(budget => {
+    const category = budget.category;
+    budget.spent = financeData.transactions
+      .filter(t => t.type === 'Expense' && t.category === category)
+      .reduce((sum, t) => sum + (parseFloat(t.amount) || 0), 0);
+  });
 }
 
 // ============================================================
@@ -582,17 +555,27 @@ function setupEventListeners() {
   const form = document.getElementById('finTransactionForm');
   if (form) form.addEventListener('submit', handleTransactionSubmit);
   
-  const retryBtn = document.getElementById('finRetry');
-  if (retryBtn) {
-    retryBtn.addEventListener('click', () => {
-      financeData.lastFetch = 0;
-      if (DEMO_MODE) {
-        loadDemoData();
-      } else {
-        initFirebase();
-      }
+  // Reset button
+  const resetBtn = document.getElementById('finResetBtn');
+  if (resetBtn) resetBtn.addEventListener('click', resetAllData);
+  
+  // Modal close buttons
+  document.querySelectorAll('.fin-modal-close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.fin-modal').classList.remove('active');
     });
-  }
+  });
+  
+  // Modal save buttons
+  document.getElementById('saveEditTransaction')?.addEventListener('click', saveEditedTransaction);
+  document.getElementById('saveEditBudget')?.addEventListener('click', saveEditedBudget);
+  
+  // Close modals on backdrop click
+  document.querySelectorAll('.fin-modal').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+  });
 }
 
 function applyFilters() {
@@ -601,7 +584,7 @@ function applyFilters() {
   renderTransactions({ category, type });
 }
 
-async function handleTransactionSubmit(e) {
+function handleTransactionSubmit(e) {
   e.preventDefault();
   
   const form = e.target;
@@ -622,18 +605,13 @@ async function handleTransactionSubmit(e) {
     addedBy: 'Officer'
   };
   
-  try {
-    await addTransactionToFirestore(formData);
-    showFormMessage('Transaction added successfully!', 'success');
-    form.reset();
-    setDefaultDate();
-  } catch (error) {
-    console.error('Error adding transaction:', error);
-    showFormMessage('Failed to add transaction. Please try again.', 'error');
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Add Transaction';
-  }
+  addTransaction(formData);
+  showFormMessage('Transaction added successfully!', 'success');
+  form.reset();
+  setDefaultDate();
+  
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Add Transaction';
 }
 
 // ============================================================
@@ -643,24 +621,14 @@ async function handleTransactionSubmit(e) {
 function showLoading(show) {
   const loading = document.getElementById('finLoading');
   const dashboard = document.getElementById('finDashboard');
-  
   if (loading) loading.classList.toggle('hidden', !show);
-  if (dashboard && show) dashboard.classList.add('hidden');
-}
-
-function showError(show) {
-  const error = document.getElementById('finError');
-  const dashboard = document.getElementById('finDashboard');
-  
-  if (error) error.classList.toggle('hidden', !show);
   if (dashboard && show) dashboard.classList.add('hidden');
 }
 
 function setDefaultDate() {
   const dateInput = document.getElementById('finDate');
   if (dateInput) {
-    const today = new Date();
-    dateInput.value = today.toISOString().split('T')[0];
+    dateInput.value = new Date().toISOString().split('T')[0];
   }
 }
 
@@ -682,8 +650,7 @@ function formatCurrency(amount) {
 function formatDate(dateStr) {
   if (!dateStr) return '';
   try {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   } catch (e) {
     return dateStr;
   }
