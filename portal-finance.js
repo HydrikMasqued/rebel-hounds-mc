@@ -91,29 +91,18 @@ function loadData() {
     const storedTransactions = localStorage.getItem(STORAGE_KEY_TRANSACTIONS);
     const storedBudgets = localStorage.getItem(STORAGE_KEY_BUDGETS);
     
-    if (storedTransactions) {
-      financeData.transactions = JSON.parse(storedTransactions);
-    } else {
-      financeData.transactions = [...DEFAULT_TRANSACTIONS];
-      saveTransactions();
-    }
-    
-    if (storedBudgets) {
-      financeData.budgets = JSON.parse(storedBudgets);
-    } else {
-      financeData.budgets = [...DEFAULT_BUDGETS];
-      saveBudgets();
-    }
-    
+    financeData.transactions = storedTransactions ? JSON.parse(storedTransactions) : [];
+    financeData.budgets = storedBudgets ? JSON.parse(storedBudgets) : [];
     financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+    
     renderDashboard();
     showLoading(false);
     console.log('Data loaded successfully');
   } catch (error) {
     console.error('Error loading data:', error);
-    financeData.transactions = [...DEFAULT_TRANSACTIONS];
-    financeData.budgets = [...DEFAULT_BUDGETS];
-    financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+    financeData.transactions = [];
+    financeData.budgets = [];
+    financeData.summary = calculateSummary([], []);
     renderDashboard();
     showLoading(false);
   }
@@ -136,19 +125,19 @@ function saveBudgets() {
 }
 
 function resetAllData() {
-  if (!confirm('Are you sure you want to reset ALL data? This will restore default sample data and cannot be undone.')) {
+  if (!confirm('Are you sure you want to clear ALL data? This cannot be undone.')) {
     return;
   }
   
   localStorage.removeItem(STORAGE_KEY_TRANSACTIONS);
   localStorage.removeItem(STORAGE_KEY_BUDGETS);
   
-  financeData.transactions = [...DEFAULT_TRANSACTIONS];
-  financeData.budgets = [...DEFAULT_BUDGETS];
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  financeData.transactions = [];
+  financeData.budgets = [];
+  financeData.summary = calculateSummary([], []);
   
   renderDashboard();
-  alert('All data has been reset to defaults.');
+  alert('All data has been cleared.');
 }
 
 // ============================================================
