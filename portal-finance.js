@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC — Finance Dashboard ===== */
+/* ===== Rebel Hounds MC  Finance Dashboard ===== */
 
 // ============================================================
 // STATE MANAGEMENT
@@ -155,8 +155,8 @@ function renderCategoryManager() {
     <div class="fin-category-item">
       <span class="fin-category-name">${escapeHtml(cat)}</span>
       <div class="fin-category-actions">
-        <button class="fin-action-btn fin-edit-btn" onclick="renameCategory(${index})" title="Rename">✏️</button>
-        <button class="fin-action-btn fin-delete-btn" onclick="deleteCategory(${index})" title="Delete">🗑️</button>
+        <button class="fin-action-btn fin-edit-btn" onclick="renameCategory(${index})" title="Rename"></button>
+        <button class="fin-action-btn fin-delete-btn" onclick="deleteCategory(${index})" title="Delete"></button>
       </div>
     </div>
   `).join('');
@@ -464,8 +464,8 @@ function renderTransactions(filters = {}) {
         <td>${escapeHtml(t.description)}</td>
         <td>${escapeHtml(t.member)}</td>
         <td class="fin-actions">
-          <button class="fin-action-btn fin-edit-btn" onclick="editTransaction('${t.id}')" title="Edit">✏️</button>
-          <button class="fin-action-btn fin-delete-btn" onclick="deleteTransaction('${t.id}')" title="Delete">🗑️</button>
+          <button class="fin-action-btn fin-edit-btn" onclick="editTransaction('${t.id}')" title="Edit"></button>
+          <button class="fin-action-btn fin-delete-btn" onclick="deleteTransaction('${t.id}')" title="Delete"></button>
         </td>
       </tr>
     `;

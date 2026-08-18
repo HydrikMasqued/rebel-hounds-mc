@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC — Media (Gallery + Videos) ===== */
+/* ===== Rebel Hounds MC  Media (Gallery + Videos) ===== */
 
 const PATCH_KEY = 'rh_patch_auth';
 const WEBHOOK_KEY = 'rh_discord_webhook';
@@ -49,7 +49,7 @@ function getGallery() {
 
 function getDefaultGallery() {
   return [
-    { url: 'rebel-hounds-patch.png', caption: 'Rebel Hounds MC — Club Patch', addedBy: 'Club' },
+    { url: 'rebel-hounds-patch.png', caption: 'Rebel Hounds MC  Club Patch', addedBy: 'Club' },
   ];
 }
 
@@ -244,7 +244,7 @@ async function uploadToDiscord(file) {
     }
 
     // Fallback: construct CDN URL from channel info
-    galleryMsg.textContent = 'Upload sent. URL not captured — check Discord.';
+    galleryMsg.textContent = 'Upload sent. URL not captured  check Discord.';
     return null;
   } catch (err) {
     galleryMsg.textContent = 'Upload failed. Check connection.';

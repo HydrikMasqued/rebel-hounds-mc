@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC — Scripts ===== */
+/* ===== Rebel Hounds MC  Scripts ===== */
 
 // Sticky navbar shadow
 const navbar = document.getElementById('navbar');

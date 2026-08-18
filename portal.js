@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC — Portal (shared across all portal pages) ===== */
+/* ===== Rebel Hounds MC  Portal (shared across all portal pages) ===== */
 
 // Sticky navbar shadow
 const navbar = document.getElementById('navbar');

@@ -7,7 +7,7 @@
 // To get your config:
 // 1. Go to https://console.firebase.google.com
 // 2. Select your project (or create one named "rebel-hounds-mc-finance")
-// 3. Click the gear icon (⚙️) → Project settings
+// 3. Click the gear icon ()  Project settings
 // 4. Scroll down to "Your apps" section
 // 5. Click the web icon (</>) to add a web app
 // 6. Copy the config object that appears
