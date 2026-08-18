@@ -51,25 +51,12 @@
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-num" data-count="45">0</span><span class="stat-label">Members</span></div>
-        <div class="stat"><span class="stat-num" id="anniversary-countdown">0d</span><span class="stat-label">Next Anniversary</span></div>
+        <div class="stat"><span class="stat-num">76</span><span class="stat-label">Days to Anniversary</span></div>
         <div class="stat"><span class="stat-num" data-count="1">0</span><span class="stat-label">Chapters</span></div>
       </div>
     </div>
     <a href="#about" class="scroll-hint">&#8595;</a>
   </header>
-  <script>
-  (function(){
-    var el=document.getElementById('anniversary-countdown');
-    if(!el)return;
-    var now=new Date();
-    var yr=now.getFullYear();
-    var next=new Date(yr,9,3);
-    if(now>next)next=new Date(yr+1,9,3);
-    var diff=next-now;
-    var days=Math.floor(diff/864e5);
-    el.textContent=days+'d';
-  })();
-  </script>
 
   <!-- ===== ABOUT ===== -->
   <section class="section about" id="about">
