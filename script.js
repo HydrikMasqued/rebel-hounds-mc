@@ -36,6 +36,7 @@ navLinks.querySelectorAll('.nav-item').forEach((item) => {
 const counters = document.querySelectorAll('.stat-num');
 
 function animateCounter(el) {
+  if (!el.dataset.count) return;
   const target = parseInt(el.dataset.count, 10);
   const duration = 1600;
   const start = performance.now();
@@ -127,13 +128,13 @@ document.head.appendChild(ytTag);
 
 // Anniversary countdown
 function updateAnniversaryCountdown() {
-  const el = document.getElementById('anniversary-countdown');
+  var el = document.getElementById('anniversary-countdown');
   if (!el) return;
-  const now = new Date();
-  let next = new Date(now.getFullYear(), 9, 3); // Oct 3
+  var now = new Date();
+  var next = new Date(now.getFullYear(), 9, 3);
   if (now > next) next = new Date(now.getFullYear() + 1, 9, 3);
-  const diff = next - now;
-  const days = Math.floor(diff / 86400000);
+  var diff = next.getTime() - now.getTime();
+  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
   el.textContent = days + 'd';
 }
 updateAnniversaryCountdown();
