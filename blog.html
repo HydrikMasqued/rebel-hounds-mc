@@ -315,7 +315,7 @@
       const post = getPost(id);
       if (!post) return;
       openEditForm(post);
-      openAdminPanel();
+      adminPanel.classList.add('open');
     };
 
     window.deletePostFromView = function(id) {
