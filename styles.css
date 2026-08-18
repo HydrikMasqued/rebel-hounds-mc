@@ -1097,6 +1097,11 @@ body {
   max-width: 360px;
   width: 100%;
   text-align: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 2.5rem 2rem;
+  box-shadow: none;
 }
 
 .portal-login-bg .patch-gate-logo {
