@@ -1,4 +1,4 @@
-/* ===== Rebel Hounds MC ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Styles ===== */
+﻿/* ===== Rebel Hounds MC — Styles ===== */
 
 :root {
   --primary: #c0392b;
@@ -698,7 +698,7 @@ body {
 }
 
 .recruit-requirements li::before {
-  content: 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Âº';
+  content: 'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âº';
   position: absolute;
   left: 0;
   color: var(--primary);
@@ -2103,7 +2103,7 @@ body {
   }
 }
 
-/* ===== SPREADSHEET INVENTORY — Card Panel Layout ===== */
+/* ===== SPREADSHEET INVENTORY â€” Card Panel Layout ===== */
 .portal-page .section:has(.ss-storage) {
   max-width: 1600px;
   padding: 2rem 2.5rem;
@@ -2393,7 +2393,7 @@ body {
   border-top: 1px solid var(--border);
 }
 
-/* Responsive — stack sections vertically on small screens */
+/* Responsive â€” stack sections vertically on small screens */
 @media (max-width: 900px) {
   .portal-page .section:has(.ss-storage) {
     padding: 1.5rem 1rem;
