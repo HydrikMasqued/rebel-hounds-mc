@@ -20,8 +20,6 @@
     .blog-card-author { color:var(--muted); font-size:.8rem; }
     .blog-read-more { color:var(--primary); font-weight:600; text-decoration:none; font-size:.9rem; }
     .blog-read-more:hover { text-decoration:underline; }
-
-    /* Single post view */
     .blog-post-view { max-width:820px; margin:0 auto; }
     .blog-post-back { display:inline-flex; align-items:center; gap:.4rem; color:var(--muted); font-size:.9rem; text-decoration:none; margin-bottom:1.5rem; }
     .blog-post-back:hover { color:var(--primary); }
@@ -38,8 +36,6 @@
     .blog-post-content h2, .blog-post-content h3 { font-family:var(--font-display); color:#fff; letter-spacing:1px; margin:1.5rem 0 .8rem; }
     .blog-post-content h2 { font-size:1.8rem; }
     .blog-post-content h3 { font-size:1.4rem; }
-
-    /* Admin panel */
     .blog-admin-toggle { position:fixed; bottom:1.5rem; right:1.5rem; z-index:900; background:var(--primary); color:#fff; border:none; border-radius:50%; width:56px; height:56px; font-size:1.5rem; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.5); transition:transform .2s,background .2s; }
     .blog-admin-toggle:hover { background:var(--primary-dark); transform:scale(1.08); }
     .blog-admin-panel { display:none; position:fixed; bottom:5rem; right:1.5rem; z-index:899; background:var(--dark-2); border:1px solid var(--border); border-radius:12px; padding:1.5rem; width:360px; max-height:80vh; overflow-y:auto; box-shadow:0 8px 32px rgba(0,0,0,.6); }
@@ -47,6 +43,7 @@
     .blog-admin-panel h3 { font-family:var(--font-display); color:var(--primary); font-size:1.3rem; letter-spacing:1px; margin-bottom:1rem; }
     .blog-admin-panel label { display:block; color:var(--muted); font-size:.8rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; margin-top:.8rem; }
     .blog-admin-panel input[type="text"],
+    .blog-admin-panel input[type="password"],
     .blog-admin-panel textarea { width:100%; background:var(--dark); border:1px solid var(--border); color:var(--text); padding:.6rem .8rem; border-radius:6px; font-family:var(--font-body); font-size:.95rem; }
     .blog-admin-panel textarea { min-height:120px; resize:vertical; }
     .blog-admin-panel input:focus, .blog-admin-panel textarea:focus { outline:none; border-color:var(--primary); }
@@ -67,20 +64,12 @@
     .blog-admin-msg { margin-top:.8rem; padding:.5rem; border-radius:6px; font-size:.85rem; text-align:center; }
     .blog-admin-msg.ok { background:rgba(76,175,80,.15); color:#4caf50; }
     .blog-admin-msg.err { background:rgba(244,67,54,.15); color:#ff5252; }
-    .blog-admin-login { margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem; }
-    .blog-admin-login input { margin-bottom:.5rem; }
-    .blog-admin-login button { width:100%; }
-
-    /* Empty state */
     .blog-empty { text-align:center; padding:4rem 2rem; color:var(--muted); }
     .blog-empty h2 { font-family:var(--font-display); font-size:2rem; color:var(--text); margin-bottom:.5rem; }
-
-    /* Search */
     .blog-search { max-width:400px; margin:0 auto 2rem; position:relative; }
     .blog-search input { width:100%; background:var(--dark-3); border:1px solid var(--border); color:var(--text); padding:.8rem 1.2rem .8rem 2.8rem; border-radius:8px; font-family:var(--font-body); font-size:1rem; }
     .blog-search input:focus { outline:none; border-color:var(--primary); }
     .blog-search-icon { position:absolute; left:1rem; top:50%; transform:translateY(-50%); color:var(--muted); font-size:1rem; }
-
     @media(max-width:600px){
       .blog-grid { grid-template-columns:1fr; }
       .blog-post-header h1 { font-size:2rem; }
@@ -116,19 +105,17 @@
     </div>
   </nav>
 
-  <!-- ===== BLOG LISTING (default) ===== -->
+  <!-- ===== BLOG LISTING ===== -->
   <main class="section" id="blogList">
     <div style="max-width:1200px;margin:0 auto;">
       <div class="section-head">
         <h2 class="section-title">CLUB BLOG</h2>
         <p class="section-sub">News, events and stories from the road.</p>
       </div>
-
       <div class="blog-search">
         <span class="blog-search-icon">&#128269;</span>
         <input type="text" id="blogSearchInput" placeholder="Search posts...">
       </div>
-
       <div class="blog-grid" id="blogGrid"></div>
       <div class="blog-empty" id="blogEmpty" style="display:none;">
         <h2>No Posts Yet</h2>
@@ -153,12 +140,11 @@
     </div>
   </main>
 
-  <!-- ===== ADMIN FLOATING BUTTON (patch holders only) ===== -->
-  <button class="blog-admin-toggle" id="blogAdminToggle" title="Blog Admin" style="display:none;">&#9998;</button>
+  <!-- ===== ADMIN BUTTON ===== -->
+  <button class="blog-admin-toggle" id="blogAdminToggle" title="Blog Admin">&#9998;</button>
 
   <!-- ===== ADMIN PANEL ===== -->
   <div class="blog-admin-panel" id="blogAdminPanel">
-    <!-- Not logged in: show login -->
     <div id="blogAdminLogin">
       <h3>&#128274; Patch Holder Access</h3>
       <p style="color:var(--muted);font-size:.85rem;margin-bottom:.8rem;">Log in to manage blog posts.</p>
@@ -171,14 +157,11 @@
       </div>
       <div class="blog-admin-msg" id="blogLoginMsg"></div>
     </div>
-
-    <!-- Logged in: show create/edit form + post list -->
     <div id="blogAdminArea" style="display:none;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
         <h3>&#9998; Manage Posts</h3>
         <button class="blog-admin-btn-cancel" id="blogLogoutBtn" style="flex:0;padding:.3rem .7rem;font-size:.8rem;">Log Out</button>
       </div>
-
       <div id="blogFormWrap">
         <input type="hidden" id="blogEditId" value="">
         <label>Title</label>
@@ -199,7 +182,6 @@
           <button class="blog-admin-btn-cancel" id="blogFormCancel" style="display:none;">Cancel Edit</button>
         </div>
       </div>
-
       <div class="blog-admin-list" id="blogAdminList"></div>
       <div class="blog-admin-msg" id="blogFormMsg"></div>
     </div>
@@ -221,306 +203,220 @@
     </div>
   </footer>
 
-  <script src="portal.js"></script>
-  <script src="blog.js"></script>
-  <script>
-    /* ===== Init ===== */
-    seedBlogData();
+<script>
+/* ===== navbar ===== */
+(function(){
+  var navbar=document.getElementById('navbar');
+  if(navbar)window.addEventListener('scroll',function(){navbar.classList.toggle('scrolled',window.scrollY>40);});
+  var navToggle=document.getElementById('navToggle');
+  var navLinks=document.querySelector('.nav-links');
+  if(navToggle&&navLinks){navToggle.addEventListener('click',function(){navLinks.classList.toggle('open');});navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open');});});}
+})();
 
-    const blogGrid = document.getElementById('blogGrid');
-    const blogEmpty = document.getElementById('blogEmpty');
-    const blogList = document.getElementById('blogList');
-    const blogPost = document.getElementById('blogPost');
-    const postTitle = document.getElementById('postTitle');
-    const postDate = document.getElementById('postDate');
-    const postAuthor = document.getElementById('postAuthor');
-    const postContent = document.getElementById('postContent');
-    const postAdminEdit = document.getElementById('postAdminEdit');
-    const blogSearchInput = document.getElementById('blogSearchInput');
+/* ===== blog system - fully self-contained ===== */
+var BLOG_STORAGE_KEY='rh_blog_posts';
+var BLOG_AUTH_KEY='rh_patch_auth';
 
-    const adminToggle = document.getElementById('blogAdminToggle');
-    const adminPanel = document.getElementById('blogAdminPanel');
-    const adminLogin = document.getElementById('blogAdminLogin');
-    const adminArea = document.getElementById('blogAdminArea');
+function cyrb53(str,seed){
+  seed=seed||0;var h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;
+  for(var i=0;i<str.length;i++){var ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}
+  h1=Math.imul(h1^(h1>>>16),2246822507);h1^=Math.imul(h2^(h2>>>13),3266489909);
+  h2=Math.imul(h2^(h2>>>16),2246822507);h2^=Math.imul(h1^(h1>>>13),3266489909);
+  return 4294967296*(2097151&h2)+(h1>>>0);
+}
 
-    const blogLoginUser = document.getElementById('blogLoginUser');
-    const blogLoginPass = document.getElementById('blogLoginPass');
-    const blogLoginBtn = document.getElementById('blogLoginBtn');
-    const blogLoginMsg = document.getElementById('blogLoginMsg');
-    const blogLogoutBtn = document.getElementById('blogLogoutBtn');
+function isBlogAuthed(){try{return sessionStorage.getItem(BLOG_AUTH_KEY)==='1';}catch(e){return false;}}
+function getAllPosts(){try{var r=localStorage.getItem(BLOG_STORAGE_KEY);if(r)return JSON.parse(r);}catch(e){}return[];}
+function saveAllPosts(p){try{localStorage.setItem(BLOG_STORAGE_KEY,JSON.stringify(p));}catch(e){}}
+function generateId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8);}
+function slugify(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
+function escapeHtml(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
 
-    const blogFormWrap = document.getElementById('blogFormWrap');
-    const blogEditId = document.getElementById('blogEditId');
-    const blogFormTitle = document.getElementById('blogFormTitle');
-    const blogFormExcerpt = document.getElementById('blogFormExcerpt');
-    const blogFormContent = document.getElementById('blogFormContent');
-    const blogFormAuthor = document.getElementById('blogFormAuthor');
-    const blogFormPinned = document.getElementById('blogFormPinned');
-    const blogFormSave = document.getElementById('blogFormSave');
-    const blogFormCancel = document.getElementById('blogFormCancel');
-    const blogFormMsg = document.getElementById('blogFormMsg');
-    const blogAdminList = document.getElementById('blogAdminList');
+function createPost(title,excerpt,content,author,pinned){
+  var posts=getAllPosts(),id=generateId(),slug=slugify(title)||id,now=new Date();
+  var post={id:id,slug:slug,title:title,excerpt:excerpt,content:content,author:author||'Rebel Hounds MC',pinned:!!pinned,createdAt:now.toISOString(),updatedAt:now.toISOString(),dateDisplay:now.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})};
+  posts.unshift(post);saveAllPosts(posts);return post;
+}
 
-    let currentView = 'list'; // 'list' or 'post'
-    let currentPostId = null;
+function updatePost(id,updates){
+  var posts=getAllPosts(),idx=posts.findIndex(function(p){return p.id===id;});
+  if(idx===-1)return null;if(updates.title)posts[idx].slug=slugify(updates.title);
+  Object.assign(posts[idx],updates,{updatedAt:new Date().toISOString()});saveAllPosts(posts);return posts[idx];
+}
 
-    /* ===== Routing ===== */
-    function getRouteParam() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('id') || params.get('slug') || null;
-    }
+function deletePost(id){saveAllPosts(getAllPosts().filter(function(p){return p.id!==id;}));}
 
-    function navigateTo(postId) {
-      if (postId) {
-        window.history.pushState({}, '', '?id=' + postId);
-        showPost(postId);
-      } else {
-        window.history.pushState({}, '', 'blog.html');
-        showList();
-      }
-    }
+function getPost(idOrSlug){return getAllPosts().find(function(p){return p.id===idOrSlug||p.slug===idOrSlug;})||null;}
 
-    function showList() {
-      currentView = 'list';
-      currentPostId = null;
-      blogList.style.display = '';
-      blogPost.style.display = 'none';
-      renderBlogGrid();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+function getSortedPosts(){
+  return getAllPosts().sort(function(a,b){
+    if(a.pinned&&!b.pinned)return -1;if(!a.pinned&&b.pinned)return 1;
+    return new Date(b.createdAt)-new Date(a.createdAt);
+  });
+}
 
-    function showPost(idOrSlug) {
-      const post = getPost(idOrSlug);
-      if (!post) { showList(); return; }
-      currentView = 'post';
-      currentPostId = post.id;
-      blogList.style.display = 'none';
-      blogPost.style.display = '';
-      postTitle.textContent = post.title;
-      postDate.textContent = post.dateDisplay;
-      postAuthor.textContent = 'By ' + post.author;
-      postContent.innerHTML = post.content;
+function seedBlogData(){
+  if(getAllPosts().length>0)return;
+  var seeds=[
+    {title:'Club Established — October 2021',excerpt:'The Rebel Hounds Motorcycle Club was born from the Perished Ones MC, transitioning from GTA Online into FiveM.',content:'<p>Established on 3 October 2021, the Rebel Hounds Motorcycle Club is a 1%er Motorcycle Club as well as a gaming community built primarily around the FiveM platform.</p><p>While members play various games together, the club only asserts authority within FiveM to maintain cohesion, discipline, and a unified culture.</p><p>The club began as a splinter faction from the Perished Ones Motorcycle Club. After numerous trials and achievements during our time in GTA Online, we transitioned into FiveM. Whilst we have adapted to the FiveM/Roleplay environment, Online traditions persist as the club maintains a highly militant personality with the shades of a modern day motorcycle club.</p>',author:'Rebel Hounds MC',pinned:true,date:'2021-10-03'},
+    {title:'Five Directives — The Foundation',excerpt:'Every member lives by the Five Directives. Non-negotiable laws that keep the club strong, unified and disciplined.',content:'<p>The Five Directives are the backbone of the Rebel Hounds MC. Every member, from Prospect to President, lives by these non-negotiable laws.</p><p>They exist to keep the club strong, unified and disciplined. When times get tough, the Directives keep us grounded. When we ride, they remind us why we wear this patch.</p><ul><li><strong>Brotherhood Above All</strong> — Club comes first. Always.</li><li><strong>Respect the Hierarchy</strong> — The chain of command exists for a reason.</li><li><strong>Protect the Name</strong> — What you do reflects on every brother.</li><li><strong>Handle It In-House</strong> — Never air club business publicly.</li><li><strong>Earn Your Colors</strong> — Every day you prove you belong.</li></ul>',author:'Rebel Hounds MC',pinned:true,date:'2021-10-15'},
+    {title:'Growing the Chapter',excerpt:'With 28 members and 5 chapters, the Rebel Hounds continue to expand across Los Santos.',content:'<p>Since our founding, we have grown to 28 members spread across 5 chapters. Each chapter operates with its own hierarchy while answering to the main charter.</p><p>Expansion has been deliberate — we don\'t rush patches. Every member earns their place through loyalty, dedication and respect for the club\'s values.</p><p>New prospects are always welcome. If you think you have what it takes, submit your application through the <a href="recruitment.html">recruitment page</a>.</p>',author:'Rebel Hounds MC',pinned:false,date:'2022-03-20'},
+    {title:'Poker Run Recap',excerpt:'Last weekend\'s Poker Run was a success! Full patch attendance, great company, and an epic showdown.',content:'<p>Last weekend we held one of our signature events — the Poker Run. Full patch attendance, great company, and an epic showdown at the end of the night.</p><p>The route took us through Paleto Bay, up to Mount Chiliad, and back down through Blaine County. The roads were open, the weather was perfect, and the brotherhood was on full display.</p><blockquote>"A club that rides together, stays together."</blockquote>',author:'Rebel Hounds MC',pinned:false,date:'2023-06-10'},
+    {title:'Cruising Through The Wilds',excerpt:'Last weekend we took the whole club on a cruise through the wilds. Sunset runs, open roads, and brotherhood.',content:'<p>Sometimes you just need to ride. No agenda, no business, no drama — just the open road and your brothers beside you.</p><p>Last weekend we took the whole club on a cruise through the wilderness surrounding Los Santos. We rolled out at golden hour, engines rumbling as the sun dipped behind the mountains.</p><blockquote>"Four wheels move the body. Two wheels move the soul."</blockquote>',author:'Rebel Hounds MC',pinned:false,date:'2023-09-15'},
+    {title:'Friendly Skirmish: North vs South',excerpt:'The chapter split in half for a friendly but intense skirmish. North Side won the battle.',content:'<p>Last Friday evening, the chapter split in half for a friendly but intense skirmish. North Side won the battle, but all brothers learned valuable lessons.</p><p>The exercise was designed to test communication, tactical awareness and unit cohesion. Both sides performed admirably, and the competitive spirit was exactly what we needed.</p>',author:'Rebel Hounds MC',pinned:false,date:'2024-01-20'},
+    {title:'Five Directives Memorial Service',excerpt:'We held a memorial service for our fallen brothers. A moment to honor their legacy.',content:'<p>Last Monday we held a memorial service for our fallen brothers. A moment to honor their legacy and continue the fight together.</p><p>The service was held at the club\'s original meeting spot — the place where it all began. Brothers from every chapter attended, standing side by side in a show of unity and remembrance.</p><blockquote>"Fallen but never forgotten. Ride on, brothers."</blockquote>',author:'Rebel Hounds MC',pinned:false,date:'2024-05-06'},
+    {title:'Summer Run — Paleto Bay to Blaine County',excerpt:'Our annual summer run took us from the city limits to the northern coast. 28 bikes, zero complaints.',content:'<p>The annual summer run is one of our biggest traditions, and this year\'s edition did not disappoint.</p><p>We rolled out of Los Santos at dawn, 28 bikes strong. The route hugged the western coastline, cutting through Mount Chiliad State Park before reaching Paleto Bay for a fuel stop and group photo.</p><p>These runs are what the club is all about — the freedom of the road and the bond of the brotherhood.</p>',author:'Rebel Hounds MC',pinned:false,date:'2024-07-20'},
+    {title:'New Chapter: South LS',excerpt:'The Rebel Hounds MC officially opens its fifth chapter in South Los Santos.',content:'<p>We are proud to announce the opening of our fifth chapter — South Los Santos. This expansion has been in the works for months, and the patch holders in the south have earned their place.</p><p>The new chapter brings our total membership to 30 and covers the southern districts of Los Santos, from Strawberry to Davis.</p>',author:'Rebel Hounds MC',pinned:false,date:'2025-02-14'},
+    {title:'Winter Celebration 2025',excerpt:'The club gathered for our annual winter celebration. Food, drinks, and brotherhood.',content:'<p>Our annual winter celebration brought the whole club together for an evening of food, drinks and brotherhood.</p><p>Highlights included the annual club awards, a gift exchange between chapters, and the President\'s traditional end-of-year speech.</p><blockquote>"Another year, another chapter. The road ahead is long, but we ride it together."</blockquote>',author:'Rebel Hounds MC',pinned:false,date:'2025-12-22'}
+  ];
+  var posts=seeds.map(function(s){
+    var id=generateId(),d=new Date(s.date);
+    return{id:id,slug:slugify(s.title),title:s.title,excerpt:s.excerpt,content:s.content,author:s.author,pinned:s.pinned,createdAt:d.toISOString(),updatedAt:d.toISOString(),dateDisplay:d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})};
+  });
+  saveAllPosts(posts);
+}
 
-      // Inline edit button for admins
-      if (isBlogAuthed()) {
-        postAdminEdit.style.display = 'block';
-        postAdminEdit.innerHTML = '<button onclick="editPostFromView(\'' + post.id + '\')" style="background:var(--primary);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-weight:600;">Edit This Post</button> <button onclick="deletePostFromView(\'' + post.id + '\')" style="background:none;color:#ff5252;border:1px solid #ff5252;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-weight:600;margin-left:.5rem;">Delete</button>';
-      } else {
-        postAdminEdit.style.display = 'none';
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+/* ===== DOM ===== */
+var blogGrid=document.getElementById('blogGrid');
+var blogEmpty=document.getElementById('blogEmpty');
+var blogList=document.getElementById('blogList');
+var blogPost=document.getElementById('blogPost');
+var postTitle=document.getElementById('postTitle');
+var postDate=document.getElementById('postDate');
+var postAuthor=document.getElementById('postAuthor');
+var postContent=document.getElementById('postContent');
+var postAdminEdit=document.getElementById('postAdminEdit');
+var blogSearchInput=document.getElementById('blogSearchInput');
+var adminToggle=document.getElementById('blogAdminToggle');
+var adminPanel=document.getElementById('blogAdminPanel');
+var adminLogin=document.getElementById('blogAdminLogin');
+var adminArea=document.getElementById('blogAdminArea');
+var blogLoginUser=document.getElementById('blogLoginUser');
+var blogLoginPass=document.getElementById('blogLoginPass');
+var blogLoginBtn=document.getElementById('blogLoginBtn');
+var blogLoginMsg=document.getElementById('blogLoginMsg');
+var blogLogoutBtn=document.getElementById('blogLogoutBtn');
+var blogEditId=document.getElementById('blogEditId');
+var blogFormTitle=document.getElementById('blogFormTitle');
+var blogFormExcerpt=document.getElementById('blogFormExcerpt');
+var blogFormContent=document.getElementById('blogFormContent');
+var blogFormAuthor=document.getElementById('blogFormAuthor');
+var blogFormPinned=document.getElementById('blogFormPinned');
+var blogFormSave=document.getElementById('blogFormSave');
+var blogFormCancel=document.getElementById('blogFormCancel');
+var blogFormMsg=document.getElementById('blogFormMsg');
+var blogAdminList=document.getElementById('blogAdminList');
 
-    window.editPostFromView = function(id) {
-      const post = getPost(id);
-      if (!post) return;
-      openEditForm(post);
-      adminPanel.classList.add('open');
-    };
+var currentView='list',currentPostId=null;
 
-    window.deletePostFromView = function(id) {
-      if (!confirm('Delete this post? This cannot be undone.')) return;
-      deletePost(id);
-      navigateTo(null);
-      renderBlogGrid();
-    };
+function getRouteParam(){var p=new URLSearchParams(window.location.search);return p.get('id')||p.get('slug')||null;}
 
-    /* ===== Blog grid rendering ===== */
-    function renderBlogGrid(filter) {
-      let posts = getSortedPosts();
-      if (filter) {
-        const q = filter.toLowerCase();
-        posts = posts.filter(p =>
-          p.title.toLowerCase().includes(q) ||
-          p.excerpt.toLowerCase().includes(q) ||
-          p.author.toLowerCase().includes(q)
-        );
-      }
-      if (posts.length === 0) {
-        blogGrid.innerHTML = '';
-        blogEmpty.style.display = '';
-        return;
-      }
-      blogEmpty.style.display = 'none';
-      blogGrid.innerHTML = posts.map(p => `
-        <article class="blog-card ${p.pinned ? 'pinned' : ''}">
-          ${p.pinned ? '<span class="pin-badge">&#128204; Pinned</span>' : ''}
-          <div class="blog-card-date">${p.dateDisplay}</div>
-          <h3>${escapeHtml(p.title)}</h3>
-          <p>${escapeHtml(p.excerpt)}</p>
-          <div class="blog-card-footer">
-            <span class="blog-card-author">${escapeHtml(p.author)}</span>
-            <a href="#" class="blog-read-more" onclick="event.preventDefault();navigateTo('${p.id}');">Read More &rarr;</a>
-          </div>
-        </article>
-      `).join('');
-    }
+function navigateTo(postId){
+  if(postId){history.pushState({},'','?id='+postId);showPost(postId);}
+  else{history.pushState({},'','blog.html');showList();}
+}
 
-    /* ===== Search ===== */
-    blogSearchInput.addEventListener('input', () => {
-      if (currentView !== 'list') return;
-      renderBlogGrid(blogSearchInput.value);
-    });
+function showList(){
+  currentView='list';currentPostId=null;
+  blogList.style.display='';blogPost.style.display='none';
+  renderBlogGrid();window.scrollTo({top:0,behavior:'smooth'});
+}
 
-    /* ===== Admin panel toggle ===== */
-    adminToggle.style.display = '';
+function showPost(idOrSlug){
+  var post=getPost(idOrSlug);if(!post){showList();return;}
+  currentView='post';currentPostId=post.id;
+  blogList.style.display='none';blogPost.style.display='';
+  postTitle.textContent=post.title;
+  postDate.textContent=post.dateDisplay;
+  postAuthor.textContent='By '+post.author;
+  postContent.innerHTML=post.content;
+  if(isBlogAuthed()){
+    postAdminEdit.style.display='block';
+    postAdminEdit.innerHTML='<button onclick="editPostFromView(\''+post.id+'\')" style="background:var(--primary);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-weight:600;">Edit This Post</button> <button onclick="deletePostFromView(\''+post.id+'\')" style="background:none;color:#ff5252;border:1px solid #ff5252;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-weight:600;margin-left:.5rem;">Delete</button>';
+  }else{postAdminEdit.style.display='none';}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
-    function updateAdminVisibility() {
-      if (isBlogAuthed()) {
-        adminLogin.style.display = 'none';
-        adminArea.style.display = '';
-        renderAdminList();
-      } else {
-        adminPanel.classList.remove('open');
-        adminLogin.style.display = '';
-        adminArea.style.display = 'none';
-      }
-    }
+window.editPostFromView=function(id){var p=getPost(id);if(p){openEditForm(p);adminPanel.classList.add('open');}};
+window.deletePostFromView=function(id){if(!confirm('Delete this post?'))return;deletePost(id);navigateTo(null);renderBlogGrid();};
 
-    adminToggle.addEventListener('click', () => {
-      adminPanel.classList.toggle('open');
-    });
+function renderBlogGrid(filter){
+  var posts=getSortedPosts();
+  if(filter){var q=filter.toLowerCase();posts=posts.filter(function(p){return p.title.toLowerCase().indexOf(q)!==-1||p.excerpt.toLowerCase().indexOf(q)!==-1||p.author.toLowerCase().indexOf(q)!==-1;});}
+  if(posts.length===0){blogGrid.innerHTML='';blogEmpty.style.display='';return;}
+  blogEmpty.style.display='none';
+  blogGrid.innerHTML=posts.map(function(p){
+    return '<article class="blog-card '+(p.pinned?'pinned':'')+'">'+(p.pinned?'<span class="pin-badge">&#128204; Pinned</span>':'')+'<div class="blog-card-date">'+p.dateDisplay+'</div><h3>'+escapeHtml(p.title)+'</h3><p>'+escapeHtml(p.excerpt)+'</p><div class="blog-card-footer"><span class="blog-card-author">'+escapeHtml(p.author)+'</span><a href="#" class="blog-read-more" onclick="event.preventDefault();navigateTo(\''+p.id+'\');">Read More &rarr;</a></div></article>';
+  }).join('');
+}
 
-    document.addEventListener('click', (e) => {
-      if (adminPanel.classList.contains('open') &&
-          !adminPanel.contains(e.target) &&
-          e.target !== adminToggle) {
-        adminPanel.classList.remove('open');
-      }
-    });
+blogSearchInput.addEventListener('input',function(){if(currentView==='list')renderBlogGrid(blogSearchInput.value);});
 
-    /* ===== Login ===== */
-    blogLoginBtn.addEventListener('click', () => {
-      const u = blogLoginUser.value.trim();
-      const p = blogLoginPass.value;
-      if (cyrb53(u) === 6326359510258827 && cyrb53(p) === 179402082180785) {
-        try { sessionStorage.setItem(BLOG_AUTH_KEY, '1'); } catch (e) {}
-        blogLoginMsg.className = 'blog-admin-msg ok';
-        blogLoginMsg.textContent = 'Logged in!';
-        blogLoginUser.value = '';
-        blogLoginPass.value = '';
-        updateAdminVisibility();
-        setTimeout(() => { blogLoginMsg.textContent = ''; }, 2000);
-      } else {
-        blogLoginMsg.className = 'blog-admin-msg err';
-        blogLoginMsg.textContent = 'Invalid credentials.';
-      }
-    });
+function updateAdminVisibility(){
+  if(isBlogAuthed()){adminLogin.style.display='none';adminArea.style.display='';renderAdminList();}
+  else{adminPanel.classList.remove('open');adminLogin.style.display='';adminArea.style.display='none';}
+}
 
-    blogLoginPass.addEventListener('keydown', (e) => { if (e.key === 'Enter') blogLoginBtn.click(); });
-    blogLoginUser.addEventListener('keydown', (e) => { if (e.key === 'Enter') blogLoginBtn.click(); });
+adminToggle.addEventListener('click',function(){adminPanel.classList.toggle('open');});
+document.addEventListener('click',function(e){if(adminPanel.classList.contains('open')&&!adminPanel.contains(e.target)&&e.target!==adminToggle)adminPanel.classList.remove('open');});
 
-    /* ===== Logout ===== */
-    blogLogoutBtn.addEventListener('click', () => {
-      try { sessionStorage.removeItem(BLOG_AUTH_KEY); } catch (e) {}
-      updateAdminVisibility();
-      adminPanel.classList.remove('open');
-    });
+blogLoginBtn.addEventListener('click',function(){
+  var u=blogLoginUser.value.trim(),p=blogLoginPass.value;
+  if(cyrb53(u)===6326359510258827&&cyrb53(p)===179402082180785){
+    try{sessionStorage.setItem(BLOG_AUTH_KEY,'1');}catch(e){}
+    blogLoginMsg.className='blog-admin-msg ok';blogLoginMsg.textContent='Logged in!';
+    blogLoginUser.value='';blogLoginPass.value='';updateAdminVisibility();
+    setTimeout(function(){blogLoginMsg.textContent='';},2000);
+  }else{blogLoginMsg.className='blog-admin-msg err';blogLoginMsg.textContent='Invalid credentials.';}
+});
+blogLoginPass.addEventListener('keydown',function(e){if(e.key==='Enter')blogLoginBtn.click();});
+blogLoginUser.addEventListener('keydown',function(e){if(e.key==='Enter')blogLoginBtn.click();});
 
-    /* ===== Create / Edit form ===== */
-    function resetForm() {
-      blogEditId.value = '';
-      blogFormTitle.value = '';
-      blogFormExcerpt.value = '';
-      blogFormContent.value = '';
-      blogFormAuthor.value = '';
-      blogFormPinned.checked = false;
-      blogFormSave.textContent = 'Publish Post';
-      blogFormCancel.style.display = 'none';
-      blogFormMsg.textContent = '';
-      blogFormMsg.className = 'blog-admin-msg';
-    }
+blogLogoutBtn.addEventListener('click',function(){try{sessionStorage.removeItem(BLOG_AUTH_KEY);}catch(e){}updateAdminVisibility();adminPanel.classList.remove('open');});
 
-    function openEditForm(post) {
-      blogEditId.value = post.id;
-      blogFormTitle.value = post.title;
-      blogFormExcerpt.value = post.excerpt;
-      blogFormContent.value = post.content;
-      blogFormAuthor.value = post.author;
-      blogFormPinned.checked = post.pinned;
-      blogFormSave.textContent = 'Save Changes';
-      blogFormCancel.style.display = '';
-    }
+function resetForm(){
+  blogEditId.value='';blogFormTitle.value='';blogFormExcerpt.value='';blogFormContent.value='';
+  blogFormAuthor.value='';blogFormPinned.checked=false;blogFormSave.textContent='Publish Post';
+  blogFormCancel.style.display='none';blogFormMsg.textContent='';blogFormMsg.className='blog-admin-msg';
+}
 
-    blogFormCancel.addEventListener('click', resetForm);
+function openEditForm(post){
+  blogEditId.value=post.id;blogFormTitle.value=post.title;blogFormExcerpt.value=post.excerpt;
+  blogFormContent.value=post.content;blogFormAuthor.value=post.author;blogFormPinned.checked=post.pinned;
+  blogFormSave.textContent='Save Changes';blogFormCancel.style.display='';
+}
 
-    blogFormSave.addEventListener('click', () => {
-      const title = blogFormTitle.value.trim();
-      const excerpt = blogFormExcerpt.value.trim();
-      const content = blogFormContent.value.trim();
-      const author = blogFormAuthor.value.trim() || 'Rebel Hounds MC';
-      const pinned = blogFormPinned.checked;
+blogFormCancel.addEventListener('click',resetForm);
 
-      if (!title || !content) {
-        blogFormMsg.className = 'blog-admin-msg err';
-        blogFormMsg.textContent = 'Title and content are required.';
-        return;
-      }
+blogFormSave.addEventListener('click',function(){
+  var title=blogFormTitle.value.trim(),excerpt=blogFormExcerpt.value.trim(),content=blogFormContent.value.trim(),
+      author=blogFormAuthor.value.trim()||'Rebel Hounds MC',pinned=blogFormPinned.checked;
+  if(!title||!content){blogFormMsg.className='blog-admin-msg err';blogFormMsg.textContent='Title and content are required.';return;}
+  if(blogEditId.value){updatePost(blogEditId.value,{title:title,excerpt:excerpt,content:content,author:author,pinned:pinned});blogFormMsg.className='blog-admin-msg ok';blogFormMsg.textContent='Post updated!';}
+  else{createPost(title,excerpt,content,author,pinned);blogFormMsg.className='blog-admin-msg ok';blogFormMsg.textContent='Post published!';}
+  resetForm();renderBlogGrid();renderAdminList();
+  if(currentView==='post'&&currentPostId)showPost(currentPostId);
+  setTimeout(function(){blogFormMsg.textContent='';},3000);
+});
 
-      if (blogEditId.value) {
-        updatePost(blogEditId.value, { title, excerpt, content, author, pinned });
-        blogFormMsg.className = 'blog-admin-msg ok';
-        blogFormMsg.textContent = 'Post updated!';
-      } else {
-        createPost(title, excerpt, content, author, pinned);
-        blogFormMsg.className = 'blog-admin-msg ok';
-        blogFormMsg.textContent = 'Post published!';
-      }
+function renderAdminList(){
+  var posts=getAllPosts();
+  if(posts.length===0){blogAdminList.innerHTML='<p style="color:var(--muted);font-size:.85rem;text-align:center;padding:1rem;">No posts yet.</p>';return;}
+  blogAdminList.innerHTML=posts.map(function(p){
+    return '<div class="blog-admin-item"><span class="blog-admin-item-title" title="'+escapeHtml(p.title)+'">'+escapeHtml(p.title)+' '+(p.pinned?'&#128204;':'')+'</span><div class="blog-admin-item-actions"><button onclick="adminEdit(\''+p.id+'\')">Edit</button><button class="del-btn" onclick="adminDelete(\''+p.id+'\')">Del</button></div></div>';
+  }).join('');
+}
 
-      resetForm();
-      renderBlogGrid();
-      renderAdminList();
+window.adminEdit=function(id){var p=getPost(id);if(p)openEditForm(p);};
+window.adminDelete=function(id){if(!confirm('Delete this post?'))return;deletePost(id);renderBlogGrid();renderAdminList();};
 
-      if (currentView === 'post' && currentPostId) {
-        showPost(currentPostId);
-      }
+window.addEventListener('popstate',function(){var id=getRouteParam();if(id)showPost(id);else showList();});
 
-      setTimeout(() => { blogFormMsg.textContent = ''; }, 3000);
-    });
-
-    /* ===== Admin post list ===== */
-    function renderAdminList() {
-      const posts = getAllPosts();
-      if (posts.length === 0) {
-        blogAdminList.innerHTML = '<p style="color:var(--muted);font-size:.85rem;text-align:center;padding:1rem;">No posts yet.</p>';
-        return;
-      }
-      blogAdminList.innerHTML = posts.map(p => `
-        <div class="blog-admin-item">
-          <span class="blog-admin-item-title" title="${escapeHtml(p.title)}">${escapeHtml(p.title)} ${p.pinned ? '&#128204;' : ''}</span>
-          <div class="blog-admin-item-actions">
-            <button onclick="adminEdit('${p.id}')">Edit</button>
-            <button class="del-btn" onclick="adminDelete('${p.id}')">Del</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    window.adminEdit = function(id) {
-      const post = getPost(id);
-      if (post) openEditForm(post);
-    };
-
-    window.adminDelete = function(id) {
-      if (!confirm('Delete this post? This cannot be undone.')) return;
-      deletePost(id);
-      renderBlogGrid();
-      renderAdminList();
-    };
-
-    /* ===== Listen for portal auth changes ===== */
-    window.addEventListener('patchAuthChange', () => { updateAdminVisibility(); });
-
-    /* ===== Browser back/forward ===== */
-    window.addEventListener('popstate', () => {
-      const id = getRouteParam();
-      if (id) showPost(id); else showList();
-    });
-
-    /* ===== Init ===== */
-    updateAdminVisibility();
-    const routeId = getRouteParam();
-    if (routeId) { showPost(routeId); } else { showList(); }
-  </script>
+/* ===== Init ===== */
+seedBlogData();
+updateAdminVisibility();
+var routeId=getRouteParam();
+if(routeId)showPost(routeId);else showList();
+</script>
 </body>
 </html>
