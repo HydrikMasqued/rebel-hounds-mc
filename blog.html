@@ -111,6 +111,7 @@
       <div class="section-head">
         <h2 class="section-title">CLUB BLOG</h2>
         <p class="section-sub">News, events and stories from the road.</p>
+        <button id="blogAdminOpenBtn" style="margin-top:1rem;background:none;border:1px solid var(--border);color:var(--muted);padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-size:.85rem;transition:all .2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">&#9998; Admin Login</button>
       </div>
       <div class="blog-search">
         <span class="blog-search-icon">&#128269;</span>
@@ -353,11 +354,22 @@ function renderBlogGrid(filter){
 blogSearchInput.addEventListener('input',function(){if(currentView==='list')renderBlogGrid(blogSearchInput.value);});
 
 function updateAdminVisibility(){
-  if(isBlogAuthed()){adminLogin.style.display='none';adminArea.style.display='';renderAdminList();}
-  else{adminPanel.classList.remove('open');adminLogin.style.display='';adminArea.style.display='none';}
+  if(isBlogAuthed()){
+    adminLogin.style.display='none';adminArea.style.display='';renderAdminList();
+    if(blogAdminOpenBtn)blogAdminOpenBtn.textContent='\u2713 Logged In';
+  }else{
+    adminPanel.classList.remove('open');adminLogin.style.display='';adminArea.style.display='none';
+    if(blogAdminOpenBtn)blogAdminOpenBtn.textContent='\u270e Admin Login';
+  }
 }
 
 adminToggle.addEventListener('click',function(){adminPanel.classList.toggle('open');});
+
+var blogAdminOpenBtn=document.getElementById('blogAdminOpenBtn');
+if(blogAdminOpenBtn){
+  blogAdminOpenBtn.addEventListener('click',function(){adminPanel.classList.add('open');});
+  if(isBlogAuthed())blogAdminOpenBtn.textContent='\u2713 Logged In';
+}
 document.addEventListener('click',function(e){if(adminPanel.classList.contains('open')&&!adminPanel.contains(e.target)&&e.target!==adminToggle)adminPanel.classList.remove('open');});
 
 blogLoginBtn.addEventListener('click',function(){
