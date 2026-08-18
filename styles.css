@@ -1084,18 +1084,62 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(180deg, rgba(13, 13, 13, 0.85) 0%, rgba(13, 13, 13, 0.75) 50%, rgba(13, 13, 13, 0.92) 100%),
+    linear-gradient(180deg, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.85) 50%, rgba(13,13,13,0.95) 100%),
     url('rebel-hounds-patch.png') center/cover no-repeat;
   background-color: var(--dark);
+  padding: 2rem;
 }
 
 .portal-login-bg .patch-gate-card {
   position: relative;
   z-index: 2;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(30, 30, 30, 0.85);
-  border: 1px solid rgba(192, 57, 43, 0.3);
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+}
+
+.portal-login-bg .patch-gate-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  display: block;
+  box-shadow: 0 0 30px rgba(192,57,43,0.25);
+}
+
+.portal-login-bg .patch-gate-card h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 4px;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.portal-login-bg .patch-gate-sub {
+  color: var(--muted);
+  margin: 0.5rem 0 2rem;
+  font-size: 0.95rem;
+}
+
+.portal-login-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--primary);
+  margin: 0 auto 2rem;
+  opacity: 0.5;
+  border: none;
+}
+
+.portal-login-bg .patch-form .form-group input {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.portal-login-bg .patch-form .form-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(192,57,43,0.15);
 }
 
 /* ===== PORTAL BANNER ===== */
