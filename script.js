@@ -125,17 +125,3 @@ function onYouTubeIframeAPIReady() {
 const ytTag = document.createElement('script');
 ytTag.src = 'https://www.youtube.com/iframe_api';
 document.head.appendChild(ytTag);
-
-// Anniversary countdown
-function updateAnniversaryCountdown() {
-  var el = document.getElementById('anniversary-countdown');
-  if (!el) return;
-  var now = new Date();
-  var next = new Date(now.getFullYear(), 9, 3);
-  if (now > next) next = new Date(now.getFullYear() + 1, 9, 3);
-  var diff = next.getTime() - now.getTime();
-  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  el.textContent = days + 'd';
-}
-updateAnniversaryCountdown();
-setInterval(updateAnniversaryCountdown, 60000);
