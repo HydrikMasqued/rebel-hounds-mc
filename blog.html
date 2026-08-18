@@ -363,14 +363,14 @@
     });
 
     /* ===== Admin panel toggle ===== */
+    adminToggle.style.display = '';
+
     function updateAdminVisibility() {
       if (isBlogAuthed()) {
-        adminToggle.style.display = '';
         adminLogin.style.display = 'none';
         adminArea.style.display = '';
         renderAdminList();
       } else {
-        adminToggle.style.display = 'none';
         adminPanel.classList.remove('open');
         adminLogin.style.display = '';
         adminArea.style.display = 'none';
