@@ -44,7 +44,8 @@ body {
   z-index: 1000;
   background: rgba(20, 20, 20, 0.92);
   backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--primary);
+  border-bottom: 3px solid var(--primary);
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.3);
   transition: box-shadow 0.3s ease;
 }
 
