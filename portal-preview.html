@@ -4,334 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal Login - Current Design</title>
+  <link rel="stylesheet" href="styles.css?v=7">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #c0392b;
-      --primary-dark: #922b21;
-      --dark: #141414;
-      --dark-2: #1e1e1e;
-      --dark-3: #262626;
-      --text: #e8e8e8;
-      --muted: #9a9a9a;
-      --border: #333;
-      --gold: #d4a017;
-      --font-display: 'Bebas Neue', sans-serif;
-      --font-body: 'Rajdhani', sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font-body);
-      background: var(--dark);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(14,14,14,0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      text-decoration: none;
-    }
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .brand-text {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      letter-spacing: 2px;
-      color: var(--text);
-    }
-    .accent { color: var(--primary); }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 1.8rem;
-    }
-    .nav-links a {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      letter-spacing: 2px;
-      color: var(--muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-    }
-    .nav-links a.active {
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 2px;
-    }
-
-    /* ===== PORTAL LOGIN - FULL BLEED ===== */
-    .portal-login-bg {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        linear-gradient(180deg, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.85) 50%, rgba(13,13,13,0.95) 100%),
-        url('rebel-hounds-patch.png') center/cover no-repeat;
-      background-color: var(--dark);
-      padding: 2rem;
-    }
-    .patch-gate {
-      display: flex;
-      justify-content: center;
-    }
-    .patch-gate-card {
-      position: relative;
-      z-index: 2;
-      max-width: 360px;
-      width: 100%;
-      text-align: center;
-    }
-    .patch-gate-logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 2px solid var(--primary);
-      object-fit: cover;
-      margin: 0 auto 1rem;
-      display: block;
-      box-shadow: 0 0 30px rgba(192,57,43,0.25);
-    }
-    .patch-gate-card h3 {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      letter-spacing: 4px;
-      color: var(--primary);
-      margin-bottom: 0.3rem;
-    }
-    .patch-gate-sub {
-      color: var(--muted);
-      margin: 0.5rem 0 2rem;
-      font-size: 0.95rem;
-    }
-    .portal-login-divider {
-      width: 60px;
-      height: 2px;
-      background: var(--primary);
-      margin: 0 auto 2rem;
-      opacity: 0.5;
-      border: none;
-    }
-
-    /* ===== FORM ===== */
-    .patch-form {
-      text-align: left;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.3rem;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(192,57,43,0.15);
-    }
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 0.75rem 1.5rem;
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      letter-spacing: 2px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-    .form-msg {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    /* ===== FOOTER ===== */
-    .footer {
-      background: var(--dark-2);
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-    }
-    .footer .brand-text {
-      font-size: 1.1rem;
-    }
-    .footer p {
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin-top: 0.5rem;
-    }
-
-    /* ===== NOTE BOX ===== */
-    .note {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-    }
-    .note-box {
-      background: var(--dark-2);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--gold);
-      border-radius: 8px;
-      padding: 1.5rem 2rem;
-    }
-    .note-box h4 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .note-box p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .note-box ul {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
-      padding-left: 1.2rem;
-    }
-    .note-box li {
-      margin-bottom: 0.3rem;
-    }
-    .note-box code {
-      background: var(--dark-3);
-      padding: 0.15rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.85rem;
-      color: var(--text);
-    }
-  </style>
 </head>
-<body>
+<body class="portal-page">
 
   <!-- ===== NAVBAR (Portal Version) ===== -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="#" class="brand">
+      <a href="index.html" class="brand">
         <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="brand-logo">
         <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#" class="active">Dashboard</a></li>
-        <li><a href="#">Map</a></li>
-        <li><a href="#">Bots</a></li>
-        <li><a href="#">Inventory</a></li>
-        <li><a href="#">Finance</a></li>
-        <li><a href="#">Bylaws</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portal.html">Dashboard</a></li>
+        <li><a href="portal-map.html">Map</a></li>
+        <li><a href="portal-bots.html">Bots</a></li>
+        <li><a href="portal-inventory.html">Inventory</a></li>
+        <li><a href="portal-finance.html">Finance</a></li>
+        <li><a href="portal-bylaws.html">Bylaws</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
     </div>
   </nav>
 
   <!-- ===== FULL BLEED LOGIN ===== -->
-  <div class="portal-login-bg">
-    <div class="patch-gate">
+  <div class="portal-login-bg" id="patchLoginBg">
+    <div class="patch-gate" id="patchGate">
       <div class="patch-gate-card">
         <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="patch-gate-logo">
         <h3>MEMBERS ONLY</h3>
         <p class="patch-gate-sub">Enter your issued credentials to access the Patch Holders Hub.</p>
         <hr class="portal-login-divider">
-        <form class="patch-form" autocomplete="off">
+        <form id="patchForm" class="patch-form" autocomplete="off">
           <div class="form-group">
-            <label for="previewUser">Username</label>
-            <input type="text" id="previewUser" name="patchUser" required placeholder="Username">
+            <label for="patchUser">Username</label>
+            <input type="text" id="patchUser" name="patchUser" required placeholder="Username">
           </div>
           <div class="form-group">
-            <label for="previewPass">Password</label>
-            <input type="password" id="previewPass" name="patchPass" required placeholder="Password">
+            <label for="patchPass">Password</label>
+            <input type="password" id="patchPass" name="patchPass" required placeholder="Password">
           </div>
-          <button type="button" class="btn btn-primary" onclick="this.textContent='Logged In';this.style.background='var(--gold)';this.style.color='var(--dark)'">Enter Portal</button>
+          <button type="submit" class="btn btn-primary btn-block">Enter Portal</button>
         </form>
-        <p class="form-msg"></p>
+        <p class="form-msg" id="patchMsg"></p>
       </div>
     </div>
   </div>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
-    <p>&copy; 2026 Rebel Hounds MC. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
-  </footer>
-
-  <!-- ===== DESIGN NOTES ===== -->
-  <div class="note">
-    <div class="note-box">
-      <h4>APPLIED DESIGN - FULL BLEED</h4>
-      <p>This is the current design applied to all portal pages. Changes made:</p>
-      <ul>
-        <li>Card wrapper removed - form floats directly on the dark background</li>
-        <li>Red divider line between description and form</li>
-        <li>Logo has red glow shadow</li>
-        <li>"MEMBERS ONLY" in red (primary) instead of gold</li>
-        <li>Inputs have subtle transparent background with red focus state</li>
-        <li>Navbar shows <code>Dashboard</code> (renamed from "Portal Hub")</li>
-        <li>Blog link added to portal nav (was missing on 5 pages)</li>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
+        <p>&copy; 2026 Rebel Hounds MC. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#rules">Rules</a></li>
+        <li><a href="recruitment.html">Recruitment</a></li>
       </ul>
     </div>
-  </div>
+  </footer>
 
+  <script>
+    document.getElementById('patchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = this.querySelector('button[type="submit"]');
+      btn.textContent = 'Logged In';
+      btn.style.background = 'var(--gold)';
+      btn.style.color = 'var(--dark)';
+    });
+  </script>
 </body>
 </html>
