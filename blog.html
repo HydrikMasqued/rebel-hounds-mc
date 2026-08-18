@@ -3,10 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog & Events — Rebel Hounds MC</title>
+  <title>Club Blog — Rebel Hounds MC</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
+    .blog-card { background:var(--dark-3); border:1px solid var(--border); border-radius:10px; padding:1.8rem; transition:border-color .25s,transform .25s; display:flex; flex-direction:column; }
+    .blog-card:hover { border-color:var(--primary); transform:translateY(-3px); }
+    .blog-card.pinned { border-color:var(--gold); box-shadow:0 0 12px rgba(212,160,23,.15); }
+    .pin-badge { display:inline-block; background:var(--gold); color:#000; font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:.2rem .6rem; border-radius:4px; margin-bottom:.8rem; }
+    .blog-card-date { color:var(--muted); font-size:.85rem; margin-bottom:.5rem; }
+    .blog-card h3 { font-family:var(--font-display); font-size:1.6rem; color:#fff; letter-spacing:1px; margin-bottom:.6rem; line-height:1.2; }
+    .blog-card p { color:var(--muted); font-size:.95rem; flex:1; margin-bottom:1rem; line-height:1.5; }
+    .blog-card-footer { display:flex; justify-content:space-between; align-items:center; }
+    .blog-card-author { color:var(--muted); font-size:.8rem; }
+    .blog-read-more { color:var(--primary); font-weight:600; text-decoration:none; font-size:.9rem; }
+    .blog-read-more:hover { text-decoration:underline; }
+
+    /* Single post view */
+    .blog-post-view { max-width:820px; margin:0 auto; }
+    .blog-post-back { display:inline-flex; align-items:center; gap:.4rem; color:var(--muted); font-size:.9rem; text-decoration:none; margin-bottom:1.5rem; }
+    .blog-post-back:hover { color:var(--primary); }
+    .blog-post-header { margin-bottom:2rem; }
+    .blog-post-header h1 { font-family:var(--font-display); font-size:3rem; color:#fff; letter-spacing:2px; line-height:1.1; }
+    .blog-post-meta { color:var(--muted); font-size:.9rem; margin-top:.8rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .blog-post-content { font-size:1.05rem; line-height:1.8; color:var(--text); }
+    .blog-post-content p { margin-bottom:1.2rem; }
+    .blog-post-content blockquote { margin:1.5rem 0; padding:1.2rem 1.5rem; background:var(--dark-3); border-left:4px solid var(--primary); font-style:italic; color:var(--muted); border-radius:0 8px 8px 0; }
+    .blog-post-content ul, .blog-post-content ol { margin:1rem 0; padding-left:1.5rem; }
+    .blog-post-content li { margin-bottom:.5rem; }
+    .blog-post-content a { color:var(--primary); text-decoration:underline; }
+    .blog-post-content img { max-width:100%; border-radius:8px; margin:1rem 0; }
+    .blog-post-content h2, .blog-post-content h3 { font-family:var(--font-display); color:#fff; letter-spacing:1px; margin:1.5rem 0 .8rem; }
+    .blog-post-content h2 { font-size:1.8rem; }
+    .blog-post-content h3 { font-size:1.4rem; }
+
+    /* Admin panel */
+    .blog-admin-toggle { position:fixed; bottom:1.5rem; right:1.5rem; z-index:900; background:var(--primary); color:#fff; border:none; border-radius:50%; width:56px; height:56px; font-size:1.5rem; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.5); transition:transform .2s,background .2s; }
+    .blog-admin-toggle:hover { background:var(--primary-dark); transform:scale(1.08); }
+    .blog-admin-panel { display:none; position:fixed; bottom:5rem; right:1.5rem; z-index:899; background:var(--dark-2); border:1px solid var(--border); border-radius:12px; padding:1.5rem; width:360px; max-height:80vh; overflow-y:auto; box-shadow:0 8px 32px rgba(0,0,0,.6); }
+    .blog-admin-panel.open { display:block; }
+    .blog-admin-panel h3 { font-family:var(--font-display); color:var(--primary); font-size:1.3rem; letter-spacing:1px; margin-bottom:1rem; }
+    .blog-admin-panel label { display:block; color:var(--muted); font-size:.8rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; margin-top:.8rem; }
+    .blog-admin-panel input[type="text"],
+    .blog-admin-panel textarea { width:100%; background:var(--dark); border:1px solid var(--border); color:var(--text); padding:.6rem .8rem; border-radius:6px; font-family:var(--font-body); font-size:.95rem; }
+    .blog-admin-panel textarea { min-height:120px; resize:vertical; }
+    .blog-admin-panel input:focus, .blog-admin-panel textarea:focus { outline:none; border-color:var(--primary); }
+    .blog-admin-actions { display:flex; gap:.6rem; margin-top:1rem; }
+    .blog-admin-actions button { flex:1; padding:.6rem; border:none; border-radius:6px; font-weight:600; cursor:pointer; font-family:var(--font-body); font-size:.9rem; }
+    .blog-admin-btn-save { background:var(--primary); color:#fff; }
+    .blog-admin-btn-save:hover { background:var(--primary-dark); }
+    .blog-admin-btn-cancel { background:var(--dark); color:var(--muted); border:1px solid var(--border); }
+    .blog-admin-btn-cancel:hover { color:var(--text); }
+    .blog-admin-list { margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem; }
+    .blog-admin-item { display:flex; justify-content:space-between; align-items:center; padding:.6rem 0; border-bottom:1px solid var(--border); }
+    .blog-admin-item:last-child { border-bottom:none; }
+    .blog-admin-item-title { color:var(--text); font-size:.9rem; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-right:.5rem; }
+    .blog-admin-item-actions { display:flex; gap:.4rem; }
+    .blog-admin-item-actions button { background:none; border:1px solid var(--border); color:var(--muted); padding:.25rem .5rem; border-radius:4px; font-size:.75rem; cursor:pointer; }
+    .blog-admin-item-actions button:hover { color:var(--text); border-color:var(--text); }
+    .blog-admin-item-actions .del-btn:hover { color:#ff5252; border-color:#ff5252; }
+    .blog-admin-msg { margin-top:.8rem; padding:.5rem; border-radius:6px; font-size:.85rem; text-align:center; }
+    .blog-admin-msg.ok { background:rgba(76,175,80,.15); color:#4caf50; }
+    .blog-admin-msg.err { background:rgba(244,67,54,.15); color:#ff5252; }
+    .blog-admin-login { margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem; }
+    .blog-admin-login input { margin-bottom:.5rem; }
+    .blog-admin-login button { width:100%; }
+
+    /* Empty state */
+    .blog-empty { text-align:center; padding:4rem 2rem; color:var(--muted); }
+    .blog-empty h2 { font-family:var(--font-display); font-size:2rem; color:var(--text); margin-bottom:.5rem; }
+
+    /* Search */
+    .blog-search { max-width:400px; margin:0 auto 2rem; position:relative; }
+    .blog-search input { width:100%; background:var(--dark-3); border:1px solid var(--border); color:var(--text); padding:.8rem 1.2rem .8rem 2.8rem; border-radius:8px; font-family:var(--font-body); font-size:1rem; }
+    .blog-search input:focus { outline:none; border-color:var(--primary); }
+    .blog-search-icon { position:absolute; left:1rem; top:50%; transform:translateY(-50%); color:var(--muted); font-size:1rem; }
+
+    @media(max-width:600px){
+      .blog-grid { grid-template-columns:1fr; }
+      .blog-post-header h1 { font-size:2rem; }
+      .blog-admin-panel { right:0; left:0; width:auto; border-radius:12px 12px 0 0; bottom:0; max-height:70vh; }
+    }
+  </style>
 </head>
 <body>
 
@@ -36,70 +116,94 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <header class="portal-hero">
-    <div class="portal-hero-inner">
-      <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="portal-hero-logo">
-      <h1 class="hero-title">BLOG <span class="accent">&</span> EVENTS</h1>
-      <p class="hero-sub">Club news, upcoming runs and event recaps.</p>
-    </div>
-  </header>
-
-  <!-- ===== UPCOMING EVENTS ===== -->
-  <section class="section" id="events">
-    <div class="section-head">
-      <h2 class="section-title">UPCOMING RUNS & EVENTS</h2>
-      <p class="section-sub">Weekly schedule — patch members and invited clubs only.</p>
-    </div>
-    <div class="events-list">
-      <div class="event">
-        <div class="event-date"><span class="date-day">FRI</span><span class="date-num">14</span></div>
-        <div class="event-info">
-          <h4>Friday Night Convoy Run</h4>
-          <p>Paleto Bay to Sandy Shores — full patch ride, meet at clubhouse at 21:00.</p>
-        </div>
-        <span class="event-badge">Club Run</span>
-      </div>
-      <div class="event">
-        <div class="event-date"><span class="date-day">SAT</span><span class="date-num">15</span></div>
-        <div class="event-info">
-          <h4>Canyon Run & Bike Show</h4>
-          <p>Zancudo river run then show at the clubhouse. Bring your best build.</p>
-        </div>
-        <span class="event-badge">Show & Shine</span>
-      </div>
-      <div class="event">
-        <div class="event-date"><span class="date-day">SUN</span><span class="date-num">16</span></div>
-        <div class="event-info">
-          <h4>Poker Run</h4>
-          <p>Five stops, best hand wins the pot. Prospect helpers needed.</p>
-        </div>
-        <span class="event-badge">Poker Run</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== BLOG POSTS ===== -->
-  <section class="section" id="blog" style="background: var(--dark-2); max-width: none;">
-    <div style="max-width: 1200px; margin: 0 auto;">
+  <!-- ===== BLOG LISTING (default) ===== -->
+  <main class="section" id="blogList">
+    <div style="max-width:1200px;margin:0 auto;">
       <div class="section-head">
         <h2 class="section-title">CLUB BLOG</h2>
-        <p class="section-sub">News and updates from the chapter.</p>
+        <p class="section-sub">News, events and stories from the road.</p>
       </div>
-      <div class="content-card">
-        <h3>Club Established — October 2021</h3>
-        <p>The Rebel Hounds Motorcycle Club was born from the Perished Ones MC, transitioning from GTA Online into FiveM with a militant culture and brotherhood forged on the road.</p>
+
+      <div class="blog-search">
+        <span class="blog-search-icon">&#128269;</span>
+        <input type="text" id="blogSearchInput" placeholder="Search posts...">
       </div>
-      <div class="content-card">
-        <h3>Five Directives — The Foundation</h3>
-        <p>Every member lives by the Five Directives. Non-negotiable laws that keep the club strong, unified and disciplined. Read the full directives on the <a href="index.html#rules" style="color: var(--primary);">Patch Rules</a> page.</p>
-      </div>
-      <div class="content-card">
-        <h3>Growing the Chapter</h3>
-        <p>With 28 members and 5 chapters, the Rebel Hounds continue to expand across Los Santos. New prospects are always welcome — check the <a href="recruitment.html" style="color: var(--primary);">Recruitment</a> page for requirements.</p>
+
+      <div class="blog-grid" id="blogGrid"></div>
+      <div class="blog-empty" id="blogEmpty" style="display:none;">
+        <h2>No Posts Yet</h2>
+        <p>Check back soon for club updates and stories.</p>
       </div>
     </div>
-  </section>
+  </main>
+
+  <!-- ===== SINGLE POST VIEW ===== -->
+  <main class="section" id="blogPost" style="display:none;">
+    <div class="blog-post-view">
+      <a href="blog.html" class="blog-post-back">&larr; Back to Blog</a>
+      <div class="blog-post-header">
+        <h1 id="postTitle"></h1>
+        <div class="blog-post-meta">
+          <span id="postDate"></span>
+          <span id="postAuthor"></span>
+        </div>
+      </div>
+      <div class="blog-post-content" id="postContent"></div>
+      <div id="postAdminEdit" style="display:none;margin-top:2rem;"></div>
+    </div>
+  </main>
+
+  <!-- ===== ADMIN FLOATING BUTTON (patch holders only) ===== -->
+  <button class="blog-admin-toggle" id="blogAdminToggle" title="Blog Admin" style="display:none;">&#9998;</button>
+
+  <!-- ===== ADMIN PANEL ===== -->
+  <div class="blog-admin-panel" id="blogAdminPanel">
+    <!-- Not logged in: show login -->
+    <div id="blogAdminLogin">
+      <h3>&#128274; Patch Holder Access</h3>
+      <p style="color:var(--muted);font-size:.85rem;margin-bottom:.8rem;">Log in to manage blog posts.</p>
+      <label>Username</label>
+      <input type="text" id="blogLoginUser" placeholder="Username">
+      <label>Password</label>
+      <input type="password" id="blogLoginPass" placeholder="Password">
+      <div class="blog-admin-actions">
+        <button class="blog-admin-btn-save" id="blogLoginBtn">Log In</button>
+      </div>
+      <div class="blog-admin-msg" id="blogLoginMsg"></div>
+    </div>
+
+    <!-- Logged in: show create/edit form + post list -->
+    <div id="blogAdminArea" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h3>&#9998; Manage Posts</h3>
+        <button class="blog-admin-btn-cancel" id="blogLogoutBtn" style="flex:0;padding:.3rem .7rem;font-size:.8rem;">Log Out</button>
+      </div>
+
+      <div id="blogFormWrap">
+        <input type="hidden" id="blogEditId" value="">
+        <label>Title</label>
+        <input type="text" id="blogFormTitle" placeholder="Post title">
+        <label>Excerpt</label>
+        <input type="text" id="blogFormExcerpt" placeholder="Short summary (shown on cards)">
+        <label>Content (HTML supported)</label>
+        <textarea id="blogFormContent" placeholder="Write your post content here. HTML tags are supported."></textarea>
+        <label>Author</label>
+        <input type="text" id="blogFormAuthor" placeholder="e.g. Road Captain, President, etc.">
+        <div style="margin-top:.8rem;">
+          <label style="display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;">
+            <input type="checkbox" id="blogFormPinned"> Pin to top
+          </label>
+        </div>
+        <div class="blog-admin-actions">
+          <button class="blog-admin-btn-save" id="blogFormSave">Publish Post</button>
+          <button class="blog-admin-btn-cancel" id="blogFormCancel" style="display:none;">Cancel Edit</button>
+        </div>
+      </div>
+
+      <div class="blog-admin-list" id="blogAdminList"></div>
+      <div class="blog-admin-msg" id="blogFormMsg"></div>
+    </div>
+  </div>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
@@ -117,6 +221,306 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="portal.js"></script>
+  <script src="blog.js"></script>
+  <script>
+    /* ===== Init ===== */
+    seedBlogData();
+
+    const blogGrid = document.getElementById('blogGrid');
+    const blogEmpty = document.getElementById('blogEmpty');
+    const blogList = document.getElementById('blogList');
+    const blogPost = document.getElementById('blogPost');
+    const postTitle = document.getElementById('postTitle');
+    const postDate = document.getElementById('postDate');
+    const postAuthor = document.getElementById('postAuthor');
+    const postContent = document.getElementById('postContent');
+    const postAdminEdit = document.getElementById('postAdminEdit');
+    const blogSearchInput = document.getElementById('blogSearchInput');
+
+    const adminToggle = document.getElementById('blogAdminToggle');
+    const adminPanel = document.getElementById('blogAdminPanel');
+    const adminLogin = document.getElementById('blogAdminLogin');
+    const adminArea = document.getElementById('blogAdminArea');
+
+    const blogLoginUser = document.getElementById('blogLoginUser');
+    const blogLoginPass = document.getElementById('blogLoginPass');
+    const blogLoginBtn = document.getElementById('blogLoginBtn');
+    const blogLoginMsg = document.getElementById('blogLoginMsg');
+    const blogLogoutBtn = document.getElementById('blogLogoutBtn');
+
+    const blogFormWrap = document.getElementById('blogFormWrap');
+    const blogEditId = document.getElementById('blogEditId');
+    const blogFormTitle = document.getElementById('blogFormTitle');
+    const blogFormExcerpt = document.getElementById('blogFormExcerpt');
+    const blogFormContent = document.getElementById('blogFormContent');
+    const blogFormAuthor = document.getElementById('blogFormAuthor');
+    const blogFormPinned = document.getElementById('blogFormPinned');
+    const blogFormSave = document.getElementById('blogFormSave');
+    const blogFormCancel = document.getElementById('blogFormCancel');
+    const blogFormMsg = document.getElementById('blogFormMsg');
+    const blogAdminList = document.getElementById('blogAdminList');
+
+    let currentView = 'list'; // 'list' or 'post'
+    let currentPostId = null;
+
+    /* ===== Routing ===== */
+    function getRouteParam() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id') || params.get('slug') || null;
+    }
+
+    function navigateTo(postId) {
+      if (postId) {
+        window.history.pushState({}, '', '?id=' + postId);
+        showPost(postId);
+      } else {
+        window.history.pushState({}, '', 'blog.html');
+        showList();
+      }
+    }
+
+    function showList() {
+      currentView = 'list';
+      currentPostId = null;
+      blogList.style.display = '';
+      blogPost.style.display = 'none';
+      renderBlogGrid();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showPost(idOrSlug) {
+      const post = getPost(idOrSlug);
+      if (!post) { showList(); return; }
+      currentView = 'post';
+      currentPostId = post.id;
+      blogList.style.display = 'none';
+      blogPost.style.display = '';
+      postTitle.textContent = post.title;
+      postDate.textContent = post.dateDisplay;
+      postAuthor.textContent = 'By ' + post.author;
+      postContent.innerHTML = post.content;
+
+      // Inline edit button for admins
+      if (isBlogAuthed()) {
+        postAdminEdit.style.display = 'block';
+        postAdminEdit.innerHTML = '<button onclick="editPostFromView(\'' + post.id + '\')" style="background:var(--primary);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-weight:600;">Edit This Post</button> <button onclick="deletePostFromView(\'' + post.id + '\')" style="background:none;color:#ff5252;border:1px solid #ff5252;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--font-body);font-weight:600;margin-left:.5rem;">Delete</button>';
+      } else {
+        postAdminEdit.style.display = 'none';
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.editPostFromView = function(id) {
+      const post = getPost(id);
+      if (!post) return;
+      openEditForm(post);
+      openAdminPanel();
+    };
+
+    window.deletePostFromView = function(id) {
+      if (!confirm('Delete this post? This cannot be undone.')) return;
+      deletePost(id);
+      navigateTo(null);
+      renderBlogGrid();
+    };
+
+    /* ===== Blog grid rendering ===== */
+    function renderBlogGrid(filter) {
+      let posts = getSortedPosts();
+      if (filter) {
+        const q = filter.toLowerCase();
+        posts = posts.filter(p =>
+          p.title.toLowerCase().includes(q) ||
+          p.excerpt.toLowerCase().includes(q) ||
+          p.author.toLowerCase().includes(q)
+        );
+      }
+      if (posts.length === 0) {
+        blogGrid.innerHTML = '';
+        blogEmpty.style.display = '';
+        return;
+      }
+      blogEmpty.style.display = 'none';
+      blogGrid.innerHTML = posts.map(p => `
+        <article class="blog-card ${p.pinned ? 'pinned' : ''}">
+          ${p.pinned ? '<span class="pin-badge">&#128204; Pinned</span>' : ''}
+          <div class="blog-card-date">${p.dateDisplay}</div>
+          <h3>${escapeHtml(p.title)}</h3>
+          <p>${escapeHtml(p.excerpt)}</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-author">${escapeHtml(p.author)}</span>
+            <a href="#" class="blog-read-more" onclick="event.preventDefault();navigateTo('${p.id}');">Read More &rarr;</a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    /* ===== Search ===== */
+    blogSearchInput.addEventListener('input', () => {
+      if (currentView !== 'list') return;
+      renderBlogGrid(blogSearchInput.value);
+    });
+
+    /* ===== Admin panel toggle ===== */
+    function updateAdminVisibility() {
+      if (isBlogAuthed()) {
+        adminToggle.style.display = '';
+        adminLogin.style.display = 'none';
+        adminArea.style.display = '';
+        renderAdminList();
+      } else {
+        adminToggle.style.display = 'none';
+        adminPanel.classList.remove('open');
+        adminLogin.style.display = '';
+        adminArea.style.display = 'none';
+      }
+    }
+
+    adminToggle.addEventListener('click', () => {
+      adminPanel.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (adminPanel.classList.contains('open') &&
+          !adminPanel.contains(e.target) &&
+          e.target !== adminToggle) {
+        adminPanel.classList.remove('open');
+      }
+    });
+
+    /* ===== Login ===== */
+    blogLoginBtn.addEventListener('click', () => {
+      const u = blogLoginUser.value.trim();
+      const p = blogLoginPass.value;
+      if (cyrb53(u) === 6326359510258827 && cyrb53(p) === 179402082180785) {
+        try { sessionStorage.setItem(BLOG_AUTH_KEY, '1'); } catch (e) {}
+        blogLoginMsg.className = 'blog-admin-msg ok';
+        blogLoginMsg.textContent = 'Logged in!';
+        blogLoginUser.value = '';
+        blogLoginPass.value = '';
+        updateAdminVisibility();
+        setTimeout(() => { blogLoginMsg.textContent = ''; }, 2000);
+      } else {
+        blogLoginMsg.className = 'blog-admin-msg err';
+        blogLoginMsg.textContent = 'Invalid credentials.';
+      }
+    });
+
+    blogLoginPass.addEventListener('keydown', (e) => { if (e.key === 'Enter') blogLoginBtn.click(); });
+    blogLoginUser.addEventListener('keydown', (e) => { if (e.key === 'Enter') blogLoginBtn.click(); });
+
+    /* ===== Logout ===== */
+    blogLogoutBtn.addEventListener('click', () => {
+      try { sessionStorage.removeItem(BLOG_AUTH_KEY); } catch (e) {}
+      updateAdminVisibility();
+      adminPanel.classList.remove('open');
+    });
+
+    /* ===== Create / Edit form ===== */
+    function resetForm() {
+      blogEditId.value = '';
+      blogFormTitle.value = '';
+      blogFormExcerpt.value = '';
+      blogFormContent.value = '';
+      blogFormAuthor.value = '';
+      blogFormPinned.checked = false;
+      blogFormSave.textContent = 'Publish Post';
+      blogFormCancel.style.display = 'none';
+      blogFormMsg.textContent = '';
+      blogFormMsg.className = 'blog-admin-msg';
+    }
+
+    function openEditForm(post) {
+      blogEditId.value = post.id;
+      blogFormTitle.value = post.title;
+      blogFormExcerpt.value = post.excerpt;
+      blogFormContent.value = post.content;
+      blogFormAuthor.value = post.author;
+      blogFormPinned.checked = post.pinned;
+      blogFormSave.textContent = 'Save Changes';
+      blogFormCancel.style.display = '';
+    }
+
+    blogFormCancel.addEventListener('click', resetForm);
+
+    blogFormSave.addEventListener('click', () => {
+      const title = blogFormTitle.value.trim();
+      const excerpt = blogFormExcerpt.value.trim();
+      const content = blogFormContent.value.trim();
+      const author = blogFormAuthor.value.trim() || 'Rebel Hounds MC';
+      const pinned = blogFormPinned.checked;
+
+      if (!title || !content) {
+        blogFormMsg.className = 'blog-admin-msg err';
+        blogFormMsg.textContent = 'Title and content are required.';
+        return;
+      }
+
+      if (blogEditId.value) {
+        updatePost(blogEditId.value, { title, excerpt, content, author, pinned });
+        blogFormMsg.className = 'blog-admin-msg ok';
+        blogFormMsg.textContent = 'Post updated!';
+      } else {
+        createPost(title, excerpt, content, author, pinned);
+        blogFormMsg.className = 'blog-admin-msg ok';
+        blogFormMsg.textContent = 'Post published!';
+      }
+
+      resetForm();
+      renderBlogGrid();
+      renderAdminList();
+
+      if (currentView === 'post' && currentPostId) {
+        showPost(currentPostId);
+      }
+
+      setTimeout(() => { blogFormMsg.textContent = ''; }, 3000);
+    });
+
+    /* ===== Admin post list ===== */
+    function renderAdminList() {
+      const posts = getAllPosts();
+      if (posts.length === 0) {
+        blogAdminList.innerHTML = '<p style="color:var(--muted);font-size:.85rem;text-align:center;padding:1rem;">No posts yet.</p>';
+        return;
+      }
+      blogAdminList.innerHTML = posts.map(p => `
+        <div class="blog-admin-item">
+          <span class="blog-admin-item-title" title="${escapeHtml(p.title)}">${escapeHtml(p.title)} ${p.pinned ? '&#128204;' : ''}</span>
+          <div class="blog-admin-item-actions">
+            <button onclick="adminEdit('${p.id}')">Edit</button>
+            <button class="del-btn" onclick="adminDelete('${p.id}')">Del</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.adminEdit = function(id) {
+      const post = getPost(id);
+      if (post) openEditForm(post);
+    };
+
+    window.adminDelete = function(id) {
+      if (!confirm('Delete this post? This cannot be undone.')) return;
+      deletePost(id);
+      renderBlogGrid();
+      renderAdminList();
+    };
+
+    /* ===== Listen for portal auth changes ===== */
+    window.addEventListener('patchAuthChange', () => { updateAdminVisibility(); });
+
+    /* ===== Browser back/forward ===== */
+    window.addEventListener('popstate', () => {
+      const id = getRouteParam();
+      if (id) showPost(id); else showList();
+    });
+
+    /* ===== Init ===== */
+    updateAdminVisibility();
+    const routeId = getRouteParam();
+    if (routeId) { showPost(routeId); } else { showList(); }
+  </script>
 </body>
 </html>
