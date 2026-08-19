@@ -7,6 +7,50 @@
   <link rel="stylesheet" href="styles.css?v=8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .map-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .map-tab {
+      padding: 0.75rem 1.5rem;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .map-tab:hover {
+      color: var(--text);
+    }
+    .map-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .map-panel {
+      display: none;
+    }
+    .map-panel.active {
+      display: block;
+    }
+    .map-panel .map-container {
+      height: 70vh;
+      min-height: 500px;
+    }
+    .map-panel .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
 </head>
 <body class="portal-page">
 
@@ -77,14 +121,33 @@
         <p class="section-sub">GTA V map with blips, markers and drawing tools.</p>
       </div>
 
-      <div class="map-container">
-        <!-- Placeholder URL " replace with your actual map server URL -->
-        <iframe src="https://loved-pioneer-cardiac-federal.trycloudflare.com" title="Rebel Hounds Infomap" allowfullscreen loading="lazy"></iframe>
+      <!-- Map Tabs -->
+      <div class="map-tabs">
+        <button class="map-tab active" data-tab="infomap">Infomap</button>
+        <button class="map-tab" data-tab="tdg">TDG Simulator</button>
       </div>
 
-      <div class="map-placeholder" id="mapPlaceholder" style="display: none;">
-        <h3>MAP SERVER OFFLINE</h3>
-        <p>The interactive map server is currently unavailable. Contact club leadership to start the map server.</p>
+      <!-- Infomap Panel -->
+      <div class="map-panel active" id="panel-infomap">
+        <div class="map-container">
+          <iframe src="https://loved-pioneer-cardiac-federal.trycloudflare.com" title="Rebel Hounds Infomap" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="map-placeholder" id="mapPlaceholder" style="display: none;">
+          <h3>MAP SERVER OFFLINE</h3>
+          <p>The interactive map server is currently unavailable. Contact club leadership to start the map server.</p>
+        </div>
+      </div>
+
+      <!-- TDG Simulator Panel -->
+      <div class="map-panel" id="panel-tdg">
+        <div class="map-container">
+          <iframe src="" title="TDG Simulator" allowfullscreen loading="lazy" id="tdgFrame"></iframe>
+        </div>
+        <div class="map-placeholder" id="tdgPlaceholder">
+          <h3>TDG SIMULATOR</h3>
+          <p>The Tactical Decision Game simulator needs to be started on the server. Contact leadership to activate it.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted);">Requires Python backend running on the VPS.</p>
+        </div>
       </div>
 
       <!-- Logout -->
@@ -111,5 +174,23 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script>
+    // Map tab switching
+    document.querySelectorAll('.map-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.map-tab').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.map-panel').forEach(function(p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // TDG URL - update this once TDG is deployed
+    var TDG_URL = '';
+    if (TDG_URL) {
+      document.getElementById('tdgFrame').src = TDG_URL;
+      document.getElementById('tdgPlaceholder').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
