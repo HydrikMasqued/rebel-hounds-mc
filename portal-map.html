@@ -140,13 +140,11 @@
 
       <!-- TDG Simulator Panel -->
       <div class="map-panel" id="panel-tdg">
-        <div class="map-container">
-          <iframe src="" title="TDG Simulator" allowfullscreen loading="lazy" id="tdgFrame"></iframe>
-        </div>
-        <div class="map-placeholder" id="tdgPlaceholder">
-          <h3>TDG SIMULATOR</h3>
-          <p>The Tactical Decision Game simulator needs to be started on the server. Contact leadership to activate it.</p>
-          <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted);">Requires Python backend running on the VPS.</p>
+        <div style="text-align: center; padding: 3rem 1rem;">
+          <h3 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 1rem;">TACTICAL DECISION GAME</h3>
+          <p style="color: var(--muted); margin-bottom: 2rem;">GTA V tactical simulator with satellite, roadmap and atlas layers. Fullscreen interactive map.</p>
+          <a href="tdg-map.html" class="btn btn-primary" target="_blank">OPEN TDG SIMULATOR</a>
+          <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--muted);">Opens in a new window. Use layer buttons to switch between Satellite, Roadmap and Atlas views.</p>
         </div>
       </div>
 
@@ -184,13 +182,6 @@
         document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
       });
     });
-
-    // TDG URL - update this once TDG is deployed
-    var TDG_URL = '';
-    if (TDG_URL) {
-      document.getElementById('tdgFrame').src = TDG_URL;
-      document.getElementById('tdgPlaceholder').style.display = 'none';
-    }
   </script>
 </body>
 </html>
