@@ -470,6 +470,7 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   transition: background 0.2s ease;
+  color: var(--muted);
 }
 
 .fin-action-btn:hover {
@@ -480,8 +481,12 @@
   color: #3498db;
 }
 
+.fin-delete-btn {
+  color: #e74c3c;
+}
+
 .fin-delete-btn:hover {
-  color: #c0392b;
+  color: #ff6b6b;
 }
 
 .fin-edit-budget-btn {
