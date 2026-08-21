@@ -1,10 +1,4 @@
 [
-  "2026-08-20 22:33:29,847 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-20 22:33:52,132 - utils.church_database - INFO - Opened church interval for serpxntt_ in session 4",
-  "2026-08-20 22:33:52,132 - cogs.church_tracker - INFO - Church: serpxntt_ joined the Roundtable VC (session 4)",
-  "2026-08-20 22:34:46,098 - utils.church_database - INFO - Opened church interval for syx0666 in session 4",
-  "2026-08-20 22:34:46,099 - cogs.church_tracker - INFO - Church: syx0666 joined the Roundtable VC (session 4)",
-  "2026-08-20 22:34:46,101 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 2340 seconds",
   "2026-08-20 22:34:46,101 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 39m",
   "2026-08-20 22:43:18,558 - utils.church_database - INFO - Closed church interval for user 361004934184828928 after 751s",
   "2026-08-20 22:43:18,558 - cogs.church_tracker - INFO - Church: snow3976 left the Roundtable VC after 12m 31s (session 4)",
@@ -198,5 +192,11 @@
   "2026-08-21 20:28:58,209 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 21:18:08,071 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 2949 seconds",
   "2026-08-21 21:18:08,072 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 49m",
-  "2026-08-21 21:18:13,596 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
+  "2026-08-21 21:18:13,596 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
+  "2026-08-21 22:16:44,009 - utils.playtime_database - INFO - Started vital session for user 1182410319667150848 in guild 889005510286786601",
+  "2026-08-21 22:16:44,009 - cogs.playtime_tracker - INFO - Started vital playtime tracking for charlie07766 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-21 22:35:50,834 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 12143 seconds",
+  "2026-08-21 22:35:50,835 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 3h 22m",
+  "2026-08-21 22:38:18,954 - utils.playtime_database - INFO - Ended vital session for user 1182410319667150848: 1294 seconds",
+  "2026-08-21 22:38:18,954 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for charlie07766: 0h 21m"
 ]
