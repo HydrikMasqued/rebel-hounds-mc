@@ -180,11 +180,11 @@
   window.refreshLog = loadLog;
 
   function loadFiveM() {
-    // Try live CFX API first for real-time data
-    fetch('https://frontend.cfx-services.net/api/servers/single/ogpvmv', {
-      headers: { 'Accept': 'application/json' }
-    }).then(function(r) {
-      if (!r.ok) throw new Error('API ' + r.status);
+    var apiUrl = 'https://frontend.cfx-services.net/api/servers/single/ogpvmv';
+    var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(apiUrl);
+    // Try via CORS proxy first, fall back to cached JSON
+    fetch(proxyUrl).then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     }).then(function(raw) {
       var playerList = (raw && raw.Data && Array.isArray(raw.Data.players))
@@ -193,8 +193,10 @@
       var players = playerList
         .map(function(p) { return { id: p.id, name: p.name, ping: p.ping }; })
         .filter(function(p) { return !!p.name; });
-      var serverName = (raw && raw.vars) ? raw.vars.sv_hostname : 'Vital RP';
-      var maxPlayers = (raw && raw.vars) ? raw.vars.sv_maxClients : 0;
+      var serverName = (raw && raw.Data && raw.Data.hostname) ? raw.Data.hostname
+        : (raw && raw.vars) ? raw.vars.sv_hostname : 'Vital RP';
+      var maxPlayers = (raw && raw.Data) ? (raw.Data.sv_maxclients || raw.Data.svMaxclients || 0)
+        : (raw && raw.vars) ? raw.vars.sv_maxClients : 0;
       renderFiveM(players, serverName, maxPlayers);
     }).catch(function() {
       // Fallback to cached JSON

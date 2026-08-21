@@ -200,15 +200,13 @@ async function syncOppTracker() {
 
 async function syncFiveM() {
   console.log('[FiveM] Fetching live players...');
+  // Use allorigins proxy since CFX API blocks some IPs
+  var apiUrl = 'https://frontend.cfx-services.net/api/servers/single/ogpvmv';
+  var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(apiUrl);
   try {
-    const resp = await axios.get('https://frontend.cfx-services.net/api/servers/single/ogpvmv', {
-      timeout: 15000,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-      }
-    });
+    const resp = await axios.get(proxyUrl, { timeout: 15000 });
     const raw = resp.data;
-    // API wraps player data under Data.players (capital D) or directly under players
+    // API wraps player data under Data.players or directly under players
     const playerList = (raw && raw.Data && Array.isArray(raw.Data.players))
       ? raw.Data.players
       : (Array.isArray(raw.players) ? raw.players : []);
@@ -217,11 +215,15 @@ async function syncFiveM() {
       name: p.name,
       ping: p.ping
     })).filter(p => p.name);
+    const serverName = (raw && raw.Data && raw.Data.hostname) ? raw.Data.hostname
+      : (raw && raw.vars) ? raw.vars.sv_hostname : 'Vital RP';
+    const maxPlayers = (raw && raw.Data) ? (raw.Data.sv_maxclients || raw.Data.svMaxclients || 0)
+      : (raw && raw.vars) ? raw.vars.sv_maxClients : 0;
     const result = {
       players,
       onlineCount: players.length,
-      serverName: (raw && raw.vars) ? raw.vars.sv_hostname : 'Vital RP',
-      maxPlayers: (raw && raw.vars) ? raw.vars.sv_maxClients : 0,
+      serverName: serverName,
+      maxPlayers: maxPlayers,
       lastUpdate: new Date().toISOString()
     };
     save('fivem_live.json', result);
