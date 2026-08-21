@@ -1,0 +1,40 @@
+{
+  "deimos": {
+    "sftp": {
+      "host": "cybrancee-bot-uk-09.cybrancee.com",
+      "port": 2022,
+      "username": "REPLACE_ME",
+      "password": "REPLACE_ME"
+    },
+    "files": {
+      "database": "data/thanatos.db",
+      "playtime_db": "data/playtime.db",
+      "church_db": "data/church.db",
+      "log": "thanatos_bot.log",
+      "config": "config.json"
+    },
+    "botToken": "REPLACE_ME",
+    "guildId": "889005510286786601"
+  },
+  "oppTracker": {
+    "sftp": {
+      "host": "cybrancee-bot-uk-08.cybrancee.com",
+      "port": 2022,
+      "username": "REPLACE_ME",
+      "password": "REPLACE_ME"
+    },
+    "files": {
+      "trackingData": "player_tracking_data.json",
+      "playerDatabase": "player_database.json",
+      "trackedPlayers": "tracked_players.json",
+      "privateTracked": "private_tracked_players.json"
+    },
+    "botToken": "REPLACE_ME",
+    "fivemServerId": "ogpvmv",
+    "fivemApiUrl": "https://frontend.cfx-services.net/api/servers/single/ogpvmv"
+  },
+  "server": {
+    "port": 3001,
+    "authPassword": "REPLACE_ME"
+  }
+}

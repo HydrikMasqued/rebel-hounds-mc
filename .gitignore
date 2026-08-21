@@ -4,3 +4,14 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+
+# Node
+node_modules/
+bot-api/node_modules/
+bot-api/cache/
+bot-api/logs/
+
+# TDG tile folders (already tracked, keep for reference)
+# Satellite/
+# Roadmap/
+# Atlas/

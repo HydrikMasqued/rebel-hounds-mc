@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="styles.css?v=8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portal-bots.css">
 </head>
 <body class="portal-page">
 
-  <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="brand">
@@ -31,7 +31,6 @@
     </div>
   </nav>
 
-  <!-- ===== LOGIN GATE ===== -->
   <div class="portal-login-bg" id="patchLoginBg">
     <div class="patch-gate" id="patchGate">
       <div class="patch-gate-card">
@@ -55,10 +54,7 @@
     </div>
   </div>
 
-  <!-- ===== MEMBERS AREA ===== -->
   <div class="patch-area hidden" id="patchArea">
-
-    <!-- Portal Sub-Nav -->
     <div class="portal-sub-nav">
       <div class="portal-sub-nav-inner">
         <a href="portal.html">Dashboard</a>
@@ -74,36 +70,180 @@
     <section class="section">
       <div class="section-head">
         <h2 class="section-title">BOT CENTRALISATION</h2>
-        <p class="section-sub">Discord bot management and configuration.</p>
+        <p class="section-sub">Live data from Deimos and OPP TRACKER Discord bots.</p>
       </div>
 
-      <div class="content-card">
-        <h3>Discord Bots</h3>
-        <p>Central hub for managing the club's Discord bots. Configure commands, permissions and automations from one place.</p>
+      <div class="api-status" id="apiStatus">
+        <span class="status-dot offline" id="apiDot"></span>
+        <span id="apiStatusText">Connecting to bot API...</span>
       </div>
 
-      <div class="content-card">
-        <h3>Active Bots</h3>
-        <ul>
-          <li>Thanatos - Event management and scheduling</li>
-          <li>Alpha Bot - Discord management and moderation</li>
-          <li>Music Bot - Voice channel music playback</li>
-        </ul>
+      <div class="bot-grid" id="overviewStats">
+        <div class="bot-stat-card">
+          <h4>Deimos Members</h4>
+          <div class="stat-value" id="statDeimosMembers">--</div>
+          <div class="stat-label">in roster</div>
+        </div>
+        <div class="bot-stat-card">
+          <h4>Active LOAs</h4>
+          <div class="stat-value" id="statActiveLOAs">--</div>
+          <div class="stat-label">on leave</div>
+        </div>
+        <div class="bot-stat-card">
+          <h4>Players Tracked</h4>
+          <div class="stat-value" id="statOppTotal">--</div>
+          <div class="stat-label">in database</div>
+        </div>
+        <div class="bot-stat-card">
+          <h4>FiveM Online</h4>
+          <div class="stat-value" id="statFiveMOnline">--</div>
+          <div class="stat-label" id="statFiveMServer">on Vital RP</div>
+        </div>
       </div>
 
-      <div class="content-card">
-        <h3>Bot Commands</h3>
-        <p>Command reference and configuration options will be listed here as bots are integrated.</p>
+      <div class="bot-section" id="fivemSection">
+        <div class="bot-section-head" onclick="toggleSection('fivemSection')">
+          <h3><span class="status-dot online" id="fivemDot"></span> FiveM - Vital RP (Live)</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge" id="fivemCount">0 online</span>
+            <button class="btn-refresh" onclick="event.stopPropagation();refreshFiveM()">Refresh</button>
+            <span class="toggle-icon">&#9660;</span>
+          </div>
+        </div>
+        <div class="bot-section-body">
+          <div class="player-grid" id="fivemPlayers">
+            <div class="empty-state"><p>No players currently online</p></div>
+          </div>
+        </div>
       </div>
 
-      <!-- Logout -->
+      <div class="bot-section" id="membersSection">
+        <div class="bot-section-head" onclick="toggleSection('membersSection')">
+          <h3>Deimos - Membership Roster</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge" id="memberCount">0</span>
+            <span class="toggle-icon">&#9660;</span>
+          </div>
+        </div>
+        <div class="bot-section-body">
+          <div style="overflow-x:auto;">
+            <table class="bot-table">
+              <thead>
+                <tr><th>Name</th><th>Rank</th><th>Status</th><th>Joined</th></tr>
+              </thead>
+              <tbody id="memberTableBody">
+                <tr><td colspan="4" class="empty-state">Loading members...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bot-section collapsed" id="loaSection">
+        <div class="bot-section-head" onclick="toggleSection('loaSection')">
+          <h3>Deimos - Active LOAs</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge" id="loaCount">0</span>
+            <span class="toggle-icon">&#9660;</span>
+          </div>
+        </div>
+        <div class="bot-section-body">
+          <div style="overflow-x:auto;">
+            <table class="bot-table">
+              <thead>
+                <tr><th>Member</th><th>Reason</th><th>Start</th><th>End</th></tr>
+              </thead>
+              <tbody id="loaTableBody">
+                <tr><td colspan="4" class="empty-state">Loading LOAs...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bot-section collapsed" id="playtimeSection">
+        <div class="bot-section-head" onclick="toggleSection('playtimeSection')">
+          <h3>Deimos - Playtime Leaderboard</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge" id="playtimeCount">0</span>
+            <span class="toggle-icon">&#9660;</span>
+          </div>
+        </div>
+        <div class="bot-section-body">
+          <div style="overflow-x:auto;">
+            <table class="bot-table">
+              <thead>
+                <tr><th>#</th><th>Member</th><th>Hours</th><th>Vital</th><th>Elyxir</th></tr>
+              </thead>
+              <tbody id="playtimeTableBody">
+                <tr><td colspan="5" class="empty-state">Loading playtime data...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bot-section collapsed" id="trackedSection">
+        <div class="bot-section-head" onclick="toggleSection('trackedSection')">
+          <h3>OPP Tracker - Watchlist</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge" id="trackedCount">0</span>
+            <span class="toggle-icon">&#9660;</span>
+          </div>
+        </div>
+        <div class="bot-section-body">
+          <div style="overflow-x:auto;">
+            <table class="bot-table">
+              <thead>
+                <tr><th>Player</th><th>Category</th><th>Added</th></tr>
+              </thead>
+              <tbody id="trackedTableBody">
+                <tr><td colspan="3" class="empty-state">Loading tracked players...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bot-section collapsed" id="logSection">
+        <div class="bot-section-head" onclick="toggleSection('logSection')">
+          <h3>Deimos - Bot Log</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="btn-refresh" onclick="event.stopPropagation();refreshLog()">Refresh</button>
+            <span class="toggle-icon">&#9660;</span>
+          </div>
+        </div>
+        <div class="bot-section-body">
+          <div class="log-viewer" id="logViewer">
+            <div class="empty-state"><p>Loading log data...</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bot-section collapsed" id="commandSection">
+        <div class="bot-section-head" onclick="toggleSection('commandSection')">
+          <h3>Deimos - Command Relay</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="toggle-icon">&#9660;</span>
+          </div>
+        </div>
+        <div class="bot-section-body">
+          <p style="color:var(--muted);font-size:0.9rem;margin-bottom:10px;">Send a message to a Discord channel through Deimos.</p>
+          <div class="cmd-form">
+            <input type="text" id="cmdChannelId" placeholder="Channel ID" style="max-width:200px;">
+            <input type="text" id="cmdMessage" placeholder="Message content...">
+            <button class="btn-refresh" onclick="sendCommand()">Send</button>
+          </div>
+          <p id="cmdResult" style="margin-top:8px;font-size:0.85rem;"></p>
+        </div>
+      </div>
+
       <div class="patch-area-foot">
         <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
       </div>
     </section>
   </div>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -120,5 +260,6 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script src="portal-bots.js?v=1"></script>
 </body>
 </html>
