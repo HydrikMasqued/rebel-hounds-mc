@@ -180,23 +180,48 @@
   window.refreshLog = loadLog;
 
   function loadFiveM() {
-    loadJson('fivem_live.json').then(function(data) {
-      document.getElementById('fivemCount').textContent = (data.onlineCount || 0) + ' online';
-      document.getElementById('statFiveMOnline').textContent = data.onlineCount || 0;
-      var container = document.getElementById('fivemPlayers');
-      var players = data.players || [];
-      if (!players.length) {
-        container.innerHTML = '<div class="empty-state"><p>No players currently online</p></div>';
-        return;
-      }
-      var html = '';
-      players.forEach(function(p) {
-        html += '<div class="player-chip"><span class="player-name">' + escHtml(p.name || 'Unknown') + '</span><span class="player-id">ID: ' + (p.id || '?') + '</span></div>';
-      });
-      container.innerHTML = html;
+    // Try live CFX API first for real-time data
+    fetch('https://frontend.cfx-services.net/api/servers/single/ogpvmv', {
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (!r.ok) throw new Error('API ' + r.status);
+      return r.json();
+    }).then(function(raw) {
+      var playerList = (raw && raw.Data && Array.isArray(raw.Data.players))
+        ? raw.Data.players
+        : (Array.isArray(raw.players) ? raw.players : []);
+      var players = playerList
+        .map(function(p) { return { id: p.id, name: p.name, ping: p.ping }; })
+        .filter(function(p) { return !!p.name; });
+      var serverName = (raw && raw.vars) ? raw.vars.sv_hostname : 'Vital RP';
+      var maxPlayers = (raw && raw.vars) ? raw.vars.sv_maxClients : 0;
+      renderFiveM(players, serverName, maxPlayers);
     }).catch(function() {
-      document.getElementById('fivemPlayers').innerHTML = '<div class="empty-state"><p>Failed to load players</p></div>';
+      // Fallback to cached JSON
+      loadJson('fivem_live.json').then(function(data) {
+        var players = data.players || [];
+        renderFiveM(players, data.serverName || 'Vital RP', data.maxPlayers || 0);
+      }).catch(function() {
+        renderFiveM([], 'Vital RP', 0);
+      });
     });
+  }
+
+  function renderFiveM(players, serverName, maxPlayers) {
+    document.getElementById('fivemCount').textContent = players.length + ' online';
+    document.getElementById('statFiveMOnline').textContent = players.length;
+    var label = document.getElementById('statFiveMServer');
+    if (label) label.textContent = 'on ' + (serverName || 'Vital RP');
+    var container = document.getElementById('fivemPlayers');
+    if (!players.length) {
+      container.innerHTML = '<div class="empty-state"><p>No players currently online</p></div>';
+      return;
+    }
+    var html = '';
+    players.forEach(function(p) {
+      html += '<div class="player-chip"><span class="player-name">' + escHtml(p.name || 'Unknown') + '</span><span class="player-id">ID: ' + (p.id || '?') + (p.ping != null ? ' | ' + p.ping + 'ms' : '') + '</span></div>';
+    });
+    container.innerHTML = html;
   }
   window.refreshFiveM = loadFiveM;
 
@@ -220,6 +245,8 @@
     loadTracked();
     loadLog();
     loadFiveM();
+    setInterval(loadFiveM, 180000);
+    setInterval(loadOverview, 180000);
   }
 
   if (document.readyState === 'loading') {

@@ -201,18 +201,27 @@ async function syncOppTracker() {
 async function syncFiveM() {
   console.log('[FiveM] Fetching live players...');
   try {
-    const resp = await axios.get('https://frontend.cfx-services.net/api/servers/single/ogpvmv', { timeout: 15000 });
-    const data = resp.data;
-    const players = (data.players || []).map(p => ({
+    const resp = await axios.get('https://frontend.cfx-services.net/api/servers/single/ogpvmv', {
+      timeout: 15000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
+    const raw = resp.data;
+    // API wraps player data under Data.players (capital D) or directly under players
+    const playerList = (raw && raw.Data && Array.isArray(raw.Data.players))
+      ? raw.Data.players
+      : (Array.isArray(raw.players) ? raw.players : []);
+    const players = playerList.map(p => ({
       id: p.id,
       name: p.name,
       ping: p.ping
-    }));
+    })).filter(p => p.name);
     const result = {
       players,
       onlineCount: players.length,
-      serverName: data.vars ? data.vars.sv_hostname : 'Vital RP',
-      maxPlayers: data.vars ? data.vars.sv_maxClients : 0,
+      serverName: (raw && raw.vars) ? raw.vars.sv_hostname : 'Vital RP',
+      maxPlayers: (raw && raw.vars) ? raw.vars.sv_maxClients : 0,
       lastUpdate: new Date().toISOString()
     };
     save('fivem_live.json', result);
