@@ -3,5 +3,6 @@
   "onlineCount": 0,
   "serverName": "Vital RP",
   "maxPlayers": 0,
-  "lastUpdate": "2026-08-21T19:07:56.183Z"
+  "lastUpdate": "2026-08-21T19:15:58.216Z",
+  "error": "timeout of 15000ms exceeded"
 }
