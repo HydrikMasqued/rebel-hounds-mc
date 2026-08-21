@@ -97,16 +97,64 @@ async function syncDeimos(SQL) {
     console.log(`  DB tables: ${Object.keys(tables).join(', ')}`);
   }
 
-  // Playtime database
+  // Playtime database - aggregate by user, join with members for display names
   const ptBuf = await sftpGetBuffer(cfg, 'data/playtime.db');
   if (ptBuf && SQL) {
-    const tables = sqliteRows(ptBuf, SQL);
-    if (tables.active_sessions) save('deimos_active_sessions.json', tables.active_sessions);
-    if (tables.monthly_stats) {
-      const sorted = tables.monthly_stats.sort((a, b) => (b.total_seconds || 0) - (a.total_seconds || 0));
-      save('deimos_monthly_stats.json', sorted.slice(0, 100));
+    const ptDb = new SQL.Database(Buffer.from(ptBuf));
+
+    // Build member name lookup from thanatos.db
+    let memberNames = {};
+    if (dbBuf) {
+      try {
+        const memDb = new SQL.Database(Buffer.from(dbBuf));
+        const memRes = memDb.exec('SELECT user_id, discord_name FROM members');
+        if (memRes.length) {
+          memRes[0].values.forEach(r => { memberNames[String(r[0])] = r[1]; });
+        }
+        memDb.close();
+      } catch {}
     }
-    console.log(`  Playtime tables: ${Object.keys(tables).join(', ')}`);
+
+    // Aggregate playtime: total per user, split by channel_type
+    let monthlyStats = [];
+    try {
+      const res = ptDb.exec([
+        'SELECT user_id, user_name,',
+        'SUM(CASE WHEN channel_type="vital" THEN total_seconds ELSE 0 END) as vital_seconds,',
+        'SUM(CASE WHEN channel_type="elyxir" THEN total_seconds ELSE 0 END) as elyxir_seconds,',
+        'SUM(total_seconds) as total_seconds,',
+        'SUM(session_count) as session_count',
+        'FROM monthly_stats GROUP BY user_id ORDER BY total_seconds DESC LIMIT 100'
+      ].join(' '));
+      if (res.length) {
+        monthlyStats = res[0].values.map(row => {
+          const obj = {};
+          res[0].columns.forEach((c, i) => obj[c] = row[i]);
+          const uid = String(obj.user_id);
+          obj.discord_name = memberNames[uid] || obj.user_name || 'User ' + uid;
+          return obj;
+        });
+      }
+    } catch (e) { console.error('  Playtime query error:', e.message); }
+
+    save('deimos_monthly_stats.json', monthlyStats);
+
+    // Active sessions
+    let activeSessions = [];
+    try {
+      const sessRes = ptDb.exec('SELECT * FROM active_sessions');
+      if (sessRes.length) {
+        activeSessions = sessRes[0].values.map(row => {
+          const obj = {};
+          sessRes[0].columns.forEach((c, i) => obj[c] = row[i]);
+          return obj;
+        });
+      }
+    } catch {}
+    save('deimos_active_sessions.json', activeSessions);
+
+    ptDb.close();
+    console.log('  Playtime: ' + monthlyStats.length + ' users aggregated');
   }
 
   // Bot log (last 200 lines)
