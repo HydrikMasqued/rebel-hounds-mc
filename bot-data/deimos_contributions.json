@@ -1,0 +1,56 @@
+[
+  {
+    "id": 116,
+    "guild_id": 889005510286786600,
+    "user_id": 181143017619587070,
+    "category": "Dirty Cash",
+    "item_name": "Dirty Cash",
+    "quantity": 216486,
+    "created_at": "2026-04-27 07:07:00"
+  },
+  {
+    "id": 117,
+    "guild_id": 889005510286786600,
+    "user_id": 181143017619587070,
+    "category": "Pistols",
+    "item_name": "Heavy Pistol",
+    "quantity": 40,
+    "created_at": "2026-05-13 07:26:05"
+  },
+  {
+    "id": 118,
+    "guild_id": 889005510286786600,
+    "user_id": 181143017619587070,
+    "category": "Pistols",
+    "item_name": "Combat Pistol",
+    "quantity": 50,
+    "created_at": "2026-05-13 07:26:46"
+  },
+  {
+    "id": 119,
+    "guild_id": 889005510286786600,
+    "user_id": 181143017619587070,
+    "category": "Crafting Items",
+    "item_name": "Tec 9 Blueprint",
+    "quantity": 36,
+    "created_at": "2026-05-13 07:27:31"
+  },
+  {
+    "id": 120,
+    "guild_id": 889005510286786600,
+    "user_id": 181143017619587070,
+    "category": "Crafting Items",
+    "item_name": "Tec 9 BP",
+    "quantity": 36,
+    "created_at": "2026-05-13 07:28:12"
+  },
+  {
+    "id": 121,
+    "guild_id": 889005510286786600,
+    "user_id": 181143017619587070,
+    "category": "Pistols",
+    "item_name": "Heavy Pistol",
+    "quantity": 13,
+    "created_at": "2026-05-13 07:28:59"
+  }
+]

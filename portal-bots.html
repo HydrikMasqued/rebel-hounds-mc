@@ -70,7 +70,7 @@
     <section class="section">
       <div class="section-head">
         <h2 class="section-title">BOT CENTRALISATION</h2>
-        <p class="section-sub">Live data from Deimos and OPP TRACKER Discord bots.</p>
+        <p class="section-sub">Live data from Deimos and OPP TRACKER Discord bots. Auto-syncs every 10 minutes.</p>
       </div>
 
       <div class="api-status" id="apiStatus">
@@ -217,24 +217,6 @@
           <div class="log-viewer" id="logViewer">
             <div class="empty-state"><p>Loading log data...</p></div>
           </div>
-        </div>
-      </div>
-
-      <div class="bot-section collapsed" id="commandSection">
-        <div class="bot-section-head" onclick="toggleSection('commandSection')">
-          <h3>Deimos - Command Relay</h3>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <span class="toggle-icon">&#9660;</span>
-          </div>
-        </div>
-        <div class="bot-section-body">
-          <p style="color:var(--muted);font-size:0.9rem;margin-bottom:10px;">Send a message to a Discord channel through Deimos.</p>
-          <div class="cmd-form">
-            <input type="text" id="cmdChannelId" placeholder="Channel ID" style="max-width:200px;">
-            <input type="text" id="cmdMessage" placeholder="Message content...">
-            <button class="btn-refresh" onclick="sendCommand()">Send</button>
-          </div>
-          <p id="cmdResult" style="margin-top:8px;font-size:0.85rem;"></p>
         </div>
       </div>
 

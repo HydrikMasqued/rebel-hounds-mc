@@ -1,0 +1,410 @@
+{
+  "astra": {
+    "name": "Astra",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120223318,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "yayo♡": {
+    "name": "Yayo♡",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120242217,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "undeaddemon": {
+    "name": "UndeadDemon",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120296921,
+    "reason": "DFM Maddox",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "its lux": {
+    "name": "Its Lux",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120326596,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "donbig$": {
+    "name": "DonBig$",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120343617,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "tatertotoverlord": {
+    "name": "Tatertotoverlord",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120440543,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "demon": {
+    "name": "Demon",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120519443,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "cammy": {
+    "name": "Cammy",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120543920,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "amanda": {
+    "name": "Amanda",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776120567979,
+    "reason": "DFM",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "bobby": {
+    "name": "bobby",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1776209164119,
+    "reason": "DFM?",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "doc": {
+    "name": "Doc",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1777820705423,
+    "reason": "9er",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "jdot": {
+    "name": "JDot",
+    "category": "enemies",
+    "addedBy": "jayreaper",
+    "addedAt": 1782296258889,
+    "reason": "DFM/IRMerc",
+    "notifications": {
+      "joinAlerts": true,
+      "leaveAlerts": true,
+      "sessionUpdates": true
+    },
+    "servers": [
+      "elyxir",
+      "vital"
+    ],
+    "lastSeen": {
+      "elyxir": null,
+      "vital": null
+    },
+    "sessionData": {
+      "elyxir": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "vital": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  }
+}

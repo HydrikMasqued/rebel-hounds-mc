@@ -1,0 +1,48 @@
+name: Sync Bot Data
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/sync-bot-data.yml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: cd bot-api && npm install ssh2-sftp-client sql.js axios
+
+      - name: Sync bot data
+        env:
+          DEIMOS_SFTP_HOST: ${{ secrets.DEIMOS_SFTP_HOST }}
+          DEIMOS_SFTP_USER: ${{ secrets.DEIMOS_SFTP_USER }}
+          DEIMOS_SFTP_PASS: ${{ secrets.DEIMOS_SFTP_PASS }}
+          DEIMOS_BOT_TOKEN: ${{ secrets.DEIMOS_BOT_TOKEN }}
+          OPP_SFTP_HOST: ${{ secrets.OPP_SFTP_HOST }}
+          OPP_SFTP_USER: ${{ secrets.OPP_SFTP_USER }}
+          OPP_SFTP_PASS: ${{ secrets.OPP_SFTP_PASS }}
+          OPP_BOT_TOKEN: ${{ secrets.OPP_BOT_TOKEN }}
+        run: node bot-api/sync-data.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "RHMC Bot Sync"
+          git config user.email "bot@rebelhoundsmcfivem.com"
+          git add bot-data/ -f
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-sync bot data $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

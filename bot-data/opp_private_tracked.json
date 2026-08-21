@@ -1,0 +1,83 @@
+{
+  "saintsinz": {
+    "name": "SaintSinz",
+    "addedAt": 1755560759041,
+    "reason": "",
+    "servers": [
+      "royalty",
+      "horizon"
+    ],
+    "lastSeen": {
+      "royalty": null,
+      "horizon": null
+    },
+    "sessionData": {
+      "royalty": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "horizon": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "xander": {
+    "name": "Xander",
+    "addedAt": 1756773869585,
+    "reason": "",
+    "servers": [
+      "royalty",
+      "horizon"
+    ],
+    "lastSeen": {
+      "royalty": null,
+      "horizon": null
+    },
+    "sessionData": {
+      "royalty": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "horizon": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  },
+  "saint": {
+    "name": "saint",
+    "addedAt": 1756773887197,
+    "reason": "",
+    "servers": [
+      "royalty",
+      "horizon"
+    ],
+    "lastSeen": {
+      "royalty": null,
+      "horizon": null
+    },
+    "sessionData": {
+      "royalty": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      },
+      "horizon": {
+        "isOnline": false,
+        "joinTime": null,
+        "totalTime": 0,
+        "sessionCount": 0
+      }
+    }
+  }
+}

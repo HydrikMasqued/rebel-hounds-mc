@@ -1,22 +1,15 @@
-/* portal-bots.js - Bot Centralisation Frontend */
+/* portal-bots.js - Bot Centralisation Frontend (Static JSON) */
 (function() {
   'use strict';
 
-  var API_BASE = '/bot-api';
-  var AUTH_KEY = 'rh_patch_auth';
+  var DATA_BASE = 'bot-data';
 
-  function getAuth() {
-    try { return sessionStorage.getItem(AUTH_KEY) === '1'; } catch(e) { return false; }
-  }
-
-  function apiFetch(path, opts) {
-    return fetch(API_BASE + path, {
-      headers: { 'x-portal-auth': 'HoundsForever', 'Content-Type': 'application/json' },
-      credentials: 'same-origin'
-    }).then(function(r) {
-      if (!r.ok) throw new Error('API ' + r.status);
-      return r.json();
-    });
+  function loadJson(file) {
+    return fetch(DATA_BASE + '/' + file + '?t=' + Date.now())
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      });
   }
 
   function toggleSection(id) {
@@ -41,49 +34,50 @@
 
   function escHtml(s) {
     var d = document.createElement('div');
-    d.textContent = s;
+    d.textContent = String(s);
     return d.innerHTML;
   }
 
-  function setApiStatus(connected) {
+  function setApiStatus(connected, msg) {
     var dot = document.getElementById('apiDot');
     var txt = document.getElementById('apiStatusText');
     var st = document.getElementById('apiStatus');
     if (connected) {
       dot.className = 'status-dot online';
-      txt.textContent = 'Connected to bot API';
+      txt.textContent = msg || 'Data loaded successfully';
       st.className = 'api-status connected';
     } else {
       dot.className = 'status-dot offline';
-      txt.textContent = 'Unable to connect to bot API. Server may be starting up.';
+      txt.textContent = msg || 'Failed to load bot data';
       st.className = 'api-status disconnected';
     }
   }
 
   function loadOverview() {
-    apiFetch('/deimos/stats').then(function(data) {
+    loadJson('deimos_stats.json').then(function(data) {
       document.getElementById('statDeimosMembers').textContent = data.totalMembers || 0;
       document.getElementById('statActiveLOAs').textContent = data.activeLOAs || 0;
     }).catch(function() {});
-    apiFetch('/opp/stats').then(function(data) {
+    loadJson('opp_stats.json').then(function(data) {
       document.getElementById('statOppTotal').textContent = data.totalPlayers || 0;
     }).catch(function() {});
-    apiFetch('/fivem/live').then(function(data) {
+    loadJson('fivem_live.json').then(function(data) {
       document.getElementById('statFiveMOnline').textContent = data.onlineCount || 0;
     }).catch(function() {});
   }
 
   function loadMembers() {
-    apiFetch('/deimos/members').then(function(data) {
-      document.getElementById('memberCount').textContent = data.length;
+    loadJson('deimos_members.json').then(function(data) {
+      var items = Array.isArray(data) ? data : [];
+      document.getElementById('memberCount').textContent = items.length;
       var tbody = document.getElementById('memberTableBody');
-      if (!data.length) {
+      if (!items.length) {
         tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No members found</td></tr>';
         return;
       }
-      data.sort(function(a, b) { return (a.discord_name || '').localeCompare(b.discord_name || ''); });
+      items.sort(function(a, b) { return (a.discord_name || '').localeCompare(b.discord_name || ''); });
       var html = '';
-      data.forEach(function(m) {
+      items.forEach(function(m) {
         var name = escHtml(m.discord_name || m.name || 'Unknown');
         var rank = escHtml(m.rank || 'Prospect');
         var status = m.status || 'active';
@@ -98,15 +92,16 @@
   }
 
   function loadLOAs() {
-    apiFetch('/deimos/loa').then(function(data) {
-      document.getElementById('loaCount').textContent = data.length;
+    loadJson('deimos_loa.json').then(function(data) {
+      var items = Array.isArray(data) ? data : [];
+      document.getElementById('loaCount').textContent = items.length;
       var tbody = document.getElementById('loaTableBody');
-      if (!data.length) {
+      if (!items.length) {
         tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No active LOAs</td></tr>';
         return;
       }
       var html = '';
-      data.forEach(function(l) {
+      items.forEach(function(l) {
         html += '<tr><td>' + escHtml(l.discord_name || l.member_name || 'Unknown') + '</td><td>' + escHtml(l.reason || 'No reason provided') + '</td><td>' + formatDate(l.start_date || l.created_at) + '</td><td>' + formatDate(l.end_date || l.expiry) + '</td></tr>';
       });
       tbody.innerHTML = html;
@@ -116,15 +111,16 @@
   }
 
   function loadPlaytime() {
-    apiFetch('/deimos/playtime/monthly').then(function(data) {
-      document.getElementById('playtimeCount').textContent = data.length;
+    loadJson('deimos_monthly_stats.json').then(function(data) {
+      var items = Array.isArray(data) ? data : [];
+      document.getElementById('playtimeCount').textContent = items.length;
       var tbody = document.getElementById('playtimeTableBody');
-      if (!data.length) {
+      if (!items.length) {
         tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No playtime data</td></tr>';
         return;
       }
       var html = '';
-      data.slice(0, 50).forEach(function(p, i) {
+      items.slice(0, 50).forEach(function(p, i) {
         var name = escHtml(p.discord_name || p.member_name || p.user_id || 'Unknown');
         var hours = formatHours(p.total_seconds);
         var vital = formatHours(p.vital_seconds || 0);
@@ -138,8 +134,8 @@
   }
 
   function loadTracked() {
-    apiFetch('/opp/tracked').then(function(data) {
-      var items = Array.isArray(data) ? data : (data.players || Object.values(data));
+    loadJson('opp_tracked_players.json').then(function(data) {
+      var items = Array.isArray(data) ? data : (data && data.players ? data.players : Object.values(data || {}));
       document.getElementById('trackedCount').textContent = items.length;
       var tbody = document.getElementById('trackedTableBody');
       if (!items.length) {
@@ -160,14 +156,15 @@
   }
 
   function loadLog() {
-    apiFetch('/deimos/log?lines=100').then(function(data) {
+    loadJson('deimos_log.json').then(function(data) {
+      var lines = Array.isArray(data) ? data : [];
       var viewer = document.getElementById('logViewer');
-      if (!data.length) {
+      if (!lines.length) {
         viewer.innerHTML = '<div class="empty-state"><p>No log data available</p></div>';
         return;
       }
       var html = '';
-      data.forEach(function(line) {
+      lines.forEach(function(line) {
         var cls = 'log-line';
         if (/error|exception|traceback/i.test(line)) cls += ' error';
         else if (/warn|warning/i.test(line)) cls += ' warn';
@@ -183,7 +180,7 @@
   window.refreshLog = loadLog;
 
   function loadFiveM() {
-    apiFetch('/fivem/live').then(function(data) {
+    loadJson('fivem_live.json').then(function(data) {
       document.getElementById('fivemCount').textContent = (data.onlineCount || 0) + ' online';
       document.getElementById('statFiveMOnline').textContent = data.onlineCount || 0;
       var container = document.getElementById('fivemPlayers');
@@ -203,68 +200,36 @@
   }
   window.refreshFiveM = loadFiveM;
 
-  function sendCommand() {
-    var channelId = document.getElementById('cmdChannelId').value.trim();
-    var message = document.getElementById('cmdMessage').value.trim();
-    var result = document.getElementById('cmdResult');
-    if (!channelId || !message) {
-      result.textContent = 'Channel ID and message are required.';
-      result.style.color = '#c0392b';
-      return;
-    }
-    result.textContent = 'Sending...';
-    result.style.color = 'var(--muted)';
-    fetch(API_BASE + '/deimos/command', {
-      method: 'POST',
-      headers: { 'x-portal-auth': 'HoundsForever', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ channelId: channelId, message: message })
-    }).then(function(r) { return r.json(); }).then(function(data) {
-      if (data.success) {
-        result.textContent = 'Message sent successfully.';
-        result.style.color = '#2ecc71';
-        document.getElementById('cmdMessage').value = '';
-      } else {
-        result.textContent = 'Error: ' + (data.error || 'Unknown error');
-        result.style.color = '#c0392b';
-      }
-    }).catch(function(e) {
-      result.textContent = 'Request failed: ' + e.message;
-      result.style.color = '#c0392b';
-    });
-  }
-  window.sendCommand = sendCommand;
-
   function init() {
-    if (!getAuth()) return;
+    var authed = false;
+    try { authed = sessionStorage.getItem('rh_patch_auth') === '1'; } catch(e) {}
+    if (!authed) return;
 
-    apiFetch('/health').then(function() {
-      setApiStatus(true);
-      loadOverview();
-      loadMembers();
-      loadLOAs();
-      loadPlaytime();
-      loadTracked();
-      loadLog();
-      loadFiveM();
-      setInterval(loadFiveM, 60000);
-      setInterval(loadOverview, 120000);
+    loadJson('sync_meta.json').then(function(meta) {
+      var syncTime = new Date(meta.lastSync);
+      var age = Math.round((Date.now() - syncTime.getTime()) / 60000);
+      setApiStatus(true, 'Data synced ' + age + ' min ago (auto-refreshes every 10 min)');
     }).catch(function() {
-      setApiStatus(false);
+      setApiStatus(true, 'Bot data loaded');
     });
+
+    loadOverview();
+    loadMembers();
+    loadLOAs();
+    loadPlaytime();
+    loadTracked();
+    loadLog();
+    loadFiveM();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(init, 500);
-    });
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(init, 300); });
   } else {
-    setTimeout(init, 500);
+    setTimeout(init, 300);
   }
 
   window.addEventListener('patchAuthChange', function(e) {
-    if (e.detail && e.detail.authed) {
-      setTimeout(init, 500);
-    }
+    if (e.detail && e.detail.authed) { setTimeout(init, 300); }
   });
 
 })();
