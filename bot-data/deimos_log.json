@@ -1,8 +1,4 @@
 [
-  "2026-08-20 22:04:22,899 - cogs.church_tracker - INFO - Church: shepardsky joined the Roundtable VC (session 4)",
-  "2026-08-20 22:11:54,687 - utils.church_database - INFO - Opened church interval for wicked1667 in session 4",
-  "2026-08-20 22:11:54,687 - cogs.church_tracker - INFO - Church: wicked1667 joined the Roundtable VC (session 4)",
-  "2026-08-20 22:25:09,540 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-20 22:30:46,757 - utils.church_database - INFO - Opened church interval for snow3976 in session 4",
   "2026-08-20 22:30:46,757 - cogs.church_tracker - INFO - Church: snow3976 joined the Roundtable VC (session 4)",
   "2026-08-20 22:33:28,782 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
@@ -198,5 +194,9 @@
   "2026-08-21 19:13:27,805 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
   "2026-08-21 19:13:27,806 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 19:13:28,476 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
-  "2026-08-21 19:13:28,476 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-21 19:13:28,476 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-21 19:59:21,766 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
+  "2026-08-21 19:59:21,766 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-21 20:14:24,805 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 903 seconds",
+  "2026-08-21 20:14:24,806 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 15m"
 ]
