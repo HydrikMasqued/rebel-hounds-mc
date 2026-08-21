@@ -1,7 +1,4 @@
 [
-  "2026-08-20 22:33:28,782 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
-  "2026-08-20 22:33:28,782 - cogs.playtime_tracker - INFO - Started vital playtime tracking for couchpotatoe_01 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-20 22:33:29,847 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
   "2026-08-20 22:33:29,847 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-20 22:33:52,132 - utils.church_database - INFO - Opened church interval for serpxntt_ in session 4",
   "2026-08-20 22:33:52,132 - cogs.church_tracker - INFO - Church: serpxntt_ joined the Roundtable VC (session 4)",
@@ -198,5 +195,8 @@
   "2026-08-21 20:14:24,805 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 903 seconds",
   "2026-08-21 20:14:24,806 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 15m",
   "2026-08-21 20:28:58,209 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
-  "2026-08-21 20:28:58,209 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-21 20:28:58,209 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-21 21:18:08,071 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 2949 seconds",
+  "2026-08-21 21:18:08,072 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 49m",
+  "2026-08-21 21:18:13,596 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
 ]
