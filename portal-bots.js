@@ -61,9 +61,6 @@
     loadJson('opp_stats.json').then(function(data) {
       document.getElementById('statOppTotal').textContent = data.totalPlayers || 0;
     }).catch(function() {});
-    loadJson('fivem_live.json').then(function(data) {
-      document.getElementById('statFiveMOnline').textContent = data.onlineCount || 0;
-    }).catch(function() {});
   }
 
   function loadMembers() {
@@ -180,10 +177,8 @@
   window.refreshLog = loadLog;
 
   function loadFiveM() {
-    var apiUrl = 'https://frontend.cfx-services.net/api/servers/single/ogpvmv';
-    var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(apiUrl);
-    // Try via CORS proxy first, fall back to cached JSON
-    fetch(proxyUrl).then(function(r) {
+    // Fetch live from CFX API via our PHP proxy on the VPS
+    fetch('proxy-fivem.php?server=ogpvmv').then(function(r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     }).then(function(raw) {
