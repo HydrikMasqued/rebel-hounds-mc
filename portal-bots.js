@@ -63,6 +63,12 @@
     }).catch(function() {});
   }
 
+  var RANK_ORDER = [
+    'president', 'vice president', 'vice-president', 'vp',
+    'secretary', 'treasurer', 'sergeant at arms', 'sergeant-at-arms', 'sa',
+    'road captain', 'officer', 'patch holder', 'member', 'prospect'
+  ];
+
   function loadMembers() {
     loadJson('deimos_members.json').then(function(data) {
       var items = Array.isArray(data) ? data : [];
@@ -72,7 +78,16 @@
         tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No members found</td></tr>';
         return;
       }
-      items.sort(function(a, b) { return (a.discord_name || '').localeCompare(b.discord_name || ''); });
+      items.sort(function(a, b) {
+        var ra = (a.rank || '').toLowerCase();
+        var rb = (b.rank || '').toLowerCase();
+        var ia = RANK_ORDER.indexOf(ra);
+        var ib = RANK_ORDER.indexOf(rb);
+        if (ia === -1) ia = 999;
+        if (ib === -1) ib = 999;
+        if (ia !== ib) return ia - ib;
+        return (a.discord_name || '').localeCompare(b.discord_name || '');
+      });
       var html = '';
       items.forEach(function(m) {
         var name = escHtml(m.discord_name || m.name || 'Unknown');
