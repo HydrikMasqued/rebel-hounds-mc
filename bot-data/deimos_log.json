@@ -1,10 +1,4 @@
 [
-  "2026-08-20 22:43:31,265 - cogs.church_tracker - INFO - Church: snow3976 joined the Roundtable VC (session 4)",
-  "2026-08-20 22:45:27,836 - utils.church_database - INFO - Opened church interval for mr_maximus in session 4",
-  "2026-08-20 22:45:27,837 - cogs.church_tracker - INFO - Church: mr_maximus joined the Roundtable VC (session 4)",
-  "2026-08-20 22:47:01,111 - utils.church_database - INFO - Opened church interval for d.bennett31 in session 4",
-  "2026-08-20 22:47:01,112 - cogs.church_tracker - INFO - Church: d.bennett31 joined the Roundtable VC (session 4)",
-  "2026-08-20 22:48:49,009 - utils.church_database - INFO - Opened church interval for jayreaper in session 4",
   "2026-08-20 22:48:49,009 - cogs.church_tracker - INFO - Church: jayreaper joined the Roundtable VC (session 4)",
   "2026-08-20 22:49:44,994 - utils.church_database - INFO - Opened church interval for panda_alleyway in session 4",
   "2026-08-20 22:49:44,995 - cogs.church_tracker - INFO - Church: panda_alleyway joined the Roundtable VC (session 4)",
@@ -198,5 +192,11 @@
   "2026-08-21 22:45:24,551 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
   "2026-08-21 22:45:24,552 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 22:59:28,831 - utils.playtime_database - INFO - Started vital session for user 241703203068968960 in guild 889005510286786601",
-  "2026-08-21 22:59:28,832 - cogs.playtime_tracker - INFO - Started vital playtime tracking for vaelisthatlivingdeadgirl in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-21 22:59:28,832 - cogs.playtime_tracker - INFO - Started vital playtime tracking for vaelisthatlivingdeadgirl in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-21 23:04:36,009 - utils.playtime_database - INFO - Started vital session for user 580324615583170561 in guild 889005510286786601",
+  "2026-08-21 23:04:36,009 - cogs.playtime_tracker - INFO - Started vital playtime tracking for nr1dishwasher in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-21 23:06:01,060 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
+  "2026-08-21 23:06:01,060 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-21 23:23:04,885 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
+  "2026-08-21 23:23:04,886 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
