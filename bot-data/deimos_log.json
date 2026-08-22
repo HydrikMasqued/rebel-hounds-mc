@@ -1,14 +1,4 @@
 [
-  "2026-08-21 01:02:05,912 - utils.church_database - INFO - Opened church interval for shepardsky in session 4",
-  "2026-08-21 01:02:05,912 - cogs.church_tracker - INFO - Church: shepardsky joined the Roundtable VC (session 4)",
-  "2026-08-21 01:02:05,914 - utils.playtime_database - INFO - Ended vital session for user 260165392209674250: 1393 seconds",
-  "2026-08-21 01:02:05,915 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 0h 23m",
-  "2026-08-21 01:20:27,245 - utils.church_database - INFO - Opened church interval for panda_alleyway in session 4",
-  "2026-08-21 01:20:27,245 - cogs.church_tracker - INFO - Church: panda_alleyway joined the Roundtable VC (session 4)",
-  "2026-08-21 01:27:21,264 - utils.playtime_database - INFO - Ended vital session for user 287694223707340800: 3087 seconds",
-  "2026-08-21 01:27:21,265 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for gingerbean2112: 0h 51m",
-  "2026-08-21 01:27:40,083 - utils.church_database - INFO - Opened church interval for syx0666 in session 4",
-  "2026-08-21 01:27:40,083 - cogs.church_tracker - INFO - Church: syx0666 joined the Roundtable VC (session 4)",
   "2026-08-21 01:35:51,666 - utils.playtime_database - INFO - Started vital session for user 260165392209674250 in guild 889005510286786601",
   "2026-08-21 01:35:51,666 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 01:35:51,666 - utils.church_database - INFO - Closed church interval for user 260165392209674250 after 2025s",
@@ -198,5 +188,15 @@
   "2026-08-22 21:47:32,970 - utils.playtime_database - INFO - Started vital session for user 747599206247694339 in guild 889005510286786601",
   "2026-08-22 21:47:32,970 - cogs.playtime_tracker - INFO - Started vital playtime tracking for obothclef in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-22 21:51:22,264 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
-  "2026-08-22 21:51:22,264 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-22 21:51:22,264 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 21:58:44,140 - utils.playtime_database - INFO - Started vital session for user 580324615583170561 in guild 889005510286786601",
+  "2026-08-22 21:58:44,140 - cogs.playtime_tracker - INFO - Started vital playtime tracking for nr1dishwasher in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 21:58:50,199 - utils.playtime_database - INFO - Started vital session for user 326529501209034764 in guild 889005510286786601",
+  "2026-08-22 21:58:50,199 - cogs.playtime_tracker - INFO - Started vital playtime tracking for chszr in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 22:03:43,981 - utils.playtime_database - INFO - Started vital session for user 907399102717886517 in guild 889005510286786601",
+  "2026-08-22 22:03:43,981 - cogs.playtime_tracker - INFO - Started vital playtime tracking for clintmonster in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 22:06:04,331 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 882 seconds",
+  "2026-08-22 22:06:04,331 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 0h 14m",
+  "2026-08-22 22:07:28,893 - utils.playtime_database - INFO - Ended vital session for user 907399102717886517: 224 seconds",
+  "2026-08-22 22:07:28,894 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for clintmonster: 0h 3m"
 ]
