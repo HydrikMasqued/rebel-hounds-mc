@@ -1,6 +1,4 @@
 [
-  "2026-08-20 23:11:50,644 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
-  "2026-08-20 23:32:02,290 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-20 23:37:08,880 - utils.church_database - INFO - Opened church interval for tragic1301 in session 4",
   "2026-08-20 23:37:08,880 - cogs.church_tracker - INFO - Church: tragic1301 joined the Roundtable VC (session 4)",
   "2026-08-20 23:43:23,502 - utils.church_database - INFO - Closed church interval for user 591781884179120130 after 374s",
@@ -198,5 +196,7 @@
   "2026-08-22 03:55:58,789 - cogs.playtime_tracker - INFO - Started vital playtime tracking for swizzy188 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-22 03:56:00,250 - utils.playtime_database - INFO - Ended vital session for user 1425481575419613376: 1 seconds",
   "2026-08-22 03:56:00,251 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for swizzy188: 0h 0m",
-  "2026-08-22 04:23:37,538 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
+  "2026-08-22 04:23:37,538 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
+  "2026-08-22 04:39:27,389 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
+  "2026-08-22 04:39:27,389 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
