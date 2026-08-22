@@ -1,9 +1,4 @@
 [
-  "2026-08-20 23:05:46,196 - cogs.church_tracker - INFO - Church: couchpotatoe_01 joined the Roundtable VC (session 4)",
-  "2026-08-20 23:08:35,874 - utils.church_database - INFO - Closed church interval for user 1360830106335187024 after 2083s",
-  "2026-08-20 23:08:35,874 - cogs.church_tracker - INFO - Church: serpxntt_ left the Roundtable VC after 34m 43s (session 4)",
-  "2026-08-20 23:09:30,066 - utils.church_database - INFO - Opened church interval for clintmonster in session 4",
-  "2026-08-20 23:09:30,066 - cogs.church_tracker - INFO - Church: clintmonster joined the Roundtable VC (session 4)",
   "2026-08-20 23:11:50,644 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-20 23:32:02,290 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-20 23:37:08,880 - utils.church_database - INFO - Opened church interval for tragic1301 in session 4",
@@ -198,5 +193,10 @@
   "2026-08-22 01:06:02,874 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 2h 20m",
   "2026-08-22 02:12:53,209 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-22 03:50:51,665 - utils.playtime_database - INFO - Ended vital session for user 241703203068968960: 17482 seconds",
-  "2026-08-22 03:50:51,666 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for vaelisthatlivingdeadgirl: 4h 51m"
+  "2026-08-22 03:50:51,666 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for vaelisthatlivingdeadgirl: 4h 51m",
+  "2026-08-22 03:55:58,788 - utils.playtime_database - INFO - Started vital session for user 1425481575419613376 in guild 889005510286786601",
+  "2026-08-22 03:55:58,789 - cogs.playtime_tracker - INFO - Started vital playtime tracking for swizzy188 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 03:56:00,250 - utils.playtime_database - INFO - Ended vital session for user 1425481575419613376: 1 seconds",
+  "2026-08-22 03:56:00,251 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for swizzy188: 0h 0m",
+  "2026-08-22 04:23:37,538 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
 ]
