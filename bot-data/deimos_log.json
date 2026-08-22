@@ -1,6 +1,4 @@
 [
-  "2026-08-20 23:51:13,142 - utils.church_database - INFO - Opened church interval for obothclef in session 4",
-  "2026-08-20 23:51:13,142 - cogs.church_tracker - INFO - Church: obothclef joined the Roundtable VC (session 4)",
   "2026-08-20 23:52:18,456 - utils.church_database - INFO - Closed church interval for user 287694223707340800 after 2801s",
   "2026-08-20 23:52:18,456 - cogs.church_tracker - INFO - Church: gingerbean2112 left the Roundtable VC after 46m 41s (session 4)",
   "2026-08-20 23:53:29,280 - utils.church_database - INFO - Opened church interval for legendlong62 in session 4",
@@ -198,5 +196,7 @@
   "2026-08-22 07:27:26,817 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-22 08:11:56,194 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-22 10:55:52,152 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
-  "2026-08-22 11:52:06,133 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
+  "2026-08-22 11:52:06,133 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
+  "2026-08-22 12:00:47,927 - utils.playtime_database - INFO - Started vital session for user 260165392209674250 in guild 889005510286786601",
+  "2026-08-22 12:00:47,928 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]

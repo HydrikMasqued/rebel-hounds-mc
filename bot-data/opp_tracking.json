@@ -105,11 +105,11 @@
   },
   "keipher26": {
     "firstSeen": 1786218278786,
-    "joinTime": 1787353727971,
+    "joinTime": 1787400830219,
     "totalTime": 399168799,
-    "sessionCount": 43,
-    "lastSeen": 1787363328428,
-    "isOnline": false
+    "sessionCount": 44,
+    "lastSeen": 1787400830219,
+    "isOnline": true
   },
   "smokeater715": {
     "firstSeen": 1786218278786,
@@ -156,7 +156,7 @@
     "joinTime": 1787388229592,
     "totalTime": 677665110,
     "sessionCount": 57,
-    "lastSeen": 1787399330130,
+    "lastSeen": 1787400830219,
     "isOnline": true
   },
   "testiclelyspeaking": {
@@ -180,7 +180,7 @@
     "joinTime": 1787396330024,
     "totalTime": 332981211,
     "sessionCount": 47,
-    "lastSeen": 1787399330130,
+    "lastSeen": 1787400830219,
     "isOnline": true
   },
   "Killnater": {
@@ -228,7 +228,7 @@
     "joinTime": 1787395730009,
     "totalTime": 186555500,
     "sessionCount": 28,
-    "lastSeen": 1787399330130,
+    "lastSeen": 1787400830219,
     "isOnline": true
   },
   "jdot": {
@@ -378,10 +378,10 @@
   "rafapro1": {
     "firstSeen": 1786220865435,
     "joinTime": 1787395730009,
-    "totalTime": 278162651,
+    "totalTime": 282362803,
     "sessionCount": 33,
-    "lastSeen": 1787399330130,
-    "isOnline": true
+    "lastSeen": 1787399630147,
+    "isOnline": false
   },
   "bobby": {
     "firstSeen": 1786220865435,
@@ -1084,7 +1084,7 @@
     "joinTime": 1787389729657,
     "totalTime": 156953102,
     "sessionCount": 17,
-    "lastSeen": 1787399330130,
+    "lastSeen": 1787400830219,
     "isOnline": true
   },
   "damon": {
@@ -1985,11 +1985,11 @@
   },
   "Phillary": {
     "firstSeen": 1786327416088,
-    "joinTime": 1787276324297,
+    "joinTime": 1787399930161,
     "totalTime": 110105350,
-    "sessionCount": 12,
-    "lastSeen": 1787280224458,
-    "isOnline": false
+    "sessionCount": 13,
+    "lastSeen": 1787400830219,
+    "isOnline": true
   },
   "seanswagg15": {
     "firstSeen": 1786328616099,
@@ -2332,7 +2332,7 @@
     "joinTime": 1787387029530,
     "totalTime": 145207016,
     "sessionCount": 20,
-    "lastSeen": 1787399330130,
+    "lastSeen": 1787400830219,
     "isOnline": true
   },
   "MyBadAim": {
