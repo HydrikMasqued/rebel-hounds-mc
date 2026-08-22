@@ -1,7 +1,4 @@
 [
-  "2026-08-21 00:18:37,819 - utils.church_database - INFO - Closed church interval for user 391042658912567296 after 5496s",
-  "2026-08-21 00:18:37,819 - cogs.church_tracker - INFO - Church: d.bennett31 left the Roundtable VC after 1h 31m (session 4)",
-  "2026-08-21 00:34:26,767 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-21 00:34:26,767 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 00:34:26,768 - utils.church_database - INFO - Closed church interval for user 908481561161240617 after 7180s",
   "2026-08-21 00:34:26,768 - cogs.church_tracker - INFO - Church: syx0666 left the Roundtable VC after 1h 59m (session 4)",
@@ -198,5 +195,8 @@
   "2026-08-22 18:31:31,020 - utils.loa_notifications - INFO - Updated membership status for Olivia Newton (ID: 1045815013614559313) - LOA: False",
   "2026-08-22 18:31:31,021 - utils.loa_notifications - WARNING - LOA notification channel 1336076859166691449 not found in guild 889005510286786601",
   "2026-08-22 18:31:31,542 - utils.loa_notifications - INFO - Sent LOA DM notification to user 181143017619587073",
-  "2026-08-22 18:31:31,543 - __main__ - INFO - Processed expired LOA for user 1045815013614559313 in guild 889005510286786601"
+  "2026-08-22 18:31:31,543 - __main__ - INFO - Processed expired LOA for user 1045815013614559313 in guild 889005510286786601",
+  "2026-08-22 19:05:52,575 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
+  "2026-08-22 19:05:52,575 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 19:09:27,421 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
 ]
