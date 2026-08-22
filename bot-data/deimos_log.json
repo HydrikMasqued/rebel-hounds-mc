@@ -1,15 +1,4 @@
 [
-  "2026-08-21 00:34:34,775 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-21 00:34:34,776 - utils.church_database - INFO - Closed church interval for user 361004934184828928 after 6663s",
-  "2026-08-21 00:34:34,776 - cogs.church_tracker - INFO - Church: snow3976 left the Roundtable VC after 1h 51m (session 4)",
-  "2026-08-21 00:35:53,301 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
-  "2026-08-21 00:35:53,301 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-21 00:35:53,302 - utils.church_database - INFO - Closed church interval for user 287694223707340800 after 2528s",
-  "2026-08-21 00:35:53,302 - cogs.church_tracker - INFO - Church: gingerbean2112 left the Roundtable VC after 42m 08s (session 4)",
-  "2026-08-21 00:38:52,163 - utils.playtime_database - INFO - Started vital session for user 260165392209674250 in guild 889005510286786601",
-  "2026-08-21 00:38:52,163 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-21 00:38:52,164 - utils.church_database - INFO - Closed church interval for user 260165392209674250 after 9269s",
-  "2026-08-21 00:38:52,164 - cogs.church_tracker - INFO - Church: shepardsky left the Roundtable VC after 2h 34m (session 4)",
   "2026-08-21 00:40:55,811 - utils.church_database - INFO - Closed church interval for user 580324615583170561 after 6518s",
   "2026-08-21 00:40:55,811 - cogs.church_tracker - INFO - Church: nr1dishwasher left the Roundtable VC after 1h 48m (session 4)",
   "2026-08-21 00:41:00,521 - utils.church_database - INFO - Opened church interval for nr1dishwasher in session 4",
@@ -198,5 +187,16 @@
   "2026-08-22 19:35:41,282 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 1788 seconds",
   "2026-08-22 19:35:41,283 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 0h 29m",
   "2026-08-22 19:44:05,552 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-08-22 19:44:05,552 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-22 19:44:05,552 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 21:04:13,385 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
+  "2026-08-22 21:19:34,916 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
+  "2026-08-22 21:19:34,916 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 21:21:21,364 - utils.playtime_database - INFO - Started vital session for user 260165392209674250 in guild 889005510286786601",
+  "2026-08-22 21:21:21,364 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 21:22:11,824 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
+  "2026-08-22 21:22:11,824 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 21:23:58,903 - utils.playtime_database - INFO - Started vital session for user 1182410319667150848 in guild 889005510286786601",
+  "2026-08-22 21:23:58,903 - cogs.playtime_tracker - INFO - Started vital playtime tracking for charlie07766 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 21:24:03,515 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
+  "2026-08-22 21:24:03,515 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
