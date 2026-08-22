@@ -66,7 +66,7 @@
   var RANK_ORDER = [
     'president', 'vice president', 'vice-president', 'vp',
     'secretary', 'treasurer', 'sergeant at arms', 'sergeant-at-arms', 'sa',
-    'road captain', 'enforcer', 'officer', 'full patch', 'nomad', 'prospect'
+    'road captain', 'enforcer', 'officer', 'tailgunner', 'full patch', 'nomad', 'prospect'
   ];
 
   function loadMembers() {
