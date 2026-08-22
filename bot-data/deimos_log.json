@@ -1,6 +1,4 @@
 [
-  "2026-08-21 00:34:26,767 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-21 00:34:26,768 - utils.church_database - INFO - Closed church interval for user 908481561161240617 after 7180s",
   "2026-08-21 00:34:26,768 - cogs.church_tracker - INFO - Church: syx0666 left the Roundtable VC after 1h 59m (session 4)",
   "2026-08-21 00:34:34,775 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
   "2026-08-21 00:34:34,775 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +196,7 @@
   "2026-08-22 18:31:31,543 - __main__ - INFO - Processed expired LOA for user 1045815013614559313 in guild 889005510286786601",
   "2026-08-22 19:05:52,575 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
   "2026-08-22 19:05:52,575 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-22 19:09:27,421 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
+  "2026-08-22 19:09:27,421 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
+  "2026-08-22 19:35:41,282 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 1788 seconds",
+  "2026-08-22 19:35:41,283 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 0h 29m"
 ]
