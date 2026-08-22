@@ -1,8 +1,4 @@
 [
-  "2026-08-20 23:53:29,280 - cogs.church_tracker - INFO - Church: legendlong62 joined the Roundtable VC (session 4)",
-  "2026-08-20 23:53:44,691 - utils.church_database - INFO - Opened church interval for gingerbean2112 in session 4",
-  "2026-08-20 23:53:44,692 - cogs.church_tracker - INFO - Church: gingerbean2112 joined the Roundtable VC (session 4)",
-  "2026-08-20 23:59:31,370 - utils.church_database - INFO - Opened church interval for vaelisthatlivingdeadgirl in session 4",
   "2026-08-20 23:59:31,370 - cogs.church_tracker - INFO - Church: vaelisthatlivingdeadgirl joined the Roundtable VC (session 4)",
   "2026-08-21 00:18:03,138 - utils.church_database - INFO - Closed church interval for user 591781884179120130 after 2077s",
   "2026-08-21 00:18:03,138 - cogs.church_tracker - INFO - Church: tragic1301 left the Roundtable VC after 34m 37s (session 4)",
@@ -198,5 +194,9 @@
   "2026-08-22 12:00:47,928 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-22 12:20:56,598 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-22 12:34:09,165 - utils.playtime_database - INFO - Ended vital session for user 260165392209674250: 2001 seconds",
-  "2026-08-22 12:34:09,166 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 0h 33m"
+  "2026-08-22 12:34:09,166 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 0h 33m",
+  "2026-08-22 14:51:21,787 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-08-22 14:51:21,787 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-22 14:52:44,990 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
+  "2026-08-22 14:52:44,990 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
