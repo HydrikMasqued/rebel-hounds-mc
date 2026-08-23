@@ -33,11 +33,11 @@
   },
   "hiteklive": {
     "firstSeen": 1786218278786,
-    "joinTime": 1787437432067,
+    "joinTime": 1787480033908,
     "totalTime": 383950285,
-    "sessionCount": 30,
-    "lastSeen": 1787454532841,
-    "isOnline": false
+    "sessionCount": 31,
+    "lastSeen": 1787481233979,
+    "isOnline": true
   },
   "ShyTurtle8151": {
     "firstSeen": 1786218278786,
@@ -308,7 +308,7 @@
     "joinTime": 1787474333715,
     "totalTime": 57602580,
     "sessionCount": 10,
-    "lastSeen": 1787479133923,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "Mortium": {
@@ -378,10 +378,10 @@
   "rafapro1": {
     "firstSeen": 1786220865435,
     "joinTime": 1787473433659,
-    "totalTime": 294063357,
+    "totalTime": 301863677,
     "sessionCount": 35,
-    "lastSeen": 1787479133923,
-    "isOnline": true
+    "lastSeen": 1787480933970,
+    "isOnline": false
   },
   "bobby": {
     "firstSeen": 1786220865435,
@@ -396,7 +396,7 @@
     "joinTime": 1787454832812,
     "totalTime": 514570369,
     "sessionCount": 75,
-    "lastSeen": 1787479133923,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "SumTingWong": {
@@ -802,10 +802,10 @@
   "AZRAEL": {
     "firstSeen": 1786229265861,
     "joinTime": 1787473733627,
-    "totalTime": 519923740,
+    "totalTime": 526524098,
     "sessionCount": 48,
-    "lastSeen": 1787479133923,
-    "isOnline": true
+    "lastSeen": 1787480033908,
+    "isOnline": false
   },
   "SleepyCat8940": {
     "firstSeen": 1786229265861,
@@ -1265,10 +1265,10 @@
   },
   "josh heywood": {
     "firstSeen": 1786238866326,
-    "joinTime": 1787473433659,
-    "totalTime": 448048116,
-    "sessionCount": 47,
-    "lastSeen": 1787479133923,
+    "joinTime": 1787480333985,
+    "totalTime": 454648365,
+    "sessionCount": 48,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "IVY": {
@@ -1418,10 +1418,10 @@
   "Mcflexington": {
     "firstSeen": 1786249412625,
     "joinTime": 1787473433659,
-    "totalTime": 96267330,
+    "totalTime": 103467611,
     "sessionCount": 14,
-    "lastSeen": 1787479133923,
-    "isOnline": true
+    "lastSeen": 1787480333985,
+    "isOnline": false
   },
   "Mikey": {
     "firstSeen": 1786249712642,
@@ -1556,7 +1556,7 @@
     "joinTime": 1787477333813,
     "totalTime": 310815438,
     "sessionCount": 43,
-    "lastSeen": 1787479133923,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "Air Fryer": {
@@ -2018,10 +2018,10 @@
   "B00g13man": {
     "firstSeen": 1786333416259,
     "joinTime": 1787471933621,
-    "totalTime": 278113260,
+    "totalTime": 285913577,
     "sessionCount": 44,
-    "lastSeen": 1787479133923,
-    "isOnline": true
+    "lastSeen": 1787479433947,
+    "isOnline": false
   },
   "seth": {
     "firstSeen": 1786334316317,
@@ -2332,7 +2332,7 @@
     "joinTime": 1787473433659,
     "totalTime": 179108687,
     "sessionCount": 26,
-    "lastSeen": 1787479133923,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "MyBadAim": {
@@ -2964,7 +2964,7 @@
     "joinTime": 1787473733627,
     "totalTime": 103804633,
     "sessionCount": 17,
-    "lastSeen": 1787479133923,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "CHOYYYYY": {
@@ -3041,10 +3041,10 @@
   },
   "Stevyzam": {
     "firstSeen": 1786830503509,
-    "joinTime": 1787452132684,
-    "totalTime": 106505047,
-    "sessionCount": 16,
-    "lastSeen": 1787456332919,
+    "joinTime": 1787480333985,
+    "totalTime": 106805002,
+    "sessionCount": 17,
+    "lastSeen": 1787480333985,
     "isOnline": false
   },
   "BreezyToad3170": {
@@ -3290,10 +3290,10 @@
   "Lord Kaltani": {
     "firstSeen": 1787071114783,
     "joinTime": 1787476433798,
-    "totalTime": 63303067,
+    "totalTime": 68103248,
     "sessionCount": 19,
-    "lastSeen": 1787479133923,
-    "isOnline": true
+    "lastSeen": 1787480933970,
+    "isOnline": false
   },
   "Little Jit": {
     "firstSeen": 1787074714933,
@@ -3316,7 +3316,7 @@
     "joinTime": 1787473733627,
     "totalTime": 211805835,
     "sessionCount": 29,
-    "lastSeen": 1787479133923,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "TripNipMcGee": {
@@ -3716,7 +3716,7 @@
     "joinTime": 1787475533772,
     "totalTime": 0,
     "sessionCount": 1,
-    "lastSeen": 1787479133923,
+    "lastSeen": 1787481233979,
     "isOnline": true
   },
   "SlowFish7275": {
