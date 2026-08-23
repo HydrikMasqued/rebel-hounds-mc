@@ -1,8 +1,4 @@
 [
-  "2026-08-21 19:13:27,806 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-21 19:13:28,476 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
-  "2026-08-21 19:13:28,476 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-21 19:59:21,766 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-21 19:59:21,766 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 20:14:24,805 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 903 seconds",
   "2026-08-21 20:14:24,806 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 15m",
@@ -198,5 +194,9 @@
   "2026-08-23 16:07:00,397 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-23 16:07:00,397 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-23 16:10:25,308 - utils.playtime_database - INFO - Started vital session for user 1182410319667150848 in guild 889005510286786601",
-  "2026-08-23 16:10:25,308 - cogs.playtime_tracker - INFO - Started vital playtime tracking for charlie07766 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-23 16:10:25,308 - cogs.playtime_tracker - INFO - Started vital playtime tracking for charlie07766 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-23 16:16:43,500 - utils.playtime_database - INFO - Started vital session for user 181143017619587073 in guild 889005510286786601",
+  "2026-08-23 16:16:43,501 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-23 16:18:11,445 - utils.playtime_database - INFO - Started vital session for user 580324615583170561 in guild 889005510286786601",
+  "2026-08-23 16:18:11,445 - cogs.playtime_tracker - INFO - Started vital playtime tracking for nr1dishwasher in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
