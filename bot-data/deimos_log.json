@@ -1,8 +1,4 @@
 [
-  "2026-08-21 23:06:01,060 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
-  "2026-08-21 23:06:01,060 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-21 23:23:04,885 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
-  "2026-08-21 23:23:04,886 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 23:37:40,636 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-22 00:53:22,607 - utils.playtime_database - INFO - Ended vital session for user 580324615583170561: 6526 seconds",
   "2026-08-22 00:53:22,609 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for nr1dishwasher: 1h 48m",
@@ -198,5 +194,9 @@
   "2026-08-23 17:44:14,114 - utils.playtime_database - INFO - Ended vital session for user 580324615583170561: 5162 seconds",
   "2026-08-23 17:44:14,115 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for nr1dishwasher: 1h 26m",
   "2026-08-23 17:48:03,421 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 7998 seconds",
-  "2026-08-23 17:48:03,422 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 2h 13m"
+  "2026-08-23 17:48:03,422 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 2h 13m",
+  "2026-08-23 18:10:12,914 - utils.playtime_database - INFO - Ended vital session for user 1182410319667150848: 7187 seconds",
+  "2026-08-23 18:10:12,915 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for charlie07766: 1h 59m",
+  "2026-08-23 18:23:01,803 - utils.playtime_database - INFO - Started vital session for user 391042658912567296 in guild 889005510286786601",
+  "2026-08-23 18:23:01,803 - cogs.playtime_tracker - INFO - Started vital playtime tracking for d.bennett31 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
