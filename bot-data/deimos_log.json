@@ -1,6 +1,4 @@
 [
-  "2026-08-22 18:31:31,542 - utils.loa_notifications - INFO - Sent LOA DM notification to user 181143017619587073",
-  "2026-08-22 18:31:31,543 - __main__ - INFO - Processed expired LOA for user 1045815013614559313 in guild 889005510286786601",
   "2026-08-22 19:05:52,575 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
   "2026-08-22 19:05:52,575 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-22 19:09:27,421 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
@@ -198,5 +196,7 @@
   "2026-08-23 20:53:27,245 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 1205 seconds",
   "2026-08-23 20:53:27,246 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 0h 20m",
   "2026-08-23 20:56:23,069 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
-  "2026-08-23 21:01:09,737 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
+  "2026-08-23 21:01:09,737 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
+  "2026-08-23 21:51:41,566 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
+  "2026-08-23 21:51:41,566 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
