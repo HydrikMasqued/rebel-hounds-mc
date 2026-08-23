@@ -1,6 +1,4 @@
 [
-  "2026-08-21 11:39:52,113 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
-  "2026-08-21 12:33:13,283 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
   "2026-08-21 14:18:12,433 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
   "2026-08-21 14:18:12,433 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 16:05:55,961 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
@@ -198,5 +196,7 @@
   "2026-08-23 13:00:16,519 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for charlie07766: 4h 24m",
   "2026-08-23 13:00:16,520 - utils.playtime_database - INFO - Recorded weekly notification for user 1182410319667150848 in guild 889005510286786601 (week 2026-34)",
   "2026-08-23 13:00:16,520 - cogs.playtime_tracker - INFO - User charlie07766 reached 6h weekly requirement!",
-  "2026-08-23 13:00:18,647 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073"
+  "2026-08-23 13:00:18,647 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
+  "2026-08-23 14:40:23,675 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278.",
+  "2026-08-23 14:49:38,936 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
 ]
