@@ -9,7 +9,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-08-06 23:34:47.759904"
+    "updated_at": "2026-08-23 02:04:32.954854"
   },
   {
     "id": 4,
@@ -21,19 +21,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-07-26 17:28:48.962132"
+    "updated_at": "2026-08-23 02:04:32.959900"
   },
   {
     "id": 5,
     "guild_id": 889005510286786600,
     "user_id": 181143017619587070,
-    "discord_name": "James Guerrero",
+    "discord_name": "Jonathan 'Jay' Charles",
     "discord_username": "jayreaper",
     "rank": "President",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-07-26 17:28:48.959824"
+    "updated_at": "2026-08-23 02:04:32.955700"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-07-26 17:28:48.960622"
+    "updated_at": "2026-08-23 02:04:32.956440"
   },
   {
     "id": 10,
@@ -57,7 +57,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-07-26 17:28:48.966472"
+    "updated_at": "2026-08-23 02:04:32.964462"
   },
   {
     "id": 13,
@@ -69,19 +69,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-07-26 17:28:48.970903"
+    "updated_at": "2026-08-23 02:04:32.968267"
   },
   {
     "id": 14,
     "guild_id": 889005510286786600,
     "user_id": 260165392209674240,
-    "discord_name": "Shepard✓ᵛᵉʳᶦᶠᶦᵉᵈ",
+    "discord_name": "Shepard \"Sergeant Stabby\"",
     "discord_username": "shepardsky",
     "rank": "Sergeant At Arms",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-07-26 17:28:48.971866"
+    "updated_at": "2026-08-23 02:04:32.969028"
   },
   {
     "id": 17,
@@ -93,7 +93,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-07-26 17:28:48.974734"
+    "updated_at": "2026-08-23 02:04:32.972035"
   },
   {
     "id": 365,
@@ -105,7 +105,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-11-25 02:34:30",
-    "updated_at": "2026-07-26 17:28:48.957536"
+    "updated_at": "2026-08-23 02:04:32.959015"
   },
   {
     "id": 436,
@@ -117,7 +117,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-12-08 23:39:53",
-    "updated_at": "2026-07-26 17:28:48.958296"
+    "updated_at": "2026-08-23 02:04:32.953212"
   },
   {
     "id": 782,
@@ -129,19 +129,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-02-09 09:58:45",
-    "updated_at": "2026-07-26 17:28:48.963458"
+    "updated_at": "2026-08-23 02:04:32.954115"
   },
   {
     "id": 1000,
     "guild_id": 889005510286786600,
     "user_id": 747599206247694300,
     "discord_name": "Oboth",
-    "discord_username": "nickox.",
+    "discord_username": "obothclef",
     "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-03-22 05:15:09",
-    "updated_at": "2026-07-26 17:28:48.961377"
+    "updated_at": "2026-08-23 02:04:32.958157"
   },
   {
     "id": 1060,
@@ -153,19 +153,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-04-14 05:52:27",
-    "updated_at": "2026-07-27 17:57:34.353850"
+    "updated_at": "2026-08-23 02:04:32.965202"
   },
   {
     "id": 1154,
     "guild_id": 889005510286786600,
     "user_id": 591781884179120100,
-    "discord_name": "Besnik",
+    "discord_name": "Besnik Hoxha",
     "discord_username": "tragic1301",
     "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-07 01:12:32",
-    "updated_at": "2026-07-26 17:28:48.964177"
+    "updated_at": "2026-08-23 02:04:32.961501"
   },
   {
     "id": 1175,
@@ -177,7 +177,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-10 00:01:39",
-    "updated_at": "2026-07-26 17:28:48.974102"
+    "updated_at": "2026-08-23 02:04:32.971285"
   },
   {
     "id": 1178,
@@ -189,7 +189,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-14 03:21:03",
-    "updated_at": "2026-07-26 17:28:48.962770"
+    "updated_at": "2026-08-23 02:04:32.960760"
   },
   {
     "id": 1188,
@@ -201,7 +201,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:05",
-    "updated_at": "2026-07-26 17:28:48.965709"
+    "updated_at": "2026-08-23 02:04:32.963733"
   },
   {
     "id": 1189,
@@ -213,7 +213,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:23",
-    "updated_at": "2026-07-26 17:28:48.968217"
+    "updated_at": "2026-08-23 02:04:32.965916"
   },
   {
     "id": 1209,
@@ -225,7 +225,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-02 07:27:53",
-    "updated_at": "2026-07-26 17:28:48.969252"
+    "updated_at": "2026-08-23 02:04:32.966800"
   },
   {
     "id": 1237,
@@ -237,7 +237,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-05 00:35:46",
-    "updated_at": "2026-08-06 15:15:24.594574"
+    "updated_at": "2026-08-23 02:04:32.970504"
   },
   {
     "id": 1297,
@@ -249,7 +249,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-18 22:03:24",
-    "updated_at": "2026-07-26 17:28:48.976200"
+    "updated_at": "2026-08-23 02:04:32.957237"
   },
   {
     "id": 1320,
@@ -261,7 +261,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-20 06:50:06",
-    "updated_at": "2026-07-26 17:28:48.964868"
+    "updated_at": "2026-08-23 02:04:32.962988"
   },
   {
     "id": 1321,
@@ -273,7 +273,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-20 06:50:39",
-    "updated_at": "2026-07-26 17:28:48.972616"
+    "updated_at": "2026-08-23 02:04:32.969720"
   },
   {
     "id": 1403,
@@ -285,46 +285,66 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-06 02:02:59",
-    "updated_at": "2026-08-06 02:02:59.261649"
+    "updated_at": "2026-08-23 02:04:32.967536"
   },
   {
-    "user_id": "287694223707340800",
-    "discord_name": "Reggie \"Kray\" Matthews",
-    "discord_username": "gingerbean2112",
-    "rank": "Prospect",
-    "status": "Active",
-    "source": "discord"
-  },
-  {
-    "user_id": "907399102717886517",
-    "discord_name": "Benji Krayton-Bucketts",
-    "discord_username": "clintmonster",
-    "rank": "Prospect",
-    "status": "Active",
-    "source": "discord"
-  },
-  {
-    "user_id": "975162499303358524",
-    "discord_name": "couchpotatoe_01",
+    "id": 1413,
+    "guild_id": 889005510286786600,
+    "user_id": 975162499303358500,
+    "discord_name": "Spesh",
     "discord_username": "couchpotatoe_01",
     "rank": "Prospect",
     "status": "Active",
-    "source": "discord"
+    "is_on_loa": 0,
+    "created_at": "2026-08-12 16:20:30",
+    "updated_at": "2026-08-23 02:04:32.972774"
   },
   {
-    "user_id": "1298057206465298446",
+    "id": 1414,
+    "guild_id": 889005510286786600,
+    "user_id": 1298057206465298400,
     "discord_name": "Deer Childs",
     "discord_username": "legendlong62",
     "rank": "Prospect",
     "status": "Active",
-    "source": "discord"
+    "is_on_loa": 0,
+    "created_at": "2026-08-12 16:20:45",
+    "updated_at": "2026-08-23 02:04:32.962208"
   },
   {
-    "user_id": "1537997564950089800",
-    "discord_name": "j4xx.kryt",
+    "id": 1416,
+    "guild_id": 889005510286786600,
+    "user_id": 287694223707340800,
+    "discord_name": "Reggie \"Kray\" Matthews",
+    "discord_username": "gingerbean2112",
+    "rank": "Prospect",
+    "status": "Active",
+    "is_on_loa": 0,
+    "created_at": "2026-08-16 12:07:57",
+    "updated_at": "2026-08-23 02:04:32.973468"
+  },
+  {
+    "id": 1417,
+    "guild_id": 889005510286786600,
+    "user_id": 907399102717886500,
+    "discord_name": "Benji Krayton-Bucketts",
+    "discord_username": "clintmonster",
+    "rank": "Prospect",
+    "status": "Active",
+    "is_on_loa": 0,
+    "created_at": "2026-08-18 20:43:11",
+    "updated_at": "2026-08-23 02:04:32.974173"
+  },
+  {
+    "id": 1420,
+    "guild_id": 889005510286786600,
+    "user_id": 1537997564950089700,
+    "discord_name": "-𝒥.𝒦𝓇𝓎𝓉𝓃-",
     "discord_username": "j4xx.kryt",
     "rank": "Prospect",
     "status": "Active",
-    "source": "discord"
+    "is_on_loa": 0,
+    "created_at": "2026-08-19 20:39:46",
+    "updated_at": "2026-08-23 02:04:32.974872"
   }
 ]
