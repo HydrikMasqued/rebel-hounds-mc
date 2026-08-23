@@ -1,6 +1,4 @@
 [
-  "2026-08-21 23:04:36,009 - utils.playtime_database - INFO - Started vital session for user 580324615583170561 in guild 889005510286786601",
-  "2026-08-21 23:04:36,009 - cogs.playtime_tracker - INFO - Started vital playtime tracking for nr1dishwasher in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 23:06:01,060 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-21 23:06:01,060 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-21 23:23:04,885 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
@@ -198,5 +196,7 @@
   "2026-08-23 17:39:44,171 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-23 17:39:44,171 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-23 17:44:14,114 - utils.playtime_database - INFO - Ended vital session for user 580324615583170561: 5162 seconds",
-  "2026-08-23 17:44:14,115 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for nr1dishwasher: 1h 26m"
+  "2026-08-23 17:44:14,115 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for nr1dishwasher: 1h 26m",
+  "2026-08-23 17:48:03,421 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 7998 seconds",
+  "2026-08-23 17:48:03,422 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 2h 13m"
 ]
