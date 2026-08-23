@@ -1,9 +1,4 @@
 [
-  "2026-08-21 06:08:10,130 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 16317 seconds",
-  "2026-08-21 06:08:10,132 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 4h 31m",
-  "2026-08-21 06:21:28,071 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 16418 seconds",
-  "2026-08-21 06:21:28,072 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 4h 33m",
-  "2026-08-21 06:21:28,073 - utils.playtime_database - INFO - Recorded weekly notification for user 591781884179120130 in guild 889005510286786601 (week 2026-34)",
   "2026-08-21 06:21:28,074 - cogs.playtime_tracker - INFO - User tragic1301 reached 6h weekly requirement!",
   "2026-08-21 06:21:30,678 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
   "2026-08-21 06:31:36,779 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 17731 seconds",
@@ -198,5 +193,10 @@
   "2026-08-23 02:55:25,611 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 20150 seconds",
   "2026-08-23 02:55:25,612 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 5h 35m",
   "2026-08-23 02:55:29,452 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 11496 seconds",
-  "2026-08-23 02:55:29,453 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 3h 11m"
+  "2026-08-23 02:55:29,453 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 3h 11m",
+  "2026-08-23 03:45:52,620 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 21779 seconds",
+  "2026-08-23 03:45:52,621 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 6h 2m",
+  "2026-08-23 03:49:03,971 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
+  "2026-08-23 03:49:03,971 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-23 03:58:05,783 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d8899415ea0fe2d31a4e405b1319a278."
 ]
