@@ -286,5 +286,45 @@
     "is_on_loa": 0,
     "created_at": "2026-08-06 02:02:59",
     "updated_at": "2026-08-06 02:02:59.261649"
+  },
+  {
+    "user_id": "287694223707340800",
+    "discord_name": "Reggie \"Kray\" Matthews",
+    "discord_username": "gingerbean2112",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "907399102717886517",
+    "discord_name": "Benji Krayton-Bucketts",
+    "discord_username": "clintmonster",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "975162499303358524",
+    "discord_name": "couchpotatoe_01",
+    "discord_username": "couchpotatoe_01",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "1298057206465298446",
+    "discord_name": "Deer Childs",
+    "discord_username": "legendlong62",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "1537997564950089800",
+    "discord_name": "j4xx.kryt",
+    "discord_username": "j4xx.kryt",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
   }
 ]

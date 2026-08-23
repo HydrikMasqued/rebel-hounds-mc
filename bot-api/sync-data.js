@@ -3,9 +3,23 @@ const initSqlJs = require('sql.js');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const OUT_DIR = path.join(__dirname, '..', 'bot-data');
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+
+const GUILD_ID = '889005510286786601';
+const RANK_ROLE_NAMES = [
+  'president', 'vice president', 'secretary', 'treasurer',
+  'sergeant at arms', 'road captain', 'enforcer', 'officer',
+  'tailgunner', 'full patch', 'nomad', 'prospect',
+  'probationary officer'
+];
+const RANK_ORDER = [
+  'president', 'vice president', 'secretary', 'treasurer',
+  'sergeant at arms', 'road captain', 'enforcer', 'officer',
+  'probationary officer', 'tailgunner', 'full patch', 'nomad', 'prospect'
+];
 
 function save(name, data) {
   const fp = path.join(OUT_DIR, name);
@@ -179,6 +193,102 @@ async function syncDeimos(SQL) {
   console.log(`[Deimos] Done: ${stats.totalMembers} members, ${stats.activeLOAs} LOAs`);
 }
 
+async function syncDiscordMembers() {
+  const token = process.env.DEIMOS_BOT_TOKEN;
+  if (!token) {
+    console.log('[Discord] No bot token, skipping');
+    return;
+  }
+  console.log('[Discord] Syncing members from API...');
+
+  try {
+    const rolesRes = await axios.get(`https://discord.com/api/v10/guilds/${GUILD_ID}/roles`, {
+      headers: { Authorization: `Bot ${token}` }
+    });
+
+    const rankRoles = rolesRes.data.filter(r => {
+      const name = r.name.toLowerCase();
+      return RANK_ROLE_NAMES.some(rank => name.includes(rank));
+    }).sort((a, b) => b.position - a.position);
+
+    const rankRoleMap = {};
+    rankRoles.forEach(r => { rankRoleMap[r.id] = r; });
+
+    let allMembers = [];
+    let after = '0';
+    while (true) {
+      const res = await axios.get(
+        `https://discord.com/api/v10/guilds/${GUILD_ID}/members?limit=1000&after=${after}`,
+        { headers: { Authorization: `Bot ${token}` } }
+      );
+      if (!res.data.length) break;
+      allMembers = allMembers.concat(res.data);
+      after = res.data[res.data.length - 1].user.id;
+      if (res.data.length < 1000) break;
+    }
+
+    const clubMembers = allMembers.filter(m =>
+      m.roles.some(rid => rankRoleMap[rid])
+    );
+
+    const dbMembers = loadJson('deimos_members.json') || [];
+    const dbUserIds = new Set(dbMembers.map(m => String(m.user_id)));
+    const dbNames = new Set(dbMembers.map(m => (m.discord_name || '').toLowerCase()));
+    const dbUsernames = new Set(dbMembers.map(m => (m.discord_username || '').toLowerCase()));
+
+    const discordEntries = clubMembers.map(m => {
+      const memberRankRoles = m.roles
+        .map(rid => rankRoleMap[rid])
+        .filter(Boolean)
+        .sort((a, b) => b.position - a.position);
+      const highestRole = memberRankRoles[0];
+
+      let rank = highestRole ? highestRole.name : 'Unknown';
+      if (rank.toLowerCase().includes('vice president')) rank = 'Vice President';
+      else if (rank.toLowerCase().includes('president')) rank = 'President';
+      else if (rank.toLowerCase().includes('sergeant at arms')) rank = 'Sergeant At Arms';
+      else if (rank.toLowerCase().includes('secretary')) rank = 'Secretary';
+      else if (rank.toLowerCase().includes('treasurer')) rank = 'Treasurer';
+      else if (rank.toLowerCase().includes('road captain')) rank = 'Road Captain';
+      else if (rank.toLowerCase().includes('probationary officer')) rank = 'Probationary Officer';
+      else if (rank.toLowerCase().includes('enforcer')) rank = 'Enforcer';
+      else if (rank.toLowerCase().includes('officer')) rank = 'Officer';
+      else if (rank.toLowerCase().includes('tailgunner')) rank = 'Tailgunner';
+      else if (rank.toLowerCase().includes('full patch')) rank = 'Full Patch';
+      else if (rank.toLowerCase().includes('nomad')) rank = 'Nomad';
+      else if (rank.toLowerCase().includes('life member')) rank = 'Life Member';
+      else if (rank.toLowerCase().includes('prospect')) rank = 'Prospect';
+
+      return {
+        user_id: m.user.id,
+        discord_name: m.nick || m.user.username,
+        discord_username: m.user.username,
+        rank: rank,
+        status: 'Active',
+        source: 'discord'
+      };
+    });
+
+    const merged = [...dbMembers];
+    let added = 0;
+    for (const dm of discordEntries) {
+      const uid = String(dm.user_id);
+      const uname = (dm.discord_username || '').toLowerCase();
+      const dname = (dm.discord_name || '').toLowerCase();
+      const isDuplicate = dbUserIds.has(uid) || dbUsernames.has(uname) || dbNames.has(dname);
+      if (!isDuplicate) {
+        merged.push(dm);
+        added++;
+      }
+    }
+
+    save('deimos_members.json', merged);
+    console.log(`  Discord: ${clubMembers.length} with roles, ${added} added to roster (total: ${merged.length})`);
+  } catch (e) {
+    console.error(`  Discord sync failed: ${e.message}`);
+  }
+}
+
 async function syncOppTracker() {
   console.log('[OPP Tracker] Syncing...');
   const cfg = {
@@ -276,6 +386,8 @@ async function main() {
     syncOppTracker(),
     syncFiveM()
   ]);
+
+  await syncDiscordMembers();
 
   // Write sync metadata
   save('sync_meta.json', {
