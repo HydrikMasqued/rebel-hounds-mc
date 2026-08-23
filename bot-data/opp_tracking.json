@@ -36,7 +36,7 @@
     "joinTime": 1787480033908,
     "totalTime": 383950285,
     "sessionCount": 31,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "ShyTurtle8151": {
@@ -172,7 +172,7 @@
     "joinTime": 1787482434079,
     "totalTime": 649726756,
     "sessionCount": 57,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "GhostKnight": {
@@ -188,7 +188,7 @@
     "joinTime": 1787482734087,
     "totalTime": 177757966,
     "sessionCount": 45,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "Boofay": {
@@ -308,7 +308,7 @@
     "joinTime": 1787474333715,
     "totalTime": 57602580,
     "sessionCount": 10,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "Mortium": {
@@ -337,11 +337,11 @@
   },
   "Vajs^": {
     "firstSeen": 1786219965418,
-    "joinTime": 1787482734087,
-    "totalTime": 205859652,
-    "sessionCount": 40,
-    "lastSeen": 1787484834210,
-    "isOnline": true
+    "joinTime": 1787485434241,
+    "totalTime": 208559836,
+    "sessionCount": 41,
+    "lastSeen": 1787485434241,
+    "isOnline": false
   },
   "That Guy": {
     "firstSeen": 1786220265398,
@@ -396,7 +396,7 @@
     "joinTime": 1787454832812,
     "totalTime": 514570369,
     "sessionCount": 75,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "SumTingWong": {
@@ -1060,7 +1060,7 @@
     "joinTime": 1787484234175,
     "totalTime": 328894593,
     "sessionCount": 36,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "SharpTurtle2624": {
@@ -1268,7 +1268,7 @@
     "joinTime": 1787480333985,
     "totalTime": 454648365,
     "sessionCount": 48,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "IVY": {
@@ -1556,7 +1556,7 @@
     "joinTime": 1787483934176,
     "totalTime": 317115797,
     "sessionCount": 44,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "Air Fryer": {
@@ -1889,11 +1889,11 @@
   },
   "Kizza": {
     "firstSeen": 1786315115484,
-    "joinTime": 1787458733040,
+    "joinTime": 1787485734259,
     "totalTime": 75903736,
-    "sessionCount": 13,
-    "lastSeen": 1787465333356,
-    "isOnline": false
+    "sessionCount": 14,
+    "lastSeen": 1787485734259,
+    "isOnline": true
   },
   "BluntBat3071": {
     "firstSeen": 1786316315545,
@@ -2332,7 +2332,7 @@
     "joinTime": 1787473433659,
     "totalTime": 179108687,
     "sessionCount": 26,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "MyBadAim": {
@@ -2884,7 +2884,7 @@
     "joinTime": 1787482134050,
     "totalTime": 145207160,
     "sessionCount": 18,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "MoodyNewt4634": {
@@ -3276,7 +3276,7 @@
     "joinTime": 1787483634172,
     "totalTime": 29101286,
     "sessionCount": 4,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "QuietOtter0440": {
@@ -3290,10 +3290,10 @@
   "Lord Kaltani": {
     "firstSeen": 1787071114783,
     "joinTime": 1787483634172,
-    "totalTime": 68103248,
+    "totalTime": 69603329,
     "sessionCount": 20,
     "lastSeen": 1787484834210,
-    "isOnline": true
+    "isOnline": false
   },
   "Little Jit": {
     "firstSeen": 1787074714933,
@@ -3316,7 +3316,7 @@
     "joinTime": 1787473733627,
     "totalTime": 211805835,
     "sessionCount": 29,
-    "lastSeen": 1787484834210,
+    "lastSeen": 1787485734259,
     "isOnline": true
   },
   "TripNipMcGee": {
