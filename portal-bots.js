@@ -102,6 +102,7 @@
       document.getElementById('memberTableBody').innerHTML = '<tr><td colspan="4" class="empty-state">Failed to load members</td></tr>';
     });
   }
+  window.refreshMembers = loadMembers;
 
   function loadLOAs() {
     loadJson('deimos_loa.json').then(function(data) {

@@ -117,6 +117,7 @@
         <div class="bot-section-head" onclick="toggleSection('membersSection')">
           <h3>Deimos - Membership Roster</h3>
           <div style="display:flex;align-items:center;gap:12px;">
+            <button class="btn-refresh" onclick="event.stopPropagation();refreshMembers()">Refresh</button>
             <span class="badge" id="memberCount">0</span>
             <span class="toggle-icon">&#9660;</span>
           </div>
@@ -179,6 +180,6 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
-  <script src="portal-bots.js?v=2"></script>
+  <script src="portal-bots.js?v=3"></script>
 </body>
 </html>
