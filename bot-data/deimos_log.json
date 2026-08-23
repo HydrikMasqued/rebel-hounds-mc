@@ -1,6 +1,4 @@
 [
-  "2026-08-21 06:32:06,787 - utils.playtime_database - INFO - Recorded weekly notification for user 361004934184828928 in guild 889005510286786601 (week 2026-34)",
-  "2026-08-21 06:32:06,787 - cogs.playtime_tracker - INFO - User snow3976 reached 6h weekly requirement!",
   "2026-08-21 06:32:08,803 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
   "2026-08-21 06:57:01,541 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 11826 seconds",
   "2026-08-21 06:57:01,542 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 3h 17m",
@@ -198,5 +196,7 @@
   "2026-08-23 06:17:27,499 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
   "2026-08-23 06:17:27,499 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-23 06:23:02,642 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 335 seconds",
-  "2026-08-23 06:23:02,643 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 0h 5m"
+  "2026-08-23 06:23:02,643 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 0h 5m",
+  "2026-08-23 07:02:37,964 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 11613 seconds",
+  "2026-08-23 07:02:37,965 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 3h 13m"
 ]
