@@ -4,8 +4,8 @@
       los_santos: {
         bounds: [[-4000, -4000], [4000, 4000]],
         images: {
-          atlas: '/map-images/atlas_hi.jpg',
-          satellite: '/map-images/satellite_hi.jpg',
+          atlas: '/map-images/satellite_hi.jpg',
+          satellite: '/map-images/atlas_hi.jpg',
           road: '/map-images/road_hi.jpg'
         },
         type: 'image'
@@ -21,7 +21,7 @@
       }
     };
     let currentMap = 'los_santos';
-    let currentLayer = 'satellite';
+    let currentLayer = 'atlas';
 
     // Blip icon glyphs
     const ICON_SVG = {
@@ -109,7 +109,6 @@
     }
 
     function addMapImage() {
-      // Remove existing overlays
       if (map._imageOverlay) { map.removeLayer(map._imageOverlay); map._imageOverlay = null; }
       if (map._tileLayer) { map.removeLayer(map._tileLayer); map._tileLayer = null; }
 
@@ -121,6 +120,8 @@
         attribution: '© CreepPork/GTAV-Maps'
       }).addTo(map);
       map._imageOverlay.bringToBack();
+
+      if (map._gridOverlay) { map._gridOverlay.bringToFront(); }
     }
 
     function syncLayerUI() {
@@ -1011,9 +1012,9 @@
           document.querySelectorAll('.map-switcher-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.map === mapId);
           });
-          currentLayer = 'satellite';
-          const satelliteRadio = document.querySelector('input[name="layer"][value="satellite"]');
-          if (satelliteRadio) satelliteRadio.checked = true;
+          currentLayer = 'atlas';
+          const atlasRadio = document.querySelector('input[name="layer"][value="atlas"]');
+          if (atlasRadio) atlasRadio.checked = true;
           syncLayerUI();
           const cfg = MAP_CONFIGS[currentMap];
           map.setMinZoom(-3);
