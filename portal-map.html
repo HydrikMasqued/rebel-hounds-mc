@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Map - Rebel Hounds MC</title>
   <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="map-styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -129,12 +130,359 @@
 
       <!-- Infomap Panel -->
       <div class="map-panel active" id="panel-infomap">
-        <div class="map-container">
-          <iframe src="https://pens-first-sought-assignments.trycloudflare.com/" title="Rebel Hounds Infomap" allowfullscreen loading="lazy"></iframe>
+        <div class="map-embed" id="mapEmbed">
+  <div id="map"></div>
+
+  <div class="map-switcher">
+    <button class="map-switcher-btn active" data-map="los_santos">Los Santos</button>
+    <button class="map-switcher-btn" data-map="cayo_perico">Cayo Perico</button>
+  </div>
+
+  <div class="map-controls">
+    <button class="map-btn" id="btnLocate" title="Fit map to view">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+        <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+      </svg>
+    </button>
+    <button class="map-btn" id="btnAddBlip" title="Add blip at center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+    </button>
+    <button class="map-btn" id="btnFullscreen" title="Fullscreen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>
+      </svg>
+    </button>
+  </div>
+
+  <button class="theme-toggle" id="btnTheme" title="Toggle dark/light theme">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+  </button>
+
+  <div class="layer-control">
+    <div class="layer-title">Base map</div>
+    <div class="layer-group">
+      <label class="layer-opt checked"><input type="radio" name="layer" value="atlas" checked><span>Atlas</span></label>
+      <label class="layer-opt"><input type="radio" name="layer" value="satellite"><span>Satellite</span></label>
+      <label class="layer-opt"><input type="radio" name="layer" value="road"><span>Road</span></label>
+    </div>
+    <div class="layer-divider"></div>
+    <label class="layer-opt"><input type="checkbox" id="gridToggle"><span>Show grid</span></label>
+  </div>
+
+  <div class="draw-control" id="drawControl">
+    <div class="draw-row">
+      <button class="draw-btn" id="btnDraw" title="Draw on the map">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </button>
+      <button class="draw-btn" id="btnErase" title="Erase (click a line to remove it)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 21H4a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h1"/><path d="M14.5 7.5 4.5 17.5a1.5 1.5 0 0 0 0 2l2 2a1.5 1.5 0 0 0 2 0L20 11a4 4 0 0 0-5.5-3.5z"/><path d="M15 3l6 6"/>
+        </svg>
+      </button>
+      <button class="draw-btn" id="btnClearDraw" title="Clear all drawings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+        </svg>
+      </button>
+      <button class="draw-btn" id="btnUndoDraw" title="Undo last drawing">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 10h10a5 5 0 0 1 0 10H9"/><path d="M3 10l4-4M3 10l4 4"/>
+        </svg>
+      </button>
+      <button class="draw-btn" id="btnExportImg" title="Export map as image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
+        </svg>
+      </button>
+    </div>
+    <div class="draw-row" id="colorRow"></div>
+    <div class="draw-row">
+      <span class="draw-size">Size</span>
+      <input type="range" class="draw-range" id="drawWidthInput" min="1" max="12" value="3" />
+    </div>
+  </div>
+
+  <aside class="sidebar sidebar-transition" id="sidebar">
+    <header class="sidebar-header">
+      <div class="brand">
+        <div class="brand-title">Rebel Hounds</div>
+        <div class="brand-sub">Info Map</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="stat-value" id="statBlips">0</span><span class="stat-label">Blips</span></div>
+        <div class="stat"><span class="stat-value" id="statCategories">0</span><span class="stat-label">Categories</span></div>
+      </div>
+      <img src="map-logo.png" alt="Rebel Hounds" class="brand-logo">
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="blips">Blips</button>
+      <button class="tab" data-tab="categories">Categories</button>
+      <button class="tab" data-tab="import-export">Data</button>
+    </nav>
+
+    <div class="panel active" id="panel-blips">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input type="text" class="search-box" id="searchInput" placeholder="Search blips..." />
+      </div>
+
+      <select class="category-filter" id="categoryFilter">
+        <option value="">All categories</option>
+      </select>
+
+      <div class="coord-display">
+        <span>Center <b id="coordLat">0</b>, <b id="coordLng">0</b></span>
+        <span>Zoom <b id="coordZoom">0</b></span>
+      </div>
+
+      <div class="blip-list" id="blipList"></div>
+    </div>
+
+    <div class="panel" id="panel-categories">
+      <div class="category-list" id="categoryList"></div>
+      <hr>
+      <div class="form-group">
+        <label>New category name</label>
+        <input type="text" id="catName" placeholder="e.g. Safehouses" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Color</label>
+          <input type="color" id="catColor" value="#d4af37" />
         </div>
-        <div class="map-placeholder" id="mapPlaceholder" style="display: none;">
-          <h3>MAP SERVER OFFLINE</h3>
-          <p>The interactive map server is currently unavailable. Contact club leadership to start the map server.</p>
+        <div class="form-group">
+          <label>Icon</label>
+          <select id="catIcon">
+            <option value="marker">Marker</option>
+            <option value="star">Star</option>
+            <option value="diamond">Diamond</option>
+            <option value="car">Car</option>
+            <option value="crosshairs">Crosshairs</option>
+            <option value="home">Home</option>
+            <option value="gamepad">Gamepad</option>
+            <option value="circle">Circle</option>
+            <option value="flag">Flag</option>
+            <option value="skull">Skull</option>
+            <option value="crown">Crown</option>
+            <option value="arrow_up">Arrow up</option>
+            <option value="arrow_up_right">Arrow up-right</option>
+            <option value="arrow_right">Arrow right</option>
+            <option value="arrow_down_right">Arrow down-right</option>
+            <option value="arrow_down">Arrow down</option>
+            <option value="arrow_down_left">Arrow down-left</option>
+            <option value="arrow_left">Arrow left</option>
+            <option value="arrow_up_left">Arrow up-left</option>
+            <option value="infantry">Infantry</option>
+            <option value="medic">Medic</option>
+            <option value="target">Target</option>
+            <option value="alert">Alert</option>
+            <option value="shield">Shield</option>
+            <option value="plane">Plane</option>
+            <option value="eye">Recon (eye)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="btnAddCategory">Add Category</button>
+    </div>
+
+    <div class="panel" id="panel-import-export">
+      <div class="import-export">
+        <button class="btn btn-primary" id="btnExport">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>
+          </svg>
+          Export All Data
+        </button>
+        <div class="form-group">
+          <label>Import JSON</label>
+          <input type="file" id="importFile" accept=".json" />
+        </div>
+        <button class="btn btn-secondary" id="btnImport" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15V3M7 8l5-5 5 5M4 21h16"/>
+          </svg>
+          Import Selected File
+        </button>
+        <hr>
+        <button class="btn btn-danger" id="btnClearAll">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18M8 6V4h8v2m3 0-1 14H6L5 6"/>
+          </svg>
+          Clear All Blips
+        </button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div id="blipForm" style="display: none;">
+      <h3 class="form-title">New Blip</h3>
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" id="blipName" placeholder="e.g. Hidden Package" required />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="blipDesc" rows="2" placeholder="Optional details..."></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Y (north) *</label>
+          <input type="number" step="any" id="blipLat" placeholder="-1000.5" required />
+        </div>
+        <div class="form-group">
+          <label>X (east) *</label>
+          <input type="number" step="any" id="blipLng" placeholder="2500.3" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <div class="cat-field">
+          <select id="blipCategory"><option value="">None</option></select>
+          <button type="button" class="btn-new-cat" id="blipNewCat">+ New</button>
+        </div>
+        <div class="new-cat-form" id="blipNewCatForm">
+          <input type="text" id="blipCatName" placeholder="New category name" />
+          <div class="new-cat-row">
+            <input type="color" id="blipCatColor" value="#d4af37" title="Category color" />
+            <select id="blipCatIcon">
+              <option value="marker">Marker</option>
+              <option value="star">Star</option>
+              <option value="diamond">Diamond</option>
+              <option value="car">Car</option>
+              <option value="crosshairs">Crosshairs</option>
+              <option value="home">Home</option>
+              <option value="gamepad">Gamepad</option>
+              <option value="circle">Circle</option>
+              <option value="flag">Flag</option>
+              <option value="skull">Skull</option>
+              <option value="crown">Crown</option>
+              <option value="arrow_up">Arrow up</option>
+              <option value="arrow_up_right">Arrow up-right</option>
+              <option value="arrow_right">Arrow right</option>
+              <option value="arrow_down_right">Arrow down-right</option>
+              <option value="arrow_down">Arrow down</option>
+              <option value="arrow_down_left">Arrow down-left</option>
+              <option value="arrow_left">Arrow left</option>
+              <option value="arrow_up_left">Arrow up-left</option>
+              <option value="infantry">Infantry</option>
+              <option value="medic">Medic</option>
+              <option value="target">Target</option>
+              <option value="alert">Alert</option>
+              <option value="shield">Shield</option>
+              <option value="plane">Plane</option>
+              <option value="eye">Recon (eye)</option>
+            </select>
+          </div>
+          <div class="new-cat-actions">
+            <button class="btn btn-primary" id="blipCatSave">Add</button>
+            <button class="btn btn-secondary" id="blipCatCancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btnSaveBlip">Save Blip</button>
+        <button class="btn btn-secondary" id="btnCancelBlip">Cancel</button>
+      </div>
+    </div>
+
+    <div id="blipEditForm" style="display: none;">
+      <h3 class="form-title">Edit Blip</h3>
+      <input type="hidden" id="editBlipId" />
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" id="editBlipName" required />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="editBlipDesc" rows="2"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Y (north) *</label>
+          <input type="number" step="any" id="editBlipLat" required />
+        </div>
+        <div class="form-group">
+          <label>X (east) *</label>
+          <input type="number" step="any" id="editBlipLng" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <div class="cat-field">
+          <select id="editBlipCategory"><option value="">None</option></select>
+          <button type="button" class="btn-new-cat" id="editNewCat">+ New</button>
+        </div>
+        <div class="new-cat-form" id="editNewCatForm">
+          <input type="text" id="editCatName" placeholder="New category name" />
+          <div class="new-cat-row">
+            <input type="color" id="editCatColor" value="#d4af37" title="Category color" />
+            <select id="editCatIcon">
+              <option value="marker">Marker</option>
+              <option value="star">Star</option>
+              <option value="diamond">Diamond</option>
+              <option value="car">Car</option>
+              <option value="crosshairs">Crosshairs</option>
+              <option value="home">Home</option>
+              <option value="gamepad">Gamepad</option>
+              <option value="circle">Circle</option>
+              <option value="flag">Flag</option>
+              <option value="skull">Skull</option>
+              <option value="crown">Crown</option>
+              <option value="arrow_up">Arrow up</option>
+              <option value="arrow_up_right">Arrow up-right</option>
+              <option value="arrow_right">Arrow right</option>
+              <option value="arrow_down_right">Arrow down-right</option>
+              <option value="arrow_down">Arrow down</option>
+              <option value="arrow_down_left">Arrow down-left</option>
+              <option value="arrow_left">Arrow left</option>
+              <option value="arrow_up_left">Arrow up-left</option>
+              <option value="infantry">Infantry</option>
+              <option value="medic">Medic</option>
+              <option value="target">Target</option>
+              <option value="alert">Alert</option>
+              <option value="shield">Shield</option>
+              <option value="plane">Plane</option>
+              <option value="eye">Recon (eye)</option>
+            </select>
+          </div>
+          <div class="new-cat-actions">
+            <button class="btn btn-primary" id="editCatSave">Add</button>
+            <button class="btn btn-secondary" id="editCatCancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Icon</label>
+        <div class="icon-picker" id="editIconPicker"></div>
+      </div>
+      <div class="form-group">
+        <label>Angle <span id="editAngleVal">0&deg;</span></label>
+        <input type="range" id="editAngle" min="0" max="359" value="0" />
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btnUpdateBlip">Update Blip</button>
+        <button class="btn btn-secondary" id="btnCancelEdit">Cancel</button>
+      </div>
+      <button class="btn btn-danger" id="btnDeleteBlip" style="margin-top: 10px;">Delete Blip</button>
+    </div>
+  </aside>
+
+  <button class="sidebar-toggle" id="btnSidebarToggle" title="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
         </div>
       </div>
 
@@ -172,6 +520,9 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
+  <script src="map-app.js"></script>
   <script>
     // Map tab switching
     document.querySelectorAll('.map-tab').forEach(function(tab) {
