@@ -1,8 +1,4 @@
 [
-  "2026-08-23 20:23:49,387 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-08-23 20:23:49,387 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-23 20:24:04,541 - utils.playtime_database - INFO - Started vital session for user 260165392209674250 in guild 889005510286786601",
-  "2026-08-23 20:24:04,541 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-23 20:24:15,843 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-23 20:24:15,843 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-23 20:24:33,009 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
@@ -198,5 +194,9 @@
   "2026-08-24 23:02:35,876 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-24 23:02:35,876 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-24 23:02:44,559 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 8 seconds",
-  "2026-08-24 23:02:44,559 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 0m"
+  "2026-08-24 23:02:44,559 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 0m",
+  "2026-08-24 23:41:23,237 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
+  "2026-08-24 23:41:23,237 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-24 23:49:18,832 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-08-24 23:49:18,833 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
