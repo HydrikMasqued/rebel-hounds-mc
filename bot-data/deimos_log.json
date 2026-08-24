@@ -1,7 +1,4 @@
 [
-  "2026-08-23 18:59:30,476 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 3h 3m",
-  "2026-08-23 18:59:35,766 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 6006 seconds",
-  "2026-08-23 18:59:35,767 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 1h 40m",
   "2026-08-23 18:59:42,706 - utils.playtime_database - INFO - Ended vital session for user 260165392209674250: 12298 seconds",
   "2026-08-23 18:59:42,707 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 3h 24m",
   "2026-08-23 18:59:47,653 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 5034 seconds",
@@ -198,5 +195,8 @@
   "2026-08-24 14:19:52,051 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-24 15:58:42,644 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
   "2026-08-24 17:05:08,467 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 9916 seconds",
-  "2026-08-24 17:05:08,467 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 2h 45m"
+  "2026-08-24 17:05:08,467 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 2h 45m",
+  "2026-08-24 17:25:36,327 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
+  "2026-08-24 17:45:15,537 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
+  "2026-08-24 17:45:15,537 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
