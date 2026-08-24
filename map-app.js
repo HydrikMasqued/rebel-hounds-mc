@@ -710,15 +710,137 @@
       }
     }
 
-    // API functions
+    // API functions - localStorage fallback when no backend
     var MAP_API_BASE = window.MAP_API_BASE || '';
-    async function api(endpoint, options = {}) {
-      var res = await fetch(MAP_API_BASE + '/api' + endpoint, {
-        headers: { 'Content-Type': 'application/json' },
-        ...options
-      });
-      if (!res.ok) throw new Error(await res.text());
-      return res.json();
+    var LS_KEY = 'rhmc_map_';
+    function lsGet(k) { try { return JSON.parse(localStorage.getItem(LS_KEY + k)) || []; } catch(e) { return []; } }
+    function lsSet(k, v) { localStorage.setItem(LS_KEY + k, JSON.stringify(v)); }
+    var nextId = { blips: 100, categories: 100, drawings: 100 };
+    function lsNextId(type) {
+      var items = lsGet(type);
+      var max = 0;
+      items.forEach(function(i) { if (i.id > max) max = i.id; });
+      return Math.max(max + 1, nextId[type]++);
+    }
+
+    async function api(endpoint, options) {
+      if (MAP_API_BASE) {
+        try {
+          var res = await fetch(MAP_API_BASE + '/api' + endpoint, {
+            headers: { 'Content-Type': 'application/json' },
+            ...(options || {})
+          });
+          if (!res.ok) throw new Error(await res.text());
+          return res.json();
+        } catch(e) { /* fall through to localStorage */ }
+      }
+      return lsApi(endpoint, options);
+    }
+
+    function lsApi(endpoint, options) {
+      var method = (options && options.method) || 'GET';
+      var body = options && options.body ? JSON.parse(options.body) : null;
+      var parts = endpoint.replace(/^\//, '').split('/');
+      var resource = parts[0];
+      var id = parts[1] ? parseInt(parts[1]) : null;
+
+      if (resource === 'blips') {
+        var items = lsGet('blips');
+        if (method === 'GET' && !id) {
+          var cat = new URLSearchParams(endpoint.split('?')[1]).get('category');
+          var result = items;
+          if (cat) result = result.filter(function(b) { return b.category_id === parseInt(cat); });
+          return Promise.resolve(result);
+        }
+        if (method === 'GET' && id) {
+          return Promise.resolve(items.find(function(b) { return b.id === id; }) || null);
+        }
+        if (method === 'POST') {
+          var blip = Object.assign({ id: lsNextId('blips'), created_at: new Date().toISOString(), updated_at: new Date().toISOString() }, body);
+          items.push(blip);
+          lsSet('blips', items);
+          return Promise.resolve(blip);
+        }
+        if (method === 'PUT' && id) {
+          var idx = items.findIndex(function(b) { return b.id === id; });
+          if (idx !== -1) { items[idx] = Object.assign(items[idx], body, { updated_at: new Date().toISOString() }); }
+          lsSet('blips', items);
+          return Promise.resolve(items[idx]);
+        }
+        if (method === 'DELETE' && id) {
+          lsSet('blips', items.filter(function(b) { return b.id !== id; }));
+          return Promise.resolve({ success: true });
+        }
+      }
+
+      if (resource === 'categories') {
+        var cats = lsGet('categories');
+        if (method === 'GET' && !id) return Promise.resolve(cats);
+        if (method === 'GET' && id) return Promise.resolve(cats.find(function(c) { return c.id === id; }) || null);
+        if (method === 'POST') {
+          var cat2 = Object.assign({ id: lsNextId('categories') }, body);
+          cats.push(cat2);
+          lsSet('categories', cats);
+          return Promise.resolve(cat2);
+        }
+        if (method === 'PUT' && id) {
+          var ci = cats.findIndex(function(c) { return c.id === id; });
+          if (ci !== -1) cats[ci] = Object.assign(cats[ci], body);
+          lsSet('categories', cats);
+          return Promise.resolve(cats[ci]);
+        }
+        if (method === 'DELETE' && id) {
+          lsSet('categories', cats.filter(function(c) { return c.id !== id; }));
+          return Promise.resolve({ success: true });
+        }
+      }
+
+      if (resource === 'drawings') {
+        var drs = lsGet('drawings');
+        if (method === 'GET') return Promise.resolve(drs);
+        if (method === 'POST') {
+          var dr = Object.assign({ id: lsNextId('drawings'), created_at: new Date().toISOString() }, body);
+          drs.push(dr);
+          lsSet('drawings', drs);
+          return Promise.resolve(dr);
+        }
+        if (method === 'DELETE' && id) {
+          lsSet('drawings', drs.filter(function(d) { return d.id !== id; }));
+          return Promise.resolve({ success: true });
+        }
+        if (method === 'DELETE' && !id) {
+          lsSet('drawings', []);
+          return Promise.resolve({ success: true });
+        }
+      }
+
+      if (resource === 'export' && method === 'GET') {
+        return Promise.resolve({ blips: lsGet('blips'), categories: lsGet('categories'), exportedAt: new Date().toISOString() });
+      }
+      if (resource === 'import' && method === 'POST') {
+        var data = body || {};
+        var cats2 = lsGet('categories');
+        var blips2 = lsGet('blips');
+        if (data.categories) data.categories.forEach(function(c) {
+          if (!cats2.find(function(e) { return e.name === c.name; })) cats2.push(Object.assign({ id: lsNextId('categories') }, c));
+        });
+        if (data.blips) data.blips.forEach(function(b) {
+          blips2.push(Object.assign({ id: lsNextId('blips'), created_at: new Date().toISOString(), updated_at: new Date().toISOString() }, b));
+        });
+        lsSet('categories', cats2);
+        lsSet('blips', blips2);
+        return Promise.resolve({ success: true, imported: (data.blips || []).length });
+      }
+
+      if (resource === 'search') {
+        var all = lsGet('blips');
+        var q = (parts[1] || '').toLowerCase();
+        return Promise.resolve(all.filter(function(b) {
+          return b.name.toLowerCase().includes(q) || (b.description || '').toLowerCase().includes(q);
+        }));
+      }
+
+      return Promise.reject(new Error('Unknown endpoint: ' + endpoint));
     }
 
     async function loadData() {
