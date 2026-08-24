@@ -21,7 +21,7 @@
       }
     };
     let currentMap = 'los_santos';
-    let currentLayer = 'atlas';
+    let currentLayer = 'satellite';
 
     // Blip icon glyphs
     const ICON_SVG = {
@@ -1011,9 +1011,9 @@
           document.querySelectorAll('.map-switcher-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.map === mapId);
           });
-          currentLayer = 'atlas';
-          const atlasRadio = document.querySelector('input[name="layer"][value="atlas"]');
-          if (atlasRadio) atlasRadio.checked = true;
+          currentLayer = 'satellite';
+          const satelliteRadio = document.querySelector('input[name="layer"][value="satellite"]');
+          if (satelliteRadio) satelliteRadio.checked = true;
           syncLayerUI();
           const cfg = MAP_CONFIGS[currentMap];
           map.setMinZoom(-3);
