@@ -4,8 +4,8 @@
       los_santos: {
         bounds: [[-4000, -4000], [4000, 4000]],
         images: {
-          atlas: '/map-images/atlas_hi.jpg',
-          satellite: '/map-images/satellite_hi.jpg',
+          atlas: '/map-images/satellite_hi.jpg',
+          satellite: '/map-images/atlas_hi.jpg',
           road: '/map-images/road_hi.jpg'
         },
         type: 'image'
@@ -13,8 +13,8 @@
       cayo_perico: {
         bounds: [[-5400, 3700], [-4150, 4950]],
         images: {
-          atlas: '/map-images/cayo_perico_atlas.jpg',
-          satellite: '/map-images/cayo_perico_satellite.jpg',
+          atlas: '/map-images/cayo_perico_satellite.jpg',
+          satellite: '/map-images/cayo_perico_atlas.jpg',
           road: '/map-images/cayo_perico_road.jpg'
         },
         type: 'image'
@@ -1167,5 +1167,34 @@
           document.getElementById('btnAddBlip').title = 'Add blip at center';
         }
       });
+
+      // Make layer control draggable
+      (function() {
+        var lc = document.querySelector('.layer-control');
+        if (!lc) return;
+        var dragging = false, startX, startY, origLeft, origTop;
+        lc.style.cursor = 'grab';
+        lc.addEventListener('mousedown', function(e) {
+          if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL' || e.target.closest('label')) return;
+          dragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          origLeft = lc.offsetLeft;
+          origTop = lc.offsetTop;
+          lc.style.cursor = 'grabbing';
+          e.preventDefault();
+        });
+        document.addEventListener('mousemove', function(e) {
+          if (!dragging) return;
+          var dx = e.clientX - startX;
+          var dy = e.clientY - startY;
+          lc.style.left = (origLeft + dx) + 'px';
+          lc.style.top = (origTop + dy) + 'px';
+          lc.style.right = 'auto';
+        });
+        document.addEventListener('mouseup', function() {
+          if (dragging) { dragging = false; lc.style.cursor = 'grab'; }
+        });
+      })();
     });
 })();
