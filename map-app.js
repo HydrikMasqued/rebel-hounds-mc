@@ -4,8 +4,8 @@
       los_santos: {
         bounds: [[-4000, -4000], [4000, 4000]],
         images: {
-          atlas: '/map-images/satellite_hi.jpg',
-          satellite: '/map-images/atlas_hi.jpg',
+          atlas: '/map-images/atlas_hi.jpg',
+          satellite: '/map-images/satellite_hi.jpg',
           road: '/map-images/road_hi.jpg'
         },
         type: 'image'
@@ -13,8 +13,8 @@
       cayo_perico: {
         bounds: [[-5400, 3700], [-4150, 4950]],
         images: {
-          atlas: '/map-images/cayo_perico_satellite.jpg',
-          satellite: '/map-images/cayo_perico_atlas.jpg',
+          atlas: '/map-images/cayo_perico_atlas.jpg',
+          satellite: '/map-images/cayo_perico_satellite.jpg',
           road: '/map-images/cayo_perico_road.jpg'
         },
         type: 'image'
