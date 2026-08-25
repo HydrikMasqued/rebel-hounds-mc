@@ -1,7 +1,4 @@
 [
-  "2026-08-23 23:14:22,391 - utils.database - INFO - Shared database connection established",
-  "2026-08-23 23:14:22,396 - utils.database - INFO - Database tables initialized successfully",
-  "2026-08-23 23:14:22,396 - __main__ - INFO - Database initialized in setup hook",
   "2026-08-23 23:14:22,403 - __main__ - INFO - Successfully loaded cogs.loa_system",
   "2026-08-23 23:14:22,405 - __main__ - INFO - Successfully loaded cogs.membership",
   "2026-08-23 23:14:22,407 - __main__ - INFO - Successfully loaded cogs.contributions",
@@ -198,5 +195,8 @@
   "2026-08-25 05:30:53,391 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
   "2026-08-25 05:30:53,391 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-25 05:56:51,055 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 1557 seconds",
-  "2026-08-25 05:56:51,055 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 25m"
+  "2026-08-25 05:56:51,055 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 25m",
+  "2026-08-25 06:12:04,338 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 2478 seconds",
+  "2026-08-25 06:12:04,339 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 0h 41m",
+  "2026-08-25 06:41:46,307 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57."
 ]
