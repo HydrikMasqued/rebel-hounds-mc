@@ -1,9 +1,4 @@
 [
-  "2026-08-25 15:53:17,399 - cogs.church_tracker - INFO - Church tracker unloaded",
-  "2026-08-25 15:53:17,399 - __main__ - INFO - Bot shutdown complete",
-  "2026-08-25 15:53:20,880 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported",
-  "2026-08-25 15:53:20,881 - discord.client - WARNING - davey is not installed, voice will NOT be supported",
-  "2026-08-25 15:53:20,881 - utils.database - INFO - Database manager initialized with path: data/thanatos.db",
   "2026-08-25 15:53:20,881 - __main__ - INFO - Database manager initialized",
   "2026-08-25 15:53:20,882 - __main__ - INFO - Time parser initialized",
   "2026-08-25 15:53:20,882 - __main__ - INFO - LOA notification manager initialized",
@@ -198,5 +193,10 @@
   "2026-08-25 19:23:28,333 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-25 19:39:07,219 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 996 seconds",
   "2026-08-25 19:39:07,219 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jayreaper: 0h 16m",
-  "2026-08-25 19:48:23,086 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 111d3404dd881b71a4cdde4bb673a881."
+  "2026-08-25 19:48:23,086 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 111d3404dd881b71a4cdde4bb673a881.",
+  "2026-08-25 20:39:14,134 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 111d3404dd881b71a4cdde4bb673a881.",
+  "2026-08-25 20:39:32,565 - utils.playtime_database - INFO - Ended vital session for user 361581703355039745: 4602 seconds",
+  "2026-08-25 20:39:32,565 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jokerb: 1h 16m",
+  "2026-08-25 20:40:10,540 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 4602 seconds",
+  "2026-08-25 20:40:10,540 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 1h 16m"
 ]
