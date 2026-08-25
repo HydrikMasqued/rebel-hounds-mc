@@ -1,5 +1,4 @@
 [
-  "2026-08-23 23:14:21,959 - discord.client - WARNING - davey is not installed, voice will NOT be supported",
   "2026-08-23 23:14:21,959 - utils.database - INFO - Database manager initialized with path: data/thanatos.db",
   "2026-08-23 23:14:21,959 - __main__ - INFO - Database manager initialized",
   "2026-08-23 23:14:21,960 - __main__ - INFO - Time parser initialized",
@@ -198,5 +197,6 @@
   "2026-08-25 03:41:32,257 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 1h 53m",
   "2026-08-25 03:46:25,844 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 14702 seconds",
   "2026-08-25 03:46:25,845 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 4h 5m",
-  "2026-08-25 03:50:23,124 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57."
+  "2026-08-25 03:50:23,124 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
+  "2026-08-25 04:14:08,144 - cogs.membership - INFO - Updated member Besnik Hoxha with rank Full Patch"
 ]
