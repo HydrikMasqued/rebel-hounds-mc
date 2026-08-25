@@ -385,19 +385,19 @@
   },
   "bobby": {
     "firstSeen": 1786220865435,
-    "joinTime": 1787599439972,
+    "joinTime": 1787660042859,
     "totalTime": 439567106,
-    "sessionCount": 40,
-    "lastSeen": 1787627341236,
-    "isOnline": false
+    "sessionCount": 41,
+    "lastSeen": 1787660042859,
+    "isOnline": true
   },
   "Maryn-MacLeod": {
     "firstSeen": 1786221165443,
     "joinTime": 1787646542244,
-    "totalTime": 631875646,
+    "totalTime": 645376261,
     "sessionCount": 81,
-    "lastSeen": 1787658242738,
-    "isOnline": true
+    "lastSeen": 1787659742850,
+    "isOnline": false
   },
   "SumTingWong": {
     "firstSeen": 1786221165443,
@@ -444,7 +444,7 @@
     "joinTime": 1787654942623,
     "totalTime": 452421351,
     "sessionCount": 38,
-    "lastSeen": 1787658242738,
+    "lastSeen": 1787660042859,
     "isOnline": true
   },
   "FartinLutherKing": {
@@ -988,7 +988,7 @@
     "joinTime": 1787647742270,
     "totalTime": 511270893,
     "sessionCount": 63,
-    "lastSeen": 1787658242738,
+    "lastSeen": 1787660042859,
     "isOnline": true
   },
   "Nacho": {
@@ -1194,10 +1194,10 @@
   "Quakehammer178TTV": {
     "firstSeen": 1786236166193,
     "joinTime": 1787655842671,
-    "totalTime": 481062371,
+    "totalTime": 484662525,
     "sessionCount": 48,
-    "lastSeen": 1787658242738,
-    "isOnline": true
+    "lastSeen": 1787659142809,
+    "isOnline": false
   },
   "Kat": {
     "firstSeen": 1786236766219,
@@ -1492,7 +1492,7 @@
     "joinTime": 1787646242218,
     "totalTime": 497424343,
     "sessionCount": 33,
-    "lastSeen": 1787658242738,
+    "lastSeen": 1787660042859,
     "isOnline": true
   },
   "El Churro": {
@@ -1556,7 +1556,7 @@
     "joinTime": 1787648042295,
     "totalTime": 391819498,
     "sessionCount": 50,
-    "lastSeen": 1787658242738,
+    "lastSeen": 1787660042859,
     "isOnline": true
   },
   "Air Fryer": {
@@ -2500,7 +2500,7 @@
     "joinTime": 1787647742270,
     "totalTime": 433820779,
     "sessionCount": 68,
-    "lastSeen": 1787658242738,
+    "lastSeen": 1787660042859,
     "isOnline": true
   },
   "SharpAnt6013": {
