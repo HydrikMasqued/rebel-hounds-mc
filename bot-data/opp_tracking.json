@@ -1,11 +1,11 @@
 {
   "8284": {
     "firstSeen": 1786944509016,
-    "joinTime": 1787639341870,
+    "joinTime": 1787648642329,
     "totalTime": 51902755,
-    "sessionCount": 9,
-    "lastSeen": 1787645042183,
-    "isOnline": false
+    "sessionCount": 10,
+    "lastSeen": 1787648942347,
+    "isOnline": true
   },
   "S": {
     "joinTime": 1787445232361,
@@ -122,10 +122,10 @@
   "DonBig$": {
     "firstSeen": 1786218278786,
     "joinTime": 1787646242218,
-    "totalTime": 827763327,
+    "totalTime": 830463456,
     "sessionCount": 59,
-    "lastSeen": 1787646542244,
-    "isOnline": true
+    "lastSeen": 1787648642329,
+    "isOnline": false
   },
   "taylordanie11e": {
     "firstSeen": 1786218278786,
@@ -162,10 +162,10 @@
   "testiclelyspeaking": {
     "firstSeen": 1786218278786,
     "joinTime": 1787646242218,
-    "totalTime": 356349631,
+    "totalTime": 357549677,
     "sessionCount": 54,
-    "lastSeen": 1787646542244,
-    "isOnline": true
+    "lastSeen": 1787647142264,
+    "isOnline": false
   },
   "Miles Mercer": {
     "firstSeen": 1786218278786,
@@ -396,7 +396,7 @@
     "joinTime": 1787646542244,
     "totalTime": 631875646,
     "sessionCount": 81,
-    "lastSeen": 1787646542244,
+    "lastSeen": 1787648942347,
     "isOnline": true
   },
   "SumTingWong": {
@@ -985,11 +985,11 @@
   },
   "Chapo": {
     "firstSeen": 1786232866010,
-    "joinTime": 1787636041684,
+    "joinTime": 1787647742270,
     "totalTime": 511270893,
-    "sessionCount": 62,
-    "lastSeen": 1787645042183,
-    "isOnline": false
+    "sessionCount": 63,
+    "lastSeen": 1787648942347,
+    "isOnline": true
   },
   "Nacho": {
     "firstSeen": 1786232866010,
@@ -1329,10 +1329,10 @@
   },
   "Cherry": {
     "firstSeen": 1786244012314,
-    "joinTime": 1787638741809,
-    "totalTime": 295605426,
-    "sessionCount": 36,
-    "lastSeen": 1787645042183,
+    "joinTime": 1787647142264,
+    "totalTime": 297105491,
+    "sessionCount": 37,
+    "lastSeen": 1787648342344,
     "isOnline": false
   },
   "Bigmac MeS": {
@@ -1492,7 +1492,7 @@
     "joinTime": 1787646242218,
     "totalTime": 497424343,
     "sessionCount": 33,
-    "lastSeen": 1787646542244,
+    "lastSeen": 1787648942347,
     "isOnline": true
   },
   "El Churro": {
@@ -1553,11 +1553,11 @@
   },
   "CJayded 𖹭": {
     "firstSeen": 1786259313098,
-    "joinTime": 1787636941737,
+    "joinTime": 1787648042295,
     "totalTime": 391819498,
-    "sessionCount": 49,
-    "lastSeen": 1787644742180,
-    "isOnline": false
+    "sessionCount": 50,
+    "lastSeen": 1787648942347,
+    "isOnline": true
   },
   "Air Fryer": {
     "firstSeen": 1786260813185,
@@ -1569,11 +1569,11 @@
   },
   "Higgs96": {
     "firstSeen": 1786264713321,
-    "joinTime": 1787168919199,
+    "joinTime": 1787647142264,
     "totalTime": 87604416,
-    "sessionCount": 18,
-    "lastSeen": 1787186020033,
-    "isOnline": false
+    "sessionCount": 19,
+    "lastSeen": 1787648942347,
+    "isOnline": true
   },
   "Munch": {
     "firstSeen": 1786265313363,
@@ -2289,11 +2289,11 @@
   },
   "Jax_Ryouken": {
     "firstSeen": 1786418583264,
-    "joinTime": 1787325226625,
+    "joinTime": 1787648042295,
     "totalTime": 3300115,
-    "sessionCount": 3,
-    "lastSeen": 1787327026661,
-    "isOnline": false
+    "sessionCount": 4,
+    "lastSeen": 1787648942347,
+    "isOnline": true
   },
   "Zob Rombie": {
     "firstSeen": 1786419783328,
@@ -2314,10 +2314,10 @@
   "Occultinq | Twitch": {
     "firstSeen": 1786424283480,
     "joinTime": 1787646242218,
-    "totalTime": 57602808,
+    "totalTime": 59402885,
     "sessionCount": 11,
-    "lastSeen": 1787646542244,
-    "isOnline": true
+    "lastSeen": 1787647742270,
+    "isOnline": false
   },
   "psych0": {
     "firstSeen": 1786442884496,
@@ -2332,7 +2332,7 @@
     "joinTime": 1787646242218,
     "totalTime": 248112123,
     "sessionCount": 31,
-    "lastSeen": 1787646542244,
+    "lastSeen": 1787648942347,
     "isOnline": true
   },
   "MyBadAim": {
@@ -2497,11 +2497,11 @@
   },
   "Yellow": {
     "firstSeen": 1786499887307,
-    "joinTime": 1787622841033,
+    "joinTime": 1787647742270,
     "totalTime": 433820779,
-    "sessionCount": 67,
-    "lastSeen": 1787645042183,
-    "isOnline": false
+    "sessionCount": 68,
+    "lastSeen": 1787648942347,
+    "isOnline": true
   },
   "SharpAnt6013": {
     "firstSeen": 1786501387356,
@@ -2897,11 +2897,11 @@
   },
   "Chuleta": {
     "firstSeen": 1786743199166,
-    "joinTime": 1787606940265,
+    "joinTime": 1787648342344,
     "totalTime": 470122472,
-    "sessionCount": 51,
-    "lastSeen": 1787644442163,
-    "isOnline": false
+    "sessionCount": 52,
+    "lastSeen": 1787648942347,
+    "isOnline": true
   },
   "Dontah": {
     "firstSeen": 1786749499494,
@@ -3044,7 +3044,7 @@
     "joinTime": 1787646542244,
     "totalTime": 161107830,
     "sessionCount": 25,
-    "lastSeen": 1787646542244,
+    "lastSeen": 1787648942347,
     "isOnline": true
   },
   "BreezyToad3170": {
@@ -3609,11 +3609,11 @@
   },
   "ShyCrab2095": {
     "firstSeen": 1787380729216,
-    "joinTime": 1787646542244,
-    "totalTime": 26701318,
-    "sessionCount": 9,
-    "lastSeen": 1787646542244,
-    "isOnline": true
+    "joinTime": 1787647742270,
+    "totalTime": 27901363,
+    "sessionCount": 10,
+    "lastSeen": 1787647742270,
+    "isOnline": false
   },
   "SlowNewt2745": {
     "firstSeen": 1787380729216,
