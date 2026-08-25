@@ -1,8 +1,4 @@
 [
-  "2026-08-25 15:53:24,451 - cogs.thread_management - INFO - Due-task check loop is ready",
-  "2026-08-25 15:53:24,452 - __main__ - INFO - LOA expiration check task is ready to start",
-  "2026-08-25 15:53:24,452 - __main__ - INFO - Deimos#9516 has landed! (ID: 1408590443608019035)",
-  "2026-08-25 15:53:24,452 - __main__ - INFO - Bot is ready and connected to 2 guild(s)",
   "2026-08-25 15:53:24,452 - utils.database - INFO - Initializing database tables",
   "2026-08-25 15:53:24,456 - cogs.church_tracker - INFO - Reconciled church session 4: 0 member(s) currently in 𝐑𝐨𝐮𝐧𝐝𝐭𝐚𝐛𝐥𝐞",
   "2026-08-25 15:53:24,459 - utils.database - INFO - Database tables initialized successfully",
@@ -198,5 +194,9 @@
   "2026-08-25 22:58:54,729 - utils.playtime_database - INFO - Started vital session for user 260165392209674250 in guild 889005510286786601",
   "2026-08-25 22:58:54,729 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-25 22:58:56,388 - utils.playtime_database - INFO - Started vital session for user 181143017619587073 in guild 889005510286786601",
-  "2026-08-25 22:58:56,388 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-25 22:58:56,388 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-25 23:36:14,559 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 8342 seconds",
+  "2026-08-25 23:36:14,560 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 2h 19m",
+  "2026-08-25 23:40:12,364 - utils.playtime_database - INFO - Ended vital session for user 260165392209674250: 2477 seconds",
+  "2026-08-25 23:40:12,364 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 0h 41m"
 ]
