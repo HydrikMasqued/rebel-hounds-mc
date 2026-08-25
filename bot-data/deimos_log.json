@@ -1,9 +1,4 @@
 [
-  "2026-08-23 23:14:21,959 - utils.database - INFO - Database manager initialized with path: data/thanatos.db",
-  "2026-08-23 23:14:21,959 - __main__ - INFO - Database manager initialized",
-  "2026-08-23 23:14:21,960 - __main__ - INFO - Time parser initialized",
-  "2026-08-23 23:14:21,960 - __main__ - INFO - LOA notification manager initialized",
-  "2026-08-23 23:14:21,960 - __main__ - INFO - Starting Thanatos Bot...",
   "2026-08-23 23:14:21,960 - discord.client - INFO - logging in using static token",
   "2026-08-23 23:14:22,388 - utils.database - INFO - Initializing database tables",
   "2026-08-23 23:14:22,391 - utils.database - INFO - Shared database connection established",
@@ -198,5 +193,10 @@
   "2026-08-25 03:46:25,844 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 14702 seconds",
   "2026-08-25 03:46:25,845 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 4h 5m",
   "2026-08-25 03:50:23,124 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
-  "2026-08-25 04:14:08,144 - cogs.membership - INFO - Updated member Besnik Hoxha with rank Full Patch"
+  "2026-08-25 04:14:08,144 - cogs.membership - INFO - Updated member Besnik Hoxha with rank Full Patch",
+  "2026-08-25 05:11:07,314 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
+  "2026-08-25 05:30:46,104 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
+  "2026-08-25 05:30:46,105 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-25 05:30:53,391 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
+  "2026-08-25 05:30:53,391 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
