@@ -1,6 +1,4 @@
 [
-  "2026-08-25 15:53:21,555 - __main__ - INFO - Successfully loaded cogs.thread_management",
-  "2026-08-25 15:53:21,558 - __main__ - INFO - Successfully loaded cogs.role_manager",
   "2026-08-25 15:53:21,561 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
   "2026-08-25 15:53:21,561 - cogs.church_tracker - INFO - Loaded church config - Roundtable VC: 1272947209612296304, confirm timeout: 10m",
   "2026-08-25 15:53:21,561 - cogs.church_tracker - INFO - Church tracker initialized",
@@ -198,5 +196,7 @@
   "2026-08-25 22:11:57,463 - utils.playtime_database - INFO - Started vital session for user 1298057206465298446 in guild 889005510286786601",
   "2026-08-25 22:11:57,463 - cogs.playtime_tracker - INFO - Started vital playtime tracking for legendlong62 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-25 22:15:38,769 - utils.playtime_database - INFO - Started vital session for user 181143017619587073 in guild 889005510286786601",
-  "2026-08-25 22:15:38,769 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-25 22:15:38,769 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-25 22:36:00,430 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
+  "2026-08-25 22:36:00,431 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
