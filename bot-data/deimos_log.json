@@ -1,7 +1,4 @@
 [
-  "2026-08-25 15:53:21,543 - cogs.playtime_tracker - INFO - Playtime database initialized",
-  "2026-08-25 15:53:21,543 - cogs.playtime_tracker - INFO - Monthly reset task started",
-  "2026-08-25 15:53:21,543 - __main__ - INFO - Successfully loaded cogs.playtime_tracker",
   "2026-08-25 15:53:21,552 - cogs.contribution_verification - INFO - Loaded contribution config - Channel: 1469837549416485015, Leadership: 1512987446483222639",
   "2026-08-25 15:53:21,552 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
   "2026-08-25 15:53:21,552 - cogs.contribution_verification - INFO - Contribution timeout check task started",
@@ -198,5 +195,8 @@
   "2026-08-25 21:27:35,162 - utils.playtime_database - INFO - Started vital session for user 516233696844578846 in guild 889005510286786601",
   "2026-08-25 21:27:35,162 - cogs.playtime_tracker - INFO - Started vital playtime tracking for thorikan in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-25 21:27:47,185 - utils.playtime_database - INFO - Started vital session for user 580324615583170561 in guild 889005510286786601",
-  "2026-08-25 21:27:47,185 - cogs.playtime_tracker - INFO - Started vital playtime tracking for nr1dishwasher in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-25 21:27:47,185 - cogs.playtime_tracker - INFO - Started vital playtime tracking for nr1dishwasher in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-25 21:47:49,323 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 1218 seconds",
+  "2026-08-25 21:47:49,323 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jayreaper: 0h 20m",
+  "2026-08-25 21:51:59,234 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 111d3404dd881b71a4cdde4bb673a881."
 ]
