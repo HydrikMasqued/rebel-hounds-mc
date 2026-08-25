@@ -1,9 +1,4 @@
 [
-  "2026-08-25 06:12:04,339 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 0h 41m",
-  "2026-08-25 06:41:46,307 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
-  "2026-08-25 07:33:50,170 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
-  "2026-08-25 09:55:30,434 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
-  "2026-08-25 10:32:25,859 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
   "2026-08-25 12:35:04,258 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
   "2026-08-25 13:18:42,241 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 830a8dab7a3286327410e45560620f57.",
   "2026-08-25 15:53:17,389 - __main__ - INFO - Bot is shutting down...",
@@ -198,5 +193,10 @@
   "2026-08-25 17:23:40,557 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-25 18:10:34,407 - utils.playtime_database - INFO - Started vital session for user 181143017619587073 in guild 889005510286786601",
   "2026-08-25 18:10:34,408 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-25 18:10:50,172 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 111d3404dd881b71a4cdde4bb673a881."
+  "2026-08-25 18:10:50,172 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 111d3404dd881b71a4cdde4bb673a881.",
+  "2026-08-25 18:59:14,094 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 5733 seconds",
+  "2026-08-25 18:59:14,094 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 1h 35m",
+  "2026-08-25 18:59:35,757 - cogs.membership - INFO - Updated member JokerB with rank Full Patch",
+  "2026-08-25 18:59:43,392 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 2948 seconds",
+  "2026-08-25 18:59:43,392 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jayreaper: 0h 49m"
 ]

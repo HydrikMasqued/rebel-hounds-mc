@@ -346,5 +346,13 @@
     "is_on_loa": 0,
     "created_at": "2026-08-19 20:39:46",
     "updated_at": "2026-08-23 02:04:32.974872"
+  },
+  {
+    "user_id": "361581703355039745",
+    "discord_name": "jokerb",
+    "discord_username": "jokerb",
+    "rank": "Full Patch",
+    "status": "Active",
+    "source": "discord"
   }
 ]
