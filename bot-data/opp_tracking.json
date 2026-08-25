@@ -124,7 +124,7 @@
     "joinTime": 1787668443311,
     "totalTime": 830463456,
     "sessionCount": 60,
-    "lastSeen": 1787672043474,
+    "lastSeen": 1787674443592,
     "isOnline": true
   },
   "taylordanie11e": {
@@ -209,19 +209,19 @@
   },
   "eGo": {
     "firstSeen": 1786218278786,
-    "joinTime": 1787602740053,
-    "totalTime": 217997388,
-    "sessionCount": 29,
-    "lastSeen": 1787607840308,
+    "joinTime": 1787672343510,
+    "totalTime": 218297374,
+    "sessionCount": 30,
+    "lastSeen": 1787672343510,
     "isOnline": false
   },
   "KnoxBerry": {
     "firstSeen": 1786218278786,
-    "joinTime": 1787606640262,
+    "joinTime": 1787672343510,
     "totalTime": 412151797,
-    "sessionCount": 38,
-    "lastSeen": 1787622841033,
-    "isOnline": false
+    "sessionCount": 39,
+    "lastSeen": 1787674443592,
+    "isOnline": true
   },
   "Kitten": {
     "firstSeen": 1786218278786,
@@ -444,7 +444,7 @@
     "joinTime": 1787654942623,
     "totalTime": 452421351,
     "sessionCount": 38,
-    "lastSeen": 1787672043474,
+    "lastSeen": 1787674443592,
     "isOnline": true
   },
   "FartinLutherKing": {
@@ -474,10 +474,10 @@
   "xquisite": {
     "firstSeen": 1786222965486,
     "joinTime": 1787669943336,
-    "totalTime": 531693767,
+    "totalTime": 534093941,
     "sessionCount": 54,
     "lastSeen": 1787672043474,
-    "isOnline": true
+    "isOnline": false
   },
   "Woosha": {
     "firstSeen": 1786222965486,
@@ -538,10 +538,10 @@
   "SkoinksSkoobs": {
     "firstSeen": 1786223865497,
     "joinTime": 1787671743447,
-    "totalTime": 128106380,
+    "totalTime": 128706443,
     "sessionCount": 23,
     "lastSeen": 1787672043474,
-    "isOnline": true
+    "isOnline": false
   },
   "Harley": {
     "firstSeen": 1786224465560,
@@ -804,7 +804,7 @@
     "joinTime": 1787667843303,
     "totalTime": 558061767,
     "sessionCount": 53,
-    "lastSeen": 1787672043474,
+    "lastSeen": 1787674443592,
     "isOnline": true
   },
   "SleepyCat8940": {
@@ -1628,7 +1628,7 @@
     "joinTime": 1787669043319,
     "totalTime": 359716906,
     "sessionCount": 54,
-    "lastSeen": 1787672043474,
+    "lastSeen": 1787674443592,
     "isOnline": true
   },
   "ShyRabbit6641": {
@@ -1946,10 +1946,10 @@
   "littletrucker101": {
     "firstSeen": 1786319915699,
     "joinTime": 1787663343104,
-    "totalTime": 163207902,
+    "totalTime": 172808357,
     "sessionCount": 17,
-    "lastSeen": 1787672043474,
-    "isOnline": true
+    "lastSeen": 1787672643496,
+    "isOnline": false
   },
   "ChillyBeetle7845": {
     "firstSeen": 1786322615849,
@@ -2052,7 +2052,7 @@
     "joinTime": 1787660342925,
     "totalTime": 388344959,
     "sessionCount": 54,
-    "lastSeen": 1787672043474,
+    "lastSeen": 1787674443592,
     "isOnline": true
   },
   "Frank": {
@@ -2092,7 +2092,7 @@
     "joinTime": 1787669043319,
     "totalTime": 445821935,
     "sessionCount": 54,
-    "lastSeen": 1787672043474,
+    "lastSeen": 1787674443592,
     "isOnline": true
   },
   "Jinn": {
@@ -2540,7 +2540,7 @@
     "joinTime": 1787671743447,
     "totalTime": 212410097,
     "sessionCount": 35,
-    "lastSeen": 1787672043474,
+    "lastSeen": 1787674443592,
     "isOnline": true
   },
   "Ethan White": {
@@ -3122,10 +3122,10 @@
   "Ricky Snow": {
     "firstSeen": 1786908807239,
     "joinTime": 1787665743224,
-    "totalTime": 57002865,
+    "totalTime": 63603151,
     "sessionCount": 10,
     "lastSeen": 1787672043474,
-    "isOnline": true
+    "isOnline": false
   },
   "MissGingerAmy": {
     "firstSeen": 1786910607312,
@@ -3754,10 +3754,10 @@
   "OGG": {
     "firstSeen": 1787510635462,
     "joinTime": 1787670843385,
-    "totalTime": 1500066,
+    "totalTime": 3300177,
     "sessionCount": 2,
-    "lastSeen": 1787672043474,
-    "isOnline": true
+    "lastSeen": 1787672343510,
+    "isOnline": false
   },
   "SleepyBeetle7660": {
     "firstSeen": 1787517235777,
@@ -3886,5 +3886,13 @@
     "sessionCount": 1,
     "lastSeen": 1787641141975,
     "isOnline": false
+  },
+  "Arthur": {
+    "firstSeen": 1787674143584,
+    "joinTime": 1787674143584,
+    "totalTime": 0,
+    "sessionCount": 1,
+    "lastSeen": 1787674443592,
+    "isOnline": true
   }
 }
