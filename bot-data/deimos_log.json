@@ -1,6 +1,4 @@
 [
-  "2026-08-23 23:14:21,960 - discord.client - INFO - logging in using static token",
-  "2026-08-23 23:14:22,388 - utils.database - INFO - Initializing database tables",
   "2026-08-23 23:14:22,391 - utils.database - INFO - Shared database connection established",
   "2026-08-23 23:14:22,396 - utils.database - INFO - Database tables initialized successfully",
   "2026-08-23 23:14:22,396 - __main__ - INFO - Database initialized in setup hook",
@@ -198,5 +196,7 @@
   "2026-08-25 05:30:46,104 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
   "2026-08-25 05:30:46,105 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-25 05:30:53,391 - utils.playtime_database - INFO - Started vital session for user 908481561161240617 in guild 889005510286786601",
-  "2026-08-25 05:30:53,391 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-25 05:30:53,391 - cogs.playtime_tracker - INFO - Started vital playtime tracking for syx0666 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-25 05:56:51,055 - utils.playtime_database - INFO - Ended vital session for user 908481561161240617: 1557 seconds",
+  "2026-08-25 05:56:51,055 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for syx0666: 0h 25m"
 ]
