@@ -388,7 +388,7 @@
     "joinTime": 1787660042859,
     "totalTime": 439567106,
     "sessionCount": 41,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "Maryn-MacLeod": {
@@ -444,7 +444,7 @@
     "joinTime": 1787654942623,
     "totalTime": 452421351,
     "sessionCount": 38,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "FartinLutherKing": {
@@ -986,10 +986,10 @@
   "Chapo": {
     "firstSeen": 1786232866010,
     "joinTime": 1787647742270,
-    "totalTime": 511270893,
+    "totalTime": 529871817,
     "sessionCount": 63,
-    "lastSeen": 1787663343104,
-    "isOnline": true
+    "lastSeen": 1787666043221,
+    "isOnline": false
   },
   "Nacho": {
     "firstSeen": 1786232866010,
@@ -1202,10 +1202,10 @@
   "Kat": {
     "firstSeen": 1786236766219,
     "joinTime": 1787661243068,
-    "totalTime": 87350059,
+    "totalTime": 90950120,
     "sessionCount": 15,
-    "lastSeen": 1787663343104,
-    "isOnline": true
+    "lastSeen": 1787664543152,
+    "isOnline": false
   },
   "Wolfekinz": {
     "firstSeen": 1786236766219,
@@ -1492,7 +1492,7 @@
     "joinTime": 1787646242218,
     "totalTime": 497424343,
     "sessionCount": 33,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "El Churro": {
@@ -1556,7 +1556,7 @@
     "joinTime": 1787648042295,
     "totalTime": 391819498,
     "sessionCount": 50,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "Air Fryer": {
@@ -1588,7 +1588,7 @@
     "joinTime": 1787662743037,
     "totalTime": 86403320,
     "sessionCount": 11,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "WolfLudwig": {
@@ -1948,7 +1948,7 @@
     "joinTime": 1787663343104,
     "totalTime": 163207902,
     "sessionCount": 17,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "ChillyBeetle7845": {
@@ -2052,7 +2052,7 @@
     "joinTime": 1787660342925,
     "totalTime": 388344959,
     "sessionCount": 54,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "Frank": {
@@ -2332,7 +2332,7 @@
     "joinTime": 1787661542964,
     "totalTime": 258012594,
     "sessionCount": 32,
-    "lastSeen": 1787663343104,
+    "lastSeen": 1787666643230,
     "isOnline": true
   },
   "MyBadAim": {
@@ -3121,11 +3121,11 @@
   },
   "Ricky Snow": {
     "firstSeen": 1786908807239,
-    "joinTime": 1787621940993,
+    "joinTime": 1787665743224,
     "totalTime": 57002865,
-    "sessionCount": 9,
-    "lastSeen": 1787632141481,
-    "isOnline": false
+    "sessionCount": 10,
+    "lastSeen": 1787666643230,
+    "isOnline": true
   },
   "MissGingerAmy": {
     "firstSeen": 1786910607312,
