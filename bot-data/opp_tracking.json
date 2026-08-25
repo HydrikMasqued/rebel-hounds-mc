@@ -202,10 +202,10 @@
   "Yazmanian": {
     "firstSeen": 1786218278786,
     "joinTime": 1787655242638,
-    "totalTime": 282504142,
+    "totalTime": 284904233,
     "sessionCount": 31,
-    "lastSeen": 1787656442684,
-    "isOnline": true
+    "lastSeen": 1787657342695,
+    "isOnline": false
   },
   "eGo": {
     "firstSeen": 1786218278786,
@@ -396,7 +396,7 @@
     "joinTime": 1787646542244,
     "totalTime": 631875646,
     "sessionCount": 81,
-    "lastSeen": 1787656442684,
+    "lastSeen": 1787658242738,
     "isOnline": true
   },
   "SumTingWong": {
@@ -444,7 +444,7 @@
     "joinTime": 1787654942623,
     "totalTime": 452421351,
     "sessionCount": 38,
-    "lastSeen": 1787656442684,
+    "lastSeen": 1787658242738,
     "isOnline": true
   },
   "FartinLutherKing": {
@@ -988,7 +988,7 @@
     "joinTime": 1787647742270,
     "totalTime": 511270893,
     "sessionCount": 63,
-    "lastSeen": 1787656442684,
+    "lastSeen": 1787658242738,
     "isOnline": true
   },
   "Nacho": {
@@ -1178,10 +1178,10 @@
   "fruit": {
     "firstSeen": 1786235566152,
     "joinTime": 1787656442684,
-    "totalTime": 398344467,
+    "totalTime": 399244478,
     "sessionCount": 57,
-    "lastSeen": 1787656442684,
-    "isOnline": true
+    "lastSeen": 1787657042710,
+    "isOnline": false
   },
   "ChillySpider8040": {
     "firstSeen": 1786235866184,
@@ -1196,7 +1196,7 @@
     "joinTime": 1787655842671,
     "totalTime": 481062371,
     "sessionCount": 48,
-    "lastSeen": 1787656442684,
+    "lastSeen": 1787658242738,
     "isOnline": true
   },
   "Kat": {
@@ -1330,10 +1330,10 @@
   "Cherry": {
     "firstSeen": 1786244012314,
     "joinTime": 1787654942623,
-    "totalTime": 297105491,
+    "totalTime": 298905559,
     "sessionCount": 38,
     "lastSeen": 1787656442684,
-    "isOnline": true
+    "isOnline": false
   },
   "Bigmac MeS": {
     "firstSeen": 1786244912366,
@@ -1492,7 +1492,7 @@
     "joinTime": 1787646242218,
     "totalTime": 497424343,
     "sessionCount": 33,
-    "lastSeen": 1787656442684,
+    "lastSeen": 1787658242738,
     "isOnline": true
   },
   "El Churro": {
@@ -1556,7 +1556,7 @@
     "joinTime": 1787648042295,
     "totalTime": 391819498,
     "sessionCount": 50,
-    "lastSeen": 1787656442684,
+    "lastSeen": 1787658242738,
     "isOnline": true
   },
   "Air Fryer": {
@@ -2314,10 +2314,10 @@
   "Occultinq | Twitch": {
     "firstSeen": 1786424283480,
     "joinTime": 1787652842764,
-    "totalTime": 59402885,
+    "totalTime": 63302812,
     "sessionCount": 12,
     "lastSeen": 1787656442684,
-    "isOnline": true
+    "isOnline": false
   },
   "psych0": {
     "firstSeen": 1786442884496,
@@ -2500,7 +2500,7 @@
     "joinTime": 1787647742270,
     "totalTime": 433820779,
     "sessionCount": 68,
-    "lastSeen": 1787656442684,
+    "lastSeen": 1787658242738,
     "isOnline": true
   },
   "SharpAnt6013": {
