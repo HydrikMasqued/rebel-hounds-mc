@@ -121,11 +121,11 @@
   },
   "DonBig$": {
     "firstSeen": 1786218278786,
-    "joinTime": 1787646242218,
+    "joinTime": 1787668443311,
     "totalTime": 830463456,
-    "sessionCount": 59,
-    "lastSeen": 1787648642329,
-    "isOnline": false
+    "sessionCount": 60,
+    "lastSeen": 1787669643320,
+    "isOnline": true
   },
   "taylordanie11e": {
     "firstSeen": 1786218278786,
@@ -386,10 +386,10 @@
   "bobby": {
     "firstSeen": 1786220865435,
     "joinTime": 1787660042859,
-    "totalTime": 439567106,
+    "totalTime": 447067535,
     "sessionCount": 41,
-    "lastSeen": 1787666643230,
-    "isOnline": true
+    "lastSeen": 1787667243265,
+    "isOnline": false
   },
   "Maryn-MacLeod": {
     "firstSeen": 1786221165443,
@@ -444,7 +444,7 @@
     "joinTime": 1787654942623,
     "totalTime": 452421351,
     "sessionCount": 38,
-    "lastSeen": 1787666643230,
+    "lastSeen": 1787669643320,
     "isOnline": true
   },
   "FartinLutherKing": {
@@ -801,11 +801,11 @@
   },
   "AZRAEL": {
     "firstSeen": 1786229265861,
-    "joinTime": 1787625505115,
+    "joinTime": 1787667843303,
     "totalTime": 558061767,
-    "sessionCount": 52,
-    "lastSeen": 1787638141820,
-    "isOnline": false
+    "sessionCount": 53,
+    "lastSeen": 1787669643320,
+    "isOnline": true
   },
   "SleepyCat8940": {
     "firstSeen": 1786229265861,
@@ -1490,10 +1490,10 @@
   "sunjuici": {
     "firstSeen": 1786254812871,
     "joinTime": 1787646242218,
-    "totalTime": 497424343,
+    "totalTime": 518425390,
     "sessionCount": 33,
-    "lastSeen": 1787666643230,
-    "isOnline": true
+    "lastSeen": 1787666943261,
+    "isOnline": false
   },
   "El Churro": {
     "firstSeen": 1786255112872,
@@ -1554,10 +1554,10 @@
   "CJayded 𖹭": {
     "firstSeen": 1786259313098,
     "joinTime": 1787648042295,
-    "totalTime": 391819498,
+    "totalTime": 410720464,
     "sessionCount": 50,
     "lastSeen": 1787666643230,
-    "isOnline": true
+    "isOnline": false
   },
   "Air Fryer": {
     "firstSeen": 1786260813185,
@@ -1586,10 +1586,10 @@
   "50cal. enjoyer": {
     "firstSeen": 1786266213438,
     "joinTime": 1787662743037,
-    "totalTime": 86403320,
+    "totalTime": 91203571,
     "sessionCount": 11,
-    "lastSeen": 1787666643230,
-    "isOnline": true
+    "lastSeen": 1787667243265,
+    "isOnline": false
   },
   "WolfLudwig": {
     "firstSeen": 1786267113468,
@@ -1625,11 +1625,11 @@
   },
   "bradley1974shaun": {
     "firstSeen": 1786278813900,
-    "joinTime": 1787626741203,
+    "joinTime": 1787669043319,
     "totalTime": 359716906,
-    "sessionCount": 53,
-    "lastSeen": 1787627641273,
-    "isOnline": false
+    "sessionCount": 54,
+    "lastSeen": 1787669643320,
+    "isOnline": true
   },
   "ShyRabbit6641": {
     "firstSeen": 1786279413973,
@@ -1948,7 +1948,7 @@
     "joinTime": 1787663343104,
     "totalTime": 163207902,
     "sessionCount": 17,
-    "lastSeen": 1787666643230,
+    "lastSeen": 1787669643320,
     "isOnline": true
   },
   "ChillyBeetle7845": {
@@ -2052,7 +2052,7 @@
     "joinTime": 1787660342925,
     "totalTime": 388344959,
     "sessionCount": 54,
-    "lastSeen": 1787666643230,
+    "lastSeen": 1787669643320,
     "isOnline": true
   },
   "Frank": {
@@ -2089,11 +2089,11 @@
   },
   "NVJoJo": {
     "firstSeen": 1786381681317,
-    "joinTime": 1787614740664,
+    "joinTime": 1787669043319,
     "totalTime": 445821935,
-    "sessionCount": 53,
-    "lastSeen": 1787643242107,
-    "isOnline": false
+    "sessionCount": 54,
+    "lastSeen": 1787669643320,
+    "isOnline": true
   },
   "Jinn": {
     "firstSeen": 1786382281368,
@@ -2330,18 +2330,18 @@
   "Shinobi": {
     "firstSeen": 1786447084661,
     "joinTime": 1787661542964,
-    "totalTime": 258012594,
+    "totalTime": 264312933,
     "sessionCount": 32,
-    "lastSeen": 1787666643230,
-    "isOnline": true
+    "lastSeen": 1787667543288,
+    "isOnline": false
   },
   "MyBadAim": {
     "firstSeen": 1786451884858,
-    "joinTime": 1787588639393,
+    "joinTime": 1787667843303,
     "totalTime": 143706597,
-    "sessionCount": 19,
-    "lastSeen": 1787589839433,
-    "isOnline": false
+    "sessionCount": 20,
+    "lastSeen": 1787669643320,
+    "isOnline": true
   },
   "NNEZZIE": {
     "firstSeen": 1786453084946,
@@ -3124,7 +3124,7 @@
     "joinTime": 1787665743224,
     "totalTime": 57002865,
     "sessionCount": 10,
-    "lastSeen": 1787666643230,
+    "lastSeen": 1787669643320,
     "isOnline": true
   },
   "MissGingerAmy": {
@@ -3657,11 +3657,11 @@
   },
   "Kie": {
     "firstSeen": 1787436231982,
-    "joinTime": 1787436231982,
+    "joinTime": 1787669043319,
     "totalTime": 6300217,
-    "sessionCount": 1,
-    "lastSeen": 1787442232215,
-    "isOnline": false
+    "sessionCount": 2,
+    "lastSeen": 1787669643320,
+    "isOnline": true
   },
   "Yuj3m": {
     "firstSeen": 1787439232138,
