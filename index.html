@@ -145,5 +145,15 @@
   </footer>
 
   <script src="script.js?v=5"></script>
+  <script>
+    (function() {
+      var el = document.getElementById('anniversaryCount');
+      if (!el) return;
+      var now = new Date();
+      var target = new Date(now.getFullYear(), 9, 10);
+      if (now > target) target = new Date(now.getFullYear() + 1, 9, 10);
+      el.textContent = Math.ceil((target - now) / 86400000);
+    })();
+  </script>
 </body>
 </html>
