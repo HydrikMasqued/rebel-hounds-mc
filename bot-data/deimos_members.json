@@ -348,11 +348,15 @@
     "updated_at": "2026-08-23 02:04:32.974872"
   },
   {
-    "user_id": "361581703355039745",
-    "discord_name": "jokerb",
+    "id": 1452,
+    "guild_id": 889005510286786600,
+    "user_id": 361581703355039740,
+    "discord_name": "JokerB",
     "discord_username": "jokerb",
     "rank": "Full Patch",
     "status": "Active",
-    "source": "discord"
+    "is_on_loa": 0,
+    "created_at": "2026-08-25 18:59:35",
+    "updated_at": "2026-08-25 18:59:35.756170"
   }
 ]
