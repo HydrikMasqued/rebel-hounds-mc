@@ -1,8 +1,4 @@
 [
-  "2026-08-25 16:54:20,205 - cogs.contribution_verification - INFO - Handled timeout for contribution 1539424420102144021 from bdillon97",
-  "2026-08-25 16:54:22,098 - cogs.contribution_verification - INFO - Sent timeout contribution DM to president 181143017619587073",
-  "2026-08-25 16:54:22,963 - cogs.contribution_verification - INFO - Posted timeout contribution to leadership channel 1512987446483222639",
-  "2026-08-25 16:54:23,954 - cogs.contribution_verification - INFO - Handled timeout for contribution 1539168460993601609 from vaelisthatlivingdeadgirl",
   "2026-08-25 16:54:25,916 - cogs.contribution_verification - INFO - Sent timeout contribution DM to president 181143017619587073",
   "2026-08-25 16:54:26,418 - cogs.contribution_verification - INFO - Posted timeout contribution to leadership channel 1512987446483222639",
   "2026-08-25 16:54:27,303 - cogs.contribution_verification - INFO - Handled timeout for contribution 1539144444832522260 from wicked1667",
@@ -198,5 +194,9 @@
   "2026-08-26 03:15:08,667 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 1742 seconds",
   "2026-08-26 03:15:08,668 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 0h 29m",
   "2026-08-26 03:41:25,109 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 111d3404dd881b71a4cdde4bb673a881.",
-  "2026-08-26 03:44:17,840 - cogs.contribution_verification - INFO - Added verification reactions to contribution from mr_maximus"
+  "2026-08-26 03:44:17,840 - cogs.contribution_verification - INFO - Added verification reactions to contribution from mr_maximus",
+  "2026-08-26 03:54:21,880 - utils.church_database - INFO - Opened church interval for chszr in session 4",
+  "2026-08-26 03:54:21,880 - cogs.church_tracker - INFO - Church: chszr joined the Roundtable VC (session 4)",
+  "2026-08-26 03:54:23,571 - utils.church_database - INFO - Closed church interval for user 326529501209034764 after 1s",
+  "2026-08-26 03:54:23,571 - cogs.church_tracker - INFO - Church: chszr left the Roundtable VC after 1s (session 4)"
 ]
