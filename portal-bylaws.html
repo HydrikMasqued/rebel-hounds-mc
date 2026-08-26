@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .bylaws-hero { text-align: center; padding: 4rem 2rem; }
-    .bylaws-hero h2 { font-family: var(--font-display); font-size: 2.5rem; letter-spacing: 3px; margin-bottom: 1rem; }
-    .bylaws-hero p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .bylaws-hero .btn { font-size: 1rem; padding: 0.9rem 2.5rem; }
+    .bylaws-frame { width: 100%; min-height: 800px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+    .bylaws-loading { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+    .bylaws-loading .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 1rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body class="portal-page">
@@ -83,10 +83,12 @@
       </div>
 
       <div class="patch-bylaws">
-        <div class="bylaws-hero">
-          <h2>REBEL HOUNDS MC</h2>
-          <p>Club bylaws are maintained in Google Docs. Click below to read the full document.</p>
-          <a href="https://docs.google.com/document/d/1pn_3M3Hr3_CnXlS-8wNzIX9tfpe9b1QmEnbsIZub00c/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary">Open Bylaws in Google Docs</a>
+        <div id="bylawsLoading" class="bylaws-loading">
+          <div class="spinner"></div>
+          <div>Loading bylaws...</div>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+          <a href="https://docs.google.com/document/d/1pn_3M3Hr3_CnXlS-8wNzIX9tfpe9b1QmEnbsIZub00c/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open in Google Docs</a>
         </div>
       </div>
 
@@ -112,5 +114,41 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script>
+    (function() {
+      'use strict';
+      var DOC_ID = '1pn_3M3Hr3_CnXlS-8wNzIX9tfpe9b1QmEnbsIZub00c';
+      var PROXY_URL = 'proxy-gdocs.php?id=' + DOC_ID;
+
+      function loadBylaws() {
+        var loading = document.getElementById('bylawsLoading');
+        fetch(PROXY_URL).then(function(r) {
+          if (!r.ok) throw new Error('Failed to load');
+          return r.text();
+        }).then(function(html) {
+          var container = document.querySelector('.patch-bylaws');
+          var frame = document.createElement('iframe');
+          frame.title = 'RHMC Bylaws';
+          frame.className = 'bylaws-frame';
+          frame.style.width = '100%';
+          frame.style.minHeight = '800px';
+          frame.style.border = '1px solid var(--border)';
+          frame.style.borderRadius = '8px';
+          frame.style.background = '#fff';
+          frame.srcdoc = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="https://docs.google.com/" target="_blank"><style>body{font-family:Arial,sans-serif;margin:0;padding:20px 40px;color:#333;line-height:1.6;}@media(max-width:768px){body{padding:10px 15px;}}</style></head><body>' + html + '</body></html>';
+          container.insertBefore(frame, container.firstChild);
+          if (loading) loading.remove();
+        }).catch(function() {
+          loading.innerHTML = '<div style="color:var(--primary);margin-bottom:1rem;">Failed to load bylaws</div><a href="https://docs.google.com/document/d/' + DOC_ID + '/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open in Google Docs</a>';
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadBylaws);
+      } else {
+        loadBylaws();
+      }
+    })();
+  </script>
 </body>
 </html>
