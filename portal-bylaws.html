@@ -88,6 +88,7 @@
           <div>Loading bylaws...</div>
         </div>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+          <button type="button" class="btn btn-outline btn-sm" id="btnRefreshBylaws">Refresh</button>
           <a href="https://docs.google.com/document/d/1pn_3M3Hr3_CnXlS-8wNzIX9tfpe9b1QmEnbsIZub00c/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open in Google Docs</a>
         </div>
       </div>
@@ -119,15 +120,20 @@
       'use strict';
       var DOC_ID = '1pn_3M3Hr3_CnXlS-8wNzIX9tfpe9b1QmEnbsIZub00c';
       var PROXY_URL = 'proxy-gdocs.php?id=' + DOC_ID;
+      var frame = null;
 
       function loadBylaws() {
+        var container = document.querySelector('.patch-bylaws');
         var loading = document.getElementById('bylawsLoading');
+
+        if (frame) { frame.remove(); frame = null; }
+        if (loading) { loading.innerHTML = '<div class="spinner"></div><div>Loading bylaws...</div>'; }
+
         fetch(PROXY_URL).then(function(r) {
           if (!r.ok) throw new Error('Failed to load');
           return r.text();
         }).then(function(html) {
-          var container = document.querySelector('.patch-bylaws');
-          var frame = document.createElement('iframe');
+          frame = document.createElement('iframe');
           frame.title = 'RHMC Bylaws';
           frame.className = 'bylaws-frame';
           frame.style.width = '100%';
@@ -139,9 +145,19 @@
           container.insertBefore(frame, container.firstChild);
           if (loading) loading.remove();
         }).catch(function() {
-          loading.innerHTML = '<div style="color:var(--primary);margin-bottom:1rem;">Failed to load bylaws</div><a href="https://docs.google.com/document/d/' + DOC_ID + '/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open in Google Docs</a>';
+          if (loading) loading.innerHTML = '<div style="color:var(--primary);margin-bottom:1rem;">Failed to load bylaws</div><a href="https://docs.google.com/document/d/' + DOC_ID + '/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open in Google Docs</a>';
         });
       }
+
+      document.getElementById('btnRefreshBylaws').addEventListener('click', function() {
+        var container = document.querySelector('.patch-bylaws');
+        var loader = document.createElement('div');
+        loader.id = 'bylawsLoading';
+        loader.className = 'bylaws-loading';
+        loader.innerHTML = '<div class="spinner"></div><div>Refreshing...</div>';
+        container.insertBefore(loader, container.firstChild);
+        loadBylaws();
+      });
 
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', loadBylaws);
