@@ -1,9 +1,4 @@
 [
-  "2026-08-26 07:26:25,936 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
-  "2026-08-26 07:26:25,937 - cogs.playtime_tracker - INFO - Loaded playtime channel config - Vital: 1267079320564924486, Elyxir: 1469806649903550586",
-  "2026-08-26 07:26:25,937 - cogs.playtime_tracker - INFO - Playtime notifications enabled - Notify user: 181143017619587073, Requirement: 6h",
-  "2026-08-26 07:26:25,937 - cogs.playtime_tracker - INFO - Playtime tracker initialized with dual-channel support",
-  "2026-08-26 07:26:25,937 - utils.playtime_database - INFO - Initializing playtime database tables",
   "2026-08-26 07:26:25,939 - utils.playtime_database - INFO - Shared playtime database connection established",
   "2026-08-26 07:26:25,942 - utils.playtime_database - INFO - Database migration check complete",
   "2026-08-26 07:26:25,943 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
@@ -198,5 +193,10 @@
   "2026-08-26 12:13:51,740 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-08-26 14:23:20,606 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
   "2026-08-26 14:23:20,606 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-08-26 14:32:03,071 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
+  "2026-08-26 14:32:03,071 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-26 15:01:56,675 - utils.playtime_database - INFO - Started vital session for user 326529501209034764 in guild 889005510286786601",
+  "2026-08-26 15:01:56,675 - cogs.playtime_tracker - INFO - Started vital playtime tracking for chszr in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-26 15:03:39,986 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-26 15:41:52,410 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-26 16:05:55,999 - cogs.contribution_verification - INFO - Added verification reactions to contribution from chszr"
 ]
