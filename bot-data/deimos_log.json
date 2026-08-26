@@ -1,13 +1,4 @@
 [
-  "2026-08-26 07:26:25,943 - cogs.playtime_tracker - INFO - Monthly reset task started",
-  "2026-08-26 07:26:25,943 - __main__ - INFO - Successfully loaded cogs.playtime_tracker",
-  "2026-08-26 07:26:25,954 - cogs.contribution_verification - INFO - Loaded contribution config - Channel: 1469837549416485015, Leadership: 1512987446483222639",
-  "2026-08-26 07:26:25,954 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
-  "2026-08-26 07:26:25,954 - cogs.contribution_verification - INFO - Contribution timeout check task started",
-  "2026-08-26 07:26:25,954 - __main__ - INFO - Successfully loaded cogs.contribution_verification",
-  "2026-08-26 07:26:25,957 - __main__ - INFO - Successfully loaded cogs.thread_management",
-  "2026-08-26 07:26:25,958 - __main__ - INFO - Successfully loaded cogs.role_manager",
-  "2026-08-26 07:26:25,960 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
   "2026-08-26 07:26:25,960 - cogs.church_tracker - INFO - Loaded church config - Roundtable VC: 1272947209612296304, confirm timeout: 10m",
   "2026-08-26 07:26:25,961 - cogs.church_tracker - INFO - Church tracker initialized",
   "2026-08-26 07:26:25,961 - utils.church_database - INFO - Initializing church database tables",
@@ -198,5 +189,14 @@
   "2026-08-26 16:20:34,852 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
   "2026-08-26 16:20:34,852 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-08-26 17:05:41,911 - utils.playtime_database - INFO - Ended vital session for user 326529501209034764: 7425 seconds",
-  "2026-08-26 17:05:41,912 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for chszr: 2h 3m"
+  "2026-08-26 17:05:41,912 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for chszr: 2h 3m",
+  "2026-08-26 17:45:58,448 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 12157 seconds",
+  "2026-08-26 17:45:58,448 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 3h 22m",
+  "2026-08-26 17:51:08,737 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-26 18:39:09,383 - utils.playtime_database - INFO - Started vital session for user 181143017619587073 in guild 889005510286786601",
+  "2026-08-26 18:39:09,383 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-26 18:45:48,247 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 398 seconds",
+  "2026-08-26 18:45:48,247 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jayreaper: 0h 6m",
+  "2026-08-26 19:15:09,213 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 10474 seconds",
+  "2026-08-26 19:15:09,214 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 2h 54m"
 ]
