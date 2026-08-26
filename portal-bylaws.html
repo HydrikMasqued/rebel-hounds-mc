@@ -8,25 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .bylaws-toolbar { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
-    .bylaws-toolbar .btn { white-space: nowrap; }
-    .bylaws-content { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem 3rem; max-width: 900px; margin: 0 auto; }
-    .bylaws-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--primary); }
-    .bylaws-header h1 { font-family: var(--font-display); font-size: 2.2rem; letter-spacing: 4px; margin-bottom: 0.3rem; }
-    .bylaws-header p { color: var(--muted); font-size: 0.9rem; letter-spacing: 1px; }
-    .bylaws-section { margin-bottom: 2rem; }
-    .bylaws-section h2 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 2px; color: var(--primary); margin-bottom: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
-    .bylaws-section .section-body { color: var(--text); line-height: 1.8; font-size: 0.95rem; white-space: pre-line; }
-    .bylaws-section.editing .section-body { background: var(--dark); border: 1px dashed var(--primary); border-radius: 6px; padding: 1rem; min-height: 80px; outline: none; }
-    .bylaws-section.editing .section-body:focus { border-color: var(--gold); }
-    .bylaws-section.editing h2 { cursor: text; background: var(--dark); border: 1px dashed var(--primary); border-radius: 4px; padding: 0.3rem 0.6rem; outline: none; }
-    .edit-banner { background: rgba(192,57,43,0.15); border: 1px solid var(--primary); border-radius: 6px; padding: 0.8rem 1.2rem; margin-bottom: 1.5rem; color: var(--primary); font-size: 0.85rem; display: none; align-items: center; gap: 0.5rem; }
-    .edit-banner.active { display: flex; }
-    .save-indicator { font-size: 0.8rem; color: var(--muted); margin-left: auto; }
-    @media (max-width: 768px) {
-      .bylaws-content { padding: 1.5rem 1.2rem; }
-      .bylaws-header h1 { font-size: 1.6rem; }
-    }
+    .bylaws-frame { width: 100%; min-height: 800px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
   </style>
 </head>
 <body class="portal-page">
@@ -94,23 +76,16 @@
     <section class="section">
       <div class="section-head">
         <h2 class="section-title">THE BYLAWS</h2>
-        <p class="section-sub">Official club bylaws - read below, download, or edit (owner only).</p>
+        <p class="section-sub">Official club bylaws - read below or open in Google Docs.</p>
       </div>
 
-      <div class="bylaws-toolbar">
-        <a href="bylaws.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open PDF</a>
-        <a href="bylaws.pdf" download class="btn btn-primary btn-sm">Download PDF</a>
-        <button class="btn btn-outline btn-sm" id="btnEditBylaws" style="display:none;">Edit Bylaws</button>
-        <button class="btn btn-primary btn-sm" id="btnSaveBylaws" style="display:none;">Save Changes</button>
-        <span class="save-indicator" id="saveIndicator"></span>
-      </div>
-
-      <div class="edit-banner" id="editBanner">
-        <span>EDIT MODE</span> &mdash; Click any section heading or content to edit. Changes save to your browser.
-      </div>
-
-      <div class="bylaws-content" id="bylawsContent">
-        <div style="text-align:center;padding:2rem;color:var(--muted);">Loading bylaws...</div>
+      <div class="patch-bylaws">
+        <div class="patch-pdf">
+          <iframe title="RHMC Bylaws" loading="lazy" id="bylawsFrame" class="bylaws-frame" src="https://docs.google.com/document/d/1pn_3M3Hr3_CnXlS-8wNzIX9tfpe9b1QmEnbsIZub00c/edit?usp=sharing"></iframe>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="https://docs.google.com/document/d/1pn_3M3Hr3_CnXlS-8wNzIX9tfpe9b1QmEnbsIZub00c/edit?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open in Google Docs</a>
+        </div>
       </div>
 
       <div class="patch-area-foot">
@@ -135,121 +110,5 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
-  <script>
-    (function() {
-      'use strict';
-      var LS_KEY = 'rhmc_bylaws_content';
-      var bylawsData = null;
-      var editMode = false;
-      var isOwner = false;
-
-      function escHtml(s) {
-        var d = document.createElement('div');
-        d.textContent = String(s);
-        return d.innerHTML;
-      }
-
-      function renderBylaws(data) {
-        var container = document.getElementById('bylawsContent');
-        var html = '<div class="bylaws-header">';
-        html += '<h1>' + escHtml(data.title) + '</h1>';
-        html += '<p>' + escHtml(data.subtitle) + '</p>';
-        html += '</div>';
-
-        data.sections.forEach(function(sec) {
-          html += '<div class="bylaws-section" data-id="' + sec.id + '">';
-          html += '<h2>' + escHtml(sec.heading) + '</h2>';
-          html += '<div class="section-body">' + escHtml(sec.content) + '</div>';
-          html += '</div>';
-        });
-
-        container.innerHTML = html;
-
-        if (editMode) {
-          container.querySelectorAll('.bylaws-section').forEach(function(el) {
-            el.classList.add('editing');
-            el.querySelector('h2').setAttribute('contenteditable', 'true');
-            el.querySelector('.section-body').setAttribute('contenteditable', 'true');
-          });
-        }
-      }
-
-      function loadBylaws() {
-        var saved = localStorage.getItem(LS_KEY);
-        if (saved) {
-          try { bylawsData = JSON.parse(saved); renderBylaws(bylawsData); return; } catch(e) {}
-        }
-        fetch('bylaws-content.json?t=' + Date.now()).then(function(r) {
-          return r.json();
-        }).then(function(data) {
-          bylawsData = data;
-          renderBylaws(bylawsData);
-        }).catch(function() {
-          document.getElementById('bylawsContent').innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load bylaws</div>';
-        });
-      }
-
-      function enterEditMode() {
-        editMode = true;
-        document.getElementById('editBanner').classList.add('active');
-        document.getElementById('btnEditBylaws').style.display = 'none';
-        document.getElementById('btnSaveBylaws').style.display = '';
-        document.getElementById('saveIndicator').textContent = 'Editing...';
-        renderBylaws(bylawsData);
-      }
-
-      function exitEditMode() {
-        editMode = false;
-        document.getElementById('editBanner').classList.remove('active');
-        document.getElementById('btnEditBylaws').style.display = '';
-        document.getElementById('btnSaveBylaws').style.display = 'none';
-        document.getElementById('saveIndicator').textContent = '';
-        renderBylaws(bylawsData);
-      }
-
-      function saveBylaws() {
-        var sections = [];
-        document.querySelectorAll('.bylaws-section').forEach(function(el) {
-          sections.push({
-            id: parseInt(el.dataset.id),
-            heading: el.querySelector('h2').textContent.trim(),
-            content: el.querySelector('.section-body').textContent.trim()
-          });
-        });
-        var header = document.querySelector('.bylaws-header');
-        bylawsData.title = header.querySelector('h1').textContent.trim();
-        bylawsData.subtitle = header.querySelector('p').textContent.trim();
-        bylawsData.sections = sections;
-        localStorage.setItem(LS_KEY, JSON.stringify(bylawsData));
-        document.getElementById('saveIndicator').textContent = 'Saved!';
-        exitEditMode();
-        setTimeout(function() { document.getElementById('saveIndicator').textContent = ''; }, 2000);
-      }
-
-      function checkOwner() {
-        try {
-          isOwner = sessionStorage.getItem('rh_patch_user') === 'HFFH';
-        } catch(e) {}
-        if (isOwner) {
-          document.getElementById('btnEditBylaws').style.display = '';
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', function() {
-        loadBylaws();
-        checkOwner();
-
-        document.getElementById('btnEditBylaws').addEventListener('click', enterEditMode);
-        document.getElementById('btnSaveBylaws').addEventListener('click', saveBylaws);
-
-        window.addEventListener('patchAuthChange', function(e) {
-          if (e.detail && e.detail.authed) {
-            checkOwner();
-            loadBylaws();
-          }
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
