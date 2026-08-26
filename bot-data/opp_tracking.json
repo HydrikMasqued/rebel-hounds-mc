@@ -169,11 +169,11 @@
   },
   "Miles Mercer": {
     "firstSeen": 1786218278786,
-    "joinTime": 1787718545728,
+    "joinTime": 1787753647564,
     "totalTime": 788033736,
-    "sessionCount": 71,
-    "lastSeen": 1787729346310,
-    "isOnline": false
+    "sessionCount": 72,
+    "lastSeen": 1787756047717,
+    "isOnline": true
   },
   "GhostKnight": {
     "firstSeen": 1786218278786,
@@ -252,7 +252,7 @@
     "joinTime": 1787753047535,
     "totalTime": 258491730,
     "sessionCount": 40,
-    "lastSeen": 1787753047535,
+    "lastSeen": 1787756047717,
     "isOnline": true
   },
   "Little Seoul": {
@@ -332,16 +332,16 @@
     "joinTime": 1787750047380,
     "totalTime": 389718641,
     "sessionCount": 65,
-    "lastSeen": 1787753047535,
+    "lastSeen": 1787756047717,
     "isOnline": true
   },
   "Vajs^": {
     "firstSeen": 1786219965418,
     "joinTime": 1787748847283,
-    "totalTime": 252961956,
+    "totalTime": 257462215,
     "sessionCount": 51,
     "lastSeen": 1787753047535,
-    "isOnline": true
+    "isOnline": false
   },
   "That Guy": {
     "firstSeen": 1786220265398,
@@ -385,11 +385,11 @@
   },
   "bobby": {
     "firstSeen": 1786220865435,
-    "joinTime": 1787660042859,
+    "joinTime": 1787755147664,
     "totalTime": 447067535,
-    "sessionCount": 41,
-    "lastSeen": 1787667243265,
-    "isOnline": false
+    "sessionCount": 42,
+    "lastSeen": 1787756047717,
+    "isOnline": true
   },
   "Maryn-MacLeod": {
     "firstSeen": 1786221165443,
@@ -441,11 +441,11 @@
   },
   "QuickCat1741": {
     "firstSeen": 1786222365501,
-    "joinTime": 1787711045326,
+    "joinTime": 1787753347542,
     "totalTime": 527425030,
-    "sessionCount": 41,
-    "lastSeen": 1787731146386,
-    "isOnline": false
+    "sessionCount": 42,
+    "lastSeen": 1787756047717,
+    "isOnline": true
   },
   "FartinLutherKing": {
     "firstSeen": 1786222665476,
@@ -602,10 +602,10 @@
   "Suicidal": {
     "firstSeen": 1786224765554,
     "joinTime": 1787735046577,
-    "totalTime": 122151637,
+    "totalTime": 141652687,
     "sessionCount": 45,
-    "lastSeen": 1787753047535,
-    "isOnline": true
+    "lastSeen": 1787754247611,
+    "isOnline": false
   },
   "Swooshy": {
     "firstSeen": 1786224765554,
@@ -641,11 +641,11 @@
   },
   "bellerophongaming": {
     "firstSeen": 1786225665619,
-    "joinTime": 1787692444474,
-    "totalTime": 164107899,
-    "sessionCount": 16,
-    "lastSeen": 1787706545063,
-    "isOnline": false
+    "joinTime": 1787755447668,
+    "totalTime": 164707936,
+    "sessionCount": 18,
+    "lastSeen": 1787756047717,
+    "isOnline": true
   },
   "Chevy": {
     "firstSeen": 1786225665619,
@@ -849,11 +849,11 @@
   },
   "LV": {
     "firstSeen": 1786229865860,
-    "joinTime": 1787686144121,
+    "joinTime": 1787756047717,
     "totalTime": 339961988,
-    "sessionCount": 42,
-    "lastSeen": 1787696944696,
-    "isOnline": false
+    "sessionCount": 43,
+    "lastSeen": 1787756047717,
+    "isOnline": true
   },
   "dlbyankees41": {
     "firstSeen": 1786229865860,
@@ -986,10 +986,10 @@
   "Chapo": {
     "firstSeen": 1786232866010,
     "joinTime": 1787732646413,
-    "totalTime": 548772804,
+    "totalTime": 569773955,
     "sessionCount": 69,
-    "lastSeen": 1787753047535,
-    "isOnline": true
+    "lastSeen": 1787753347542,
+    "isOnline": false
   },
   "Nacho": {
     "firstSeen": 1786232866010,
@@ -1020,7 +1020,7 @@
     "joinTime": 1787733546519,
     "totalTime": 336961916,
     "sessionCount": 40,
-    "lastSeen": 1787753047535,
+    "lastSeen": 1787756047717,
     "isOnline": true
   },
   "[UGC] Tropic": {
@@ -1386,10 +1386,10 @@
   "DatBoiMedov": {
     "firstSeen": 1786247012505,
     "joinTime": 1787753047535,
-    "totalTime": 192609023,
+    "totalTime": 193509091,
     "sessionCount": 37,
-    "lastSeen": 1787753047535,
-    "isOnline": true
+    "lastSeen": 1787753647564,
+    "isOnline": false
   },
   "Hepy65_TTV": {
     "firstSeen": 1786248512576,
@@ -1490,10 +1490,10 @@
   "sunjuici": {
     "firstSeen": 1786254812871,
     "joinTime": 1787732646413,
-    "totalTime": 549026983,
+    "totalTime": 570928197,
     "sessionCount": 35,
-    "lastSeen": 1787753047535,
-    "isOnline": true
+    "lastSeen": 1787754247611,
+    "isOnline": false
   },
   "El Churro": {
     "firstSeen": 1786255112872,
@@ -1996,7 +1996,7 @@
     "joinTime": 1787749447304,
     "totalTime": 105905349,
     "sessionCount": 16,
-    "lastSeen": 1787753047535,
+    "lastSeen": 1787756047717,
     "isOnline": true
   },
   "A Typical Squid": {
@@ -2052,7 +2052,7 @@
     "joinTime": 1787747647233,
     "totalTime": 419546497,
     "sessionCount": 57,
-    "lastSeen": 1787753047535,
+    "lastSeen": 1787756047717,
     "isOnline": true
   },
   "Frank": {
@@ -2276,7 +2276,7 @@
     "joinTime": 1787750047380,
     "totalTime": 200409457,
     "sessionCount": 23,
-    "lastSeen": 1787753047535,
+    "lastSeen": 1787756047717,
     "isOnline": true
   },
   ".": {
