@@ -1,11 +1,4 @@
 [
-  "2026-08-26 07:26:25,960 - cogs.church_tracker - INFO - Loaded church config - Roundtable VC: 1272947209612296304, confirm timeout: 10m",
-  "2026-08-26 07:26:25,961 - cogs.church_tracker - INFO - Church tracker initialized",
-  "2026-08-26 07:26:25,961 - utils.church_database - INFO - Initializing church database tables",
-  "2026-08-26 07:26:25,963 - utils.church_database - INFO - Shared church database connection established",
-  "2026-08-26 07:26:25,965 - utils.church_database - INFO - Church database tables initialized successfully",
-  "2026-08-26 07:26:25,965 - cogs.church_tracker - INFO - Church database initialized",
-  "2026-08-26 07:26:25,965 - cogs.church_tracker - INFO - Church confirmation expiry task started",
   "2026-08-26 07:26:25,965 - __main__ - INFO - Successfully loaded cogs.church_tracker",
   "2026-08-26 07:26:25,965 - __main__ - INFO - LOA expiration check task started",
   "2026-08-26 07:26:26,373 - __main__ - INFO - Force synced 49 global slash command(s)",
@@ -198,5 +191,12 @@
   "2026-08-26 18:45:48,247 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 398 seconds",
   "2026-08-26 18:45:48,247 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jayreaper: 0h 6m",
   "2026-08-26 19:15:09,213 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 10474 seconds",
-  "2026-08-26 19:15:09,214 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 2h 54m"
+  "2026-08-26 19:15:09,214 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 2h 54m",
+  "2026-08-26 20:09:16,607 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-26 20:36:39,120 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
+  "2026-08-26 20:36:39,120 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-26 20:43:14,479 - cogs.contribution_verification - INFO - Added verification reactions to contribution from snow3976",
+  "2026-08-26 20:43:52,779 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 433 seconds",
+  "2026-08-26 20:43:52,780 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 0h 7m",
+  "2026-08-26 20:44:07,588 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
 ]
