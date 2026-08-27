@@ -358,5 +358,13 @@
     "is_on_loa": 0,
     "created_at": "2026-08-25 18:59:35",
     "updated_at": "2026-08-25 18:59:35.756170"
+  },
+  {
+    "user_id": "516233696844578846",
+    "discord_name": "Thorikan",
+    "discord_username": "thorikan",
+    "rank": "Full Patch",
+    "status": "Active",
+    "source": "discord"
   }
 ]
