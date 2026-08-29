@@ -1,5 +1,11 @@
 /* ===== Rebel Hounds MC - Minimalist Styles ===== */
 
+@font-face { font-family: 'Bebas Neue'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/bebas-neue-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/rajdhani-latin-400.woff2') format('woff2'); }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/rajdhani-latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/rajdhani-latin-600.woff2') format('woff2'); }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/rajdhani-latin-700.woff2') format('woff2'); }
+
 :root {
   --primary: #c0392b;
   --primary-dark: #922b21;
@@ -31,7 +37,6 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 .accent {
