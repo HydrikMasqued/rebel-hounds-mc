@@ -1,6 +1,4 @@
 [
-  "2026-08-28 08:50:38,381 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
-  "2026-08-28 09:20:35,635 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-08-28 09:43:17,518 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-08-28 13:04:03,529 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
   "2026-08-28 13:04:03,529 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +196,7 @@
   "2026-08-29 05:42:44,554 - utils.playtime_database - INFO - Recorded weekly notification for user 420309961931751424 in guild 889005510286786601 (week 2026-35)",
   "2026-08-29 05:42:44,555 - cogs.playtime_tracker - INFO - User mr_maximus reached 6h weekly requirement!",
   "2026-08-29 05:42:45,056 - cogs.playtime_tracker - ERROR - Cannot DM user 181143017619587073 - DMs are disabled",
-  "2026-08-29 06:52:20,681 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
+  "2026-08-29 06:52:20,681 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-29 10:25:48,594 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-29 12:26:44,293 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
 ]
