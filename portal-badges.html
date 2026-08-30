@@ -52,6 +52,12 @@
     .edit-banner { background: rgba(192,57,43,0.12); border: 1px solid var(--primary); border-radius: 6px; padding: 0.6rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--primary); display: none; }
     .edit-banner.active { display: block; }
     .badge-empty { text-align: center; padding: 2rem; color: var(--muted); grid-column: 1 / -1; }
+    .tier-manage { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
+    .tier-manage h4 { font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; margin-bottom: 0.7rem; }
+    .tier-row { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .tier-row input[type="text"] { flex: 1; min-width: 110px; background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.3rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+    .tier-row input[type="color"] { width: 36px; height: 28px; padding: 0; border: 1px solid var(--border); border-radius: 4px; background: var(--dark); cursor: pointer; }
+    .tier-preview { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 4px; display: inline-block; min-width: 60px; text-align: center; }
   </style>
 </head>
 <body class="portal-page">
@@ -183,15 +189,25 @@
         } catch(e) { return null; }
       }
 
+      function getDefaultTiers(){ return [{id:"bronze",label:"Bronze",color:"#cd7f32"},{id:"silver",label:"Silver",color:"#c0c0c0"},{id:"gold",label:"Gold",color:"#d4a017"},{id:"legend",label:"Legend",color:"#c0392b"}]; }
+      function hexToRgba(hex, a){ try{ var c=hex.replace('#',''); if(c.length===3) c=c.split('').map(function(ch){return ch+ch;}).join(''); var r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16); return 'rgba('+r+','+g+','+b+','+a+')'; }catch(e){ return hex; } }
+      function getTierMeta(id){ var arr=(badgesData&&badgesData.tiers)||getDefaultTiers(); for(var i=0;i<arr.length;i++) if(arr[i].id===id) return arr[i]; return {id:id,label:id,color:"#777"}; }
+      function tierOptionsHtml(sel){ var arr=(badgesData&&badgesData.tiers)||getDefaultTiers(); var h=''; for(var i=0;i<arr.length;i++) h+='<option value="'+esc(arr[i].id)+'"'+(arr[i].id===sel?' selected':'')+'>'+esc(arr[i].label)+'</option>'; return h; }
+      function tierPillHtml(id){ var m=getTierMeta(id); return '<span class="badge-tier" style="background:'+hexToRgba(m.color,0.15)+';color:'+esc(m.color)+';border:1px solid '+hexToRgba(m.color,0.25)+';">'+esc(m.label)+'</span>'; }
       function normalize(data) {
-        if (data.groups) return data;
+        if (!data) return { tiers: getDefaultTiers(), groups: [] };
+        if (data.groups) {
+          if (!data.tiers || !Array.isArray(data.tiers) || data.tiers.length===0) data.tiers = getDefaultTiers();
+          data.tiers.forEach(function(t){ if(!t.color) t.color="#888"; if(!t.label) t.label=t.id; });
+          return data;
+        }
         if (data.badges) {
-          return { groups: [
+          return { tiers: getDefaultTiers(), groups: [
             { id: '1250275308293324820', label: 'Unique', badges: data.badges.slice(0,3) },
             { id: '1250276310027079770', label: 'Earnables', badges: data.badges.slice(3) }
           ]};
         }
-        return { groups: [] };
+        return { tiers: getDefaultTiers(), groups: [] };
       }
 
       function render() {
@@ -210,6 +226,14 @@
           '<div class="summary-stat"><div class="num">' + badgesData.groups.length + '</div><div class="label">Categories</div></div>';
 
         var html = '';
+        if (editMode) {
+          html += '<div class="tier-manage"><h4>Tiers — rename, recolor, add or remove</h4>';
+          (badgesData.tiers||[]).forEach(function(t, tIdx){
+            html += '<div class="tier-row" data-tier-idx="'+tIdx+'"><input type="text" value="'+esc(t.label)+'" data-tier-field="label" data-tier-idx="'+tIdx+'" placeholder="Tier name"><input type="text" value="'+esc(t.id)+'" data-tier-field="id" data-tier-idx="'+tIdx+'" placeholder="ID" style="max-width:120px;"><input type="color" value="'+esc(t.color)+'" data-tier-field="color" data-tier-idx="'+tIdx+'"><span class="tier-preview" style="background:'+hexToRgba(t.color,0.15)+';color:'+esc(t.color)+';border:1px solid '+hexToRgba(t.color,0.3)+';">'+esc(t.label)+'</span><button type="button" class="btn btn-outline btn-sm" data-action="delete-tier" data-tier-idx="'+tIdx+'" style="font-size:0.7rem;">Delete</button></div>';
+          });
+          html += '<div class="tier-row" style="margin-top:0.6rem;"><input type="text" id="new-tier-label" placeholder="New tier name"><input type="text" id="new-tier-id" placeholder="id (e.g. platinum)" style="max-width:120px;"><input type="color" id="new-tier-color" value="#888888"><button type="button" class="btn btn-primary btn-sm" data-action="add-tier">Add tier</button></div>';
+          html += '<div style="font-size:0.7rem;color:var(--muted);margin-top:0.4rem;">Renaming an ID will update all patches using that tier on Save. Deleting a tier moves its patches to the first remaining tier.</div></div>';
+        }
         badgesData.groups.forEach(function(group, gIdx) {
           html += '<div class="badge-group" data-gidx="' + gIdx + '">';
           html += '<div class="badge-group-head"><h3>' + esc(group.label) + '</h3><span class="badge-group-id">ID ' + esc(group.id) + '</span>';
@@ -236,13 +260,13 @@
                 html += '<div class="badge-edit-row"><input type="text" value="' + esc(b.icon) + '" data-field="icon" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Fallback icon (emoji)" style="max-width:70px;text-align:center;">';
                 html += '<input type="text" value="' + esc(b.name) + '" data-field="name" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Patch name"></div>';
                 html += '<div class="badge-edit-row"><textarea data-field="desc" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Description — what does this patch mean?">' + esc(b.desc) + '</textarea></div>';
-                html += '<div class="badge-edit-row"><select data-field="tier" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '"><option value="bronze"' + (b.tier==='bronze'?' selected':'') + '>bronze</option><option value="silver"' + (b.tier==='silver'?' selected':'') + '>silver</option><option value="gold"' + (b.tier==='gold'?' selected':'') + '>gold</option><option value="legend"' + (b.tier==='legend'?' selected':'') + '>legend</option></select></div>';
+                html += '<div class="badge-edit-row"><select data-field="tier" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">'+tierOptionsHtml(b.tier)+'</select></div>';
               } else {
                 if (b.image) html += '<img src="' + esc(b.image) + '" class="badge-img" alt="' + esc(b.name) + '">';
                 else html += '<div class="badge-icon">' + esc(b.icon || '🏅') + '</div>';
                 html += '<div class="badge-name">' + esc(b.name) + '</div>';
                 html += '<div class="badge-desc">' + esc(b.desc) + '</div>';
-                html += '<span class="badge-tier ' + esc(b.tier) + '">' + esc(b.tier) + '</span>';
+                html += tierPillHtml(b.tier);
               }
               var earned = b.earnedBy || [];
               html += '<div class="badge-earned"><div class="badge-earned-label">Earned by — ' + earned.length + '</div>';
@@ -276,7 +300,7 @@
             html += '<div class="badge-edit-row"><input type="file" accept="image/*" data-image-file data-gidx="' + gIdx + '" id="new-image-file-' + gIdx + '" style="font-size:0.75rem;color:var(--muted);"><input type="text" id="new-image-' + gIdx + '" placeholder="Image URL (or upload above)"></div>';
             html += '<div class="badge-edit-row"><input type="text" id="new-icon-' + gIdx + '" placeholder="Fallback icon (emoji)"><input type="text" id="new-name-' + gIdx + '" placeholder="Patch name *"></div>';
             html += '<div class="badge-edit-row"><input type="text" id="new-desc-' + gIdx + '" placeholder="Description — what does this patch mean?"></div>';
-            html += '<div class="badge-edit-row"><select id="new-tier-' + gIdx + '"><option value="bronze">bronze</option><option value="silver">silver</option><option value="gold">gold</option><option value="legend">legend</option></select><button type="button" class="btn btn-primary btn-sm" data-action="add-badge" data-gidx="' + gIdx + '">Add patch</button></div>';
+            html += '<div class="badge-edit-row"><select id="new-tier-' + gIdx + '">'+tierOptionsHtml((badgesData.tiers&&badgesData.tiers[0]&&badgesData.tiers[0].id)||"bronze")+'</select><button type="button" class="btn btn-primary btn-sm" data-action="add-badge" data-gidx="' + gIdx + '">Add patch</button></div>';
             html += '</div>';
           }
           html += '</div>';
@@ -303,6 +327,30 @@
       }
 
       function save() {
+        var tierIdMap = {};
+        (badgesData.tiers||[]).forEach(function(t, idx){
+          var idEl = document.querySelector('[data-tier-field="id"][data-tier-idx="'+idx+'"]');
+          var labelEl = document.querySelector('[data-tier-field="label"][data-tier-idx="'+idx+'"]');
+          var colorEl = document.querySelector('[data-tier-field="color"][data-tier-idx="'+idx+'"]');
+          var oldId = t.id;
+          if (idEl) {
+            var newId = idEl.value.trim().toLowerCase().replace(/[^a-z0-9_-]/g,'') || oldId;
+            if (newId !== oldId) {
+              if ((badgesData.tiers||[]).some(function(x,i){ return x.id===newId && i!==idx; })) {
+                alert('Duplicate tier ID "'+newId+'" — skipped');
+              } else {
+                tierIdMap[oldId]=newId;
+                t.id=newId;
+              }
+            }
+          }
+          if (labelEl) t.label = labelEl.value.trim() || t.label;
+          if (colorEl) t.color = colorEl.value || t.color;
+        });
+        Object.keys(tierIdMap).forEach(function(oldId){
+          var newId=tierIdMap[oldId];
+          badgesData.groups.forEach(function(g){ (g.badges||[]).forEach(function(b){ if(b.tier===oldId) b.tier=newId; }); });
+        });
         badgesData.groups.forEach(function(g, gIdx) {
           var labelInput = document.querySelector('[data-glabel="' + gIdx + '"]');
           if (labelInput) g.label = labelInput.value.trim() || g.label;
@@ -372,6 +420,31 @@
           if (!name2) { alert('Name required'); return; }
           var newId = name2.toLowerCase().replace(/[^a-z0-9]+/g, '-');
           badgesData.groups[gIdx].badges.push({ id: newId, name: name2, desc: desc, icon: icon, image: image, tier: tier, earnedBy: [] });
+          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          render();
+        } else if (action === 'add-tier') {
+          var tLabel = (document.getElementById('new-tier-label').value||'').trim();
+          var tId = (document.getElementById('new-tier-id').value||'').trim().toLowerCase().replace(/[^a-z0-9_-]/g,'');
+          var tColor = document.getElementById('new-tier-color').value || '#888888';
+          if (!tLabel) { alert('Tier name required'); return; }
+          if (!tId) tId = tLabel.toLowerCase().replace(/[^a-z0-9_-]/g,'');
+          if (!tId) { alert('Tier ID required'); return; }
+          if ((badgesData.tiers||[]).some(function(x){ return x.id===tId; })) { alert('Tier ID already exists'); return; }
+          badgesData.tiers.push({ id: tId, label: tLabel, color: tColor });
+          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          render();
+        } else if (action === 'delete-tier') {
+          var tIdx = parseInt(t.getAttribute('data-tier-idx'),10);
+          if (isNaN(tIdx) || !badgesData.tiers[tIdx]) return;
+          var tierId2 = badgesData.tiers[tIdx].id;
+          var used2 = 0;
+          badgesData.groups.forEach(function(g){ (g.badges||[]).forEach(function(b){ if(b.tier===tierId2) used2++; }); });
+          if (used2>0 && !confirm('Delete tier "'+tierId2+'" used by '+used2+' patch(es)? They will be moved to '+(badgesData.tiers.length>1 ? (tIdx===0?badgesData.tiers[1].id:badgesData.tiers[0].id) : 'none')+' tier.')) return;
+          if (!confirm('Delete tier "'+tierId2+'"?')) return;
+          var fallback = badgesData.tiers.length>1 ? (tIdx===0?badgesData.tiers[1].id:badgesData.tiers[0].id) : null;
+          if (fallback) { badgesData.groups.forEach(function(g){ (g.badges||[]).forEach(function(b){ if(b.tier===tierId2) b.tier=fallback; }); }); }
+          badgesData.tiers.splice(tIdx,1);
+          if (badgesData.tiers.length===0) badgesData.tiers.push({id:'default',label:'Default',color:'#888888'});
           localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
           render();
         } else if (action === 'clear-image') {

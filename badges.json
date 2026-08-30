@@ -1,4 +1,10 @@
 ﻿{
+    "tiers": [
+        { "id": "bronze", "label": "Bronze", "color": "#cd7f32" },
+        { "id": "silver", "label": "Silver", "color": "#c0c0c0" },
+        { "id": "gold", "label": "Gold", "color": "#d4a017" },
+        { "id": "legend", "label": "Legend", "color": "#c0392b" }
+    ],
     "groups":  [
                    {
                        "id":  "1250275308293324820",
