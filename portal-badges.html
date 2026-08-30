@@ -20,7 +20,7 @@
     .badge-card { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; text-align: center; transition: transform 0.2s, border-color 0.2s; position: relative; }
     .badge-card:hover { transform: translateY(-2px); }
     .badge-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
-    .badge-img { width: 90px; height: 90px; object-fit: contain; margin: 0 auto 0.6rem; display: block; border-radius: 6px; background: var(--dark); border: 1px solid var(--border); }
+    .badge-img { width: 90px; height: 90px; object-fit: contain; margin: 0 auto 0.6rem; display: block; border-radius: 6px; background: transparent; border: 1px solid transparent; }
     .badge-img-fallback { font-size: 2.2rem; margin-bottom: 0.4rem; }
     .badge-name { font-family: var(--font-display); font-size: 1rem; letter-spacing: 1px; margin-bottom: 0.2rem; }
     .badge-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.4rem; }
@@ -499,20 +499,43 @@
           var ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, w, h);
           URL.revokeObjectURL(url);
-          var quality = 0.92;
-          function tryExport(q){
-            canvas.toBlob(function(blob){
-              if(!blob){ alert('Resize failed'); return; }
-              if(blob.size <= maxBytes || q <= 0.52){
-                var r2 = new FileReader();
-                r2.onload = function(ev){ handleDataUrl(ev.target.result); };
-                r2.readAsDataURL(blob);
-              } else {
-                tryExport(q - 0.08);
-              }
-            }, 'image/jpeg', q);
+          var isPng = file.type === 'image/png';
+          if (isPng) {
+            function tryPngExport(){
+              canvas.toBlob(function(blob){
+                if(!blob){ alert('Resize failed'); return; }
+                if(blob.size <= maxBytes || canvas.width < 220){
+                  var r2 = new FileReader();
+                  r2.onload = function(ev){ handleDataUrl(ev.target.result); };
+                  r2.readAsDataURL(blob);
+                } else {
+                  var nw = Math.round(canvas.width * 0.85);
+                  var nh = Math.round(canvas.height * 0.85);
+                  var c2 = document.createElement('canvas'); c2.width = nw; c2.height = nh;
+                  c2.getContext('2d').drawImage(canvas, 0, 0, nw, nh);
+                  canvas.width = nw; canvas.height = nh;
+                  canvas.getContext('2d').drawImage(c2, 0, 0);
+                  tryPngExport();
+                }
+              }, 'image/png');
+            }
+            tryPngExport();
+          } else {
+            var quality = 0.92;
+            function tryExport(q){
+              canvas.toBlob(function(blob){
+                if(!blob){ alert('Resize failed'); return; }
+                if(blob.size <= maxBytes || q <= 0.52){
+                  var r2 = new FileReader();
+                  r2.onload = function(ev){ handleDataUrl(ev.target.result); };
+                  r2.readAsDataURL(blob);
+                } else {
+                  tryExport(q - 0.08);
+                }
+              }, 'image/jpeg', q);
+            }
+            tryExport(quality);
           }
-          tryExport(quality);
         };
         img.onerror = function(){ alert('Invalid image'); URL.revokeObjectURL(url); t.value=''; };
         img.src = url;
