@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievement Badges - Rebel Hounds MC</title>
+  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; }
+    .badge-card { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; text-align: center; transition: transform 0.2s, border-color 0.2s; position: relative; }
+    .badge-card:hover { transform: translateY(-2px); }
+    .badge-card.locked { opacity: 0.4; }
+    .badge-card.unlocked { border-color: var(--primary); }
+    .badge-icon { font-size: 2.5rem; margin-bottom: 0.6rem; }
+    .badge-name { font-family: var(--font-display); font-size: 1rem; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .badge-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.6rem; }
+    .badge-tier { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 4px; display: inline-block; }
+    .badge-tier.bronze { background: rgba(205,127,50,0.15); color: #cd7f32; }
+    .badge-tier.silver { background: rgba(192,192,192,0.15); color: #c0c0c0; }
+    .badge-tier.gold { background: rgba(212,160,23,0.15); color: var(--gold); }
+    .badge-tier.legend { background: rgba(192,57,43,0.15); color: var(--primary); }
+    .badge-lock { position: absolute; top: 0.6rem; right: 0.6rem; font-size: 0.8rem; opacity: 0.5; }
+    .badge-summary { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .badge-summary .summary-stat { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.5rem; text-align: center; flex: 1; min-width: 120px; }
+    .badge-summary .num { font-family: var(--font-display); font-size: 2rem; color: var(--primary); }
+    .badge-summary .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .badge-empty { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+    .member-badge-select { margin-bottom: 2rem; }
+    .member-badge-select label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; display: block; }
+    .member-badge-select select { background: var(--dark-2); border: 1px solid var(--border); color: var(--text); padding: 0.6rem 1rem; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; min-width: 200px; }
+  </style>
+</head>
+<body class="portal-page">
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="brand-logo">
+        <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portal.html">Dashboard</a></li>
+        <li><a href="portal-map.html">Map</a></li>
+        <li><a href="portal-bots.html">Bots</a></li>
+        <li><a href="portal-inventory.html">Inventory</a></li>
+        <li><a href="portal-finance.html">Finance</a></li>
+        <li><a href="portal-bylaws.html">Bylaws</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <div class="portal-login-bg" id="patchLoginBg">
+    <div class="patch-gate" id="patchGate">
+      <div class="patch-gate-card">
+        <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="patch-gate-logo">
+        <h3>MEMBERS ONLY</h3>
+        <p class="patch-gate-sub">Enter your issued credentials to access the Patch Holders Hub.</p>
+        <hr class="portal-login-divider">
+        <form id="patchForm" class="patch-form" autocomplete="off">
+          <div class="form-group">
+            <label for="patchUser">Username</label>
+            <input type="text" id="patchUser" name="patchUser" required placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="patchPass">Password</label>
+            <input type="password" id="patchPass" name="patchPass" required placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enter Portal</button>
+        </form>
+        <p class="form-msg" id="patchMsg"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="patch-area hidden" id="patchArea">
+
+    <div class="portal-sub-nav">
+      <div class="portal-sub-nav-inner">
+        <a href="portal.html">Dashboard</a>
+        <a href="portal-map.html">Map</a>
+        <a href="portal-bots.html">Bots</a>
+        <a href="portal-inventory.html">Inventory</a>
+        <a href="portal-finance.html">Finance</a>
+        <a href="portal-bylaws.html">Bylaws</a>
+        <a href="portal-prospects.html">Prospects</a>
+        <a href="portal-badges.html" class="active">Badges</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">ACHIEVEMENT BADGES</h2>
+        <p class="section-sub">Milestones and accomplishments earned by club members.</p>
+      </div>
+
+      <div class="member-badge-select">
+        <label for="memberSelect">View Member Badges</label>
+        <select id="memberSelect"><option value="">All Badges</option></select>
+      </div>
+
+      <div class="badge-summary" id="badgeSummary"></div>
+      <div class="badge-grid" id="badgeGrid">
+        <div class="badge-empty">Loading badges...</div>
+      </div>
+
+      <div class="patch-area-foot">
+        <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
+        <p>&copy; 2026 Rebel Hounds MC. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#rules">Rules</a></li>
+        <li><a href="recruitment.html">Recruitment</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="portal.js?v=4"></script>
+  <script>
+    (function() {
+      'use strict';
+      var LS_KEY = 'rhmc_badges';
+      var badgesData = null;
+
+      function esc(s) {
+        var d = document.createElement('div');
+        d.textContent = String(s || '');
+        return d.innerHTML;
+      }
+
+      function getUnlocked() {
+        try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) { return {}; }
+      }
+
+      function saveUnlocked(obj) {
+        localStorage.setItem(LS_KEY, JSON.stringify(obj));
+      }
+
+      function renderBadges(memberFilter) {
+        var grid = document.getElementById('badgeGrid');
+        var summary = document.getElementById('badgeSummary');
+        if (!badgesData) { grid.innerHTML = '<div class="badge-empty">No badge data available.</div>'; return; }
+
+        var unlocked = getUnlocked();
+        var badges = badgesData.badges || [];
+        var unlockedCount = 0;
+
+        if (memberFilter && unlocked[memberFilter]) {
+          unlockedCount = Object.keys(unlocked[memberFilter]).length;
+        } else {
+          Object.keys(unlocked).forEach(function(m) { unlockedCount = Math.max(unlockedCount, Object.keys(unlocked[m]).length); });
+        }
+
+        summary.innerHTML =
+          '<div class="summary-stat"><div class="num">' + badges.length + '</div><div class="label">Total Badges</div></div>' +
+          '<div class="summary-stat"><div class="num">' + unlockedCount + '</div><div class="label">Unlocked</div></div>' +
+          '<div class="summary-stat"><div class="num">' + (badges.length - unlockedCount) + '</div><div class="label">Locked</div></div>';
+
+        var tierOrder = { legend: 0, gold: 1, silver: 2, bronze: 3 };
+        badges.sort(function(a, b) { return (tierOrder[a.tier] || 9) - (tierOrder[b.tier] || 9); });
+
+        var html = '';
+        badges.forEach(function(b) {
+          var isUnlocked = false;
+          if (memberFilter && unlocked[memberFilter]) {
+            isUnlocked = !!unlocked[memberFilter][b.id];
+          } else {
+            Object.keys(unlocked).forEach(function(m) { if (unlocked[m][b.id]) isUnlocked = true; });
+          }
+
+          html += '<div class="badge-card ' + (isUnlocked ? 'unlocked' : 'locked') + '">';
+          if (!isUnlocked) html += '<div class="badge-lock">&#128274;</div>';
+          html += '<div class="badge-icon">' + b.icon + '</div>';
+          html += '<div class="badge-name">' + esc(b.name) + '</div>';
+          html += '<div class="badge-desc">' + esc(b.desc) + '</div>';
+          html += '<span class="badge-tier ' + b.tier + '">' + b.tier + '</span>';
+          html += '</div>';
+        });
+
+        grid.innerHTML = html || '<div class="badge-empty">No badges defined.</div>';
+      }
+
+      function populateMembers() {
+        var select = document.getElementById('memberSelect');
+        var unlocked = getUnlocked();
+        Object.keys(unlocked).sort().forEach(function(name) {
+          var opt = document.createElement('option');
+          opt.value = name;
+          opt.textContent = name;
+          select.appendChild(opt);
+        });
+        select.addEventListener('change', function() { renderBadges(this.value); });
+      }
+
+      function loadBadges() {
+        fetch('badges.json?t=' + Date.now()).then(function(r) {
+          return r.json();
+        }).then(function(data) {
+          badgesData = data;
+          renderBadges('');
+          populateMembers();
+        }).catch(function() {
+          document.getElementById('badgeGrid').innerHTML = '<div class="badge-empty">Failed to load badge data.</div>';
+        });
+      }
+
+      loadBadges();
+    })();
+  </script>
+</body>
+</html>

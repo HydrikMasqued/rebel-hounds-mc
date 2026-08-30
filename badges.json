@@ -1,0 +1,19 @@
+{
+  "badges": [
+    { "id": "founding", "name": "Founding Father", "desc": "Original club founder or early member", "icon": "\ud83c\udff5", "tier": "gold" },
+    { "id": "1year", "name": "One Year Patch", "desc": "Active patched member for 1+ year", "icon": "\ud83d\udcc5", "tier": "silver" },
+    { "id": "2year", "name": "Two Year Patch", "desc": "Active patched member for 2+ years", "icon": "\ud83c\udfc6", "tier": "silver" },
+    { "id": "3year", "name": "Three Year Patch", "desc": "Active patched member for 3+ years", "icon": "\ud83c\udfc5", "tier": "gold" },
+    { "id": "4year", "name": "Four Year Patch", "desc": "Active patched member for 4+ years", "icon": "\ud83d\dd25", "tier": "gold" },
+    { "id": "5year", "name": "Five Year Legend", "desc": "Active patched member for 5+ years", "icon": "\u2b50", "tier": "legend" },
+    { "id": "road-captain", "name": "Road Captain", "desc": "Led club runs and organized rides", "icon": "\ud83d\udeb2", "tier": "silver" },
+    { "id": "first-run", "name": "First Run", "desc": "Attended first official club run", "icon": "\ud83d\ude0e", "tier": "bronze" },
+    { "id": "war-veteran", "name": "War Veteran", "desc": "Participated in an official club war", "icon": "\u2694\ufe0f", "tier": "silver" },
+    { "id": "recruiter", "name": "The Recruiter", "desc": "Successfully sponsored a new prospect", "icon": "\ud83d\udc64", "tier": "bronze" },
+    { "id": "trailblazer", "name": "Trailblazer", "desc": "Discovered and mapped a new route", "icon": "\ud83c\udfde\ufe0f", "tier": "bronze" },
+    { "id": " iron-hound", "name": "Iron Hound", "desc": "Never missed a meeting for 6 months", "icon": "\ud83d\udca0", "tier": "silver" },
+    { "id": "charter-member", "name": "Charter Member", "desc": "Present at the signing of the bylaws", "icon": "\ud83d\udcdc", "tier": "gold" },
+    { "id": "first-post", "name": "First Post", "desc": "Made first blog post on the portal", "icon": "\u270d\ufe0f", "tier": "bronze" },
+    { "id": "enforcer", "name": "The Enforcer", "desc": "Served as club enforcer", "icon": "\ud83d\udee1\ufe0f", "tier": "silver" }
+  ]
+}

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebel Hounds MC — Discord Rework Concept | 889005510286786601</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080808;
+  --bg-2:#111113;
+  --bg-3:#1a1a1e;
+  --panel:#141416;
+  --panel-2:#1c1c20;
+  --border:#232326;
+  --border-2:#2a2a2e;
+  --text:#f0f0f0;
+  --muted:#888891;
+  --dim:#5a5a64;
+  --red:#c0392b;
+  --red-dark:#922b21;
+  --red-glow:rgba(192,57,43,0.15);
+  --gold:#d4a017;
+  --gold-glow:rgba(212,160,23,0.12);
+  --green:#23a559;
+  --radius:10px;
+  --radius-sm:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Geist',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-thumb{background:#2a2a2e;border-radius:10px}
+::-webkit-scrollbar-track{background:transparent}
+
+/* TOP BAR */
+.concept-top{
+  position:sticky;top:0;z-index:50;
+  background:rgba(8,8,8,0.92);backdrop-filter:blur(16px) saturate(1.2);
+  border-bottom:1px solid var(--border);
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.top-left{display:flex;align-items:center;gap:16px}
+.top-logo{width:42px;height:42px;border-radius:50%;border:2px solid var(--red);object-fit:cover;box-shadow:0 0 20px var(--red-glow)}
+.top-title h1{font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:22px;line-height:1}
+.top-title p{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.top-title p span{color:var(--red);font-weight:700}
+.badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;padding:4px 8px;border-radius:20px;border:1px solid var(--border);color:var(--muted);background:var(--panel)}
+.badge.live{border-color:rgba(35,165,89,0.3);color:var(--green);background:rgba(35,165,89,0.08)}
+.top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{font-family:'Geist',sans-serif;font-weight:600;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:9px 16px;border-radius:6px;border:1px solid var(--border);background:var(--panel-2);color:var(--text);cursor:pointer;transition:all .18s}
+.btn:hover{border-color:#3a3a3e;transform:translateY(-1px)}
+.btn-primary{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 4px 20px var(--red-glow)}
+.btn-primary:hover{background:var(--red-dark)}
+.btn-ghost{background:transparent}
+.toggle-wrap{display:flex;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:3px;gap:3px}
+.toggle-btn{padding:7px 14px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
+.toggle-btn.active{background:var(--red);color:#fff;box-shadow:0 2px 10px var(--red-glow)}
+
+/* HERO EXPLAINER */
+.hero{max-width:1280px;margin:0 auto;padding:28px 24px 0;display:grid;grid-template-columns:1.15fr 0.85fr;gap:24px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.hero-card{background:linear-gradient(145deg,var(--panel),var(--bg-2));border:1px solid var(--border);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.6}
+.hero-card h2{font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:28px;line-height:1}
+.hero-card h2 span{color:var(--red)}
+.hero-card .sub{color:var(--muted);font-size:13px;margin:8px 0 16px;line-height:1.7}
+.hero-card .sub strong{color:var(--text)}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
+.stat-mini{background:var(--bg-3);border:1px solid var(--border);padding:10px 14px;border-radius:8px;flex:1;min-width:120px}
+.stat-mini b{font-family:'JetBrains Mono',monospace;font-size:18px;display:block}
+.stat-mini span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.problem-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.problem-list li{display:flex;gap:10px;font-size:13px;color:var(--muted);background:var(--bg-3);border:1px solid var(--border);padding:10px 12px;border-radius:8px}
+.problem-list li i{color:var(--red);font-style:normal}
+.hero-card.accent{border-left:3px solid var(--red)}
+.hero-card.accent.gold{border-left-color:var(--gold)}
+
+/* DISCORD MOCK */
+.mock-wrap{max-width:1280px;margin:24px auto;padding:0 24px}
+.mock-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.mock-header h3{font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:18px}
+.mock-header p{font-size:12px;color:var(--muted)}
+.view-tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--border);padding:4px;border-radius:8px}
+.view-tab{padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;color:var(--muted);border:none;background:transparent}
+.view-tab.active{background:var(--bg-3);color:var(--text);box-shadow:0 1px 6px rgba(0,0,0,.4)}
+
+/* DISCORD LAYOUT */
+.discord{
+  display:grid;
+  grid-template-columns:72px 270px 1fr 240px;
+  height:680px;
+  background:#0e0e10;
+  border:1px solid #232326;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03) inset;
+}
+@media(max-width:1100px){.discord{grid-template-columns:72px 240px 1fr;}.discord .members{display:none}}
+@media(max-width:700px){.discord{grid-template-columns:1fr;height:auto;min-height:680px}.discord .server-bar{display:none}.discord .members{display:none}}
+@media(max-width:700px){.discord{grid-template-columns:1fr}.channels{border-right:none}}
+/* server bar */
+.server-bar{background:#08080a;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:8px;border-right:1px solid #1e1e22}
+.server-icon{width:48px;height:48px;border-radius:16px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;cursor:pointer;border:1px solid var(--border)}
+.server-icon.active{border-radius:12px;background:var(--red);color:#fff;border-color:var(--red)}
+.server-icon img{width:100%;height:100%;border-radius:inherit;object-fit:cover}
+.server-sep{width:32px;height:2px;background:#232326;border-radius:10px;margin:4px 0}
+.server-icon.small{width:48px;height:48px;border-radius:50%;background:#1a1a1e;color:var(--muted)}
+.server-icon.small:hover{border-radius:16px;background:var(--green);color:#fff}
+
+/* channels */
+.channels{background:#111113;display:flex;flex-direction:column;border-right:1px solid #1e1e22;overflow:hidden}
+.channels-head{padding:14px 16px 12px;border-bottom:1px solid #1e1e22;box-shadow:0 1px 0 rgba(0,0,0,.2),0 1.5px 0 rgba(255,255,255,.02)}
+.channels-head h4{font-size:15px;font-weight:800;letter-spacing:.2px;display:flex;align-items:center;gap:6px}
+.channels-head h4::after{content:'⌄';font-size:10px;color:var(--muted);margin-left:2px}
+.channels-head p{font-size:11px;color:var(--muted);margin-top:2px;font-family:'JetBrains Mono',monospace}
+.channels-scroll{flex:1;overflow-y:auto;padding:8px 8px 16px}
+.cat{margin-bottom:14px}
+.cat-head{display:flex;align-items:center;gap:4px;padding:6px 2px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--dim);cursor:pointer;user-select:none}
+.cat-head:hover{color:var(--muted)}
+.cat-head .arrow{font-size:8px;transition:transform .15s}
+.cat.collapsed .arrow{transform:rotate(-90deg)}
+.cat.collapsed .ch-list{display:none}
+.cat-count{margin-left:auto;background:#1e1e22;color:var(--muted);font-size:10px;padding:1px 5px;border-radius:10px;font-family:'JetBrains Mono',monospace}
+.ch-list{display:flex;flex-direction:column;gap:1px;margin-top:2px}
+.ch{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:5px;font-size:13.5px;color:#80848e;cursor:pointer;transition:all .12s;position:relative}
+.ch:hover{background:#1e1e22;color:#dcddde}
+.ch.active{background:#23232a;color:#fff}
+.ch.active::before{content:'';position:absolute;left:-8px;top:50%;transform:translateY(-50%);width:4px;height:20px;background:#fff;border-radius:0 4px 4px 0}
+.ch .hash{color:var(--dim);font-size:15px;font-weight:400}
+.ch.active .hash{color:var(--muted)}
+.ch .label{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.ch.active .label{font-weight:600}
+.ch .badge-lock{font-size:10px;color:var(--gold)}
+.ch .badge-new{font-size:9px;background:var(--red);color:#fff;padding:1px 5px;border-radius:10px;font-weight:700;letter-spacing:.5px}
+.ch.voice{color:#80848e}
+.ch.voice .hash{font-size:13px}
+.ch .user-count{font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-left:auto}
+.ch .live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 6px var(--green)}
+.category-desc{font-size:11px;color:var(--dim);padding:0 6px 6px;line-height:1.4;display:none}
+.cat:hover .category-desc{display:block}
+
+/* main */
+.main{flex:1;display:flex;flex-direction:column;background:#1a1a1e;overflow:hidden;min-width:0}
+.main-head{height:48px;display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid #232326;background:#1a1a1e;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.main-head .hash{color:var(--dim);font-size:22px}
+.main-head h3{font-size:15px;font-weight:700}
+.main-head .topic{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:1px solid #2a2a2e;padding-left:12px;margin-left:4px}
+.main-head .actions{margin-left:auto;display:flex;gap:8px;color:var(--muted);font-size:16px}
+.main-scroll{flex:1;overflow-y:auto;padding:20px;background:radial-gradient(800px 400px at 50% -100px, rgba(192,57,43,.08), transparent 60%), #1a1a1e}
+.welcome{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#1f1f23,#141416);margin-bottom:20px}
+.welcome-banner{height:130px;background:linear-gradient(90deg,#0f0f0f 0%, #1a0f0f 40%, #2a1410 100%), url('rebel-hounds-patch.png') center/220px no-repeat;position:relative;display:flex;align-items:flex-end;padding:16px;background-blend-mode:overlay;opacity:.95}
+.welcome-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%, rgba(0,0,0,.85))}
+.welcome-banner h2{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:26px}
+.welcome-banner h2 span{color:var(--red)}
+.welcome-body{padding:16px}
+.welcome-body h4{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.welcome-body p{font-size:13px;color:#b5bac1;line-height:1.7}
+.welcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+@media(max-width:700px){.welcome-grid{grid-template-columns:1fr}}
+.welcome-card{background:#23232a;border:1px solid #2a2a2e;border-radius:8px;padding:12px}
+.welcome-card h5{font-size:12px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
+.welcome-card p{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}
+.msg{padding:10px 0;display:flex;gap:12px}
+.msg + .msg{margin-top:4px}
+.msg-avatar{width:40px;height:40px;border-radius:50%;flex-shrink:0;object-fit:cover;background:#2a2a2e;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff}
+.msg-body{flex:1;min-width:0}
+.msg-head{display:flex;align-items:baseline;gap:8px}
+.msg-author{font-size:14px;font-weight:600;color:#fff}
+.msg-author.staff{color:var(--gold)}
+.msg-author.high{color:var(--red)}
+.msg-time{font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace}
+.msg-role{font-size:9px;letter-spacing:.8px;text-transform:uppercase;padding:2px 6px;border-radius:4px;font-weight:700}
+.role-president{background:var(--gold);color:#000}
+.role-vp{background:#232326;color:var(--gold);border:1px solid rgba(212,160,23,.3)}
+.role-enforcer{background:var(--red);color:#fff}
+.msg-text{font-size:13.5px;color:#dcddde;margin-top:2px;line-height:1.65;white-space:pre-wrap}
+.msg-text .mention{color:#00a8fc;background:rgba(0,168,252,.12);padding:0 4px;border-radius:3px}
+.embed{margin-top:8px;background:#0f0f10;border:1px solid #232326;border-left:3px solid var(--red);border-radius:6px;padding:10px 12px;max-width:520px}
+.embed.gold{border-left-color:var(--gold)}
+.embed h5{font-size:13px;font-weight:700}
+.embed p{font-size:12px;color:var(--muted);margin-top:2px}
+.embed .embed-footer{font-size:11px;color:var(--dim);margin-top:8px;display:flex;gap:8px;align-items:center}
+.divider{height:1px;background:#232326;margin:12px 0;position:relative}
+.divider span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#1a1a1e;padding:0 8px;font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace}
+.input-bar{padding:12px 16px;background:#1a1a1e}
+.input{ background:#23232a;border:1px solid #2a2a2e;border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;color:var(--dim);font-size:13px}
+.input span{color:var(--muted)}
+.input b{color:var(--dim);font-weight:500}
+
+/* members */
+.members{background:#111113;border-left:1px solid #1e1e22;display:flex;flex-direction:column;overflow:hidden}
+.members-head{padding:12px 12px 8px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--dim)}
+.member-group{padding:0 8px 10px}
+.member-group h5{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:8px 0 6px;padding:0 4px}
+.member-row{display:flex;align-items:center;gap:8px;padding:4px 6px;border-radius:4px;cursor:pointer}
+.member-row:hover{background:#1e1e22}
+.member-row img{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#2a2a2e}
+.member-row .name{font-size:13px;font-weight:500;color:#b5bac1}
+.member-row .name.pres{color:var(--gold)}
+.member-row .name.vp{color:#ff7a3d}
+.member-row .name.patched{color:#f23f43}
+.member-status{width:8px;height:8px;border-radius:50%;background:var(--green);margin-left:auto;border:2px solid #111113}
+.member-status.idle{background:var(--gold)}
+.member-status.dnd{background:var(--red)}
+.member-status.off{background:var(--dim)}
+.online-dot{width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle}
+
+/* comparison banner */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1280px;margin:20px auto;padding:0 24px}
+@media(max-width:800px){.compare{grid-template-columns:1fr}}
+.compare-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+.compare-card.bad{border-color:rgba(192,57,43,.25)}
+.compare-card.good{border-color:rgba(212,160,23,.25);background:linear-gradient(180deg,rgba(212,160,23,.06),var(--panel))}
+.compare-card h4{font-size:13px;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.compare-card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.compare-card li{font-size:12.5px;color:var(--muted);display:flex;gap:8px}
+.compare-card li::before{content:'×';color:var(--red);font-weight:700}
+.compare-card.good li::before{content:'✓';color:var(--green)}
+
+/* DETAILS SECTION */
+.details{max-width:1280px;margin:28px auto;padding:0 24px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px}
+@media(max-width:900px){.details{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px}
+.card h3{font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:18px;margin-bottom:6px}
+.card h3 span{color:var(--red)}
+.card .desc{font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.role{padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-3);display:flex;align-items:center;gap:10px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.role b{font-size:12px;display:block}
+.role span{font-size:11px;color:var(--muted)}
+.table{width:100%;border-collapse:collapse;font-size:12.5px}
+.table th{text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--border);font-weight:700}
+.table td{padding:9px 10px;border-bottom:1px solid #1e1e22;color:#b5bac1}
+.table td:first-child{color:var(--text);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:11.5px}
+.perm{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:700;letter-spacing:.5px;display:inline-block}
+.perm-read{background:rgba(35,165,89,.12);color:var(--green);border:1px solid rgba(35,165,89,.2)}
+.perm-write{background:rgba(0,168,252,.12);color:#00a8fc;border:1px solid rgba(0,168,252,.2)}
+.perm-admin{background:rgba(192,57,43,.15);color:var(--red);border:1px solid rgba(192,57,43,.2)}
+.perm-none{background:var(--bg-3);color:var(--dim);border:1px solid var(--border)}
+.onboard{counter-reset:step;display:flex;flex-direction:column;gap:10px}
+.onboard-step{display:flex;gap:12px;background:var(--bg-3);border:1px solid var(--border);padding:12px;border-radius:8px}
+.onboard-step::before{counter-increment:step;content:counter(step);width:28px;height:28px;flex-shrink:0;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;font-size:12px}
+.onboard-step h5{font-size:12.5px}
+.onboard-step p{font-size:11.5px;color:var(--muted);margin-top:2px}
+.flow-note{margin-top:14px;background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.2);padding:10px 12px;border-radius:8px;font-size:11.5px;color:var(--muted)}
+.flow-note b{color:var(--gold)}
+.badge-legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.legend{font-size:10px;letter-spacing:.6px;text-transform:uppercase;padding:4px 8px;border-radius:20px;border:1px solid var(--border);background:var(--bg-3);color:var(--muted)}
+
+/* FOOTER */
+.footer{max-width:1280px;margin:24px auto 40px;padding:16px 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--border);color:var(--dim);font-size:11px;font-family:'JetBrains Mono',monospace}
+.footer a{color:var(--muted);text-decoration:underline}
+.noscript{max-width:1280px;margin:12px auto;padding:10px 16px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:8px;color:#ff9a8f;font-size:12px;text-align:center}
+
+/* channel preview helper */
+.hidden{display:none !important}
+</style>
+</head>
+<body>
+
+<!-- TOP -->
+<header class="concept-top">
+  <div class="top-left">
+    <img class="top-logo" src="rebel-hounds-patch.png" onerror="this.style.display='none'" alt="RHMC">
+    <div class="top-title">
+      <h1>REBEL HOUNDS MC — DISCORD REWORK</h1>
+      <p>Server ID <span>889005510286786601</span> · INTERACTIVE CONCEPT · FiveM 1%ER CLUBHOUSE FORMAT</p>
+    </div>
+    <span class="badge live">● LIVE CONCEPT</span>
+    <span class="badge">v2.0 REFINED</span>
+  </div>
+  <div class="top-actions">
+    <div class="toggle-wrap" id="modeToggle">
+      <button class="toggle-btn active" data-mode="refined">✦ Refined Proposal</button>
+      <button class="toggle-btn" data-mode="current">Current (Messy)</button>
+    </div>
+    <button class="btn btn-ghost" onclick="document.getElementById('details').scrollIntoView({behavior:'smooth'})">Roles & Perms</button>
+    <button class="btn btn-primary" onclick="window.print()">Export / Print</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-card accent">
+    <h2>FROM <span>CLUTTERED GARAGE</span> TO CHURCH-READY CLUBHOUSE</h2>
+    <p class="sub">
+      Discord server <strong>889005510286786601</strong> is currently <strong>private / widget-disabled</strong> — so I can't auto-scrape it via the API. 
+      This concept is built from your <strong>Rebel Hounds MC</strong> brand (1%er, Los Santos, Est. 03 OCT 2021, Perished Ones lineage) and modern FiveM MC best-practice — designed to feel <strong>militant, disciplined, and premium</strong>, not like a random gaming hub.
+    </p>
+    <div class="stats">
+      <div class="stat-mini"><b>7</b><span>Categories (was 12+)</span></div>
+      <div class="stat-mini"><b>32</b><span>Channels (was 55+)</span></div>
+      <div class="stat-mini"><b>40%</b><span>Less scroll fatigue</span></div>
+      <div class="stat-mini"><b>100%</b><span>Mobile & RP Ready</span></div>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+      <span class="badge" style="border-color:var(--red);color:var(--red)">▲ Hierarchy First</span>
+      <span class="badge">▲ Need-to-Know Perms</span>
+      <span class="badge">▲ Prospect Funnel</span>
+      <span class="badge">▲ War-Ready Ops</span>
+    </div>
+  </div>
+
+  <div class="hero-card gold">
+    <h3 style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:17px;margin-bottom:10px">WHAT'S WRONG WITH MOST FiveM MC DISCORDS?</h3>
+    <ul class="problem-list">
+      <li><i>✕</i><span><b>Channel creep:</b> 60+ channels, 4 "general" chats, nobody knows where to post.</span></li>
+      <li><i>✕</i><span><b>No funnel:</b> Recruitment DMs get lost, prospects never see bylaws.</span></li>
+      <li><i>✕</i><span><b>Flat roles:</b> Everyone @everyone, Church leaks, no need-to-know.</span></li>
+      <li><i>✕</i><span><b>Voice chaos:</b> 12 empty VCs, no stage for Church or debrief.</span></li>
+      <li><i>✕</i><span><b>Brand drift:</b> Looks like a gaming server, not a 1%er clubhouse.</span></li>
+    </ul>
+    <p style="font-size:11px;color:var(--dim);margin-top:10px;font-family:'JetBrains Mono',monospace">↳ This rework fixes all of it — scroll down to test-drive the new layout.</p>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare">
+  <div class="compare-card bad">
+    <h4>⛔ Current (Typical Messy MC)</h4>
+    <ul>
+      <li>12-15 categories, inconsistent icons & ordering</li>
+      <li>#general, #chat, #main, #lounge all active — duplicate conversations</li>
+      <li>#rules + #bylaws + #info spread across 3 categories</li>
+      <li>Prospect channels mixed with Patched channels — leaks & confusion</li>
+      <li>No onboarding; new joins land in #general and get ignored</li>
+      <li>Everyone can @everyone, announcement spam</li>
+    </ul>
+  </div>
+  <div class="compare-card good">
+    <h4>✦ Refined (This Proposal)</h4>
+    <ul>
+      <li>7 tight categories, ordered by member journey: Welcome → Prospect → Clubhouse → Church</li>
+      <li>Single source of truth: #welcome, #bylaws, #announcements at top, read-only</li>
+      <li>Hangaround → Prospect → Patched funnel with auto-roles & tickets</li>
+      <li>Need-to-know perms: Church, War Room, Treasury invisible to prospects</li>
+      <li>Onboarding: verify → rules → faction-select → introduction ticket</li>
+      <li>Only High Command can @everyone; announcements are clean & pinned</li>
+    </ul>
+  </div>
+</section>
+
+<!-- MOCK HEADER -->
+<div class="mock-wrap">
+  <div class="mock-header">
+    <div>
+      <h3>INTERACTIVE DISCORD PREVIEW</h3>
+      <p>Click any channel on the left to swap the center preview. Collapse categories. Toggle Current vs Refined at top.</p>
+    </div>
+    <div class="view-tabs" id="previewTabs">
+      <button class="view-tab active" data-preview="welcome">Welcome</button>
+      <button class="view-tab" data-preview="church">Church</button>
+      <button class="view-tab" data-preview="prospect">Prospect</button>
+      <button class="view-tab" data-preview="ops">Operations</button>
+    </div>
+  </div>
+
+  <!-- DISCORD -->
+  <div class="discord" id="discordMock">
+
+    <!-- SERVER BAR -->
+    <div class="server-bar">
+      <div class="server-icon active" title="Rebel Hounds MC"><img src="rebel-hounds-patch.png" onerror="this.parentElement.textContent='RH'" alt=""></div>
+      <div class="server-sep"></div>
+      <div class="server-icon small" title="Vital RP">VR</div>
+      <div class="server-icon small" title="Add Server">＋</div>
+      <div class="server-icon small" title="Discover">⌖</div>
+    </div>
+
+    <!-- CHANNELS -->
+    <div class="channels" id="channelsPane">
+      <div class="channels-head">
+        <h4>Rebel Hounds MC</h4>
+        <p>Est. 03 OCT 2021 · Los Santos 1%er</p>
+      </div>
+      <div class="channels-scroll" id="channelList">
+        <!-- injected by JS -->
+      </div>
+      <div style="padding:8px;background:#08080a;border-top:1px solid #1e1e22;display:flex;align-items:center;gap:8px">
+        <img src="rebel-hounds-patch.png" onerror="this.style.display='none'" style="width:28px;height:28px;border-radius:50%;object-fit:cover">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:12px;font-weight:700">Patch Holder</div>
+          <div style="font-size:11px;color:var(--green)"><span class="online-dot"></span>Online · In City</div>
+        </div>
+        <span style="color:var(--muted);font-size:14px">⚙︎</span>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="main-head">
+        <span class="hash" id="mainHash">#</span>
+        <h3 id="mainTitle">welcome</h3>
+        <span class="topic" id="mainTopic">Read before you speak. Loyalty. Discipline. Community.</span>
+        <div class="actions"><span title="Threads">◫</span><span title="Inbox">🔔</span><span title="Members">👥</span></div>
+      </div>
+      <div class="main-scroll" id="mainScroll">
+        <!-- injected -->
+      </div>
+      <div class="input-bar"><div class="input"><span>＋</span><span>Message <b id="inputChannel">#welcome</b></span><span style="margin-left:auto">😊 🎁 GIF</span></div></div>
+    </div>
+
+    <!-- MEMBERS -->
+    <div class="members">
+      <div class="members-head">Members — 45</div>
+      <div class="member-group">
+        <h5>High Command — 5</h5>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=12"><span class="name pres">President</span><span class="member-status"></span></div>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=15"><span class="name vp">Vice President</span><span class="member-status"></span></div>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=8"><span class="name patched">Sgt. At Arms</span><span class="member-status dnd"></span></div>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=11"><span class="name patched">Road Captain</span><span class="member-status idle"></span></div>
+        <h5>Patched Members — 18</h5>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=20"><span class="name patched">Rebel · Wraith</span><span class="member-status"></span></div>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=22"><span class="name patched">Hound · Jax</span><span class="member-status"></span></div>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=33"><span class="name patched">Hound · Diesel</span><span class="member-status off"></span></div>
+        <h5>Prospects — 7</h5>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=18"><span class="name" style="color:#b5bac1">P · Towns</span><span class="member-status"></span></div>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=25"><span class="name" style="color:#b5bac1">P · Knox</span><span class="member-status idle"></span></div>
+        <h5>Hangarounds — 12</h5>
+        <div class="member-row"><img src="https://i.pravatar.cc/100?img=30"><span class="name" style="color:var(--dim)">HA · Drift</span><span class="member-status"></span></div>
+        <div style="margin-top:10px;padding:8px;background:#1a1a1e;border:1px solid var(--border);border-radius:6px">
+          <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700">Church Session</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">🔒 Tonight 20:30 BST · Voice: CHURCH</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:11px;color:var(--dim);margin-top:8px;font-family:'JetBrains Mono',monospace">This is a frontend concept only — no real Discord connection. Use it as a build spec for your admin team / bot dev.</p>
+</div>
+
+<!-- DETAILS -->
+<section class="details" id="details">
+  <div class="card">
+    <h3>ROLE <span>HIERARCHY & COLORS</span></h3>
+    <p class="desc">Flat roles kill mystique. This stack makes hierarchy instantly readable — and powers your channel perms.</p>
+    <div class="role-grid">
+      <div class="role"><span class="role-dot" style="background:var(--gold)"></span><div><b>President</b><span>Full admin · Gold #d4a017 · Hoist</span></div></div>
+      <div class="role"><span class="role-dot" style="background:#ff7a3d"></span><div><b>Vice President</b><span>Admin · Orange · Hoist</span></div></div>
+      <div class="role"><span class="role-dot" style="background:var(--red)"></span><div><b>Sgt. At Arms / Road Captain</b><span>Manage members · Red #c0392b</span></div></div>
+      <div class="role"><span class="role-dot" style="background:#f23f43"></span><div><b>Patched Member</b><span>Core access · Rugged Red</span></div></div>
+      <div class="role"><span class="role-dot" style="background:#57f287"></span><div><b>Prospect</b><span>Limited · Green · Must earn patch</span></div></div>
+      <div class="role"><span class="role-dot" style="background:#80848e"></span><div><b>Hangaround</b><span>Trial · Grey · Invite-only view</span></div></div>
+      <div class="role"><span class="role-dot" style="background:#5865f2"></span><div><b>Support / Bot</b><span>Tickets, logs, announcements</span></div></div>
+      <div class="role"><span class="role-dot" style="background:#3ba55c"></span><div><b>Allies / Guests</b><span>Diplomacy channel only</span></div></div>
+    </div>
+    <div class="badge-legend">
+      <span class="legend">Hoist = shows separate in member list</span>
+      <span class="legend">Top 4 roles = Church access</span>
+      <span class="legend">Color = identity at a glance</span>
+    </div>
+    <div style="margin-top:14px;background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:12px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Permission Philosophy</div>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6"><b style="color:var(--text)">Need-to-know:</b> Church, War Room, Treasury, Intel are invisible to Prospect/Hangaround. Patched see everything except High Command vote logs. Bots handle ticket transparency.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>CHANNEL <span>PERMISSION MATRIX</span></h3>
+    <p class="desc">Copy this straight into Discord when rebuilding. Green = access, Red = hidden/locked.</p>
+    <div style="overflow:auto;border:1px solid var(--border);border-radius:8px">
+      <table class="table">
+        <thead><tr><th>Channel</th><th>Hangaround</th><th>Prospect</th><th>Patched</th><th>High Cmd</th></tr></thead>
+        <tbody id="permTable"></tbody>
+      </table>
+    </div>
+    <p style="font-size:11px;color:var(--dim);margin-top:8px">Tip: Set category perms, then override per-channel. Keeps sync clean.</p>
+  </div>
+
+  <div class="card">
+    <h3>ONBOARDING <span>FUNNEL</span></h3>
+    <p class="desc">New joiners go from cold invite → vetted Prospect in under 3 minutes, no admin DM spam.</p>
+    <div class="onboard">
+      <div class="onboard-step"><div><h5>1 — Landing & Verify</h5><p>Captcha / Wick + read #welcome. Click ✅ to unlock #rules. Auto-role @Unverified → @Hangaround.</p></div></div>
+      <div class="onboard-step"><div><h5>2 — Read Rules & Bylaws</h5><p>#rules (5 Directives) + #bylaws + #chain-of-command are read-only. React 📜 to acknowledge.</p></div></div>
+      <div class="onboard-step"><div><h5>3 — Introduction Ticket</h5><p>Button in #recruitment → Ticket bot → “Who are you? Age? RP exp? Why Hounds?” → Staff triage.</p></div></div>
+      <div class="onboard-step"><div><h5>4 — Hangaround Lounge</h5><p>Approved = access to #hangaround-lounge (IC chat) + #prospect-info. Observe rides for 7 days.</p></div></div>
+      <div class="onboard-step"><div><h5>5 — Prospect Patch</h5><p>Vote in #church-votes → @Prospect + prospect-hall, mentor assigned, tasks tracked.</p></div></div>
+    </div>
+    <div class="flow-note"><b>Why funnel?</b> Stops randoms flooding #general, filters time-wasters, and gives prospects a clear ladder: <i>Hangaround → Prospect → Patched</i> — exactly like your IRL 1%er lineage.</div>
+  </div>
+
+  <div class="card">
+    <h3>BOT & <span>AUTOMATION STACK</span></h3>
+    <p class="desc">Lean but lethal — 4 bots cover 90% of MC admin work.</p>
+    <table class="table">
+      <thead><tr><th>Bot</th><th>Job</th></tr></thead>
+      <tbody>
+        <tr><td>Wick / Beemo</td><td>Anti-raid, anti-nuke, verification, auto-mod</td></tr>
+        <tr><td>Ticket Tool / Helper.gg</td><td>Recruitment, support, war-room tickets. Transcripts to #logs</td></tr>
+        <tr><td>Carl-bot / Dyno</td><td>Reaction roles, embeds, announcement scheduling, auto-purge</td></tr>
+        <tr><td>Logger (custom / ProBot)</td><td>Audit church votes, treasury, inventory webhooks → #bot-logs</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:var(--bg-3);border:1px solid var(--border);padding:10px;border-radius:8px"><b style="font-size:12px">Announcement Rule</b><p style="font-size:11px;color:var(--muted);margin-top:4px">Only @High Command → @everyone in #announcements. All other pings are @here / role-specific.</p></div>
+      <div style="background:var(--bg-3);border:1px solid var(--border);padding:10px;border-radius:8px"><b style="font-size:12px">Voice Rule</b><p style="font-size:11px;color:var(--muted);margin-top:4px">Church VC = push-to-mute, only High Command can unmute. Road crews = open.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD SPEC -->
+<section style="max-width:1280px;margin:0 auto;padding:0 24px">
+  <div class="card" style="border-left:3px solid var(--red)">
+    <h3>BUILD SPEC — <span>COPY-PASTE FOR ADMINS</span></h3>
+    <p class="desc">Give this list to whoever rebuilds the server. Create categories in order, then channels inside each. Set perms at category level.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;font-size:12.5px">
+      <div>
+        <h4 style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">🏛 INFORMATION — Read Only</h4>
+        <ul style="list-style:none;color:var(--muted);line-height:1.9">
+          <li>📜 #welcome — server banner + ethos (verify gate)</li>
+          <li>📖 #rules — The Five Directives (5 lines, no spam)</li>
+          <li>⚖️ #bylaws — link to portal-bylaws.html</li>
+          <li>⛓️ #chain-of-command — hierarchy graphic</li>
+          <li>📢 #announcements — High Command only</li>
+          <li>🎖️ #patch-wall — patched members gallery</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">📥 INTAKE — Funnel</h4>
+        <ul style="list-style:none;color:var(--muted);line-height:1.9">
+          <li>🤝 #recruitment — Carl embed + Ticket button</li>
+          <li>📝 #application-info — requirements & timeline</li>
+          <li>💬 #hangaround-lounge — HA + Prospect + Patched</li>
+          <li>🎫 tickets (category) — auto private threads</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:8px">🏚 CLUBHOUSE — Patched Only</h4>
+        <ul style="list-style:none;color:var(--muted);line-height:1.9">
+          <li>#general — day-to-day (single, not 3 generals)</li>
+          <li>#bar-talk — memes, clips, off-topic</li>
+          <li>#church-lobby — pre-Church check-in</li>
+          <li>#rides-and-runs — photo dumps + run recap</li>
+          <li>#media-feed — synced to website gallery</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#ff7a3d;margin-bottom:8px">⛪ CHURCH — High Command Only (Invisible)</h4>
+        <ul style="list-style:none;color:var(--muted);line-height:1.9">
+          <li>🔒 #high-command — Pres/VP/SAA only</li>
+          <li>🔒 #officer-chat — patched officers</li>
+          <li>🗳️ #church-votes — polls, prospect votes</li>
+          <li>⚔️ #war-room — ops planning, intel</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#57f287;margin-bottom:8px">🎓 PROSPECT PROGRAM</h4>
+        <ul style="list-style:none;color:var(--muted);line-height:1.9">
+          <li>#prospect-hall — tasks & mentor pings</li>
+          <li>#prospect-chat — prospects + mentors only</li>
+          <li>#tasks — checklist bot</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#00a8fc;margin-bottom:8px">⚙ OPERATIONS — Need To Know</h4>
+        <ul style="list-style:none;color:var(--muted);line-height:1.9">
+          <li>#run-board — weekly runs, jobs, turf</li>
+          <li>#treasury — dues, fines, ledger (patched+)</li>
+          <li>#inventory — syncs to portal-inventory</li>
+          <li>#intel-map — portal-map embeds</li>
+          <li>#bot-logs — transcripts, audit</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#b5bac1;margin-bottom:8px">🔊 VOICE — Clean</h4>
+        <ul style="list-style:none;color:var(--muted);line-height:1.9">
+          <li>🎙 Clubhouse (open, 20 slots)</li>
+          <li>🎙 Road Crew A / B (for runs)</li>
+          <li>🔒 CHURCH (High Command, push-mute, 12 max)</li>
+          <li>🎙 Hangaround Stage (listen-only for HAs)</li>
+          <li>💤 AFK</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+      <span class="badge">Order matters: Information → Intake → Clubhouse → Prospect → Operations → Church → Voice</span>
+      <span class="badge" style="color:var(--gold);border-color:rgba(212,160,23,.3)">Keep category names caps, no emojis in titles — clean like a real MC charter</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© 2026 Rebel Hounds MC — Discord Concept for 889005510286786601 — Built as static HTML mock. Not connected to Discord API.</span>
+  <span>File: <a href="#">rebel-hounds-mc/discord-concept.html</a> · Share via file or host on portal</span>
+</footer>
+
+<script>
+const refined = [
+  {name:"INFORMATION", count:"6", desc:"Read-only. First thing every join sees.", icon:"◈", channels:[
+    {id:"welcome", label:"welcome", icon:"#", note:"", badge:""},
+    {id:"rules", label:"rules", icon:"#", badge:"READ ONLY"},
+    {id:"bylaws", label:"bylaws", icon:"#", badge:""},
+    {id:"chain-of-command", label:"chain-of-command", icon:"#", badge:""},
+    {id:"announcements", label:"announcements", icon:"📢", badge:"HIGH CMD"},
+    {id:"patch-wall", label:"patch-wall", icon:"#", badge:""},
+  ]},
+  {name:"INTAKE", count:"3", desc:"Funnel — where prospects are made or filtered.", icon:"◇", channels:[
+    {id:"recruitment", label:"recruitment", icon:"#", badge:"TICKET"},
+    {id:"application-info", label:"application-info", icon:"#", badge:""},
+    {id:"hangaround-lounge", label:"hangaround-lounge", icon:"#", badge:""},
+  ]},
+  {name:"CLUBHOUSE", count:"5", desc:"Patched-only daily life. One general, not four.", icon:"⬢", channels:[
+    {id:"general", label:"general", icon:"#", badge:""},
+    {id:"bar-talk", label:"bar-talk", icon:"#", badge:""},
+    {id:"church-lobby", label:"church-lobby", icon:"#", badge:""},
+    {id:"rides-and-runs", label:"rides-and-runs", icon:"#", badge:"NEW"},
+    {id:"media-feed", label:"media-feed", icon:"#", badge:""},
+  ]},
+  {name:"PROSPECT PROGRAM", count:"3", desc:"Earn your patch. Mentors only.", icon:"⬣", channels:[
+    {id:"prospect-hall", label:"prospect-hall", icon:"#", badge:"LOCKED"},
+    {id:"prospect-chat", label:"prospect-chat", icon:"#", badge:""},
+    {id:"tasks", label:"tasks", icon:"#", badge:"BOT"},
+  ]},
+  {name:"OPERATIONS", count:"6", desc:"Runs, money, guns, maps — need-to-know.", icon:"⬡", channels:[
+    {id:"run-board", label:"run-board", icon:"#", badge:""},
+    {id:"treasury", label:"treasury", icon:"#", badge:"LOCKED"},
+    {id:"inventory", label:"inventory", icon:"#", badge:""},
+    {id:"intel-map", label:"intel-map", icon:"#", badge:""},
+    {id:"diplomacy", label:"diplomacy", icon:"#", badge:""},
+    {id:"bot-logs", label:"bot-logs", icon:"#", badge:""},
+  ]},
+  {name:"CHURCH", count:"4", desc:"High Command invisible. Church is sacred.", icon:"⬔", channels:[
+    {id:"high-command", label:"high-command", icon:"🔒", badge:"PRES ONLY"},
+    {id:"officer-chat", label:"officer-chat", icon:"🔒", badge:""},
+    {id:"church-votes", label:"church-votes", icon:"#", badge:"VOTE"},
+    {id:"war-room", label:"war-room", icon:"🔒", badge:"OPSEC"},
+  ]},
+  {name:"VOICE CHANNELS", count:"5", desc:"Tight. No dead rooms.", icon:"◐", channels:[
+    {id:"vc-clubhouse", label:"Clubhouse", icon:"🔊", voice:true, count:"8/20"},
+    {id:"vc-road-a", label:"Road Crew A", icon:"🔊", voice:true, count:"0/12"},
+    {id:"vc-road-b", label:"Road Crew B", icon:"🔊", voice:true, count:"0/12"},
+    {id:"vc-church", label:"CHURCH", icon:"🔒", voice:true, count:"—", locked:true},
+    {id:"vc-afk", label:"AFK", icon:"🔊", voice:true, count:""},
+  ]},
+];
+
+const messy = [
+  {name:"WELCOME ──── 5", count:"5", desc:"", channels:[
+    {id:"m-welcome", label:"welcome", icon:"#", badge:""},
+    {id:"m-rules", label:"rules", icon:"#", badge:""},
+    {id:"m-rules-2", label:"rules-2", icon:"#", badge:""},
+    {id:"m-info", label:"info", icon:"#", badge:""},
+    {id:"m-announcements", label:"announcements", icon:"📢", badge:""},
+  ]},
+  {name:"GENERAL CHAT ──── 4", count:"4", desc:"", channels:[
+    {id:"m-general", label:"general", icon:"#", badge:""},
+    {id:"m-chat", label:"chat", icon:"#", badge:""},
+    {id:"m-main", label:"main", icon:"#", badge:""},
+    {id:"m-lounge", label:"lounge", icon:"#", badge:""},
+  ]},
+  {name:"MEDIA ──── 6", count:"6", desc:"", channels:[
+    {id:"m-memes", label:"memes", icon:"#", badge:""},
+    {id:"m-clips", label:"clips", icon:"#", badge:""},
+    {id:"m-photos", label:"photos", icon:"#", badge:""},
+    {id:"m-videos", label:"videos", icon:"#", badge:""},
+    {id:"m-tiktok", label:"tiktok", icon:"#", badge:""},
+    {id:"m-instagram", label:"instagram", icon:"#", badge:""},
+  ]},
+  {name:"RANDOM ──── 8", count:"8", desc:"", channels:[
+    {id:"m-bylaws", label:"bylaws", icon:"#", badge:""},
+    {id:"m-bylaws-old", label:"bylaws-old", icon:"#", badge:""},
+    {id:"m-prospect-info", label:"prospect-info", icon:"#", badge:""},
+    {id:"m-prospect-chat", label:"prospect-chat", icon:"#", badge:""},
+    {id:"m-suggestions", label:"suggestions", icon:"#", badge:""},
+    {id:"m-support", label:"support", icon:"#", badge:""},
+    {id:"m-tickets", label:"tickets", icon:"#", badge:""},
+    {id:"m-help", label:"help", icon:"#", badge:""},
+  ]},
+  {name:"GTA / FIVEM ──── 7", count:"7", desc:"", channels:[
+    {id:"m-jobs", label:"jobs", icon:"#", badge:""},
+    {id:"m-runs", label:"runs", icon:"#", badge:""},
+    {id:"m-turf", label:"turf", icon:"#", badge:""},
+    {id:"m-inventory", label:"inventory", icon:"#", badge:""},
+    {id:"m-map", label:"map", icon:"#", badge:""},
+    {id:"m-market", label:"market", icon:"#", badge:""},
+    {id:"m-deals", label:"deals", icon:"#", badge:""},
+  ]},
+  {name:"VOICE ──── 12", count:"12", desc:"", channels:[
+    {id:"m-vc1", label:"General 1", icon:"🔊", voice:true, count:""},
+    {id:"m-vc2", label:"General 2", icon:"🔊", voice:true, count:""},
+    {id:"m-vc3", label:"General 3", icon:"🔊", voice:true, count:""},
+    {id:"m-vc4", label:"Chill 1", icon:"🔊", voice:true, count:""},
+    {id:"m-vc5", label:"Chill 2", icon:"🔊", voice:true, count:""},
+    {id:"m-vc6", label:"Gaming", icon:"🔊", voice:true, count:""},
+    {id:"m-vc7", label:"Music", icon:"🔊", voice:true, count:""},
+    {id:"m-vc8", label:"AFK", icon:"🔊", voice:true, count:""},
+  ]},
+];
+
+const previews = {
+  welcome: `
+    <div class="welcome">
+      <div class="welcome-banner"><h2>REBEL HOUNDS <span>MOTORCYCLE CLUB</span></h2></div>
+      <div class="welcome-body">
+        <h4>Welcome to the Clubhouse — Read Before You Speak</h4>
+        <p>Est. 03 OCT 2021 · Los Santos 1%er · Splinter of the Perished Ones. <b>Loyalty. Discipline. Community.</b> This server is not a gaming hub — it's a chartered clubhouse. Respect the patch, respect the chain.</p>
+        <div class="welcome-grid">
+          <div class="welcome-card"><h5>📜 Read the Directives</h5><p>The Five Directives are non-negotiable. Break one, lose your patch.</p></div>
+          <div class="welcome-card"><h5>🤝 Want In?</h5><p>Hit <b>#recruitment</b> → open a ticket. No DMs to command.</p></div>
+          <div class="welcome-card"><h5>⛪ Patched?</h5><p>Verify in ticket to unlock Clubhouse & Church.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:var(--red);color:#fff">RH</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author high">President</span><span class="msg-role role-president">President</span><span class="msg-time">Today at 18:32</span></div>
+        <div class="msg-text">Welcome to the new clubhouse. Clean, militant, readable. If you're new, start at <span class="mention">#welcome</span> → <span class="mention">#rules</span> → <span class="mention">#recruitment</span>. If you're patched, check <span class="mention">#announcements</span> for tonight's Church.</div>
+        <div class="embed"><h5>📌 Pinned: The Five Directives</h5><p>I. Never Strike a Brother · II. Keep Club Business In-House · III. Protect Secrets · IV. Follow Chain of Command · V. Never Bring Shame to the Club</p><div class="embed-footer">📌 1.2k views · 212 ✅ acknowledged</div></div>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:#1a1a1e;color:var(--gold);border:1px solid var(--gold)">SA</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author staff">Sgt. At Arms</span><span class="msg-role role-enforcer">Sgt. At Arms</span><span class="msg-time">Today at 19:04</span></div>
+        <div class="msg-text">Hangarounds — you stay in <span class="mention">#hangaround-lounge</span> until voted Prospect. No Clubhouse access. Show discipline first.</div>
+      </div>
+    </div>
+    <div class="divider"><span>New messages · Today</span></div>
+    <div class="msg">
+      <div class="msg-avatar">HA</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author">HA · Drift</span><span class="msg-time">Today at 19:11</span></div>
+        <div class="msg-text">Understood. 🫡</div>
+      </div>
+    </div>
+  `,
+  church: `
+    <div class="embed gold" style="max-width:100%;margin-bottom:16px"><h5>⛪ CHURCH SESSION — TONIGHT 20:30 BST</h5><p>Voice: 🔒 CHURCH · Text: #church-votes · Only High Command may speak unless called upon. Prospect vote: HA · Drift & HA · Knox. Treasury report posted.</p><div class="embed-footer"><span>🔒 High Command Only</span><span>·</span><span>Push-to-mute enforced</span></div></div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:var(--gold);color:#000">P</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author staff">President</span><span class="msg-role role-president">President</span><span class="msg-time">Yesterday at 20:31</span></div>
+        <div class="msg-text">Church called to order. SAA, roll call.</div>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:#232326;color:#fff">SA</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author staff">Sgt. At Arms</span><span class="msg-time">Yesterday at 20:32</span></div>
+        <div class="msg-text">5 present. 2 prospects pending. War Room intel says Ballas pushing Davis. Request vote to authorize run.</div>
+        <div class="embed"><h5>🗳️ Poll: Authorize Davis Run? (24h)</h5><p>✅ Yes — 4 · ❌ No — 0 · 🤐 Abstain — 1</p><div class="embed-footer">Poll closes in 16h · #church-votes</div></div>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:#c0392b;color:#fff">VP</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author high">Vice President</span><span class="msg-time">Yesterday at 20:38</span></div>
+        <div class="msg-text">Motion passed. Road Captain, plan route via <span class="mention">#intel-map</span>. Prospect participation: observe only.</div>
+      </div>
+    </div>
+  `,
+  prospect: `
+    <div class="embed" style="max-width:100%;border-left-color:#57f287"><h5>🎓 Prospect Hall — Week 2 Tasks</h5><p>Mentor: Hound · Jax — Complete: 1) Attend 2 runs 2) Post ride recap in #rides-and-runs 3) Memorize 5 Directives. Deadline Friday.</p><div class="embed-footer">Progress: 1/3 · 4 prospects active</div></div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:#57f287;color:#000">JX</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author" style="color:#57f287">Hound · Jax</span><span class="msg-time">Today at 16:20</span></div>
+        <div class="msg-text"><span class="mention">P · Towns</span> good work on yesterday's escort. Next: lead the formation to Sandy, no shortcuts. We watch how you ride, not how you talk.</div>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:#2a2a2e;color:#57f287">PT</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author">P · Towns</span><span class="msg-time">Today at 16:22</span></div>
+        <div class="msg-text">Copy that. Will prep bike and be at clubhouse 19:00.</div>
+      </div>
+    </div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:var(--red);color:#fff">SA</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author high">Sgt. At Arms</span><span class="msg-time">Today at 16:25</span></div>
+        <div class="msg-text">Prospects: check <span class="mention">#tasks</span> pinned. Miss a task = strike. Three strikes = cut.</div>
+      </div>
+    </div>
+  `,
+  ops: `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+      <div style="background:#23232a;border:1px solid #2a2a2e;border-radius:8px;padding:12px"><b style="font-size:12px">💰 Treasury</b><p style="font-size:11px;color:var(--muted);margin-top:4px">This week: +$42k (runs) · Dues collected: 38/45 · Fines: $1.2k</p><span style="font-size:10px;color:var(--gold)">View in portal-finance.html</span></div>
+      <div style="background:#23232a;border:1px solid #2a2a2e;border-radius:8px;padding:12px"><b style="font-size:12px">📦 Inventory</b><p style="font-size:11px;color:var(--muted);margin-top:4px">Clubhouse stash synced. 12 bikes road-ready. Check portal-inventory.</p><span style="font-size:10px;color:var(--gold)">Synced via webhook</span></div>
+    </div>
+    <div class="msg">
+      <div class="msg-avatar" style="background:#00a8fc;color:#fff">RC</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author">Road Captain</span><span class="msg-time">Today at 14:10</span></div>
+        <div class="msg-text">Run Board updated: <b>Friday 21:00 — La Mesa → Paleto</b>. Stops: Mirror Park, Sandy. Fuel funded. Reply ✅ to confirm bike.</div>
+        <div class="embed"><h5>🗺️ Intel Map</h5><p>Mirror Park: Ballas activity low. La Mesa: PD patrol 15:00-18:00. Avoid.</p><div class="embed-footer">From portal-map.html · updated 2h ago</div></div>
+      </div>
+    </div>
+  `,
+  // fallback for random channels
+  generic: (label) => `
+    <div class="msg">
+      <div class="msg-avatar" style="background:var(--panel-2);color:var(--muted)">#</div>
+      <div class="msg-body">
+        <div class="msg-head"><span class="msg-author">Rebel Hounds Bot</span><span class="msg-time">Today</span></div>
+        <div class="msg-text">This is a preview for <b>#${label}</b>. In the real server this channel would have its own topic, perms and history. The point is the <i>structure</i> around it: one clear home instead of four duplicate chats.</div>
+        <div class="embed"><h5>💡 Design Note</h5><p>Fewer, meaner channels → faster decisions, less scroll, more discipline — just like Church.</p></div>
+      </div>
+    </div>
+  `
+};
+
+let mode = 'refined';
+let activeChannel = 'welcome';
+
+function renderChannels(){
+  const data = mode === 'refined' ? refined : messy;
+  const el = document.getElementById('channelList');
+  el.innerHTML = data.map((cat, idx) => `
+    <div class="cat" data-cat="${idx}">
+      <div class="cat-head" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="arrow">▼</span> ${cat.name} <span class="cat-count">${cat.count}</span>
+      </div>
+      ${cat.desc ? `<div class="category-desc">${cat.desc}</div>` : ``}
+      <div class="ch-list">
+        ${cat.channels.map(ch => `
+          <div class="ch ${activeChannel===ch.id?'active':''} ${ch.voice?'voice':''}" data-id="${ch.id}" data-label="${ch.label}" onclick="selectChannel('${ch.id}','${ch.label}')">
+            <span class="hash">${ch.voice? (ch.locked?'🔒':'🔊') : ch.icon}</span>
+            <span class="label">${ch.label}</span>
+            ${ch.count?`<span class="user-count">${ch.count}</span>`:''}
+            ${ch.badge?`<span class="${ch.badge==='NEW'?'badge-new':'badge-lock'}">${ch.badge}</span>`:''}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderMain(){
+  const map = {welcome:'welcome', rules:'welcome', bylaws:'welcome', 'chain-of-command':'welcome', announcements:'welcome', 'patch-wall':'welcome',
+               recruitment:'welcome', prospect:'prospect', 'prospect-hall':'prospect', 'prospect-chat':'prospect',
+               'high-command':'church','officer-chat':'church','church-votes':'church','war-room':'church',
+               'run-board':'ops','treasury':'ops','inventory':'ops','intel-map':'ops'};
+  const key = previews[activeChannel] ? activeChannel : (map[activeChannel] || null);
+  let html;
+  if (key && previews[key]) html = previews[key];
+  else html = previews.generic(activeChannel.replace('m-',''));
+  document.getElementById('mainScroll').innerHTML = html;
+  document.getElementById('mainTitle').textContent = activeChannel.replace('m-','');
+  document.getElementById('mainHash').textContent = document.querySelector(`.ch[data-id="${activeChannel}"]`)?.classList.contains('voice') ? '🔊' : '#';
+  document.getElementById('inputChannel').textContent = '#' + activeChannel.replace('m-','');
+  const topics = {
+    welcome:"Read before you speak. Loyalty. Discipline. Community.",
+    recruitment:"Open a ticket — no DMs to High Command.",
+    general:"Keep it club. No civilian drama.",
+    "high-command":"Need-to-know only. No leaks.",
+    "prospect-hall":"Earn it. Tasks & mentors.",
+    "run-board":"Runs, jobs, intel. Check portal-map.",
+    "treasury":"Dues & ledger — patched eyes only."
+  };
+  document.getElementById('mainTopic').textContent = topics[activeChannel] || topics[activeChannel.replace('m-','')] || "Channel topic — disciplined, single-purpose, synced to portal.";
+}
+
+window.selectChannel = (id,label)=>{
+  activeChannel = id;
+  document.querySelectorAll('.ch').forEach(c=>c.classList.remove('active'));
+  document.querySelector(`.ch[data-id="${id}"]`)?.classList.add('active');
+  renderMain();
+}
+
+// perm table
+const permData = [
+  ["welcome","READ","READ","READ","WRITE"],
+  ["rules / bylaws","READ","READ","READ","WRITE"],
+  ["announcements","READ","READ","READ","ADMIN"],
+  ["recruitment","WRITE","WRITE","READ","ADMIN"],
+  ["hangaround-lounge","WRITE","WRITE","READ","READ"],
+  ["general / bar-talk","NONE","NONE","WRITE","WRITE"],
+  ["prospect-hall","NONE","READ","WRITE","ADMIN"],
+  ["prospect-chat","NONE","WRITE","READ","READ"],
+  ["treasury","NONE","NONE","READ","WRITE"],
+  ["war-room","NONE","NONE","NONE","ADMIN"],
+  ["high-command","NONE","NONE","NONE","ADMIN"],
+  ["church-votes","NONE","NONE","READ","ADMIN"],
+  ["VOICE: CHURCH","NONE","NONE","NONE","JOIN/MUTE"],
+];
+function permCell(v){
+  if(v==="READ") return `<span class="perm perm-read">READ</span>`;
+  if(v==="WRITE") return `<span class="perm perm-write">WRITE</span>`;
+  if(v==="ADMIN") return `<span class="perm perm-admin">ADMIN</span>`;
+  if(v==="NONE") return `<span class="perm perm-none">HIDDEN</span>`;
+  return `<span class="perm perm-none">${v}</span>`;
+}
+document.getElementById('permTable').innerHTML = permData.map(r=>`
+  <tr><td>${r[0]}</td><td>${permCell(r[1])}</td><td>${permCell(r[2])}</td><td>${permCell(r[3])}</td><td>${permCell(r[4])}</td></tr>
+`).join('');
+
+// mode toggle
+document.querySelectorAll('.toggle-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.toggle-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    mode = b.dataset.mode;
+    activeChannel = mode==='refined'?'welcome':'m-welcome';
+    renderChannels(); renderMain();
+  })
+});
+document.querySelectorAll('.view-tab').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.view-tab').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const map = {welcome:'welcome', church:'high-command', prospect:'prospect-hall', ops:'run-board'};
+    activeChannel = map[b.dataset.preview] || 'welcome';
+    renderChannels(); renderMain();
+    document.getElementById('discordMock').scrollIntoView({behavior:'smooth', block:'center'});
+  })
+});
+
+renderChannels(); renderMain();
+</script>
+</body>
+</html>

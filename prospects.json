@@ -1,0 +1,19 @@
+{
+  "prospectPeriod": 90,
+  "prospects": [
+    {
+      "name": "JDavinci",
+      "prospectSince": "2026-05-10",
+      "sponsor": "Tyrex",
+      "status": "active",
+      "notes": "Strong work ethic. Consistent attendance."
+    },
+    {
+      "name": "Kilo",
+      "prospectSince": "2026-06-22",
+      "sponsor": "KingSlayer",
+      "status": "active",
+      "notes": "New prospect. Learning the ropes."
+    }
+  ]
+}

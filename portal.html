@@ -73,6 +73,8 @@
         <a href="portal-inventory.html">Inventory</a>
         <a href="portal-finance.html">Finance</a>
         <a href="portal-bylaws.html">Bylaws</a>
+        <a href="portal-prospects.html">Prospects</a>
+        <a href="portal-badges.html">Badges</a>
         <a href="blog.html">Blog</a>
       </div>
     </div>
@@ -124,6 +126,22 @@
           <h4>Club Blog</h4>
           <p>Create, edit, and manage blog posts.</p>
         </a>
+        <a href="portal-prospects.html" class="portal-dash-card">
+          <div class="portal-dash-icon">&#129488;</div>
+          <h4>Prospects</h4>
+          <p>Track prospect progress and status.</p>
+        </a>
+        <a href="portal-badges.html" class="portal-dash-card">
+          <div class="portal-dash-icon">&#127942;</div>
+          <h4>Achievement Badges</h4>
+          <p>Milestones and member accomplishments.</p>
+        </a>
+      </div>
+
+      <!-- Server Status -->
+      <div class="portal-section" style="margin-top:2rem;">
+        <h3 class="portal-section-title">FIVEM SERVER STATUS</h3>
+        <div id="serverStatus" class="server-status-box">Loading server data...</div>
       </div>
 
       <!-- Logout -->
@@ -151,5 +169,78 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script>
+    (function() {
+      var el = document.getElementById('serverStatus');
+      if (!el) return;
+
+      var PROXY = 'proxy-fivem.php';
+      var SERVER_URL = 'https://frontend.cfx-services.net/api/servers/single/ogpvmv';
+
+      fetch(PROXY + '?url=' + encodeURIComponent(SERVER_URL)).then(function(r) {
+        return r.json();
+      }).then(function(data) {
+        var d = data.Data || {};
+        var players = d.players || [];
+        var maxPlayers = d_sv_maxclients || d.resources_maxclients || 128;
+        var hostname = d.hostname || 'Rebel Hounds MC';
+        var gametype = d.gametype || 'FiveM';
+        var mapname = d.mapname || 'Unknown';
+        var resources = d.resources || [];
+        var rules = d.rules || {};
+        var tags = d.tags || [];
+
+        var html = '<div class="server-info-grid">';
+
+        html += '<div class="server-info-item"><span class="server-label">Server</span><span class="server-value">' + escHtml(hostname) + '</span></div>';
+        html += '<div class="server-info-item"><span class="server-label">Players</span><span class="server-value accent">' + players.length + ' / ' + maxPlayers + '</span></div>';
+        html += '<div class="server-info-item"><span class="server-label">Game Type</span><span class="server-value">' + escHtml(gametype) + '</span></div>';
+        html += '<div class="server-info-item"><span class="server-label">Map</span><span class="server-value">' + escHtml(mapname) + '</span></div>';
+
+        if (rules && rules['sv_version']) {
+          html += '<div class="server-info-item"><span class="server-label">FiveM Version</span><span class="server-value">' + escHtml(rules['sv_version']) + '</span></div>';
+        }
+        if (rules && rules['licenseKey']) {
+          html += '<div class="server-info-item"><span class="server-label">License</span><span class="server-value">Authenticated</span></div>';
+        }
+
+        if (tags && tags.length > 0) {
+          html += '<div class="server-info-item server-full"><span class="server-label">Tags</span><span class="server-value">' + tags.map(function(t) { return '<span class="server-tag">' + escHtml(t) + '</span>'; }).join(' ') + '</span></div>';
+        }
+
+        html += '</div>';
+
+        if (resources.length > 0) {
+          html += '<div class="server-resources">';
+          html += '<h4>Connected Resources (' + resources.length + ')</h4>';
+          html += '<div class="resource-list">';
+          resources.forEach(function(r) {
+            html += '<span class="resource-item">' + escHtml(r) + '</span>';
+          });
+          html += '</div></div>';
+        }
+
+        if (players.length > 0) {
+          html += '<div class="server-players">';
+          html += '<h4>Online Players (' + players.length + ')</h4>';
+          html += '<div class="player-list">';
+          players.forEach(function(p) {
+            html += '<span class="player-item">' + escHtml(p.name || 'Unknown') + '</span>';
+          });
+          html += '</div></div>';
+        }
+
+        el.innerHTML = html;
+      }).catch(function() {
+        el.innerHTML = '<div style="color:var(--muted);padding:1rem;">Unable to fetch server data. Server may be offline.</div>';
+      });
+
+      function escHtml(s) {
+        var d = document.createElement('div');
+        d.textContent = String(s || '');
+        return d.innerHTML;
+      }
+    })();
+  </script>
 </body>
 </html>
