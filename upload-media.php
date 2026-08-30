@@ -6,29 +6,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); echo json_encode(['error'=>'Method not allowed']); exit; }
 
 $uploadDir = __DIR__ . '/media-uploads';
-if (!is_dir($uploadDir)) { @mkdir($uploadDir, 0755, true); }
+if (!is_dir($uploadDir)) { @mkdir($uploadDir, 0777, true); }
+@chmod($uploadDir, 0777);
 
 $galleryFile = __DIR__ . '/gallery.json';
 $caption = isset($_POST['caption']) ? trim($_POST['caption']) : '';
 $caption = mb_substr($caption, 0, 300);
-
 $imageUrl = isset($_POST['imageUrl']) ? trim($_POST['imageUrl']) : '';
 
 if ($imageUrl !== '') {
     if (!filter_var($imageUrl, FILTER_VALIDATE_URL)) { http_response_code(400); echo json_encode(['error'=>'Invalid URL']); exit; }
-    $entry = ['url'=>$imageUrl, 'caption'=>$caption, 'type'=>'image', 'addedBy'=>'Member', 'ts'=>time()];
+    $isVidUrl = preg_match('/\.(mp4|webm|mov|m4v|avi)(\?|$)/i', $imageUrl);
+    $type = $isVidUrl ? 'video' : 'image';
+    $entry = ['url'=>$imageUrl, 'caption'=>$caption, 'type'=>$type, 'addedBy'=>'Member', 'ts'=>time()];
     $gallery = [];
     if (file_exists($galleryFile)) { $raw=@file_get_contents($galleryFile); $gallery=json_decode($raw,true); if(!is_array($gallery)) $gallery=[]; }
     array_unshift($gallery, $entry);
     $gallery=array_slice($gallery,0,500);
     @file_put_contents($galleryFile, json_encode($gallery, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), LOCK_EX);
-    echo json_encode(['success'=>true, 'url'=>$imageUrl]);
+    @chmod($galleryFile, 0666);
+    echo json_encode(['success'=>true, 'url'=>$imageUrl, 'type'=>$type]);
     exit;
 }
 
-if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+if (!isset($_FILES['file'])) {
     http_response_code(400);
-    echo json_encode(['error'=>'No file uploaded']);
+    echo json_encode(['error'=>'No file received. Try a smaller file or check server limits.']);
+    exit;
+}
+if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+    $code = $_FILES['file']['error'];
+    $map = [
+        UPLOAD_ERR_INI_SIZE => 'File too large for server (php.ini limit). Try a smaller file.',
+        UPLOAD_ERR_FORM_SIZE => 'File too large.',
+        UPLOAD_ERR_PARTIAL => 'Upload interrupted. Try again.',
+        UPLOAD_ERR_NO_FILE => 'No file uploaded.',
+        UPLOAD_ERR_NO_TMP_DIR => 'Server temp folder missing.',
+        UPLOAD_ERR_CANT_WRITE => 'Server write failed.',
+        UPLOAD_ERR_EXTENSION => 'Server blocked this file type.'
+    ];
+    $msg = isset($map[$code]) ? $map[$code] : 'Upload error code '.$code;
+    http_response_code(400);
+    echo json_encode(['error'=>$msg]);
     exit;
 }
 
@@ -53,27 +72,22 @@ if ($size > $maxSize) {
     exit;
 }
 
-$finfo = @finfo_open(FILEINFO_MIME_TYPE);
-$mime = $finfo ? @finfo_file($finfo, $tmpPath) : '';
-if ($finfo) @finfo_close($finfo);
-$allowedMimePrefix = $isVideo ? ['video/'] : ['image/'];
-$mimeOk = false;
-foreach ($allowedMimePrefix as $p) { if (strpos($mime, $p)===0) { $mimeOk=true; break; } }
-if (!$mimeOk && $mime !== 'application/octet-stream') {
-    // still allow if extension is valid but mime unknown
-}
-
 $safeBase = preg_replace('/[^a-zA-Z0-9_-]/','_', pathinfo($origName, PATHINFO_FILENAME));
 $safeBase = substr($safeBase, 0, 40);
 if ($safeBase==='') $safeBase='upload';
-$unique = $safeBase . '_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+try { $rand = bin2hex(random_bytes(4)); } catch(Exception $e) { $rand = substr(md5(uniqid()),0,8); }
+$unique = $safeBase . '_' . time() . '_' . $rand . '.' . $ext;
 $destPath = $uploadDir . '/' . $unique;
 
 if (!@move_uploaded_file($tmpPath, $destPath)) {
-    http_response_code(500);
-    echo json_encode(['error'=>'Failed to save file']);
-    exit;
+    // fallback copy
+    if (!@copy($tmpPath, $destPath)) {
+        http_response_code(500);
+        echo json_encode(['error'=>'Failed to save file. Folder may not be writable.']);
+        exit;
+    }
 }
+@chmod($destPath, 0644);
 
 $url = 'media-uploads/' . $unique;
 $type = $isVideo ? 'video' : 'image';
@@ -84,5 +98,6 @@ if (file_exists($galleryFile)) { $raw=@file_get_contents($galleryFile); $gallery
 array_unshift($gallery, $entry);
 $gallery=array_slice($gallery,0,500);
 @file_put_contents($galleryFile, json_encode($gallery, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), LOCK_EX);
+@chmod($galleryFile, 0666);
 
 echo json_encode(['success'=>true, 'url'=>$url, 'type'=>$type]);

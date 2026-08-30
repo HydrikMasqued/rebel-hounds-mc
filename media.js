@@ -5,7 +5,6 @@ const UPLOAD_PHP = 'upload-media.php';
 const LS_GALLERY = 'rh_gallery';
 const LS_VIDEOS = 'rh_videos';
 
-// Fetch shared gallery from server, fallback to localStorage
 async function fetchSharedGallery() {
   try {
     const r = await fetch(GALLERY_JSON + '?t=' + Date.now(), { cache: 'no-store' });
@@ -21,7 +20,6 @@ function getDefaultGallery() {
 function getVideos() {
   try { return JSON.parse(localStorage.getItem(LS_VIDEOS)) || []; } catch(e){ return []; }
 }
-
 function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -31,14 +29,20 @@ function isVideoUrl(url, type) {
   if (type === 'image') return false;
   return /\.(mp4|webm|mov|m4v|avi)(\?|$)/i.test(url);
 }
-
-// Render gallery — supports images and videos
 async function renderGallery() {
   const grid = document.getElementById('galleryGrid');
   const empty = document.getElementById('galleryEmpty');
   if (!grid) return;
-  const items = await fetchSharedGallery();
-  // also merge local videos that are youtube embeds
+  let items=[];
+  try { items = await fetchSharedGallery(); } catch(e){ items=getDefaultGallery(); }
+  // merge local fallback for recent uploads if server not yet updated
+  try {
+    const local = JSON.parse(localStorage.getItem(LS_GALLERY)||'[]');
+    if (Array.isArray(local) && local.length) {
+      const urls=new Set(items.map(i=>i.url));
+      local.forEach(l=>{ if(!urls.has(l.url)) items.push(l); });
+    }
+  } catch(e){}
   if (items.length === 0) { if (empty) empty.style.display='block'; grid.innerHTML=''; return; }
   if (empty) empty.style.display='none';
   grid.innerHTML = items.map((item, i) => {
@@ -51,18 +55,15 @@ async function renderGallery() {
       ${item.caption ? `<div class="gallery-item-overlay"><p>${escapeHtml(item.caption)}</p></div>` : ''}
     </div>`;
   }).join('');
-
   grid.querySelectorAll('.gallery-item').forEach(el => {
     el.addEventListener('click', () => {
       const url = el.getAttribute('data-url');
       const type = el.getAttribute('data-type');
-      const idx = parseInt(el.getAttribute('data-index'),10);
       if (type === 'video') openLightboxVideo(url);
       else openLightbox(url);
     });
   });
 }
-
 function renderVideos() {
   const grid = document.getElementById('videoGrid');
   const empty = document.getElementById('videoEmpty');
@@ -77,12 +78,10 @@ function renderVideos() {
     </div>
   `).join('');
 }
-
 function openLightbox(url) {
   const lb=document.getElementById('lightbox');
   const img=document.getElementById('lightboxImg');
   if(!lb||!img) return;
-  // ensure video element hidden if present
   const vid=document.getElementById('lightboxVideo');
   if(vid){ vid.pause(); vid.style.display='none'; }
   img.style.display='block';
@@ -123,7 +122,6 @@ const lightbox=document.getElementById('lightbox');
 if(lightbox) lightbox.addEventListener('click', e=>{ if(e.target===lightbox) closeLightbox(); });
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
 
-// Upload handling — direct to PHP
 const gallerySubmit=document.getElementById('gallerySubmit');
 const galleryUrl=document.getElementById('galleryUrl');
 const galleryCaption=document.getElementById('galleryCaption');
@@ -132,7 +130,6 @@ const galleryPreviewImg=document.getElementById('galleryPreviewImg');
 const galleryPreviewVideo=document.getElementById('galleryPreviewVideo');
 const galleryMsg=document.getElementById('galleryMsg');
 const galleryFile=document.getElementById('galleryFile');
-
 let pendingFile=null;
 
 if(galleryFile){
@@ -180,53 +177,70 @@ if(galleryUrl){
     }
   });
 }
-
 async function uploadDirect(file, caption, url){
   const fd=new FormData();
   if(file) fd.append('file', file);
   if(caption) fd.append('caption', caption);
   if(url) fd.append('imageUrl', url);
-  galleryMsg.textContent='Uploading...';
   try{
     const res=await fetch(UPLOAD_PHP, { method:'POST', body: fd });
     const data=await res.json().catch(()=>({}));
-    if(!res.ok || data.error){ galleryMsg.textContent=data.error||'Upload failed.'; return null; }
-    return data.url;
+    if(!res.ok || data.error){ return { error: data.error || ('Server error '+res.status) }; }
+    return { url: data.url };
   }catch(err){
-    galleryMsg.textContent='Upload failed. Check connection.';
-    return null;
+    return { error: 'Connection failed. Check internet.' };
   }
 }
-
+function saveLocalFallback(url, caption, isVid){
+  try{
+    const items=JSON.parse(localStorage.getItem(LS_GALLERY)||'[]');
+    items.unshift({ url:url, caption:caption, type: isVid?'video':'image', addedBy:'Member' });
+    localStorage.setItem(LS_GALLERY, JSON.stringify(items.slice(0,100)));
+  }catch(e){}
+}
 if(gallerySubmit){
   gallerySubmit.addEventListener('click', async ()=>{
     const urlVal=galleryUrl.value.trim();
     const caption=galleryCaption.value.trim();
-    let finalUrl=null;
-
-    if(pendingFile || urlVal){
-      finalUrl=await uploadDirect(pendingFile, caption, urlVal);
-      if(!finalUrl) return;
-    } else {
+    if(!pendingFile && !urlVal){
       galleryMsg.textContent='Please select a file or enter a URL.';
       return;
     }
-
-    // success — reset form and re-render from server
-    galleryUrl.value='';
-    galleryCaption.value='';
-    galleryPreview.style.display='none';
-    galleryPreviewImg.removeAttribute('src');
-    galleryPreviewVideo.removeAttribute('src');
-    galleryPreviewVideo.pause();
-    if(galleryFile) galleryFile.value='';
-    pendingFile=null;
-    galleryMsg.textContent='Uploaded! Visible to everyone.';
-    await renderGallery();
-    setTimeout(()=>{ galleryMsg.textContent=''; }, 3000);
+    galleryMsg.textContent='Uploading...';
+    gallerySubmit.disabled=true;
+    const result=await uploadDirect(pendingFile, caption, urlVal);
+    gallerySubmit.disabled=false;
+    if(result && result.url){
+      galleryMsg.textContent='Uploaded! Visible to everyone.';
+      galleryUrl.value='';
+      galleryCaption.value='';
+      galleryPreview.style.display='none';
+      galleryPreviewImg.removeAttribute('src');
+      galleryPreviewVideo.removeAttribute('src');
+      galleryPreviewVideo.pause();
+      if(galleryFile) galleryFile.value='';
+      pendingFile=null;
+      // also save locally for instant feedback if server gallery not yet refreshed
+      saveLocalFallback(result.url, caption, false);
+      await renderGallery();
+      setTimeout(()=>{ galleryMsg.textContent=''; }, 3000);
+    } else {
+      const errMsg=(result&&result.error)||'Upload failed.';
+      // Fallback for images: save locally as Data URL so user still sees it
+      if(pendingFile && pendingFile.type.startsWith('image/')){
+        const reader=new FileReader();
+        reader.onload=e=>{
+          saveLocalFallback(e.target.result, caption, false);
+          galleryMsg.textContent=errMsg+' — Saved locally for you. Server may need permissions fix. Others will not see it until server works.';
+          renderGallery();
+          galleryUrl.value=''; galleryCaption.value=''; galleryPreview.style.display='none'; if(galleryFile) galleryFile.value=''; pendingFile=null;
+        };
+        reader.readAsDataURL(pendingFile);
+      } else {
+        galleryMsg.textContent=errMsg+' — If this persists, check file type/size or contact admin.';
+      }
+    }
   });
 }
-
-// Init
 renderGallery();
 renderVideos();
