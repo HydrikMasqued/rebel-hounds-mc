@@ -1,15 +1,4 @@
 [
-  "2026-08-28 20:28:21,921 - cogs.church_tracker - INFO - Church: thorikan joined the Roundtable VC (session 4)",
-  "2026-08-28 20:28:41,768 - utils.church_database - INFO - Opened church interval for jayreaper in session 4",
-  "2026-08-28 20:28:41,768 - cogs.church_tracker - INFO - Church: jayreaper joined the Roundtable VC (session 4)",
-  "2026-08-28 20:30:24,941 - utils.church_database - INFO - Opened church interval for vaelisthatlivingdeadgirl in session 4",
-  "2026-08-28 20:30:24,941 - cogs.church_tracker - INFO - Church: vaelisthatlivingdeadgirl joined the Roundtable VC (session 4)",
-  "2026-08-28 20:30:36,998 - utils.church_database - INFO - Opened church interval for serpxntt_ in session 4",
-  "2026-08-28 20:30:36,998 - cogs.church_tracker - INFO - Church: serpxntt_ joined the Roundtable VC (session 4)",
-  "2026-08-28 20:30:41,318 - utils.church_database - INFO - Opened church interval for nr1dishwasher in session 4",
-  "2026-08-28 20:30:41,318 - cogs.church_tracker - INFO - Church: nr1dishwasher joined the Roundtable VC (session 4)",
-  "2026-08-28 20:31:06,391 - utils.church_database - INFO - Opened church interval for bdillon97 in session 4",
-  "2026-08-28 20:31:06,392 - cogs.church_tracker - INFO - Church: bdillon97 joined the Roundtable VC (session 4)",
   "2026-08-28 20:31:06,392 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 3870 seconds",
   "2026-08-28 20:31:06,393 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 1h 4m",
   "2026-08-28 20:31:10,377 - utils.church_database - INFO - Opened church interval for d.bennett31 in session 4",
@@ -198,5 +187,16 @@
   "2026-08-29 22:03:56,821 - utils.playtime_database - INFO - Ended vital session for user 391042658912567296: 7486 seconds",
   "2026-08-29 22:03:56,821 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for d.bennett31: 2h 4m",
   "2026-08-29 22:10:28,537 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
-  "2026-08-29 22:10:28,537 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-08-29 22:10:28,537 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-29 22:31:14,670 - cogs.membership - INFO - Updated member 𝙎𝙀𝙍𝙋𝙀𝙉𝙏 with rank Full Patch",
+  "2026-08-29 22:58:29,912 - utils.playtime_database - INFO - Started vital session for user 326529501209034764 in guild 889005510286786601",
+  "2026-08-29 22:58:29,912 - cogs.playtime_tracker - INFO - Started vital playtime tracking for chszr in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-29 23:45:34,002 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
+  "2026-08-29 23:45:34,003 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-08-30 00:15:17,434 - cogs.contribution_verification - ERROR - Cannot DM president 181143017619587073 - DMs disabled",
+  "2026-08-30 00:15:18,144 - cogs.contribution_verification - INFO - Posted timeout contribution to leadership channel 1512987446483222639",
+  "2026-08-30 00:15:18,339 - cogs.contribution_verification - INFO - Handled timeout for contribution 1542318824706285659 from bdillon97",
+  "2026-08-30 00:22:10,533 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-08-30 00:26:27,197 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
+  "2026-08-30 00:26:27,197 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
