@@ -386,12 +386,11 @@
         if (!t.hasAttribute('data-image-file')) return;
         var file = t.files && t.files[0];
         if (!file) return;
-        if (file.size > 800000) { alert('Image too large — max 800KB'); t.value = ''; return; }
-        var reader = new FileReader();
+        if (!file.type.startsWith('image/')) { alert('Please select an image'); t.value=''; return; }
         var gIdx = parseInt(t.getAttribute('data-gidx'), 10);
         var bIdxAttr = t.getAttribute('data-bidx');
-        reader.onload = function(ev) {
-          var dataUrl = ev.target.result;
+        var maxBytes = 800 * 1024;
+        function handleDataUrl(dataUrl){
           if (bIdxAttr !== null) {
             var bIdx = parseInt(bIdxAttr, 10);
             badgesData.groups[gIdx].badges[bIdx].image = dataUrl;
@@ -402,12 +401,50 @@
             var hint = document.createElement('div');
             hint.style.fontSize = '0.7rem';
             hint.style.color = 'var(--primary)';
-            hint.textContent = 'Image ready';
+            hint.textContent = 'Image ready (auto-resized)';
             t.parentNode.appendChild(hint);
             setTimeout(function(){ hint.remove(); }, 2500);
           }
+        }
+        if (file.size <= maxBytes) {
+          var reader = new FileReader();
+          reader.onload = function(ev){ handleDataUrl(ev.target.result); };
+          reader.readAsDataURL(file);
+          return;
+        }
+        var url = URL.createObjectURL(file);
+        var img = new Image();
+        img.onload = function(){
+          var maxDim = 1024;
+          var w = img.width, h = img.height;
+          if (w > maxDim || h > maxDim) {
+            if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+            else { w = Math.round(w * maxDim / h); h = maxDim; }
+          }
+          var canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          URL.revokeObjectURL(url);
+          var quality = 0.92;
+          function tryExport(q){
+            canvas.toBlob(function(blob){
+              if(!blob){ alert('Resize failed'); return; }
+              if(blob.size <= maxBytes || q <= 0.52){
+                var r2 = new FileReader();
+                r2.onload = function(ev){ handleDataUrl(ev.target.result); };
+                r2.readAsDataURL(blob);
+              } else {
+                tryExport(q - 0.08);
+              }
+            }, 'image/jpeg', q);
+          }
+          tryExport(quality);
         };
-        reader.readAsDataURL(file);
+        img.onerror = function(){ alert('Invalid image'); URL.revokeObjectURL(url); t.value=''; };
+        img.src = url;
+        var msg = document.createElement('div'); msg.style.fontSize='0.7rem'; msg.style.color='var(--muted)'; msg.textContent='Resizing large image...';
+        t.parentNode.appendChild(msg); setTimeout(function(){ msg.remove(); }, 3000);
       });
 
       document.getElementById('btnEditBadges').addEventListener('click', enterEdit);
