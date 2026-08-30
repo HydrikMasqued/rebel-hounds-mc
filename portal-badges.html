@@ -257,10 +257,12 @@
               } else {
                 html += '<div class="badge-earned-empty">No one yet</div>';
               }
-              html += '<div class="badge-earned-add">';
-              html += '<input type="text" placeholder="Add name" id="add-earned-' + gIdx + '-' + bIdx + '" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">';
-              html += '<button type="button" class="btn btn-outline btn-sm" data-action="add-earned" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">Add</button>';
-              html += '</div>';
+              if (editMode) {
+                html += '<div class="badge-earned-add">';
+                html += '<input type="text" placeholder="Add name" id="add-earned-' + gIdx + '-' + bIdx + '" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">';
+                html += '<button type="button" class="btn btn-outline btn-sm" data-action="add-earned" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">Add</button>';
+                html += '</div>';
+              }
               html += '</div>';
               if (editMode) {
                 html += '<div class="badge-card-actions"><button type="button" class="btn btn-outline btn-sm" data-action="delete-badge" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" style="color:var(--primary);border-color:var(--primary);">Delete patch</button></div>';
