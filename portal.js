@@ -79,7 +79,7 @@ function setPatchAuth(authed) {
     if (bylawsOpen) bylawsOpen.href = BYLAWS_URL;
     if (bylawsDownload) bylawsDownload.href = BYLAWS_URL;
   } else {
-    try { sessionStorage.removeItem(PATCH_KEY); } catch (e) {}
+    try { sessionStorage.removeItem(PATCH_KEY); sessionStorage.removeItem('rh_patch_user'); } catch (e) {}
     if (patchGate) patchGate.classList.remove('hidden');
     if (patchLoginBg) patchLoginBg.style.display = '';
     if (patchArea) patchArea.classList.add('hidden');
@@ -101,6 +101,7 @@ if (patchForm) {
     const u = patchUser.value.trim();
     const p = patchPass.value;
     if (cyrb53(u) === Number(PATCH_USER) && cyrb53(p) === Number(PATCH_PASS)) {
+      try { sessionStorage.setItem('rh_patch_user', u); } catch(e) {}
       setPatchAuth(true);
       patchForm.reset();
       if (patchArea) patchArea.scrollIntoView({ behavior: 'smooth' });

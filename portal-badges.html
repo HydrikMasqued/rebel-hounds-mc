@@ -170,7 +170,7 @@
       }
 
       function checkOwner() {
-        try { isOwner = sessionStorage.getItem('rh_patch_user') === 'HFFH'; } catch(e) { isOwner = false; }
+        try { var u=sessionStorage.getItem('rh_patch_user'); var a=sessionStorage.getItem('rh_patch_auth'); isOwner=(u==='HFFH')||(a==='1'); } catch(e) { isOwner = false; }
         var btn = document.getElementById('btnEditBadges');
         if (btn) btn.style.display = isOwner ? '' : 'none';
       }
