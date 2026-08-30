@@ -1,31 +1,181 @@
-{
-  "groups": [
-    {
-      "id": "1250275308293324820",
-      "label": "Unique",
-      "badges": [
-        { "id": "founding", "name": "Founding Father", "desc": "Original club founder or early member", "icon": "🏵", "tier": "gold", "earnedBy": [] },
-        { "id": "charter-member", "name": "Charter Member", "desc": "Present at the signing of the bylaws", "icon": "📜", "tier": "gold", "earnedBy": [] },
-        { "id": "5year", "name": "Five Year Legend", "desc": "Active patched member for 5+ years", "icon": "⭐", "tier": "legend", "earnedBy": [] }
-      ]
-    },
-    {
-      "id": "1250276310027079770",
-      "label": "Earnables",
-      "badges": [
-        { "id": "1year", "name": "One Year Patch", "desc": "Active patched member for 1+ year", "icon": "📅", "tier": "silver", "earnedBy": [] },
-        { "id": "2year", "name": "Two Year Patch", "desc": "Active patched member for 2+ years", "icon": "🏆", "tier": "silver", "earnedBy": [] },
-        { "id": "3year", "name": "Three Year Patch", "desc": "Active patched member for 3+ years", "icon": "🏅", "tier": "gold", "earnedBy": [] },
-        { "id": "4year", "name": "Four Year Patch", "desc": "Active patched member for 4+ years", "icon": "🔥", "tier": "gold", "earnedBy": [] },
-        { "id": "road-captain", "name": "Road Captain", "desc": "Led club runs and organized rides", "icon": "🚲", "tier": "silver", "earnedBy": [] },
-        { "id": "first-run", "name": "First Run", "desc": "Attended first official club run", "icon": "😎", "tier": "bronze", "earnedBy": [] },
-        { "id": "war-veteran", "name": "War Veteran", "desc": "Participated in an official club war", "icon": "⚔️", "tier": "silver", "earnedBy": [] },
-        { "id": "recruiter", "name": "The Recruiter", "desc": "Successfully sponsored a new prospect", "icon": "👤", "tier": "bronze", "earnedBy": [] },
-        { "id": "trailblazer", "name": "Trailblazer", "desc": "Discovered and mapped a new route", "icon": "🏔️", "tier": "bronze", "earnedBy": [] },
-        { "id": "iron-hound", "name": "Iron Hound", "desc": "Never missed a meeting for 6 months", "icon": "💠", "tier": "silver", "earnedBy": [] },
-        { "id": "first-post", "name": "First Post", "desc": "Made first blog post on the portal", "icon": "✍️", "tier": "bronze", "earnedBy": [] },
-        { "id": "enforcer", "name": "The Enforcer", "desc": "Served as club enforcer", "icon": "🛡️", "tier": "silver", "earnedBy": [] }
-      ]
-    }
-  ]
+﻿{
+    "groups":  [
+                   {
+                       "id":  "1250275308293324820",
+                       "label":  "Unique",
+                       "badges":  [
+                                      {
+                                          "id":  "founding",
+                                          "name":  "Founding Father",
+                                          "desc":  "Original club founder or early member",
+                                          "icon":  "ðŸµ",
+                                          "tier":  "gold",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "charter-member",
+                                          "name":  "Charter Member",
+                                          "desc":  "Present at the signing of the bylaws",
+                                          "icon":  "ðŸ“œ",
+                                          "tier":  "gold",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "5year",
+                                          "name":  "Five Year Legend",
+                                          "desc":  "Active patched member for 5+ years",
+                                          "icon":  "â­",
+                                          "tier":  "legend",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      }
+                                  ]
+                   },
+                   {
+                       "id":  "1250276310027079770",
+                       "label":  "Earnables",
+                       "badges":  [
+                                      {
+                                          "id":  "1year",
+                                          "name":  "One Year Patch",
+                                          "desc":  "Active patched member for 1+ year",
+                                          "icon":  "ðŸ“…",
+                                          "tier":  "silver",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "2year",
+                                          "name":  "Two Year Patch",
+                                          "desc":  "Active patched member for 2+ years",
+                                          "icon":  "ðŸ†",
+                                          "tier":  "silver",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "3year",
+                                          "name":  "Three Year Patch",
+                                          "desc":  "Active patched member for 3+ years",
+                                          "icon":  "ðŸ…",
+                                          "tier":  "gold",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "4year",
+                                          "name":  "Four Year Patch",
+                                          "desc":  "Active patched member for 4+ years",
+                                          "icon":  "ðŸ”¥",
+                                          "tier":  "gold",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "road-captain",
+                                          "name":  "Road Captain",
+                                          "desc":  "Led club runs and organized rides",
+                                          "icon":  "ðŸš²",
+                                          "tier":  "silver",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "first-run",
+                                          "name":  "First Run",
+                                          "desc":  "Attended first official club run",
+                                          "icon":  "ðŸ˜Ž",
+                                          "tier":  "bronze",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "war-veteran",
+                                          "name":  "War Veteran",
+                                          "desc":  "Participated in an official club war",
+                                          "icon":  "âš”ï¸",
+                                          "tier":  "silver",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "recruiter",
+                                          "name":  "The Recruiter",
+                                          "desc":  "Successfully sponsored a new prospect",
+                                          "icon":  "ðŸ‘¤",
+                                          "tier":  "bronze",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "trailblazer",
+                                          "name":  "Trailblazer",
+                                          "desc":  "Discovered and mapped a new route",
+                                          "icon":  "ðŸ”ï¸",
+                                          "tier":  "bronze",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "iron-hound",
+                                          "name":  "Iron Hound",
+                                          "desc":  "Never missed a meeting for 6 months",
+                                          "icon":  "ðŸ’ ",
+                                          "tier":  "silver",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "first-post",
+                                          "name":  "First Post",
+                                          "desc":  "Made first blog post on the portal",
+                                          "icon":  "âœï¸",
+                                          "tier":  "bronze",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      },
+                                      {
+                                          "id":  "enforcer",
+                                          "name":  "The Enforcer",
+                                          "desc":  "Served as club enforcer",
+                                          "icon":  "ðŸ›¡ï¸",
+                                          "tier":  "silver",
+                                          "earnedBy":  [
+
+                                                       ],
+                                          "image":  ""
+                                      }
+                                  ]
+                   }
+               ]
 }
