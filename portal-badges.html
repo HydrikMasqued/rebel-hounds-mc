@@ -5,31 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Achievement Badges - Rebel Hounds MC</title>
   <link rel="stylesheet" href="styles.css?v=8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; }
-    .badge-card { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; text-align: center; transition: transform 0.2s, border-color 0.2s; position: relative; }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 500; font-display: swap; src: url(data:font/woff2;base64,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QQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBgQEBAQEBAQEBAQEBAQGBgYEBgYGBAQEBAQEBAQEBAYGBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAYGBgYEBgYGBAQEBAQEBAgEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBgQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGBgYEBgYGBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGBgYEBgYGBAQEBAQEBAQEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAQEBAQEBAQGBgYEBgYGBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGBgYEBgYGBAQEBAQEBAgEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAQEBAYGBgYEBgYGBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGBgYEBgYGBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQGBgYEBgYGBAQEBAQEBAQEBAQEBAQEBAQEBAQEBgYGBAQEBgYGBAQEBgYGBAQEBAQEBAQEBAQEBCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkpKSgoKAQEBgYGBAQEBgYGBAQEBgYGBAQEBgYGBAQEBgYGBARBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBw==) format('woff2'); }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 600; font-display: swap; src: url(data:font/woff2;base64,d09GMgABAAAAAD10ABEAAAAAmAAAAD0TAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbDBwYBmAAggQIZAmWcBEICoH+AIHhWAuDIAABNgIkA4Y8BCAFhRoHg10MgREbD4cl45iF20EC6fe/sSiCjQOA/Nod8//fkxsyBL9Al61WJ0GQHWbBlDBMBcEQJs6u4JyJnMluB511LQcTUqKvyXmT40bDydX0ZLjpxor2EjYLTgVK/67Bb4Wq45+H9QVFC6pgf/hPtmU2HsGBNUrQK/aozw4/sTXiCI19kmvx/6c/e27gUreplCYlUjkp+agvkMwR6awwaFnUIzRTPRJBBiGRRFBGQgihRNLMCEVEyBJgMCkbnLEzzpuS80bfpgjr9SbnvX1vclpv8npD9obkPwjTbFrJId35oaigY8YlOYkwLJeOVCMOMSPmkOS0Zfba4/esjCf6w3y7P6VR4ZtQxgMUwNKBW8FgEM4OKWDRfP953fr/tfeRnAimCRAIqoPfyYzzTOGbVGJNebvqVv+3z97PVVbVo//d3WGw3QE+R7lGXryRZ5a8A6eRtf0PABvQrOXuKLVlcl+yRrGDUKh33RmEFfiPa+WCkC3HvN9/QJkCHUwpS4eQFJMloSt0nHqZsldtcO9vgAU4C4/pT1PgJ9VX2wF/BZC2Ag5zVd2aMsW49oiTLUygbGs0qptBYJgQEkFQGIGxW8tGcL+w95eP/5ROldpM+vMmcRHgQfLbfmOUIo1dm1VUnIIAt/f/VK1Kf0HcaZC7r5844zVr1GvV5/suSNqdddGFPgiJqiIKKNCChAzQRiJlqTYUqdaoKfUMiwC1oJqaR7lZZ5zMeI2TtM5qzrio7yLnXJRfGt+FG0TJPZZmUXBmH/vbRZppfRDCN8iyOFDYTIapw433Jd1+NyCD3pOcg0AAFAgzGQgczqNqQ3aKo6Dbwtdc1NzSpwFxwHoCetFy3ASw0cK1UcjpQrXQR9vKcPiGYtxr1lV6AY6Cep9b/L8cOHaRSh5RUwCg/x0C4IdBbIwDYA0GbcM8fOyLIuvI/mdKif4OWGWNTbbaaQ8TWFLCjvd27x51/pB35F15Ne/Nx/B6fq27Wm1pMpGuB3h7LUPr0XZ0YF/xUw54e9758Oj/N2SmH/Oqo4447KD99tljpxHa/n379/jfI62ltVZZaZnFJhqB/5r2jnDTbnRjx7d1dmO3T6frRa3ef7OXf1TULYB0BcCPWKADfCB/h9Rfs+IX6I1B/OgHATj4i0TRAfX3o+f6zH4W58g/erKmf8YNUE10bESIG/Gk/QYERmdJYJjPLRmYgr8UUoaPTd87qYPJ4PyTFxWTr+A3p14YBwPusmd2WUCBGkhT9m3RYiRAmvM5KPxShDnyxySDo0cTDxuDTs7vsnCXiuHpNyRjRUp842d9zy0FMAClpimoeOqpxFGLMyKBlFtKqKhgWlTp0ERHx3MvOZ8DFKk4PgEih79PbSvzbocynPl4atJ58BrcffGFH9xwRYdWcLYCLa43YNmA1qzSryD6aCKXc9Kr2UuVTtsCqKxwOfkrXQkUOcYxwGRif7ong8YagwO3JtIGW5R+zEHTR6aOSkqNGOSo0AQRlQlfnOcZnhkLaBKFauqP0YzbP812GoLrAh7maO3GHXFpXoxKWBOclkDhVhr/EjZgmcTUALbH/f6KVBAXmCii71Ci3DIFMC2TafgrXZWjIrGTEfkPWjICdK00Di59kXU/LOS0N/pdy5gGz/zBxT5tZLblumZRkEq90lKsglQ4pixwVGB1xTugxDTSTkGhBy/SS1HanPwR4/alonlqIWYAgJUfcioO9DhiAhRzDV150eCWBchpn0TiQ0OejldADq2C0y49U+Iw==) format('woff2'); }
+@font-face { font-family: 'Bebas Neue'; font-style: normal; font-weight: 400; font-display: swap; src: url(data:font/woff2;base64,d09GMgABAAAAADXIABEAAAAAiLwAADVkAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGm4bnwAciT4GYACEfgiBAgmcFREICoGnHIGUCAuEHAABNgIkA4gmBCAFhAQHiEAMgUsb33s1jNsvCegOdEqJ7NmTKIKNAwkzeD8SYapZbyP4/09ITsaQzQJmqr06mDEwk+VSd+dVKFwFgwY7R6EwOxxtQox9rUo2myeb61Y+iFL0z8mjmfA+74OFimpQYGQkQ4fh4xhXfPM3u1p65sN3OgdGNISd/fZJ6qtn/KMhpgxfoEgpqrQiYfs9hJNMv1twxuRWtq323noGto38SU5eomgtKrJ654DYPapnyeQYUKF6hagJsIfn5/Z/7t1d3cGoWNRdwYBVw5IaYwWMqYgwYEMYyAYWYtUT0f76jXxR+lIFo+K99mXiS59QVCf17CGmPBqDiEbs64F0Ucb2QTSqRqqWCxBMIEUCpEiJQRKZJVHpsi78P/7fIaaid9GmpnNRRY1Lu208uLZGS0RiJRSaSqdrE3/RHe8y1IbbiZplU8kBIs1cdAZtU3kDRPeOq1RJXaHfq7NmpCTFn7g74JKoJCgBZcuxsqsjKLpjt9br77gD5i60Wqiuvv4HoA/of9pSLiqHFXjKT3U3uwEyoBYuYZv1g5JKT3U3uwEyoBYuYZv1g5JvfUV9Ra2uelozgtMZSlccZTBvvb59+v+vM7vw3v+S7QCQl7xcIyiAc1w5csCjqRIvlHMU2rLcsl4d6gjWTO3a+QFBzvkXhLYulQMjgN2EWVSca6wfK3lgTIUrwAYArBL4f6aa7fxdQCBBB+5FylG6FKU7v56igkOK9dWD+Qvszs4uQSwICgsQCqB0BkkFALxASRcWSYKguyzpQswdBYo6kJfoFGIVcqjcu+hcuSjtsnLpomxduqjMw9eZvHkT7I2SLWURe9hvxjPhTgVKtRSswhW7lcv1x1D7PhQzqlcJEkWvf437/X59g7nuwzaNJRyJcIQRCc28j/977uFv+k3bq+gfkqCDEOdibHvPoahts4gfKpHSXpD/UgWwAsAkkKdIYECBARQYLAmCDsJUBFKiBEROAaJSCmLRDdKjB6RPHKTfQpCnnsJ5ZgK0VBocCDCBVh94401dAcB8SyIGqBCALmkgOPhi60BBEA7Zry8G5Cc20vsDSdNHt0ewL0DgABYFH1pk8sV1zSooQgFBAtUDJoPqSkmSVLGzM9OSk5OQE2DLB/nntIA8IptkLzQJcBIAawGAHRJJnnrO3upnyNiMy/hMyMRwGaKhrO4KTOvv60jeEPyVbcsHszvbsjHDWZFFmg8SH6BVe9OZcJoSBPch1xVnyqLHzErFRLjoPBvUEKl2To9mZP8b0UbP/FWn3/zgVKuwWleV/tXWB3Keo+TRGlNBk3TVzlypxTudY6tLp4W3atrpPYgHxibrdDN2GNgRzTY0a4474Hy8C3ES66R7zh5Oo3bOLBsunxbJCG/VtKFXMApEMmAqOjRP5BIRp8Lzamo1ulmyRYvW+9vgAXPaAwTQGOHT6gEYCTLh/vrNCGpOkp+BkynBiEAn7Wpoi/QN80qXRWI57Fe/ER9E4VAUnCUUPJUCMTkEZloVZlUBpxIKol+BzPvgEQxZAAb5FQQCZ+0QoKbplCQJMAEK35tGuPC9EgoAlUBvRTeAvBgKzwuOiHOJwiI7iAktM8VuyJrmJg77LwIggaWdJZ6UZ1ChNa0NxDOOuqo5ShbQK78C7VBK5YDMTstL9DeVukY2BZTR1bV0pPqqfxfNnjV8/W84aN7ytne864gxx5102lnnXXTZFVddc9Mtt91x1z33PfDQI++B0SBQEAoKWDIqVI4cKBYWHKFiKBkZlIoKQk2PwsAAz8iIwM) format('woff2'); }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 700; font-display: swap; src: url(data:font/woff2;base64,d09GMgABAAAAAD1IABEAAAAAnOwAADzmAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbDBwYBmAAggQIZAmWcBEICoKHfIHpRQuDIAABNgIkA4Y8BCAFhQwHg10MgREb7ooV3Bh6twMEUuozZMCd8TgA6/UP/v+cHIwxYAOs3D7ppBYzCE2HjJCDM7juSQsTsxTUiKXv9YXVxoMqs/WJiejfmF3jz0Yq7HuFi2j3IPM87EtPH2ppiZ2ha4hf9OK3clsZlrUw+TPDbHEGto38SU5eomgtKrJ654DYPapnyeQYUKF6hagJsIfn5/Z/7t1d3cGoWNRdwYBVw5IaYwWMqYgwYEMYyAYWYtUT0f76jXxR+lIFo+K99mXp1XKt9FWLv/1lm8n9vMeQ9CcGujHoTbHBoI1OKqgaGF+DQhw6e+55Xb8Xz85nP05l05ii9fRc9VcmLDGNvUSZV7U7egNwoxAzZpwicTwKedtFJ56XrAZVnhtSHcZUgrsPp9kFNKDrKUDHwZlyk1CGgspHYLofgqoiSgJTjvExQbJMyb16KqJuiTKIHuknDMmxCV1x8BVWr//09YnXQKZHgd8yvXvUnRkqnv6m1M3BlHNAj66QoY7vVgjIAOGxwygXhXBzcrYp88CVU1GEjZbI/zf9K9mw3exlVO23ge7c9l0ZsRbsdh16MOHJEE1QXrIzP9TEjNGpdm0sJhOgKn7qB24spNSYQa1ZGoSrx5YrS2IWwPwEeGLd57Q3EfvTOfdr0fF0Hl7J4P5rdriAKKMnw+mSfYCawZiQgTfg0jgTsTg4hjM07/pHtfmmm/g1nlTTg6CWyxOJ6+i1V+R2l9tfVnP8IJZfh1fPr2GnM+N6U6J1ERu30fjrFcKAViFqw5sIbqN2BkPLQ1IfTVPEKxCzkyy4vE91Xe1mWW6oYBDtb4c+eEzykRCKoWlDkh8oIV6NkIIrjoydPH) format('woff2'); }
+@font-face { font-family: 'Rajdhani'; font-style: normal; font-weight: 400; font-display: swap; src: url(data:font/woff2;base64,d09GMgABAAAAADqAABEAAAAAlNgAADohAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbDBwYBmAAggQIZAmWcBEICoH3UIHZWAuDIAABNgIkA4Y8BCAFhSQHg10MgREbGYMl7NgL4DyIBMz/xxNFbaCsuoxCYOMAQJQfTvD/JyQdY8iINlDKst8nfRkhQQKVEjjGrKYNR7LKNhZBhJJd1li8MT0i/Z5l6a+YSlohTQ+d59VxBS+c0X2afdrvBwu1/3ydS7sWkEyHJnpbisqdNzKsGLAJo3F6Z4A7rIjR1Yenbb5/h0SZdWZhASYhVoGuws61W6OrTJfV2Nc7y+5+NNLaxyDbF4Lv+0zKIThQqhbmCFQbKmL5v549yC7oXyjKIxQOG7JC2BR8dPI7pEI4JLyf57fVj/hQ7j0XVEBAQkBs4L2Hig3yMBCxd3SsEewxJgqMmXaqdaZ1a7L/Tu2OW9W40V/fX+79NXtDHeCQTRCK+Prxa/n9qbrUNITcCfdLFnjmE8hFI59TEXIT3Bug/wFgA9oz2+clKUoxmnl5J8ZG7IQYa1GBKHwr6hQ1XTVs3Mypdjrm0MkZesL+ClBRmJ22jNTJZPDf1swiCO/fdrLJy78CNSlYFXpAdsPaqtNtbRBFbKzaAZyo9aIfv+cWPNa3SVvwl1y6cocEW7YiMv804ELD5gY8W5w9aFvm2k6X3mZVkwiQ48NreJtqvsIajvdJTTra/5Uuu/4qaXdaOMpsGLOJcRxvCnfHdDhuSu/eXVXdpe5qSagbgVAzqQV5PEYSExBjW40Yv4YJT2bAKUQME5jgADhlvDmecrrv29txz/d9e7jc149fa/W8FDRVC4mWTj4754JpE6v79s/sOt4gFNESSZl1KSYzswvxhkR9zrvHmHXr1ywqL1Ex0H3rGNMsqf5iijqk8Cv5OIfvmfgEEkIAEIILIuojr7r+OGYhiX/5S6KTQE8UPoI/D0H0LZT6nfnwKXJ3brtEL5IZA1/7ecAB1znRkR4kY8aDeBUJi8JYHVuLJkYAH+KZTh09T1w4d+3r/5HETFlCv49asg9KMBt8DibR1RFy/KC3YlFZR9eGpMV8CfXbBC+ZwpcPSkGFUVwwHwGtY1KTYLDclQFyW+Dsv6ilsKoAel5gWo+CpQiacWb0QiKVpKqKhgUVXjocCcIMcUOa6LKCrRnwZRqv+PE1anHaUMr0N6ZfKbGDS6Gvy3YTGMd4yAklZWoOHeBOYIdMSEhQqitmVys8r6Zy2gqiwN4Gy2y/k/6dqtypn2U9zbqTtuzsJkRijs/a6wDrY3CKaD1kCm+sYoNaEvjYSFYBYKosrcghN9mbpRqObO1Jq4ehJsTiOUPIFHPHuFJnconoIYlbgrliFUzp74v9xZhkGKAD0+OSpEh/jIEIi+RaF8ywjAKDcr4J90HaWR5quZUP4VCRtBR4vi6btQ5beL66O7/vRHJKY0vQ5P374ljKyBxNxxVERU7yMRlEtKnhFL1hyy+uq9o9CKpK2CQl/ZCYs1lJJTPsN8QyU6rkGmUQNWevrZNdLj) format('woff2'); }
+  .badge-group { margin-bottom: 2.5rem; }
+    .badge-group-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+    .badge-group-head h3 { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 2px; color: var(--primary); }
+    .badge-group-id { font-size: 0.75rem; color: var(--muted); font-family: monospace; }
+    .badge-group-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+    .badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem; }
+    .badge-card { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; text-align: center; transition: transform 0.2s, border-color 0.2s; position: relative; }
     .badge-card:hover { transform: translateY(-2px); }
-    .badge-card.locked { opacity: 0.4; }
-    .badge-card.unlocked { border-color: var(--primary); }
-    .badge-icon { font-size: 2.5rem; margin-bottom: 0.6rem; }
-    .badge-name { font-family: var(--font-display); font-size: 1rem; letter-spacing: 1px; margin-bottom: 0.3rem; }
-    .badge-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.6rem; }
+    .badge-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
+    .badge-name { font-family: var(--font-display); font-size: 1rem; letter-spacing: 1px; margin-bottom: 0.2rem; }
+    .badge-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.4rem; }
     .badge-tier { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 4px; display: inline-block; }
     .badge-tier.bronze { background: rgba(205,127,50,0.15); color: #cd7f32; }
     .badge-tier.silver { background: rgba(192,192,192,0.15); color: #c0c0c0; }
     .badge-tier.gold { background: rgba(212,160,23,0.15); color: var(--gold); }
     .badge-tier.legend { background: rgba(192,57,43,0.15); color: var(--primary); }
-    .badge-lock { position: absolute; top: 0.6rem; right: 0.6rem; font-size: 0.8rem; opacity: 0.5; }
-    .badge-summary { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-    .badge-summary .summary-stat { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.5rem; text-align: center; flex: 1; min-width: 120px; }
-    .badge-summary .num { font-family: var(--font-display); font-size: 2rem; color: var(--primary); }
-    .badge-summary .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-    .badge-empty { text-align: center; padding: 4rem 2rem; color: var(--muted); }
-    .member-badge-select { margin-bottom: 2rem; }
-    .member-badge-select label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; display: block; }
-    .member-badge-select select { background: var(--dark-2); border: 1px solid var(--border); color: var(--text); padding: 0.6rem 1rem; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; min-width: 200px; }
+    .badge-earned { margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px solid var(--border); text-align: left; }
+    .badge-earned-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .badge-earned-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .badge-earned-name { background: var(--dark); border: 1px solid var(--border); border-radius: 12px; padding: 0.15rem 0.55rem; font-size: 0.75rem; color: var(--text); display: inline-flex; align-items: center; gap: 0.3rem; }
+    .badge-earned-name button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.9rem; line-height: 1; padding: 0; }
+    .badge-earned-name button:hover { color: var(--primary); }
+    .badge-earned-empty { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+    .badge-earned-add { display: flex; gap: 0.4rem; margin-top: 0.5rem; }
+    .badge-earned-add input { flex: 1; background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.3rem 0.5rem; border-radius: 4px; font-size: 0.8rem; min-width: 0; }
+    .badge-earned-add button { white-space: nowrap; }
+    .badge-edit-row { display: flex; gap: 0.4rem; margin-bottom: 0.4rem; }
+    .badge-edit-row input, .badge-edit-row select, .badge-edit-row textarea { flex: 1; background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.35rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-family: var(--font-body); }
+    .badge-edit-row textarea { resize: vertical; min-height: 50px; }
+    .badge-card-actions { display: flex; gap: 0.4rem; justify-content: center; margin-top: 0.6rem; }
+    .badge-summary { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .badge-summary .summary-stat { background: var(--dark-2); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1.2rem; text-align: center; flex: 1; min-width: 110px; }
+    .badge-summary .num { font-family: var(--font-display); font-size: 1.6rem; color: var(--primary); }
+    .badge-summary .label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .badge-add-form { background: var(--dark-2); border: 1px dashed var(--border); border-radius: 8px; padding: 1.2rem; margin-top: 1rem; }
+    .badge-add-form h4 { font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 1px; margin-bottom: 0.6rem; }
+    .edit-banner { background: rgba(192,57,43,0.12); border: 1px solid var(--primary); border-radius: 6px; padding: 0.6rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--primary); display: none; }
+    .edit-banner.active { display: block; }
+    .badge-empty { text-align: center; padding: 2rem; color: var(--muted); grid-column: 1 / -1; }
   </style>
 </head>
 <body class="portal-page">
@@ -94,20 +114,22 @@
     </div>
 
     <section class="section">
-      <div class="section-head">
-        <h2 class="section-title">ACHIEVEMENT BADGES</h2>
-        <p class="section-sub">Milestones and accomplishments earned by club members.</p>
+      <div class="section-head" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <h2 class="section-title" style="margin-bottom:0;">ACHIEVEMENT BADGES</h2>
+          <p class="section-sub" style="margin:0;">Unique and earnable milestones — who earned what.</p>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:0.5rem;">
+          <button class="btn btn-outline btn-sm" id="btnEditBadges" style="display:none;">Edit</button>
+          <button class="btn btn-primary btn-sm" id="btnSaveBadges" style="display:none;">Save</button>
+          <button class="btn btn-outline btn-sm" id="btnCancelBadges" style="display:none;">Cancel</button>
+        </div>
       </div>
 
-      <div class="member-badge-select">
-        <label for="memberSelect">View Member Badges</label>
-        <select id="memberSelect"><option value="">All Badges</option></select>
-      </div>
+      <div class="edit-banner" id="editBanner">EDIT MODE — Change badge info, add/remove names under each badge, add or delete badges. Remember to Save.</div>
 
       <div class="badge-summary" id="badgeSummary"></div>
-      <div class="badge-grid" id="badgeGrid">
-        <div class="badge-empty">Loading badges...</div>
-      </div>
+      <div id="badgeGroups">Loading badges...</div>
 
       <div class="patch-area-foot">
         <button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button>
@@ -134,92 +156,221 @@
   <script>
     (function() {
       'use strict';
-      var LS_KEY = 'rhmc_badges';
+      var LS_KEY = 'rhmc_badges_data';
       var badgesData = null;
+      var editMode = false;
+      var isOwner = false;
 
       function esc(s) {
         var d = document.createElement('div');
-        d.textContent = String(s || '');
+        d.textContent = String(s == null ? '' : s);
         return d.innerHTML;
       }
 
-      function getUnlocked() {
-        try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) { return {}; }
+      function checkOwner() {
+        try { isOwner = sessionStorage.getItem('rh_patch_user') === 'HFFH'; } catch(e) { isOwner = false; }
+        var btn = document.getElementById('btnEditBadges');
+        if (btn) btn.style.display = isOwner ? '' : 'none';
       }
 
-      function saveUnlocked(obj) {
-        localStorage.setItem(LS_KEY, JSON.stringify(obj));
+      function getStored() {
+        try {
+          var raw = localStorage.getItem(LS_KEY);
+          if (!raw) return null;
+          return JSON.parse(raw);
+        } catch(e) { return null; }
       }
 
-      function renderBadges(memberFilter) {
-        var grid = document.getElementById('badgeGrid');
-        var summary = document.getElementById('badgeSummary');
-        if (!badgesData) { grid.innerHTML = '<div class="badge-empty">No badge data available.</div>'; return; }
-
-        var unlocked = getUnlocked();
-        var badges = badgesData.badges || [];
-        var unlockedCount = 0;
-
-        if (memberFilter && unlocked[memberFilter]) {
-          unlockedCount = Object.keys(unlocked[memberFilter]).length;
-        } else {
-          Object.keys(unlocked).forEach(function(m) { unlockedCount = Math.max(unlockedCount, Object.keys(unlocked[m]).length); });
+      function normalize(data) {
+        if (data.groups) return data;
+        if (data.badges) {
+          return { groups: [
+            { id: '1250275308293324820', label: 'Unique', badges: data.badges.slice(0,3) },
+            { id: '1250276310027079770', label: 'Earnables', badges: data.badges.slice(3) }
+          ]};
         }
+        return { groups: [] };
+      }
 
+      function render() {
+        var container = document.getElementById('badgeGroups');
+        var summary = document.getElementById('badgeSummary');
+        if (!badgesData || !badgesData.groups) {
+          container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);">No badge data</div>';
+          return;
+        }
+        var totalBadges = 0;
+        var totalEarned = 0;
+        badgesData.groups.forEach(function(g) { totalBadges += (g.badges || []).length; (g.badges || []).forEach(function(b) { totalEarned += (b.earnedBy || []).length; }); });
         summary.innerHTML =
-          '<div class="summary-stat"><div class="num">' + badges.length + '</div><div class="label">Total Badges</div></div>' +
-          '<div class="summary-stat"><div class="num">' + unlockedCount + '</div><div class="label">Unlocked</div></div>' +
-          '<div class="summary-stat"><div class="num">' + (badges.length - unlockedCount) + '</div><div class="label">Locked</div></div>';
-
-        var tierOrder = { legend: 0, gold: 1, silver: 2, bronze: 3 };
-        badges.sort(function(a, b) { return (tierOrder[a.tier] || 9) - (tierOrder[b.tier] || 9); });
+          '<div class="summary-stat"><div class="num">' + totalBadges + '</div><div class="label">Badges</div></div>' +
+          '<div class="summary-stat"><div class="num">' + totalEarned + '</div><div class="label">Earned</div></div>' +
+          '<div class="summary-stat"><div class="num">' + badgesData.groups.length + '</div><div class="label">Categories</div></div>';
 
         var html = '';
-        badges.forEach(function(b) {
-          var isUnlocked = false;
-          if (memberFilter && unlocked[memberFilter]) {
-            isUnlocked = !!unlocked[memberFilter][b.id];
-          } else {
-            Object.keys(unlocked).forEach(function(m) { if (unlocked[m][b.id]) isUnlocked = true; });
+        badgesData.groups.forEach(function(group, gIdx) {
+          html += '<div class="badge-group" data-gidx="' + gIdx + '">';
+          html += '<div class="badge-group-head"><h3>' + esc(group.label) + '</h3><span class="badge-group-id">ID ' + esc(group.id) + '</span>';
+          if (editMode) {
+            html += '<input type="text" value="' + esc(group.label) + '" data-glabel="' + gIdx + '" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.25rem 0.5rem;border-radius:4px;font-size:0.85rem;max-width:160px;" placeholder="Category name">';
           }
-
-          html += '<div class="badge-card ' + (isUnlocked ? 'unlocked' : 'locked') + '">';
-          if (!isUnlocked) html += '<div class="badge-lock">&#128274;</div>';
-          html += '<div class="badge-icon">' + b.icon + '</div>';
-          html += '<div class="badge-name">' + esc(b.name) + '</div>';
-          html += '<div class="badge-desc">' + esc(b.desc) + '</div>';
-          html += '<span class="badge-tier ' + b.tier + '">' + b.tier + '</span>';
+          html += '</div>';
+          var badges = group.badges || [];
+          if (badges.length === 0) {
+            html += '<div class="badge-empty">No badges in this category yet.</div>';
+          } else {
+            html += '<div class="badge-grid">';
+            badges.forEach(function(b, bIdx) {
+              html += '<div class="badge-card" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">';
+              if (editMode) {
+                html += '<div class="badge-edit-row"><input type="text" value="' + esc(b.icon) + '" data-field="icon" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Icon" style="max-width:60px;text-align:center;">';
+                html += '<input type="text" value="' + esc(b.name) + '" data-field="name" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Name"></div>';
+                html += '<div class="badge-edit-row"><textarea data-field="desc" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Description">' + esc(b.desc) + '</textarea></div>';
+                html += '<div class="badge-edit-row"><select data-field="tier" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '"><option value="bronze"' + (b.tier==='bronze'?' selected':'') + '>bronze</option><option value="silver"' + (b.tier==='silver'?' selected':'') + '>silver</option><option value="gold"' + (b.tier==='gold'?' selected':'') + '>gold</option><option value="legend"' + (b.tier==='legend'?' selected':'') + '>legend</option></select></div>';
+              } else {
+                html += '<div class="badge-icon">' + esc(b.icon) + '</div>';
+                html += '<div class="badge-name">' + esc(b.name) + '</div>';
+                html += '<div class="badge-desc">' + esc(b.desc) + '</div>';
+                html += '<span class="badge-tier ' + esc(b.tier) + '">' + esc(b.tier) + '</span>';
+              }
+              var earned = b.earnedBy || [];
+              html += '<div class="badge-earned"><div class="badge-earned-label">Earned by — ' + earned.length + '</div>';
+              if (earned.length > 0) {
+                html += '<div class="badge-earned-list">';
+                earned.forEach(function(name, nIdx) {
+                  html += '<span class="badge-earned-name">' + esc(name);
+                  if (editMode) html += ' <button type="button" data-action="remove-earned" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" data-nidx="' + nIdx + '" title="Remove">&times;</button>';
+                  html += '</span>';
+                });
+                html += '</div>';
+              } else {
+                html += '<div class="badge-earned-empty">No one yet</div>';
+              }
+              html += '<div class="badge-earned-add">';
+              html += '<input type="text" placeholder="Add name" id="add-earned-' + gIdx + '-' + bIdx + '" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">';
+              html += '<button type="button" class="btn btn-outline btn-sm" data-action="add-earned" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">Add</button>';
+              html += '</div>';
+              html += '</div>';
+              if (editMode) {
+                html += '<div class="badge-card-actions"><button type="button" class="btn btn-outline btn-sm" data-action="delete-badge" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" style="color:var(--primary);border-color:var(--primary);">Delete badge</button></div>';
+              }
+              html += '</div>';
+            });
+            html += '</div>';
+          }
+          if (editMode) {
+            html += '<div class="badge-add-form"><h4>Add badge to ' + esc(group.label) + '</h4>';
+            html += '<div class="badge-edit-row"><input type="text" id="new-icon-' + gIdx + '" placeholder="Icon (emoji)"><input type="text" id="new-name-' + gIdx + '" placeholder="Name"></div>';
+            html += '<div class="badge-edit-row"><input type="text" id="new-desc-' + gIdx + '" placeholder="Description"></div>';
+            html += '<div class="badge-edit-row"><select id="new-tier-' + gIdx + '"><option value="bronze">bronze</option><option value="silver">silver</option><option value="gold">gold</option><option value="legend">legend</option></select><button type="button" class="btn btn-primary btn-sm" data-action="add-badge" data-gidx="' + gIdx + '">Add badge</button></div>';
+            html += '</div>';
+          }
           html += '</div>';
         });
-
-        grid.innerHTML = html || '<div class="badge-empty">No badges defined.</div>';
+        container.innerHTML = html;
       }
 
-      function populateMembers() {
-        var select = document.getElementById('memberSelect');
-        var unlocked = getUnlocked();
-        Object.keys(unlocked).sort().forEach(function(name) {
-          var opt = document.createElement('option');
-          opt.value = name;
-          opt.textContent = name;
-          select.appendChild(opt);
+      function enterEdit() {
+        editMode = true;
+        document.getElementById('editBanner').classList.add('active');
+        document.getElementById('btnEditBadges').style.display = 'none';
+        document.getElementById('btnSaveBadges').style.display = '';
+        document.getElementById('btnCancelBadges').style.display = '';
+        render();
+      }
+
+      function exitEdit() {
+        editMode = false;
+        document.getElementById('editBanner').classList.remove('active');
+        document.getElementById('btnEditBadges').style.display = isOwner ? '' : 'none';
+        document.getElementById('btnSaveBadges').style.display = 'none';
+        document.getElementById('btnCancelBadges').style.display = 'none';
+        render();
+      }
+
+      function save() {
+        badgesData.groups.forEach(function(g, gIdx) {
+          var labelInput = document.querySelector('[data-glabel="' + gIdx + '"]');
+          if (labelInput) g.label = labelInput.value.trim() || g.label;
+          (g.badges || []).forEach(function(b, bIdx) {
+            var nameEl = document.querySelector('[data-field="name"][data-gidx="' + gIdx + '"][data-bidx="' + bIdx + '"]');
+            var descEl = document.querySelector('[data-field="desc"][data-gidx="' + gIdx + '"][data-bidx="' + bIdx + '"]');
+            var iconEl = document.querySelector('[data-field="icon"][data-gidx="' + gIdx + '"][data-bidx="' + bIdx + '"]');
+            var tierEl = document.querySelector('[data-field="tier"][data-gidx="' + gIdx + '"][data-bidx="' + bIdx + '"]');
+            if (nameEl) b.name = nameEl.value.trim() || b.name;
+            if (descEl) b.desc = descEl.value.trim();
+            if (iconEl) b.icon = iconEl.value.trim() || b.icon;
+            if (tierEl) b.tier = tierEl.value;
+            if (!b.earnedBy) b.earnedBy = [];
+          });
         });
-        select.addEventListener('change', function() { renderBadges(this.value); });
+        localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+        exitEdit();
       }
 
-      function loadBadges() {
-        fetch('badges.json?t=' + Date.now()).then(function(r) {
-          return r.json();
-        }).then(function(data) {
-          badgesData = data;
-          renderBadges('');
-          populateMembers();
-        }).catch(function() {
-          document.getElementById('badgeGrid').innerHTML = '<div class="badge-empty">Failed to load badge data.</div>';
+      function load() {
+        var stored = getStored();
+        if (stored) { badgesData = normalize(stored); render(); checkOwner(); return; }
+        fetch('badges.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(data){
+          badgesData = normalize(data);
+          render();
+          checkOwner();
+        }).catch(function(){
+          document.getElementById('badgeGroups').innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load badges</div>';
         });
       }
 
-      loadBadges();
+      document.addEventListener('click', function(e) {
+        var t = e.target;
+        var action = t.getAttribute('data-action');
+        if (!action) return;
+        var gIdx = parseInt(t.getAttribute('data-gidx'), 10);
+        var bIdx = parseInt(t.getAttribute('data-bidx'), 10);
+        if (action === 'add-earned') {
+          var input = document.getElementById('add-earned-' + gIdx + '-' + bIdx);
+          var name = input ? input.value.trim() : '';
+          if (!name) return;
+          var badge = badgesData.groups[gIdx].badges[bIdx];
+          if (!badge.earnedBy) badge.earnedBy = [];
+          if (badge.earnedBy.indexOf(name) === -1) badge.earnedBy.push(name);
+          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          render();
+        } else if (action === 'remove-earned') {
+          var nIdx = parseInt(t.getAttribute('data-nidx'), 10);
+          badgesData.groups[gIdx].badges[bIdx].earnedBy.splice(nIdx, 1);
+          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          render();
+        } else if (action === 'delete-badge') {
+          if (!confirm('Delete this badge?')) return;
+          badgesData.groups[gIdx].badges.splice(bIdx, 1);
+          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          render();
+        } else if (action === 'add-badge') {
+          var icon = (document.getElementById('new-icon-' + gIdx).value.trim() || '🏅');
+          var name2 = document.getElementById('new-name-' + gIdx).value.trim();
+          var desc = document.getElementById('new-desc-' + gIdx).value.trim();
+          var tier = document.getElementById('new-tier-' + gIdx).value;
+          if (!name2) { alert('Name required'); return; }
+          var newId = name2.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          badgesData.groups[gIdx].badges.push({ id: newId, name: name2, desc: desc, icon: icon, tier: tier, earnedBy: [] });
+          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          render();
+        }
+      });
+
+      document.getElementById('btnEditBadges').addEventListener('click', enterEdit);
+      document.getElementById('btnSaveBadges').addEventListener('click', save);
+      document.getElementById('btnCancelBadges').addEventListener('click', function(){
+        var stored = getStored();
+        if (stored) badgesData = normalize(stored);
+        else fetch('badges.json?t=' + Date.now()).then(function(r){return r.json();}).then(function(d){ badgesData = normalize(d); exitEdit(); });
+        exitEdit();
+      });
+
+      window.addEventListener('patchAuthChange', function(e){ if(e.detail && e.detail.authed) checkOwner(); });
+
+      load();
+      checkOwner();
     })();
   </script>
 </body>
