@@ -2,19 +2,19 @@
   {
     "user_id": 367316570180943900,
     "user_name": "panda_alleyway",
-    "vital_seconds": 2204323,
+    "vital_seconds": 2356721,
     "elyxir_seconds": 1138214,
-    "total_seconds": 3342537,
-    "session_count": 433,
+    "total_seconds": 3494935,
+    "session_count": 445,
     "discord_name": "William Xander Reks"
   },
   {
     "user_id": 361004934184828900,
     "user_name": "snow3976",
-    "vital_seconds": 1851839,
+    "vital_seconds": 1913698,
     "elyxir_seconds": 981760,
-    "total_seconds": 2833599,
-    "session_count": 379,
+    "total_seconds": 2895458,
+    "session_count": 390,
     "discord_name": "Ember Davis"
   },
   {
@@ -38,65 +38,74 @@
   {
     "user_id": 908481561161240600,
     "user_name": "syx0666",
-    "vital_seconds": 1411646,
+    "vital_seconds": 1418136,
     "elyxir_seconds": 595885,
-    "total_seconds": 2007531,
-    "session_count": 240,
+    "total_seconds": 2014021,
+    "session_count": 243,
     "discord_name": "Sid Dempsey"
   },
   {
     "user_id": 326529501209034750,
     "user_name": "chszr",
-    "vital_seconds": 914592,
+    "vital_seconds": 986880,
     "elyxir_seconds": 1001450,
-    "total_seconds": 1916042,
-    "session_count": 344,
+    "total_seconds": 1988330,
+    "session_count": 354,
     "discord_name": "Logan Ryder"
   },
   {
     "user_id": 391042658912567300,
     "user_name": "d.bennett31",
-    "vital_seconds": 1010395,
+    "vital_seconds": 1043697,
     "elyxir_seconds": 903919,
-    "total_seconds": 1914314,
-    "session_count": 352,
+    "total_seconds": 1947616,
+    "session_count": 360,
     "discord_name": "Jason \"Escobar\" Castle"
   },
   {
     "user_id": 420309961931751400,
     "user_name": "mr_maximus",
-    "vital_seconds": 1670513,
+    "vital_seconds": 1711400,
     "elyxir_seconds": 160992,
-    "total_seconds": 1831505,
-    "session_count": 156,
+    "total_seconds": 1872392,
+    "session_count": 159,
     "discord_name": "Alexi Hoxha"
-  },
-  {
-    "user_id": 181143017619587070,
-    "user_name": "jayreaper",
-    "vital_seconds": 765743,
-    "elyxir_seconds": 1051800,
-    "total_seconds": 1817543,
-    "session_count": 288,
-    "discord_name": "Jonathan 'Jay' Charles"
   },
   {
     "user_id": 1045815013614559400,
     "user_name": "bdillon97",
-    "vital_seconds": 1213127,
+    "vital_seconds": 1293053,
     "elyxir_seconds": 577197,
-    "total_seconds": 1790324,
-    "session_count": 237,
+    "total_seconds": 1870250,
+    "session_count": 245,
     "discord_name": "Olivia Newton"
+  },
+  {
+    "user_id": 181143017619587070,
+    "user_name": "jayreaper",
+    "vital_seconds": 798755,
+    "elyxir_seconds": 1051800,
+    "total_seconds": 1850555,
+    "session_count": 294,
+    "discord_name": "Jonathan 'Jay' Charles"
   },
   {
     "user_id": 591781884179120100,
     "user_name": "tragic1301",
-    "vital_seconds": 1305404,
+    "vital_seconds": 1339741,
     "elyxir_seconds": 254564,
-    "total_seconds": 1559968,
-    "session_count": 228,
+    "total_seconds": 1594305,
+    "session_count": 236,
     "discord_name": "Besnik Hoxha"
+  },
+  {
+    "user_id": 580324615583170600,
+    "user_name": "nr1dishwasher",
+    "vital_seconds": 506462,
+    "elyxir_seconds": 773921,
+    "total_seconds": 1280383,
+    "session_count": 209,
+    "discord_name": "Desoo"
   },
   {
     "user_id": 241703203068968960,
@@ -106,15 +115,6 @@
     "total_seconds": 1280234,
     "session_count": 168,
     "discord_name": "Vaelis (That living dead girl)"
-  },
-  {
-    "user_id": 580324615583170600,
-    "user_name": "nr1dishwasher",
-    "vital_seconds": 493705,
-    "elyxir_seconds": 773921,
-    "total_seconds": 1267626,
-    "session_count": 207,
-    "discord_name": "Desoo"
   },
   {
     "user_id": 516233696844578800,
@@ -135,6 +135,15 @@
     "discord_name": "horrestpumps"
   },
   {
+    "user_id": 140312416687751170,
+    "user_name": "wicked1667",
+    "vital_seconds": 772839,
+    "elyxir_seconds": 0,
+    "total_seconds": 772839,
+    "session_count": 91,
+    "discord_name": "Drew Jackson"
+  },
+  {
     "user_id": 1285294132079890400,
     "user_name": "ebkoutlaw",
     "vital_seconds": 76639,
@@ -142,15 +151,6 @@
     "total_seconds": 765695,
     "session_count": 133,
     "discord_name": "ebkoutlaw"
-  },
-  {
-    "user_id": 140312416687751170,
-    "user_name": "wicked1667",
-    "vital_seconds": 765545,
-    "elyxir_seconds": 0,
-    "total_seconds": 765545,
-    "session_count": 89,
-    "discord_name": "Drew Jackson"
   },
   {
     "user_id": 1360830106335187000,
@@ -173,11 +173,20 @@
   {
     "user_id": 319184811971575800,
     "user_name": "loreviking",
-    "vital_seconds": 492837,
+    "vital_seconds": 503686,
     "elyxir_seconds": 0,
-    "total_seconds": 492837,
-    "session_count": 78,
+    "total_seconds": 503686,
+    "session_count": 79,
     "discord_name": "Xan Xcient"
+  },
+  {
+    "user_id": 1182410319667150800,
+    "user_name": "charlie07766",
+    "vital_seconds": 365735,
+    "elyxir_seconds": 0,
+    "total_seconds": 365735,
+    "session_count": 49,
+    "discord_name": "Zeus livin"
   },
   {
     "user_id": 747599206247694300,
@@ -187,15 +196,6 @@
     "total_seconds": 364881,
     "session_count": 49,
     "discord_name": "Oboth"
-  },
-  {
-    "user_id": 1182410319667150800,
-    "user_name": "charlie07766",
-    "vital_seconds": 318105,
-    "elyxir_seconds": 0,
-    "total_seconds": 318105,
-    "session_count": 46,
-    "discord_name": "Zeus livin"
   },
   {
     "user_id": 1170506248106541000,
@@ -245,19 +245,19 @@
   {
     "user_id": 1425481575419613400,
     "user_name": "swizzy188",
-    "vital_seconds": 68819,
+    "vital_seconds": 78342,
     "elyxir_seconds": 0,
-    "total_seconds": 68819,
-    "session_count": 16,
+    "total_seconds": 78342,
+    "session_count": 19,
     "discord_name": "𝓙𝓣"
   },
   {
     "user_id": 1298057206465298400,
     "user_name": "legendlong62",
-    "vital_seconds": 47073,
+    "vital_seconds": 58260,
     "elyxir_seconds": 0,
-    "total_seconds": 47073,
-    "session_count": 11,
+    "total_seconds": 58260,
+    "session_count": 14,
     "discord_name": "Deer Childs"
   },
   {
@@ -286,6 +286,15 @@
     "total_seconds": 12164,
     "session_count": 3,
     "discord_name": "bearded_destroyer"
+  },
+  {
+    "user_id": 399697875002458100,
+    "user_name": "lunaskribbs",
+    "vital_seconds": 9716,
+    "elyxir_seconds": 0,
+    "total_seconds": 9716,
+    "session_count": 1,
+    "discord_name": "lunaskribbs"
   },
   {
     "user_id": 756282312454570100,
