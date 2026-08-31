@@ -52,9 +52,9 @@ body {
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.9rem 1.2rem 0.9rem 0.6rem;
+  padding: 0.9rem 1.2rem 0.9rem 0.4rem;
   display: flex;
-  gap: 2.2rem;
+  gap: 3.2rem;
   align-items: center;
   justify-content: space-between;
 }
