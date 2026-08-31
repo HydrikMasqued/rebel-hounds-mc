@@ -174,21 +174,23 @@
       var el = document.getElementById('serverStatus');
       if (!el) return;
 
-      var PROXY = 'proxy-fivem.php';
-      var SERVER_URL = 'https://frontend.cfx-services.net/api/servers/single/ogpvmv';
+      var PROXY = 'proxy-fivem.php?server=ogpvmv';
 
-      fetch(PROXY + '?url=' + encodeURIComponent(SERVER_URL)).then(function(r) {
+      fetch(PROXY, { cache: 'no-store' }).then(function(r) {
+        if (!r.ok) throw new Error('proxy '+r.status);
         return r.json();
       }).then(function(data) {
-        var d = data.Data || {};
+        if (data.error) throw new Error(data.error);
+        var d = data.Data || data || {};
         var players = d.players || [];
-        var maxPlayers = d_sv_maxclients || d.resources_maxclients || 128;
-        var hostname = d.hostname || 'Rebel Hounds MC';
-        var gametype = d.gametype || 'FiveM';
+        var maxPlayers = d.sv_maxclients || d.svMaxclients || (d.vars && d.vars.sv_maxClients) || 128;
+        var hostname = d.hostname || (d.vars && d.vars.sv_projectName) || 'Rebel Hounds MC';
+        var gametype = d.gametype || (d.vars && d.vars.gamename) || 'FiveM';
         var mapname = d.mapname || 'Unknown';
         var resources = d.resources || [];
-        var rules = d.rules || {};
-        var tags = d.tags || [];
+        var vars = d.vars || {};
+        var tagsRaw = vars.tags || d.tags || '';
+        var tags = typeof tagsRaw === 'string' ? tagsRaw.split(',').map(function(s){return s.trim();}).filter(Boolean) : (Array.isArray(tagsRaw)?tagsRaw:[]);
 
         var html = '<div class="server-info-grid">';
 
@@ -197,11 +199,14 @@
         html += '<div class="server-info-item"><span class="server-label">Game Type</span><span class="server-value">' + escHtml(gametype) + '</span></div>';
         html += '<div class="server-info-item"><span class="server-label">Map</span><span class="server-value">' + escHtml(mapname) + '</span></div>';
 
-        if (rules && rules['sv_version']) {
-          html += '<div class="server-info-item"><span class="server-label">FiveM Version</span><span class="server-value">' + escHtml(rules['sv_version']) + '</span></div>';
+        if (vars['txAdmin-version']) {
+          html += '<div class="server-info-item"><span class="server-label">txAdmin</span><span class="server-value">' + escHtml(vars['txAdmin-version']) + '</span></div>';
         }
-        if (rules && rules['licenseKey']) {
-          html += '<div class="server-info-item"><span class="server-label">License</span><span class="server-value">Authenticated</span></div>';
+        if (vars['sv_enforceGameBuild']) {
+          html += '<div class="server-info-item"><span class="server-label">Game Build</span><span class="server-value">' + escHtml(vars['sv_enforceGameBuild']) + '</span></div>';
+        }
+        if (vars['peak_players']) {
+          html += '<div class="server-info-item"><span class="server-label">Peak Players</span><span class="server-value">' + escHtml(vars['peak_players']) + '</span></div>';
         }
 
         if (tags && tags.length > 0) {
