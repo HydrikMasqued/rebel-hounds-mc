@@ -1,8 +1,4 @@
 [
-  "2026-09-01 19:01:17,869 - utils.playtime_database - INFO - Recorded weekly notification for user 367316570180943892 in guild 889005510286786601 (week 2026-36)",
-  "2026-09-01 19:01:17,869 - cogs.playtime_tracker - INFO - User panda_alleyway reached 6h weekly requirement!",
-  "2026-09-01 19:01:20,984 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
-  "2026-09-01 19:02:49,181 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 9846 seconds",
   "2026-09-01 19:02:49,181 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 2h 44m",
   "2026-09-01 19:09:31,950 - utils.playtime_database - INFO - Ended vital session for user 975162499303358524: 1779 seconds",
   "2026-09-01 19:09:31,951 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for couchpotatoe_01: 0h 29m",
@@ -198,5 +194,9 @@
   "2026-09-03 01:49:39,476 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-03 02:43:56,640 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 12116 seconds",
   "2026-09-03 02:43:56,640 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 3h 21m",
-  "2026-09-03 03:55:43,708 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
+  "2026-09-03 03:55:43,708 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-03 06:12:24,184 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-03 06:21:41,696 - utils.playtime_database - INFO - Started vital session for user 241703203068968960 in guild 889005510286786601",
+  "2026-09-03 06:21:41,696 - cogs.playtime_tracker - INFO - Started vital playtime tracking for vaelisthatlivingdeadgirl in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-03 08:40:25,596 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
 ]
