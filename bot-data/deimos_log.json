@@ -1,14 +1,4 @@
 [
-  "2026-09-02 16:30:03,264 - utils.playtime_database - INFO - Ended vital session for user 287694223707340800: 2511 seconds",
-  "2026-09-02 16:30:03,264 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for gingerbean2112: 0h 41m",
-  "2026-09-02 16:30:55,405 - utils.playtime_database - INFO - Ended vital session for user 399697875002458122: 2564 seconds",
-  "2026-09-02 16:30:55,405 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lunaskribbs: 0h 42m",
-  "2026-09-02 16:39:56,409 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
-  "2026-09-02 16:43:25,394 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
-  "2026-09-02 16:43:25,394 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-02 16:57:19,514 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
-  "2026-09-02 16:57:19,514 - cogs.playtime_tracker - INFO - Started vital playtime tracking for couchpotatoe_01 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-02 17:05:01,526 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-02 17:27:42,204 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-02 17:38:56,603 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
   "2026-09-02 17:38:56,603 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +188,15 @@
   "2026-09-04 10:07:53,047 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-04 11:29:06,819 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-04 14:25:20,962 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
-  "2026-09-04 17:56:23,870 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
+  "2026-09-04 17:56:23,870 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-04 19:47:44,351 - utils.playtime_database - INFO - Started vital session for user 1182410319667150848 in guild 889005510286786601",
+  "2026-09-04 19:47:44,351 - cogs.playtime_tracker - INFO - Started vital playtime tracking for charlie07766 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-04 19:56:16,597 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
+  "2026-09-04 19:56:16,597 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-04 19:56:19,260 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
+  "2026-09-04 19:56:19,260 - cogs.playtime_tracker - INFO - Started vital playtime tracking for couchpotatoe_01 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-04 19:56:20,523 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
+  "2026-09-04 19:56:20,523 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-04 19:56:34,175 - utils.playtime_database - INFO - Started vital session for user 328219066793984010 in guild 889005510286786601",
+  "2026-09-04 19:56:34,175 - cogs.playtime_tracker - INFO - Started vital playtime tracking for pky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
