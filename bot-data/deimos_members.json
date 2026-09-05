@@ -360,10 +360,50 @@
     "updated_at": "2026-08-25 18:59:35.756170"
   },
   {
+    "user_id": "328219066793984010",
+    "discord_name": "Dick \"Posh Wank\" Schwett",
+    "discord_username": "pky",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "399697875002458122",
+    "discord_name": "Donna “ Luna “ Willow",
+    "discord_username": "lunaskribbs",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
     "user_id": "516233696844578846",
     "discord_name": "Thorikan",
     "discord_username": "thorikan",
     "rank": "Full Patch",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "937444062150152254",
+    "discord_name": "Carlos Wolfram",
+    "discord_username": "donit1178",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "1105925237247316018",
+    "discord_name": "ravenmj420",
+    "discord_username": "ravenmj420",
+    "rank": "Prospect",
+    "status": "Active",
+    "source": "discord"
+  },
+  {
+    "user_id": "1158839908966871050",
+    "discord_name": "Barry Wolfram",
+    "discord_username": "lactose.the.intolerant6969",
+    "rank": "Prospect",
     "status": "Active",
     "source": "discord"
   }

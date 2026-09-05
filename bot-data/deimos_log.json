@@ -1,15 +1,4 @@
 [
-  "2026-09-04 22:00:38,044 - utils.church_database - INFO - Opened church interval for shepardsky in session 4",
-  "2026-09-04 22:00:38,044 - cogs.church_tracker - INFO - Church: shepardsky joined the Roundtable VC (session 4)",
-  "2026-09-04 22:01:26,546 - utils.church_database - INFO - Opened church interval for jayreaper in session 4",
-  "2026-09-04 22:01:26,546 - cogs.church_tracker - INFO - Church: jayreaper joined the Roundtable VC (session 4)",
-  "2026-09-04 22:01:30,777 - utils.church_database - INFO - Opened church interval for obothclef in session 4",
-  "2026-09-04 22:01:30,777 - cogs.church_tracker - INFO - Church: obothclef joined the Roundtable VC (session 4)",
-  "2026-09-04 22:02:36,970 - utils.church_database - INFO - Opened church interval for thorikan in session 4",
-  "2026-09-04 22:02:36,970 - cogs.church_tracker - INFO - Church: thorikan joined the Roundtable VC (session 4)",
-  "2026-09-04 22:03:06,260 - utils.church_database - INFO - Opened church interval for charlie07766 in session 4",
-  "2026-09-04 22:03:06,260 - cogs.church_tracker - INFO - Church: charlie07766 joined the Roundtable VC (session 4)",
-  "2026-09-04 22:03:06,260 - utils.playtime_database - INFO - Ended vital session for user 1182410319667150848: 8121 seconds",
   "2026-09-04 22:03:06,261 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for charlie07766: 2h 15m",
   "2026-09-04 22:03:59,226 - utils.church_database - INFO - Opened church interval for mr_maximus in session 4",
   "2026-09-04 22:03:59,226 - cogs.church_tracker - INFO - Church: mr_maximus joined the Roundtable VC (session 4)",
@@ -198,5 +187,16 @@
   "2026-09-05 05:40:40,194 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-05 06:30:22,184 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-05 08:26:08,576 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
-  "2026-09-05 10:35:54,143 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
+  "2026-09-05 10:35:54,143 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-05 13:28:59,533 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
+  "2026-09-05 13:28:59,533 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-05 13:43:25,820 - cogs.membership - INFO - Updated member Donna “ Luna “ Willow with rank Prospect",
+  "2026-09-05 13:43:46,931 - cogs.membership - INFO - Updated member Raven Wolfram with rank Prospect",
+  "2026-09-05 13:44:06,616 - cogs.membership - INFO - Updated member Barry Wolfram with rank Prospect",
+  "2026-09-05 13:44:18,422 - cogs.membership - INFO - Updated member Carlos Wolfram with rank Prospect",
+  "2026-09-05 13:44:27,230 - cogs.membership - INFO - Updated member Dick \"Posh Wank\" Schwett with rank Prospect",
+  "2026-09-05 14:05:09,407 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-05 14:24:08,844 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-05 15:06:19,308 - utils.playtime_database - INFO - Started vital session for user 326529501209034764 in guild 889005510286786601",
+  "2026-09-05 15:06:19,308 - cogs.playtime_tracker - INFO - Started vital playtime tracking for chszr in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
