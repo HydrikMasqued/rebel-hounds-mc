@@ -1,11 +1,4 @@
 [
-  "2026-09-05 00:16:21,555 - utils.playtime_database - INFO - Started vital session for user 907399102717886517 in guild 889005510286786601",
-  "2026-09-05 00:16:21,555 - cogs.playtime_tracker - INFO - Started vital playtime tracking for clintmonster in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-05 00:16:29,959 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
-  "2026-09-05 00:16:29,959 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-05 00:16:32,422 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 2 seconds",
-  "2026-09-05 00:16:32,422 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 0h 0m",
-  "2026-09-05 00:16:33,316 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
   "2026-09-05 00:16:33,316 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-05 00:17:55,959 - utils.playtime_database - INFO - Ended vital session for user 907399102717886517: 94 seconds",
   "2026-09-05 00:17:55,960 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for clintmonster: 0h 1m",
@@ -198,5 +191,12 @@
   "2026-09-06 02:34:35,695 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
   "2026-09-06 02:34:35,695 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-06 03:15:52,414 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 11302 seconds",
-  "2026-09-06 03:15:52,415 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 3h 8m"
+  "2026-09-06 03:15:52,415 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 3h 8m",
+  "2026-09-06 05:14:37,291 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-06 05:45:02,566 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 11426 seconds",
+  "2026-09-06 05:45:02,567 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 3h 10m",
+  "2026-09-06 05:47:00,924 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 15028 seconds",
+  "2026-09-06 05:47:00,924 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 4h 10m",
+  "2026-09-06 07:18:58,758 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-06 08:25:48,257 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e."
 ]
