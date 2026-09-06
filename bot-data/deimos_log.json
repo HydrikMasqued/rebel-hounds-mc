@@ -1,15 +1,4 @@
 [
-  "2026-09-04 22:48:43,884 - cogs.church_tracker - INFO - Church: swizzy188 left the Roundtable VC after 20m 46s (session 5)",
-  "2026-09-04 23:13:50,415 - utils.church_database - INFO - Closed church interval for user 1182410319667150848 after 3814s",
-  "2026-09-04 23:13:50,415 - cogs.church_tracker - INFO - Church: charlie07766 left the Roundtable VC after 1h 03m (session 5)",
-  "2026-09-04 23:14:29,520 - utils.church_database - INFO - Closed church interval for user 975162499303358524 after 2253s",
-  "2026-09-04 23:14:29,520 - cogs.church_tracker - INFO - Church: couchpotatoe_01 left the Roundtable VC after 37m 33s (session 5)",
-  "2026-09-04 23:15:49,677 - utils.church_database - INFO - Opened church interval for couchpotatoe_01 in session 5",
-  "2026-09-04 23:15:49,678 - cogs.church_tracker - INFO - Church: couchpotatoe_01 joined the Roundtable VC (session 5)",
-  "2026-09-04 23:22:40,734 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
-  "2026-09-04 23:29:36,054 - utils.church_database - INFO - Opened church interval for swizzy188 in session 5",
-  "2026-09-04 23:29:36,054 - cogs.church_tracker - INFO - Church: swizzy188 joined the Roundtable VC (session 5)",
-  "2026-09-04 23:29:51,332 - utils.church_database - INFO - Opened church interval for loreviking in session 5",
   "2026-09-04 23:29:51,332 - cogs.church_tracker - INFO - Church: loreviking joined the Roundtable VC (session 5)",
   "2026-09-04 23:32:40,906 - utils.church_database - INFO - Closed church interval for user 908481561161240617 after 2801s",
   "2026-09-04 23:32:40,906 - cogs.church_tracker - INFO - Church: syx0666 left the Roundtable VC after 46m 41s (session 5)",
@@ -198,5 +187,16 @@
   "2026-09-05 22:37:37,543 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
   "2026-09-05 22:37:37,543 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-05 22:47:58,604 - utils.playtime_database - INFO - Started vital session for user 294127733401976832 in guild 889005510286786601",
-  "2026-09-05 22:47:58,604 - cogs.playtime_tracker - INFO - Started vital playtime tracking for rushy313 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-09-05 22:47:58,604 - cogs.playtime_tracker - INFO - Started vital playtime tracking for rushy313 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-05 23:16:19,739 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
+  "2026-09-05 23:16:19,739 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-05 23:46:48,315 - cogs.contribution_verification - INFO - Added verification reactions to contribution from jayreaper",
+  "2026-09-05 23:46:57,883 - cogs.contribution_verification - INFO - Added verification reactions to contribution from jayreaper",
+  "2026-09-05 23:47:05,800 - cogs.contribution_verification - INFO - Added verification reactions to contribution from jayreaper",
+  "2026-09-06 00:07:30,248 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
+  "2026-09-06 00:07:30,248 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-06 00:13:38,173 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 5760 seconds",
+  "2026-09-06 00:13:38,174 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 1h 36m",
+  "2026-09-06 00:21:33,008 - utils.playtime_database - INFO - Ended vital session for user 975162499303358524: 14705 seconds",
+  "2026-09-06 00:21:33,009 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for couchpotatoe_01: 4h 5m"
 ]
