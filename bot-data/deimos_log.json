@@ -1,9 +1,4 @@
 [
-  "2026-09-07 02:21:41,593 - utils.playtime_database - INFO - Ended vital session for user 326529501209034764: 1250 seconds",
-  "2026-09-07 02:21:41,594 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for chszr: 0h 20m",
-  "2026-09-07 02:22:22,344 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 637 seconds",
-  "2026-09-07 02:22:22,344 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 0h 10m",
-  "2026-09-07 02:55:28,060 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
   "2026-09-07 03:15:17,690 - cogs.contribution_verification - INFO - Sent timeout contribution DM to president 181143017619587073",
   "2026-09-07 03:15:18,289 - cogs.contribution_verification - INFO - Posted timeout contribution to leadership channel 1512987446483222639",
   "2026-09-07 03:15:18,469 - cogs.contribution_verification - INFO - Handled timeout for contribution 1545258973358329907 from bdillon97",
@@ -198,5 +193,10 @@
   "2026-09-08 03:24:01,946 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 12173 seconds",
   "2026-09-08 03:24:01,947 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 3h 22m",
   "2026-09-08 03:24:12,696 - utils.playtime_database - INFO - Ended vital session for user 727297663355191346: 8965 seconds",
-  "2026-09-08 03:24:12,696 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ghostt4920: 2h 29m"
+  "2026-09-08 03:24:12,696 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ghostt4920: 2h 29m",
+  "2026-09-08 06:51:36,073 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-08 07:49:57,658 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-08 08:06:58,141 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-08 08:35:12,187 - utils.playtime_database - INFO - Started vital session for user 727297663355191346 in guild 889005510286786601",
+  "2026-09-08 08:35:12,187 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ghostt4920 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
