@@ -1,9 +1,4 @@
 [
-  "2026-09-07 01:47:41,429 - utils.playtime_database - INFO - Ended vital session for user 391042658912567296: 71 seconds",
-  "2026-09-07 01:47:41,430 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for d.bennett31: 0h 1m",
-  "2026-09-07 01:47:47,722 - utils.playtime_database - INFO - Ended vital session for user 326529501209034764: 11116 seconds",
-  "2026-09-07 01:47:47,723 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for chszr: 3h 5m",
-  "2026-09-07 01:47:50,911 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 6282 seconds",
   "2026-09-07 01:47:50,911 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 1h 44m",
   "2026-09-07 01:49:53,645 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 5023 seconds",
   "2026-09-07 01:49:53,646 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 1h 23m",
@@ -198,5 +193,10 @@
   "2026-09-07 22:46:09,279 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 3759 seconds",
   "2026-09-07 22:46:09,280 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 1h 2m",
   "2026-09-07 22:48:28,592 - utils.playtime_database - INFO - Ended vital session for user 1158839908966871050: 12469 seconds",
-  "2026-09-07 22:48:28,593 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lactose.the.intolerant6969: 3h 27m"
+  "2026-09-07 22:48:28,593 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lactose.the.intolerant6969: 3h 27m",
+  "2026-09-07 23:32:08,953 - utils.playtime_database - INFO - Ended vital session for user 975162499303358524: 3213 seconds",
+  "2026-09-07 23:32:08,954 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for couchpotatoe_01: 0h 53m",
+  "2026-09-07 23:38:23,449 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6e50697ddf032be00a891252fad1fc2e.",
+  "2026-09-08 00:01:08,094 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
+  "2026-09-08 00:01:08,094 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
