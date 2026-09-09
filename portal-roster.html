@@ -59,9 +59,9 @@
     .member-card.head { border-color: rgba(192,57,43,0.38); box-shadow: 0 0 22px rgba(192,57,43,0.14), inset 0 1px 0 rgba(255,255,255,0.04); }
     .member-card.head:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 26px rgba(192,57,43,0.22); }
     .member-card.president { width: 280px; border-width: 2px; box-shadow: 0 0 30px rgba(192,57,43,0.22), inset 0 1px 0 rgba(255,255,255,0.05); background: linear-gradient(145deg, #1a0f0f 0%, #1e1a1a 100%); }
-    .member-card.president .member-avatar { width: 72px; height: 72px; }
+    .member-card.president .member-avatar { width: 110px; height: 110px; }
     .member-card.president .member-name { font-size: 1.05rem; letter-spacing: 0.5px; }
-    .member-avatar { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 0.5rem; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; overflow: hidden; }
+    .member-avatar { width: 88px; height: 88px; border-radius: 50%; margin: 0 auto 0.6rem; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 2rem; overflow: hidden; }
     .member-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .member-name { font-weight: 700; font-size: 0.9rem; line-height: 1.2; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .member-username { font-size: 0.7rem; color: #999; margin-bottom: 0.25rem; }
@@ -80,7 +80,7 @@
     .roster-modal.open { display: flex; }
     .roster-modal-card { background: #121212; border: 1px solid #2a2a2a; border-radius: 10px; max-width: 720px; width: 100%; max-height: 90vh; overflow: auto; }
     .roster-modal-head { display: flex; gap: 1rem; padding: 1.2rem; border-bottom: 1px solid #222; align-items: flex-start; }
-    .roster-modal-head img { width: 84px; height: 84px; border-radius: 8px; object-fit: cover; border: 1px solid #333; background: #1a1a1a; }
+    .roster-modal-head img { width: 104px; height: 104px; border-radius: 8px; object-fit: cover; border: 1px solid #333; background: #1a1a1a; }
     .roster-modal-head h3 { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 1px; margin: 0; color: #fff; }
     .roster-modal-head small { color: #999; font-size: 0.8rem; }
     .roster-modal-body { padding: 1rem 1.2rem; display: grid; gap: 0.9rem; }
@@ -168,7 +168,7 @@
   <div class="roster-modal" id="rosterModal">
     <div class="roster-modal-card">
       <div class="roster-modal-head">
-        <div id="modalAvatar" class="member-avatar" style="width:84px;height:84px;flex-shrink:0;">&#128100;</div>
+        <div id="modalAvatar" class="member-avatar" style="width:104px;height:104px;flex-shrink:0;font-size:2.4rem;">&#128100;</div>
         <div style="flex:1;min-width:0;">
           <h3 id="modalName">—</h3>
           <small id="modalRank">—</small>
