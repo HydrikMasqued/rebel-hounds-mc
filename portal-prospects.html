@@ -142,6 +142,7 @@
       <div class="edit-banner" id="editBanner">EDIT MODE — Change any field, replace prospect photo, add or remove folders. Remember to Save.</div>
 
       <div class="prospect-summary" id="prospectSummary"></div>
+      <div id="periodControl" style="margin-bottom:1.2rem;"></div>
       <div class="prospect-folders" id="prospectFolders">Loading files...</div>
 
       <div id="prospectAddForm" style="display:none;"></div>
@@ -192,6 +193,14 @@
         var active=prospects.filter(function(p){return p.status==='active';}).length;
         var completed=prospects.filter(function(p){return p.status==='completed';}).length;
         summary.innerHTML='<div class="summary-stat"><div class="num">'+prospects.length+'</div><div class="label">Files</div></div><div class="summary-stat"><div class="num">'+active+'</div><div class="label">Active</div></div><div class="summary-stat"><div class="num">'+completed+'</div><div class="label">Completed</div></div>';
+        var periodCtrl=document.getElementById('periodControl');
+        if(periodCtrl){
+          if(editMode){
+            periodCtrl.innerHTML='<div style="display:flex;align-items:center;gap:0.6rem;background:var(--dark-2);border:1px solid var(--border);border-radius:6px;padding:0.6rem 0.9rem;flex-wrap:wrap;"><label style="font-size:0.75rem;color:var(--muted);font-weight:700;letter-spacing:0.7px;text-transform:uppercase;">Prospect deadline (days)</label><input type="number" data-field="prospectPeriod" value="'+period+'" min="1" max="365" style="width:90px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.35rem 0.5rem;border-radius:4px;font-size:0.9rem;"><span style="font-size:0.8rem;color:var(--muted);">days — folders show Day X of this value</span></div>';
+          } else {
+            periodCtrl.innerHTML='<div style="font-size:0.8rem;color:var(--muted);"><span style="font-weight:700;letter-spacing:0.5px;text-transform:uppercase;">Deadline:</span> '+period+' days — Day X of '+period+' on each folder</div>';
+          }
+        }
 
         if(prospects.length===0){
           container.innerHTML='<div class="prospect-empty">No prospect files yet.'+(editMode?' Click Edit then Add below.':'')+'</div>';
