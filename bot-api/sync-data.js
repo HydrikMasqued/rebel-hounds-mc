@@ -270,7 +270,8 @@ async function syncDiscordMembers() {
     });
 
     const merged = [...dbMembers];
-    let added = 0;
+    const dbByUid = new Map(dbMembers.map(m => [String(m.user_id), m]));
+    let added = 0, refreshed = 0;
     for (const dm of discordEntries) {
       const uid = String(dm.user_id);
       const uname = (dm.discord_username || '').toLowerCase();
@@ -279,11 +280,24 @@ async function syncDiscordMembers() {
       if (!isDuplicate) {
         merged.push(dm);
         added++;
+        continue;
+      }
+      // Existing member: refresh rank + display name from live Discord
+      // roles so promotions/demotions show even when the bot DB is stale.
+      const existing = dbByUid.get(uid)
+        || dbMembers.find(m => (m.discord_username || '').toLowerCase() === uname)
+        || dbMembers.find(m => (m.discord_name || '').toLowerCase() === dname);
+      if (existing) {
+        if (existing.rank !== dm.rank) { existing.rank = dm.rank; refreshed++; }
+        if (dm.discord_name && existing.discord_name !== dm.discord_name) {
+          existing.discord_name = dm.discord_name;
+          refreshed++;
+        }
       }
     }
 
     save('deimos_members.json', merged);
-    console.log(`  Discord: ${clubMembers.length} with roles, ${added} added to roster (total: ${merged.length})`);
+    console.log(`  Discord: ${clubMembers.length} with roles, ${added} added, ${refreshed} rank/name refreshed (total: ${merged.length})`);
   } catch (e) {
     console.error(`  Discord sync failed: ${e.message}`);
   }
