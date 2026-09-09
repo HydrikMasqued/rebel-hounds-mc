@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roster Design Concepts - Rebel Hounds MC</title>
+  <link rel="stylesheet" href="styles.css?v=9">
+  <style>
+    body { background: #0a0a0a; }
+    .concept-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.2rem; }
+    .concept-block { margin-bottom: 5rem; }
+    .concept-label { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 2px; color: var(--primary); margin-bottom: 0.3rem; }
+    .concept-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; max-width: 640px; line-height: 1.6; }
+
+    /* ============ CONCEPT A : CHAIN OF COMMAND (org chart) ============ */
+    .c1-stage { background: #0d1520; border: 1px solid #1c2a3d; border-radius: 12px; padding: 2.5rem 1rem; overflow-x: auto; }
+    .c1-tree, .c1-tree ul { list-style: none; margin: 0; padding: 0; }
+    .c1-tree ul { display: flex; justify-content: center; padding-top: 34px; position: relative; }
+    .c1-tree ul::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 34px; background: #3b82f6; }
+    .c1-tree li { position: relative; padding: 0 14px; text-align: center; }
+    .c1-tree li::before, .c1-tree li::after { content: ''; position: absolute; top: -34px; width: 50%; height: 34px; border-top: 1px solid #3b82f6; }
+    .c1-tree li::before { left: 0; border-right: 1px solid #3b82f6; }
+    .c1-tree li::after { right: 0; border-left: 1px solid #3b82f6; }
+    .c1-tree li:only-child::before, .c1-tree li:only-child::after { display: none; }
+    .c1-tree li:only-child { padding-top: 0; }
+    .c1-tree li:first-child::before, .c1-tree li:last-child::after { border: none; }
+    .c1-tree li:first-child::after { border-radius: 6px 0 0 0; }
+    .c1-tree li:last-child::before { border-radius: 0 6px 0 0; }
+    .c1-dogtag { display: inline-block; background: linear-gradient(160deg, #1a2433, #111927); border: 1px solid #33475f; border-radius: 8px; padding: 0.7rem 1.1rem; min-width: 150px; position: relative; }
+    .c1-dogtag::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: #0d1520; border: 1px solid #3b82f6; }
+    .c1-dogtag .n { font-family: monospace; font-weight: 700; font-size: 0.82rem; color: #dbe7f5; letter-spacing: 0.5px; }
+    .c1-dogtag .r { font-family: monospace; font-size: 0.62rem; color: #3b82f6; letter-spacing: 1.5px; margin-top: 0.25rem; text-transform: uppercase; }
+    .c1-dogtag.top { border-color: #c0392b; box-shadow: 0 0 24px rgba(192,57,43,0.25); }
+    .c1-dogtag.top::before { border-color: #c0392b; }
+    .c1-dogtag.top .r { color: #ff6b6b; }
+
+    /* ============ CONCEPT B : KUTTES (stitched patches + rockers) ============ */
+    .c2-stage { background: #141010 radial-gradient(circle at 50% 0%, #1e1616, #141010 70%); border: 1px solid #2b2222; border-radius: 12px; padding: 2.5rem 1rem; text-align: center; }
+    .c2-rockertop { display: inline-block; font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 6px; color: #e8dcc0; background: #241a1a; border: 2px dashed #8a6f4d; border-bottom: none; border-radius: 120px 120px 0 0; padding: 0.7rem 2.6rem 0.3rem; }
+    .c2-row { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; margin: 1.6rem 0; }
+    .c2-patch { width: 190px; background: #1d1515; border: 2px dashed #8a6f4d; border-radius: 10px; padding: 1rem 0.8rem 0.9rem; position: relative; box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
+    .c2-patch::before { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(138,111,77,0.35); border-radius: 7px; pointer-events: none; }
+    .c2-patch .pn { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 1px; color: #f0e6cc; }
+    .c2-patch .pr { display: inline-block; margin-top: 0.5rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #0f0c0c; background: #c9a227; border-radius: 3px; padding: 0.2rem 0.6rem; }
+    .c2-patch .pr.red { background: #c0392b; color: #fff; }
+    .c2-patch .pr.grey { background: #777; color: #111; }
+    .c2-patch .avatar { width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 0.5rem; background: #0f0c0c; border: 2px dashed #8a6f4d; display: flex; align-items: center; justify-content: center; color: #8a6f4d; font-size: 1.3rem; }
+    .c2-rockerbot { display: inline-block; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 5px; color: #e8dcc0; background: #241a1a; border: 2px dashed #8a6f4d; border-top: none; border-radius: 0 0 120px 120px; padding: 0.3rem 2.2rem 0.8rem; }
+
+    /* ============ CONCEPT C : EVIDENCE BOARD (pinned files + string) ============ */
+    .c3-stage { background: #101418; border: 1px solid #22303c; border-radius: 12px; padding: 2.5rem 1rem; position: relative; overflow: hidden; }
+    .c3-stage::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 26px 26px; pointer-events: none; }
+    .c3-string { height: 2px; background: linear-gradient(90deg, transparent, #c0392b 15%, #c0392b 85%, transparent); opacity: 0.7; margin: 0 auto; max-width: 640px; position: relative; }
+    .c3-string::before, .c3-string::after { content: ''; position: absolute; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: #c0392b; box-shadow: 0 0 8px rgba(192,57,43,0.8); }
+    .c3-string::before { left: 12%; } .c3-string::after { right: 12%; }
+    .c3-row { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; margin: 1.4rem 0; position: relative; }
+    .c3-file { width: 180px; background: #f2ecdc; color: #1a1a1a; border-radius: 3px; padding: 0.9rem 0.8rem 0.8rem; position: relative; box-shadow: 0 8px 20px rgba(0,0,0,0.55); }
+    .c3-file:nth-child(odd) { transform: rotate(-2deg); }
+    .c3-file:nth-child(even) { transform: rotate(1.6deg); }
+    .c3-file .pin { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff7b7b, #c0392b 70%); box-shadow: 0 3px 5px rgba(0,0,0,0.5); }
+    .c3-file .stamp { position: absolute; top: 6px; right: 6px; font-size: 0.55rem; font-weight: 800; letter-spacing: 1px; color: #c0392b; border: 1.5px solid #c0392b; border-radius: 3px; padding: 0.1rem 0.3rem; transform: rotate(8deg); }
+    .c3-file .fn { font-weight: 800; font-size: 0.85rem; line-height: 1.25; }
+    .c3-file .fr { font-family: monospace; font-size: 0.62rem; color: #8a7a5a; font-weight: 700; margin: 0.2rem 0 0.4rem; }
+    .c3-file .fm { font-size: 0.72rem; line-height: 1.5; color: #333; border-top: 1px dashed #b0a07a; padding-top: 0.4rem; }
+    .c3-file.top { background: #241414; color: #f0e6cc; }
+    .c3-file.top .fr { color: #c0392b; }
+    .c3-file.top .fm { color: #cbb; border-color: #5a2c2c; }
+  </style>
+</head>
+<body>
+  <div class="concept-wrap">
+    <h1 style="font-family:var(--font-display);letter-spacing:3px;font-size:2rem;">ROSTER DESIGN CONCEPTS</h1>
+    <p style="color:var(--muted);margin-bottom:3rem;">Three directions for the Club Roster tree. Pick 1, 2 or 3 and I will build it out with full edit + files.</p>
+
+    <div class="concept-block">
+      <div class="concept-label">1 - CHAIN OF COMMAND</div>
+      <p class="concept-desc">Classic military org-chart. Real branching lines drawn with CSS - President on top, lines split down to VP and Sergeant, fanning out to the ranks below. Dog-tag cards, mono type, cold blue steel on dark. Precise, disciplined, hierarchical.</p>
+      <div class="c1-stage">
+        <ul class="c1-tree">
+          <li>
+            <div class="c1-dogtag top"><div class="n">JONATHAN 'JAY' CHARLES</div><div class="r">President</div></div>
+            <ul>
+              <li>
+                <div class="c1-dogtag"><div class="n">JASON "ESCOBAR" CASTLE</div><div class="r">Vice President</div></div>
+                <ul>
+                  <li><div class="c1-dogtag"><div class="n">RUSHYYY</div><div class="r">Full Patch</div></div></li>
+                  <li><div class="c1-dogtag"><div class="n">ALEXI HOXHA</div><div class="r">Full Patch</div></div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="c1-dogtag"><div class="n">SHEPARD "STABBY"</div><div class="r">Sergeant At Arms</div></div>
+                <ul>
+                  <li><div class="c1-dogtag"><div class="n">JAMAL WHITLOCK</div><div class="r">Nomad</div></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">2 - KUTTES</div>
+      <p class="concept-desc">The MC world itself. Members as stitched patches with dashed thread borders, rank as a rocker tab, top and bottom rockers framing each tier. Leather-dark browns, gold thread, red enamel for the top table. Worn, proud, analogue.</p>
+      <div class="c2-stage">
+        <div class="c2-rockertop">THREE HEADS</div>
+        <div class="c2-row">
+          <div class="c2-patch"><div class="avatar">&#128100;</div><div class="pn">JONATHAN 'JAY' CHARLES</div><div class="pr red">President</div></div>
+        </div>
+        <div class="c2-row">
+          <div class="c2-patch"><div class="avatar">&#128100;</div><div class="pn">JASON "ESCOBAR" CASTLE</div><div class="pr">Vice President</div></div>
+          <div class="c2-patch"><div class="avatar">&#128100;</div><div class="pn">SHEPARD "STABBY"</div><div class="pr">Sergeant At Arms</div></div>
+        </div>
+        <div class="c2-rockerbot">PATCH HOLDERS</div>
+        <div class="c2-row">
+          <div class="c2-patch"><div class="avatar">&#128100;</div><div class="pn">RUSHYYY</div><div class="pr grey">Full Patch</div></div>
+          <div class="c2-patch"><div class="avatar">&#128100;</div><div class="pn">ALEXI HOXHA</div><div class="pr grey">Full Patch</div></div>
+          <div class="c2-patch"><div class="avatar">&#128100;</div><div class="pn">JAMAL WHITLOCK</div><div class="pr grey">Nomad</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">3 - EVIDENCE BOARD</div>
+      <p class="concept-desc">Extends your prospect-folder dossier language. Member files pinned like index cards on a dark board, red string running between ranks, rubber-stamp rank marks, slight rotations for a lived-in feel. Investigative, RP-heavy, storytelling.</p>
+      <div class="c3-stage">
+        <div class="c3-row">
+          <div class="c3-file top"><div class="pin"></div><div class="stamp">TOP TABLE</div><div class="fn">Jonathan 'Jay' Charles</div><div class="fr">FILE RHMC-001 - PRESIDENT</div><div class="fm">Founded the charter. Calls Church. Final word on patches.</div></div>
+        </div>
+        <div class="c3-string"></div>
+        <div class="c3-row">
+          <div class="c3-file"><div class="pin"></div><div class="stamp">VP</div><div class="fn">Jason "Escobar" Castle</div><div class="fr">FILE RHMC-002</div><div class="fm">Runs day-to-day. Second signature on all decisions.</div></div>
+          <div class="c3-file"><div class="pin"></div><div class="stamp">SGT</div><div class="fn">Shepard "Stabby"</div><div class="fr">FILE RHMC-003</div><div class="fm">Keeps order. Discipline and security details.</div></div>
+        </div>
+        <div class="c3-string"></div>
+        <div class="c3-row">
+          <div class="c3-file"><div class="pin"></div><div class="fn">Rushyyy</div><div class="fr">FULL PATCH</div><div class="fm">Road support. Never misses a run.</div></div>
+          <div class="c3-file"><div class="pin"></div><div class="fn">Jamal Whitlock</div><div class="fr">NOMAD</div><div class="fm">Rides between chapters. Liaison work.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="color:var(--muted);"><a href="portal-roster.html" style="color:var(--primary);">Back to live Roster</a></p>
+  </div>
+</body>
+</html>
