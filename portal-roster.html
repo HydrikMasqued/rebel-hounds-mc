@@ -150,7 +150,7 @@
       <div class="section-head" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
         <div>
           <h2 class="section-title" style="margin-bottom:0;">CLUB ROSTER</h2>
-          <p class="section-sub" style="margin:0;">Patched members — hierarchy tree. Three Heads at the top.</p>
+          <p class="section-sub" style="margin:0;">Patched members - hierarchy tree. Three Heads at the top.</p>
         </div>
         <div style="margin-left:auto;display:flex;gap:0.5rem;">
           <button class="btn btn-outline btn-sm" id="btnEditRoster" style="display:none;">Edit</button>
@@ -158,7 +158,7 @@
           <button class="btn btn-outline btn-sm" id="btnCancelRoster" style="display:none;">Cancel</button>
         </div>
       </div>
-      <div class="edit-banner" id="editBanner">EDIT MODE — Change rank to move someone up/down the tree. Click a card to edit their file (contributions, memorable moments). Remember to Save.</div>
+      <div class="edit-banner" id="editBanner">EDIT MODE - Change rank to move someone, rename headers below, click a card to edit their file. Remember to Save.</div>
       <div class="roster-toolbar"><span class="hint">Click a patch holder to open their file. Change rank in Edit mode to elevate/lower on the tree.</span></div>
       <div id="rosterTree">Loading roster...</div>
       <div class="patch-area-foot"><button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button></div>
@@ -210,7 +210,18 @@
         5:['Nomad'],
         6:['Life Member']
       };
-      var LEVEL_LABEL={1:'PRESIDENT',2:'VICE PRESIDENT • SERGEANT AT ARMS',3:'OFFICERS',4:'FULL PATCH',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)'};
+      var DEFAULT_LEVEL_LABELS={heads:'THREE HEADS',3:'OFFICERS',4:'PATCH HOLDERS',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)'};
+      var LEVEL_LABEL={1:'PRESIDENT',2:'VICE PRESIDENT / SERGEANT AT ARMS',3:'OFFICERS',4:'PATCH HOLDERS',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)'};
+      function getLevelLabel(key){
+        if(rosterData && rosterData.levelLabels && rosterData.levelLabels[key]) return rosterData.levelLabels[key];
+        if(DEFAULT_LEVEL_LABELS[key]) return DEFAULT_LEVEL_LABELS[key];
+        return LEVEL_LABEL[key]||key;
+      }
+      function ensureLevelLabels(){
+        if(!rosterData) return;
+        if(!rosterData.levelLabels || typeof rosterData.levelLabels!=='object') rosterData.levelLabels={};
+        Object.keys(DEFAULT_LEVEL_LABELS).forEach(function(k){ if(!rosterData.levelLabels[k]) rosterData.levelLabels[k]=DEFAULT_LEVEL_LABELS[k]; });
+      }
 
       function esc(s){var d=document.createElement('div');d.textContent=String(s==null?'':s);return d.innerHTML;}
       function checkOwner(){try{var u=sessionStorage.getItem('rh_patch_user');var a=sessionStorage.getItem('rh_patch_auth');isOwner=(u==='HFFH')||(a==='1');}catch(e){isOwner=false;}var b=document.getElementById('btnEditRoster');if(b) b.style.display=isOwner?'':'none';}
@@ -271,7 +282,8 @@
         var headsTotal=headsPres.length+headsSubs.length;
         if(headsTotal>0){
           html+='<div class="tree-level heads-level" data-level="heads" style="animation-delay:0.14s">';
-          html+='<div class="level-head"><h3 class="level-title">THREE HEADS</h3><span class="level-count">'+headsTotal+'</span></div>';
+          html+='<div class="level-head"><h3 class="level-title">'+esc(getLevelLabel('heads'))+'</h3><span class="level-count">'+headsTotal+'</span></div>';
+          if(editMode){ html+='<div style="margin:-0.2rem 0 0.8rem;"><input type="text" data-level-label="heads" value="'+esc(getLevelLabel('heads'))+'" placeholder="Header name" style="width:100%;max-width:280px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.8rem;"></div>'; }
           if(headsPres.length>0){
             html+='<div class="heads-president">';
             headsPres.forEach(function(m, i){ html+=cardHtml(m, 1, i); });
@@ -301,7 +313,8 @@
           var list=byLevel[lvl];
           if(list.length===0) return;
           html+='<div class="tree-level" data-level="'+lvl+'">';
-          html+='<div class="level-head"><h3 class="level-title">'+esc(LEVEL_LABEL[lvl])+'</h3><span class="level-count">'+list.length+'</span></div>';
+          html+='<div class="level-head"><h3 class="level-title">'+esc(getLevelLabel(String(lvl)))+'</h3><span class="level-count">'+list.length+'</span></div>';
+          if(editMode){ html+='<div style="margin:-0.2rem 0 0.8rem;"><input type="text" data-level-label="'+lvl+'" value="'+esc(getLevelLabel(String(lvl)))+'" placeholder="Header name" style="width:100%;max-width:280px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.8rem;"></div>'; }
           html+='<div class="level-members">';
           list.forEach(function(m, midx){ html+=cardHtml(m, lvl, idx*2+midx); });
           html+='</div></div>';
@@ -371,16 +384,23 @@
       function enterEdit(){ editMode=true; document.getElementById('editBanner').classList.add('active'); document.getElementById('btnEditRoster').style.display='none'; document.getElementById('btnSaveRoster').style.display=''; document.getElementById('btnCancelRoster').style.display=''; render(); }
       function exitEdit(){ editMode=false; document.getElementById('editBanner').classList.remove('active'); document.getElementById('btnEditRoster').style.display=isOwner?'':'none'; document.getElementById('btnSaveRoster').style.display='none'; document.getElementById('btnCancelRoster').style.display='none'; render(); }
       function save(){
-        // ranks already updated via selects
+        // ranks already updated via selects - collect renamed headers
+        if(!rosterData.levelLabels || typeof rosterData.levelLabels!=='object') rosterData.levelLabels={};
+        document.querySelectorAll('[data-level-label]').forEach(function(el){
+          var k=el.getAttribute('data-level-label');
+          var v=(el.value||'').trim();
+          if(v) rosterData.levelLabels[k]=v;
+        });
         localStorage.setItem(LS_KEY, JSON.stringify(rosterData));
         exitEdit();
       }
 
       function load(){
         var stored=getStored();
-        if(stored){ rosterData=stored; render(); checkOwner(); return; }
+        if(stored){ rosterData=stored; ensureLevelLabels(); render(); checkOwner(); return; }
         fetch('roster.json?t='+Date.now()).then(function(r){return r.json();}).then(function(data){
           rosterData=data;
+          ensureLevelLabels();
           render(); checkOwner();
         }).catch(function(){ document.getElementById('rosterTree').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load roster</div>'; });
       }

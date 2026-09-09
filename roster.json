@@ -56,6 +56,13 @@
                       "id":  "Tailgunner"
                   }
               ],
+    "levelLabels": {
+        "heads": "THREE HEADS",
+        "3": "OFFICERS",
+        "4": "PATCH HOLDERS",
+        "5": "NOMAD",
+        "6": "LIFE MEMBERS (RETIRED)"
+    },
     "members":  [
                     {
                         "id":  "391042658912567300",
