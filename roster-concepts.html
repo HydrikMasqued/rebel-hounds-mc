@@ -28,6 +28,8 @@
     .c1-tree li:last-child::before { border-radius: 0 6px 0 0; }
     .c1-dogtag { display: inline-block; background: linear-gradient(160deg, #1a2433, #111927); border: 1px solid #33475f; border-radius: 8px; padding: 0.7rem 1.1rem; min-width: 150px; position: relative; }
     .c1-dogtag::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: #0d1520; border: 1px solid #3b82f6; }
+    .c1-dogtag .c1-photo { width: 76px; height: 76px; border-radius: 50%; margin: 0.3rem auto 0.6rem; background: #0d1520; border: 2px solid #3b82f6; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #3b82f6; }
+    .c1-dogtag.top .c1-photo { width: 92px; height: 92px; border-color: #c0392b; color: #ff6b6b; font-size: 2.4rem; }
     .c1-dogtag .n { font-family: monospace; font-weight: 700; font-size: 0.82rem; color: #dbe7f5; letter-spacing: 0.5px; }
     .c1-dogtag .r { font-family: monospace; font-size: 0.62rem; color: #3b82f6; letter-spacing: 1.5px; margin-top: 0.25rem; text-transform: uppercase; }
     .c1-dogtag.top { border-color: #c0392b; box-shadow: 0 0 24px rgba(192,57,43,0.25); }
@@ -44,7 +46,7 @@
     .c2-patch .pr { display: inline-block; margin-top: 0.5rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #0f0c0c; background: #c9a227; border-radius: 3px; padding: 0.2rem 0.6rem; }
     .c2-patch .pr.red { background: #c0392b; color: #fff; }
     .c2-patch .pr.grey { background: #777; color: #111; }
-    .c2-patch .avatar { width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 0.5rem; background: #0f0c0c; border: 2px dashed #8a6f4d; display: flex; align-items: center; justify-content: center; color: #8a6f4d; font-size: 1.3rem; }
+    .c2-patch .avatar { width: 92px; height: 92px; border-radius: 50%; margin: 0 auto 0.6rem; background: #0f0c0c; border: 2px dashed #8a6f4d; display: flex; align-items: center; justify-content: center; color: #8a6f4d; font-size: 2.2rem; }
     .c2-rockerbot { display: inline-block; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 5px; color: #e8dcc0; background: #241a1a; border: 2px dashed #8a6f4d; border-top: none; border-radius: 0 0 120px 120px; padding: 0.3rem 2.2rem 0.8rem; }
 
     /* ============ CONCEPT C : EVIDENCE BOARD (pinned files + string) ============ */
@@ -57,7 +59,9 @@
     .c3-file { width: 180px; background: #f2ecdc; color: #1a1a1a; border-radius: 3px; padding: 0.9rem 0.8rem 0.8rem; position: relative; box-shadow: 0 8px 20px rgba(0,0,0,0.55); }
     .c3-file:nth-child(odd) { transform: rotate(-2deg); }
     .c3-file:nth-child(even) { transform: rotate(1.6deg); }
-    .c3-file .pin { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff7b7b, #c0392b 70%); box-shadow: 0 3px 5px rgba(0,0,0,0.5); }
+    .c3-file .pin { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff7b7b, #c0392b 70%); box-shadow: 0 3px 5px rgba(0,0,0,0.5); z-index: 2; }
+    .c3-file .c3-photo { height: 110px; border-radius: 2px; margin: 0.4rem 0 0.6rem; background: #22242a; border: 1px solid #c9c2ae; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #6b6f78; }
+    .c3-file.top .c3-photo { background: #171114; border-color: #5a2c2c; color: #8a5a5a; }
     .c3-file .stamp { position: absolute; top: 6px; right: 6px; font-size: 0.55rem; font-weight: 800; letter-spacing: 1px; color: #c0392b; border: 1.5px solid #c0392b; border-radius: 3px; padding: 0.1rem 0.3rem; transform: rotate(8deg); }
     .c3-file .fn { font-weight: 800; font-size: 0.85rem; line-height: 1.25; }
     .c3-file .fr { font-family: monospace; font-size: 0.62rem; color: #8a7a5a; font-weight: 700; margin: 0.2rem 0 0.4rem; }
@@ -78,19 +82,19 @@
       <div class="c1-stage">
         <ul class="c1-tree">
           <li>
-            <div class="c1-dogtag top"><div class="n">JONATHAN 'JAY' CHARLES</div><div class="r">President</div></div>
+            <div class="c1-dogtag top"><div class="c1-photo">&#128100;</div><div class="n">JONATHAN 'JAY' CHARLES</div><div class="r">President</div></div>
             <ul>
               <li>
-                <div class="c1-dogtag"><div class="n">JASON "ESCOBAR" CASTLE</div><div class="r">Vice President</div></div>
+                <div class="c1-dogtag"><div class="c1-photo">&#128100;</div><div class="n">JASON "ESCOBAR" CASTLE</div><div class="r">Vice President</div></div>
                 <ul>
-                  <li><div class="c1-dogtag"><div class="n">RUSHYYY</div><div class="r">Full Patch</div></div></li>
-                  <li><div class="c1-dogtag"><div class="n">ALEXI HOXHA</div><div class="r">Full Patch</div></div></li>
+                  <li><div class="c1-dogtag"><div class="c1-photo">&#128100;</div><div class="n">RUSHYYY</div><div class="r">Full Patch</div></div></li>
+                  <li><div class="c1-dogtag"><div class="c1-photo">&#128100;</div><div class="n">ALEXI HOXHA</div><div class="r">Full Patch</div></div></li>
                 </ul>
               </li>
               <li>
-                <div class="c1-dogtag"><div class="n">SHEPARD "STABBY"</div><div class="r">Sergeant At Arms</div></div>
+                <div class="c1-dogtag"><div class="c1-photo">&#128100;</div><div class="n">SHEPARD "STABBY"</div><div class="r">Sergeant At Arms</div></div>
                 <ul>
-                  <li><div class="c1-dogtag"><div class="n">JAMAL WHITLOCK</div><div class="r">Nomad</div></div></li>
+                  <li><div class="c1-dogtag"><div class="c1-photo">&#128100;</div><div class="n">JAMAL WHITLOCK</div><div class="r">Nomad</div></div></li>
                 </ul>
               </li>
             </ul>
@@ -125,17 +129,17 @@
       <p class="concept-desc">Extends your prospect-folder dossier language. Member files pinned like index cards on a dark board, red string running between ranks, rubber-stamp rank marks, slight rotations for a lived-in feel. Investigative, RP-heavy, storytelling.</p>
       <div class="c3-stage">
         <div class="c3-row">
-          <div class="c3-file top"><div class="pin"></div><div class="stamp">TOP TABLE</div><div class="fn">Jonathan 'Jay' Charles</div><div class="fr">FILE RHMC-001 - PRESIDENT</div><div class="fm">Founded the charter. Calls Church. Final word on patches.</div></div>
+          <div class="c3-file top"><div class="pin"></div><div class="c3-photo">&#128100;</div><div class="stamp">TOP TABLE</div><div class="fn">Jonathan 'Jay' Charles</div><div class="fr">FILE RHMC-001 - PRESIDENT</div><div class="fm">Founded the charter. Calls Church. Final word on patches.</div></div>
         </div>
         <div class="c3-string"></div>
         <div class="c3-row">
-          <div class="c3-file"><div class="pin"></div><div class="stamp">VP</div><div class="fn">Jason "Escobar" Castle</div><div class="fr">FILE RHMC-002</div><div class="fm">Runs day-to-day. Second signature on all decisions.</div></div>
-          <div class="c3-file"><div class="pin"></div><div class="stamp">SGT</div><div class="fn">Shepard "Stabby"</div><div class="fr">FILE RHMC-003</div><div class="fm">Keeps order. Discipline and security details.</div></div>
+          <div class="c3-file"><div class="pin"></div><div class="c3-photo">&#128100;</div><div class="stamp">VP</div><div class="fn">Jason "Escobar" Castle</div><div class="fr">FILE RHMC-002</div><div class="fm">Runs day-to-day. Second signature on all decisions.</div></div>
+          <div class="c3-file"><div class="pin"></div><div class="c3-photo">&#128100;</div><div class="stamp">SGT</div><div class="fn">Shepard "Stabby"</div><div class="fr">FILE RHMC-003</div><div class="fm">Keeps order. Discipline and security details.</div></div>
         </div>
         <div class="c3-string"></div>
         <div class="c3-row">
-          <div class="c3-file"><div class="pin"></div><div class="fn">Rushyyy</div><div class="fr">FULL PATCH</div><div class="fm">Road support. Never misses a run.</div></div>
-          <div class="c3-file"><div class="pin"></div><div class="fn">Jamal Whitlock</div><div class="fr">NOMAD</div><div class="fm">Rides between chapters. Liaison work.</div></div>
+          <div class="c3-file"><div class="pin"></div><div class="c3-photo">&#128100;</div><div class="fn">Rushyyy</div><div class="fr">FULL PATCH</div><div class="fm">Road support. Never misses a run.</div></div>
+          <div class="c3-file"><div class="pin"></div><div class="c3-photo">&#128100;</div><div class="fn">Jamal Whitlock</div><div class="fr">NOMAD</div><div class="fm">Rides between chapters. Liaison work.</div></div>
         </div>
       </div>
     </div>
