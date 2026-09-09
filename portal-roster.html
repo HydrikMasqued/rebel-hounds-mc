@@ -306,7 +306,7 @@
           var isPresident=m.rank==='President';
           var isHead=isPresident || ['Vice President','Sergeant At Arms'].indexOf(m.rank)>-1;
           var cardClass=isPresident?'member-card head president':(isHead?'member-card head':(m.rank==='Life Member'?'member-card life':'member-card'));
-          var h='<div class="'+cardClass+'" data-id="'+esc(m.id)+'" '+(editMode?'':'data-open="'+esc(m.id)+'"')+' style="'+(editMode?'':'cursor:pointer;')+'animation-delay:'+(0.14+lvl*0.08+cidx*0.035)+'s">';
+          var h='<div class="'+cardClass+'" data-id="'+esc(m.id)+'" data-open="'+esc(m.id)+'" style="cursor:pointer;animation-delay:'+(0.14+lvl*0.08+cidx*0.035)+'s">';
           h+='<div class="member-avatar">'+(m.image?'<img src="'+esc(m.image)+'" alt="">':'&#128100;')+'</div>';
           h+='<div class="member-name" title="'+esc(m.name)+'">'+esc(m.name)+'</div>';
           h+='<div class="member-username">'+esc(m.username||'')+'</div>';
@@ -452,7 +452,10 @@
 
       document.addEventListener('click', function(e){
         var card=e.target.closest('[data-open]');
-        if(card && !editMode){ openModal(card.getAttribute('data-open')); }
+        if(card){
+          if(e.target.closest('select, input, textarea, button, a')) return;
+          openModal(card.getAttribute('data-open'));
+        }
         if(e.target.closest('#modalClose') || e.target.id==='rosterModal') closeModal();
         if(e.target.getAttribute('data-action')==='remove-gallery-img'){
           var gIdx=parseInt(e.target.getAttribute('data-idx'),10);
