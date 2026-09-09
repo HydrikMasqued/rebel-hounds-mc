@@ -1,7 +1,4 @@
 [
-  "  File \"/home/container/.local/lib/python3.12/site-packages/aiohttp/connector.py\", line 1148, in _resolve_host",
-  "    return await asyncio.shield(resolved_host_task)",
-  "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
   "  File \"/home/container/.local/lib/python3.12/site-packages/aiohttp/connector.py\", line 1179, in _resolve_host_with_throttle",
   "    addrs = await self._resolver.resolve(host, port, family=self._family)",
   "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -198,5 +195,8 @@
   "2026-09-09 05:31:39,312 - utils.playtime_database - INFO - Ended vital session for user 1158839908966871050: 12953 seconds",
   "2026-09-09 05:31:39,313 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lactose.the.intolerant6969: 3h 35m",
   "2026-09-09 07:49:50,058 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa.",
-  "2026-09-09 09:21:17,458 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa."
+  "2026-09-09 09:21:17,458 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa.",
+  "2026-09-09 11:34:22,674 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa.",
+  "2026-09-09 12:24:15,773 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa.",
+  "2026-09-09 13:15:19,483 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa."
 ]
