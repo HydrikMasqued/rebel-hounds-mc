@@ -3,10 +3,13 @@
     const MAP_CONFIGS = {
       los_santos: {
         bounds: [[-4000, -4000], [4000, 4000]],
+        // Los Santos layers are 11008px images split into 3x3 tiles
+        // (single huge images exceed many GPUs' texture limits and render black).
+        // A layer value is either a single image URL string or a tile spec.
         images: {
-          atlas: '/map-images/satellite_hi.jpg',
-          satellite: '/map-images/atlas_hi.jpg',
-          road: '/map-images/road_hi.jpg'
+          atlas: { base: '/map-images/satellite_hi', rows: 3, cols: 3, ext: 'jpg' },
+          satellite: { base: '/map-images/atlas_hi', rows: 3, cols: 3, ext: 'jpg' },
+          road: { base: '/map-images/road_hi', rows: 3, cols: 3, ext: 'jpg' }
         },
         type: 'image'
       },
@@ -110,16 +113,38 @@
 
     function addMapImage() {
       if (map._imageOverlay) { map.removeLayer(map._imageOverlay); map._imageOverlay = null; }
+      if (map._imageOverlays) { map._imageOverlays.forEach(function(o) { map.removeLayer(o); }); map._imageOverlays = null; }
       if (map._tileLayer) { map.removeLayer(map._tileLayer); map._tileLayer = null; }
 
       const cfg = MAP_CONFIGS[currentMap];
-
-      map._imageOverlay = L.imageOverlay(cfg.images[currentLayer], cfg.bounds, {
+      const spec = cfg.images[currentLayer];
+      const overlayOpts = {
         opacity: 1,
         interactive: false,
         attribution: '© CreepPork/GTAV-Maps'
-      }).addTo(map);
-      map._imageOverlay.bringToBack();
+      };
+
+      if (typeof spec === 'string') {
+        map._imageOverlay = L.imageOverlay(spec, cfg.bounds, overlayOpts).addTo(map);
+        map._imageOverlay.bringToBack();
+      } else {
+        // Tiled layer: N x M sub-images laid over subdivided bounds
+        map._imageOverlays = [];
+        const rows = spec.rows, cols = spec.cols, ext = spec.ext || 'jpg';
+        const s = cfg.bounds[0][0], w = cfg.bounds[0][1];
+        const n = cfg.bounds[1][0], e = cfg.bounds[1][1];
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const b = [
+              [n - (r + 1) * (n - s) / rows, w + c * (e - w) / cols],
+              [n - r * (n - s) / rows, w + (c + 1) * (e - w) / cols]
+            ];
+            const ov = L.imageOverlay(spec.base + '_' + r + c + '.' + ext, b, overlayOpts).addTo(map);
+            ov.bringToBack();
+            map._imageOverlays.push(ov);
+          }
+        }
+      }
 
       if (map._gridOverlay) { map._gridOverlay.bringToFront(); }
     }
