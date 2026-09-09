@@ -226,6 +226,47 @@
       function esc(s){var d=document.createElement('div');d.textContent=String(s==null?'':s);return d.innerHTML;}
       function checkOwner(){try{var u=sessionStorage.getItem('rh_patch_user');var a=sessionStorage.getItem('rh_patch_auth');isOwner=(u==='HFFH')||(a==='1');}catch(e){isOwner=false;}var b=document.getElementById('btnEditRoster');if(b) b.style.display=isOwner?'':'none';}
       function getStored(){try{var r=localStorage.getItem(LS_KEY);return r?JSON.parse(r):null;}catch(e){return null;}}
+      function persist(){
+        try{ localStorage.setItem(LS_KEY, JSON.stringify(rosterData)); return true; }
+        catch(e){ alert('Could not save - browser storage is full. Try a smaller image (or remove an old gallery picture) and save again.'); return false; }
+      }
+      function processImageFile(file, maxBytes, maxDim, cb){
+        if(!file.type || file.type.indexOf('image/')!==0){ alert('Please select an image file'); return; }
+        if(file.size<=maxBytes){
+          var rd=new FileReader();
+          rd.onload=function(ev){ cb(ev.target.result); };
+          rd.readAsDataURL(file);
+          return;
+        }
+        var url=URL.createObjectURL(file);
+        var img=new Image();
+        img.onload=function(){
+          var w=img.width, h=img.height;
+          if(w>maxDim||h>maxDim){ if(w>h){ h=Math.round(h*maxDim/w); w=maxDim; } else { w=Math.round(w*maxDim/h); h=maxDim; } }
+          var canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h;
+          canvas.getContext('2d').drawImage(img,0,0,w,h);
+          URL.revokeObjectURL(url);
+          var isPng=file.type==='image/png';
+          if(isPng){
+            canvas.toBlob(function(blob){
+              if(!blob){ alert('Resize failed'); return; }
+              var r2=new FileReader(); r2.onload=function(ev){ cb(ev.target.result); }; r2.readAsDataURL(blob);
+            },'image/png');
+          } else {
+            var q=0.88;
+            (function tryQ(){
+              canvas.toBlob(function(blob){
+                if(!blob){ alert('Resize failed'); return; }
+                if(blob.size<=maxBytes||q<=0.5){
+                  var r3=new FileReader(); r3.onload=function(ev){ cb(ev.target.result); }; r3.readAsDataURL(blob);
+                } else { q-=0.1; tryQ(); }
+              },'image/jpeg',q);
+            })();
+          }
+        };
+        img.onerror=function(){ URL.revokeObjectURL(url); alert('Invalid image file'); };
+        img.src=url;
+      }
       function rankClass(rank){
         if(rank==='President') return 'rank-president';
         if(rank==='Vice President') return 'rank-vp';
@@ -356,7 +397,7 @@
             '<div class="roster-field"><label>Full Name</label><input type="text" id="modalNameInput" value="'+esc(m.name||'')+'" placeholder="Full display name"></div>'+
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Discord Username</label><input type="text" id="modalUsername" value="'+esc(m.username||'')+'" placeholder="@username"></div><div class="roster-field"><label>Rank</label><select id="modalRankSel">'+rankOptionsHtml(m.rank)+'</select></div></div>'+
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Joined Date</label><input type="date" id="modalJoined" value="'+esc((m.joined||'').split(" ")[0])+'"></div><div class="roster-field"><label>Status</label><select id="modalStatus"><option value="Active"'+(m.status==='Active'?' selected':'')+'>Active</option><option value="Retired"'+(m.status==='Retired'?' selected':'')+'>Retired</option><option value="On LOA"'+(m.status==='On LOA'?' selected':'')+'>On LOA</option></select></div></div>'+
-            '<div class="roster-field"><label>Main Photo — URL or upload (transparent PNG keeps transparency)</label><div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;"><input type="text" id="modalImage" value="'+esc(m.image||'')+'" placeholder="https://..." style="flex:1;min-width:180px;"><input type="file" id="modalImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"></div></div>'+
+            '<div class="roster-field"><label>Main Photo - URL or upload (transparent PNG keeps transparency)</label><div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;"><input type="text" id="modalImage" value="'+esc(m.image||'')+'" placeholder="https://..." style="flex:1;min-width:180px;"><input type="file" id="modalImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"></div><div id="modalImageNote" style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">Large photos are auto-resized. After choosing a file, click Save File below.</div></div>'+
             '<div class="roster-field"><label>Additional Pictures — gallery for this member</label><div id="modalGallery" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">'+(m.gallery&&m.gallery.length?m.gallery.map(function(url,i){return '<div style="position:relative;width:72px;height:72px;border-radius:6px;overflow:hidden;border:1px solid #333;"><img src="'+esc(url)+'" style="width:100%;height:100%;object-fit:cover;"><button type="button" data-action="remove-gallery-img" data-idx="'+i+'" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;">×</button></div>';}).join(''):'<span style="font-size:0.75rem;color:#777;">No extra pictures yet</span>')+'</div><div style="display:flex;gap:0.5rem;"><input type="text" id="modalGalleryUrl" placeholder="Paste image URL" style="flex:1;"><input type="file" id="modalGalleryFile" accept="image/*" style="font-size:0.75rem;max-width:150px;"><button type="button" class="btn btn-outline btn-sm" id="modalGalleryAdd">Add</button></div></div>'+
             '<div class="roster-field"><label>What they did within the club</label><textarea id="modalContrib" placeholder="Roles, runs led, businesses, wars, mentoring...">'+esc(m.contributions||'')+'</textarea></div>'+
             '<div class="roster-field"><label>Memorable moments</label><textarea id="modalMoments" placeholder="Legendary stories, funny moments, milestones...">'+esc(m.memorableMoments||'')+'</textarea></div>'+
@@ -365,9 +406,13 @@
             var fi=document.getElementById('modalImageFile');
             if(fi) fi.addEventListener('change', function(){
               var file=fi.files&&fi.files[0]; if(!file) return;
-              var reader=new FileReader();
-              reader.onload=function(ev){ var inp=document.getElementById('modalImage'); if(inp) inp.value=ev.target.result; av.innerHTML='<img src="'+esc(ev.target.result)+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">'; };
-              reader.readAsDataURL(file);
+              var note=document.getElementById('modalImageNote');
+              if(note) note.textContent='Processing image...';
+              processImageFile(file, 500*1024, 512, function(dataUrl){
+                var inp=document.getElementById('modalImage'); if(inp) inp.value=dataUrl;
+                av.innerHTML='<img src="'+esc(dataUrl)+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+                if(note) note.textContent='Image ready - click Save File to keep it.';
+              });
             });
           },0);
         } else {
@@ -391,7 +436,7 @@
           var v=(el.value||'').trim();
           if(v) rosterData.levelLabels[k]=v;
         });
-        localStorage.setItem(LS_KEY, JSON.stringify(rosterData));
+        if(!persist()) return;
         exitEdit();
       }
 
@@ -411,7 +456,7 @@
         if(e.target.closest('#modalClose') || e.target.id==='rosterModal') closeModal();
         if(e.target.getAttribute('data-action')==='remove-gallery-img'){
           var gIdx=parseInt(e.target.getAttribute('data-idx'),10);
-          if(activeMember && activeMember.gallery){ activeMember.gallery.splice(gIdx,1); localStorage.setItem(LS_KEY, JSON.stringify(rosterData)); openModal(activeMember.id); }
+          if(activeMember && activeMember.gallery){ activeMember.gallery.splice(gIdx,1); if(persist()) openModal(activeMember.id); }
         }
         if(e.target.id==='modalGalleryAdd'){
           var urlInp=document.getElementById('modalGalleryUrl');
@@ -421,8 +466,7 @@
           if(!url){ alert('Paste URL or choose file first'); return; }
           if(!activeMember.gallery) activeMember.gallery=[];
           activeMember.gallery.push(url);
-          localStorage.setItem(LS_KEY, JSON.stringify(rosterData));
-          openModal(activeMember.id);
+          if(persist()) openModal(activeMember.id);
         }
       });
       document.addEventListener('change', function(e){
@@ -430,39 +474,19 @@
           var id=e.target.getAttribute('data-id');
           var newRank=e.target.value;
           var m=rosterData.members.find(function(x){ return String(x.id)===String(id); });
-          if(m){ m.rank=newRank; localStorage.setItem(LS_KEY, JSON.stringify(rosterData)); render(); }
+          if(m){ m.rank=newRank; if(persist()) render(); }
         }
         if(e.target.id==='modalGalleryFile'){
           var file=e.target.files&&e.target.files[0]; if(!file) return;
-          if(!file.type.startsWith('image/')){ alert('Please select an image'); e.target.value=''; return; }
           var target=e.target;
-          function setPending(dataUrl){
+          target.parentNode.querySelectorAll('.img-processing-note').forEach(function(n){ n.remove(); });
+          var busy=document.createElement('div'); busy.className='img-processing-note'; busy.style.fontSize='0.7rem'; busy.style.color='var(--muted)'; busy.textContent='Processing image...'; target.parentNode.appendChild(busy);
+          processImageFile(file, 800*1024, 1024, function(dataUrl){
             target.dataset.pendingGallery=dataUrl;
-            var hint=document.createElement('div'); hint.style.fontSize='0.7rem'; hint.style.color='var(--primary)'; hint.textContent='Image ready — click Add'; target.parentNode.appendChild(hint); setTimeout(function(){ hint.remove(); }, 2500);
-          }
-          if(file.size>800*1024){
-            var url=URL.createObjectURL(file);
-            var img=new Image();
-            img.onload=function(){
-              var maxDim=1024; var w=img.width, h=img.height;
-              if(w>maxDim||h>maxDim){ if(w>h){h=Math.round(h*maxDim/w); w=maxDim;} else {w=Math.round(w*maxDim/h); h=maxDim;}}
-              var canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h;
-              canvas.getContext('2d').drawImage(img,0,0,w,h);
-              URL.revokeObjectURL(url);
-              var isPng=file.type==='image/png';
-              if(isPng){
-                canvas.toBlob(function(blob){ var r=new FileReader(); r.onload=function(ev){ setPending(ev.target.result); }; r.readAsDataURL(blob); },'image/png');
-              } else {
-                canvas.toBlob(function(blob){ var r=new FileReader(); r.onload=function(ev){ setPending(ev.target.result); }; r.readAsDataURL(blob); },'image/jpeg',0.88);
-              }
-            };
-            img.onerror=function(){ alert('Invalid image'); URL.revokeObjectURL(url); target.value=''; };
-            img.src=url;
-          } else {
-            var reader=new FileReader();
-            reader.onload=function(ev){ setPending(ev.target.result); };
-            reader.readAsDataURL(file);
-          }
+            busy.textContent='Image ready - click Add';
+            busy.style.color='var(--primary)';
+            setTimeout(function(){ busy.remove(); }, 3000);
+          });
         }
       });
       document.getElementById('modalClose').addEventListener('click', closeModal);
@@ -486,9 +510,9 @@
         if(contrib) activeMember.contributions=contrib.value;
         if(moments) activeMember.memorableMoments=moments.value;
         if(bio) activeMember.bio=bio.value;
-        if(img) activeMember.image=img.value;
+        if(img) activeMember.image=(img.value||'').trim();
         if(rankSel) activeMember.rank=rankSel.value;
-        localStorage.setItem(LS_KEY, JSON.stringify(rosterData));
+        if(!persist()) return;
         closeModal();
         render();
       });
@@ -508,7 +532,7 @@
 <script>
 // Add member handler (outside IIFE, uses localStorage)
 document.addEventListener('click', function(e){
-  if(e.target.getAttribute('data-action')==='add-member'){
+  if(e.target && e.target.getAttribute && e.target.getAttribute('data-action')==='add-member'){
     var name=(document.getElementById('newMemberName').value||'').trim();
     if(!name){ alert('Name required'); return; }
     var username=(document.getElementById('newMemberUsername').value||'').trim();
@@ -529,13 +553,21 @@ document.addEventListener('click', function(e){
       return;
     }
     stored.members.push({ id:newId, name:name, username:username, rank:rank, status:'Active', joined:joined, contributions:'', memorableMoments:'', bio:'', image:img, gallery:[] });
-    localStorage.setItem('rhmc_roster_data', JSON.stringify(stored));
+    try{ localStorage.setItem('rhmc_roster_data', JSON.stringify(stored)); }
+    catch(err){ alert('Could not save - browser storage is full. Try a smaller image.'); return; }
     location.reload();
   }
 });
 document.addEventListener('change', function(e){
   if(e.target.id==='newMemberImageFile'){
     var file=e.target.files&&e.target.files[0]; if(!file) return;
+    if(!file.type || file.type.indexOf('image/')!==0){ alert('Please select an image file'); e.target.value=''; return; }
+    var _t=e.target;
+    function _ready(dataUrl){
+      _t.dataset.pendingImage=dataUrl;
+      var h=document.createElement('div'); h.style.fontSize='0.7rem'; h.style.color='var(--primary, #c0392b)'; h.textContent='Photo ready - click Add to Roster';
+      _t.parentNode.appendChild(h); setTimeout(function(){ h.remove(); }, 3000);
+    }
     if(file.size>900000){
       var url=URL.createObjectURL(file);
       var img=new Image();
@@ -546,13 +578,15 @@ document.addEventListener('change', function(e){
         canvas.getContext('2d').drawImage(img,0,0,w,h);
         URL.revokeObjectURL(url);
         canvas.toBlob(function(blob){
-          var r=new FileReader(); r.onload=function(ev){ e.target.dataset.pendingImage=ev.target.result; }; r.readAsDataURL(blob);
+          if(!blob){ alert('Resize failed, try a smaller image'); return; }
+          var r=new FileReader(); r.onload=function(ev){ _ready(ev.target.result); }; r.readAsDataURL(blob);
         }, file.type==='image/png'?'image/png':'image/jpeg', 0.88);
       };
+      img.onerror=function(){ URL.revokeObjectURL(url); alert('Invalid image file'); };
       img.src=url;
     } else {
       var reader=new FileReader();
-      reader.onload=function(ev){ e.target.dataset.pendingImage=ev.target.result; };
+      reader.onload=function(ev){ _ready(ev.target.result); };
       reader.readAsDataURL(file);
     }
   }
