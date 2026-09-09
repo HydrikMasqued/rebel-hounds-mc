@@ -17,8 +17,9 @@
     .roster-toolbar .hint { font-size: 0.75rem; color: var(--muted); margin-right: auto; }
     .edit-banner { background: rgba(192,57,43,0.12); border: 1px solid var(--primary); border-radius: 6px; padding: 0.6rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--primary); display: none; }
     .edit-banner.active { display: block; }
-    .roster-tree { display: flex; flex-direction: column; gap: 0; max-width: 1100px; margin: 0 auto; position: relative; }
-    .roster-tree::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, #222, transparent); opacity: 0.35; pointer-events: none; }
+    .roster-tree { display: flex; flex-direction: column; gap: 0; max-width: 1100px; margin: 0 auto; position: relative; padding: 1rem 0; }
+    .roster-tree::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, #222 12%, #333 50%, #222 88%, transparent); opacity: 0.45; pointer-events: none; }
+    .roster-tree::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.015) 1px, transparent 0); background-size: 28px 28px; pointer-events: none; border-radius: 12px; }
     .tree-level { background: linear-gradient(135deg, var(--dark-2) 0%, #181818 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; overflow: hidden; animation: levelIn 0.6s ease forwards; opacity: 0; transform: translateY(18px); box-shadow: 0 4px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03); }
     .tree-level::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(192,57,43,0.45), transparent); opacity: 0; transition: opacity 0.35s; }
     .tree-level:hover::before { opacity: 1; }
@@ -35,7 +36,11 @@
     .tree-level:hover .level-title::after { width: 100%; }
     .level-sub { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; }
     .level-count { margin-left: auto; font-size: 0.7rem; color: var(--muted); background: var(--dark); border: 1px solid var(--border); padding: 0.15rem 0.5rem; border-radius: 12px; }
-    .level-members { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
+    .level-members { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; position: relative; padding-top: 10px; }
+    .level-members::before { content: ''; position: absolute; top: 0; left: 14%; right: 14%; height: 1px; background: linear-gradient(90deg, transparent, #2a2a2a, #333, #2a2a2a, transparent); opacity: 0.7; }
+    .tree-level[data-level="1"] .level-members { justify-content: center; }
+    .tree-level[data-level="1"] .member-card { width: 270px; border-width: 2px; }
+    .tree-level[data-level="2"] .level-members { gap: 2.2rem; }
     .member-card { background: linear-gradient(145deg, #121212 0%, #1a1a1a 100%); border: 1px solid #222; border-radius: 10px; padding: 0.9rem 1rem; width: 208px; text-align: center; cursor: pointer; transition: all 0.32s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; opacity: 0; transform: translateY(14px); animation: cardIn 0.5s ease forwards; }
     .member-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(380px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.06), transparent 42%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     .member-card:hover::after { opacity: 1; }
@@ -43,6 +48,9 @@
     .member-card.life { opacity: 0.85; border-style: dashed; }
     .member-card.head { border-color: rgba(192,57,43,0.38); box-shadow: 0 0 22px rgba(192,57,43,0.14), inset 0 1px 0 rgba(255,255,255,0.04); }
     .member-card.head:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 26px rgba(192,57,43,0.22); }
+    .member-card.president { width: 280px; border-width: 2px; box-shadow: 0 0 30px rgba(192,57,43,0.22), inset 0 1px 0 rgba(255,255,255,0.05); background: linear-gradient(145deg, #1a0f0f 0%, #1e1a1a 100%); }
+    .member-card.president .member-avatar { width: 72px; height: 72px; }
+    .member-card.president .member-name { font-size: 1.05rem; letter-spacing: 0.5px; }
     .member-avatar { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 0.5rem; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; overflow: hidden; }
     .member-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .member-name { font-weight: 700; font-size: 0.9rem; line-height: 1.2; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -185,13 +193,14 @@
 
       var RANK_ORDER=['President','Vice President','Sergeant At Arms','Secretary','Treasurer','Road Captain','Enforcer','Officer','Tailgunner','Full Patch','Nomad','Life Member'];
       var LEVEL_MAP={
-        1:['President','Vice President','Sergeant At Arms'],
-        2:['Secretary','Treasurer','Road Captain','Enforcer','Officer'],
-        3:['Full Patch','Tailgunner'],
-        4:['Nomad'],
-        5:['Life Member']
+        1:['President'],
+        2:['Vice President','Sergeant At Arms'],
+        3:['Secretary','Treasurer','Road Captain','Enforcer','Officer'],
+        4:['Full Patch','Tailgunner'],
+        5:['Nomad'],
+        6:['Life Member']
       };
-      var LEVEL_LABEL={1:'THREE HEADS — President • Vice President • Sergeant At Arms',2:'OFFICERS',3:'FULL PATCH',4:'NOMAD',5:'LIFE MEMBERS (RETIRED)'};
+      var LEVEL_LABEL={1:'PRESIDENT',2:'VICE PRESIDENT • SERGEANT AT ARMS',3:'OFFICERS',4:'FULL PATCH',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)'};
 
       function esc(s){var d=document.createElement('div');d.textContent=String(s==null?'':s);return d.innerHTML;}
       function checkOwner(){try{var u=sessionStorage.getItem('rh_patch_user');var a=sessionStorage.getItem('rh_patch_auth');isOwner=(u==='HFFH')||(a==='1');}catch(e){isOwner=false;}var b=document.getElementById('btnEditRoster');if(b) b.style.display=isOwner?'':'none';}
@@ -217,26 +226,31 @@
         var container=document.getElementById('rosterTree');
         if(!rosterData||!rosterData.members){ container.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">No roster data</div>'; return; }
         var members=rosterData.members.slice().sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
-        var byLevel={1:[],2:[],3:[],4:[],5:[]};
+        var byLevel={1:[],2:[],3:[],4:[],5:[],6:[]};
         members.forEach(function(m){
           var lvl=5;
           for(var k in LEVEL_MAP){ if(LEVEL_MAP[k].indexOf(m.rank)>-1) { lvl=parseInt(k,10); break; } }
           // if rank not in map, put in Full Patch level
-          if(lvl===5 && m.rank!=='Life Member' && LEVEL_MAP[5].indexOf(m.rank)===-1 && LEVEL_MAP[1].indexOf(m.rank)===-1 && LEVEL_MAP[2].indexOf(m.rank)===-1 && LEVEL_MAP[4].indexOf(m.rank)===-1) lvl=3;
+          if(lvl===6){
+            var found=false;
+            for(var kk in LEVEL_MAP){ if(LEVEL_MAP[kk].indexOf(m.rank)>-1) found=true; }
+            if(!found) lvl=4;
+          }
           byLevel[lvl].push(m);
         });
 
         var html='<div class="roster-tree">';
-        [1,2,3,4,5].forEach(function(lvl, idx){
+        [1,2,3,4,5,6].forEach(function(lvl, idx){
           var list=byLevel[lvl];
           if(list.length===0) return;
           var isTop=lvl===1;
-          html+='<div class="tree-level">';
+          html+='<div class="tree-level" data-level="'+lvl+'">';
           html+='<div class="level-head"><h3 class="level-title">'+esc(LEVEL_LABEL[lvl])+'</h3><span class="level-count">'+list.length+'</span></div>';
           html+='<div class="level-members">';
           list.forEach(function(m){
-            var isHead=isTop || ['President','Vice President','Sergeant At Arms'].indexOf(m.rank)>-1;
-            var cardClass=isHead?'member-card head':(m.rank==='Life Member'?'member-card life':'member-card');
+            var isPresident=m.rank==='President';
+            var isHead=isPresident || ['Vice President','Sergeant At Arms'].indexOf(m.rank)>-1;
+            var cardClass=isPresident?'member-card head president':(isHead?'member-card head':(m.rank==='Life Member'?'member-card life':'member-card'));
             html+='<div class="'+cardClass+'" data-id="'+esc(m.id)+'" '+(editMode?'':'data-open="'+esc(m.id)+'"')+' style="'+(editMode?'':'cursor:pointer;')+'animation-delay:'+(0.14+lvl*0.08+idx*0.035)+'s">';
             html+='<div class="member-avatar">'+(m.image?'<img src="'+esc(m.image)+'" alt="">':'&#128100;')+'</div>';
             html+='<div class="member-name" title="'+esc(m.name)+'">'+esc(m.name)+'</div>';
@@ -249,9 +263,16 @@
             html+='</div>';
           });
           html+='</div></div>';
-          if(idx<4 && (byLevel[lvl+1] && byLevel[lvl+1].length>0 || byLevel[lvl+2] && byLevel[lvl+2].length>0)) html+='<div class="tree-connector"></div>';
+          if(idx < 5){
+            var hasNext=false;
+            for(var nl=lvl+1; nl<=6; nl++){ if(byLevel[nl] && byLevel[nl].length>0){ hasNext=true; break; } }
+            if(hasNext) html+='<div class="tree-connector"></div>';
+          }
         });
         html+='</div>';
+        if(editMode){
+          html+='<div style="margin-top:1.6rem;background:var(--dark-2);border:1px dashed var(--border);border-radius:10px;padding:1.2rem;"><h4 style="font-family:var(--font-display);font-size:0.95rem;letter-spacing:1px;margin-bottom:0.7rem;">Add Patched Member</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;"><input type="text" id="newMemberName" placeholder="Full name *" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><input type="text" id="newMemberUsername" placeholder="Discord username" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><select id="newMemberRank" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;">'+RANK_ORDER.map(function(r){return '<option>'+esc(r)+'</option>';}).join('')+'</select><input type="date" id="newMemberJoined" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"></div><div style="display:flex;gap:0.5rem;margin-top:0.7rem;flex-wrap:wrap;"><input type="text" id="newMemberImage" placeholder="Photo URL" style="flex:1;min-width:180px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><input type="file" id="newMemberImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"><button type="button" class="btn btn-primary btn-sm" data-action="add-member">Add to Roster</button></div></div>';
+        }
         container.innerHTML=html;
         container.querySelectorAll('.member-card').forEach(function(card){
           card.addEventListener('mousemove', function(e){
@@ -275,12 +296,16 @@
         var foot=document.getElementById('modalFoot');
         if(editMode && isOwner){
           foot.style.display='flex';
+          if(!m.gallery) m.gallery=[];
           body.innerHTML=
-            '<div class="roster-field"><label>Photo URL or upload</label><div style="display:flex;gap:0.5rem;align-items:center;"><input type="text" id="modalImage" value="'+esc(m.image||'')+'" placeholder="https://..."><input type="file" id="modalImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"></div></div>'+
+            '<div class="roster-field"><label>Full Name</label><input type="text" id="modalNameInput" value="'+esc(m.name||'')+'" placeholder="Full display name"></div>'+
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Discord Username</label><input type="text" id="modalUsername" value="'+esc(m.username||'')+'" placeholder="@username"></div><div class="roster-field"><label>Rank</label><select id="modalRankSel">'+rankOptionsHtml(m.rank)+'</select></div></div>'+
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Joined Date</label><input type="date" id="modalJoined" value="'+esc((m.joined||'').split(" ")[0])+'"></div><div class="roster-field"><label>Status</label><select id="modalStatus"><option value="Active"'+(m.status==='Active'?' selected':'')+'>Active</option><option value="Retired"'+(m.status==='Retired'?' selected':'')+'>Retired</option><option value="On LOA"'+(m.status==='On LOA'?' selected':'')+'>On LOA</option></select></div></div>'+
+            '<div class="roster-field"><label>Main Photo — URL or upload (transparent PNG keeps transparency)</label><div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;"><input type="text" id="modalImage" value="'+esc(m.image||'')+'" placeholder="https://..." style="flex:1;min-width:180px;"><input type="file" id="modalImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"></div></div>'+
+            '<div class="roster-field"><label>Additional Pictures — gallery for this member</label><div id="modalGallery" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">'+(m.gallery&&m.gallery.length?m.gallery.map(function(url,i){return '<div style="position:relative;width:72px;height:72px;border-radius:6px;overflow:hidden;border:1px solid #333;"><img src="'+esc(url)+'" style="width:100%;height:100%;object-fit:cover;"><button type="button" data-action="remove-gallery-img" data-idx="'+i+'" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;">×</button></div>';}).join(''):'<span style="font-size:0.75rem;color:#777;">No extra pictures yet</span>')+'</div><div style="display:flex;gap:0.5rem;"><input type="text" id="modalGalleryUrl" placeholder="Paste image URL" style="flex:1;"><input type="file" id="modalGalleryFile" accept="image/*" style="font-size:0.75rem;max-width:150px;"><button type="button" class="btn btn-outline btn-sm" id="modalGalleryAdd">Add</button></div></div>'+
             '<div class="roster-field"><label>What they did within the club</label><textarea id="modalContrib" placeholder="Roles, runs led, businesses, wars, mentoring...">'+esc(m.contributions||'')+'</textarea></div>'+
             '<div class="roster-field"><label>Memorable moments</label><textarea id="modalMoments" placeholder="Legendary stories, funny moments, milestones...">'+esc(m.memorableMoments||'')+'</textarea></div>'+
-            '<div class="roster-field"><label>Bio / notes</label><textarea id="modalBio" placeholder="Background, character, RP notes...">'+esc(m.bio||'')+'</textarea></div>'+
-            '<div class="roster-field"><label>Quick rank change</label><select id="modalRankSel">'+rankOptionsHtml(m.rank)+'</select></div>';
+            '<div class="roster-field"><label>Bio / notes</label><textarea id="modalBio" placeholder="Background, character, RP notes...">'+esc(m.bio||'')+'</textarea></div>';
           setTimeout(function(){
             var fi=document.getElementById('modalImageFile');
             if(fi) fi.addEventListener('change', function(){
@@ -322,13 +347,60 @@
         var card=e.target.closest('[data-open]');
         if(card && !editMode){ openModal(card.getAttribute('data-open')); }
         if(e.target.closest('#modalClose') || e.target.id==='rosterModal') closeModal();
+        if(e.target.getAttribute('data-action')==='remove-gallery-img'){
+          var gIdx=parseInt(e.target.getAttribute('data-idx'),10);
+          if(activeMember && activeMember.gallery){ activeMember.gallery.splice(gIdx,1); localStorage.setItem(LS_KEY, JSON.stringify(rosterData)); openModal(activeMember.id); }
+        }
+        if(e.target.id==='modalGalleryAdd'){
+          var urlInp=document.getElementById('modalGalleryUrl');
+          var fileInp=document.getElementById('modalGalleryFile');
+          var url=(urlInp&&urlInp.value.trim())||'';
+          if(fileInp && fileInp.dataset.pendingGallery){ url=fileInp.dataset.pendingGallery; fileInp.dataset.pendingGallery=''; fileInp.value=''; if(urlInp) urlInp.value=''; }
+          if(!url){ alert('Paste URL or choose file first'); return; }
+          if(!activeMember.gallery) activeMember.gallery=[];
+          activeMember.gallery.push(url);
+          localStorage.setItem(LS_KEY, JSON.stringify(rosterData));
+          openModal(activeMember.id);
+        }
       });
       document.addEventListener('change', function(e){
         if(e.target.hasAttribute('data-rank-select')){
           var id=e.target.getAttribute('data-id');
           var newRank=e.target.value;
           var m=rosterData.members.find(function(x){ return String(x.id)===String(id); });
-          if(m){ m.rank=newRank; render(); }
+          if(m){ m.rank=newRank; localStorage.setItem(LS_KEY, JSON.stringify(rosterData)); render(); }
+        }
+        if(e.target.id==='modalGalleryFile'){
+          var file=e.target.files&&e.target.files[0]; if(!file) return;
+          if(!file.type.startsWith('image/')){ alert('Please select an image'); e.target.value=''; return; }
+          var target=e.target;
+          function setPending(dataUrl){
+            target.dataset.pendingGallery=dataUrl;
+            var hint=document.createElement('div'); hint.style.fontSize='0.7rem'; hint.style.color='var(--primary)'; hint.textContent='Image ready — click Add'; target.parentNode.appendChild(hint); setTimeout(function(){ hint.remove(); }, 2500);
+          }
+          if(file.size>800*1024){
+            var url=URL.createObjectURL(file);
+            var img=new Image();
+            img.onload=function(){
+              var maxDim=1024; var w=img.width, h=img.height;
+              if(w>maxDim||h>maxDim){ if(w>h){h=Math.round(h*maxDim/w); w=maxDim;} else {w=Math.round(w*maxDim/h); h=maxDim;}}
+              var canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h;
+              canvas.getContext('2d').drawImage(img,0,0,w,h);
+              URL.revokeObjectURL(url);
+              var isPng=file.type==='image/png';
+              if(isPng){
+                canvas.toBlob(function(blob){ var r=new FileReader(); r.onload=function(ev){ setPending(ev.target.result); }; r.readAsDataURL(blob); },'image/png');
+              } else {
+                canvas.toBlob(function(blob){ var r=new FileReader(); r.onload=function(ev){ setPending(ev.target.result); }; r.readAsDataURL(blob); },'image/jpeg',0.88);
+              }
+            };
+            img.onerror=function(){ alert('Invalid image'); URL.revokeObjectURL(url); target.value=''; };
+            img.src=url;
+          } else {
+            var reader=new FileReader();
+            reader.onload=function(ev){ setPending(ev.target.result); };
+            reader.readAsDataURL(file);
+          }
         }
       });
       document.getElementById('modalClose').addEventListener('click', closeModal);
@@ -336,11 +408,19 @@
       document.getElementById('modalCancel').addEventListener('click', closeModal);
       document.getElementById('modalSave').addEventListener('click', function(){
         if(!activeMember) return;
+        var nameI=document.getElementById('modalNameInput');
+        var userI=document.getElementById('modalUsername');
+        var joinedI=document.getElementById('modalJoined');
+        var statusI=document.getElementById('modalStatus');
         var contrib=document.getElementById('modalContrib');
         var moments=document.getElementById('modalMoments');
         var bio=document.getElementById('modalBio');
         var img=document.getElementById('modalImage');
         var rankSel=document.getElementById('modalRankSel');
+        if(nameI) activeMember.name=nameI.value.trim()||activeMember.name;
+        if(userI) activeMember.username=userI.value.trim();
+        if(joinedI) activeMember.joined=joinedI.value;
+        if(statusI) activeMember.status=statusI.value;
         if(contrib) activeMember.contributions=contrib.value;
         if(moments) activeMember.memorableMoments=moments.value;
         if(bio) activeMember.bio=bio.value;
@@ -363,5 +443,58 @@
       load(); checkOwner();
     })();
   </script>
+<script>
+// Add member handler (outside IIFE, uses localStorage)
+document.addEventListener('click', function(e){
+  if(e.target.getAttribute('data-action')==='add-member'){
+    var name=(document.getElementById('newMemberName').value||'').trim();
+    if(!name){ alert('Name required'); return; }
+    var username=(document.getElementById('newMemberUsername').value||'').trim();
+    var rankEl=document.getElementById('newMemberRank');
+    var rank=rankEl?rankEl.value:'Full Patch';
+    var joinedEl=document.getElementById('newMemberJoined');
+    var joined=joinedEl&&joinedEl.value ? joinedEl.value : new Date().toISOString().split('T')[0];
+    var imgEl=document.getElementById('newMemberImage');
+    var img=imgEl? (imgEl.value||'').trim() : '';
+    var fileInp=document.getElementById('newMemberImageFile');
+    if(fileInp && fileInp.dataset.pendingImage){ img=fileInp.dataset.pendingImage; }
+    var newId='m_'+Date.now().toString(36);
+    var stored=null;
+    try{ stored=JSON.parse(localStorage.getItem('rhmc_roster_data')); }catch(e){}
+    if(!stored){
+      // fallback: try to fetch and use
+      alert('Roster not loaded yet, try again after page loads');
+      return;
+    }
+    stored.members.push({ id:newId, name:name, username:username, rank:rank, status:'Active', joined:joined, contributions:'', memorableMoments:'', bio:'', image:img, gallery:[] });
+    localStorage.setItem('rhmc_roster_data', JSON.stringify(stored));
+    location.reload();
+  }
+});
+document.addEventListener('change', function(e){
+  if(e.target.id==='newMemberImageFile'){
+    var file=e.target.files&&e.target.files[0]; if(!file) return;
+    if(file.size>900000){
+      var url=URL.createObjectURL(file);
+      var img=new Image();
+      img.onload=function(){
+        var maxDim=800; var w=img.width, h=img.height;
+        if(w>maxDim||h>maxDim){ if(w>h){h=Math.round(h*maxDim/w); w=maxDim;} else {w=Math.round(w*maxDim/h); h=maxDim;}}
+        var canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h;
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        URL.revokeObjectURL(url);
+        canvas.toBlob(function(blob){
+          var r=new FileReader(); r.onload=function(ev){ e.target.dataset.pendingImage=ev.target.result; }; r.readAsDataURL(blob);
+        }, file.type==='image/png'?'image/png':'image/jpeg', 0.88);
+      };
+      img.src=url;
+    } else {
+      var reader=new FileReader();
+      reader.onload=function(ev){ e.target.dataset.pendingImage=ev.target.result; };
+      reader.readAsDataURL(file);
+    }
+  }
+});
+</script>
 </body>
 </html>
