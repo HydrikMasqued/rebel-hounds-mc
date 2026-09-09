@@ -380,7 +380,7 @@
     function renderBlips(filter = '') {
       blipLayer.clearLayers();
       const filtered = blips.filter(b =>
-        (b.name.toLowerCase().includes(filter.toLowerCase()) ||
+        (((b.name || '') + '').toLowerCase().includes(filter.toLowerCase()) ||
         (b.description || '').toLowerCase().includes(filter.toLowerCase())) &&
         blipMatchesCategory(b)
       );
@@ -396,7 +396,7 @@
           <strong>${escapeHtml(blip.name)}</strong><br/>
           ${category ? `<span style="color:${category.color}">●</span> ${escapeHtml(category.name)}<br/>` : ''}
           ${blip.description ? `<em style="white-space:pre-line">${escapeHtml(blip.description)}</em><br/>` : ''}
-          <small style="color:#8a93a0">Y: ${blip.latitude.toFixed(2)} &middot; X: ${blip.longitude.toFixed(2)}</small>
+          <small style="color:#8a93a0">Y: ${Number(blip.latitude).toFixed(2)} &middot; X: ${Number(blip.longitude).toFixed(2)}</small>
         `);
 
         marker.on('click', () => selectBlip(blip.id));
@@ -428,10 +428,10 @@
     function renderBlipList(filter = '') {
       const list = document.getElementById('blipList');
       const filtered = blips.filter(b =>
-        (b.name.toLowerCase().includes(filter.toLowerCase()) ||
+        (((b.name || '') + '').toLowerCase().includes(filter.toLowerCase()) ||
         (b.description || '').toLowerCase().includes(filter.toLowerCase())) &&
         blipMatchesCategory(b)
-      ).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      ).sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
 
       if (filtered.length === 0) {
         list.innerHTML = '<div class="empty-state">No blips found</div>';
@@ -689,6 +689,7 @@
     async function saveQuickBlip() {
       const name = document.getElementById('quickName').value.trim();
       if (!name) return alert('Name is required');
+      if (!isFinite(quickLat) || !isFinite(quickLng)) return alert('Invalid location - click the map again to place the blip');
       try {
         await api('/blips', { method: 'POST', body: JSON.stringify({
           name,
@@ -822,14 +823,16 @@
         var cats2 = lsGet('categories');
         var blips2 = lsGet('blips');
         if (data.categories) data.categories.forEach(function(c) {
-          if (!cats2.find(function(e) { return e.name === c.name; })) cats2.push(Object.assign({ id: lsNextId('categories') }, c));
+          if (c && c.name && !cats2.find(function(e) { return e.name === c.name; })) cats2.push(Object.assign({ id: lsNextId('categories') }, c));
         });
+        var skipped = 0;
         if (data.blips) data.blips.forEach(function(b) {
+          if (!b || typeof b.name !== 'string' || !b.name.trim() || !isFinite(parseFloat(b.latitude)) || !isFinite(parseFloat(b.longitude))) { skipped++; return; }
           blips2.push(Object.assign({ id: lsNextId('blips'), created_at: new Date().toISOString(), updated_at: new Date().toISOString() }, b));
         });
         lsSet('categories', cats2);
         lsSet('blips', blips2);
-        return Promise.resolve({ success: true, imported: (data.blips || []).length });
+        return Promise.resolve({ success: true, imported: ((data.blips || []).length - skipped), skipped: skipped });
       }
 
       if (resource === 'search') {
@@ -843,12 +846,30 @@
       return Promise.reject(new Error('Unknown endpoint: ' + endpoint));
     }
 
+    // A single malformed stored entry (null name/coords, e.g. from an old
+    // import) must never break rendering for all other blips.
+    function sanitizeBlips(arr) {
+      var cleaned = [];
+      var changed = false;
+      (arr || []).forEach(function(b) {
+        if (!b || typeof b !== 'object') { changed = true; return; }
+        if (typeof b.name !== 'string' || !b.name.trim()) { b.name = 'Unnamed blip'; changed = true; }
+        var lat = parseFloat(b.latitude), lng = parseFloat(b.longitude);
+        if (!isFinite(lat) || !isFinite(lng)) { console.warn('Skipping blip with invalid coordinates:', b.id, b.name); return; }
+        b.latitude = lat; b.longitude = lng;
+        cleaned.push(b);
+      });
+      return { list: cleaned, changed: changed };
+    }
+
     async function loadData() {
       try {
-        [blips, categories] = await Promise.all([
-          api('/blips'),
-          api('/categories')
-        ]);
+        var rawBlips = await api('/blips');
+        var sane = sanitizeBlips(rawBlips);
+        blips = sane.list;
+        // Self-heal repaired names back to localStorage (backend owns its own data)
+        if (sane.changed && !MAP_API_BASE) { try { lsSet('blips', rawBlips); } catch (e) {} }
+        categories = await api('/categories');
         try {
           drawings = await api('/drawings');
         } catch (e) {
@@ -901,12 +922,15 @@
     async function saveBlip() {
       const name = document.getElementById('blipName').value.trim();
       if (!name) return alert('Name is required');
+      const lat = parseFloat(document.getElementById('blipLat').value);
+      const lng = parseFloat(document.getElementById('blipLng').value);
+      if (!isFinite(lat) || !isFinite(lng)) return alert('Invalid coordinates');
 
       const blip = {
         name,
         description: document.getElementById('blipDesc').value.trim(),
-        latitude: parseFloat(document.getElementById('blipLat').value),
-        longitude: parseFloat(document.getElementById('blipLng').value),
+        latitude: lat,
+        longitude: lng,
         category_id: document.getElementById('blipCategory').value || null,
         map_context: currentMap
       };
@@ -1035,10 +1059,11 @@
       try {
         const text = await file.text();
         const data = JSON.parse(text);
-        await api('/import', { method: 'POST', body: JSON.stringify(data) });
+        const res = await api('/import', { method: 'POST', body: JSON.stringify(data) });
         document.getElementById('importFile').value = '';
         document.getElementById('btnImport').disabled = true;
         loadData();
+        if (res && res.skipped) alert('Imported ' + res.imported + ' blips, skipped ' + res.skipped + ' invalid entries.');
       } catch (e) {
         alert('Import failed: ' + e.message);
       }
@@ -1068,7 +1093,7 @@
         const filter = e.target.value.toLowerCase();
         if (filter.length > 0) {
           const match = blips.find(b =>
-            b.name.toLowerCase().includes(filter) ||
+            (((b.name || '') + '').toLowerCase().includes(filter)) ||
             (b.description || '').toLowerCase().includes(filter)
           );
           if (match && (match.map_context || 'los_santos') === currentMap) {
@@ -1192,6 +1217,12 @@
       div.textContent = text;
       return div.innerHTML;
     }
+
+    // Exposed for inline onclick handlers in rendered lists (IIFE scope is invisible to them)
+    window.editBlip = editBlip;
+    window.deleteBlip = deleteBlip;
+    window.editCategory = editCategory;
+    window.deleteCategory = deleteCategory;
 
     // Event listeners
     document.addEventListener('DOMContentLoaded', () => {
