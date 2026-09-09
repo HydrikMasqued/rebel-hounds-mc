@@ -130,8 +130,9 @@
         <div class="bot-section-head" onclick="toggleSection('membersSection')">
           <h3>Deimos - Membership Roster</h3>
           <div style="display:flex;align-items:center;gap:12px;">
-            <button class="btn-refresh" onclick="event.stopPropagation();refreshMembers()">Refresh</button>
+            <button class="btn-refresh" id="memberRefreshBtn" onclick="event.stopPropagation();refreshMembers()">Refresh</button>
             <span class="badge" id="memberCount">0</span>
+            <span style="color:var(--muted);font-size:0.75rem;">Bot syncs on roster changes</span>
             <span class="toggle-icon">&#9660;</span>
           </div>
         </div>

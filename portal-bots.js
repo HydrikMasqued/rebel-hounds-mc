@@ -70,6 +70,8 @@
   ];
 
   function loadMembers() {
+    var refreshBtn = document.getElementById('memberRefreshBtn');
+    if (refreshBtn) { refreshBtn.disabled = true; refreshBtn.textContent = 'Syncing...'; }
     loadJson('deimos_members.json').then(function(data) {
       var items = Array.isArray(data) ? data : [];
       document.getElementById('memberCount').textContent = items.length;
@@ -100,6 +102,9 @@
       tbody.innerHTML = html;
     }).catch(function() {
       document.getElementById('memberTableBody').innerHTML = '<tr><td colspan="4" class="empty-state">Failed to load members</td></tr>';
+    }).then(function() {
+      var b = document.getElementById('memberRefreshBtn');
+      if (b) { b.disabled = false; b.textContent = 'Refresh'; }
     });
   }
   window.refreshMembers = loadMembers;
@@ -246,7 +251,7 @@
     loadJson('sync_meta.json').then(function(meta) {
       var syncTime = new Date(meta.lastSync);
       var age = Math.round((Date.now() - syncTime.getTime()) / 60000);
-      setApiStatus(true, 'Data synced ' + age + ' min ago (auto-refreshes every 10 min)');
+      setApiStatus(true, 'Data synced ' + age + ' min ago (bot pushes updates on roster changes)');
     }).catch(function() {
       setApiStatus(true, 'Bot data loaded');
     });
