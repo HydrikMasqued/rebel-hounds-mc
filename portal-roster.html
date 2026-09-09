@@ -41,6 +41,16 @@
     .tree-level[data-level="1"] .level-members { justify-content: center; }
     .tree-level[data-level="1"] .member-card { width: 270px; border-width: 2px; }
     .tree-level[data-level="2"] .level-members { gap: 2.2rem; }
+    .heads-level { text-align: center; }
+    .heads-president { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .heads-branch { position: relative; height: 34px; max-width: 640px; margin: 0 auto; }
+    .heads-branch::before { content: ''; position: absolute; left: 50%; top: 0; width: 1px; height: 18px; background: linear-gradient(to bottom, var(--primary), #333); transform: translateX(-50%); }
+    .heads-branch::after { content: ''; position: absolute; top: 18px; left: 25%; right: 25%; height: 1px; background: linear-gradient(90deg, transparent, #333 20%, #333 80%, transparent); }
+    .heads-sub { display: flex; max-width: 700px; margin: 0 auto; gap: 0; }
+    .heads-sub-col { flex: 1; display: flex; justify-content: center; position: relative; padding-top: 14px; }
+    .heads-sub-col::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 14px; background: #333; transform: translateX(-50%); }
+    .heads-single-line { width: 1px; height: 22px; background: linear-gradient(to bottom, var(--primary), #333); margin: 0 auto; }
+    @media (max-width: 640px) { .heads-sub { flex-direction: column; gap: 0.9rem; } .heads-sub-col::before { display: none; } .heads-branch::after { left: 12%; right: 12%; } }
     .member-card { background: linear-gradient(145deg, #121212 0%, #1a1a1a 100%); border: 1px solid #222; border-radius: 10px; padding: 0.9rem 1rem; width: 208px; text-align: center; cursor: pointer; transition: all 0.32s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; opacity: 0; transform: translateY(14px); animation: cardIn 0.5s ease forwards; }
     .member-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(380px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.06), transparent 42%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     .member-card:hover::after { opacity: 1; }
@@ -240,30 +250,62 @@
         });
 
         var html='<div class="roster-tree">';
-        [1,2,3,4,5,6].forEach(function(lvl, idx){
+        function cardHtml(m, lvl, cidx){
+          var isPresident=m.rank==='President';
+          var isHead=isPresident || ['Vice President','Sergeant At Arms'].indexOf(m.rank)>-1;
+          var cardClass=isPresident?'member-card head president':(isHead?'member-card head':(m.rank==='Life Member'?'member-card life':'member-card'));
+          var h='<div class="'+cardClass+'" data-id="'+esc(m.id)+'" '+(editMode?'':'data-open="'+esc(m.id)+'"')+' style="'+(editMode?'':'cursor:pointer;')+'animation-delay:'+(0.14+lvl*0.08+cidx*0.035)+'s">';
+          h+='<div class="member-avatar">'+(m.image?'<img src="'+esc(m.image)+'" alt="">':'&#128100;')+'</div>';
+          h+='<div class="member-name" title="'+esc(m.name)+'">'+esc(m.name)+'</div>';
+          h+='<div class="member-username">'+esc(m.username||'')+'</div>';
+          h+='<div class="member-rank '+rankClass(m.rank)+'">'+esc(m.rank)+'</div>';
+          if(editMode){
+            h+='<select data-rank-select data-id="'+esc(m.id)+'">'+rankOptionsHtml(m.rank)+'</select>';
+            h+='<div class="rank-hint">Change rank to move</div>';
+          }
+          h+='</div>';
+          return h;
+        }
+        var headsPres=(byLevel[1]||[]).slice();
+        var headsSubs=(byLevel[2]||[]).slice().sort(function(a,b){ return RANK_ORDER.indexOf(a.rank)-RANK_ORDER.indexOf(b.rank); });
+        var headsTotal=headsPres.length+headsSubs.length;
+        if(headsTotal>0){
+          html+='<div class="tree-level heads-level" data-level="heads" style="animation-delay:0.14s">';
+          html+='<div class="level-head"><h3 class="level-title">THREE HEADS</h3><span class="level-count">'+headsTotal+'</span></div>';
+          if(headsPres.length>0){
+            html+='<div class="heads-president">';
+            headsPres.forEach(function(m, i){ html+=cardHtml(m, 1, i); });
+            html+='</div>';
+          }
+          if(headsPres.length>0 && headsSubs.length>0){
+            if(headsSubs.length===1){ html+='<div class="heads-single-line"></div>'; }
+            else { html+='<div class="heads-branch"></div>'; }
+          }
+          if(headsSubs.length>0){
+            if(headsSubs.length===1){
+              html+='<div class="heads-president">';
+              headsSubs.forEach(function(m, i){ html+=cardHtml(m, 2, i); });
+              html+='</div>';
+            } else {
+              html+='<div class="heads-sub">';
+              headsSubs.forEach(function(m, i){ html+='<div class="heads-sub-col">'+cardHtml(m, 2, i)+'</div>'; });
+              html+='</div>';
+            }
+          }
+          html+='</div>';
+          var hasAfterHeads=false;
+          for(var hl=3; hl<=6; hl++){ if(byLevel[hl] && byLevel[hl].length>0){ hasAfterHeads=true; break; } }
+          if(hasAfterHeads) html+='<div class="tree-connector"></div>';
+        }
+        [3,4,5,6].forEach(function(lvl, idx){
           var list=byLevel[lvl];
           if(list.length===0) return;
-          var isTop=lvl===1;
           html+='<div class="tree-level" data-level="'+lvl+'">';
           html+='<div class="level-head"><h3 class="level-title">'+esc(LEVEL_LABEL[lvl])+'</h3><span class="level-count">'+list.length+'</span></div>';
           html+='<div class="level-members">';
-          list.forEach(function(m){
-            var isPresident=m.rank==='President';
-            var isHead=isPresident || ['Vice President','Sergeant At Arms'].indexOf(m.rank)>-1;
-            var cardClass=isPresident?'member-card head president':(isHead?'member-card head':(m.rank==='Life Member'?'member-card life':'member-card'));
-            html+='<div class="'+cardClass+'" data-id="'+esc(m.id)+'" '+(editMode?'':'data-open="'+esc(m.id)+'"')+' style="'+(editMode?'':'cursor:pointer;')+'animation-delay:'+(0.14+lvl*0.08+idx*0.035)+'s">';
-            html+='<div class="member-avatar">'+(m.image?'<img src="'+esc(m.image)+'" alt="">':'&#128100;')+'</div>';
-            html+='<div class="member-name" title="'+esc(m.name)+'">'+esc(m.name)+'</div>';
-            html+='<div class="member-username">'+esc(m.username||'')+'</div>';
-            html+='<div class="member-rank '+rankClass(m.rank)+'">'+esc(m.rank)+'</div>';
-            if(editMode){
-              html+='<select data-rank-select data-id="'+esc(m.id)+'">'+rankOptionsHtml(m.rank)+'</select>';
-              html+='<div class="rank-hint">Change rank to move</div>';
-            }
-            html+='</div>';
-          });
+          list.forEach(function(m, midx){ html+=cardHtml(m, lvl, idx*2+midx); });
           html+='</div></div>';
-          if(idx < 5){
+          if(idx < 3){
             var hasNext=false;
             for(var nl=lvl+1; nl<=6; nl++){ if(byLevel[nl] && byLevel[nl].length>0){ hasNext=true; break; } }
             if(hasNext) html+='<div class="tree-connector"></div>';
