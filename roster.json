@@ -1,0 +1,385 @@
+﻿{
+    "ranks":  [
+                  {
+                      "label":  "President",
+                      "level":  1,
+                      "id":  "President"
+                  },
+                  {
+                      "label":  "Vice President",
+                      "level":  1,
+                      "id":  "Vice President"
+                  },
+                  {
+                      "label":  "Sergeant At Arms",
+                      "level":  1,
+                      "id":  "Sergeant At Arms"
+                  },
+                  {
+                      "label":  "Secretary",
+                      "level":  2,
+                      "id":  "Secretary"
+                  },
+                  {
+                      "label":  "Treasurer",
+                      "level":  2,
+                      "id":  "Treasurer"
+                  },
+                  {
+                      "label":  "Road Captain",
+                      "level":  2,
+                      "id":  "Road Captain"
+                  },
+                  {
+                      "label":  "Enforcer",
+                      "level":  2,
+                      "id":  "Enforcer"
+                  },
+                  {
+                      "label":  "Full Patch",
+                      "level":  3,
+                      "id":  "Full Patch"
+                  },
+                  {
+                      "label":  "Nomad",
+                      "level":  4,
+                      "id":  "Nomad"
+                  },
+                  {
+                      "label":  "Life Member (Retired)",
+                      "level":  5,
+                      "id":  "Life Member"
+                  },
+                  {
+                      "label":  "Tailgunner",
+                      "level":  3,
+                      "id":  "Tailgunner"
+                  }
+              ],
+    "members":  [
+                    {
+                        "id":  "391042658912567300",
+                        "name":  "Jason \"Escobar\" Castle",
+                        "username":  "d.bennett31",
+                        "rank":  "Vice President",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "294127733401976800",
+                        "name":  "Rushyyy [ROMMEL HIMSELF]",
+                        "username":  "rushy313",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "181143017619587070",
+                        "name":  "Jonathan \u0027Jay\u0027 Charles",
+                        "username":  "jayreaper",
+                        "rank":  "President",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "367316570180943900",
+                        "name":  "William Xander Reks",
+                        "username":  "panda_alleyway",
+                        "rank":  "Treasurer",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "580324615583170600",
+                        "name":  "Desoo",
+                        "username":  "nr1dishwasher",
+                        "rank":  "Enforcer",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "326529501209034750",
+                        "name":  "Logan Ryder",
+                        "username":  "chszr",
+                        "rank":  "Enforcer",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "260165392209674240",
+                        "name":  "Shepard \"Sergeant Stabby\"",
+                        "username":  "shepardsky",
+                        "rank":  "Sergeant At Arms",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "361004934184828900",
+                        "name":  "Ember Davis",
+                        "username":  "snow3976",
+                        "rank":  "Secretary",
+                        "status":  "Active",
+                        "joined":  "2025-09-01",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "1045815013614559400",
+                        "name":  "Olivia Newton",
+                        "username":  "bdillon97",
+                        "rank":  "Road Captain",
+                        "status":  "Active",
+                        "joined":  "2025-11-25",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "908481561161240600",
+                        "name":  "Sid Dempsey",
+                        "username":  "syx0666",
+                        "rank":  "Tailgunner",
+                        "status":  "Active",
+                        "joined":  "2025-12-08",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "420309961931751400",
+                        "name":  "Alexi Hoxha",
+                        "username":  "mr_maximus",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-02-09",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "747599206247694300",
+                        "name":  "Oboth",
+                        "username":  "obothclef",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-03-22",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "241703203068968960",
+                        "name":  "Vaelis (That living dead girl)",
+                        "username":  "vaelisthatlivingdeadgirl",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-04-14",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "591781884179120100",
+                        "name":  "Besnik Hoxha",
+                        "username":  "tragic1301",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-06-07",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "1425481575419613400",
+                        "name":  "ð“™ð“£",
+                        "username":  "swizzy188",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-06-10",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "319184811971575800",
+                        "name":  "Xan Xcient",
+                        "username":  "loreviking",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-06-14",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "220192531520946180",
+                        "name":  "Riku",
+                        "username":  "gotled",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-06-18",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "1170506248106541000",
+                        "name":  "Jamal Whitlock",
+                        "username":  "dreamlucifer",
+                        "rank":  "Nomad",
+                        "status":  "Active",
+                        "joined":  "2026-06-18",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "1360830106335187000",
+                        "name":  "ð™Žð™€ð™ð™‹ð™€ð™‰ð™",
+                        "username":  "serpxntt_",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-07-02",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "1182410319667150800",
+                        "name":  "Zeus livin",
+                        "username":  "charlie07766",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-07-05",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "140312416687751170",
+                        "name":  "Drew Jackson",
+                        "username":  "wicked1667",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-07-18",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "244964132288200700",
+                        "name":  "Buck JOMS",
+                        "username":  "buck4117",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-07-20",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "237044103991263230",
+                        "name":  "Jesco",
+                        "username":  "jescoblack",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-07-20",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "361581703355039740",
+                        "name":  "JokerB",
+                        "username":  "jokerb",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "2026-08-25",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "516233696844578846",
+                        "name":  "Thorikan",
+                        "username":  "thorikan",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "727297663355191346",
+                        "name":  "Chris Myers",
+                        "username":  "ghostt4920",
+                        "rank":  "Full Patch",
+                        "status":  "Active",
+                        "joined":  "",
+                        "contributions":  "",
+                        "memorableMoments":  "",
+                        "bio":  "",
+                        "image":  ""
+                    },
+                    {
+                        "id":  "life-001",
+                        "name":  "Retired Member Example",
+                        "username":  "retired",
+                        "rank":  "Life Member",
+                        "status":  "Retired",
+                        "joined":  "2021-10-03",
+                        "contributions":  "Founding era contributions — add details",
+                        "memorableMoments":  "Legendary run 2022",
+                        "bio":  "Retired — Life Member",
+                        "image":  ""
+                    }
+                ]
+}
