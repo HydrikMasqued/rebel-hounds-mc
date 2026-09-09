@@ -296,8 +296,36 @@ async function syncDiscordMembers() {
       }
     }
 
-    save('deimos_members.json', merged);
-    console.log(`  Discord: ${clubMembers.length} with roles, ${added} added, ${refreshed} rank/name refreshed (total: ${merged.length})`);
+    // Prune departed members: DB records with a real Discord ID that are
+    // no longer in the live guild list. Safeguards: never prune Life
+    // Members, non-Active records, non-snowflake IDs, or more than 25%
+    // of the roster in one run (protects against API anomalies).
+    const liveIds = new Set(allMembers.map(m => String(m.user.id)));
+    let finalMerged = merged;
+    let pruned = 0;
+    if (allMembers.length > 0) {
+      const candidates = merged.filter(m => {
+        const isDbRecord = !m.source;
+        const snowflake = /^\d{17,20}$/.test(String(m.user_id || ''));
+        if (!isDbRecord || !snowflake) return false;
+        if ((m.rank || '') === 'Life Member') return false;
+        if ((m.status || 'Active') !== 'Active') return false;
+        return !liveIds.has(String(m.user_id));
+      });
+      if (candidates.length > merged.length * 0.25) {
+        console.log(`  Discord: prune blocked (would remove ${candidates.length}/${merged.length}, over 25% safety limit)`);
+      } else {
+        const dropIds = new Set(candidates.map(m => String(m.user_id)));
+        if (candidates.length) console.log(`  Discord: pruned departed: ${candidates.map(m => m.discord_name || m.discord_username || m.user_id).join(', ')}`);
+        finalMerged = merged.filter(m => !dropIds.has(String(m.user_id)));
+        pruned = candidates.length;
+      }
+    } else {
+      console.log('  Discord: empty member list, skipping prune');
+    }
+
+    save('deimos_members.json', finalMerged);
+    console.log(`  Discord: ${clubMembers.length} with roles, ${added} added, ${refreshed} rank/name refreshed, ${pruned} departed (total: ${finalMerged.length})`);
   } catch (e) {
     console.error(`  Discord sync failed: ${e.message}`);
   }
