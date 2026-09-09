@@ -1,8 +1,4 @@
 [
-  "Traceback (most recent call last):",
-  "  File \"/home/container/.local/lib/python3.12/site-packages/aiohttp/connector.py\", line 1532, in _create_direct_connection",
-  "    hosts = await self._resolve_host(host, port, traces=traces)",
-  "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
   "  File \"/home/container/.local/lib/python3.12/site-packages/aiohttp/connector.py\", line 1148, in _resolve_host",
   "    return await asyncio.shield(resolved_host_task)",
   "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
@@ -198,5 +194,9 @@
   "2026-09-09 02:34:09,286 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa.",
   "2026-09-09 04:03:21,501 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa.",
   "2026-09-09 05:01:06,826 - utils.playtime_database - INFO - Ended vital session for user 727297663355191346: 13730 seconds",
-  "2026-09-09 05:01:06,827 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ghostt4920: 3h 48m"
+  "2026-09-09 05:01:06,827 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ghostt4920: 3h 48m",
+  "2026-09-09 05:31:39,312 - utils.playtime_database - INFO - Ended vital session for user 1158839908966871050: 12953 seconds",
+  "2026-09-09 05:31:39,313 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lactose.the.intolerant6969: 3h 35m",
+  "2026-09-09 07:49:50,058 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa.",
+  "2026-09-09 09:21:17,458 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4fa666849817e9efc9100bcc09c42bfa."
 ]
