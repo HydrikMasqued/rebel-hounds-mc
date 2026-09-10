@@ -25,6 +25,8 @@
     @keyframes heroIn { to { opacity: 1; transform: translateY(0); filter: blur(0); } }
     .hero-banner { animation: kenburns 36s ease-in-out infinite alternate; }
     @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09); } }
+    .hero-video { opacity: 0; transition: opacity 1.8s ease; }
+    .hero-video.video-on { opacity: 1; }
     .scroll-hint { animation: hintBob 2.2s ease-in-out infinite; transition: opacity 0.4s; }
     @keyframes hintBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
     body.scrolled-past .scroll-hint { opacity: 0; }
@@ -101,6 +103,7 @@
   </nav>
 
   <header class="hero" id="home">
+    <div class="hero-video" id="heroVideo" aria-hidden="true"></div>
     <img src="banner.png" alt="Rebel Hounds MC banner" class="hero-banner">
     <div class="hero-overlay"></div>
     <div class="hero-content" id="heroContent">
@@ -280,6 +283,29 @@
         var track = document.getElementById('tickerTrack');
         if (track) track.innerHTML += track.innerHTML;
       })();
+
+      // YouTube background video (same setup as live homepage)
+      var YT_VIDEO_ID = 'I5lX2OmPJtI';
+      var heroVideo = document.getElementById('heroVideo');
+      window.onYouTubeIframeAPIReady = function() {
+        if (!heroVideo || !window.YT) return;
+        try {
+          new YT.Player('heroVideo', {
+            videoId: YT_VIDEO_ID,
+            playerVars: { autoplay: 1, controls: 0, loop: 1, playlist: YT_VIDEO_ID, mute: 1, playsinline: 1, rel: 0, modestbranding: 1 },
+            events: {
+              onReady: function(e) { try { e.target.mute(); e.target.playVideo(); } catch (err) {} },
+              onStateChange: function(e) {
+                if (window.YT && e.data === YT.PlayerState.PLAYING) heroVideo.classList.add('video-on');
+              },
+              onError: function() { heroVideo.classList.add('hidden'); }
+            }
+          });
+        } catch (err) { heroVideo.classList.add('hidden'); }
+      };
+      var ytTag = document.createElement('script');
+      ytTag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(ytTag);
     })();
   </script>
 </body>
