@@ -2492,3 +2492,4 @@ body.scrolled-past .scroll-hint { opacity: 0; }
 .ticker-editbar label { display: inline-flex; align-items: center; gap: 0.35rem; }
 .ticker-editbar input.tsep { width: 2.6rem; text-align: center; background: var(--dark); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 0.3rem 0.4rem; font-size: 0.85rem; }
 .ticker-edit-fab { position: fixed; right: 12px; bottom: 12px; z-index: 9999; background: #0a0a0a; border: 1px solid var(--primary); color: var(--text); font-size: 0.72rem; letter-spacing: 1px; padding: 0.5rem 0.8rem; border-radius: 6px; cursor: pointer; }
+.ticker-status { font-size: 0.75rem; color: var(--muted); }

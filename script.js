@@ -184,25 +184,76 @@ if (recruitForm) {
     return d.innerHTML;
   }
 
-  function loadState() {
+  function readData(raw) {
     try {
-      var raw = localStorage.getItem(LS_KEY);
-      if (!raw) return;
       var data = JSON.parse(raw);
       if (data && Array.isArray(data.items) && data.items.length) {
-        state.items = data.items.map(function(w) { return String(w); });
-        state.sep = data.sep ? String(data.sep) : SEP_DEFAULT;
+        var clean = data.items.map(function(w) { return String(w).slice(0, 40); }).filter(function(w) { return !!w; });
+        if (!clean.length) return null;
+        var sep = data.sep ? String(data.sep).slice(0, 4) : SEP_DEFAULT;
+        return {
+          sep: sep || SEP_DEFAULT,
+          items: clean,
+          updated: (typeof data.updated === 'number' && data.updated > 0) ? data.updated : 0
+        };
       }
     } catch (e) {}
+    return null;
   }
 
-  function persist() {
+  function loadState() {
+    renderView();
+    var local = null;
     try {
-      localStorage.setItem(LS_KEY, JSON.stringify(state));
-      return true;
-    } catch (e) {
-      alert('Could not save ticker (browser storage unavailable).');
-      return false;
+      var raw = localStorage.getItem(LS_KEY);
+      if (raw) local = readData(raw);
+    } catch (e) {}
+    function useLocal() {
+      if (local) { state = local; renderView(); }
+    }
+    if (!window.fetch) { useLocal(); return; }
+    fetch('ticker.json?t=' + Date.now()).then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function(data) {
+      var server = readData(JSON.stringify(data));
+      if (!server) { useLocal(); return; }
+      if (local && local.updated > server.updated) {
+        state = local;
+      } else {
+        state = server;
+        try { localStorage.removeItem(LS_KEY); } catch (e) {}
+      }
+      renderView();
+    }).catch(useLocal);
+  }
+
+  function saveToServer(cb) {
+    var payload;
+    try {
+      payload = JSON.stringify({ sep: state.sep, items: state.items, updated: state.updated || 0 });
+    } catch (e) { cb(false, 'encoding error'); return; }
+    if (!window.fetch) { cb(false, 'no fetch support'); return; }
+    fetch('save-ticker.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: payload
+    }).then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function(data) {
+      if (data && data.success) cb(true);
+      else cb(false, (data && data.error) || 'server rejected');
+    }).catch(function(err) {
+      cb(false, (err && err.message) || 'connection failed');
+    });
+  }
+
+  function setStatus(msg, isErr) {
+    var el = document.getElementById('tickerStatus');
+    if (el) {
+      el.textContent = msg;
+      el.style.color = isErr ? 'var(--primary)' : 'var(--muted)';
     }
   }
 
@@ -279,7 +330,8 @@ if (recruitForm) {
       '<button type="button" class="btn btn-outline btn-sm" id="tickerAdd">Add word</button>' +
       '<button type="button" class="btn btn-primary btn-sm" id="tickerSave">Save</button>' +
       '<button type="button" class="btn btn-outline btn-sm" id="tickerReset">Reset</button>' +
-      '<button type="button" class="btn btn-outline btn-sm" id="tickerCancel">Cancel</button>';
+      '<button type="button" class="btn btn-outline btn-sm" id="tickerCancel">Cancel</button>' +
+      '<span id="tickerStatus" class="ticker-status"></span>';
     document.getElementById('tickerAdd').addEventListener('click', function() {
       syncWorkingFromInputs();
       working.items.push('NEW WORD');
@@ -293,13 +345,26 @@ if (recruitForm) {
       if (!words.length) { alert('Add at least one word.'); return; }
       working.items = words;
       if (!working.sep.trim()) working.sep = SEP_DEFAULT;
-      state = { sep: working.sep, items: working.items.slice() };
-      if (persist()) exitEdit();
+      state = { sep: working.sep, items: working.items.slice(), updated: Date.now() };
+      setStatus('Saving to server...');
+      saveToServer(function(ok, msg) {
+        if (ok) {
+          try { localStorage.removeItem(LS_KEY); } catch (e) {}
+          exitEdit();
+        } else {
+          try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {}
+          setStatus('Server save failed (' + msg + ') - kept in this browser only.', true);
+        }
+      });
     });
     document.getElementById('tickerReset').addEventListener('click', function() {
-      try { localStorage.removeItem(LS_KEY); } catch (e) {}
-      state = { sep: SEP_DEFAULT, items: DEFAULT_ITEMS.slice() };
-      exitEdit();
+      state = { sep: SEP_DEFAULT, items: DEFAULT_ITEMS.slice(), updated: Date.now() };
+      setStatus('Resetting on server...');
+      saveToServer(function(ok, msg) {
+        try { localStorage.removeItem(LS_KEY); } catch (e) {}
+        if (!ok) alert('Server reset failed (' + msg + ') - cleared locally only.');
+        exitEdit();
+      });
     });
     document.getElementById('tickerCancel').addEventListener('click', exitEdit);
   }
