@@ -111,12 +111,19 @@ function onYouTubeIframeAPIReady() {
         onReady: (e) => {
           e.target.mute();
           e.target.playVideo();
+          // Fallback: reveal after 8s even if PLAYING event never arrives
+          // (slow buffering / paused autoplay). If the player errored, it
+          // stays hidden and the banner fallback shows instead.
+          setTimeout(() => {
+            if (!heroVideo.classList.contains('hidden')) heroVideo.classList.add('video-on');
+          }, 8000);
         },
         onStateChange: (e) => {
           if (e.data === YT.PlayerState.PLAYING) heroVideo.classList.add('video-on');
         },
-        onError: () => {
+        onError: (e) => {
           heroVideo.classList.add('hidden');
+          if (window.console) console.warn('Hero video unavailable, using banner fallback. Code: ' + (e && e.data));
         }
       }
     });
