@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -47,20 +47,20 @@
 <body class="portal-page">
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="brand">
+      <a href="/" class="brand">
         <img src="rebel-hounds-patch.png" alt="Rebel Hounds MC patch" class="brand-logo">
         <span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="portal.html">Dashboard</a></li>
-        <li><a href="portal-map.html">Map</a></li>
-        <li><a href="portal-bots.html">Bots</a></li>
-        <li><a href="portal-inventory.html">Inventory</a></li>
-        <li><a href="portal-finance.html">Finance</a></li>
-        <li><a href="portal-bylaws.html">Bylaws</a></li>
-        <li><a href="portal-roster.html">Roster</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="portal">Dashboard</a></li>
+        <li><a href="portal-map">Map</a></li>
+        <li><a href="portal-bots">Bots</a></li>
+        <li><a href="portal-inventory">Inventory</a></li>
+        <li><a href="portal-finance">Finance</a></li>
+        <li><a href="portal-bylaws">Bylaws</a></li>
+        <li><a href="portal-roster">Roster</a></li>
+        <li><a href="blog">Blog</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
     </div>
@@ -86,21 +86,21 @@
   <div class="patch-area hidden" id="patchArea">
     <div class="portal-sub-nav">
       <div class="portal-sub-nav-inner">
-        <a href="portal.html">Dashboard</a>
-        <a href="portal-map.html">Map</a>
-        <a href="portal-bots.html">Bots</a>
-        <a href="portal-inventory.html">Inventory</a>
-        <a href="portal-finance.html">Finance</a>
-        <a href="portal-bylaws.html">Bylaws</a>
-        <a href="portal-prospects.html">Prospects</a>
-        <a href="portal-badges.html">Flashes</a>
-        <a href="portal-roster.html">Roster</a>
-        <a href="blog.html">Blog</a>
+        <a href="portal">Dashboard</a>
+        <a href="portal-map">Map</a>
+        <a href="portal-bots">Bots</a>
+        <a href="portal-inventory">Inventory</a>
+        <a href="portal-finance">Finance</a>
+        <a href="portal-bylaws">Bylaws</a>
+        <a href="portal-prospects">Prospects</a>
+        <a href="portal-badges">Flashes</a>
+        <a href="portal-roster">Roster</a>
+        <a href="blog">Blog</a>
       </div>
     </div>
 
     <section class="section dossier-wrap">
-      <a href="portal-prospects.html" class="back-link">&#8592; Back to Prospect Files</a>
+      <a href="portal-prospects" class="back-link">&#8592; Back to Prospect Files</a>
       <div class="dossier-head">
         <div>
           <h2 id="dossierTitle">PROSPECT DOSSIER</h2>
@@ -121,7 +121,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand"><span class="brand-text">REBEL<span class="accent">HOUNDS</span>MC</span><p>&copy; 2026 Rebel Hounds MC. Not affiliated with Rockstar Games or Take-Two Interactive.</p></div>
-      <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#rules">Rules</a></li><li><a href="recruitment.html">Recruitment</a></li></ul>
+      <ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/#about">About</a></li><li><a href="/#rules">Rules</a></li><li><a href="recruitment">Recruitment</a></li></ul>
     </div>
   </footer>
 
@@ -151,7 +151,7 @@
         var container=document.getElementById('dossierContent');
         var title=document.getElementById('dossierTitle');
         var sub=document.getElementById('dossierSub');
-        if(!prospect){ container.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Prospect not found. <a href="portal-prospects.html" style="color:var(--primary);">Back to files</a></div>'; return; }
+        if(!prospect){ container.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Prospect not found. <a href="portal-prospects" style="color:var(--primary);">Back to files</a></div>'; return; }
         var period=(prospectsData.prospectPeriod||90);
         var since=new Date(prospect.prospectSince);
         var daysElapsed=isNaN(since)?0:daysBetween(since,new Date());
@@ -361,7 +361,7 @@
           prospectsData=data;
           if(getStored()) prospectsData=getStored();
           var id=qs('id');
-          if(!id){ document.getElementById('dossierContent').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Missing prospect id. <a href="portal-prospects.html" style="color:var(--primary);">Back to files</a></div>'; return; }
+          if(!id){ document.getElementById('dossierContent').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Missing prospect id. <a href="portal-prospects" style="color:var(--primary);">Back to files</a></div>'; return; }
           prospectIdx=-1;
           for(var i=0;i<(prospectsData.prospects||[]).length;i++){ if((prospectsData.prospects[i].id===id)||(prospectsData.prospects[i].name===id)) { prospect=prospectsData.prospects[i]; prospectIdx=i; break; } }
           if(!prospect && !isNaN(parseInt(id,10))) { var n=parseInt(id,10); if(prospectsData.prospects[n]) { prospect=prospectsData.prospects[n]; prospectIdx=n; } }

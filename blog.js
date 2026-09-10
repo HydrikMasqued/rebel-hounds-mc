@@ -105,7 +105,7 @@ function seedBlogData() {
     {
       title: 'Growing the Chapter',
       excerpt: 'With 28 members and 5 chapters, the Rebel Hounds continue to expand across Los Santos.',
-      content: '<p>Since our founding, we have grown to 28 members spread across 5 chapters. Each chapter operates with its own hierarchy while answering to the main charter.</p><p>Expansion has been deliberate  we don\'t rush patches. Every member earns their place through loyalty, dedication and respect for the club\'s values.</p><p>New prospects are always welcome. If you think you have what it takes, submit your application through the <a href="recruitment.html">recruitment page</a>.</p>',
+      content: '<p>Since our founding, we have grown to 28 members spread across 5 chapters. Each chapter operates with its own hierarchy while answering to the main charter.</p><p>Expansion has been deliberate  we don\'t rush patches. Every member earns their place through loyalty, dedication and respect for the club\'s values.</p><p>New prospects are always welcome. If you think you have what it takes, submit your application through the <a href="recruitment">recruitment page</a>.</p>',
       author: 'Rebel Hounds MC',
       pinned: false,
       date: '2022-03-20'
