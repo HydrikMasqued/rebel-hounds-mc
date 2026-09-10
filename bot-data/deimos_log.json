@@ -1,10 +1,4 @@
 [
-  "2026-09-09 21:21:31,345 - __main__ - INFO - LOA expiration check task started",
-  "2026-09-09 21:21:31,772 - __main__ - INFO - Force synced 49 global slash command(s)",
-  "2026-09-09 21:21:32,606 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e4111b5b24dc96ab18d0c47e71545b57).",
-  "2026-09-09 21:21:34,626 - cogs.thread_management - INFO - Due-task check loop is ready",
-  "2026-09-09 21:21:34,626 - __main__ - INFO - LOA expiration check task is ready to start",
-  "2026-09-09 21:21:34,626 - __main__ - INFO - Deimos#9516 has landed! (ID: 1408590443608019035)",
   "2026-09-09 21:21:34,626 - __main__ - INFO - Bot is ready and connected to 2 guild(s)",
   "2026-09-09 21:21:34,627 - utils.database - INFO - Initializing database tables",
   "2026-09-09 21:21:34,630 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
@@ -198,5 +192,11 @@
   "2026-09-10 02:01:17,975 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
   "2026-09-10 03:30:00,476 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
   "2026-09-10 03:35:50,812 - utils.playtime_database - INFO - Ended vital session for user 727297663355191346: 6706 seconds",
-  "2026-09-10 03:35:50,813 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ghostt4920: 1h 51m"
+  "2026-09-10 03:35:50,813 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ghostt4920: 1h 51m",
+  "2026-09-10 05:47:49,400 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-10 06:00:43,093 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-10 06:51:53,530 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-10 08:07:31,387 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-10 08:53:48,748 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-10 09:39:19,672 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2."
 ]
