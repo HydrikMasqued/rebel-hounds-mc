@@ -1,6 +1,4 @@
 [
-  "2026-09-09 21:21:34,626 - __main__ - INFO - Bot is ready and connected to 2 guild(s)",
-  "2026-09-09 21:21:34,627 - utils.database - INFO - Initializing database tables",
   "2026-09-09 21:21:34,630 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
   "2026-09-09 21:21:34,630 - cogs.playtime_tracker - INFO - Started vital session for existing VC member: gingerbean2112 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-09 21:21:34,632 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
@@ -198,5 +196,7 @@
   "2026-09-10 06:51:53,530 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
   "2026-09-10 08:07:31,387 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
   "2026-09-10 08:53:48,748 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
-  "2026-09-10 09:39:19,672 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2."
+  "2026-09-10 09:39:19,672 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-10 11:17:38,700 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-10 13:56:24,390 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2."
 ]
