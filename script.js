@@ -83,58 +83,38 @@ if (recruitForm) {
   });
 }
 
-/* ===== YouTube background video =====
-   Change this ID to swap the hero background video.
-   If YouTube is blocked by the browser/ad blocker, the
-   patch image fallback on the hero stays visible.
+/* ===== Hero background video (direct embed, no API dependency) =====
+   Change YT_ID to swap the hero background video.
+   Uses the privacy-enhanced host plus a plain iframe so there is no
+   external API script or global callback that can fail silently.
+   If YouTube is blocked entirely, the banner fallback stays visible.
 */
-const YT_VIDEO_ID = 'I5lX2OmPJtI';
-
-const heroVideo = document.getElementById('heroVideo');
-
-function onYouTubeIframeAPIReady() {
+(function() {
+  var YT_ID = 'I5lX2OmPJtI';
+  var heroVideo = document.getElementById('heroVideo');
   if (!heroVideo) return;
+  var revealed = false;
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    heroVideo.classList.add('video-on');
+  }
   try {
-    new YT.Player('heroVideo', {
-      videoId: YT_VIDEO_ID,
-      playerVars: {
-        autoplay: 1,
-        controls: 0,
-        loop: 1,
-        playlist: YT_VIDEO_ID,
-        mute: 1,
-        playsinline: 1,
-        rel: 0,
-        modestbranding: 1
-      },
-      events: {
-        onReady: (e) => {
-          e.target.mute();
-          e.target.playVideo();
-          // Fallback: reveal after 8s even if PLAYING event never arrives
-          // (slow buffering / paused autoplay). If the player errored, it
-          // stays hidden and the banner fallback shows instead.
-          setTimeout(() => {
-            if (!heroVideo.classList.contains('hidden')) heroVideo.classList.add('video-on');
-          }, 8000);
-        },
-        onStateChange: (e) => {
-          if (e.data === YT.PlayerState.PLAYING) heroVideo.classList.add('video-on');
-        },
-        onError: (e) => {
-          heroVideo.classList.add('hidden');
-          if (window.console) console.warn('Hero video unavailable, using banner fallback. Code: ' + (e && e.data));
-        }
-      }
-    });
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + YT_ID +
+      '?autoplay=1&mute=1&controls=0&loop=1&playlist=' + YT_ID +
+      '&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3';
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('title', 'Rebel Hounds MC video');
+    iframe.addEventListener('load', function() { setTimeout(reveal, 2500); });
+    heroVideo.appendChild(iframe);
+    setTimeout(reveal, 9000);
   } catch (err) {
     heroVideo.classList.add('hidden');
   }
-}
-
-const ytTag = document.createElement('script');
-ytTag.src = 'https://www.youtube.com/iframe_api';
-document.head.appendChild(ytTag);
+})();
 
 /* ===== Animation layer: scroll reveals, hero parallax, ticker ===== */
 (function() {
