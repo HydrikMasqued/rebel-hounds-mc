@@ -112,6 +112,9 @@ function onYouTubeIframeAPIReady() {
           e.target.mute();
           e.target.playVideo();
         },
+        onStateChange: (e) => {
+          if (e.data === YT.PlayerState.PLAYING) heroVideo.classList.add('video-on');
+        },
         onError: () => {
           heroVideo.classList.add('hidden');
         }
@@ -125,3 +128,37 @@ function onYouTubeIframeAPIReady() {
 const ytTag = document.createElement('script');
 ytTag.src = 'https://www.youtube.com/iframe_api';
 document.head.appendChild(ytTag);
+
+/* ===== Animation layer: scroll reveals, hero parallax, ticker ===== */
+(function() {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var heroContent = document.getElementById('heroContent');
+  var ticking = false;
+  function onScrollAnim() {
+    var y = window.scrollY || 0;
+    document.body.classList.toggle('scrolled-past', y > window.innerHeight * 0.55);
+    if (heroContent && !reduceMotion && y < window.innerHeight) {
+      heroContent.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function() {
+    if (!ticking) { window.requestAnimationFrame(onScrollAnim); ticking = true; }
+  }, { passive: true });
+
+  var revealEls = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function(el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('in'); });
+  }
+
+  var track = document.getElementById('tickerTrack');
+  if (track) track.innerHTML += track.innerHTML;
+})();
