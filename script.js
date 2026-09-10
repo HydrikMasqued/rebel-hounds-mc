@@ -146,6 +146,197 @@ if (recruitForm) {
     revealEls.forEach(function(el) { el.classList.add('in'); });
   }
 
+})();
+
+/* ===== Editable ticker (homepage strip, owner unlock) ===== */
+(function() {
   var track = document.getElementById('tickerTrack');
-  if (track) track.innerHTML += track.innerHTML;
+  if (!track) return;
+  var tickerEl = track.closest ? track.closest('.ticker') : null;
+  var LS_KEY = 'rhmc_ticker';
+  var OWNER_KEY = 'rhmc_ticker_owner';
+  var SEP_DEFAULT = '\u2022';
+  var DEFAULT_ITEMS = ['LOYALTY', 'RESPECT', 'BROTHERHOOD', 'DISCIPLINE', 'REBEL HOUNDS MC'];
+  var PASS_HASH = 179402082180785;
+  var state = { sep: SEP_DEFAULT, items: DEFAULT_ITEMS.slice() };
+  var working = null;
+  var editing = false;
+  var fab = null;
+
+  function cyrb53(str, seed) {
+    seed = seed || 0;
+    var h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed, ch, i;
+    for (i = 0; i < str.length; i++) {
+      ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+    h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+    h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+  }
+
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = String(s == null ? '' : s);
+    return d.innerHTML;
+  }
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(LS_KEY);
+      if (!raw) return;
+      var data = JSON.parse(raw);
+      if (data && Array.isArray(data.items) && data.items.length) {
+        state.items = data.items.map(function(w) { return String(w); });
+        state.sep = data.sep ? String(data.sep) : SEP_DEFAULT;
+      }
+    } catch (e) {}
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify(state));
+      return true;
+    } catch (e) {
+      alert('Could not save ticker (browser storage unavailable).');
+      return false;
+    }
+  }
+
+  function renderView() {
+    track.innerHTML = state.items.map(function(w) {
+      return '<span>' + esc(w) + ' <b>' + esc(state.sep) + '</b></span>';
+    }).join('');
+    track.innerHTML += track.innerHTML;
+  }
+
+  function isOwner() {
+    try { return sessionStorage.getItem(OWNER_KEY) === '1'; } catch (e) { return false; }
+  }
+
+  function ensureFab() {
+    if (fab || !isOwner()) return;
+    fab = document.createElement('button');
+    fab.type = 'button';
+    fab.className = 'ticker-edit-fab';
+    fab.textContent = 'Edit ticker';
+    fab.addEventListener('click', enterEdit);
+    document.body.appendChild(fab);
+  }
+
+  function enterEdit() {
+    if (editing) return;
+    editing = true;
+    working = { sep: state.sep, items: state.items.slice() };
+    if (tickerEl) {
+      tickerEl.classList.add('editing');
+      tickerEl.removeAttribute('aria-hidden');
+    }
+    renderEdit();
+    if (fab) fab.style.display = 'none';
+  }
+
+  function exitEdit() {
+    editing = false;
+    working = null;
+    if (tickerEl) {
+      tickerEl.classList.remove('editing');
+      tickerEl.setAttribute('aria-hidden', 'true');
+    }
+    var bar = document.getElementById('tickerEditBar');
+    if (bar) bar.style.display = 'none';
+    renderView();
+    if (fab) fab.style.display = '';
+  }
+
+  function syncWorkingFromInputs() {
+    if (!working) return;
+    var sepEl = document.getElementById('tickerSep');
+    if (sepEl) working.sep = sepEl.value;
+    var vals = [];
+    track.querySelectorAll('input[data-widx]').forEach(function(inp) { vals.push(inp.value); });
+    if (vals.length && vals.length === working.items.length) working.items = vals;
+  }
+
+  function renderEdit() {
+    track.innerHTML = working.items.map(function(w, i) {
+      return '<span class="ticker-word-edit"><input type="text" value="' + esc(w) + '" data-widx="' + i + '" maxlength="40"><button type="button" data-rm="' + i + '" title="Remove">&times;</button></span>';
+    }).join('');
+    var bar = document.getElementById('tickerEditBar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'tickerEditBar';
+      bar.className = 'ticker-editbar';
+      tickerEl.parentNode.insertBefore(bar, tickerEl);
+    }
+    bar.style.display = 'flex';
+    bar.innerHTML =
+      '<strong>Editing ticker</strong>' +
+      '<label>Separator <input type="text" id="tickerSep" class="tsep" value="' + esc(working.sep) + '" maxlength="4"></label>' +
+      '<button type="button" class="btn btn-outline btn-sm" id="tickerAdd">Add word</button>' +
+      '<button type="button" class="btn btn-primary btn-sm" id="tickerSave">Save</button>' +
+      '<button type="button" class="btn btn-outline btn-sm" id="tickerReset">Reset</button>' +
+      '<button type="button" class="btn btn-outline btn-sm" id="tickerCancel">Cancel</button>';
+    document.getElementById('tickerAdd').addEventListener('click', function() {
+      syncWorkingFromInputs();
+      working.items.push('NEW WORD');
+      renderEdit();
+      var inputs = track.querySelectorAll('input[data-widx]');
+      if (inputs.length) inputs[inputs.length - 1].focus();
+    });
+    document.getElementById('tickerSave').addEventListener('click', function() {
+      syncWorkingFromInputs();
+      var words = working.items.map(function(w) { return w.trim(); }).filter(function(w) { return !!w; });
+      if (!words.length) { alert('Add at least one word.'); return; }
+      working.items = words;
+      if (!working.sep.trim()) working.sep = SEP_DEFAULT;
+      state = { sep: working.sep, items: working.items.slice() };
+      if (persist()) exitEdit();
+    });
+    document.getElementById('tickerReset').addEventListener('click', function() {
+      try { localStorage.removeItem(LS_KEY); } catch (e) {}
+      state = { sep: SEP_DEFAULT, items: DEFAULT_ITEMS.slice() };
+      exitEdit();
+    });
+    document.getElementById('tickerCancel').addEventListener('click', exitEdit);
+  }
+
+  track.addEventListener('click', function(e) {
+    if (editing) {
+      var rm = e.target.getAttribute ? e.target.getAttribute('data-rm') : null;
+      if (rm !== null && rm !== undefined && rm !== '') {
+        syncWorkingFromInputs();
+        working.items.splice(parseInt(rm, 10), 1);
+        renderEdit();
+      }
+      return;
+    }
+    if (isOwner()) return;
+    clickCount++;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(function() { clickCount = 0; }, 1200);
+    if (clickCount >= 5) {
+      clickCount = 0;
+      var pw = null;
+      try { pw = window.prompt('Owner password to edit ticker:'); } catch (err) {}
+      if (pw === null || pw === '') return;
+      if (cyrb53(pw) === PASS_HASH) {
+        try { sessionStorage.setItem(OWNER_KEY, '1'); } catch (err) {}
+        ensureFab();
+        enterEdit();
+      } else {
+        alert('Wrong password.');
+      }
+    }
+  });
+
+  var clickCount = 0;
+  var clickTimer = null;
+
+  loadState();
+  renderView();
+  ensureFab();
 })();
