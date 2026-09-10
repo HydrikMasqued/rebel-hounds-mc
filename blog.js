@@ -137,7 +137,7 @@ function seedBlogData() {
     {
       title: 'Five Directives Memorial Service',
       excerpt: 'We held a memorial service for our fallen brothers. A moment to honor their legacy.',
-      content: '<p>Last Monday we held a memorial service for our fallen brothers. A moment to honor their legacy and continue the fight together.</p><p>The service was held at the club's original meeting spot  the place where it all began. Brothers from every chapter attended, standing side by side in a show of unity and remembrance.</p><p>We read the names, shared the memories, and reaffirmed our commitment to the Five Directives. The club endures because they laid the foundation. We carry their torch forward.</p><blockquote>"Fallen but never forgotten. Ride on, brothers."</blockquote>',
+      content: '<p>Last Monday we held a memorial service for our fallen brothers. A moment to honor their legacy and continue the fight together.</p><p>The service was held at the club\'s original meeting spot  the place where it all began. Brothers from every chapter attended, standing side by side in a show of unity and remembrance.</p><p>We read the names, shared the memories, and reaffirmed our commitment to the Five Directives. The club endures because they laid the foundation. We carry their torch forward.</p><blockquote>"Fallen but never forgotten. Ride on, brothers."</blockquote>',
       author: 'Rebel Hounds MC',
       pinned: false,
       date: '2024-05-06'
