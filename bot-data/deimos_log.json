@@ -1,10 +1,4 @@
 [
-  "2026-09-09 21:47:47,099 - cogs.playtime_tracker - INFO - Started vital session for existing VC member: lunaskribbs in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-09 21:47:47,100 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
-  "2026-09-09 21:47:47,100 - cogs.playtime_tracker - INFO - Started vital session for existing VC member: couchpotatoe_01 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-09 21:47:47,101 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-09-09 21:47:47,101 - cogs.playtime_tracker - INFO - Started vital session for existing VC member: bdillon97 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-09 21:47:47,102 - cogs.playtime_tracker - INFO - Processed 5 existing VC members for guild 𝐑𝐞𝐛𝐞𝐥 𝐇𝐨𝐮𝐧𝐝𝐬 𝐌𝐨𝐭𝐨𝐫𝐜𝐲𝐜𝐥𝐞 𝐂𝐥𝐮𝐛",
   "2026-09-09 21:47:47,103 - utils.database - INFO - Database tables initialized successfully",
   "2026-09-09 21:47:47,104 - __main__ - INFO - Database initialized for guild: 𝐑𝐞𝐛𝐞𝐥 𝐇𝐨𝐮𝐧𝐝𝐬 𝐌𝐨𝐭𝐨𝐫𝐜𝐲𝐜𝐥𝐞 𝐂𝐥𝐮𝐛 (ID: 889005510286786601)",
   "2026-09-09 21:47:47,104 - utils.database - INFO - Initializing database tables",
@@ -198,5 +192,11 @@
   "2026-09-11 07:00:22,197 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
   "2026-09-11 09:14:47,578 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
   "2026-09-11 11:28:57,188 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
-  "2026-09-11 12:02:45,137 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2."
+  "2026-09-11 12:02:45,137 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-11 15:08:14,128 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-11 15:32:00,887 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
+  "2026-09-11 15:33:19,048 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-11 15:34:14,855 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-09-11 15:34:14,858 - cogs.membership - INFO - Updated member Erich Von Manstein with rank Full Patch",
+  "2026-09-11 15:35:47,098 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)"
 ]
