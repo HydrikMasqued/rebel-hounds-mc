@@ -1,9 +1,4 @@
 [
-  "2026-09-09 23:34:03,115 - cogs.playtime_tracker - INFO - Started vital playtime tracking for vaelisthatlivingdeadgirl in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-09 23:46:57,202 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
-  "2026-09-09 23:56:02,358 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 7695 seconds",
-  "2026-09-09 23:56:02,358 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jayreaper: 2h 8m",
-  "2026-09-09 23:58:51,934 - utils.playtime_database - INFO - Ended vital session for user 391042658912567296: 6288 seconds",
   "2026-09-09 23:58:51,935 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for d.bennett31: 1h 44m",
   "2026-09-09 23:59:35,267 - utils.playtime_database - INFO - Ended vital session for user 241703203068968960: 1532 seconds",
   "2026-09-09 23:59:35,268 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for vaelisthatlivingdeadgirl: 0h 25m",
@@ -198,5 +193,10 @@
   "2026-09-12 04:10:18,264 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 0h 38m",
   "2026-09-12 04:19:00,026 - utils.playtime_database - INFO - Ended vital session for user 326529501209034764: 2836 seconds",
   "2026-09-12 04:19:00,026 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for chszr: 0h 47m",
-  "2026-09-12 05:06:08,355 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2."
+  "2026-09-12 05:06:08,355 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-12 08:26:45,924 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-12 08:46:14,221 - utils.playtime_database - INFO - Started vital session for user 907399102717886517 in guild 889005510286786601",
+  "2026-09-12 08:46:14,221 - cogs.playtime_tracker - INFO - Started vital playtime tracking for clintmonster in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-12 08:57:11,250 - utils.playtime_database - INFO - Started vital session for user 1182410319667150848 in guild 889005510286786601",
+  "2026-09-12 08:57:11,250 - cogs.playtime_tracker - INFO - Started vital playtime tracking for charlie07766 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
