@@ -255,8 +255,9 @@
         img.src = dataUrl;
       }
 
-      // One-time shrink of already-stored oversized photos so a full store
-      // becomes savable again. Runs shortly after load, then re-renders.
+      // Move stored data-URL photos to the server so they stop eating
+      // browser storage. Falls back to a local shrink when the server is
+      // unreachable. Runs shortly after load, then re-renders.
       function migrateImages() {
         var jobs = [];
         (badgesData.groups || []).forEach(function(g) {
@@ -264,20 +265,31 @@
             if (b.image && b.image.indexOf('data:image') === 0) jobs.push(b);
           });
         });
-        var i = 0, changed = false;
+        if (!jobs.length) return;
+        console.info('[badges] Moving ' + jobs.length + ' photo(s) to server storage...');
+        var i = 0;
         (function next() {
-          if (i >= jobs.length) {
-            if (changed) {
-              try { localStorage.setItem(LS_KEY, JSON.stringify(badgesData)); } catch (e) {}
-              render();
-            }
-            return;
-          }
+          if (i >= jobs.length) { render(); return; }
           var b = jobs[i++];
-          shrinkDataUrl(b.image, function(out) {
-            if (out !== b.image && out.length < b.image.length) { b.image = out; changed = true; }
+          var fname = 'badge-' + String(b.id || 'img').replace(/[^a-z0-9_-]+/gi, '-').slice(0, 40);
+          function finish(imgVal) {
+            if (imgVal && imgVal !== b.image) {
+              b.image = imgVal;
+              try { localStorage.setItem(LS_KEY, JSON.stringify(badgesData)); } catch (e) {}
+            }
             next();
-          });
+          }
+          if (b.image.indexOf('data:image/gif') === 0) {
+            uploadDataUrl(b.image, fname, function(url) { finish(url); });
+          } else {
+            shrinkDataUrl(b.image, function(small) {
+              uploadDataUrl(small, fname, function(url) {
+                if (url) finish(url);
+                else if (small !== b.image && small.length < b.image.length) finish(small);
+                else finish(null);
+              });
+            });
+          }
         })();
       }
 
@@ -546,6 +558,47 @@
         }
       });
 
+      function dataUrlToBlob(dataUrl) {
+        var parts = dataUrl.split(',');
+        var mime = ((parts[0].match(/:(.*?);/) || [])[1]) || 'image/png';
+        var bin = atob(parts[1] || '');
+        var arr = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+        return { blob: new Blob([arr], { type: mime }), mime: mime };
+      }
+
+      function showHint(t, msg, color) {
+        var hint = document.createElement('div');
+        hint.style.fontSize = '0.7rem';
+        hint.style.color = color || 'var(--muted)';
+        hint.textContent = msg;
+        t.parentNode.appendChild(hint);
+        setTimeout(function(){ hint.remove(); }, 4000);
+      }
+
+      // POST an image to the server (private: kept out of the gallery).
+      // cb(url) with the server URL, or cb(null) when unavailable.
+      function uploadDataUrl(dataUrl, fname, cb) {
+        if (!window.fetch || !window.FormData) { cb(null); return; }
+        var parts;
+        try { parts = dataUrlToBlob(dataUrl); }
+        catch (e) { cb(null); return; }
+        var ext = 'png';
+        if (parts.mime === 'image/jpeg') ext = 'jpg';
+        else if (parts.mime === 'image/gif') ext = 'gif';
+        else if (parts.mime === 'image/webp') ext = 'webp';
+        var fd = new FormData();
+        try { fd.append('file', parts.blob, fname + '.' + ext); }
+        catch (e) { cb(null); return; }
+        fd.append('private', '1');
+        fetch('upload-media.php', { method: 'POST', body: fd }).then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        }).then(function(d) {
+          cb(d && d.url ? d.url : null);
+        }).catch(function() { cb(null); });
+      }
+
       document.addEventListener('change', function(e) {
         var t = e.target;
         if (!t.hasAttribute('data-image-file')) return;
@@ -558,17 +611,20 @@
         function handleDataUrl(dataUrl){
           if (bIdxAttr !== null) {
             var bIdx = parseInt(bIdxAttr, 10);
-            badgesData.groups[gIdx].badges[bIdx].image = dataUrl;
-            if(!safeSet())return;
-            render();
+            var badge = badgesData.groups[gIdx].badges[bIdx];
+            if (!badge) return;
+            showHint(t, 'Uploading to server...');
+            uploadDataUrl(dataUrl, 'badge-' + String(badge.id || ('b' + gIdx + 'x' + bIdx)), function(url){
+              badge.image = url || dataUrl;
+              if(!safeSet())return;
+              render();
+            });
           } else {
-            t.dataset.pendingImage = dataUrl;
-            var hint = document.createElement('div');
-            hint.style.fontSize = '0.7rem';
-            hint.style.color = 'var(--primary)';
-            hint.textContent = 'Image ready (auto-resized)';
-            t.parentNode.appendChild(hint);
-            setTimeout(function(){ hint.remove(); }, 2500);
+            showHint(t, 'Uploading to server...');
+            uploadDataUrl(dataUrl, 'badge-new-' + gIdx, function(url){
+              t.dataset.pendingImage = url || dataUrl;
+              showHint(t, url ? 'Image uploaded to server' : 'Server unavailable - kept in this browser', url ? 'var(--primary)' : 'var(--muted)');
+            });
           }
         }
         if (file.size <= maxBytes) {

@@ -91,6 +91,8 @@ if (!@move_uploaded_file($tmpPath, $destPath)) {
 
 $url = 'media-uploads/' . $unique;
 $type = $isVideo ? 'video' : 'image';
+
+if (empty($_POST['private'])) {
 $entry = ['url'=>$url, 'caption'=>$caption, 'type'=>$type, 'addedBy'=>'Member', 'ts'=>time()];
 
 $gallery = [];
@@ -99,5 +101,6 @@ array_unshift($gallery, $entry);
 $gallery=array_slice($gallery,0,500);
 @file_put_contents($galleryFile, json_encode($gallery, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), LOCK_EX);
 @chmod($galleryFile, 0666);
+}
 
 echo json_encode(['success'=>true, 'url'=>$url, 'type'=>$type]);
