@@ -7,5 +7,5 @@ return [
     'port' => 3306,
     'db'   => 'Media',
     'user' => 'HFFH',
-    'pass' => 'REPLACE_WITH_DB_PASSWORD',
+    'pass' => 'Cubaygf09',
 ];
