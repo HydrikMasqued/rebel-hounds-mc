@@ -126,6 +126,7 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script src="upload-image.js?v=1"></script>
   <script>
     (function(){
       'use strict';
@@ -140,7 +141,70 @@
       function qs(name){var m=location.search.match(new RegExp('[?&]'+name+'=([^&]+)'));return m?decodeURIComponent(m[1]):null;}
       function daysBetween(a,b){return Math.floor((b-a)/86400000);}
       function checkOwner(){try{var u=sessionStorage.getItem('rh_patch_user');var a=sessionStorage.getItem('rh_patch_auth');isOwner=(u==='HFFH')||(a==='1');}catch(e){isOwner=false;}var b=document.getElementById('btnEditDossier');if(b) b.style.display=isOwner?'':'none';}
-      function getStored(){try{var r=localStorage.getItem(LS_KEY);return r?JSON.parse(r):null;}catch(e){return null;}}
+      var DOC_KEY='prospects';
+      function getStored(){
+        var env=readLocal();
+        return env?env.data:null;
+      }
+      function readLocal(){
+        try{
+          var p=JSON.parse(localStorage.getItem(LS_KEY));
+          if(!p) return null;
+          if(p&&p.data&&typeof p.updated==='number') return p;
+          return {updated:0,data:p};
+        }catch(e){return null;}
+      }
+      function writeLocal(env){
+        try{ localStorage.setItem(LS_KEY, JSON.stringify(env)); return true; }
+        catch(e){ return false; }
+      }
+      function pullServer(cb){
+        fetch('api-store.php?key='+DOC_KEY+'&t='+Date.now()).then(function(r){
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          return r.json();
+        }).then(function(d){ cb((d&&!d.empty)?d:null); }).catch(function(){ cb(null); });
+      }
+      function pushServer(env, cb){
+        fetch('api-store.php?key='+DOC_KEY,{
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({updated:env.updated, data:env.data})
+        }).then(function(r){
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          return r.json();
+        }).then(function(d){ cb(!!(d&&d.success)); }).catch(function(){ cb(false); });
+      }
+      function putDoc(quiet){
+        var env;
+        try{ env={updated:Date.now(), data:prospectsData}; localStorage.setItem(LS_KEY, JSON.stringify(env)); }
+        catch(e){ alert('Could not save - browser storage is full. Try a smaller image and save again.'); return false; }
+        pushServer(env, function(ok){
+          if(!ok&&!quiet) alert('Saved in this browser, but the server copy did not update. Others will not see it yet.');
+          else if(!ok&&window.console) console.warn('[prospects] server sync failed, will retry on next change');
+        });
+        return true;
+      }
+      // Move stored data-URL photos to the server (owner only).
+      function migrateImagesToServer(){
+        var jobs=[];
+        (prospectsData.prospects||[]).forEach(function(p){
+          if(p.image && p.image.indexOf('data:image')===0) jobs.push(p);
+        });
+        if(!jobs.length) return;
+        console.info('[prospects] Moving '+jobs.length+' photo(s) to server storage...');
+        var i=0;
+        (function next(){
+          if(i>=jobs.length){ render(); return; }
+          var p=jobs[i++];
+          var val=p.image;
+          rhUploadImage(val,'prospect-'+String(p.id||'img'),function(url){
+            if(url && url!==val){
+              p.image=url;
+              try{ localStorage.setItem(LS_KEY, JSON.stringify({updated:Date.now(),data:prospectsData})); }catch(e){}
+            }
+            setTimeout(next,150);
+          });
+        })();
+      }
 
       function kvRow(label, value, field, isEdit){
         if(isEdit) return '<tr><td>'+esc(label)+'</td><td><input type="text" data-field="'+field+'" value="'+esc(value)+'"></td></tr>';
@@ -350,24 +414,40 @@
           if(prospect[tbl] && prospect[tbl][idx]) prospect[tbl][idx][key]=el.value;
         });
         prospectsData.prospects[prospectIdx]=prospect;
-        localStorage.setItem(LS_KEY, JSON.stringify(prospectsData));
+        if(!putDoc(false))return;
         exitEdit();
       }
 
+      function startWith(doc){
+        prospectsData=doc;
+        prospect=null;
+        var id=qs('id');
+        if(!id){ document.getElementById('dossierContent').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Missing prospect id. <a href="portal-prospects" style="color:var(--primary);">Back to files</a></div>'; return; }
+        prospectIdx=-1;
+        for(var i=0;i<(prospectsData.prospects||[]).length;i++){ if((prospectsData.prospects[i].id===id)||(prospectsData.prospects[i].name===id)) { prospect=prospectsData.prospects[i]; prospectIdx=i; break; } }
+        if(!prospect && !isNaN(parseInt(id,10))) { var n=parseInt(id,10); if(prospectsData.prospects[n]) { prospect=prospectsData.prospects[n]; prospectIdx=n; } }
+        render();
+        checkOwner();
+      }
+
       function load(){
-        var stored=getStored();
-        var fetchPromise=stored?Promise.resolve(stored):fetch('prospects.json?t='+Date.now()).then(function(r){return r.json();});
-        fetchPromise.then(function(data){
-          prospectsData=data;
-          if(getStored()) prospectsData=getStored();
-          var id=qs('id');
-          if(!id){ document.getElementById('dossierContent').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Missing prospect id. <a href="portal-prospects" style="color:var(--primary);">Back to files</a></div>'; return; }
-          prospectIdx=-1;
-          for(var i=0;i<(prospectsData.prospects||[]).length;i++){ if((prospectsData.prospects[i].id===id)||(prospectsData.prospects[i].name===id)) { prospect=prospectsData.prospects[i]; prospectIdx=i; break; } }
-          if(!prospect && !isNaN(parseInt(id,10))) { var n=parseInt(id,10); if(prospectsData.prospects[n]) { prospect=prospectsData.prospects[n]; prospectIdx=n; } }
-          render();
-          checkOwner();
-        }).catch(function(){ document.getElementById('dossierContent').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load</div>'; });
+        checkOwner();
+        var local=readLocal();
+        pullServer(function(server){
+          if(server&&local){
+            if(server.updated>=local.updated){ writeLocal(server); startWith(server.data); }
+            else { startWith(local.data); if(isOwner) pushServer(local,function(){}); }
+          } else if(server){ writeLocal(server); startWith(server.data); }
+          else if(local){ startWith(local.data); if(isOwner) pushServer(local,function(){}); }
+          else {
+            fetch('prospects.json?t='+Date.now()).then(function(r){return r.json();}).then(function(data){
+              startWith(data);
+              if(isOwner) pushServer({updated:Date.now(),data:prospectsData},function(){});
+            }).catch(function(){ document.getElementById('dossierContent').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load</div>'; });
+            return;
+          }
+          if(isOwner) setTimeout(migrateImagesToServer, 800);
+        });
       }
 
       document.addEventListener('click', function(e){
@@ -379,7 +459,7 @@
           if(!confirm('Delete this row?')) return;
           prospect[tbl].splice(idx,1);
           prospectsData.prospects[prospectIdx]=prospect;
-          localStorage.setItem(LS_KEY, JSON.stringify(prospectsData));
+          if(!putDoc(true))return;
           render();
         } else if(action==='add-row'){
           var tbl2=t.getAttribute('data-table');
@@ -393,12 +473,12 @@
           if(!prospect[tbl2]) prospect[tbl2]=[];
           prospect[tbl2].push(row);
           prospectsData.prospects[prospectIdx]=prospect;
-          localStorage.setItem(LS_KEY, JSON.stringify(prospectsData));
+          if(!putDoc(true))return;
           render();
         } else if(action==='clear-dossier-image'){
           prospect.image='';
           prospectsData.prospects[prospectIdx]=prospect;
-          localStorage.setItem(LS_KEY, JSON.stringify(prospectsData));
+          if(!putDoc(true))return;
           render();
         }
       });
@@ -407,9 +487,16 @@
         var t=e.target;
         if(t.id==='dossierImageFile'){
           var file=t.files&&t.files[0]; if(!file) return;
-          if(file.size>900000){ alert('Image too large — max 900KB'); t.value=''; return; }
+          if(!file.type||file.type.indexOf('image/')!==0){ alert('Please select an image file'); t.value=''; return; }
           var reader=new FileReader();
-          reader.onload=function(ev){ prospect.image=ev.target.result; prospectsData.prospects[prospectIdx]=prospect; localStorage.setItem(LS_KEY, JSON.stringify(prospectsData)); render(); };
+          reader.onload=function(ev){
+            rhUploadImage(ev.target.result,'prospect-dossier',function(url){
+              prospect.image=url||ev.target.result;
+              prospectsData.prospects[prospectIdx]=prospect;
+              if(!putDoc(true))return;
+              render();
+            });
+          };
           reader.readAsDataURL(file);
         }
       });
@@ -421,7 +508,7 @@
         if(s){ prospectsData=s; var id2=qs('id'); for(var i=0;i<prospectsData.prospects.length;i++){ if(prospectsData.prospects[i].id===id2){ prospect=prospectsData.prospects[i]; prospectIdx=i; break; } } }
         exitEdit();
       });
-      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed) checkOwner(); });
+      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed){ checkOwner(); load(); } });
       load(); checkOwner();
     })();
   </script>

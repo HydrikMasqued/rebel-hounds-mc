@@ -192,6 +192,7 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script src="upload-image.js?v=1"></script>
   <script>
     (function(){
       'use strict';
@@ -225,10 +226,47 @@
 
       function esc(s){var d=document.createElement('div');d.textContent=String(s==null?'':s);return d.innerHTML;}
       function checkOwner(){try{var u=sessionStorage.getItem('rh_patch_user');var a=sessionStorage.getItem('rh_patch_auth');isOwner=(u==='HFFH')||(a==='1');}catch(e){isOwner=false;}var b=document.getElementById('btnEditRoster');if(b) b.style.display=isOwner?'':'none';}
-      function getStored(){try{var r=localStorage.getItem(LS_KEY);return r?JSON.parse(r):null;}catch(e){return null;}}
-      function persist(){
-        try{ localStorage.setItem(LS_KEY, JSON.stringify(rosterData)); return true; }
+      var DOC_KEY='roster';
+      function getStored(){
+        var env=readLocal();
+        return env?env.data:null;
+      }
+      function readLocal(){
+        try{
+          var p=JSON.parse(localStorage.getItem(LS_KEY));
+          if(!p) return null;
+          if(p&&p.data&&typeof p.updated==='number') return p;
+          return {updated:0,data:p};
+        }catch(e){return null;}
+      }
+      function writeLocal(env){
+        try{ localStorage.setItem(LS_KEY, JSON.stringify(env)); return true; }
+        catch(e){ return false; }
+      }
+      function pullServer(cb){
+        fetch('api-store.php?key='+DOC_KEY+'&t='+Date.now()).then(function(r){
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          return r.json();
+        }).then(function(d){ cb((d&&!d.empty)?d:null); }).catch(function(){ cb(null); });
+      }
+      function pushServer(env, cb){
+        fetch('api-store.php?key='+DOC_KEY,{
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({updated:env.updated, data:env.data})
+        }).then(function(r){
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          return r.json();
+        }).then(function(d){ cb(!!(d&&d.success)); }).catch(function(){ cb(false); });
+      }
+      function persist(explicit){
+        var env;
+        try{ env={updated:Date.now(), data:rosterData}; localStorage.setItem(LS_KEY, JSON.stringify(env)); }
         catch(e){ alert('Could not save - browser storage is full. Try a smaller image (or remove an old gallery picture) and save again.'); return false; }
+        pushServer(env, function(ok){
+          if(!ok&&explicit) alert('Saved in this browser, but the server copy did not update. Others will not see it yet.');
+          else if(!ok&&window.console) console.warn('[roster] server sync failed, will retry on next change');
+        });
+        return true;
       }
       function processImageFile(file, maxBytes, maxDim, cb){
         if(!file.type || file.type.indexOf('image/')!==0){ alert('Please select an image file'); return; }
@@ -409,9 +447,13 @@
               var note=document.getElementById('modalImageNote');
               if(note) note.textContent='Processing image...';
               processImageFile(file, 500*1024, 512, function(dataUrl){
-                var inp=document.getElementById('modalImage'); if(inp) inp.value=dataUrl;
-                av.innerHTML='<img src="'+esc(dataUrl)+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
-                if(note) note.textContent='Image ready - click Save File to keep it.';
+                if(note) note.textContent='Uploading to server...';
+                rhUploadImage(dataUrl, 'roster-'+String(activeMember&&activeMember.id||'img'), function(url){
+                  var finalUrl=url||dataUrl;
+                  var inp=document.getElementById('modalImage'); if(inp) inp.value=finalUrl;
+                  av.innerHTML='<img src="'+esc(finalUrl)+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+                  if(note) note.textContent=url?'Image uploaded to server - click Save File to keep it.':'Server unavailable - kept in this browser. Click Save File to keep it.';
+                });
               });
             });
           },0);
@@ -436,18 +478,67 @@
           var v=(el.value||'').trim();
           if(v) rosterData.levelLabels[k]=v;
         });
-        if(!persist()) return;
+        if(!persist(true)) return;
         exitEdit();
       }
 
+      function useData(doc){
+        rosterData=doc;
+        ensureLevelLabels();
+        render();
+        checkOwner();
+      }
+
+      function seedServer(doc){
+        if(!isOwner) return;
+        pushServer({updated:Date.now(), data:doc}, function(){});
+      }
+
+      // Move stored data-URL photos to the server (owner only).
+      function migrateImagesToServer(){
+        var jobs=[];
+        (rosterData.members||[]).forEach(function(m){
+          if(m.image && m.image.indexOf('data:image')===0) jobs.push({o:m,k:'image'});
+          (m.gallery||[]).forEach(function(url,i){
+            if(url && url.indexOf('data:image')===0) jobs.push({o:m.gallery,k:i});
+          });
+        });
+        if(!jobs.length) return;
+        console.info('[roster] Moving '+jobs.length+' photo(s) to server storage...');
+        var i=0;
+        (function next(){
+          if(i>=jobs.length){ render(); return; }
+          var j=jobs[i++];
+          var val=j.o[j.k];
+          function done(newVal){
+            if(newVal && newVal!==val){
+              j.o[j.k]=newVal;
+              persist(false);
+            }
+            setTimeout(next,150);
+          }
+          rhUploadImage(val,'roster-'+String((j.o.id!=null?j.o.id:'img')),function(url){ done(url); });
+        })();
+      }
+
       function load(){
-        var stored=getStored();
-        if(stored){ rosterData=stored; ensureLevelLabels(); render(); checkOwner(); return; }
-        fetch('roster.json?t='+Date.now()).then(function(r){return r.json();}).then(function(data){
-          rosterData=data;
-          ensureLevelLabels();
-          render(); checkOwner();
-        }).catch(function(){ document.getElementById('rosterTree').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load roster</div>'; });
+        checkOwner();
+        var local=readLocal();
+        pullServer(function(server){
+          if(server&&local){
+            if(server.updated>=local.updated){ writeLocal(server); useData(server.data); }
+            else { useData(local.data); if(isOwner) pushServer(local,function(){}); }
+          } else if(server){ writeLocal(server); useData(server.data); }
+          else if(local){ useData(local.data); if(isOwner) pushServer(local,function(){}); }
+          else {
+            fetch('roster.json?t='+Date.now()).then(function(r){return r.json();}).then(function(data){
+              useData(data);
+              if(isOwner) pushServer({updated:Date.now(),data:rosterData},function(){});
+            }).catch(function(){ document.getElementById('rosterTree').innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load roster</div>'; });
+            return;
+          }
+          if(isOwner) setTimeout(migrateImagesToServer, 800);
+        });
       }
 
       document.addEventListener('click', function(e){
@@ -485,10 +576,13 @@
           target.parentNode.querySelectorAll('.img-processing-note').forEach(function(n){ n.remove(); });
           var busy=document.createElement('div'); busy.className='img-processing-note'; busy.style.fontSize='0.7rem'; busy.style.color='var(--muted)'; busy.textContent='Processing image...'; target.parentNode.appendChild(busy);
           processImageFile(file, 800*1024, 1024, function(dataUrl){
-            target.dataset.pendingGallery=dataUrl;
-            busy.textContent='Image ready - click Add';
-            busy.style.color='var(--primary)';
-            setTimeout(function(){ busy.remove(); }, 3000);
+            busy.textContent='Uploading to server...';
+            rhUploadImage(dataUrl, 'roster-gallery', function(url){
+              target.dataset.pendingGallery=url||dataUrl;
+              busy.textContent=url?'Image uploaded - click Add':'Server unavailable - kept in browser, click Add';
+              busy.style.color=url?'var(--primary)':'var(--muted)';
+              setTimeout(function(){ busy.remove(); }, 3000);
+            });
           });
         }
       });
@@ -515,7 +609,7 @@
         if(bio) activeMember.bio=bio.value;
         if(img) activeMember.image=(img.value||'').trim();
         if(rankSel) activeMember.rank=rankSel.value;
-        if(!persist()) return;
+        if(!persist(true)) return;
         closeModal();
         render();
       });
@@ -527,7 +621,7 @@
         else fetch('roster.json?t='+Date.now()).then(function(r){return r.json();}).then(function(d){ rosterData=d; exitEdit(); });
         exitEdit();
       });
-      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed) checkOwner(); });
+      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed){ checkOwner(); load(); } });
       document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
       load(); checkOwner();
     })();
@@ -549,15 +643,23 @@ document.addEventListener('click', function(e){
     if(fileInp && fileInp.dataset.pendingImage){ img=fileInp.dataset.pendingImage; }
     var newId='m_'+Date.now().toString(36);
     var stored=null;
-    try{ stored=JSON.parse(localStorage.getItem('rhmc_roster_data')); }catch(e){}
+    try{
+      var p=JSON.parse(localStorage.getItem('rhmc_roster_data'));
+      if(p) stored=(p&&p.data&&typeof p.updated==='number')?p.data:p;
+    }catch(e){}
     if(!stored){
       // fallback: try to fetch and use
       alert('Roster not loaded yet, try again after page loads');
       return;
     }
+    if(!stored.members) stored.members=[];
     stored.members.push({ id:newId, name:name, username:username, rank:rank, status:'Active', joined:joined, contributions:'', memorableMoments:'', bio:'', image:img, gallery:[] });
-    try{ localStorage.setItem('rhmc_roster_data', JSON.stringify(stored)); }
+    var env={updated:Date.now(), data:stored};
+    try{ localStorage.setItem('rhmc_roster_data', JSON.stringify(env)); }
     catch(err){ alert('Could not save - browser storage is full. Try a smaller image.'); return; }
+    try{
+      fetch('api-store.php?key=roster',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({updated:env.updated,data:env.data})}).catch(function(){});
+    }catch(e){}
     location.reload();
   }
 });
@@ -567,9 +669,12 @@ document.addEventListener('change', function(e){
     if(!file.type || file.type.indexOf('image/')!==0){ alert('Please select an image file'); e.target.value=''; return; }
     var _t=e.target;
     function _ready(dataUrl){
-      _t.dataset.pendingImage=dataUrl;
-      var h=document.createElement('div'); h.style.fontSize='0.7rem'; h.style.color='var(--primary, #c0392b)'; h.textContent='Photo ready - click Add to Roster';
-      _t.parentNode.appendChild(h); setTimeout(function(){ h.remove(); }, 3000);
+      rhUploadImage(dataUrl, 'roster-new-member', function(url){
+        _t.dataset.pendingImage=url||dataUrl;
+        var h=document.createElement('div'); h.style.fontSize='0.7rem'; h.style.color='var(--primary, #c0392b)';
+        h.textContent=url?'Photo uploaded - click Add to Roster':'Photo ready - click Add to Roster';
+        _t.parentNode.appendChild(h); setTimeout(function(){ h.remove(); }, 3000);
+      });
     }
     if(file.size>900000){
       var url=URL.createObjectURL(file);

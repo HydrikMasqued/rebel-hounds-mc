@@ -182,22 +182,68 @@
         if (btn) btn.style.display = isOwner ? '' : 'none';
       }
 
+      var DOC_KEY = 'badges';
+
       function getStored() {
+        var env = readLocal();
+        return env ? env.data : null;
+      }
+
+      function readLocal() {
         try {
-          var raw = localStorage.getItem(LS_KEY);
-          if (!raw) return null;
-          return JSON.parse(raw);
+          var p = JSON.parse(localStorage.getItem(LS_KEY));
+          if (!p) return null;
+          if (p && p.data && typeof p.updated === 'number') return p;
+          return { updated: 0, data: p };
         } catch(e) { return null; }
       }
 
-      function safeSet() {
+      function writeLocal(env) {
+        try { localStorage.setItem(LS_KEY, JSON.stringify(env)); return true; }
+        catch (e) { return false; }
+      }
+
+      function writeLocal(env) {
+        try { localStorage.setItem(LS_KEY, JSON.stringify(env)); return true; }
+        catch (e) { return false; }
+      }
+
+      function pullServer(cb) {
+        fetch('api-store.php?key=' + DOC_KEY + '&t=' + Date.now()).then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        }).then(function(d) {
+          cb((d && !d.empty) ? d : null);
+        }).catch(function() { cb(null); });
+      }
+
+      function pushServer(env, cb) {
+        fetch('api-store.php?key=' + DOC_KEY, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ updated: env.updated, data: env.data })
+        }).then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        }).then(function(d) {
+          cb(!!(d && d.success));
+        }).catch(function() { cb(false); });
+      }
+
+      function safeSet(explicit) {
+        var env;
         try {
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
-          return true;
+          env = { updated: Date.now(), data: badgesData };
+          localStorage.setItem(LS_KEY, JSON.stringify(env));
         } catch (e) {
           alert('Browser storage is full - cannot save. Remove an old patch photo or use a smaller image, then try again. (Nothing was saved.)');
           return false;
         }
+        pushServer(env, function(ok) {
+          if (!ok && explicit) alert('Saved in this browser, but the server copy did not update. Others will not see it yet.');
+          else if (!ok && window.console) console.warn('[badges] server sync failed, will retry on next change');
+        });
+        return true;
       }
 
       // Badge photos display at 90px - anything bigger wastes storage.
@@ -472,19 +518,49 @@
             if (!b.earnedBy) b.earnedBy = [];
           });
         });
-        if(!safeSet())return;
+        if(!safeSet(true))return;
         exitEdit();
       }
 
+      function useData(doc) {
+        badgesData = normalize(doc);
+        render();
+        checkOwner();
+        setTimeout(migrateImages, 600);
+      }
+
+      function seedServer(doc) {
+        if (!isOwner) return;
+        var env = { updated: Date.now(), data: doc };
+        pushServer(env, function(){});
+      }
+
       function load() {
-        var stored = getStored();
-        if (stored) { badgesData = normalize(stored); render(); checkOwner(); setTimeout(migrateImages, 600); return; }
-        fetch('badges.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(data){
-          badgesData = normalize(data);
-          render();
-          checkOwner();
-        }).catch(function(){
-          document.getElementById('badgeGroups').innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load patches</div>';
+        checkOwner();
+        var local = readLocal();
+        pullServer(function(server){
+          if (server && local) {
+            if (server.updated >= local.updated) {
+              writeLocal(server);
+              useData(server.data);
+            } else {
+              useData(local.data);
+              if (isOwner) pushServer(local, function(){});
+            }
+          } else if (server) {
+            writeLocal(server);
+            useData(server.data);
+          } else if (local) {
+            useData(local.data);
+            if (isOwner) pushServer(local, function(){});
+          } else {
+            fetch('badges.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(data){
+              useData(data);
+              if (isOwner) seedServer(badgesData);
+            }).catch(function(){
+              document.getElementById('badgeGroups').innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);">Failed to load patches</div>';
+            });
+          }
         });
       }
 
@@ -700,7 +776,7 @@
         exitEdit();
       });
 
-      window.addEventListener('patchAuthChange', function(e){ if(e.detail && e.detail.authed) checkOwner(); });
+      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed){ checkOwner(); load(); } });
 
       load();
       checkOwner();

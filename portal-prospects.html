@@ -171,6 +171,7 @@
   </footer>
 
   <script src="portal.js?v=4"></script>
+  <script src="upload-image.js?v=1"></script>
   <script>
     (function() {
       'use strict';
@@ -183,7 +184,70 @@
       function esc(s) { var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
       function daysBetween(a,b){ return Math.floor((b-a)/86400000); }
       function checkOwner(){ try{ var u=sessionStorage.getItem('rh_patch_user'); var a=sessionStorage.getItem('rh_patch_auth'); isOwner=(u==='HFFH')||(a==='1'); }catch(e){ isOwner=false; } var b=document.getElementById('btnEditProspects'); if(b) b.style.display=isOwner?'':'none'; if(isOwner) document.getElementById('editBanner').textContent='EDIT MODE — You are owner. Click Edit to change any field, replace photo, add or remove folders. Remember to Save.'; }
-      function getStored(){ try{ var r=localStorage.getItem(LS_KEY); return r?JSON.parse(r):null; }catch(e){ return null; } }
+      var DOC_KEY='prospects';
+      function getStored(){
+        var env=readLocal();
+        return env?env.data:null;
+      }
+      function readLocal(){
+        try{
+          var p=JSON.parse(localStorage.getItem(LS_KEY));
+          if(!p) return null;
+          if(p&&p.data&&typeof p.updated==='number') return p;
+          return {updated:0,data:p};
+        }catch(e){return null;}
+      }
+      function writeLocal(env){
+        try{ localStorage.setItem(LS_KEY, JSON.stringify(env)); return true; }
+        catch(e){ return false; }
+      }
+      function pullServer(cb){
+        fetch('api-store.php?key='+DOC_KEY+'&t='+Date.now()).then(function(r){
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          return r.json();
+        }).then(function(d){ cb((d&&!d.empty)?d:null); }).catch(function(){ cb(null); });
+      }
+      function pushServer(env, cb){
+        fetch('api-store.php?key='+DOC_KEY,{
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({updated:env.updated, data:env.data})
+        }).then(function(r){
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          return r.json();
+        }).then(function(d){ cb(!!(d&&d.success)); }).catch(function(){ cb(false); });
+      }
+      function putDoc(quiet){
+        var env;
+        try{ env={updated:Date.now(), data:prospectsData}; localStorage.setItem(LS_KEY, JSON.stringify(env)); }
+        catch(e){ alert('Could not save - browser storage is full. Try a smaller image and save again.'); return false; }
+        pushServer(env, function(ok){
+          if(!ok&&!quiet) alert('Saved in this browser, but the server copy did not update. Others will not see it yet.');
+          else if(!ok&&window.console) console.warn('[prospects] server sync failed, will retry on next change');
+        });
+        return true;
+      }
+      // Move stored data-URL avatars to the server (owner only).
+      function migrateImagesToServer(){
+        var jobs=[];
+        (prospectsData.prospects||[]).forEach(function(p){
+          if(p.image && p.image.indexOf('data:image')===0) jobs.push(p);
+        });
+        if(!jobs.length) return;
+        console.info('[prospects] Moving '+jobs.length+' photo(s) to server storage...');
+        var i=0;
+        (function next(){
+          if(i>=jobs.length){ render(); return; }
+          var p=jobs[i++];
+          var val=p.image;
+          rhUploadImage(val,'prospect-'+String(p.id||'img'),function(url){
+            if(url && url!==val){
+              p.image=url;
+              try{ localStorage.setItem(LS_KEY, JSON.stringify({updated:Date.now(),data:prospectsData})); }catch(e){}
+            }
+            setTimeout(next,150);
+          });
+        })();
+      }
 
       function render() {
         var container=document.getElementById('prospectFolders');
@@ -289,7 +353,7 @@
         var newId='rhmc-'+Date.now().toString(36);
         var fileId='RHMC-'+String(prospectsData.prospects.length+1).padStart(3,'0')+'-'+since.slice(0,4);
         prospectsData.prospects.push({ id:newId, fileId:fileId, name:name, prospectSince:since, sponsor:sponsor, recruitedBy:sponsor, status:status, notes:notes, officerNote:notes, image:image, discord:'', discordId:'', lastActive:'', attendanceScore:'', standing:'Good', nextReview:'', mainConcern:'', recruitment:{}, background:{}, initialAssessment:[], attendanceSummary:[], activityLog:[], punctualityLog:[], timeTotals:{}, contributionRecord:[], conductAssessment:[], warnings:[], reviews:[], finalDecision:{}, evidenceArchive:[] });
-        localStorage.setItem(LS_KEY, JSON.stringify(prospectsData));
+        if(!putDoc(true))return;
         render();
       }
 
@@ -312,14 +376,34 @@
         });
         var periodInput=document.querySelector('[data-field="prospectPeriod"]');
         if(periodInput) prospectsData.prospectPeriod=parseInt(periodInput.value,10)||PROSPECT_PERIOD;
-        localStorage.setItem(LS_KEY, JSON.stringify(prospectsData));
+        if(!putDoc(false))return;
         exitEdit();
       }
 
+      function useData(doc){
+        prospectsData=doc;
+        render();
+        checkOwner();
+      }
+
       function load(){
-        var stored=getStored();
-        if(stored){ prospectsData=stored; render(); checkOwner(); return; }
-        fetch('prospects.json?t='+Date.now()).then(function(r){return r.json();}).then(function(data){ prospectsData=data; render(); checkOwner(); }).catch(function(){ document.getElementById('prospectFolders').innerHTML='<div class="prospect-empty">Failed to load files</div>'; });
+        checkOwner();
+        var local=readLocal();
+        pullServer(function(server){
+          if(server&&local){
+            if(server.updated>=local.updated){ writeLocal(server); useData(server.data); }
+            else { useData(local.data); if(isOwner) pushServer(local,function(){}); }
+          } else if(server){ writeLocal(server); useData(server.data); }
+          else if(local){ useData(local.data); if(isOwner) pushServer(local,function(){}); }
+          else {
+            fetch('prospects.json?t='+Date.now()).then(function(r){return r.json();}).then(function(data){
+              useData(data);
+              if(isOwner) pushServer({updated:Date.now(),data:prospectsData},function(){});
+            }).catch(function(){ document.getElementById('prospectFolders').innerHTML='<div class="prospect-empty">Failed to load files</div>'; });
+            return;
+          }
+          if(isOwner) setTimeout(migrateImagesToServer, 800);
+        });
       }
 
       document.addEventListener('click', function(e){
@@ -335,27 +419,33 @@
           location.href='portal-prospect?id='+encodeURIComponent(id);
           return;
         }
-        if(a==='delete-prospect'){ if(!confirm('Delete this prospect file?')) return; prospectsData.prospects.splice(idx,1); localStorage.setItem(LS_KEY, JSON.stringify(prospectsData)); render(); }
-        else if(a==='clear-image'){ prospectsData.prospects[idx].image=''; localStorage.setItem(LS_KEY, JSON.stringify(prospectsData)); render(); }
+        if(a==='delete-prospect'){ if(!confirm('Delete this prospect file?')) return; prospectsData.prospects.splice(idx,1); if(!putDoc(true))return; render(); }
+        else if(a==='clear-image'){ prospectsData.prospects[idx].image=''; if(!putDoc(true))return; render(); }
       });
 
       document.addEventListener('change', function(e){
-        var t=e.target; if(!t.hasAttribute('data-avatar-file')) return;
+        var t=e.target; if(!t.hasAttribute('data-avatar-file') && t.id!=='new-image-file') return;
         var file=t.files&&t.files[0]; if(!file) return;
-        if(file.size>900000){ alert('Image too large — max 900KB'); t.value=''; return; }
+        if(!file.type||file.type.indexOf('image/')!==0){ alert('Please select an image file'); t.value=''; return; }
         var idx=parseInt(t.getAttribute('data-idx'),10);
-        var reader=new FileReader();
-        reader.onload=function(ev){
-          var dataUrl=ev.target.result;
-          if(!isNaN(idx) && prospectsData.prospects[idx]){ prospectsData.prospects[idx].image=dataUrl; localStorage.setItem(LS_KEY, JSON.stringify(prospectsData)); render(); }
-          else { t.dataset.pendingImage=dataUrl; var h=document.createElement('div'); h.style.fontSize='0.7rem'; h.style.color='var(--primary)'; h.textContent='Image ready'; t.parentNode.appendChild(h); setTimeout(function(){h.remove();},2500); }
-        };
-        reader.readAsDataURL(file);
-        if(t.id==='new-image-file'){
-          var nr=new FileReader();
-          nr.onload=function(ev){ t.dataset.pendingImage=ev.target.result; var h=document.createElement('div'); h.style.fontSize='0.7rem'; h.style.color='var(--primary)'; h.textContent='Image ready'; t.parentNode.appendChild(h); setTimeout(function(){h.remove();},2000); };
-          nr.readAsDataURL(file);
+        function setImage(dataUrl){
+          rhUploadImage(dataUrl,'prospect-avatar',function(url){
+            var finalUrl=url||dataUrl;
+            if(!isNaN(idx) && prospectsData.prospects[idx]){
+              prospectsData.prospects[idx].image=finalUrl;
+              if(!putDoc(true))return;
+              render();
+            } else {
+              t.dataset.pendingImage=finalUrl;
+              var h=document.createElement('div'); h.style.fontSize='0.7rem'; h.style.color='var(--primary)';
+              h.textContent=url?'Image uploaded to server':'Image ready';
+              t.parentNode.appendChild(h); setTimeout(function(){h.remove();},2500);
+            }
+          });
         }
+        var reader=new FileReader();
+        reader.onload=function(ev){ setImage(ev.target.result); };
+        reader.readAsDataURL(file);
       });
 
       document.getElementById('btnEditProspects').addEventListener('click', enterEdit);
@@ -366,7 +456,7 @@
         else fetch('prospects.json?t='+Date.now()).then(function(r){return r.json();}).then(function(d){prospectsData=d; exitEdit();});
         exitEdit();
       });
-      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed) checkOwner(); });
+      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed){ checkOwner(); load(); } });
       load(); checkOwner();
     })();
   </script>
