@@ -212,7 +212,7 @@ if (recruitForm) {
       if (local) { state = local; renderView(); }
     }
     if (!window.fetch) { useLocal(); return; }
-    fetch('ticker.json?t=' + Date.now()).then(function(r) {
+    fetch('api-ticker.php?t=' + Date.now()).then(function(r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     }).then(function(data) {
@@ -234,7 +234,7 @@ if (recruitForm) {
       payload = JSON.stringify({ sep: state.sep, items: state.items, updated: state.updated || 0 });
     } catch (e) { cb(false, 'encoding error'); return; }
     if (!window.fetch) { cb(false, 'no fetch support'); return; }
-    fetch('save-ticker.php', {
+    fetch('api-ticker.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: payload
