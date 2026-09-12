@@ -1,11 +1,4 @@
 [
-  "2026-09-10 01:21:02,843 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
-  "2026-09-10 01:21:02,843 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-10 01:21:05,249 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
-  "2026-09-10 01:21:05,250 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-10 01:21:05,546 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 2 seconds",
-  "2026-09-10 01:21:05,546 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 0h 0m",
-  "2026-09-10 01:21:06,183 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
   "2026-09-10 01:21:06,183 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-10 01:21:09,282 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 3 seconds",
   "2026-09-10 01:21:09,283 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 0h 0m",
@@ -198,5 +191,12 @@
   "2026-09-12 15:54:44,626 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
   "2026-09-12 15:54:44,628 - cogs.membership - INFO - Updated member Oboth with rank Full Patch",
   "2026-09-12 15:55:47,099 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
-  "2026-09-12 15:56:17,650 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)"
+  "2026-09-12 15:56:17,650 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
+  "2026-09-12 16:39:01,378 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
+  "2026-09-12 16:39:01,378 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-12 17:33:51,531 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-12 18:01:40,251 - utils.playtime_database - INFO - Ended vital session for user 328219066793984010: 13884 seconds",
+  "2026-09-12 18:01:40,251 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for pky: 3h 51m",
+  "2026-09-12 18:30:04,298 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
+  "2026-09-12 18:30:04,298 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
