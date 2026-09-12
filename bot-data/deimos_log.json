@@ -1,13 +1,4 @@
 [
-  "2026-09-10 01:19:11,348 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 2h 56m",
-  "2026-09-10 01:19:13,572 - utils.playtime_database - INFO - Ended vital session for user 287694223707340800: 8840 seconds",
-  "2026-09-10 01:19:13,573 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for gingerbean2112: 2h 27m",
-  "2026-09-10 01:19:17,978 - utils.playtime_database - INFO - Ended vital session for user 399697875002458122: 12690 seconds",
-  "2026-09-10 01:19:17,979 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lunaskribbs: 3h 31m",
-  "2026-09-10 01:20:55,030 - utils.playtime_database - INFO - Started vital session for user 326529501209034764 in guild 889005510286786601",
-  "2026-09-10 01:20:55,030 - cogs.playtime_tracker - INFO - Started vital playtime tracking for chszr in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-10 01:21:00,087 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
-  "2026-09-10 01:21:00,087 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-10 01:21:02,843 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
   "2026-09-10 01:21:02,843 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-10 01:21:05,249 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
@@ -198,5 +189,14 @@
   "2026-09-12 12:19:01,937 - utils.playtime_database - INFO - Ended vital session for user 1182410319667150848: 1738 seconds",
   "2026-09-12 12:19:01,937 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for charlie07766: 0h 28m",
   "2026-09-12 12:39:03,763 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
-  "2026-09-12 12:39:15,416 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)"
+  "2026-09-12 12:39:15,416 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-09-12 14:10:15,846 - utils.playtime_database - INFO - Started vital session for user 328219066793984010 in guild 889005510286786601",
+  "2026-09-12 14:10:15,846 - cogs.playtime_tracker - INFO - Started vital playtime tracking for pky in 𝐕 - 𝐈𝐧 𝐂𝐢𝐭𝐲 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-12 14:19:58,593 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f335901ddd119c3f0dff8901d04f94d2.",
+  "2026-09-12 15:54:44,606 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-09-12 15:54:44,608 - cogs.membership - INFO - Updated member Jonathan 'Jay' Charles with rank President",
+  "2026-09-12 15:54:44,626 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-09-12 15:54:44,628 - cogs.membership - INFO - Updated member Oboth with rank Full Patch",
+  "2026-09-12 15:55:47,099 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-09-12 15:56:17,650 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)"
 ]
