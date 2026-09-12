@@ -190,6 +190,97 @@
         } catch(e) { return null; }
       }
 
+      function safeSet() {
+        try {
+          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          return true;
+        } catch (e) {
+          alert('Browser storage is full - cannot save. Remove an old patch photo or use a smaller image, then try again. (Nothing was saved.)');
+          return false;
+        }
+      }
+
+      // Badge photos display at 90px - anything bigger wastes storage.
+      // Keeps PNG transparency by staying PNG; JPEGs recompress.
+      var IMG_MAX_DIM = 512;
+      var IMG_MAX_BYTES = 400 * 1024;
+      function shrinkDataUrl(dataUrl, cb) {
+        var img = new Image();
+        img.onload = function() {
+          if (img.width <= IMG_MAX_DIM && img.height <= IMG_MAX_DIM && dataUrl.length <= IMG_MAX_BYTES * 1.37) { cb(dataUrl); return; }
+          var w = img.width, h = img.height;
+          if (w > IMG_MAX_DIM || h > IMG_MAX_DIM) {
+            if (w > h) { h = Math.round(h * IMG_MAX_DIM / w); w = IMG_MAX_DIM; }
+            else { w = Math.round(w * IMG_MAX_DIM / h); h = IMG_MAX_DIM; }
+          }
+          var canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          var isPng = dataUrl.indexOf('data:image/png') === 0;
+          if (isPng) {
+            canvas.toBlob(function(blob) {
+              if (!blob) { cb(dataUrl); return; }
+              if (blob.size <= IMG_MAX_BYTES || (canvas.width < 220 && canvas.height < 220)) {
+                var r = new FileReader();
+                r.onload = function(ev) { cb(ev.target.result); };
+                r.readAsDataURL(blob);
+              } else {
+                var nw = Math.max(220, Math.round(canvas.width * 0.7));
+                var nh = Math.max(220, Math.round(canvas.height * 0.7));
+                var c2 = document.createElement('canvas'); c2.width = nw; c2.height = nh;
+                c2.getContext('2d').drawImage(canvas, 0, 0, nw, nh);
+                c2.toBlob(function(b2) {
+                  if (!b2) { cb(dataUrl); return; }
+                  var r2 = new FileReader();
+                  r2.onload = function(ev) { cb(ev.target.result); };
+                  r2.readAsDataURL(b2);
+                }, 'image/png');
+              }
+            }, 'image/png');
+          } else {
+            var q = 0.85;
+            (function tryQ() {
+              canvas.toBlob(function(blob) {
+                if (!blob) { cb(dataUrl); return; }
+                if (blob.size <= IMG_MAX_BYTES || q <= 0.5) {
+                  var r = new FileReader();
+                  r.onload = function(ev) { cb(ev.target.result); };
+                  r.readAsDataURL(blob);
+                } else { q -= 0.1; tryQ(); }
+              }, 'image/jpeg', q);
+            })();
+          }
+        };
+        img.onerror = function() { cb(dataUrl); };
+        img.src = dataUrl;
+      }
+
+      // One-time shrink of already-stored oversized photos so a full store
+      // becomes savable again. Runs shortly after load, then re-renders.
+      function migrateImages() {
+        var jobs = [];
+        (badgesData.groups || []).forEach(function(g) {
+          (g.badges || []).forEach(function(b) {
+            if (b.image && b.image.indexOf('data:image') === 0) jobs.push(b);
+          });
+        });
+        var i = 0, changed = false;
+        (function next() {
+          if (i >= jobs.length) {
+            if (changed) {
+              try { localStorage.setItem(LS_KEY, JSON.stringify(badgesData)); } catch (e) {}
+              render();
+            }
+            return;
+          }
+          var b = jobs[i++];
+          shrinkDataUrl(b.image, function(out) {
+            if (out !== b.image && out.length < b.image.length) { b.image = out; changed = true; }
+            next();
+          });
+        })();
+      }
+
       function getDefaultTiers(){ return [{id:"bronze",label:"Bronze",color:"#cd7f32"},{id:"silver",label:"Silver",color:"#c0c0c0"},{id:"gold",label:"Gold",color:"#d4a017"},{id:"legend",label:"Legend",color:"#c0392b"}]; }
       function hexToRgba(hex, a){ try{ var c=hex.replace('#',''); if(c.length===3) c=c.split('').map(function(ch){return ch+ch;}).join(''); var r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16); return 'rgba('+r+','+g+','+b+','+a+')'; }catch(e){ return hex; } }
       function getTierMeta(id){ var arr=(badgesData&&badgesData.tiers)||getDefaultTiers(); for(var i=0;i<arr.length;i++) if(arr[i].id===id) return arr[i]; return {id:id,label:id,color:"#777"}; }
@@ -369,13 +460,13 @@
             if (!b.earnedBy) b.earnedBy = [];
           });
         });
-        localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+        if(!safeSet())return;
         exitEdit();
       }
 
       function load() {
         var stored = getStored();
-        if (stored) { badgesData = normalize(stored); render(); checkOwner(); return; }
+        if (stored) { badgesData = normalize(stored); render(); checkOwner(); setTimeout(migrateImages, 600); return; }
         fetch('badges.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(data){
           badgesData = normalize(data);
           render();
@@ -398,17 +489,17 @@
           var badge = badgesData.groups[gIdx].badges[bIdx];
           if (!badge.earnedBy) badge.earnedBy = [];
           if (badge.earnedBy.indexOf(name) === -1) badge.earnedBy.push(name);
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          if(!safeSet())return;
           render();
         } else if (action === 'remove-earned') {
           var nIdx = parseInt(t.getAttribute('data-nidx'), 10);
           badgesData.groups[gIdx].badges[bIdx].earnedBy.splice(nIdx, 1);
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          if(!safeSet())return;
           render();
         } else if (action === 'delete-badge') {
           if (!confirm('Delete this patch?')) return;
           badgesData.groups[gIdx].badges.splice(bIdx, 1);
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          if(!safeSet())return;
           render();
         } else if (action === 'add-badge') {
           var icon = (document.getElementById('new-icon-' + gIdx).value.trim() || '🏅');
@@ -421,7 +512,7 @@
           if (!name2) { alert('Name required'); return; }
           var newId = name2.toLowerCase().replace(/[^a-z0-9]+/g, '-');
           badgesData.groups[gIdx].badges.push({ id: newId, name: name2, desc: desc, icon: icon, image: image, tier: tier, earnedBy: [] });
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          if(!safeSet())return;
           render();
         } else if (action === 'add-tier') {
           var tLabel = (document.getElementById('new-tier-label').value||'').trim();
@@ -432,7 +523,7 @@
           if (!tId) { alert('Tier ID required'); return; }
           if ((badgesData.tiers||[]).some(function(x){ return x.id===tId; })) { alert('Tier ID already exists'); return; }
           badgesData.tiers.push({ id: tId, label: tLabel, color: tColor });
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          if(!safeSet())return;
           render();
         } else if (action === 'delete-tier') {
           var tIdx = parseInt(t.getAttribute('data-tier-idx'),10);
@@ -446,11 +537,11 @@
           if (fallback) { badgesData.groups.forEach(function(g){ (g.badges||[]).forEach(function(b){ if(b.tier===tierId2) b.tier=fallback; }); }); }
           badgesData.tiers.splice(tIdx,1);
           if (badgesData.tiers.length===0) badgesData.tiers.push({id:'default',label:'Default',color:'#888888'});
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          if(!safeSet())return;
           render();
         } else if (action === 'clear-image') {
           badgesData.groups[gIdx].badges[bIdx].image = '';
-          localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+          if(!safeSet())return;
           render();
         }
       });
@@ -463,12 +554,12 @@
         if (!file.type.startsWith('image/')) { alert('Please select an image'); t.value=''; return; }
         var gIdx = parseInt(t.getAttribute('data-gidx'), 10);
         var bIdxAttr = t.getAttribute('data-bidx');
-        var maxBytes = 800 * 1024;
+        var maxBytes = IMG_MAX_BYTES;
         function handleDataUrl(dataUrl){
           if (bIdxAttr !== null) {
             var bIdx = parseInt(bIdxAttr, 10);
             badgesData.groups[gIdx].badges[bIdx].image = dataUrl;
-            localStorage.setItem(LS_KEY, JSON.stringify(badgesData));
+            if(!safeSet())return;
             render();
           } else {
             t.dataset.pendingImage = dataUrl;
@@ -489,7 +580,7 @@
         var url = URL.createObjectURL(file);
         var img = new Image();
         img.onload = function(){
-          var maxDim = 1024;
+          var maxDim = IMG_MAX_DIM;
           var w = img.width, h = img.height;
           if (w > maxDim || h > maxDim) {
             if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
