@@ -10,7 +10,8 @@ header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
-if (!isLoggedIn()) { http_response_code(401); echo json_encode(['error'=>'Not logged in']); exit; }
+$isPost = ($_SERVER['REQUEST_METHOD'] === 'POST');
+if (!$isPost && !isLoggedIn()) { http_response_code(401); echo json_encode(['error'=>'Not logged in']); exit; }
 
 try {
     $pdo = db();

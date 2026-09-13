@@ -10,6 +10,7 @@
     fetch('api-visitors.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
       body: JSON.stringify({ page: page, session_id: sid, username: user, role: role })
     }).catch(function() {});
   } catch(e) {}

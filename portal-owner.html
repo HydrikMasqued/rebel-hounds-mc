@@ -245,12 +245,18 @@
         fetch('api-store.php?key=prospects&t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
           var data = (d && d.data) ? d.data : null;
           var arr = (data && data.prospects) ? data.prospects : [];
+          if (arr.length === 0) {
+            try { var ls = JSON.parse(localStorage.getItem('rhmc_prospects') || '[]'); if (ls.length) arr = ls; } catch(e) {}
+          }
           document.getElementById('statProspects').textContent = arr.length;
         }).catch(function() { document.getElementById('statProspects').textContent = '0'; });
 
         fetch('api-store.php?key=roster&t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
           var data = (d && d.data) ? d.data : null;
           var arr = (data && data.members) ? data.members : [];
+          if (arr.length === 0) {
+            try { var ls = JSON.parse(localStorage.getItem('rhmc_roster') || '[]'); if (ls.length) arr = ls; } catch(e) {}
+          }
           document.getElementById('statMembers').textContent = arr.length;
         }).catch(function() { document.getElementById('statMembers').textContent = '0'; });
 

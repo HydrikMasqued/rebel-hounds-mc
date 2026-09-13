@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebel Hounds MC — Club Manager</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="../rebel-hounds-patch.png">
+</head>
+<body>
+
+<!-- ===== LOGIN GATE ===== -->
+<div id="gate" class="gate">
+  <div class="gate-card">
+    <img src="../rebel-hounds-patch.png" alt="RHMC" class="gate-logo" onerror="this.style.display='none'">
+    <h1>REBEL <span>HOUNDS</span> MC</h1>
+    <p class="gate-sub">CLUB MANAGER — MEMBERS ONLY</p>
+    <form id="gateForm">
+      <input type="password" id="gatePass" placeholder="Club passcode" autocomplete="off">
+      <button type="submit" class="btn btn-primary btn-block">Enter Clubhouse</button>
+    </form>
+    <p id="gateMsg" class="gate-msg"></p>
+    <p class="gate-hint">Default passcode: <code>hounds</code> — change it in Settings.</p>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="side-brand">
+      <img src="../rebel-hounds-patch.png" alt="" onerror="this.style.display='none'">
+      <div><strong>REBEL HOUNDS</strong><small>MC MANAGER</small></div>
+    </div>
+    <div class="side-search"><input id="globalSearch" placeholder="Search everything…  ( / )"></div>
+    <nav class="side-nav" id="sideNav">
+      <button data-view="dashboard" class="active"><i>🏠</i>Dashboard</button>
+      <p class="nav-head">Club</p>
+      <button data-view="members"><i>🎖️</i>Members <b id="cMembers" class="count"></b></button>
+      <button data-view="prospects"><i>🧷</i>Prospects <b id="cProspects" class="count"></b></button>
+      <button data-view="projects"><i>📋</i>Projects</button>
+      <button data-view="tasks"><i>✅</i>Tasks <b id="cTasks" class="count"></b></button>
+      <button data-view="deadlines"><i>⏰</i>Deadlines <b id="cDeadlines" class="count alert"></b></button>
+      <p class="nav-head">Intel</p>
+      <button data-view="gangs"><i>💀</i>Gang Dossiers</button>
+      <button data-view="intel"><i>🕵️</i>Intel Log</button>
+      <button data-view="heists"><i>💰</i>Heists</button>
+      <button data-view="civilians"><i>🧍</i>Civilians</button>
+      <p class="nav-head">Business</p>
+      <button data-view="finance"><i>💵</i>Finance</button>
+      <button data-view="inventory"><i>📦</i>Inventory</button>
+      <button data-view="bikes"><i>🏍️</i>Bike Log</button>
+      <p class="nav-head">System</p>
+      <button data-view="settings"><i>⚙️</i>Settings</button>
+    </nav>
+    <div class="side-foot">
+      <button id="exportBtn" class="btn btn-ghost btn-sm">⬇ Export</button>
+      <button id="importBtn" class="btn btn-ghost btn-sm">⬆ Import</button>
+      <input type="file" id="importFile" accept=".json" hidden>
+      <button id="lockBtn" class="btn btn-ghost btn-sm">🔒 Lock</button>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <header class="topbar">
+      <button id="menuToggle" class="btn btn-ghost">☰</button>
+      <h2 id="viewTitle">Dashboard</h2>
+      <div class="top-actions">
+        <span id="clock" class="clock"></span>
+        <button id="quickAdd" class="btn btn-primary btn-sm">+ Quick Add</button>
+      </div>
+    </header>
+
+    <div id="searchResults" class="search-results hidden"></div>
+
+    <!-- DASHBOARD -->
+    <section id="view-dashboard" class="view active">
+      <div class="stat-grid" id="statGrid"></div>
+      <div class="dash-cols">
+        <div class="card">
+          <h3>⚠️ Upcoming Deadlines (14 days)</h3>
+          <div id="dashDeadlines"></div>
+        </div>
+        <div class="card">
+          <h3>✅ Open Tasks</h3>
+          <div id="dashTasks"></div>
+        </div>
+      </div>
+      <div class="dash-cols">
+        <div class="card">
+          <h3>🕵️ Latest Intel</h3>
+          <div id="dashIntel"></div>
+        </div>
+        <div class="card">
+          <h3>💵 Treasury & Activity</h3>
+          <div id="dashFinance"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERS -->
+    <section id="view-members" class="view">
+      <div class="toolbar">
+        <input id="fMembers" placeholder="Filter members…">
+        <select id="fMemberRank"><option value="">All ranks</option></select>
+        <select id="fMemberStatus"><option value="">All status</option><option>Active</option><option>Inactive</option><option>Retired</option><option>Out Bad</option></select>
+        <button class="btn btn-primary btn-sm" data-add="members">+ Member</button>
+      </div>
+      <div id="membersList" class="card-grid"></div>
+    </section>
+
+    <!-- PROSPECTS -->
+    <section id="view-prospects" class="view">
+      <div class="toolbar">
+        <input id="fProspects" placeholder="Filter prospects…">
+        <select id="fProspectStatus"><option value="">All stages</option><option>Hangaround</option><option>Prospect</option><option>Patched</option><option>Dropped</option></select>
+        <button class="btn btn-primary btn-sm" data-add="prospects">+ Prospect</button>
+      </div>
+      <div class="prospect-board" id="prospectBoard"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="view-projects" class="view">
+      <div class="toolbar">
+        <input id="fProjects" placeholder="Filter projects…">
+        <select id="fProjectStatus"><option value="">All status</option><option>Planning</option><option>Active</option><option>On Hold</option><option>Done</option></select>
+        <button class="btn btn-primary btn-sm" data-add="projects">+ Project</button>
+      </div>
+      <div id="projectsList" class="card-grid"></div>
+    </section>
+
+    <!-- TASKS -->
+    <section id="view-tasks" class="view">
+      <div class="toolbar">
+        <input id="fTasks" placeholder="Filter tasks…">
+        <select id="fTaskStatus"><option value="">All</option><option>Todo</option><option>Doing</option><option>Done</option></select>
+        <select id="fTaskPriority"><option value="">Any priority</option><option>Low</option><option>Normal</option><option>High</option><option>Urgent</option></select>
+        <button class="btn btn-primary btn-sm" data-add="tasks">+ Task</button>
+      </div>
+      <div class="task-cols">
+        <div class="card"><h3>Todo</h3><div id="tasksTodo" class="task-lane"></div></div>
+        <div class="card"><h3>Doing</h3><div id="tasksDoing" class="task-lane"></div></div>
+        <div class="card"><h3>Done</h3><div id="tasksDone" class="task-lane"></div></div>
+      </div>
+    </section>
+
+    <!-- DEADLINES -->
+    <section id="view-deadlines" class="view">
+      <div class="toolbar">
+        <button class="btn btn-primary btn-sm" data-add="deadlines">+ Deadline</button>
+        <label class="chk"><input type="checkbox" id="showDoneDeadlines"> show completed</label>
+      </div>
+      <div id="deadlinesList" class="list"></div>
+    </section>
+
+    <!-- GANGS -->
+    <section id="view-gangs" class="view">
+      <div class="toolbar">
+        <input id="fGangs" placeholder="Filter gangs…">
+        <select id="fGangAtt"><option value="">Any attitude</option><option>Allied</option><option>Neutral</option><option>Tense</option><option>Hostile</option><option>At War</option></select>
+        <button class="btn btn-primary btn-sm" data-add="gangs">+ Dossier</button>
+      </div>
+      <div id="gangsList" class="card-grid"></div>
+    </section>
+
+    <!-- INTEL -->
+    <section id="view-intel" class="view">
+      <div class="toolbar">
+        <input id="fIntel" placeholder="Filter intel…">
+        <select id="fIntelCat"><option value="">All categories</option><option>Gang</option><option>Heist</option><option>Civilian</option><option>LEO</option><option>Business</option></select>
+        <button class="btn btn-primary btn-sm" data-add="intel">+ Intel</button>
+      </div>
+      <div id="intelList" class="list"></div>
+    </section>
+
+    <!-- HEISTS -->
+    <section id="view-heists" class="view">
+      <div class="toolbar">
+        <input id="fHeists" placeholder="Filter heists…">
+        <select id="fHeistStatus"><option value="">All status</option><option>Intel</option><option>Planning</option><option>Ready</option><option>Executed</option><option>Burned</option></select>
+        <button class="btn btn-primary btn-sm" data-add="heists">+ Heist</button>
+      </div>
+      <div id="heistsList" class="card-grid"></div>
+    </section>
+
+    <!-- CIVILIANS -->
+    <section id="view-civilians" class="view">
+      <div class="toolbar">
+        <input id="fCivs" placeholder="Filter people…">
+        <select id="fCivValue"><option value="">Any value</option><option>Informant</option><option>Client</option><option>Neutral</option><option>Threat</option><option>LEO Watch</option></select>
+        <button class="btn btn-primary btn-sm" data-add="civilians">+ Person</button>
+      </div>
+      <div id="civsList" class="card-grid"></div>
+    </section>
+
+    <!-- FINANCE -->
+    <section id="view-finance" class="view">
+      <div class="stat-grid" id="finStats"></div>
+      <div class="toolbar">
+        <input id="fFin" placeholder="Filter ledger…">
+        <select id="fFinType"><option value="">In + Out</option><option value="in">Income</option><option value="out">Expense</option></select>
+        <button class="btn btn-primary btn-sm" data-add="finance">+ Entry</button>
+      </div>
+      <div class="card"><div id="financeList" class="list"></div></div>
+    </section>
+
+    <!-- INVENTORY -->
+    <section id="view-inventory" class="view">
+      <div class="toolbar">
+        <input id="fInv" placeholder="Filter inventory…">
+        <select id="fInvCat"><option value="">All categories</option><option>Weapons</option><option>Ammo</option><option>Parts</option><option>Supplies</option><option>Cut / Gear</option><option>Vehicles</option><option>Other</option></select>
+        <button class="btn btn-primary btn-sm" data-add="inventory">+ Item</button>
+      </div>
+      <div id="invList" class="list"></div>
+    </section>
+
+    <!-- BIKES -->
+    <section id="view-bikes" class="view">
+      <div class="toolbar">
+        <input id="fBikes" placeholder="Filter bikes…">
+        <button class="btn btn-primary btn-sm" data-add="bikes">+ Bike</button>
+      </div>
+      <div id="bikesList" class="card-grid"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="view-settings" class="view">
+      <div class="dash-cols">
+        <div class="card">
+          <h3>Club Settings</h3>
+          <label>Club name<input id="setClub" class="inp"></label>
+          <label>Passcode<input id="setPass" class="inp"></label>
+          <label>Church day<input id="setChurch" class="inp" placeholder="e.g. Sunday 20:00"></label>
+          <button id="saveSettings" class="btn btn-primary btn-sm">Save</button>
+        </div>
+        <div class="card">
+          <h3>Danger Zone</h3>
+          <p class="muted">Export first. These cannot be undone.</p>
+          <button id="seedBtn" class="btn btn-ghost btn-sm">Reload demo seed data</button>
+          <button id="wipeBtn" class="btn btn-danger btn-sm">Wipe all data</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-head"><h3 id="modalTitle">Edit</h3><button id="modalClose" class="btn btn-ghost btn-sm">✕</button></div>
+    <div id="modalBody" class="modal-body"></div>
+    <div class="modal-foot">
+      <button id="modalDelete" class="btn btn-danger btn-sm">Delete</button>
+      <span style="flex:1"></span>
+      <button id="modalCancel" class="btn btn-ghost btn-sm">Cancel</button>
+      <button id="modalSave" class="btn btn-primary btn-sm">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUICK ADD ===== -->
+<div id="quickMenu" class="quick hidden">
+  <button data-add="tasks">✅ Task</button>
+  <button data-add="deadlines">⏰ Deadline</button>
+  <button data-add="intel">🕵️ Intel</button>
+  <button data-add="finance">💵 Finance</button>
+  <button data-add="prospects">🧷 Prospect</button>
+  <button data-add="gangs">💀 Gang</button>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
