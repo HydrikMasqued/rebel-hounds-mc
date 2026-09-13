@@ -1,13 +1,4 @@
 [
-  "2026-09-12 23:08:45,585 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-09-12 23:08:45,586 - cogs.membership - INFO - Updated member Thorikan with rank Full Patch",
-  "2026-09-12 23:08:45,634 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-09-12 23:08:45,634 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-09-12 23:08:45,636 - cogs.membership - INFO - Updated member Jamal Whitlock (Warlock) with rank Nomad",
-  "2026-09-12 23:08:45,636 - cogs.membership - INFO - Updated member 𝙎𝙀𝙍𝙋𝙀𝙉𝙏 with rank Full Patch",
-  "2026-09-12 23:08:46,066 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-09-12 23:08:46,067 - cogs.membership - INFO - Updated member 𝙎𝙀𝙍𝙋𝙀𝙉𝙏 with rank Full Patch",
-  "2026-09-12 23:08:48,417 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
   "2026-09-12 23:08:48,418 - cogs.membership - INFO - Updated member 𝙎𝙀𝙍𝙋𝙀𝙉𝙏 with rank Full Patch",
   "2026-09-12 23:08:49,164 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
   "2026-09-12 23:08:49,165 - cogs.membership - INFO - Updated member 𝙎𝙀𝙍𝙋𝙀𝙉𝙏 with rank Full Patch",
@@ -198,5 +189,14 @@
   "2026-09-13 11:54:27,944 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 599 seconds",
   "2026-09-13 11:54:27,944 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 9m",
   "2026-09-13 11:59:23,909 - utils.playtime_database - INFO - Ended vital session for user 328219066793984010: 752 seconds",
-  "2026-09-13 11:59:23,910 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for pky: 0h 12m"
+  "2026-09-13 11:59:23,910 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for pky: 0h 12m",
+  "2026-09-13 14:23:03,958 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 5d346b41dd804c6ee3628b7c20c26e87.",
+  "2026-09-13 15:44:35,337 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 5d346b41dd804c6ee3628b7c20c26e87.",
+  "2026-09-13 16:17:41,482 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 5d346b41dd804c6ee3628b7c20c26e87.",
+  "2026-09-13 16:41:52,696 - cogs.contribution_verification - INFO - Added verification reactions to contribution from j4xx.kryt",
+  "2026-09-13 16:51:22,278 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 5d346b41dd804c6ee3628b7c20c26e87.",
+  "2026-09-13 16:59:32,805 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
+  "2026-09-13 16:59:32,805 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝑰𝑵𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄-&-𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-13 17:07:21,180 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-09-13 17:07:21,180 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝑰𝑵𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄-&-𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
