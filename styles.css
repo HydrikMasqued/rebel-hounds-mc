@@ -1324,6 +1324,37 @@ body {
   font-size: 0.85rem;
 }
 
+.media-delete-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 10;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(220,53,69,0.9);
+  color: #fff;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  pointer-events: auto;
+}
+.gallery-item:hover .media-delete-btn,
+.video-card:hover .media-delete-btn {
+  opacity: 1;
+}
+.media-delete-btn:hover {
+  background: #dc3545;
+}
+.media-delete-btn-video {
+  top: 8px;
+  right: 8px;
+}
+
 .gallery-upload-area {
   background: var(--dark-2);
   border: 1px dashed var(--border);
