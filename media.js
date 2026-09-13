@@ -5,11 +5,21 @@ const UPLOAD_PHP = 'upload-media.php';
 const LS_GALLERY = 'rh_gallery';
 const LS_VIDEOS = 'rh_videos';
 
-function canEditMedia() {
+var _mediaRole = null;
+var _mediaRoleLoaded = false;
+async function canEditMedia() {
+  if (_mediaRoleLoaded) return _mediaRole === 'officer' || _mediaRole === 'owner';
   try {
-    var r = sessionStorage.getItem('rh_patch_role') || '';
-    return r === 'officer' || r === 'owner';
-  } catch(e) { return false; }
+    var r = await fetch('auth-check.php?t=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' });
+    var d = await r.json();
+    _mediaRoleLoaded = true;
+    _mediaRole = d.logged_in ? (d.role || '') : '';
+    return _mediaRole === 'officer' || _mediaRole === 'owner';
+  } catch(e) {
+    _mediaRoleLoaded = true;
+    _mediaRole = '';
+    return false;
+  }
 }
 
 function escapeHtml(str) {
@@ -59,7 +69,7 @@ async function renderGallery() {
   } catch(e) {}
   if (items.length === 0) { if (empty) empty.style.display = 'block'; grid.innerHTML = ''; return; }
   if (empty) empty.style.display = 'none';
-  var edit = canEditMedia();
+  var edit = await canEditMedia();
   grid.innerHTML = items.map(function(item, i) {
     var isVid = isVideoUrl(item.url, item.type);
     var media = isVid
@@ -140,7 +150,7 @@ async function renderVideos() {
   try { items = await fetchVideos(); } catch(e) { items = []; }
   if (items.length === 0) { if (empty) { empty.style.display = 'block'; grid.innerHTML = ''; } return; }
   if (empty) empty.style.display = 'none';
-  var edit = canEditMedia();
+  var edit = await canEditMedia();
   grid.innerHTML = items.map(function(item) {
     var delBtn = edit ? '<button class="media-delete-btn media-delete-btn-video" data-url="' + escapeHtml(item.embedUrl) + '" title="Delete">&times;</button>' : '';
     return '<div class="video-card" style="position:relative;">' +
