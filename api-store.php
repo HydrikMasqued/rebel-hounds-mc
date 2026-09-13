@@ -1,7 +1,10 @@
 <?php
 require __DIR__ . '/db.php';
+require __DIR__ . '/auth-require.php';
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
+
+if (!isLoggedIn()) { http_response_code(401); echo json_encode(['error'=>'Not logged in']); exit; }
 
 $KEYS = ['badges', 'roster', 'prospects'];
 $key = isset($_GET['key']) ? $_GET['key'] : '';
@@ -33,6 +36,7 @@ if ($m === 'GET') {
 }
 
 if ($m === 'POST') {
+    requireRole('officer');
     $raw = file_get_contents('php://input');
     if (strlen($raw) > 12*1024*1024) { http_response_code(413); echo json_encode(['error'=>'Too large']); exit; }
     $body = json_decode($raw, true);

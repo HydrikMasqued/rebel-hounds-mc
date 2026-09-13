@@ -17,3 +17,15 @@ CREATE TABLE IF NOT EXISTS site_data (
     data    JSON NOT NULL,
     updated BIGINT NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- User accounts with role-based access control.
+-- Roles: owner (full), officer (see+edit all), patched (see all, no edit), prospect (see limited pages).
+-- Passwords are bcrypt-hashed via PHP password_hash().
+CREATE TABLE IF NOT EXISTS users (
+    id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username      VARCHAR(64) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role          ENUM('owner','officer','patched','prospect') NOT NULL DEFAULT 'patched',
+    display_name  VARCHAR(128) NOT NULL DEFAULT '',
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

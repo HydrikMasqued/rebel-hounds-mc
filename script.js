@@ -157,7 +157,6 @@ if (recruitForm) {
   var OWNER_KEY = 'rhmc_ticker_owner';
   var SEP_DEFAULT = '\u2022';
   var DEFAULT_ITEMS = ['LOYALTY', 'RESPECT', 'BROTHERHOOD', 'DISCIPLINE', 'REBEL HOUNDS MC'];
-  var PASS_HASH = 179402082180785;
   var state = { sep: SEP_DEFAULT, items: DEFAULT_ITEMS.slice() };
   var working = null;
   var editing = false;
@@ -265,7 +264,11 @@ if (recruitForm) {
   }
 
   function isOwner() {
-    try { return sessionStorage.getItem(OWNER_KEY) === '1'; } catch (e) { return false; }
+    try {
+      if (sessionStorage.getItem(OWNER_KEY) === '1') return true;
+      var r = sessionStorage.getItem('rh_patch_role');
+      return r === 'owner';
+    } catch (e) { return false; }
   }
 
   function ensureFab() {
@@ -385,16 +388,37 @@ if (recruitForm) {
     clickTimer = setTimeout(function() { clickCount = 0; }, 1200);
     if (clickCount >= 5) {
       clickCount = 0;
+      // Check portal session first
+      var portalRole = null;
+      try { portalRole = sessionStorage.getItem('rh_patch_role'); } catch (err) {}
+      if (portalRole === 'owner') {
+        ensureFab();
+        enterEdit();
+        return;
+      }
       var pw = null;
       try { pw = window.prompt('Owner password to edit ticker:'); } catch (err) {}
       if (pw === null || pw === '') return;
-      if (cyrb53(pw) === PASS_HASH) {
-        try { sessionStorage.setItem(OWNER_KEY, '1'); } catch (err) {}
-        ensureFab();
-        enterEdit();
-      } else {
-        alert('Wrong password.');
-      }
+      // Server-side auth
+      fetch('auth-check.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: 'HFFH', password: pw })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.logged_in && d.role === 'owner') {
+          try {
+            sessionStorage.setItem(OWNER_KEY, '1');
+            sessionStorage.setItem('rh_patch_role', 'owner');
+          } catch (err) {}
+          ensureFab();
+          enterEdit();
+        } else {
+          alert('Wrong password.');
+        }
+      })
+      .catch(function() { alert('Connection error.'); });
     }
   });
 

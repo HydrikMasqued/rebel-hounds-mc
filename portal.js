@@ -35,43 +35,63 @@ if (navToggle && navLinks) {
   });
 }
 
-/* ===== Login gate ===== */
-const cyrb53 = (str, seed = 0) => {
-  let h1 = 0xdeadbeef ^ seed;
-  let h2 = 0x41c6ce57 ^ seed;
-  for (let i = 0, ch; i < str.length; i++) {
-    ch = str.charCodeAt(i);
-    h1 = Math.imul(h1 ^ ch, 2654435761);
-    h2 = Math.imul(h2 ^ ch, 1597334677);
-  }
-  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
-  h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
-  h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-  return 4294967296 * (2097151 & h2) + (h1 >>> 0);
-};
-
-const PATCH_USER = '6326359510258827';   // HFFH
-const PATCH_PASS = '179402082180785';    // HoundsForever
-const PATCH_KEY = 'rh_patch_auth';
+/* ===== Role-based access control ===== */
+const ROLE_LEVEL = { prospect: 1, patched: 2, officer: 3, owner: 4 };
+const PATCH_KEY  = 'rh_patch_auth';
+const ROLE_KEY   = 'rh_patch_role';
+const USER_KEY   = 'rh_patch_user';
 const BYLAWS_URL = 'rhmc-bylaws-q8k2x7.pdf';
 
-const patchGate = document.getElementById('patchGate');
-const patchArea = document.getElementById('patchArea');
-const patchForm = document.getElementById('patchForm');
-const patchMsg = document.getElementById('patchMsg');
-const patchUser = document.getElementById('patchUser');
-const patchPass = document.getElementById('patchPass');
-const patchLogout = document.getElementById('patchLogout');
-const patchLogMsg = document.getElementById('patchLogMsg');
-const patchLoginBg = document.getElementById('patchLoginBg');
-const bylawsFrame = document.getElementById('bylawsFrame');
-const bylawsOpen = document.getElementById('bylawsOpen');
+const patchGate     = document.getElementById('patchGate');
+const patchArea     = document.getElementById('patchArea');
+const patchForm     = document.getElementById('patchForm');
+const patchMsg      = document.getElementById('patchMsg');
+const patchUser     = document.getElementById('patchUser');
+const patchPass     = document.getElementById('patchPass');
+const patchLogout   = document.getElementById('patchLogout');
+const patchLogMsg   = document.getElementById('patchLogMsg');
+const patchLoginBg  = document.getElementById('patchLoginBg');
+const bylawsFrame   = document.getElementById('bylawsFrame');
+const bylawsOpen    = document.getElementById('bylawsOpen');
 const bylawsDownload = document.getElementById('bylawsDownload');
 
-function setPatchAuth(authed) {
-  if (authed) {
-    try { sessionStorage.setItem(PATCH_KEY, '1'); } catch (e) {}
+let currentRole = null;
+
+function getRole() {
+  return currentRole;
+}
+
+function hasRole(minRole) {
+  if (!currentRole) return false;
+  return (ROLE_LEVEL[currentRole] || 0) >= (ROLE_LEVEL[minRole] || 0);
+}
+
+function isOwner() {
+  return currentRole === 'owner';
+}
+
+/* ---- Apply role-based visibility ---- */
+function applyRoleVisibility() {
+  // Nav items: hide those the user can't access
+  document.querySelectorAll('[data-min-role]').forEach(function(el) {
+    var min = el.getAttribute('data-min-role');
+    el.style.display = hasRole(min) ? '' : 'none';
+  });
+  // Edit buttons: only officer+ can see
+  document.querySelectorAll('[data-edit-role]').forEach(function(el) {
+    var min = el.getAttribute('data-edit-role');
+    el.style.display = hasRole(min) ? '' : 'none';
+  });
+}
+
+/* ---- Auth state management ---- */
+function setPatchAuth(authed, role) {
+  if (authed && role) {
+    try {
+      sessionStorage.setItem(PATCH_KEY, '1');
+      sessionStorage.setItem(ROLE_KEY, role);
+    } catch (e) {}
+    currentRole = role;
     if (patchGate) patchGate.classList.add('hidden');
     if (patchLoginBg) patchLoginBg.style.display = 'none';
     if (patchArea) patchArea.classList.remove('hidden');
@@ -79,7 +99,12 @@ function setPatchAuth(authed) {
     if (bylawsOpen) bylawsOpen.href = BYLAWS_URL;
     if (bylawsDownload) bylawsDownload.href = BYLAWS_URL;
   } else {
-    try { sessionStorage.removeItem(PATCH_KEY); sessionStorage.removeItem('rh_patch_user'); } catch (e) {}
+    try {
+      sessionStorage.removeItem(PATCH_KEY);
+      sessionStorage.removeItem(ROLE_KEY);
+      sessionStorage.removeItem(USER_KEY);
+    } catch (e) {}
+    currentRole = null;
     if (patchGate) patchGate.classList.remove('hidden');
     if (patchLoginBg) patchLoginBg.style.display = '';
     if (patchArea) patchArea.classList.add('hidden');
@@ -87,35 +112,53 @@ function setPatchAuth(authed) {
     if (bylawsOpen) bylawsOpen.href = '#';
     if (bylawsDownload) bylawsDownload.href = '#';
   }
-  // Notify other scripts (e.g. inventory.js) of auth change
-  window.dispatchEvent(new CustomEvent('patchAuthChange', { detail: { authed } }));
+  applyRoleVisibility();
+  // Notify other scripts (e.g. finance, bots) of auth change
+  window.dispatchEvent(new CustomEvent('patchAuthChange', { detail: { authed: authed, role: currentRole } }));
 }
 
 function clearPatchMsg() {
   if (patchMsg) patchMsg.textContent = '';
 }
 
+/* ---- Login form ---- */
 if (patchForm) {
-  patchForm.addEventListener('submit', (e) => {
+  patchForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const u = patchUser.value.trim();
-    const p = patchPass.value;
-    if (cyrb53(u) === Number(PATCH_USER) && cyrb53(p) === Number(PATCH_PASS)) {
-      try { sessionStorage.setItem('rh_patch_user', u); } catch(e) {}
-      setPatchAuth(true);
-      patchForm.reset();
-      if (patchArea) patchArea.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      patchMsg.textContent = 'Invalid credentials. Contact club leadership.';
-    }
+    var u = patchUser.value.trim();
+    var p = patchPass.value;
+    if (!u || !p) return;
+
+    fetch('auth-check.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: u, password: p })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (res.ok && res.data.logged_in) {
+        try { sessionStorage.setItem(USER_KEY, u); } catch (e) {}
+        setPatchAuth(true, res.data.role);
+        patchForm.reset();
+        if (patchArea) patchArea.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        patchMsg.textContent = 'Invalid credentials. Contact club leadership.';
+      }
+    })
+    .catch(function() {
+      patchMsg.textContent = 'Connection error. Try again.';
+    });
   });
 
   patchPass.addEventListener('input', clearPatchMsg);
   patchUser.addEventListener('input', clearPatchMsg);
 }
 
+/* ---- Logout ---- */
 if (patchLogout) {
-  patchLogout.addEventListener('click', () => {
+  patchLogout.addEventListener('click', function() {
+    // Also clear server session
+    fetch('auth-check.php', { method: 'GET', cache: 'no-store' }).catch(function() {});
     setPatchAuth(false);
     if (patchLogMsg) patchLogMsg.textContent = 'Logged out. Ride safe.';
     if (patchLoginBg) {
@@ -126,6 +169,32 @@ if (patchLogout) {
   });
 }
 
-let patchAuthed = false;
-try { patchAuthed = sessionStorage.getItem(PATCH_KEY) === '1'; } catch (e) {}
-setPatchAuth(patchAuthed);
+/* ---- Restore session on page load ---- */
+(function restoreSession() {
+  var authed = false;
+  var role = null;
+  try {
+    authed = sessionStorage.getItem(PATCH_KEY) === '1';
+    role = sessionStorage.getItem(ROLE_KEY);
+  } catch (e) {}
+
+  if (authed && role) {
+    // Quick restore from cache, then verify with server in background
+    currentRole = role;
+    setPatchAuth(true, role);
+    // Verify session is still valid
+    fetch('auth-check.php', { cache: 'no-store' })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d.logged_in) {
+          setPatchAuth(false);
+        } else if (d.role !== role) {
+          // Role changed, update
+          setPatchAuth(true, d.role);
+        }
+      })
+      .catch(function() { /* keep cached session on network error */ });
+  } else {
+    setPatchAuth(false);
+  }
+})();

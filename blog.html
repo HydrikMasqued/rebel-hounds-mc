@@ -232,7 +232,13 @@ function cyrb53(str,seed){
   return 4294967296*(2097151&h2)+(h1>>>0);
 }
 
-function isBlogAuthed(){try{return sessionStorage.getItem(BLOG_AUTH_KEY)==='1';}catch(e){return false;}}
+function isBlogAuthed(){
+  try{
+    if(sessionStorage.getItem(BLOG_AUTH_KEY)!=='1')return false;
+    var r=sessionStorage.getItem('rh_patch_role');
+    return r==='officer'||r==='owner';
+  }catch(e){return false;}
+}
 function getAllPosts(){try{var r=localStorage.getItem(BLOG_STORAGE_KEY);if(r)return JSON.parse(r);}catch(e){}return[];}
 function saveAllPosts(p){try{localStorage.setItem(BLOG_STORAGE_KEY,JSON.stringify(p));}catch(e){}}
 function generateId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8);}
@@ -380,17 +386,23 @@ document.addEventListener('click',function(e){if(adminPanel.classList.contains('
 
 blogLoginBtn.addEventListener('click',function(){
   var u=blogLoginUser.value.trim(),p=blogLoginPass.value;
-  if(cyrb53(u)===6326359510258827&&cyrb53(p)===179402082180785){
-    try{sessionStorage.setItem(BLOG_AUTH_KEY,'1');}catch(e){}
-    blogLoginMsg.className='blog-admin-msg ok';blogLoginMsg.textContent='Logged in!';
-    blogLoginUser.value='';blogLoginPass.value='';updateAdminVisibility();
-    setTimeout(function(){blogLoginMsg.textContent='';},2000);
-  }else{blogLoginMsg.className='blog-admin-msg err';blogLoginMsg.textContent='Invalid credentials.';}
+  fetch('auth-check.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})})
+  .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+  .then(function(res){
+    if(res.ok&&res.data.logged_in){
+      try{sessionStorage.setItem(BLOG_AUTH_KEY,'1');sessionStorage.setItem('rh_patch_role',res.data.role);}catch(e){}
+      blogLoginMsg.className='blog-admin-msg ok';blogLoginMsg.textContent='Logged in!';
+      blogLoginUser.value='';blogLoginPass.value='';updateAdminVisibility();
+      setTimeout(function(){blogLoginMsg.textContent='';},2000);
+    }else{blogLoginMsg.className='blog-admin-msg err';blogLoginMsg.textContent='Invalid credentials.';}
+  })
+  .catch(function(){blogLoginMsg.className='blog-admin-msg err';blogLoginMsg.textContent='Connection error.';}
+  );
 });
 blogLoginPass.addEventListener('keydown',function(e){if(e.key==='Enter')blogLoginBtn.click();});
 blogLoginUser.addEventListener('keydown',function(e){if(e.key==='Enter')blogLoginBtn.click();});
 
-blogLogoutBtn.addEventListener('click',function(){try{sessionStorage.removeItem(BLOG_AUTH_KEY);}catch(e){}updateAdminVisibility();adminPanel.classList.remove('open');});
+blogLogoutBtn.addEventListener('click',function(){try{sessionStorage.removeItem(BLOG_AUTH_KEY);sessionStorage.removeItem('rh_patch_role');}catch(e){}fetch('auth-check.php',{method:'GET',cache:'no-store'}).catch(function(){});updateAdminVisibility();adminPanel.classList.remove('open');});
 
 function resetForm(){
   blogEditId.value='';blogFormTitle.value='';blogFormExcerpt.value='';blogFormContent.value='';

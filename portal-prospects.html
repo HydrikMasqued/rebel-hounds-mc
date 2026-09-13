@@ -75,14 +75,14 @@
       </a>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="portal">Dashboard</a></li>
-        <li><a href="portal-map">Map</a></li>
-        <li><a href="portal-bots">Bots</a></li>
-        <li><a href="portal-inventory">Inventory</a></li>
-        <li><a href="portal-finance">Finance</a></li>
-        <li><a href="portal-bylaws">Bylaws</a></li>
-        <li><a href="portal-roster">Roster</a></li>
-        <li><a href="blog">Blog</a></li>
+        <li data-min-role="prospect"><a href="portal">Dashboard</a></li>
+        <li data-min-role="prospect"><a href="portal-map">Map</a></li>
+        <li data-min-role="patched"><a href="portal-bots">Bots</a></li>
+        <li data-min-role="patched"><a href="portal-inventory">Inventory</a></li>
+        <li data-min-role="patched"><a href="portal-finance">Finance</a></li>
+        <li data-min-role="prospect"><a href="portal-bylaws">Bylaws</a></li>
+        <li data-min-role="patched"><a href="portal-roster">Roster</a></li>
+        <li data-min-role="prospect"><a href="blog">Blog</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
     </div>
@@ -115,16 +115,16 @@
 
     <div class="portal-sub-nav">
       <div class="portal-sub-nav-inner">
-        <a href="portal">Dashboard</a>
-        <a href="portal-map">Map</a>
-        <a href="portal-bots">Bots</a>
-        <a href="portal-inventory">Inventory</a>
-        <a href="portal-finance">Finance</a>
-        <a href="portal-bylaws">Bylaws</a>
-        <a href="portal-prospects" class="active">Prospects</a>
-        <a href="portal-badges">Flashes</a>
-        <a href="portal-roster">Roster</a>
-        <a href="blog">Blog</a>
+        <a href="portal" data-min-role="prospect">Dashboard</a>
+        <a href="portal-map" data-min-role="prospect">Map</a>
+        <a href="portal-bots" data-min-role="patched">Bots</a>
+        <a href="portal-inventory" data-min-role="patched">Inventory</a>
+        <a href="portal-finance" data-min-role="patched">Finance</a>
+        <a href="portal-bylaws" data-min-role="prospect">Bylaws</a>
+        <a href="portal-prospects" class="active" data-min-role="patched">Prospects</a>
+        <a href="portal-badges" data-min-role="prospect">Flashes</a>
+        <a href="portal-roster" data-min-role="patched">Roster</a>
+        <a href="blog" data-min-role="prospect">Blog</a>
       </div>
     </div>
 
@@ -135,9 +135,9 @@
           <p class="section-sub" style="margin:0;">Each folder is a prospect dossier — RP file view.</p>
         </div>
         <div style="margin-left:auto;display:flex;gap:0.5rem;">
-          <button class="btn btn-outline btn-sm" id="btnEditProspects" style="display:none;">Edit</button>
-          <button class="btn btn-primary btn-sm" id="btnSaveProspects" style="display:none;">Save</button>
-          <button class="btn btn-outline btn-sm" id="btnCancelProspects" style="display:none;">Cancel</button>
+          <button class="btn btn-outline btn-sm" id="btnEditProspects" style="display:none;" data-edit-role="officer">Edit</button>
+          <button class="btn btn-primary btn-sm" id="btnSaveProspects" style="display:none;" data-edit-role="officer">Save</button>
+          <button class="btn btn-outline btn-sm" id="btnCancelProspects" style="display:none;" data-edit-role="officer">Cancel</button>
         </div>
       </div>
 
@@ -179,11 +179,9 @@
       var PROSPECT_PERIOD = 90;
       var prospectsData = null;
       var editMode = false;
-      var isOwner = false;
 
       function esc(s) { var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
       function daysBetween(a,b){ return Math.floor((b-a)/86400000); }
-      function checkOwner(){ try{ var u=sessionStorage.getItem('rh_patch_user'); var a=sessionStorage.getItem('rh_patch_auth'); isOwner=(u==='HFFH')||(a==='1'); }catch(e){ isOwner=false; } var b=document.getElementById('btnEditProspects'); if(b) b.style.display=isOwner?'':'none'; if(isOwner) document.getElementById('editBanner').textContent='EDIT MODE — You are owner. Click Edit to change any field, replace photo, add or remove folders. Remember to Save.'; }
       var DOC_KEY='prospects';
       function getStored(){
         var env=readLocal();
@@ -358,7 +356,7 @@
       }
 
       function enterEdit(){ editMode=true; document.getElementById('editBanner').classList.add('active'); document.getElementById('btnEditProspects').style.display='none'; document.getElementById('btnSaveProspects').style.display=''; document.getElementById('btnCancelProspects').style.display=''; render(); }
-      function exitEdit(){ editMode=false; document.getElementById('editBanner').classList.remove('active'); document.getElementById('btnEditProspects').style.display=isOwner?'':'none'; document.getElementById('btnSaveProspects').style.display='none'; document.getElementById('btnCancelProspects').style.display='none'; render(); }
+      function exitEdit(){ editMode=false; document.getElementById('editBanner').classList.remove('active'); document.getElementById('btnEditProspects').style.display='none'; document.getElementById('btnSaveProspects').style.display='none'; document.getElementById('btnCancelProspects').style.display='none'; render(); }
       function save(){
         (prospectsData.prospects||[]).forEach(function(p, idx){
           var nameEl=document.querySelector('[data-field="name"][data-idx="'+idx+'"]');
@@ -383,26 +381,24 @@
       function useData(doc){
         prospectsData=doc;
         render();
-        checkOwner();
       }
 
       function load(){
-        checkOwner();
         var local=readLocal();
         pullServer(function(server){
           if(server&&local){
             if(server.updated>=local.updated){ writeLocal(server); useData(server.data); }
-            else { useData(local.data); if(isOwner) pushServer(local,function(){}); }
+            else { useData(local.data); pushServer(local,function(){}); }
           } else if(server){ writeLocal(server); useData(server.data); }
-          else if(local){ useData(local.data); if(isOwner) pushServer(local,function(){}); }
+          else if(local){ useData(local.data); pushServer(local,function(){}); }
           else {
             fetch('prospects.json?t='+Date.now()).then(function(r){return r.json();}).then(function(data){
               useData(data);
-              if(isOwner) pushServer({updated:Date.now(),data:prospectsData},function(){});
+              pushServer({updated:Date.now(),data:prospectsData},function(){});
             }).catch(function(){ document.getElementById('prospectFolders').innerHTML='<div class="prospect-empty">Failed to load files</div>'; });
             return;
           }
-          if(isOwner) setTimeout(migrateImagesToServer, 800);
+          setTimeout(migrateImagesToServer, 800);
         });
       }
 
@@ -456,8 +452,8 @@
         else fetch('prospects.json?t='+Date.now()).then(function(r){return r.json();}).then(function(d){prospectsData=d; exitEdit();});
         exitEdit();
       });
-      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed){ checkOwner(); load(); } });
-      load(); checkOwner();
+      window.addEventListener('patchAuthChange', function(e){ if(e.detail&&e.detail.authed){ load(); } });
+      load();
     })();
   </script>
 </body>

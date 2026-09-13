@@ -71,17 +71,17 @@
       </a>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="portal">Dashboard</a></li>
-        <li><a href="portal-map" class="active">Map</a></li>
-        <li><a href="portal-bots">Bots</a></li>
-        <li><a href="portal-inventory">Inventory</a></li>
-        <li><a href="portal-finance">Finance</a></li>
-        <li><a href="portal-bylaws">Bylaws</a></li>
-        <li><a href="portal-prospects">Prospects</a></li>
-        <li><a href="portal-badges">Flashes</a>
+        <li data-min-role="prospect"><a href="portal">Dashboard</a></li>
+        <li data-min-role="prospect"><a href="portal-map" class="active">Map</a></li>
+        <li data-min-role="patched"><a href="portal-bots">Bots</a></li>
+        <li data-min-role="patched"><a href="portal-inventory">Inventory</a></li>
+        <li data-min-role="patched"><a href="portal-finance">Finance</a></li>
+        <li data-min-role="prospect"><a href="portal-bylaws">Bylaws</a></li>
+        <li data-min-role="patched"><a href="portal-prospects">Prospects</a></li>
+        <li data-min-role="prospect"><a href="portal-badges">Flashes</a>
         <a href="portal-roster">Roster</a></li>
-        <li><a href="portal-roster">Roster</a></li>
-        <li><a href="blog">Blog</a></li>
+        <li data-min-role="patched"><a href="portal-roster">Roster</a></li>
+        <li data-min-role="prospect"><a href="blog">Blog</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
     </div>
@@ -117,16 +117,16 @@
     <!-- Portal Sub-Nav -->
     <div class="portal-sub-nav">
       <div class="portal-sub-nav-inner">
-        <a href="portal">Dashboard</a>
-        <a href="portal-map" class="active">Map</a>
-        <a href="portal-bots">Bots</a>
-        <a href="portal-inventory">Inventory</a>
-        <a href="portal-finance">Finance</a>
-        <a href="portal-bylaws">Bylaws</a>
-        <a href="portal-prospects">Prospects</a>
-        <a href="portal-badges">Flashes</a>
-        <a href="portal-roster">Roster</a>
-        <a href="blog">Blog</a>
+        <a href="portal" data-min-role="prospect">Dashboard</a>
+        <a href="portal-map" class="active" data-min-role="prospect">Map</a>
+        <a href="portal-bots" data-min-role="patched">Bots</a>
+        <a href="portal-inventory" data-min-role="patched">Inventory</a>
+        <a href="portal-finance" data-min-role="patched">Finance</a>
+        <a href="portal-bylaws" data-min-role="prospect">Bylaws</a>
+        <a href="portal-prospects" data-min-role="patched">Prospects</a>
+        <a href="portal-badges" data-min-role="prospect">Flashes</a>
+        <a href="portal-roster" data-min-role="patched">Roster</a>
+        <a href="blog" data-min-role="prospect">Blog</a>
       </div>
     </div>
 
