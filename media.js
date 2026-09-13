@@ -9,6 +9,15 @@ var _mediaRole = null;
 var _mediaRoleLoaded = false;
 async function canEditMedia() {
   if (_mediaRoleLoaded) return _mediaRole === 'officer' || _mediaRole === 'owner';
+  // Check sessionStorage first (set by portal.js)
+  var ssRole = '';
+  try { ssRole = sessionStorage.getItem('rh_patch_role') || ''; } catch(e) {}
+  if (ssRole === 'officer' || ssRole === 'owner') {
+    _mediaRoleLoaded = true;
+    _mediaRole = ssRole;
+    return true;
+  }
+  // Check PHP session via auth-check
   try {
     var r = await fetch('auth-check.php?t=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' });
     var d = await r.json();

@@ -85,7 +85,11 @@ body {
   display: flex;
   gap: 1.3rem;
   align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.nav-links::-webkit-scrollbar { display: none; }
 
 .nav-links a {
   color: var(--muted);
@@ -95,6 +99,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -1167,12 +1172,15 @@ body {
 }
 
 .portal-sub-nav-inner {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   gap: 0;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.portal-sub-nav-inner::-webkit-scrollbar { display: none; }
 
 .portal-sub-nav a {
   color: var(--muted);

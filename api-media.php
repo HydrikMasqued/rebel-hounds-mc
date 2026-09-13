@@ -29,15 +29,9 @@ function writeJson($path, $data) {
     @chmod($path, 0666);
 }
 
-function isLoggedIn() {
-    return isset($_SESSION['rh_role']);
-}
-function getRole() {
-    return $_SESSION['rh_role'] ?? null;
-}
 function isOfficer() {
-    $role = getRole();
-    return $role === 'officer' || $role === 'owner';
+    $r = getRole();
+    return $r === 'officer' || $r === 'owner';
 }
 
 // GET — list items (public)
