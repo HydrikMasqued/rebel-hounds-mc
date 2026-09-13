@@ -66,6 +66,21 @@ if ($method === 'POST') {
         ':items' => json_encode(array_values($items), JSON_UNESCAPED_SLASHES),
         ':updated' => $updated,
     ]);
+    // Log the change
+    try {
+        require_once __DIR__ . '/auth-require.php';
+        $pdo->exec("CREATE TABLE IF NOT EXISTS site_logs (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, ts BIGINT NOT NULL DEFAULT 0, username VARCHAR(64) NOT NULL DEFAULT '', role VARCHAR(16) NOT NULL DEFAULT '', action VARCHAR(64) NOT NULL DEFAULT '', store_key VARCHAR(64) NOT NULL DEFAULT '', detail TEXT, ip VARCHAR(45) NOT NULL DEFAULT '') ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+        $logStmt = $pdo->prepare('INSERT INTO site_logs (ts, username, role, action, store_key, detail, ip) VALUES (:ts, :u, :r, :a, :k, :d, :i)');
+        $logStmt->execute([
+            ':ts' => (int)(time() * 1000),
+            ':u' => $_SESSION['rh_username'] ?? '',
+            ':r' => $_SESSION['rh_role'] ?? '',
+            ':a' => 'ticker_update',
+            ':k' => 'ticker',
+            ':d' => 'Updated ticker (' . count($items) . ' items)',
+            ':i' => $_SERVER['REMOTE_ADDR'] ?? ''
+        ]);
+    } catch (Exception $e) { /* logging failure is non-fatal */ }
     jout(['success' => true]);
 }
 

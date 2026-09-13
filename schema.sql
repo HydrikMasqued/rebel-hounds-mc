@@ -29,3 +29,27 @@ CREATE TABLE IF NOT EXISTS users (
     display_name  VARCHAR(128) NOT NULL DEFAULT '',
     created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Audit log for all data changes across the site.
+CREATE TABLE IF NOT EXISTS site_logs (
+    id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    ts         BIGINT NOT NULL DEFAULT 0,
+    username   VARCHAR(64) NOT NULL DEFAULT '',
+    role       VARCHAR(16) NOT NULL DEFAULT '',
+    action     VARCHAR(64) NOT NULL DEFAULT '',
+    store_key  VARCHAR(64) NOT NULL DEFAULT '',
+    detail     TEXT,
+    ip         VARCHAR(45) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Page view tracking for analytics.
+CREATE TABLE IF NOT EXISTS visitors (
+    id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    ts         BIGINT NOT NULL DEFAULT 0,
+    page       VARCHAR(128) NOT NULL DEFAULT '',
+    session_id VARCHAR(64) NOT NULL DEFAULT '',
+    username   VARCHAR(64) NOT NULL DEFAULT '',
+    role       VARCHAR(16) NOT NULL DEFAULT '',
+    ip         VARCHAR(45) NOT NULL DEFAULT '',
+    user_agent VARCHAR(255) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
