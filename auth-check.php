@@ -42,6 +42,7 @@ function seedUsers($pdo) {
 }
 
 try {
+    $pdo = db();
     seedUsers($pdo);
 } catch (Exception $e) {
     http_response_code(500);
