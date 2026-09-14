@@ -226,6 +226,18 @@
   bindEvents();
   updateUI();
 
+  // On page load, verify PHP session if no sessionStorage
+  if (!_role) {
+    fetch('auth-check.php?t=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.logged_in && d.role) {
+          setAuth(d.role, d.username || '');
+        }
+      })
+      .catch(function() {});
+  }
+
   // Sync with portal.js if it's loaded (listen for auth changes from portal login form)
   window.addEventListener('patchAuthChange', function(e) {
     if (e.detail) {

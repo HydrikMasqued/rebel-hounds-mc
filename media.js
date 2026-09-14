@@ -360,3 +360,11 @@ if (gallerySubmit) {
 
 renderGallery();
 renderVideos();
+
+// Re-render when auth state changes (user logs in via widget or portal)
+window.addEventListener('patchAuthChange', function(e) {
+  _mediaRoleLoaded = false;
+  _mediaRole = null;
+  renderGallery();
+  renderVideos();
+});
