@@ -5,41 +5,33 @@ const UPLOAD_PHP = 'upload-media.php';
 const LS_GALLERY = 'rh_gallery';
 const LS_VIDEOS = 'rh_videos';
 
-var _mediaRole = null;
-var _mediaRoleLoaded = false;
-async function canEditMedia() {
-  if (_mediaRoleLoaded) return _mediaRole === 'officer' || _mediaRole === 'owner';
-  // Check shared auth widget first
-  if (window.rhmcAuth && window.rhmcAuth.canEdit()) {
-    _mediaRoleLoaded = true;
-    _mediaRole = window.rhmcAuth.getRole();
-    return true;
-  }
-  // Check sessionStorage (set by portal.js)
-  var ssRole = '';
-  try { ssRole = sessionStorage.getItem('rh_patch_role') || ''; } catch(e) {}
-  if (ssRole === 'officer' || ssRole === 'owner') {
-    _mediaRoleLoaded = true;
-    _mediaRole = ssRole;
-    return true;
-  }
-  // Check PHP session via auth-check
+function canEditMedia() {
+  // Check shared auth widget first (synchronous)
+  if (window.rhmcAuth && window.rhmcAuth.canEdit()) return true;
+  // Check sessionStorage (synchronous)
   try {
-    var r = await fetch('auth-check.php?t=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' });
-    var d = await r.json();
-    _mediaRoleLoaded = true;
-    _mediaRole = d.logged_in ? (d.role || '') : '';
-    // Sync back to auth widget and sessionStorage
-    if (_mediaRole) {
-      try { sessionStorage.setItem('rh_patch_role', _mediaRole); } catch(e) {}
-      if (window.rhmcAuth) window.dispatchEvent(new CustomEvent('patchAuthChange', { detail: { authed: true, role: _mediaRole } }));
-    }
-    return _mediaRole === 'officer' || _mediaRole === 'owner';
-  } catch(e) {
-    _mediaRoleLoaded = true;
-    _mediaRole = '';
-    return false;
-  }
+    var r = sessionStorage.getItem('rh_patch_role') || '';
+    if (r === 'officer' || r === 'owner') return true;
+  } catch(e) {}
+  return false;
+}
+
+// Also check PHP session in background and re-render if role found
+function checkServerAuth() {
+  if (canEditMedia()) return;
+  fetch('auth-check.php?t=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (d.logged_in && d.role && (d.role === 'officer' || d.role === 'owner')) {
+        // Sync to sessionStorage so canEditMedia() works next time
+        try { sessionStorage.setItem('rh_patch_role', d.role); } catch(e) {}
+        if (window.rhmcAuth) window.dispatchEvent(new CustomEvent('patchAuthChange', { detail: { authed: true, role: d.role } }));
+        // Re-render with delete buttons
+        renderGallery();
+        renderVideos();
+      }
+    })
+    .catch(function() {});
 }
 
 function escapeHtml(str) {
@@ -89,7 +81,7 @@ async function renderGallery() {
   } catch(e) {}
   if (items.length === 0) { if (empty) empty.style.display = 'block'; grid.innerHTML = ''; return; }
   if (empty) empty.style.display = 'none';
-  var edit = await canEditMedia();
+  var edit = canEditMedia();
   grid.innerHTML = items.map(function(item, i) {
     var isVid = isVideoUrl(item.url, item.type);
     var media = isVid
@@ -143,9 +135,6 @@ async function deleteMediaItem(url, type) {
         await renderVideos();
       }
     } else if (r.status === 403) {
-      // Reset auth cache so next check re-authenticates
-      _mediaRoleLoaded = false;
-      _mediaRole = null;
       alert('You need to be logged in as an officer or owner to delete media.\n\nUse the login button in the bottom-right corner to log in.');
     } else {
       alert(d.error || 'Failed to delete.');
@@ -174,7 +163,7 @@ async function renderVideos() {
   try { items = await fetchVideos(); } catch(e) { items = []; }
   if (items.length === 0) { if (empty) { empty.style.display = 'block'; grid.innerHTML = ''; } return; }
   if (empty) empty.style.display = 'none';
-  var edit = await canEditMedia();
+  var edit = canEditMedia();
   grid.innerHTML = items.map(function(item) {
     var delBtn = edit ? '<button class="media-delete-btn media-delete-btn-video" data-url="' + escapeHtml(item.embedUrl) + '" title="Delete">&times;</button>' : '';
     return '<div class="video-card" style="position:relative;">' +
@@ -360,11 +349,10 @@ if (gallerySubmit) {
 
 renderGallery();
 renderVideos();
+checkServerAuth();
 
 // Re-render when auth state changes (user logs in via widget or portal)
-window.addEventListener('patchAuthChange', function(e) {
-  _mediaRoleLoaded = false;
-  _mediaRole = null;
+window.addEventListener('patchAuthChange', function() {
   renderGallery();
   renderVideos();
 });
