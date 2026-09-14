@@ -9,7 +9,13 @@ var _mediaRole = null;
 var _mediaRoleLoaded = false;
 async function canEditMedia() {
   if (_mediaRoleLoaded) return _mediaRole === 'officer' || _mediaRole === 'owner';
-  // Check sessionStorage first (set by portal.js)
+  // Check shared auth widget first
+  if (window.rhmcAuth && window.rhmcAuth.canEdit()) {
+    _mediaRoleLoaded = true;
+    _mediaRole = window.rhmcAuth.getRole();
+    return true;
+  }
+  // Check sessionStorage (set by portal.js)
   var ssRole = '';
   try { ssRole = sessionStorage.getItem('rh_patch_role') || ''; } catch(e) {}
   if (ssRole === 'officer' || ssRole === 'owner') {
@@ -23,6 +29,11 @@ async function canEditMedia() {
     var d = await r.json();
     _mediaRoleLoaded = true;
     _mediaRole = d.logged_in ? (d.role || '') : '';
+    // Sync back to auth widget and sessionStorage
+    if (_mediaRole) {
+      try { sessionStorage.setItem('rh_patch_role', _mediaRole); } catch(e) {}
+      if (window.rhmcAuth) window.dispatchEvent(new CustomEvent('patchAuthChange', { detail: { authed: true, role: _mediaRole } }));
+    }
     return _mediaRole === 'officer' || _mediaRole === 'owner';
   } catch(e) {
     _mediaRoleLoaded = true;
@@ -122,7 +133,6 @@ async function deleteMediaItem(url, type) {
     var d = await r.json();
     if (d.success) {
       if (type !== 'video') {
-        // Also remove from localStorage fallback
         try {
           var local = JSON.parse(localStorage.getItem(LS_GALLERY) || '[]');
           local = local.filter(function(i) { return i.url !== url; });
@@ -132,6 +142,11 @@ async function deleteMediaItem(url, type) {
       } else {
         await renderVideos();
       }
+    } else if (r.status === 403) {
+      // Reset auth cache so next check re-authenticates
+      _mediaRoleLoaded = false;
+      _mediaRole = null;
+      alert('You need to be logged in as an officer or owner to delete media.\n\nUse the login button in the bottom-right corner to log in.');
     } else {
       alert(d.error || 'Failed to delete.');
     }
