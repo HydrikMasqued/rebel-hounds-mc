@@ -132,6 +132,28 @@ async function deleteMediaItem(url, type) {
         } catch(e) {}
         await renderGallery();
       } else {
+        try {
+          var vids = JSON.parse(localStorage.getItem(LS_VIDEOS) || '[]');
+          vids = vids.filter(function(i) { return (i.embedUrl || '') !== url; });
+          localStorage.setItem(LS_VIDEOS, JSON.stringify(vids));
+        } catch(e) {}
+        await renderVideos();
+      }
+    } else if (r.status === 404) {
+      // Item only in localStorage, delete from there
+      if (type !== 'video') {
+        try {
+          var local = JSON.parse(localStorage.getItem(LS_GALLERY) || '[]');
+          local = local.filter(function(i) { return i.url !== url; });
+          localStorage.setItem(LS_GALLERY, JSON.stringify(local));
+        } catch(e) {}
+        await renderGallery();
+      } else {
+        try {
+          var vids = JSON.parse(localStorage.getItem(LS_VIDEOS) || '[]');
+          vids = vids.filter(function(i) { return (i.embedUrl || '') !== url; });
+          localStorage.setItem(LS_VIDEOS, JSON.stringify(vids));
+        } catch(e) {}
         await renderVideos();
       }
     } else if (r.status === 403) {
