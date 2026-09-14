@@ -53,3 +53,18 @@ CREATE TABLE IF NOT EXISTS visitors (
     ip         VARCHAR(45) NOT NULL DEFAULT '',
     user_agent VARCHAR(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Media gallery and videos (images, videos, uploaded files).
+CREATE TABLE IF NOT EXISTS media (
+    id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    type        ENUM('image','video') NOT NULL DEFAULT 'image',
+    url         VARCHAR(500) NOT NULL DEFAULT '',
+    embed_url   VARCHAR(500) NOT NULL DEFAULT '',
+    caption     VARCHAR(300) NOT NULL DEFAULT '',
+    title       VARCHAR(200) NOT NULL DEFAULT '',
+    description VARCHAR(500) NOT NULL DEFAULT '',
+    added_by    VARCHAR(64) NOT NULL DEFAULT '',
+    ts          BIGINT NOT NULL DEFAULT 0,
+    INDEX idx_type (type),
+    INDEX idx_ts (ts)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

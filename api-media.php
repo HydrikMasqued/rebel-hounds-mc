@@ -1,32 +1,34 @@
 <?php
 /**
- * Rebel Hounds MC — Media management API
- * GET    /api-media.php                    → list all gallery items
- * POST   /api-media.php { url, caption }   → add gallery item (officer+)
- * DELETE /api-media.php { url }            → remove gallery item (officer+)
- * GET    /api-media.php?type=videos        → list all video items
- * POST   /api-media.php { embedUrl, title, description }  → add video (officer+)
- * DELETE /api-media.php { url, type:video, embedUrl }     → remove video (officer+)
+ * Rebel Hounds MC — Media management API (database-backed)
+ * GET    /api-media.php                       → list all gallery items
+ * GET    /api-media.php?type=videos            → list all video items
+ * POST   /api-media.php { url, caption }       → add gallery item (officer+)
+ * POST   /api-media.php { embedUrl, title }    → add video (officer+)
+ * DELETE /api-media.php { url, type }          → remove item (officer+)
  */
+require __DIR__ . '/db.php';
 require __DIR__ . '/auth-require.php';
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
 $method = $_SERVER['REQUEST_METHOD'];
-$galleryFile = __DIR__ . '/gallery.json';
-$videosFile = __DIR__ . '/videos.json';
 
-function readJson($path) {
-    if (!file_exists($path)) return [];
-    $raw = @file_get_contents($path);
-    $data = json_decode($raw, true);
-    return is_array($data) ? $data : [];
-}
-
-function writeJson($path, $data) {
-    @file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
-    @chmod($path, 0666);
+function ensureMediaTable($pdo) {
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS media (" .
+        "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
+        "type ENUM('image','video') NOT NULL DEFAULT 'image', " .
+        "url VARCHAR(500) NOT NULL DEFAULT '', " .
+        "embed_url VARCHAR(500) NOT NULL DEFAULT '', " .
+        "caption VARCHAR(300) NOT NULL DEFAULT '', " .
+        "title VARCHAR(200) NOT NULL DEFAULT '', " .
+        "description VARCHAR(500) NOT NULL DEFAULT '', " .
+        "added_by VARCHAR(64) NOT NULL DEFAULT '', " .
+        "ts BIGINT NOT NULL DEFAULT 0" .
+        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+    );
 }
 
 function isOfficer() {
@@ -34,14 +36,63 @@ function isOfficer() {
     return $r === 'officer' || $r === 'owner';
 }
 
+try {
+    $pdo = db();
+    ensureMediaTable($pdo);
+    // Auto-migrate gallery.json if media table is empty
+    $count = $pdo->query('SELECT COUNT(*) FROM media')->fetchColumn();
+    if ($count == 0) {
+        $galleryFile = __DIR__ . '/gallery.json';
+        if (file_exists($galleryFile)) {
+            $raw = @file_get_contents($galleryFile);
+            $items = json_decode($raw, true);
+            if (is_array($items) && count($items) > 0) {
+                $stmt = $pdo->prepare('INSERT INTO media (type, url, caption, added_by, ts) VALUES (?, ?, ?, ?, ?)');
+                foreach ($items as $item) {
+                    $url = $item['url'] ?? '';
+                    $caption = $item['caption'] ?? '';
+                    $type = ($item['type'] ?? '') === 'video' ? 'video' : 'image';
+                    $addedBy = $item['addedBy'] ?? 'Club';
+                    $ts = $item['ts'] ?? time();
+                    $stmt->execute([$type, $url, $caption, $addedBy, $ts]);
+                }
+            }
+        }
+    }
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'db_init_failed']);
+    exit;
+}
+
 // GET — list items (public)
 if ($method === 'GET') {
     $type = isset($_GET['type']) ? $_GET['type'] : 'gallery';
     if ($type === 'videos') {
-        echo json_encode(['items' => readJson($videosFile)]);
+        $stmt = $pdo->prepare('SELECT * FROM media WHERE type = ? ORDER BY ts DESC LIMIT 200');
+        $stmt->execute(['video']);
     } else {
-        echo json_encode(['items' => readJson($galleryFile)]);
+        $stmt = $pdo->prepare('SELECT * FROM media WHERE type IN (?, ?) ORDER BY ts DESC LIMIT 500');
+        $stmt->execute(['image', 'video']);
     }
+    $rows = $stmt->fetchAll();
+    $items = array_map(function($r) {
+        $item = [
+            'id' => (int)$r['id'],
+            'type' => $r['type'],
+            'url' => $r['url'],
+            'caption' => $r['caption'],
+            'addedBy' => $r['added_by'],
+            'ts' => (int)$r['ts']
+        ];
+        if ($r['type'] === 'video') {
+            $item['embedUrl'] = $r['embed_url'];
+            $item['title'] = $r['title'];
+            $item['description'] = $r['description'];
+        }
+        return $item;
+    }, $rows);
+    echo json_encode(['items' => $items]);
     exit;
 }
 
@@ -62,18 +113,18 @@ if ($method === 'POST') {
         $embedUrl = trim($body['embedUrl']);
         $title = isset($body['title']) ? mb_substr(trim($body['title']), 0, 200) : '';
         $description = isset($body['description']) ? mb_substr(trim($body['description']), 0, 500) : '';
-        $videos = readJson($videosFile);
-        $entry = [
-            'embedUrl' => $embedUrl,
-            'title' => $title,
-            'description' => $description,
-            'addedBy' => $_SESSION['rh_username'] ?? 'Officer',
-            'ts' => time()
-        ];
-        array_unshift($videos, $entry);
-        $videos = array_slice($videos, 0, 200);
-        writeJson($videosFile, $videos);
-        echo json_encode(['success' => true, 'item' => $entry]);
+        $addedBy = $_SESSION['rh_username'] ?? 'Officer';
+        $ts = time();
+
+        $stmt = $pdo->prepare('INSERT INTO media (type, url, embed_url, caption, title, description, added_by, ts) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute(['video', '', $embedUrl, '', $title, $description, $addedBy, $ts]);
+        $id = $pdo->lastInsertId();
+
+        echo json_encode(['success' => true, 'item' => [
+            'id' => (int)$id, 'type' => 'video', 'url' => '', 'embedUrl' => $embedUrl,
+            'caption' => '', 'title' => $title, 'description' => $description,
+            'addedBy' => $addedBy, 'ts' => $ts
+        ]]);
         exit;
     }
 
@@ -86,19 +137,18 @@ if ($method === 'POST') {
     }
     $caption = isset($body['caption']) ? mb_substr(trim($body['caption']), 0, 300) : '';
     $isVidUrl = preg_match('/\.(mp4|webm|mov|m4v|avi)(\?|$)/i', $url);
-    $type = $isVidUrl ? 'video' : 'image';
-    $gallery = readJson($galleryFile);
-    $entry = [
-        'url' => $url,
-        'caption' => $caption,
-        'type' => $type,
-        'addedBy' => $_SESSION['rh_username'] ?? 'Officer',
-        'ts' => time()
-    ];
-    array_unshift($gallery, $entry);
-    $gallery = array_slice($gallery, 0, 500);
-    writeJson($galleryFile, $gallery);
-    echo json_encode(['success' => true, 'item' => $entry]);
+    $mediaType = $isVidUrl ? 'video' : 'image';
+    $addedBy = $_SESSION['rh_username'] ?? 'Officer';
+    $ts = time();
+
+    $stmt = $pdo->prepare('INSERT INTO media (type, url, embed_url, caption, title, description, added_by, ts) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$mediaType, $url, '', $caption, '', '', $addedBy, $ts]);
+    $id = $pdo->lastInsertId();
+
+    echo json_encode(['success' => true, 'item' => [
+        'id' => (int)$id, 'type' => $mediaType, 'url' => $url, 'caption' => $caption,
+        'addedBy' => $addedBy, 'ts' => $ts
+    ]]);
     exit;
 }
 
@@ -123,52 +173,33 @@ if ($method === 'DELETE') {
         exit;
     }
 
+    // Try to find and delete by url (or embed_url for videos)
     if ($mediaType === 'video') {
-        $videos = readJson($videosFile);
-        $found = false;
-        foreach ($videos as $i => $v) {
-            if (($v['embedUrl'] ?? '') === $url) {
-                array_splice($videos, $i, 1);
-                $found = true;
-                break;
-            }
-        }
-        if (!$found) {
-            http_response_code(404);
-            echo json_encode(['error' => 'Video not found']);
-            exit;
-        }
-        writeJson($videosFile, $videos);
-        echo json_encode(['success' => true, 'deleted' => $url]);
-        exit;
+        $stmt = $pdo->prepare('SELECT id, url FROM media WHERE embed_url = ? AND type = ? LIMIT 1');
+        $stmt->execute([$url, 'video']);
+    } else {
+        $stmt = $pdo->prepare('SELECT id, url FROM media WHERE url = ? LIMIT 1');
+        $stmt->execute([$url]);
     }
+    $row = $stmt->fetch();
 
-    // Gallery delete
-    $gallery = readJson($galleryFile);
-    $found = false;
-    foreach ($gallery as $i => $g) {
-        if (($g['url'] ?? '') === $url) {
-            $deleted = array_splice($gallery, $i, 1)[0];
-            $found = true;
-            // Also try to delete the physical file if it's a local upload
-            $filePath = __DIR__ . '/' . $url;
-            if (strpos($url, 'media-uploads/') === 0 && file_exists($filePath)) {
-                @unlink($filePath);
-            }
-            break;
-        }
-    }
-    if (!$found) {
+    if (!$row) {
         http_response_code(404);
-        echo json_encode(['error' => 'Gallery item not found']);
+        echo json_encode(['error' => 'Item not found']);
         exit;
     }
-    writeJson($galleryFile, $gallery);
 
-    // Log deletion
+    // Delete physical file if it's a local upload
+    $filePath = __DIR__ . '/' . $row['url'];
+    if (strpos($row['url'], 'media-uploads/') === 0 && file_exists($filePath)) {
+        @unlink($filePath);
+    }
+
+    $delStmt = $pdo->prepare('DELETE FROM media WHERE id = ?');
+    $delStmt->execute([$row['id']]);
+
+    // Log
     try {
-        require __DIR__ . '/db.php';
-        $pdo = db();
         $pdo->exec("CREATE TABLE IF NOT EXISTS site_logs (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, ts BIGINT NOT NULL DEFAULT 0, username VARCHAR(64) NOT NULL DEFAULT '', role VARCHAR(16) NOT NULL DEFAULT '', action VARCHAR(64) NOT NULL DEFAULT '', store_key VARCHAR(64) NOT NULL DEFAULT '', detail TEXT, ip VARCHAR(45) NOT NULL DEFAULT '') ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
         $logStmt = $pdo->prepare('INSERT INTO site_logs (ts, username, role, action, store_key, detail, ip) VALUES (:ts, :u, :r, :a, :k, :d, :i)');
         $logStmt->execute([
@@ -176,8 +207,8 @@ if ($method === 'DELETE') {
             ':u' => $_SESSION['rh_username'] ?? '',
             ':r' => $_SESSION['rh_role'] ?? '',
             ':a' => 'media_delete',
-            ':k' => 'gallery',
-            ':d' => 'Deleted ' . ($deleted['type'] ?? 'item') . ': ' . $url,
+            ':k' => 'media',
+            ':d' => 'Deleted ' . $mediaType . ': ' . $url,
             ':i' => $_SERVER['REMOTE_ADDR'] ?? ''
         ]);
     } catch (Exception $e) {}

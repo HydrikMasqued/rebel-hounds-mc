@@ -1,4 +1,9 @@
 <?php
+/**
+ * Rebel Hounds MC — Media upload handler (database-backed)
+ * POST multipart/form-data → uploads file, saves to media table
+ */
+require __DIR__ . '/db.php';
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
@@ -9,26 +14,46 @@ $uploadDir = __DIR__ . '/media-uploads';
 if (!is_dir($uploadDir)) { @mkdir($uploadDir, 0777, true); }
 @chmod($uploadDir, 0777);
 
-$galleryFile = __DIR__ . '/gallery.json';
+// Ensure media table exists
+try {
+    $pdo = db();
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS media (" .
+        "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
+        "type ENUM('image','video') NOT NULL DEFAULT 'image', " .
+        "url VARCHAR(500) NOT NULL DEFAULT '', " .
+        "embed_url VARCHAR(500) NOT NULL DEFAULT '', " .
+        "caption VARCHAR(300) NOT NULL DEFAULT '', " .
+        "title VARCHAR(200) NOT NULL DEFAULT '', " .
+        "description VARCHAR(500) NOT NULL DEFAULT '', " .
+        "added_by VARCHAR(64) NOT NULL DEFAULT '', " .
+        "ts BIGINT NOT NULL DEFAULT 0" .
+        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+    );
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'db_init_failed']);
+    exit;
+}
+
 $caption = isset($_POST['caption']) ? trim($_POST['caption']) : '';
 $caption = mb_substr($caption, 0, 300);
 $imageUrl = isset($_POST['imageUrl']) ? trim($_POST['imageUrl']) : '';
+$addedBy = session_status() === PHP_SESSION_ACTIVE ? ($_SESSION['rh_username'] ?? 'Member') : 'Member';
+$ts = time();
 
+// URL upload
 if ($imageUrl !== '') {
     if (!filter_var($imageUrl, FILTER_VALIDATE_URL)) { http_response_code(400); echo json_encode(['error'=>'Invalid URL']); exit; }
     $isVidUrl = preg_match('/\.(mp4|webm|mov|m4v|avi)(\?|$)/i', $imageUrl);
     $type = $isVidUrl ? 'video' : 'image';
-    $entry = ['url'=>$imageUrl, 'caption'=>$caption, 'type'=>$type, 'addedBy'=>'Member', 'ts'=>time()];
-    $gallery = [];
-    if (file_exists($galleryFile)) { $raw=@file_get_contents($galleryFile); $gallery=json_decode($raw,true); if(!is_array($gallery)) $gallery=[]; }
-    array_unshift($gallery, $entry);
-    $gallery=array_slice($gallery,0,500);
-    @file_put_contents($galleryFile, json_encode($gallery, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), LOCK_EX);
-    @chmod($galleryFile, 0666);
+    $stmt = $pdo->prepare('INSERT INTO media (type, url, caption, added_by, ts) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute([$type, $imageUrl, $caption, $addedBy, $ts]);
     echo json_encode(['success'=>true, 'url'=>$imageUrl, 'type'=>$type]);
     exit;
 }
 
+// File upload
 if (!isset($_FILES['file'])) {
     http_response_code(400);
     echo json_encode(['error'=>'No file received. Try a smaller file or check server limits.']);
@@ -80,7 +105,6 @@ $unique = $safeBase . '_' . time() . '_' . $rand . '.' . $ext;
 $destPath = $uploadDir . '/' . $unique;
 
 if (!@move_uploaded_file($tmpPath, $destPath)) {
-    // fallback copy
     if (!@copy($tmpPath, $destPath)) {
         http_response_code(500);
         echo json_encode(['error'=>'Failed to save file. Folder may not be writable.']);
@@ -92,15 +116,7 @@ if (!@move_uploaded_file($tmpPath, $destPath)) {
 $url = 'media-uploads/' . $unique;
 $type = $isVideo ? 'video' : 'image';
 
-if (empty($_POST['private'])) {
-$entry = ['url'=>$url, 'caption'=>$caption, 'type'=>$type, 'addedBy'=>'Member', 'ts'=>time()];
-
-$gallery = [];
-if (file_exists($galleryFile)) { $raw=@file_get_contents($galleryFile); $gallery=json_decode($raw,true); if(!is_array($gallery)) $gallery=[]; }
-array_unshift($gallery, $entry);
-$gallery=array_slice($gallery,0,500);
-@file_put_contents($galleryFile, json_encode($gallery, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES), LOCK_EX);
-@chmod($galleryFile, 0666);
-}
+$stmt = $pdo->prepare('INSERT INTO media (type, url, caption, added_by, ts) VALUES (?, ?, ?, ?, ?)');
+$stmt->execute([$type, $url, $caption, $addedBy, $ts]);
 
 echo json_encode(['success'=>true, 'url'=>$url, 'type'=>$type]);

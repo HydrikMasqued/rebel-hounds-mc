@@ -1,14 +1,10 @@
-/* ===== Rebel Hounds MC  Media (Gallery + Videos) — shared uploads v3 ===== */
+/* ===== Rebel Hounds MC  Media (Gallery + Videos) — database-backed v4 ===== */
 
 const API_MEDIA = 'api-media.php';
 const UPLOAD_PHP = 'upload-media.php';
-const LS_GALLERY = 'rh_gallery';
-const LS_VIDEOS = 'rh_videos';
 
 function canEditMedia() {
-  // Check shared auth widget first (synchronous)
   if (window.rhmcAuth && window.rhmcAuth.canEdit()) return true;
-  // Check sessionStorage (synchronous)
   try {
     var r = sessionStorage.getItem('rh_patch_role') || '';
     if (r === 'officer' || r === 'owner') return true;
@@ -16,17 +12,14 @@ function canEditMedia() {
   return false;
 }
 
-// Also check PHP session in background and re-render if role found
 function checkServerAuth() {
   if (canEditMedia()) return;
   fetch('auth-check.php?t=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' })
     .then(function(r) { return r.json(); })
     .then(function(d) {
       if (d.logged_in && d.role && (d.role === 'officer' || d.role === 'owner')) {
-        // Sync to sessionStorage so canEditMedia() works next time
         try { sessionStorage.setItem('rh_patch_role', d.role); } catch(e) {}
         if (window.rhmcAuth) window.dispatchEvent(new CustomEvent('patchAuthChange', { detail: { authed: true, role: d.role } }));
-        // Re-render with delete buttons
         renderGallery();
         renderVideos();
       }
@@ -46,23 +39,13 @@ function isVideoUrl(url, type) {
 }
 
 /* ===== GALLERY ===== */
-async function fetchSharedGallery() {
+async function fetchGallery() {
   try {
     var r = await fetch(API_MEDIA + '?t=' + Date.now(), { cache: 'no-store', credentials: 'same-origin' });
     var d = await r.json();
     if (d && Array.isArray(d.items)) return d.items;
   } catch(e) {}
-  // Fallback to gallery.json
-  try {
-    var r2 = await fetch('gallery.json?t=' + Date.now(), { cache: 'no-store' });
-    if (r2.ok) { var d2 = await r2.json(); if (Array.isArray(d2)) return d2; }
-  } catch(e) {}
-  // Fallback to localStorage
-  try { return JSON.parse(localStorage.getItem(LS_GALLERY)) || getDefaultGallery(); } catch(e) { return getDefaultGallery(); }
-}
-
-function getDefaultGallery() {
-  return [{ url: 'rebel-hounds-patch.png', caption: 'Rebel Hounds MC  Club Patch', type: 'image', addedBy: 'Club' }];
+  return [];
 }
 
 async function renderGallery() {
@@ -70,15 +53,7 @@ async function renderGallery() {
   var empty = document.getElementById('galleryEmpty');
   if (!grid) return;
   var items = [];
-  try { items = await fetchSharedGallery(); } catch(e) { items = getDefaultGallery(); }
-  // merge local fallback
-  try {
-    var local = JSON.parse(localStorage.getItem(LS_GALLERY) || '[]');
-    if (Array.isArray(local) && local.length) {
-      var urls = new Set(items.map(function(i){ return i.url; }));
-      local.forEach(function(l){ if(!urls.has(l.url)) items.push(l); });
-    }
-  } catch(e) {}
+  try { items = await fetchGallery(); } catch(e) { items = []; }
   if (items.length === 0) { if (empty) empty.style.display = 'block'; grid.innerHTML = ''; return; }
   if (empty) empty.style.display = 'none';
   var edit = canEditMedia();
@@ -87,10 +62,9 @@ async function renderGallery() {
     var media = isVid
       ? '<video src="' + escapeHtml(item.url) + '" muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;"></video><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.6);color:#fff;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:18px;">\u25B6</span>'
       : '<img src="' + escapeHtml(item.url) + '" alt="' + escapeHtml(item.caption||'Club photo') + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;">';
-    var delBtn = edit ? '<button class="media-delete-btn" data-url="' + escapeHtml(item.url) + '" data-type="' + (isVid?'video':'image') + '" title="Delete">&times;</button>' : '';
+    var delBtn = edit ? '<button class="media-delete-btn" data-id="' + (item.id||0) + '" data-url="' + escapeHtml(item.url) + '" data-type="' + (isVid?'video':'image') + '" title="Delete">&times;</button>' : '';
     return '<div class="gallery-item" data-index="' + i + '" data-url="' + escapeHtml(item.url) + '" data-type="' + (isVid?'video':'image') + '" style="position:relative;overflow:hidden;cursor:pointer;">' +
-      delBtn +
-      media +
+      delBtn + media +
       (item.caption ? '<div class="gallery-item-overlay"><p>' + escapeHtml(item.caption) + '</p></div>' : '') +
     '</div>';
   }).join('');
@@ -106,58 +80,26 @@ async function renderGallery() {
   grid.querySelectorAll('.media-delete-btn').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
-      var url = btn.getAttribute('data-url');
-      var type = btn.getAttribute('data-type');
-      if (!confirm('Delete this ' + type + '?')) return;
-      deleteMediaItem(url, type);
+      if (!confirm('Delete this item?')) return;
+      deleteMediaItem(btn.getAttribute('data-id'), btn.getAttribute('data-url'), btn.getAttribute('data-type'));
     });
   });
 }
 
-async function deleteMediaItem(url, type) {
+async function deleteMediaItem(id, url, type) {
   try {
     var r = await fetch(API_MEDIA, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
-      body: JSON.stringify({ url: url, type: type === 'video' ? 'video' : 'gallery' })
+      body: JSON.stringify({ url: url, type: type })
     });
     var d = await r.json();
     if (d.success) {
-      if (type !== 'video') {
-        try {
-          var local = JSON.parse(localStorage.getItem(LS_GALLERY) || '[]');
-          local = local.filter(function(i) { return i.url !== url; });
-          localStorage.setItem(LS_GALLERY, JSON.stringify(local));
-        } catch(e) {}
-        await renderGallery();
-      } else {
-        try {
-          var vids = JSON.parse(localStorage.getItem(LS_VIDEOS) || '[]');
-          vids = vids.filter(function(i) { return (i.embedUrl || '') !== url; });
-          localStorage.setItem(LS_VIDEOS, JSON.stringify(vids));
-        } catch(e) {}
-        await renderVideos();
-      }
-    } else if (r.status === 404) {
-      // Item only in localStorage, delete from there
-      if (type !== 'video') {
-        try {
-          var local = JSON.parse(localStorage.getItem(LS_GALLERY) || '[]');
-          local = local.filter(function(i) { return i.url !== url; });
-          localStorage.setItem(LS_GALLERY, JSON.stringify(local));
-        } catch(e) {}
-        await renderGallery();
-      } else {
-        try {
-          var vids = JSON.parse(localStorage.getItem(LS_VIDEOS) || '[]');
-          vids = vids.filter(function(i) { return (i.embedUrl || '') !== url; });
-          localStorage.setItem(LS_VIDEOS, JSON.stringify(vids));
-        } catch(e) {}
-        await renderVideos();
-      }
+      if (type !== 'video') await renderGallery();
+      else await renderVideos();
     } else if (r.status === 403) {
-      alert('You need to be logged in as an officer or owner to delete media.\n\nUse the login button in the bottom-right corner to log in.');
+      alert('You need to be logged in as an officer or owner.\nUse the login button in the bottom-right corner.');
     } else {
       alert(d.error || 'Failed to delete.');
     }
@@ -173,8 +115,7 @@ async function fetchVideos() {
     var d = await r.json();
     if (d && Array.isArray(d.items)) return d.items;
   } catch(e) {}
-  // Fallback to localStorage
-  try { return JSON.parse(localStorage.getItem(LS_VIDEOS)) || []; } catch(e) { return []; }
+  return [];
 }
 
 async function renderVideos() {
@@ -187,19 +128,18 @@ async function renderVideos() {
   if (empty) empty.style.display = 'none';
   var edit = canEditMedia();
   grid.innerHTML = items.map(function(item) {
-    var delBtn = edit ? '<button class="media-delete-btn media-delete-btn-video" data-url="' + escapeHtml(item.embedUrl) + '" title="Delete">&times;</button>' : '';
+    var delBtn = edit ? '<button class="media-delete-btn media-delete-btn-video" data-id="' + (item.id||0) + '" data-url="' + escapeHtml(item.embedUrl || item.url) + '" title="Delete">&times;</button>' : '';
     return '<div class="video-card" style="position:relative;">' +
       delBtn +
-      '<iframe src="' + escapeHtml(item.embedUrl) + '" title="' + escapeHtml(item.title||'Video') + '" allowfullscreen loading="lazy"></iframe>' +
+      '<iframe src="' + escapeHtml(item.embedUrl || item.url) + '" title="' + escapeHtml(item.title||'Video') + '" allowfullscreen loading="lazy"></iframe>' +
       '<div class="video-card-info"><h4>' + escapeHtml(item.title||'Untitled') + '</h4>' + (item.description ? '<p>' + escapeHtml(item.description) + '</p>' : '') + '</div>' +
     '</div>';
   }).join('');
   grid.querySelectorAll('.media-delete-btn-video').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
-      var url = btn.getAttribute('data-url');
       if (!confirm('Delete this video?')) return;
-      deleteMediaItem(url, 'video');
+      deleteMediaItem(btn.getAttribute('data-id'), btn.getAttribute('data-url'), 'video');
     });
   });
 }
@@ -319,13 +259,6 @@ async function uploadDirect(file, caption, url) {
     return { error: 'Connection failed. Check internet.' };
   }
 }
-function saveLocalFallback(url, caption, isVid) {
-  try {
-    var items = JSON.parse(localStorage.getItem(LS_GALLERY) || '[]');
-    items.unshift({ url: url, caption: caption, type: isVid ? 'video' : 'image', addedBy: 'Member' });
-    localStorage.setItem(LS_GALLERY, JSON.stringify(items.slice(0, 100)));
-  } catch(e) {}
-}
 if (gallerySubmit) {
   gallerySubmit.addEventListener('click', async function() {
     var urlVal = galleryUrl.value.trim();
@@ -348,23 +281,10 @@ if (gallerySubmit) {
       galleryPreviewVideo.pause();
       if (galleryFile) galleryFile.value = '';
       pendingFile = null;
-      saveLocalFallback(result.url, caption, false);
       await renderGallery();
       setTimeout(function() { galleryMsg.textContent = ''; }, 3000);
     } else {
-      var errMsg = (result && result.error) || 'Upload failed.';
-      if (pendingFile && pendingFile.type.startsWith('image/')) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          saveLocalFallback(e.target.result, caption, false);
-          galleryMsg.textContent = errMsg + ' - Saved locally for you. Server may need permissions fix. Others will not see it until server works.';
-          renderGallery();
-          galleryUrl.value = ''; galleryCaption.value = ''; galleryPreview.style.display = 'none'; if (galleryFile) galleryFile.value = ''; pendingFile = null;
-        };
-        reader.readAsDataURL(pendingFile);
-      } else {
-        galleryMsg.textContent = errMsg + ' - If this persists, check file type/size or contact admin.';
-      }
+      galleryMsg.textContent = (result && result.error) || 'Upload failed.';
     }
   });
 }
@@ -373,7 +293,6 @@ renderGallery();
 renderVideos();
 checkServerAuth();
 
-// Re-render when auth state changes (user logs in via widget or portal)
 window.addEventListener('patchAuthChange', function() {
   renderGallery();
   renderVideos();
