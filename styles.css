@@ -2550,7 +2550,7 @@ body.scrolled-past .scroll-hint { opacity: 0; }
 .badge-name { font-family: var(--font-display); font-size: 1.6rem; color: #fff; letter-spacing: 1px; margin-bottom: 0.5rem; }
 .badge-desc { font-size: 1.05rem; color: #aaa; margin-bottom: 0.8rem; line-height: 1.5; }
 .badge-tier { display: inline-block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.8rem; border-radius: 4px; margin-bottom: 0.7rem; }
-.badge-earned { width: 100%; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+.badge-earned { width: 100%; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
 .badge-earned-label { font-size: 0.9rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
 .badge-earned-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .badge-earned-name { font-size: 1rem; color: var(--text); background: var(--dark); padding: 0.25rem 0.7rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 0.35rem; }
