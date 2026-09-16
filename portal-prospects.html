@@ -263,7 +263,8 @@
         var period=prospectsData.prospectPeriod||PROSPECT_PERIOD;
         var active=prospects.filter(function(p){return p.status==='active';}).length;
         var completed=prospects.filter(function(p){return p.status==='completed';}).length;
-        summary.innerHTML='<div class="summary-stat"><div class="num">'+prospects.length+'</div><div class="label">Files</div></div><div class="summary-stat"><div class="num">'+active+'</div><div class="label">Active</div></div><div class="summary-stat"><div class="num">'+completed+'</div><div class="label">Completed</div></div>';
+        var disqualified=prospects.filter(function(p){return p.status==='disqualified';}).length;
+        summary.innerHTML='<div class="summary-stat"><div class="num">'+prospects.length+'</div><div class="label">Files</div></div><div class="summary-stat"><div class="num">'+active+'</div><div class="label">Active</div></div><div class="summary-stat"><div class="num">'+completed+'</div><div class="label">Patched</div></div>';
         var periodCtrl=document.getElementById('periodControl');
         if(periodCtrl){
           if(editMode){
@@ -279,7 +280,10 @@
           prospects.sort(function(a,b){ return new Date(a.prospectSince)-new Date(b.prospectSince); });
           var now=new Date();
           var html='';
-          prospects.forEach(function(p, idx){
+          var activeProspects=prospects.filter(function(p){return p.status==='active';});
+          var archivedProspects=prospects.filter(function(p){return p.status!=='active';});
+          activeProspects.forEach(function(p){
+            var idx=prospects.indexOf(p);
             var since=new Date(p.prospectSince);
             var daysElapsed=daysBetween(since, now);
             var progress=Math.min(Math.round((daysElapsed/period)*100),100);
@@ -299,17 +303,12 @@
               html+='<div class="folder-fields">';
               html+='<div class="folder-field"><label>Prospect Since</label><span>'+since.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})+' ('+daysElapsed+' days)</span></div>';
               html+='<div class="folder-field"><label>Sponsor</label><span>'+esc(p.sponsor||'-')+'</span></div>';
-              if(p.status==='active'){
-                html+='<div class="folder-field full"><label>Status</label><span style="text-transform:uppercase;font-weight:700;color:var(--primary);">'+esc(status)+'</span></div>';
-              } else {
-                html+='<div class="folder-field full"><label>Status</label><span style="text-transform:uppercase;">'+esc(status)+'</span></div>';
-              }
+              html+='<div class="folder-field full"><label>Status</label><span style="text-transform:uppercase;font-weight:700;color:var(--primary);">'+esc(status)+'</span></div>';
               html+='</div>';
               if(p.notes) html+='<div class="folder-notes">'+esc(p.notes)+'</div>';
               else html+='<div class="folder-notes" style="opacity:0.5;">No notes on file.</div>';
-              if(status==='active'){
-                html+='<div class="folder-progress"><div class="progress-bar"><div class="progress-fill '+fillClass+'" style="width:'+progress+'%"></div></div><div class="progress-label"><span>Day '+daysElapsed+' of '+period+'</span><span>'+progress+'%</span></div></div>';
-              }
+              html+='<div class="folder-progress"><div class="progress-bar"><div class="progress-fill '+fillClass+'" style="width:'+progress+'%"></div></div><div class="progress-label"><span>Day '+daysElapsed+' of '+period+'</span><span>'+progress+'%</span></div></div>';
+              html+='<div class="folder-actions" style="margin-top:1rem;"><button type="button" class="btn btn-primary btn-sm" data-action="patch-in" data-idx="'+idx+'">Patched In</button></div>';
             } else {
               html+='<div class="folder-edit-grid">';
               html+='<div style="display:flex;gap:0.8rem;align-items:flex-start;">';
@@ -332,7 +331,71 @@
             }
             html+='</div></div></div>';
           });
+          if(archivedProspects.length > 0){
+            html+='<div style="margin-top:2rem;border-top:1px solid var(--border);padding-top:1.5rem;">';
+            html+='<div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;cursor:pointer;" id="archivedToggle">';
+            html+='<h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;color:var(--muted);margin:0;">Archived Files ('+archivedProspects.length+')</h3>';
+            html+='<span id="archivedArrow" style="color:var(--muted);font-size:0.8rem;">&#9654; Show</span>';
+            html+='</div>';
+            html+='<div id="archivedList" style="display:none;">';
+            archivedProspects.forEach(function(p){
+              var idx=prospects.indexOf(p);
+              var since=new Date(p.prospectSince);
+              var daysElapsed=daysBetween(since, now);
+              var status=p.status||'active';
+              var fileNo='RHMC-'+String(idx+1).padStart(3,'0')+'-'+since.getFullYear();
+              var patchDate=p.patchedDate ? new Date(p.patchedDate).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : '-';
+              html+='<div class="prospect-folder" data-idx="'+idx+'"'+(editMode?'':' data-action="open-dossier" style="cursor:pointer;"')+'>';
+              html+='<div class="folder-tab"><span>'+esc(p.name)+'</span><small>'+esc(fileNo)+'</small><span class="tab-status '+status+'">'+status+'</span></div>';
+              html+='<div class="folder-body"><div class="folder-paper">';
+              html+='<div class="folder-stamp '+status+'">'+status+'</div>';
+              if(!editMode){
+                html+='<div class="folder-head">';
+                if(p.image) html+='<img class="folder-avatar" src="'+esc(p.image)+'" alt="">';
+                else html+='<div class="folder-avatar-placeholder">\uD83D\uDC64</div>';
+                html+='<div class="folder-title"><h3>'+esc(p.name)+'</h3><div class="file-no">File '+esc(fileNo)+' &mdash; Sponsor: '+esc(p.sponsor||'-')+'</div></div>';
+                html+='</div>';
+                html+='<div class="folder-fields">';
+                html+='<div class="folder-field"><label>Prospect Since</label><span>'+since.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})+' ('+daysElapsed+' days)</span></div>';
+                html+='<div class="folder-field"><label>Sponsor</label><span>'+esc(p.sponsor||'-')+'</span></div>';
+                html+='<div class="folder-field full"><label>Status</label><span style="text-transform:uppercase;">'+esc(status)+'</span></div>';
+                if(p.patchedDate) html+='<div class="folder-field full"><label>Patched Date</label><span>'+patchDate+'</span></div>';
+                html+='</div>';
+                if(p.notes) html+='<div class="folder-notes">'+esc(p.notes)+'</div>';
+              } else {
+                html+='<div class="folder-edit-grid">';
+                html+='<div style="display:flex;gap:0.8rem;align-items:flex-start;">';
+                html+='<div style="text-align:center;">';
+                if(p.image) html+='<img src="'+esc(p.image)+'" style="width:72px;height:72px;object-fit:cover;border-radius:4px;border:1px solid #c9b896;display:block;margin-bottom:0.35rem;">';
+                else html+='<div style="width:72px;height:72px;background:#e8ddd0;border:1px dashed #b0a07a;border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:0.35rem;">\uD83D\uDC64</div>';
+                html+='<input type="file" accept="image/*" data-avatar-file data-idx="'+idx+'" style="font-size:0.65rem;max-width:90px;">';
+                if(p.image) html+='<button type="button" class="btn btn-outline btn-sm" data-action="clear-image" data-idx="'+idx+'" style="font-size:0.6rem;padding:0.15rem 0.4rem;margin-top:0.2rem;">Remove</button>';
+                html+='</div>';
+                html+='<div style="flex:1;display:grid;gap:0.4rem;">';
+                html+='<label>Prospect Name<input type="text" value="'+esc(p.name)+'" data-field="name" data-idx="'+idx+'" placeholder="Name"></label>';
+                html+='<label>Sponsor<input type="text" value="'+esc(p.sponsor||'')+'" data-field="sponsor" data-idx="'+idx+'" placeholder="Sponsor"></label>';
+                html+='</div></div>';
+                html+='<label>Prospect Since (YYYY-MM-DD)<input type="date" value="'+esc(p.prospectSince)+'" data-field="prospectSince" data-idx="'+idx+'"></label>';
+                html+='<label>Status<select data-field="status" data-idx="'+idx+'"><option value="active"'+(status==='active'?' selected':'')+'>active</option><option value="completed"'+(status==='completed'?' selected':'')+'>completed</option><option value="disqualified"'+(status==='disqualified'?' selected':'')+'>disqualified</option></select></label>';
+                html+='<label>Notes<textarea data-field="notes" data-idx="'+idx+'" placeholder="RP notes, behaviour, file remarks...">'+esc(p.notes||'')+'</textarea></label>';
+                html+='<label>Image URL (or use upload above)<input type="text" value="'+esc(p.image||'')+'" data-field="image" data-idx="'+idx+'" placeholder="https://..."></label>';
+                html+='<div class="folder-actions"><button type="button" class="btn btn-outline btn-sm" data-action="delete-prospect" data-idx="'+idx+'" style="color:var(--primary);border-color:var(--primary);">Delete file</button></div>';
+                html+='</div>';
+              }
+              html+='</div></div></div>';
+            });
+            html+='</div></div>';
+          }
           container.innerHTML=html;
+          var toggle=document.getElementById('archivedToggle');
+          if(toggle){
+            toggle.addEventListener('click',function(){
+              var list=document.getElementById('archivedList');
+              var arrow=document.getElementById('archivedArrow');
+              if(list.style.display==='none'){ list.style.display=''; arrow.innerHTML='&#9660; Hide'; }
+              else { list.style.display='none'; arrow.innerHTML='&#9654; Show'; }
+            });
+          }
         }
         if(editMode){
           addForm.style.display='';
@@ -363,7 +426,7 @@
       }
 
       function enterEdit(){ editMode=true; document.getElementById('editBanner').classList.add('active'); document.getElementById('btnEditProspects').style.display='none'; document.getElementById('btnSaveProspects').style.display=''; document.getElementById('btnCancelProspects').style.display=''; render(); }
-      function exitEdit(){ editMode=false; document.getElementById('editBanner').classList.remove('active'); document.getElementById('btnEditProspects').style.display='none'; document.getElementById('btnSaveProspects').style.display='none'; document.getElementById('btnCancelProspects').style.display='none'; render(); }
+      function exitEdit(){ editMode=false; document.getElementById('editBanner').classList.remove('active'); document.getElementById('btnSaveProspects').style.display='none'; document.getElementById('btnCancelProspects').style.display='none'; document.getElementById('btnEditProspects').style.display=hasRole('officer')?'':'none'; render(); }
       function save(){
         (prospectsData.prospects||[]).forEach(function(p, idx){
           var nameEl=document.querySelector('[data-field="name"][data-idx="'+idx+'"]');
@@ -424,6 +487,15 @@
         }
         if(a==='delete-prospect'){ if(!confirm('Delete this prospect file?')) return; prospectsData.prospects.splice(idx,1); if(!putDoc(true))return; render(); }
         else if(a==='clear-image'){ prospectsData.prospects[idx].image=''; if(!putDoc(true))return; render(); }
+        else if(a==='patch-in'){
+          var p2=prospectsData.prospects[idx];
+          if(!p2) return;
+          if(!confirm('Patch in '+p2.name+'? This will archive their file as completed.')) return;
+          p2.status='completed';
+          p2.patchedDate=new Date().toISOString().slice(0,10);
+          if(!putDoc(true))return;
+          render();
+        }
       });
 
       document.addEventListener('change', function(e){
