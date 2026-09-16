@@ -1,12 +1,4 @@
 [
-  "2026-09-16 08:20:18,268 - discord.client - INFO - logging in using static token",
-  "2026-09-16 08:20:18,684 - utils.database - INFO - Initializing database tables",
-  "2026-09-16 08:20:18,687 - utils.database - INFO - Shared database connection established",
-  "2026-09-16 08:20:18,692 - utils.database - INFO - Database tables initialized successfully",
-  "2026-09-16 08:20:18,692 - __main__ - INFO - Database initialized in setup hook",
-  "2026-09-16 08:20:18,699 - __main__ - INFO - Successfully loaded cogs.loa_system",
-  "2026-09-16 08:20:18,701 - __main__ - INFO - Successfully loaded cogs.membership",
-  "2026-09-16 08:20:18,705 - __main__ - INFO - Successfully loaded cogs.configuration",
   "2026-09-16 08:20:18,707 - cogs.direct_messaging - INFO - Loaded 18 saved DM conversation(s)",
   "2026-09-16 08:20:18,707 - __main__ - INFO - Successfully loaded cogs.direct_messaging",
   "2026-09-16 08:20:18,714 - __main__ - INFO - Successfully loaded cogs.time_converter",
@@ -198,5 +190,13 @@
   "2026-09-16 09:41:24,022 - __main__ - INFO - Database initialized for guild: Test Server 3 (ID: 1396144378271109221)",
   "2026-09-16 09:41:26,355 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-09-16 09:41:26,355 - cogs.contribution_verification - INFO - Found 0 pending contributions",
-  "2026-09-16 11:46:57,240 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a."
+  "2026-09-16 11:46:57,240 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
+  "2026-09-16 13:46:35,040 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-09-16 13:46:35,041 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-16 15:01:38,180 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
+  "2026-09-16 15:14:47,261 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 5292 seconds",
+  "2026-09-16 15:14:47,262 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 1h 28m",
+  "2026-09-16 15:31:22,066 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-09-16 15:31:22,066 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-16 15:37:26,607 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a."
 ]
