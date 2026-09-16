@@ -421,9 +421,9 @@
       function exitEdit() {
         editMode = false;
         document.getElementById('editBanner').classList.remove('active');
-        document.getElementById('btnEditBadges').style.display = 'none';
         document.getElementById('btnSaveBadges').style.display = 'none';
         document.getElementById('btnCancelBadges').style.display = 'none';
+        document.getElementById('btnEditBadges').style.display = hasRole('officer') ? '' : 'none';
         render();
       }
 
