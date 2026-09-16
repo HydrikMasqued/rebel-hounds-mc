@@ -752,13 +752,14 @@
     async function api(endpoint, options) {
       if (MAP_API_BASE) {
         try {
-          var res = await fetch(MAP_API_BASE + '/api' + endpoint, {
+          var url = MAP_API_BASE + endpoint;
+          var res = await fetch(url, {
             headers: { 'Content-Type': 'application/json' },
             ...(options || {})
           });
           if (!res.ok) throw new Error(await res.text());
           return res.json();
-        } catch(e) { /* fall through to localStorage */ }
+        } catch(e) { console.warn('[map] API failed, using localStorage:', e.message); }
       }
       return lsApi(endpoint, options);
     }

@@ -52,58 +52,107 @@ function cleanupFinanceDashboard() {
 }
 
 // ============================================================
-// DATA PERSISTENCE (localStorage)
+// DATA PERSISTENCE (server + localStorage fallback)
 // ============================================================
 
-function loadData() {
+const FINANCE_DOC_KEY = 'finance';
+
+function readLocalFinance() {
   try {
-    const storedCategories = localStorage.getItem(STORAGE_KEY_CATEGORIES);
-    const storedTransactions = localStorage.getItem(STORAGE_KEY_TRANSACTIONS);
-    const storedBudgets = localStorage.getItem(STORAGE_KEY_BUDGETS);
-    
-    financeData.categories = storedCategories ? JSON.parse(storedCategories) : [...DEFAULT_CATEGORIES];
-    financeData.transactions = storedTransactions ? JSON.parse(storedTransactions) : [];
-    financeData.budgets = storedBudgets ? JSON.parse(storedBudgets) : [];
+    const raw = localStorage.getItem('rhmc_finance_data');
+    if (!raw) return null;
+    const p = JSON.parse(raw);
+    if (p && p.data && typeof p.updated === 'number') return p;
+    return { updated: 0, data: p };
+  } catch (e) { return null; }
+}
+
+function writeLocalFinance(env) {
+  try { localStorage.setItem('rhmc_finance_data', JSON.stringify(env)); } catch (e) {}
+}
+
+function pullFinanceServer(cb) {
+  fetch('api-store.php?key=' + FINANCE_DOC_KEY + '&t=' + Date.now())
+    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(d) { cb((d && !d.empty) ? d : null); })
+    .catch(function() { cb(null); });
+}
+
+function pushFinanceServer(env, cb) {
+  fetch('api-store.php?key=' + FINANCE_DOC_KEY, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ updated: env.updated, data: env.data })
+  })
+    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(d) { cb(!!(d && d.success)); })
+    .catch(function() { cb(false); });
+}
+
+function saveFinanceToServer() {
+  const env = {
+    updated: Date.now(),
+    data: {
+      categories: financeData.categories,
+      transactions: financeData.transactions,
+      budgets: financeData.budgets
+    }
+  };
+  writeLocalFinance(env);
+  pushFinanceServer(env, function(ok) {
+    if (!ok && window.console) console.warn('[finance] server sync failed');
+  });
+}
+
+function loadData() {
+  const local = readLocalFinance();
+  pullFinanceServer(function(server) {
+    var merged = null;
+    if (server && local) {
+      if (server.updated >= local.updated) {
+        merged = server.data;
+        writeLocalFinance(server);
+      } else {
+        merged = local.data;
+        pushFinanceServer(local, function() {});
+      }
+    } else if (server) {
+      merged = server.data;
+      writeLocalFinance(server);
+    } else if (local) {
+      merged = local.data;
+      pushFinanceServer(local, function() {});
+    }
+
+    if (merged) {
+      financeData.categories = merged.categories && merged.categories.length ? merged.categories : [...DEFAULT_CATEGORIES];
+      financeData.transactions = merged.transactions || [];
+      financeData.budgets = merged.budgets || [];
+    } else {
+      financeData.categories = [...DEFAULT_CATEGORIES];
+      financeData.transactions = [];
+      financeData.budgets = [];
+    }
+
     financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
-    
     updateAllCategoryDropdowns();
     renderDashboard();
     showLoading(false);
-    console.log('Data loaded successfully');
-  } catch (error) {
-    console.error('Error loading data:', error);
-    financeData.categories = [...DEFAULT_CATEGORIES];
-    financeData.transactions = [];
-    financeData.budgets = [];
-    financeData.summary = calculateSummary([], []);
-    renderDashboard();
-    showLoading(false);
-  }
+  });
 }
 
-function saveCategories() {
-  try { localStorage.setItem(STORAGE_KEY_CATEGORIES, JSON.stringify(financeData.categories)); } catch (e) {}
-}
-
-function saveTransactions() {
-  try { localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(financeData.transactions)); } catch (e) {}
-}
-
-function saveBudgets() {
-  try { localStorage.setItem(STORAGE_KEY_BUDGETS, JSON.stringify(financeData.budgets)); } catch (e) {}
-}
+function saveCategories() { saveFinanceToServer(); }
+function saveTransactions() { saveFinanceToServer(); }
+function saveBudgets() { saveFinanceToServer(); }
 
 function resetAllData() {
   if (!confirm('Are you sure you want to clear ALL data? This cannot be undone.')) return;
-  
-  localStorage.removeItem(STORAGE_KEY_CATEGORIES);
-  localStorage.removeItem(STORAGE_KEY_TRANSACTIONS);
-  localStorage.removeItem(STORAGE_KEY_BUDGETS);
   
   financeData.categories = [...DEFAULT_CATEGORIES];
   financeData.transactions = [];
   financeData.budgets = [];
   financeData.summary = calculateSummary([], []);
+  saveFinanceToServer();
   
   updateAllCategoryDropdowns();
   renderDashboard();

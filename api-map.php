@@ -1,0 +1,275 @@
+<?php
+require __DIR__ . '/db.php';
+require __DIR__ . '/auth-require.php';
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
+
+if (!isLoggedIn()) { http_response_code(401); echo json_encode(['error'=>'Not logged in']); exit; }
+
+try {
+    $pdo = db();
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS map_blips (" .
+        "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
+        "name VARCHAR(200) NOT NULL DEFAULT '', " .
+        "description TEXT, " .
+        "latitude DOUBLE NOT NULL DEFAULT 0, " .
+        "longitude DOUBLE NOT NULL DEFAULT 0, " .
+        "category_id INT UNSIGNED DEFAULT NULL, " .
+        "icon VARCHAR(50) NOT NULL DEFAULT 'marker', " .
+        "color VARCHAR(20) NOT NULL DEFAULT '#d4af37', " .
+        "angle INT UNSIGNED NOT NULL DEFAULT 0, " .
+        "created_at VARCHAR(30) NOT NULL, " .
+        "updated_at VARCHAR(30) NOT NULL" .
+        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+    );
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS map_categories (" .
+        "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
+        "name VARCHAR(100) NOT NULL DEFAULT '', " .
+        "color VARCHAR(20) NOT NULL DEFAULT '#d4af37', " .
+        "icon VARCHAR(50) NOT NULL DEFAULT 'marker'" .
+        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+    );
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS map_drawings (" .
+        "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
+        "type VARCHAR(20) NOT NULL DEFAULT 'stroke', " .
+        "color VARCHAR(20) NOT NULL DEFAULT '#ff4d6d', " .
+        "width INT UNSIGNED NOT NULL DEFAULT 3, " .
+        "points JSON NOT NULL, " .
+        "created_at VARCHAR(30) NOT NULL" .
+        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+    );
+} catch (PDOException $e) {
+    error_log('map db unavailable: ' . $e->getMessage());
+    jerr('Database unavailable', 500);
+}
+
+$uri = $_SERVER['REQUEST_URI'];
+$path = parse_url($uri, PHP_URL_PATH);
+$path = preg_replace('#^.*/api-map\.php#', '', $path);
+$parts = array_values(array_filter(explode('/', $path)));
+$resource = $parts[0] ?? '';
+$id = isset($parts[1]) ? (int)$parts[1] : null;
+
+$m = $_SERVER['REQUEST_METHOD'];
+
+// GET - read
+if ($m === 'GET') {
+    if ($resource === 'blips') {
+        if ($id) {
+            $stmt = $pdo->prepare('SELECT * FROM map_blips WHERE id = :id');
+            $stmt->execute([':id' => $id]);
+            $row = $stmt->fetch();
+            if (!$row) jerr('Not found', 404);
+            $row['latitude'] = (float)$row['latitude'];
+            $row['longitude'] = (float)$row['longitude'];
+            $row['category_id'] = $row['category_id'] !== null ? (int)$row['category_id'] : null;
+            $row['angle'] = (int)$row['angle'];
+            jout($row);
+        }
+        $cat = isset($_GET['category']) ? (int)$_GET['category'] : null;
+        if ($cat) {
+            $stmt = $pdo->prepare('SELECT * FROM map_blips WHERE category_id = :cat ORDER BY id');
+            $stmt->execute([':cat' => $cat]);
+        } else {
+            $stmt = $pdo->query('SELECT * FROM map_blips ORDER BY id');
+        }
+        $rows = $stmt->fetchAll();
+        foreach ($rows as &$r) {
+            $r['latitude'] = (float)$r['latitude'];
+            $r['longitude'] = (float)$r['longitude'];
+            $r['category_id'] = $r['category_id'] !== null ? (int)$r['category_id'] : null;
+            $r['angle'] = (int)$r['angle'];
+        }
+        jout($rows);
+    }
+    if ($resource === 'categories') {
+        if ($id) {
+            $stmt = $pdo->prepare('SELECT * FROM map_categories WHERE id = :id');
+            $stmt->execute([':id' => $id]);
+            $row = $stmt->fetch();
+            if (!$row) jerr('Not found', 404);
+            $row['id'] = (int)$row['id'];
+            jout($row);
+        }
+        $stmt = $pdo->query('SELECT * FROM map_categories ORDER BY id');
+        $rows = $stmt->fetchAll();
+        foreach ($rows as &$r) { $r['id'] = (int)$r['id']; }
+        jout($rows);
+    }
+    if ($resource === 'drawings') {
+        $stmt = $pdo->query('SELECT * FROM map_drawings ORDER BY id');
+        $rows = $stmt->fetchAll();
+        foreach ($rows as &$r) {
+            $r['id'] = (int)$r['id'];
+            $r['width'] = (int)$r['width'];
+            $r['points'] = json_decode($r['points'], true);
+        }
+        jout($rows);
+    }
+    if ($resource === 'export') {
+        $blips = $pdo->query('SELECT * FROM map_blips ORDER BY id')->fetchAll();
+        $cats = $pdo->query('SELECT * FROM map_categories ORDER BY id')->fetchAll();
+        foreach ($blips as &$b) { $b['latitude']=(float)$b['latitude']; $b['longitude']=(float)$b['longitude']; $b['category_id']=$b['category_id']!==null?(int)$b['category_id']:null; $b['angle']=(int)$b['angle']; }
+        foreach ($cats as &$c) { $c['id']=(int)$c['id']; }
+        jout(['blips'=>$blips, 'categories'=>$cats, 'exportedAt'=>date('c')]);
+    }
+    if ($resource === 'search' && isset($parts[1])) {
+        $q = '%' . $parts[1] . '%';
+        $stmt = $pdo->prepare('SELECT * FROM map_blips WHERE name LIKE :q OR description LIKE :q ORDER BY id');
+        $stmt->execute([':q' => $q]);
+        $rows = $stmt->fetchAll();
+        foreach ($rows as &$r) { $r['latitude']=(float)$r['latitude']; $r['longitude']=(float)$r['longitude']; $r['category_id']=$r['category_id']!==null?(int)$r['category_id']:null; $r['angle']=(int)$r['angle']; }
+        jout($rows);
+    }
+    jerr('Not found', 404);
+}
+
+// POST - create
+if ($m === 'POST') {
+    requireRole('officer');
+    $raw = file_get_contents('php://input');
+    $body = json_decode($raw, true);
+    if (!is_array($body)) jerr('Invalid data');
+
+    if ($resource === 'blips') {
+        $name = trim($body['name'] ?? '');
+        if (!$name) jerr('Name required');
+        $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, latitude, longitude, category_id, icon, color, angle, created_at, updated_at) VALUES (:n, :d, :lat, :lng, :cat, :icon, :col, :ang, :created, :updated)');
+        $now = date('c');
+        $stmt->execute([
+            ':n' => $name,
+            ':d' => $body['description'] ?? '',
+            ':lat' => (float)($body['latitude'] ?? 0),
+            ':lng' => (float)($body['longitude'] ?? 0),
+            ':cat' => $body['category_id'] ?? null,
+            ':icon' => $body['icon'] ?? 'marker',
+            ':col' => $body['color'] ?? '#d4af37',
+            ':ang' => (int)($body['angle'] ?? 0),
+            ':created' => $now,
+            ':updated' => $now
+        ]);
+        $newId = $pdo->lastInsertId();
+        jout(['id' => (int)$newId]);
+    }
+    if ($resource === 'categories') {
+        $name = trim($body['name'] ?? '');
+        if (!$name) jerr('Name required');
+        $stmt = $pdo->prepare('INSERT INTO map_categories (name, color, icon) VALUES (:n, :c, :i)');
+        $stmt->execute([':n' => $name, ':c' => $body['color'] ?? '#d4af37', ':i' => $body['icon'] ?? 'marker']);
+        $newId = $pdo->lastInsertId();
+        jout(['id' => (int)$newId]);
+    }
+    if ($resource === 'drawings') {
+        $stmt = $pdo->prepare('INSERT INTO map_drawings (type, color, width, points, created_at) VALUES (:t, :c, :w, :p, :created)');
+        $stmt->execute([
+            ':t' => $body['type'] ?? 'stroke',
+            ':c' => $body['color'] ?? '#ff4d6d',
+            ':w' => (int)($body['width'] ?? 3),
+            ':p' => json_encode($body['points'] ?? []),
+            ':created' => date('c')
+        ]);
+        $newId = $pdo->lastInsertId();
+        jout(['id' => (int)$newId]);
+    }
+    if ($resource === 'import') {
+        $cats = $body['categories'] ?? [];
+        $blips = $body['blips'] ?? [];
+        $imported = 0;
+        foreach ($cats as $c) {
+            if (empty($c['name'])) continue;
+            $stmt = $pdo->prepare('INSERT IGNORE INTO map_categories (name, color, icon) VALUES (:n, :c, :i)');
+            $stmt->execute([':n'=>$c['name'], ':c'=>$c['color']??'#d4af37', ':i'=>$c['icon']??'marker']);
+        }
+        foreach ($blips as $b) {
+            if (empty($b['name']) || !is_numeric($b['latitude'] ?? null) || !is_numeric($b['longitude'] ?? null)) continue;
+            $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, latitude, longitude, category_id, icon, color, angle, created_at, updated_at) VALUES (:n,:d,:lat,:lng,:cat,:icon,:col,:ang,:c,:u)');
+            $stmt->execute([
+                ':n'=>$b['name'], ':d'=>$b['description']??'', ':lat'=>(float)$b['latitude'], ':lng'=>(float)$b['longitude'],
+                ':cat'=>$b['category_id']??null, ':icon'=>$b['icon']??'marker', ':col'=>$b['color']??'#d4af37',
+                ':ang'=>(int)($b['angle']??0), ':c'=>date('c'), ':u'=>date('c')
+            ]);
+            $imported++;
+        }
+        jout(['success'=>true, 'imported'=>$imported]);
+    }
+    jerr('Not found', 404);
+}
+
+// PUT - update
+if ($m === 'PUT') {
+    requireRole('officer');
+    if ($resource === 'blips' && $id) {
+        $raw = file_get_contents('php://input');
+        $body = json_decode($raw, true);
+        if (!is_array($body)) jerr('Invalid data');
+        $sets = [];
+        $params = [':id' => $id];
+        foreach (['name','description','icon','color'] as $f) {
+            if (isset($body[$f])) { $sets[] = "$f = :$f"; $params[":$f"] = $body[$f]; }
+        }
+        foreach (['latitude','longitude'] as $f) {
+            if (isset($body[$f])) { $sets[] = "$f = :$f"; $params[":$f"] = (float)$body[$f]; }
+        }
+        if (isset($body['category_id'])) { $sets[]='category_id=:cat'; $params[':cat']=$body['category_id']; }
+        if (isset($body['angle'])) { $sets[]='angle=:ang'; $params[':ang']=(int)$body['angle']; }
+        $sets[] = 'updated_at = :updated';
+        $params[':updated'] = date('c');
+        if ($sets) {
+            $stmt = $pdo->prepare('UPDATE map_blips SET ' . implode(',', $sets) . ' WHERE id = :id');
+            $stmt->execute($params);
+        }
+        jout(['success'=>true]);
+    }
+    if ($resource === 'categories' && $id) {
+        $raw = file_get_contents('php://input');
+        $body = json_decode($raw, true);
+        $sets = [];
+        $params = [':id' => $id];
+        foreach (['name','color','icon'] as $f) {
+            if (isset($body[$f])) { $sets[] = "$f = :$f"; $params[":$f"] = $body[$f]; }
+        }
+        if ($sets) {
+            $stmt = $pdo->prepare('UPDATE map_categories SET ' . implode(',', $sets) . ' WHERE id = :id');
+            $stmt->execute($params);
+        }
+        jout(['success'=>true]);
+    }
+    jerr('Not found', 404);
+}
+
+// DELETE
+if ($m === 'DELETE') {
+    requireRole('officer');
+    if ($resource === 'blips') {
+        if ($id) {
+            $stmt = $pdo->prepare('DELETE FROM map_blips WHERE id = :id');
+            $stmt->execute([':id' => $id]);
+        } else {
+            $pdo->exec('DELETE FROM map_blips');
+        }
+        jout(['success'=>true]);
+    }
+    if ($resource === 'categories') {
+        if ($id) {
+            $stmt = $pdo->prepare('DELETE FROM map_categories WHERE id = :id');
+            $stmt->execute([':id' => $id]);
+        }
+        jout(['success'=>true]);
+    }
+    if ($resource === 'drawings') {
+        if ($id) {
+            $stmt = $pdo->prepare('DELETE FROM map_drawings WHERE id = :id');
+            $stmt->execute([':id' => $id]);
+        } else {
+            $pdo->exec('DELETE FROM map_drawings');
+        }
+        jout(['success'=>true]);
+    }
+    jerr('Not found', 404);
+}
+
+http_response_code(405);
+echo json_encode(['error' => 'Method not allowed']);

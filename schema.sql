@@ -68,3 +68,52 @@ CREATE TABLE IF NOT EXISTS media (
     INDEX idx_type (type),
     INDEX idx_ts (ts)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Club blog posts.
+CREATE TABLE IF NOT EXISTS blog_posts (
+    id          VARCHAR(64) NOT NULL PRIMARY KEY,
+    slug        VARCHAR(200) NOT NULL,
+    title       VARCHAR(300) NOT NULL DEFAULT '',
+    excerpt     VARCHAR(500) NOT NULL DEFAULT '',
+    content     LONGTEXT NOT NULL,
+    author      VARCHAR(100) NOT NULL DEFAULT 'Rebel Hounds MC',
+    pinned      TINYINT(1) NOT NULL DEFAULT 0,
+    created_at  VARCHAR(30) NOT NULL,
+    updated_at  VARCHAR(30) NOT NULL,
+    date_display VARCHAR(60) NOT NULL DEFAULT '',
+    INDEX idx_pinned (pinned),
+    INDEX idx_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Interactive map blips.
+CREATE TABLE IF NOT EXISTS map_blips (
+    id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(200) NOT NULL DEFAULT '',
+    description TEXT,
+    latitude    DOUBLE NOT NULL DEFAULT 0,
+    longitude   DOUBLE NOT NULL DEFAULT 0,
+    category_id INT UNSIGNED DEFAULT NULL,
+    icon        VARCHAR(50) NOT NULL DEFAULT 'marker',
+    color       VARCHAR(20) NOT NULL DEFAULT '#d4af37',
+    angle       INT UNSIGNED NOT NULL DEFAULT 0,
+    created_at  VARCHAR(30) NOT NULL,
+    updated_at  VARCHAR(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Map categories.
+CREATE TABLE IF NOT EXISTS map_categories (
+    id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name  VARCHAR(100) NOT NULL DEFAULT '',
+    color VARCHAR(20) NOT NULL DEFAULT '#d4af37',
+    icon  VARCHAR(50) NOT NULL DEFAULT 'marker'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Map drawings (strokes/lines).
+CREATE TABLE IF NOT EXISTS map_drawings (
+    id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    type       VARCHAR(20) NOT NULL DEFAULT 'stroke',
+    color      VARCHAR(20) NOT NULL DEFAULT '#ff4d6d',
+    width      INT UNSIGNED NOT NULL DEFAULT 3,
+    points     JSON NOT NULL,
+    created_at VARCHAR(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
