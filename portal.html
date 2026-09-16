@@ -91,10 +91,10 @@
       <!-- Welcome Banner -->
       <div class="portal-banner">
         <div class="portal-banner-text">
-          <h3>Welcome back, <span class="accent">Patched</span>.</h3>
+          <h3>Welcome back, <span class="accent" id="banner-role">Member</span>.</h3>
           <p>Club business, resources and upcoming run intel.</p>
         </div>
-        <span class="portal-banner-badge">Patch Holder</span>
+        <span class="portal-banner-badge" id="banner-role-badge">Member</span>
       </div>
 
       <!-- Dashboard Grid -->
@@ -184,6 +184,22 @@
   <script src="auth-widget.js"></script>
   <script src="portal.js?v=5"></script>
   <script src="track.js"></script>
+  <script>
+    (function() {
+      var roleNames = { prospect: 'Prospect', patched: 'Patched', officer: 'Officer', owner: 'Owner' };
+      var badgeNames = { prospect: 'Prospect', patched: 'Patch Holder', officer: 'Officer', owner: 'Owner' };
+      function updateBanner() {
+        var role = typeof getRole === 'function' ? getRole() : null;
+        if (!role) return;
+        var nameEl = document.getElementById('banner-role');
+        var badgeEl = document.getElementById('banner-role-badge');
+        if (nameEl) nameEl.textContent = roleNames[role] || role;
+        if (badgeEl) badgeEl.textContent = badgeNames[role] || role;
+      }
+      updateBanner();
+      window.addEventListener('patchAuthChange', updateBanner);
+    })();
+  </script>
   <script>
     (function() {
       var el = document.getElementById('serverStatus');
