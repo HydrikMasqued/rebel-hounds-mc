@@ -2532,3 +2532,47 @@ body.scrolled-past .scroll-hint { opacity: 0; }
 .ticker-editbar input.tsep { width: 2.6rem; text-align: center; background: var(--dark); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 0.3rem 0.4rem; font-size: 0.85rem; }
 .ticker-edit-fab { position: fixed; right: 12px; bottom: 12px; z-index: 9999; background: #0a0a0a; border: 1px solid var(--primary); color: var(--text); font-size: 0.72rem; letter-spacing: 1px; padding: 0.5rem 0.8rem; border-radius: 6px; cursor: pointer; }
 .ticker-status { font-size: 0.75rem; color: var(--muted); }
+
+/* ===== Flashes / Patches page ===== */
+.badge-summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.badge-summary .summary-stat { background: var(--dark-3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.5rem; text-align: center; min-width: 120px; }
+.badge-summary .summary-stat .num { font-family: var(--font-display); font-size: 2rem; color: #fff; letter-spacing: 2px; }
+.badge-summary .summary-stat .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.2rem; }
+.badge-group { margin-bottom: 2.5rem; }
+.badge-group-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+.badge-group-head h3 { font-family: var(--font-display); font-size: 1.5rem; color: #fff; letter-spacing: 2px; margin: 0; }
+.badge-group-id { font-size: 0.7rem; color: var(--muted); }
+.badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem; }
+.badge-card { background: var(--dark-3); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: border-color 0.25s; }
+.badge-card:hover { border-color: var(--primary); }
+.badge-img { width: 90px; height: 90px; object-fit: contain; border-radius: 8px; margin-bottom: 0.8rem; }
+.badge-icon { font-size: 3rem; margin-bottom: 0.6rem; line-height: 1; }
+.badge-name { font-family: var(--font-display); font-size: 1.1rem; color: #fff; letter-spacing: 1px; margin-bottom: 0.3rem; }
+.badge-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.6rem; line-height: 1.4; }
+.badge-tier { display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.6rem; }
+.badge-earned { width: 100%; margin-top: auto; padding-top: 0.6rem; border-top: 1px solid var(--border); }
+.badge-earned-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+.badge-earned-list { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.badge-earned-name { font-size: 0.78rem; color: var(--text); background: var(--dark); padding: 0.15rem 0.5rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 0.3rem; }
+.badge-earned-name button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.9rem; padding: 0; line-height: 1; }
+.badge-earned-name button:hover { color: #ff5252; }
+.badge-earned-empty { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+.badge-earned-add { display: flex; gap: 0.4rem; margin-top: 0.4rem; }
+.badge-earned-add input { flex: 1; background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.3rem 0.5rem; border-radius: 4px; font-size: 0.78rem; }
+.badge-empty { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.9rem; }
+.tier-manage { background: var(--dark-3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
+.tier-manage h4 { font-family: var(--font-display); color: var(--primary); font-size: 1rem; letter-spacing: 1px; margin-bottom: 0.8rem; }
+.tier-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+.tier-row input[type="text"] { background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+.tier-row input[type="color"] { width: 32px; height: 28px; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; background: none; padding: 0; }
+.tier-preview { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 4px; }
+.badge-edit-row { display: flex; gap: 0.4rem; margin-bottom: 0.4rem; width: 100%; flex-wrap: wrap; }
+.badge-edit-row input[type="text"], .badge-edit-row textarea, .badge-edit-row select { background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.25rem 0.4rem; border-radius: 4px; font-size: 0.78rem; font-family: var(--font-body); }
+.badge-edit-row input[type="text"] { flex: 1; min-width: 100px; }
+.badge-edit-row textarea { flex: 1; min-width: 150px; min-height: 50px; resize: vertical; }
+.badge-edit-row select { min-width: 100px; }
+.badge-add-form { background: var(--dark-3); border: 1px dashed var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1rem; }
+.badge-add-form h4 { font-family: var(--font-display); font-size: 0.9rem; color: var(--primary); letter-spacing: 1px; margin-bottom: 0.6rem; }
+.badge-card-actions { margin-top: 0.6rem; width: 100%; }
+.edit-banner { display: none; background: rgba(212,160,23,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 0.6rem 1rem; border-radius: 6px; font-size: 0.8rem; text-align: center; margin-bottom: 1rem; letter-spacing: 0.5px; }
+.edit-banner.active { display: block; }
