@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -83,7 +83,7 @@
       <div class="section-head" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
         <div>
           <h2 class="section-title" style="margin-bottom:0;">FLASHES / PATCHES</h2>
-          <p class="section-sub" style="margin:0;">In the MC you earn a flash or patch â€” unique and earnable.</p>
+          <p class="section-sub" style="margin:0;">In the MC you earn a flash or patch — unique and earnable.</p>
         </div>
         <div style="margin-left:auto;display:flex;gap:0.5rem;">
           <button class="btn btn-outline btn-sm" id="btnEditBadges" style="display:none;" data-edit-role="officer">Edit</button>
@@ -92,7 +92,7 @@
         </div>
       </div>
 
-      <div class="edit-banner" id="editBanner">EDIT MODE â€” Replace images, edit name/description, add or remove names under each patch, add or delete patches. Remember to Save.</div>
+      <div class="edit-banner" id="editBanner">EDIT MODE — Replace images, edit name/description, add or remove names under each patch, add or delete patches. Remember to Save.</div>
 
       <div class="badge-summary" id="badgeSummary"></div>
       <div id="badgeGroups">Loading badges...</div>
@@ -328,7 +328,7 @@
 
         var html = '';
         if (editMode) {
-          html += '<div class="tier-manage"><h4>Tiers â€” rename, recolor, add or remove</h4>';
+          html += '<div class="tier-manage"><h4>Tiers — rename, recolor, add or remove</h4>';
           (badgesData.tiers||[]).forEach(function(t, tIdx){
             html += '<div class="tier-row" data-tier-idx="'+tIdx+'"><input type="text" value="'+esc(t.label)+'" data-tier-field="label" data-tier-idx="'+tIdx+'" placeholder="Tier name"><input type="text" value="'+esc(t.id)+'" data-tier-field="id" data-tier-idx="'+tIdx+'" placeholder="ID" style="max-width:120px;"><input type="color" value="'+esc(t.color)+'" data-tier-field="color" data-tier-idx="'+tIdx+'"><span class="tier-preview" style="background:'+hexToRgba(t.color,0.15)+';color:'+esc(t.color)+';border:1px solid '+hexToRgba(t.color,0.3)+';">'+esc(t.label)+'</span><button type="button" class="btn btn-outline btn-sm" data-action="delete-tier" data-tier-idx="'+tIdx+'" style="font-size:0.7rem;">Delete</button></div>';
           });
@@ -360,17 +360,17 @@
                 html += '</div>';
                 html += '<div class="badge-edit-row"><input type="text" value="' + esc(b.icon) + '" data-field="icon" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Fallback icon (emoji)" style="max-width:70px;text-align:center;">';
                 html += '<input type="text" value="' + esc(b.name) + '" data-field="name" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Patch name"></div>';
-                html += '<div class="badge-edit-row"><textarea data-field="desc" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Description â€” what does this patch mean?">' + esc(b.desc) + '</textarea></div>';
+                html += '<div class="badge-edit-row"><textarea data-field="desc" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '" placeholder="Description — what does this patch mean?">' + esc(b.desc) + '</textarea></div>';
                 html += '<div class="badge-edit-row"><select data-field="tier" data-gidx="' + gIdx + '" data-bidx="' + bIdx + '">'+tierOptionsHtml(b.tier)+'</select></div>';
               } else {
                 if (b.image) html += '<img src="' + esc(b.image) + '" class="badge-img" alt="' + esc(b.name) + '">';
-                else html += '<div class="badge-icon">' + esc(b.icon || 'ðŸ…') + '</div>';
+                else html += '<div class="badge-icon">' + esc(b.icon || '🏴') + '</div>';
                 html += '<div class="badge-name">' + esc(b.name) + '</div>';
                 html += '<div class="badge-desc">' + esc(b.desc) + '</div>';
                 html += tierPillHtml(b.tier);
               }
               var earned = b.earnedBy || [];
-              html += '<div class="badge-earned"><div class="badge-earned-label">Earned by â€” ' + earned.length + '</div>';
+              html += '<div class="badge-earned"><div class="badge-earned-label">Earned by — ' + earned.length + '</div>';
               if (earned.length > 0) {
                 html += '<div class="badge-earned-list">';
                 earned.forEach(function(name, nIdx) {
@@ -400,7 +400,7 @@
             html += '<div class="badge-add-form"><h4>Add patch to ' + esc(group.label) + '</h4>';
             html += '<div class="badge-edit-row"><input type="file" accept="image/*" data-image-file data-gidx="' + gIdx + '" id="new-image-file-' + gIdx + '" style="font-size:0.75rem;color:var(--muted);"><input type="text" id="new-image-' + gIdx + '" placeholder="Image URL (or upload above)"></div>';
             html += '<div class="badge-edit-row"><input type="text" id="new-icon-' + gIdx + '" placeholder="Fallback icon (emoji)"><input type="text" id="new-name-' + gIdx + '" placeholder="Patch name *"></div>';
-            html += '<div class="badge-edit-row"><input type="text" id="new-desc-' + gIdx + '" placeholder="Description â€” what does this patch mean?"></div>';
+            html += '<div class="badge-edit-row"><input type="text" id="new-desc-' + gIdx + '" placeholder="Description — what does this patch mean?"></div>';
             html += '<div class="badge-edit-row"><select id="new-tier-' + gIdx + '">'+tierOptionsHtml((badgesData.tiers&&badgesData.tiers[0]&&badgesData.tiers[0].id)||"bronze")+'</select><button type="button" class="btn btn-primary btn-sm" data-action="add-badge" data-gidx="' + gIdx + '">Add patch</button></div>';
             html += '</div>';
           }
@@ -438,7 +438,7 @@
             var newId = idEl.value.trim().toLowerCase().replace(/[^a-z0-9_-]/g,'') || oldId;
             if (newId !== oldId) {
               if ((badgesData.tiers||[]).some(function(x,i){ return x.id===newId && i!==idx; })) {
-                alert('Duplicate tier ID "'+newId+'" â€” skipped');
+                alert('Duplicate tier ID "'+newId+'" — skipped');
               } else {
                 tierIdMap[oldId]=newId;
                 t.id=newId;
@@ -538,7 +538,7 @@
           if(!safeSet())return;
           render();
         } else if (action === 'add-badge') {
-          var icon = (document.getElementById('new-icon-' + gIdx).value.trim() || 'ðŸ…');
+          var icon = (document.getElementById('new-icon-' + gIdx).value.trim() || '🏴');
           var name2 = document.getElementById('new-name-' + gIdx).value.trim();
           var desc = document.getElementById('new-desc-' + gIdx).value.trim();
           var tier = document.getElementById('new-tier-' + gIdx).value;
