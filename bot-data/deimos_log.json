@@ -1,8 +1,4 @@
 [
-  "2026-09-17 05:59:51,645 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
-  "2026-09-17 06:12:35,765 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 17738 seconds",
-  "2026-09-17 06:12:35,766 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 4h 55m",
-  "2026-09-17 06:15:05,577 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
   "2026-09-17 06:36:27,577 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
   "2026-09-17 07:12:42,154 - utils.playtime_database - INFO - Ended vital session for user 241703203068968960: 20852 seconds",
   "2026-09-17 07:12:42,155 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for vaelisthatlivingdeadgirl: 5h 47m",
@@ -198,5 +194,9 @@
   "2026-09-18 12:11:28,629 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-18 12:27:27,329 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
   "2026-09-18 14:35:00,692 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
-  "2026-09-18 14:35:00,692 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-09-18 14:35:00,692 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-18 15:05:40,495 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
+  "2026-09-18 16:21:39,024 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
+  "2026-09-18 16:21:39,024 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-18 17:12:10,485 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)"
 ]
