@@ -271,14 +271,6 @@
     "lastSeen": 1789251320935,
     "isOnline": false
   },
-  "Mortium": {
-    "firstSeen": 1786219365327,
-    "joinTime": 1787235822350,
-    "totalTime": 130805732,
-    "sessionCount": 23,
-    "lastSeen": 1787239122613,
-    "isOnline": false
-  },
   "Jayreaper": {
     "firstSeen": 1786219965418,
     "joinTime": 1787696944696,
@@ -4892,7 +4884,7 @@
     "joinTime": 1789806047954,
     "totalTime": 43802086,
     "sessionCount": 3,
-    "lastSeen": 1789823448848,
+    "lastSeen": 1789835149316,
     "isOnline": true
   }
 }
