@@ -1,9 +1,4 @@
 [
-  "2026-09-18 02:17:04,328 - utils.playtime_database - INFO - Recorded weekly notification for user 907399102717886517 in guild 889005510286786601 (week 2026-38)",
-  "2026-09-18 02:17:04,329 - cogs.playtime_tracker - INFO - User clintmonster reached 6h weekly requirement!",
-  "2026-09-18 02:17:06,316 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
-  "2026-09-18 02:28:39,029 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 18624 seconds",
-  "2026-09-18 02:28:39,029 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 5h 10m",
   "2026-09-18 02:32:18,998 - utils.playtime_database - INFO - Started vital session for user 1425481575419613376 in guild 889005510286786601",
   "2026-09-18 02:32:18,998 - cogs.playtime_tracker - INFO - Started vital playtime tracking for swizzy188 in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-18 02:32:26,651 - utils.playtime_database - INFO - Ended vital session for user 1425481575419613376: 7 seconds",
@@ -198,5 +193,10 @@
   "2026-09-19 07:58:30,553 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-19 08:30:09,622 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 1899 seconds",
   "2026-09-19 08:30:09,623 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 31m",
-  "2026-09-19 08:49:40,256 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a."
+  "2026-09-19 08:49:40,256 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
+  "2026-09-19 10:18:13,585 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
+  "2026-09-19 12:09:40,035 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
+  "2026-09-19 12:23:17,204 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-09-19 12:23:17,204 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-19 13:00:33,001 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a."
 ]

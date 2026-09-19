@@ -2511,14 +2511,6 @@
     "lastSeen": 1787784549177,
     "isOnline": false
   },
-  "ChillyFrog9340": {
-    "firstSeen": 1787224121818,
-    "joinTime": 1787224121818,
-    "totalTime": 1500076,
-    "sessionCount": 1,
-    "lastSeen": 1787225321894,
-    "isOnline": false
-  },
   "JDot": {
     "firstSeen": 1787226521926,
     "joinTime": 1789745145007,
@@ -4900,7 +4892,7 @@
     "joinTime": 1789806047954,
     "totalTime": 43802086,
     "sessionCount": 3,
-    "lastSeen": 1789809648143,
+    "lastSeen": 1789823448848,
     "isOnline": true
   }
 }
