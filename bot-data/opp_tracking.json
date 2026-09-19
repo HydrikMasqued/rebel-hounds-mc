@@ -223,14 +223,6 @@
     "lastSeen": 1789755945536,
     "isOnline": false
   },
-  "jdot": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1787180619801,
-    "totalTime": 259999012,
-    "sessionCount": 22,
-    "lastSeen": 1787197720613,
-    "isOnline": false
-  },
   "SkillIssueGG": {
     "firstSeen": 1786218278786,
     "joinTime": 1789719643772,
@@ -1535,14 +1527,6 @@
     "lastSeen": 1789239020268,
     "isOnline": false
   },
-  "Cat™": {
-    "firstSeen": 1786310915282,
-    "joinTime": 1787186320012,
-    "totalTime": 11400559,
-    "sessionCount": 4,
-    "lastSeen": 1787187820073,
-    "isOnline": false
-  },
   "TheJesterNess || TTV": {
     "firstSeen": 1786311515341,
     "joinTime": 1789301123301,
@@ -2327,14 +2311,6 @@
     "lastSeen": 1789694142340,
     "isOnline": false
   },
-  "Aiden9706": {
-    "firstSeen": 1786864705205,
-    "joinTime": 1787198620647,
-    "totalTime": 49502439,
-    "sessionCount": 12,
-    "lastSeen": 1787199220695,
-    "isOnline": false
-  },
   "Tommy Twotone": {
     "firstSeen": 1786893206517,
     "joinTime": 1788655491723,
@@ -2543,36 +2519,12 @@
     "lastSeen": 1787450032596,
     "isOnline": false
   },
-  "Crayon Enjoyer ": {
-    "firstSeen": 1787182719902,
-    "joinTime": 1787198320637,
-    "totalTime": 5700204,
-    "sessionCount": 2,
-    "lastSeen": 1787200120734,
-    "isOnline": false
-  },
-  "SleepyNewt1752": {
-    "firstSeen": 1787188420142,
-    "joinTime": 1787188420142,
-    "totalTime": 5700248,
-    "sessionCount": 1,
-    "lastSeen": 1787193820382,
-    "isOnline": false
-  },
   "Ricky": {
     "firstSeen": 1787195320443,
     "joinTime": 1787199520679,
     "totalTime": 6900420,
     "sessionCount": 2,
     "lastSeen": 1787202220849,
-    "isOnline": false
-  },
-  "CrunchyGuitarBoi": {
-    "firstSeen": 1787195320443,
-    "joinTime": 1787195320443,
-    "totalTime": 3000194,
-    "sessionCount": 1,
-    "lastSeen": 1787198020610,
     "isOnline": false
   },
   "ChillyFrog6538": {
@@ -4972,7 +4924,7 @@
     "joinTime": 1789763145841,
     "totalTime": 1800006,
     "sessionCount": 2,
-    "lastSeen": 1789778446643,
+    "lastSeen": 1789794047412,
     "isOnline": true
   }
 }
