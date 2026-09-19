@@ -1,13 +1,4 @@
 [
-  "2026-09-18 03:13:30,279 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-18 03:45:06,642 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 21140 seconds",
-  "2026-09-18 03:45:06,643 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 5h 52m",
-  "2026-09-18 03:59:37,381 - utils.playtime_database - INFO - Ended vital session for user 260165392209674250: 2767 seconds",
-  "2026-09-18 03:59:37,381 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 0h 46m",
-  "2026-09-18 03:59:59,918 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
-  "2026-09-18 04:02:55,414 - utils.playtime_database - INFO - Ended vital session for user 1105925237247316018: 14142 seconds",
-  "2026-09-18 04:02:55,414 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ravenmj420: 3h 55m",
-  "2026-09-18 04:05:43,840 - utils.playtime_database - INFO - Started vital session for user 260165392209674250 in guild 889005510286786601",
   "2026-09-18 04:05:43,841 - cogs.playtime_tracker - INFO - Started vital playtime tracking for shepardsky in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-18 04:08:01,761 - utils.playtime_database - INFO - Ended vital session for user 260165392209674250: 137 seconds",
   "2026-09-18 04:08:01,762 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 0h 2m",
@@ -198,5 +189,14 @@
   "2026-09-19 15:59:31,286 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a.",
   "2026-09-19 16:03:09,637 - utils.playtime_database - INFO - Started vital session for user 907399102717886517 in guild 889005510286786601",
   "2026-09-19 16:03:09,637 - cogs.playtime_tracker - INFO - Started vital playtime tracking for clintmonster in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-19 16:22:19,812 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)"
+  "2026-09-19 16:22:19,812 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-09-19 16:49:47,130 - utils.playtime_database - INFO - Started vital session for user 1105925237247316018 in guild 889005510286786601",
+  "2026-09-19 16:49:47,130 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ravenmj420 in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-19 17:37:37,775 - utils.playtime_database - INFO - Ended vital session for user 907399102717886517: 5668 seconds",
+  "2026-09-19 17:37:37,776 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for clintmonster: 1h 34m",
+  "2026-09-19 17:49:56,762 - utils.playtime_database - INFO - Started vital session for user 326529501209034764 in guild 889005510286786601",
+  "2026-09-19 17:49:56,763 - cogs.playtime_tracker - INFO - Started vital playtime tracking for chszr in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-19 18:07:50,053 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
+  "2026-09-19 18:07:50,053 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝑰𝑵 𝑪𝑰𝑻𝒀 𝑽𝑪 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-19 18:33:07,392 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 43f595d976c1c8ee1a63cd84b98d497a."
 ]
