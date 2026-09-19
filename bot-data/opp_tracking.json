@@ -823,14 +823,6 @@
     "lastSeen": 1789718143556,
     "isOnline": false
   },
-  "WildRage13": {
-    "firstSeen": 1786232566020,
-    "joinTime": 1787217221541,
-    "totalTime": 154553175,
-    "sessionCount": 17,
-    "lastSeen": 1787217221541,
-    "isOnline": false
-  },
   "Dips": {
     "firstSeen": 1786232566020,
     "joinTime": 1789737044557,
@@ -1943,14 +1935,6 @@
     "lastSeen": 1789180217406,
     "isOnline": false
   },
-  "DCXC": {
-    "firstSeen": 1786476786100,
-    "joinTime": 1787195020428,
-    "totalTime": 15600782,
-    "sessionCount": 3,
-    "lastSeen": 1787202220849,
-    "isOnline": false
-  },
   "Minxxie": {
     "firstSeen": 1786480386246,
     "joinTime": 1789595137462,
@@ -2517,14 +2501,6 @@
     "totalTime": 45901815,
     "sessionCount": 18,
     "lastSeen": 1787450032596,
-    "isOnline": false
-  },
-  "Ricky": {
-    "firstSeen": 1787195320443,
-    "joinTime": 1787199520679,
-    "totalTime": 6900420,
-    "sessionCount": 2,
-    "lastSeen": 1787202220849,
     "isOnline": false
   },
   "ChillyFrog6538": {
@@ -4921,10 +4897,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1789763145841,
-    "totalTime": 1800006,
-    "sessionCount": 2,
-    "lastSeen": 1789794047412,
+    "joinTime": 1789806047954,
+    "totalTime": 43802086,
+    "sessionCount": 3,
+    "lastSeen": 1789809648143,
     "isOnline": true
   }
 }
