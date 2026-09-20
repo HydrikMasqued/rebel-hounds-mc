@@ -80,6 +80,19 @@ if ($m === 'POST') {
         ':created' => $now, ':updated' => $now, ':dd' => $dateDisplay
     ]);
 
+    // Discord announcement for genuinely new posts only.
+    // Seed imports carry createdAt and edits carry id - both are skipped.
+    $announced = false;
+    if (empty($body['id']) && empty($body['createdAt'])) {
+        try {
+            require_once __DIR__ . '/discord-notify.php';
+            $postUrl = discord_site_url() . '/blog?id=' . urlencode($id);
+            $pingBody = $excerpt !== '' ? $excerpt : $content;
+            $dr = discord_blog_ping($title, $pingBody, $postUrl, $author);
+            $announced = !empty($dr['sent']);
+        } catch (Exception $e) {}
+    }
+
     // Log
     try {
         $pdo->exec("CREATE TABLE IF NOT EXISTS site_logs (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, ts BIGINT NOT NULL DEFAULT 0, username VARCHAR(64) NOT NULL DEFAULT '', role VARCHAR(16) NOT NULL DEFAULT '', action VARCHAR(64) NOT NULL DEFAULT '', store_key VARCHAR(64) NOT NULL DEFAULT '', detail TEXT, ip VARCHAR(45) NOT NULL DEFAULT '') ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
@@ -95,7 +108,7 @@ if ($m === 'POST') {
         ]);
     } catch (Exception $e) {}
 
-    jout(['success' => true, 'id' => $id]);
+    jout(['success' => true, 'id' => $id, 'announced' => $announced]);
 }
 
 if ($m === 'PUT') {

@@ -11,6 +11,9 @@ bot-api/node_modules/
 bot-api/cache/
 bot-api/logs/
 
+# Discord webhook URL (secret) - configure on server from discord-config.example.php
+discord-config.php
+
 # TDG tile folders (already tracked, keep for reference)
 # Satellite/
 # Roadmap/
