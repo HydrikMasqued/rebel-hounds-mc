@@ -1671,14 +1671,6 @@
     "lastSeen": 1789073712068,
     "isOnline": false
   },
-  "Darkkiss_ttv": {
-    "firstSeen": 1786333116252,
-    "joinTime": 1787280524483,
-    "totalTime": 50402459,
-    "sessionCount": 14,
-    "lastSeen": 1787281124495,
-    "isOnline": false
-  },
   "B00g13man": {
     "firstSeen": 1786333416259,
     "joinTime": 1787504035168,
@@ -4884,7 +4876,7 @@
     "joinTime": 1789845349830,
     "totalTime": 82804063,
     "sessionCount": 4,
-    "lastSeen": 1789863650635,
+    "lastSeen": 1789880451571,
     "isOnline": true
   }
 }
