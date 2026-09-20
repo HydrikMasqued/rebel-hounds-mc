@@ -2567,22 +2567,6 @@
     "lastSeen": 1788130165795,
     "isOnline": false
   },
-  "Troell": {
-    "firstSeen": 1787332426935,
-    "joinTime": 1787339927291,
-    "totalTime": 8400417,
-    "sessionCount": 2,
-    "lastSeen": 1787341127346,
-    "isOnline": false
-  },
-  "LazyTurtle4090": {
-    "firstSeen": 1787343227451,
-    "joinTime": 1787343827435,
-    "totalTime": 1500078,
-    "sessionCount": 2,
-    "lastSeen": 1787344727529,
-    "isOnline": false
-  },
   "klang": {
     "firstSeen": 1787357328167,
     "joinTime": 1789624238907,
@@ -4860,7 +4844,7 @@
     "joinTime": 1789929954031,
     "totalTime": 163808106,
     "sessionCount": 8,
-    "lastSeen": 1789931454101,
+    "lastSeen": 1789939854470,
     "isOnline": true
   }
 }
