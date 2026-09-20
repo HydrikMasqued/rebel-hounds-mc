@@ -958,6 +958,10 @@ body {
   text-align: left;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .patch-area {
   max-width: 1000px;
   margin: 0 auto;
