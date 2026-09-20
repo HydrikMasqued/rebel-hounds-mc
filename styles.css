@@ -149,8 +149,10 @@ body {
   left: -0.5rem;
   min-width: 180px;
   background: var(--dark-2);
-  border: 1px solid var(--border);
-  padding: 0.4rem 0;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 14px 36px rgba(0,0,0,.55);
+  padding: 0.5rem 0;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4px);
@@ -168,6 +170,8 @@ body {
 .dropdown li a {
   display: block;
   padding: 0.5rem 1.2rem;
+  margin: 0 0.35rem;
+  border-radius: 6px;
   font-size: 0.85rem;
   white-space: nowrap;
 }
