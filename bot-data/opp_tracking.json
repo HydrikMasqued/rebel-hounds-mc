@@ -2119,14 +2119,6 @@
     "lastSeen": 1788163467472,
     "isOnline": false
   },
-  "PaleFrog6569": {
-    "firstSeen": 1786610592818,
-    "joinTime": 1787314426179,
-    "totalTime": 45601969,
-    "sessionCount": 2,
-    "lastSeen": 1787339027247,
-    "isOnline": false
-  },
   "QuietLizard6424": {
     "firstSeen": 1786630093790,
     "joinTime": 1787696644677,
@@ -4865,10 +4857,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1789909552994,
-    "totalTime": 159907961,
-    "sessionCount": 5,
-    "lastSeen": 1789921853632,
-    "isOnline": false
+    "joinTime": 1789929954031,
+    "totalTime": 163808106,
+    "sessionCount": 8,
+    "lastSeen": 1789931454101,
+    "isOnline": true
   }
 }
