@@ -124,7 +124,7 @@ body {
   cursor: pointer;
 }
 
-.nav-item > a::after {
+.nav-item > a::before {
   content: '';
   display: inline-block;
   width: 0;
@@ -135,9 +135,10 @@ body {
   transition: transform 0.2s ease;
   margin-left: 2px;
   position: static;
+  order: 2;
 }
 
-.nav-item:hover > a::after {
+.nav-item:hover > a::before {
   transform: rotate(180deg);
   width: 0;
 }
@@ -2518,12 +2519,10 @@ body.scrolled-past .scroll-hint { opacity: 0; }
 .btn:active { transform: translateY(0) scale(0.98); }
 .btn::after { content: ''; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-20deg); transition: left 0.5s ease; }
 .btn:hover::after { left: 130%; }
-.nav-links > li:not(.nav-item) > a { position: relative; }
-.nav-links > li:not(.nav-item) > a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--primary); transition: width 0.25s ease; }
-.nav-links > li:not(.nav-item) > a:hover::after { width: 100%; }
-.nav-links > li:not(.nav-item) > a.active::after { width: 100%; }
-.nav-item > a .nav-label { position: relative; }
-.nav-item > a.active .nav-label::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px; background: var(--primary); }
+.nav-links a { position: relative; }
+.nav-links a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--primary); transition: width 0.25s ease; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active::after { width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .hero-anim, .rv { opacity: 1 !important; transform: none !important; filter: none !important; }
