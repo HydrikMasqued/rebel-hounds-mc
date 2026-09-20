@@ -46,7 +46,6 @@ body {
   z-index: 1000;
   background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
 }
 
 .nav-inner {
