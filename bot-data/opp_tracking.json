@@ -2543,14 +2543,6 @@
     "lastSeen": 1788866402122,
     "isOnline": false
   },
-  "rare breed": {
-    "firstSeen": 1787286524760,
-    "joinTime": 1787290124954,
-    "totalTime": 6900373,
-    "sessionCount": 2,
-    "lastSeen": 1787293425119,
-    "isOnline": false
-  },
   "PaleFrog1216": {
     "firstSeen": 1787290724996,
     "joinTime": 1789615238454,
@@ -4876,7 +4868,7 @@
     "joinTime": 1789845349830,
     "totalTime": 82804063,
     "sessionCount": 4,
-    "lastSeen": 1789880451571,
+    "lastSeen": 1789897252360,
     "isOnline": true
   }
 }
