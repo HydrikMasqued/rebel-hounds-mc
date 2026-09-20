@@ -1,58 +1,66 @@
 [
   {
     "guild_id": 889005510286786600,
-    "user_id": 367316570180943900,
-    "user_name": "panda_alleyway",
-    "join_time": "2026-09-18T21:24:34.294384+00:00",
-    "created_at": "2026-09-18 21:24:34",
+    "user_id": 181143017619587070,
+    "user_name": "jayreaper",
+    "join_time": "2026-09-20T22:00:55.361051+00:00",
+    "created_at": "2026-09-20 22:00:55",
     "channel_type": "vital"
   },
   {
     "guild_id": 889005510286786600,
     "user_id": 260165392209674240,
     "user_name": "shepardsky",
-    "join_time": "2026-09-18T21:43:50.231609+00:00",
-    "created_at": "2026-09-18 21:43:50",
+    "join_time": "2026-09-20T22:00:55.364890+00:00",
+    "created_at": "2026-09-20 22:00:55",
     "channel_type": "vital"
   },
   {
     "guild_id": 889005510286786600,
-    "user_id": 1045815013614559400,
-    "user_name": "bdillon97",
-    "join_time": "2026-09-18T21:48:59.802674+00:00",
-    "created_at": "2026-09-18 21:48:59",
+    "user_id": 367316570180943900,
+    "user_name": "panda_alleyway",
+    "join_time": "2026-09-20T22:00:55.367891+00:00",
+    "created_at": "2026-09-20 22:00:55",
     "channel_type": "vital"
   },
   {
     "guild_id": 889005510286786600,
-    "user_id": 140312416687751170,
-    "user_name": "wicked1667",
-    "join_time": "2026-09-18T21:54:07.412317+00:00",
-    "created_at": "2026-09-18 21:54:07",
+    "user_id": 399697875002458100,
+    "user_name": "lunaskribbs",
+    "join_time": "2026-09-20T22:00:55.369033+00:00",
+    "created_at": "2026-09-20 22:00:55",
     "channel_type": "vital"
   },
   {
     "guild_id": 889005510286786600,
     "user_id": 591781884179120100,
     "user_name": "tragic1301",
-    "join_time": "2026-09-18T23:15:17.553654+00:00",
-    "created_at": "2026-09-18 23:15:17",
+    "join_time": "2026-09-20T22:00:55.370116+00:00",
+    "created_at": "2026-09-20 22:00:55",
     "channel_type": "vital"
   },
   {
     "guild_id": 889005510286786600,
-    "user_id": 319184811971575800,
-    "user_name": "loreviking",
-    "join_time": "2026-09-18T23:56:49.593422+00:00",
-    "created_at": "2026-09-18 23:56:49",
+    "user_id": 937444062150152200,
+    "user_name": "donit1178",
+    "join_time": "2026-09-20T22:00:55.371651+00:00",
+    "created_at": "2026-09-20 22:00:55",
     "channel_type": "vital"
   },
   {
     "guild_id": 889005510286786600,
-    "user_id": 391042658912567300,
-    "user_name": "d.bennett31",
-    "join_time": "2026-09-18T23:57:40.893654+00:00",
-    "created_at": "2026-09-18 23:57:40",
+    "user_id": 1045815013614559400,
+    "user_name": "bdillon97",
+    "join_time": "2026-09-20T22:00:55.372545+00:00",
+    "created_at": "2026-09-20 22:00:55",
+    "channel_type": "vital"
+  },
+  {
+    "guild_id": 889005510286786600,
+    "user_id": 1105925237247316000,
+    "user_name": "ravenmj420",
+    "join_time": "2026-09-20T22:00:55.373666+00:00",
+    "created_at": "2026-09-20 22:00:55",
     "channel_type": "vital"
   }
 ]
