@@ -18,7 +18,10 @@
     .montage-player { position: relative; width: 100%; aspect-ratio: 16/8; max-height: 560px; background: #000; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.55); }
     .montage-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
     .montage-slide.visible { opacity: 1; z-index: 1; }
-    .montage-slide img, .montage-slide video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .montage-slide img, .montage-slide video { width: 100%; height: 100%; display: block; }
+    .montage-slide img { object-fit: contain; position: relative; z-index: 1; }
+    .montage-slide video { object-fit: cover; background: #000; }
+    .montage-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(26px) brightness(.5); transform: scale(1.15); }
     .montage-slide img.kb { animation: kbZoom 7s ease-in-out forwards; }
     .montage-slide img.kb-alt { animation: kbZoomAlt 7s ease-in-out forwards; }
     @keyframes kbZoom { from { transform: scale(1); } to { transform: scale(1.12); } }

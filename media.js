@@ -463,6 +463,10 @@ function showMontageSlide(i) {
     };
     v.addEventListener('playing', begin);
     v.addEventListener('loadedmetadata', function() {
+      try {
+        var vr = v.videoWidth / Math.max(1, v.videoHeight);
+        v.style.objectFit = (vr >= 1.5) ? 'cover' : 'contain';
+      } catch(e2) {}
       if (v.duration && isFinite(v.duration) && montagePlaying && multi && started) {
         var dur = Math.min(v.duration * 1000, VIDEO_MAX_MS);
         montageSlideLen = Math.max(3000, dur);
@@ -480,7 +484,7 @@ function showMontageSlide(i) {
       if (multi) montageTimer = setTimeout(montageNext, VIDEO_MAX_MS);
     }
   } else {
-    showEl.innerHTML = '<img src="' + escapeHtml(item.url) + '" alt="' + escapeHtml(cap || 'Club media') + '" class="' + (i % 2 ? 'kb-alt' : 'kb') + '">';
+    showEl.innerHTML = '<div class="montage-bg" style="background-image:url(\'' + escapeHtml(item.url) + '\')"></div><img src="' + escapeHtml(item.url) + '" alt="' + escapeHtml(cap || 'Club media') + '" class="' + (i % 2 ? 'kb-alt' : 'kb') + '">';
     montageSlideLen = PHOTO_MS;
     montageSlideStart = Date.now();
     showEl.classList.add('visible');
