@@ -87,14 +87,6 @@
     "lastSeen": 1788404679142,
     "isOnline": false
   },
-  "Mr_K1NG": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1787361828377,
-    "totalTime": 23933363,
-    "sessionCount": 5,
-    "lastSeen": 1787366328535,
-    "isOnline": false
-  },
   "keipher26": {
     "firstSeen": 1786218278786,
     "joinTime": 1789683041718,
@@ -1631,14 +1623,6 @@
     "lastSeen": 1789198518359,
     "isOnline": false
   },
-  "Peanuts": {
-    "firstSeen": 1786326816042,
-    "joinTime": 1787362428371,
-    "totalTime": 47102064,
-    "sessionCount": 6,
-    "lastSeen": 1787377729062,
-    "isOnline": false
-  },
   "Phillary": {
     "firstSeen": 1786327416088,
     "joinTime": 1788997808333,
@@ -2567,28 +2551,12 @@
     "lastSeen": 1789626338970,
     "isOnline": false
   },
-  "Moth Hospital": {
-    "firstSeen": 1787366028501,
-    "joinTime": 1787366028501,
-    "totalTime": 300034,
-    "sessionCount": 1,
-    "lastSeen": 1787366028501,
-    "isOnline": false
-  },
   "|404| PFF Mason D.": {
     "firstSeen": 1787366328535,
     "joinTime": 1787559837932,
     "totalTime": 77703710,
     "sessionCount": 6,
     "lastSeen": 1787559837932,
-    "isOnline": false
-  },
-  "Wiley Coyote": {
-    "firstSeen": 1787368428635,
-    "joinTime": 1787372928832,
-    "totalTime": 3900190,
-    "sessionCount": 2,
-    "lastSeen": 1787373528864,
     "isOnline": false
   },
   "FamousGibz": {
@@ -4828,7 +4796,7 @@
     "joinTime": 1789929954031,
     "totalTime": 163808106,
     "sessionCount": 8,
-    "lastSeen": 1789953355107,
+    "lastSeen": 1789971956055,
     "isOnline": true
   }
 }
