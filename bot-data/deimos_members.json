@@ -442,5 +442,17 @@
     "is_on_loa": 0,
     "created_at": "2026-09-11 15:34:14",
     "updated_at": "2026-09-16 22:38:59.700817"
+  },
+  {
+    "id": 1652,
+    "guild_id": 889005510286786600,
+    "user_id": 238365055412994050,
+    "discord_name": "Amira",
+    "discord_username": "vikt0rr",
+    "rank": null,
+    "status": "Active",
+    "is_on_loa": 0,
+    "created_at": "2026-09-21 00:40:16",
+    "updated_at": "2026-09-21 00:40:16.486831"
   }
 ]
