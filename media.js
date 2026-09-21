@@ -12,6 +12,25 @@ function canEditMedia() {
   return false;
 }
 
+function canUploadMedia() {
+  if (window.rhmcAuth && window.rhmcAuth.getRoleLevel) {
+    try { return window.rhmcAuth.getRoleLevel() >= 2; } catch(e) {}
+  }
+  try {
+    var r = sessionStorage.getItem('rh_patch_role') || '';
+    return r === 'patched' || r === 'officer' || r === 'owner';
+  } catch(e) {}
+  return false;
+}
+
+function updateUploadVisibility() {
+  var form = document.getElementById('galleryUpload');
+  var notice = document.getElementById('galleryLoginNotice');
+  var ok = canUploadMedia();
+  if (form) form.style.display = ok ? '' : 'none';
+  if (notice) notice.style.display = ok ? 'none' : '';
+}
+
 function checkServerAuth() {
   if (canEditMedia()) return;
   fetch('auth-check.php?t=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' })
@@ -291,9 +310,11 @@ if (gallerySubmit) {
 
 renderGallery();
 renderVideos();
+updateUploadVisibility();
 checkServerAuth();
 
 window.addEventListener('patchAuthChange', function() {
   renderGallery();
   renderVideos();
+  updateUploadVisibility();
 });

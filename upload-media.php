@@ -4,6 +4,9 @@
  * POST multipart/form-data → uploads file, saves to media table
  */
 require __DIR__ . '/db.php';
+require __DIR__ . '/auth-require.php';
+// Uploads are for Full Patch members and above (patched, officer, owner).
+requireRole('patched');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
