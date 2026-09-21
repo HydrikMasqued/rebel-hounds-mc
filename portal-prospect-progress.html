@@ -84,9 +84,16 @@
     </div>
 
     <section class="section">
-      <div class="section-head">
-        <h2 class="section-title">PROSPECT PROGRESS</h2>
-        <p class="section-sub">Track your prospecting period, attendance and standing.</p>
+      <div class="section-head" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <h2 class="section-title" style="margin-bottom:0;">PROSPECT PROGRESS</h2>
+          <p class="section-sub" style="margin:0;">Track your prospecting period, attendance and standing.</p>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:0.5rem;">
+          <button type="button" class="btn btn-outline btn-sm" id="btnEditProgress" style="display:none;" data-edit-role="officer">Edit</button>
+          <button type="button" class="btn btn-primary btn-sm" id="btnSaveProgress" style="display:none;">Save</button>
+          <button type="button" class="btn btn-outline btn-sm" id="btnCancelProgress" style="display:none;">Cancel</button>
+        </div>
       </div>
 
       <div id="progressContent" style="margin-top:1.5rem;">Loading...</div>
@@ -120,6 +127,26 @@
       'use strict';
       var LS_KEY = 'rhmc_prospects_data';
       var container = document.getElementById('progressContent');
+      var currentData = null;
+      var editMode = false;
+
+      function isOfficer() { return (typeof hasRole === 'function') && hasRole('officer'); }
+
+      function toISODate(v) {
+        if (/^\d{4}-\d{2}-\d{2}$/.test(v || '')) return v;
+        var d = new Date(v);
+        if (isNaN(d)) return '';
+        return d.toISOString().slice(0, 10);
+      }
+
+      function updateProgressButtons() {
+        var eb = document.getElementById('btnEditProgress');
+        var sb = document.getElementById('btnSaveProgress');
+        var cb = document.getElementById('btnCancelProgress');
+        if (eb) eb.style.display = (!editMode && isOfficer()) ? '' : 'none';
+        if (sb) sb.style.display = editMode ? '' : 'none';
+        if (cb) cb.style.display = editMode ? '' : 'none';
+      }
 
       function esc(s) { var d = document.createElement('div'); d.textContent = String(s == null ? '' : s); return d.innerHTML; }
       function daysBetween(a, b) { return Math.floor((b - a) / 86400000); }
@@ -140,7 +167,7 @@
         }).then(function(d) { cb((d && !d.empty) ? d : null); }).catch(function() { cb(null); });
       }
 
-      function renderProspectCard(p, period) {
+      function renderProspectCard(p, period, idx) {
         var since = new Date(p.prospectSince);
         var now = new Date();
         var daysElapsed = isNaN(since) ? 0 : daysBetween(since, now);
@@ -185,7 +212,11 @@
         html += '<div class="progress-stat"><div class="progress-stat-label">Days Elapsed</div><div class="progress-stat-value">' + daysElapsed + '</div></div>';
         html += '<div class="progress-stat"><div class="progress-stat-label">Days Remaining</div><div class="progress-stat-value">' + remaining + '</div></div>';
         html += '<div class="progress-stat"><div class="progress-stat-label">Total Period</div><div class="progress-stat-value">' + period + ' days</div></div>';
-        html += '<div class="progress-stat"><div class="progress-stat-label">Prospect Since</div><div class="progress-stat-value">' + esc(p.prospectSince || '-') + '</div></div>';
+        if (editMode) {
+          html += '<div class="progress-stat"><div class="progress-stat-label">Prospect Since</div><div class="progress-stat-value"><input type="date" data-psince="' + idx + '" value="' + esc(toISODate(p.prospectSince)) + '" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.25rem 0.4rem;border-radius:4px;font-size:0.8rem;max-width:150px;"></div></div>';
+        } else {
+          html += '<div class="progress-stat"><div class="progress-stat-label">Prospect Since</div><div class="progress-stat-value">' + esc(p.prospectSince || '-') + '</div></div>';
+        }
         html += '</div>';
 
         // Additional info
@@ -208,8 +239,10 @@
       }
 
       function render(data) {
+        currentData = data || null;
         if (!data || !data.prospects || data.prospects.length === 0) {
           container.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--muted);">No prospect data available yet.</div>';
+          updateProgressButtons();
           return;
         }
         var period = data.prospectPeriod || 90;
@@ -217,15 +250,68 @@
 
         if (prospects.length === 0) {
           container.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--muted);">No active prospects found.</div>';
+          updateProgressButtons();
           return;
         }
 
-        var html = '<div style="margin-bottom:1rem;font-size:0.85rem;color:var(--muted);">Prospecting period: <strong style="color:var(--text);">' + period + ' days</strong> &bull; Active prospects: <strong style="color:var(--text);">' + prospects.length + '</strong></div>';
+        var periodHtml = editMode
+          ? 'Prospecting period: <input type="number" id="periodInput" value="' + period + '" min="1" max="365" style="width:70px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.2rem 0.4rem;border-radius:4px;"> days'
+          : 'Prospecting period: <strong style="color:var(--text);">' + period + ' days</strong>';
+        var html = '<div style="margin-bottom:1rem;font-size:0.85rem;color:var(--muted);">' + periodHtml + ' &bull; Active prospects: <strong style="color:var(--text);">' + prospects.length + '</strong></div>';
         prospects.forEach(function(p) {
-          html += renderProspectCard(p, period);
+          html += renderProspectCard(p, period, data.prospects.indexOf(p));
         });
         container.innerHTML = html;
+        updateProgressButtons();
       }
+
+      function persistProgress(cb) {
+        var payload = { data: currentData, updated: Date.now() };
+        try { localStorage.setItem(LS_KEY, JSON.stringify(payload)); } catch(e) {}
+        fetch('api-store.php?key=prospects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); }).then(function(res) {
+          cb(res.ok && res.data && res.data.success === true);
+        }).catch(function() { cb(false); });
+      }
+
+      var btnEdit = document.getElementById('btnEditProgress');
+      var btnSave = document.getElementById('btnSaveProgress');
+      var btnCancel = document.getElementById('btnCancelProgress');
+      if (btnEdit) btnEdit.addEventListener('click', function() {
+        if (!isOfficer() || !currentData) return;
+        editMode = true;
+        render(currentData);
+      });
+      if (btnCancel) btnCancel.addEventListener('click', function() {
+        editMode = false;
+        if (currentData) render(currentData);
+      });
+      if (btnSave) btnSave.addEventListener('click', function() {
+        if (!currentData) return;
+        var perEl = document.getElementById('periodInput');
+        if (perEl) {
+          var pv = parseInt(perEl.value, 10);
+          if (!isNaN(pv) && pv >= 1 && pv <= 365) currentData.prospectPeriod = pv;
+        }
+        document.querySelectorAll('[data-psince]').forEach(function(el) {
+          var idx = parseInt(el.getAttribute('data-psince'), 10);
+          if (!isNaN(idx) && currentData.prospects && currentData.prospects[idx] && /^\d{4}-\d{2}-\d{2}$/.test(el.value)) {
+            currentData.prospects[idx].prospectSince = el.value;
+          }
+        });
+        btnSave.textContent = 'Saving...';
+        btnSave.disabled = true;
+        persistProgress(function(ok) {
+          btnSave.textContent = 'Save';
+          btnSave.disabled = false;
+          if (!ok) { alert('Save failed. Check connection and officer login.'); return; }
+          editMode = false;
+          render(currentData);
+        });
+      });
 
       // Load data
       var local = readLocal();
