@@ -289,9 +289,9 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
-        }).then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); }).then(function(res) {
-          cb(res.ok && res.data && res.data.success === true);
-        }).catch(function() { cb(false); });
+        }).then(function(r) { return r.json().catch(function() { return {}; }).then(function(d) { return { status: r.status, ok: r.ok, data: d }; }); }).then(function(res) {
+          cb(res);
+        }).catch(function() { cb({ status: 0, ok: false, data: {} }); });
       }
 
       var btnEdit = document.getElementById('btnEditProgress');
@@ -345,10 +345,18 @@
         });
         btnSave.textContent = 'Saving...';
         btnSave.disabled = true;
-        persistProgress(function(ok) {
+        persistProgress(function(res) {
           btnSave.textContent = 'Save';
           btnSave.disabled = false;
-          if (!ok) { alert('Save failed. Check connection and officer login.'); return; }
+          if (!res.ok || !res.data || res.data.success !== true) {
+            var msg = 'Save failed. ';
+            if (res.status === 401) msg += 'You are not logged in - log in as an officer first.';
+            else if (res.status === 403) msg += 'Officer or owner required' + (res.data && res.data.your_role ? ' (you are logged in as: ' + res.data.your_role + ').' : '.');
+            else if (res.status === 0) msg += 'Check connection and try again.';
+            else msg += 'Server error ' + res.status + '.';
+            alert(msg);
+            return;
+          }
           editMode = false;
           render(currentData);
         });
