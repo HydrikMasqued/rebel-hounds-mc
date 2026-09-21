@@ -58,7 +58,7 @@ if ($m === 'POST') {
             ':r' => $_SESSION['rh_role'] ?? '',
             ':a' => 'store_update',
             ':k' => $key,
-            ':d' => 'Updated ' . $key . ' (' . number_format(strlen($body['data'])) . ' bytes)',
+            ':d' => 'Updated ' . $key . ' (' . number_format(strlen($raw)) . ' bytes)',
             ':i' => $_SERVER['REMOTE_ADDR'] ?? ''
         ]);
     } catch (Exception $e) { /* logging failure is non-fatal */ }
