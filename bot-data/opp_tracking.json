@@ -2031,14 +2031,6 @@
     "lastSeen": 1789188017816,
     "isOnline": false
   },
-  "Pootis": {
-    "firstSeen": 1786567690556,
-    "joinTime": 1787426331504,
-    "totalTime": 42301961,
-    "sessionCount": 17,
-    "lastSeen": 1787426631479,
-    "isOnline": false
-  },
   "Ping Me Harder": {
     "firstSeen": 1786569490663,
     "joinTime": 1788736195713,
@@ -4785,10 +4777,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1789929954031,
-    "totalTime": 163808106,
-    "sessionCount": 8,
-    "lastSeen": 1790015758324,
+    "joinTime": 1790017859080,
+    "totalTime": 251412557,
+    "sessionCount": 9,
+    "lastSeen": 1790028358943,
     "isOnline": true
   }
 }
