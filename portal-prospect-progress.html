@@ -139,6 +139,13 @@
         return d.toISOString().slice(0, 10);
       }
 
+      function progressField(label, field, value, idx) {
+        if (editMode) {
+          return '<div><span style="color:var(--muted);">' + label + ':</span> <input type="text" data-pfield="' + field + '" data-pidx="' + idx + '" value="' + esc(value || '') + '" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.2rem 0.4rem;border-radius:4px;font-size:0.8rem;max-width:130px;"></div>';
+        }
+        return '<div><span style="color:var(--muted);">' + label + ':</span> <span style="color:var(--text);">' + esc(value || '-') + '</span></div>';
+      }
+
       function updateProgressButtons() {
         var eb = document.getElementById('btnEditProgress');
         var sb = document.getElementById('btnSaveProgress');
@@ -221,14 +228,16 @@
 
         // Additional info
         html += '<div style="margin-top:1rem;padding-top:0.8rem;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.8rem;">';
-        html += '<div><span style="color:var(--muted);">Standing:</span> <span style="color:var(--text);">' + esc(p.standing || '-') + '</span></div>';
-        html += '<div><span style="color:var(--muted);">Attendance:</span> <span style="color:var(--text);">' + esc(p.attendanceScore || '-') + '</span></div>';
-        html += '<div><span style="color:var(--muted);">Last Active:</span> <span style="color:var(--text);">' + esc(p.lastActive || '-') + '</span></div>';
-        html += '<div><span style="color:var(--muted);">Next Review:</span> <span style="color:var(--text);">' + esc(p.nextReview || '-') + '</span></div>';
+        html += progressField('Standing', 'standing', p.standing, idx);
+        html += progressField('Attendance', 'attendanceScore', p.attendanceScore, idx);
+        html += progressField('Last Active', 'lastActive', p.lastActive, idx);
+        html += progressField('Next Review', 'nextReview', p.nextReview, idx);
         html += '</div>';
 
-        // Officer note (if any)
-        if (p.officerNote) {
+        // Officer note
+        if (editMode) {
+          html += '<div style="margin-top:0.8rem;"><input type="text" data-pfield="officerNote" data-pidx="' + idx + '" value="' + esc(p.officerNote || '') + '" placeholder="Officer note" style="width:100%;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.5rem 0.7rem;border-radius:4px;font-size:0.8rem;box-sizing:border-box;"></div>';
+        } else if (p.officerNote) {
           html += '<div style="margin-top:0.8rem;padding:0.6rem 0.8rem;background:var(--dark);border-left:3px solid var(--primary);border-radius:0 4px 4px 0;font-size:0.8rem;font-style:italic;color:var(--muted);">';
           html += '<strong style="color:var(--primary);font-style:normal;">Officer Note:</strong> ' + esc(p.officerNote);
           html += '</div>';
@@ -300,6 +309,13 @@
           var idx = parseInt(el.getAttribute('data-psince'), 10);
           if (!isNaN(idx) && currentData.prospects && currentData.prospects[idx] && /^\d{4}-\d{2}-\d{2}$/.test(el.value)) {
             currentData.prospects[idx].prospectSince = el.value;
+          }
+        });
+        document.querySelectorAll('[data-pfield]').forEach(function(el) {
+          var idx = parseInt(el.getAttribute('data-pidx'), 10);
+          var f = el.getAttribute('data-pfield');
+          if (!isNaN(idx) && f && currentData.prospects && currentData.prospects[idx]) {
+            currentData.prospects[idx][f] = el.value;
           }
         });
         btnSave.textContent = 'Saving...';
