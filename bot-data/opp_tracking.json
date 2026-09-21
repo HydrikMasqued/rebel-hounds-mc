@@ -663,14 +663,6 @@
     "lastSeen": 1788749696263,
     "isOnline": false
   },
-  "Haise": {
-    "firstSeen": 1786228065788,
-    "joinTime": 1787356128070,
-    "totalTime": 43202000,
-    "sessionCount": 12,
-    "lastSeen": 1787356128070,
-    "isOnline": false
-  },
   "AnimatedCub": {
     "firstSeen": 1786228665793,
     "joinTime": 1789689042108,
@@ -2573,14 +2565,6 @@
     "totalTime": 74103575,
     "sessionCount": 11,
     "lastSeen": 1789626338970,
-    "isOnline": false
-  },
-  "Error": {
-    "firstSeen": 1787358528209,
-    "joinTime": 1787358528209,
-    "totalTime": 600018,
-    "sessionCount": 1,
-    "lastSeen": 1787358828217,
     "isOnline": false
   },
   "Moth Hospital": {
@@ -4844,7 +4828,7 @@
     "joinTime": 1789929954031,
     "totalTime": 163808106,
     "sessionCount": 8,
-    "lastSeen": 1789946754783,
+    "lastSeen": 1789953355107,
     "isOnline": true
   }
 }
