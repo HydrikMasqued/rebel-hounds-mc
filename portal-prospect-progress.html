@@ -216,9 +216,17 @@
 
         // Stats grid
         html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem;">';
-        html += '<div class="progress-stat"><div class="progress-stat-label">Days Elapsed</div><div class="progress-stat-value">' + daysElapsed + '</div></div>';
+        if (editMode) {
+          html += '<div class="progress-stat"><div class="progress-stat-label">Days Elapsed</div><div class="progress-stat-value"><input type="number" data-pdays="' + idx + '" data-pdays-def="' + daysElapsed + '" value="' + daysElapsed + '" min="0" max="3650" title="Set day count - start date is recalculated on save" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.25rem 0.4rem;border-radius:4px;font-size:0.8rem;max-width:90px;"></div></div>';
+        } else {
+          html += '<div class="progress-stat"><div class="progress-stat-label">Days Elapsed</div><div class="progress-stat-value">' + daysElapsed + '</div></div>';
+        }
         html += '<div class="progress-stat"><div class="progress-stat-label">Days Remaining</div><div class="progress-stat-value">' + remaining + '</div></div>';
-        html += '<div class="progress-stat"><div class="progress-stat-label">Total Period</div><div class="progress-stat-value">' + period + ' days</div></div>';
+        if (editMode) {
+          html += '<div class="progress-stat"><div class="progress-stat-label">Total Period</div><div class="progress-stat-value"><input type="number" class="periodInput" value="' + period + '" min="1" max="365" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.25rem 0.4rem;border-radius:4px;font-size:0.8rem;max-width:90px;"> days</div></div>';
+        } else {
+          html += '<div class="progress-stat"><div class="progress-stat-label">Total Period</div><div class="progress-stat-value">' + period + ' days</div></div>';
+        }
         if (editMode) {
           html += '<div class="progress-stat"><div class="progress-stat-label">Prospect Since</div><div class="progress-stat-value"><input type="date" data-psince="' + idx + '" value="' + esc(toISODate(p.prospectSince)) + '" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.25rem 0.4rem;border-radius:4px;font-size:0.8rem;max-width:150px;"></div></div>';
         } else {
@@ -264,7 +272,7 @@
         }
 
         var periodHtml = editMode
-          ? 'Prospecting period: <input type="number" id="periodInput" value="' + period + '" min="1" max="365" style="width:70px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.2rem 0.4rem;border-radius:4px;"> days'
+          ? 'Prospecting period: <input type="number" id="periodInput" class="periodInput" value="' + period + '" min="1" max="365" style="width:70px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.2rem 0.4rem;border-radius:4px;"> days'
           : 'Prospecting period: <strong style="color:var(--text);">' + period + ' days</strong>';
         var html = '<div style="margin-bottom:1rem;font-size:0.85rem;color:var(--muted);">' + periodHtml + ' &bull; Active prospects: <strong style="color:var(--text);">' + prospects.length + '</strong></div>';
         prospects.forEach(function(p) {
@@ -298,17 +306,34 @@
         editMode = false;
         if (currentData) render(currentData);
       });
+      container.addEventListener('input', function(e) {
+        var t = e.target;
+        if (t && t.classList && t.classList.contains('periodInput')) {
+          var pv = parseInt(t.value, 10);
+          if (!isNaN(pv) && pv >= 1 && pv <= 365) {
+            if (currentData) currentData.prospectPeriod = pv;
+            document.querySelectorAll('.periodInput').forEach(function(el) { if (el !== t) el.value = pv; });
+          }
+        }
+      });
       if (btnSave) btnSave.addEventListener('click', function() {
         if (!currentData) return;
-        var perEl = document.getElementById('periodInput');
-        if (perEl) {
-          var pv = parseInt(perEl.value, 10);
-          if (!isNaN(pv) && pv >= 1 && pv <= 365) currentData.prospectPeriod = pv;
-        }
         document.querySelectorAll('[data-psince]').forEach(function(el) {
           var idx = parseInt(el.getAttribute('data-psince'), 10);
           if (!isNaN(idx) && currentData.prospects && currentData.prospects[idx] && /^\d{4}-\d{2}-\d{2}$/.test(el.value)) {
             currentData.prospects[idx].prospectSince = el.value;
+          }
+        });
+        document.querySelectorAll('[data-pdays]').forEach(function(el) {
+          var idx = parseInt(el.getAttribute('data-pdays'), 10);
+          var def = el.getAttribute('data-pdays-def');
+          var nv = parseInt(el.value, 10);
+          if (el.value !== def && !isNaN(idx) && !isNaN(nv) && nv >= 0 && nv <= 3650 && currentData.prospects && currentData.prospects[idx]) {
+            var d = new Date();
+            d.setDate(d.getDate() - nv);
+            var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+            var dd = ('0' + d.getDate()).slice(-2);
+            currentData.prospects[idx].prospectSince = d.getFullYear() + '-' + mm + '-' + dd;
           }
         });
         document.querySelectorAll('[data-pfield]').forEach(function(el) {
