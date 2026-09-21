@@ -81,7 +81,6 @@
       <div class="section-head" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
         <div>
           <h2 class="section-title" style="margin-bottom:0;">FLASHES / PATCHES</h2>
-          <p class="section-sub" style="margin:0;">In the MC you earn a flash or patch — unique and earnable.</p>
         </div>
         <div style="margin-left:auto;display:flex;gap:0.5rem;">
           <button class="btn btn-outline btn-sm" id="btnEditBadges" style="display:none;" data-edit-role="officer">Edit</button>
@@ -92,7 +91,6 @@
 
       <div class="edit-banner" id="editBanner">EDIT MODE — Replace images, edit name/description, add or remove names under each patch, add or delete patches. Remember to Save.</div>
 
-      <div class="badge-summary" id="badgeSummary"></div>
       <div id="badgeGroups">Loading badges...</div>
 
       <div class="patch-area-foot">
@@ -316,13 +314,7 @@
           container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);">No patch data</div>';
           return;
         }
-        var totalBadges = 0;
-        var totalEarned = 0;
-        badgesData.groups.forEach(function(g) { totalBadges += (g.badges || []).length; (g.badges || []).forEach(function(b) { totalEarned += (b.earnedBy || []).length; }); });
-        summary.innerHTML =
-          '<div class="summary-stat"><div class="num">' + totalBadges + '</div><div class="label">Patches</div></div>' +
-          '<div class="summary-stat"><div class="num">' + totalEarned + '</div><div class="label">Earned</div></div>' +
-          '<div class="summary-stat"><div class="num">' + badgesData.groups.length + '</div><div class="label">Categories</div></div>';
+        if (summary) summary.style.display = 'none';
 
         var html = '';
         if (editMode) {
