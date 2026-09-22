@@ -4705,10 +4705,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790064961103,
-    "totalTime": 298214403,
-    "sessionCount": 10,
-    "lastSeen": 1790071561182,
-    "isOnline": true
+    "joinTime": 1790080561639,
+    "totalTime": 320715463,
+    "sessionCount": 11,
+    "lastSeen": 1790087762075,
+    "isOnline": false
   }
 }
