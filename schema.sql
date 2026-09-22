@@ -117,3 +117,17 @@ CREATE TABLE IF NOT EXISTS map_drawings (
     points     JSON NOT NULL,
     created_at VARCHAR(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Gang territories (zones, logos, HQ markers).
+CREATE TABLE IF NOT EXISTS map_territories (
+    id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    gang_name  VARCHAR(120) NOT NULL DEFAULT '',
+    color      VARCHAR(20) NOT NULL DEFAULT '#c0392b',
+    logo_url   VARCHAR(500) NOT NULL DEFAULT '',
+    hq_lat     DOUBLE DEFAULT NULL,
+    hq_lng     DOUBLE DEFAULT NULL,
+    zone       JSON NOT NULL,
+    notes      TEXT,
+    created_at VARCHAR(30) NOT NULL,
+    updated_at VARCHAR(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

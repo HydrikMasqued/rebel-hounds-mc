@@ -41,6 +41,20 @@ try {
         "created_at VARCHAR(30) NOT NULL" .
         ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
     );
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS map_territories (" .
+        "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
+        "gang_name VARCHAR(120) NOT NULL DEFAULT '', " .
+        "color VARCHAR(20) NOT NULL DEFAULT '#c0392b', " .
+        "logo_url VARCHAR(500) NOT NULL DEFAULT '', " .
+        "hq_lat DOUBLE DEFAULT NULL, " .
+        "hq_lng DOUBLE DEFAULT NULL, " .
+        "zone JSON NOT NULL, " .
+        "notes TEXT, " .
+        "created_at VARCHAR(30) NOT NULL, " .
+        "updated_at VARCHAR(30) NOT NULL" .
+        ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+    );
 } catch (PDOException $e) {
     error_log('map db unavailable: ' . $e->getMessage());
     jerr('Database unavailable', 500);
@@ -109,12 +123,32 @@ if ($m === 'GET') {
         }
         jout($rows);
     }
+    if ($resource === 'territories') {
+        $normTerr = function($r) {
+            $r['id'] = (int)$r['id'];
+            $r['zone'] = json_decode($r['zone'], true) ?: [];
+            $r['hq_lat'] = $r['hq_lat'] !== null ? (float)$r['hq_lat'] : null;
+            $r['hq_lng'] = $r['hq_lng'] !== null ? (float)$r['hq_lng'] : null;
+            return $r;
+        };
+        if ($id) {
+            $stmt = $pdo->prepare('SELECT * FROM map_territories WHERE id = :id');
+            $stmt->execute([':id' => $id]);
+            $row = $stmt->fetch();
+            if (!$row) jerr('Not found', 404);
+            jout($normTerr($row));
+        }
+        $rows = $pdo->query('SELECT * FROM map_territories ORDER BY id')->fetchAll();
+        jout(array_map($normTerr, $rows));
+    }
     if ($resource === 'export') {
         $blips = $pdo->query('SELECT * FROM map_blips ORDER BY id')->fetchAll();
         $cats = $pdo->query('SELECT * FROM map_categories ORDER BY id')->fetchAll();
+        $terrs = $pdo->query('SELECT * FROM map_territories ORDER BY id')->fetchAll();
         foreach ($blips as &$b) { $b['latitude']=(float)$b['latitude']; $b['longitude']=(float)$b['longitude']; $b['category_id']=$b['category_id']!==null?(int)$b['category_id']:null; $b['angle']=(int)$b['angle']; }
         foreach ($cats as &$c) { $c['id']=(int)$c['id']; }
-        jout(['blips'=>$blips, 'categories'=>$cats, 'exportedAt'=>date('c')]);
+        foreach ($terrs as &$t) { $t['id']=(int)$t['id']; $t['zone']=json_decode($t['zone'], true) ?: []; $t['hq_lat']=$t['hq_lat']!==null?(float)$t['hq_lat']:null; $t['hq_lng']=$t['hq_lng']!==null?(float)$t['hq_lng']:null; }
+        jout(['blips'=>$blips, 'categories'=>$cats, 'territories'=>$terrs, 'exportedAt'=>date('c')]);
     }
     if ($resource === 'search' && isset($parts[1])) {
         $q = '%' . $parts[1] . '%';
@@ -173,6 +207,26 @@ if ($m === 'POST') {
         ]);
         $newId = $pdo->lastInsertId();
         jout(['id' => (int)$newId]);
+    }
+    if ($resource === 'territories') {
+        $name = trim($body['gang_name'] ?? '');
+        if (!$name) jerr('Gang name required');
+        $zone = $body['zone'] ?? [];
+        if (!is_array($zone) || count($zone) < 3) jerr('Zone needs at least 3 points');
+        $now = date('c');
+        $stmt = $pdo->prepare('INSERT INTO map_territories (gang_name, color, logo_url, hq_lat, hq_lng, zone, notes, created_at, updated_at) VALUES (:n, :c, :logo, :hlat, :hlng, :zone, :notes, :created, :updated)');
+        $stmt->execute([
+            ':n' => $name,
+            ':c' => $body['color'] ?? '#c0392b',
+            ':logo' => $body['logo_url'] ?? '',
+            ':hlat' => (isset($body['hq_lat']) && $body['hq_lat'] !== null && $body['hq_lat'] !== '') ? (float)$body['hq_lat'] : null,
+            ':hlng' => (isset($body['hq_lng']) && $body['hq_lng'] !== null && $body['hq_lng'] !== '') ? (float)$body['hq_lng'] : null,
+            ':zone' => json_encode(array_values($zone)),
+            ':notes' => $body['notes'] ?? '',
+            ':created' => $now,
+            ':updated' => $now
+        ]);
+        jout(['id' => (int)$pdo->lastInsertId()]);
     }
     if ($resource === 'import') {
         $cats = $body['categories'] ?? [];
@@ -237,6 +291,31 @@ if ($m === 'PUT') {
         }
         jout(['success'=>true]);
     }
+    if ($resource === 'territories' && $id) {
+        $raw = file_get_contents('php://input');
+        $body = json_decode($raw, true);
+        if (!is_array($body)) jerr('Invalid data');
+        $sets = [];
+        $params = [':id' => $id];
+        foreach (['gang_name','color','logo_url','notes'] as $f) {
+            if (isset($body[$f])) { $sets[] = "$f = :$f"; $params[":$f"] = $body[$f]; }
+        }
+        if (array_key_exists('zone', $body) && is_array($body['zone'])) { $sets[] = 'zone = :zone'; $params[':zone'] = json_encode(array_values($body['zone'])); }
+        foreach (['hq_lat','hq_lng'] as $f) {
+            if (array_key_exists($f, $body)) {
+                $v = $body[$f];
+                $sets[] = "$f = :$f";
+                $params[":$f"] = ($v === null || $v === '') ? null : (float)$v;
+            }
+        }
+        $sets[] = 'updated_at = :updated';
+        $params[':updated'] = date('c');
+        if ($sets) {
+            $stmt = $pdo->prepare('UPDATE map_territories SET ' . implode(',', $sets) . ' WHERE id = :id');
+            $stmt->execute($params);
+        }
+        jout(['success'=>true]);
+    }
     jerr('Not found', 404);
 }
 
@@ -265,6 +344,15 @@ if ($m === 'DELETE') {
             $stmt->execute([':id' => $id]);
         } else {
             $pdo->exec('DELETE FROM map_drawings');
+        }
+        jout(['success'=>true]);
+    }
+    if ($resource === 'territories') {
+        if ($id) {
+            $stmt = $pdo->prepare('DELETE FROM map_territories WHERE id = :id');
+            $stmt->execute([':id' => $id]);
+        } else {
+            $pdo->exec('DELETE FROM map_territories');
         }
         jout(['success'=>true]);
     }

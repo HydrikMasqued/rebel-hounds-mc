@@ -58,6 +58,72 @@
       height: 100%;
       border: 0;
     }
+    #territoryMap { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; background: var(--bg); }
+    .terr-label {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      pointer-events: none; transform: translate(-50%, -50%);
+      text-align: center; max-width: 140px;
+    }
+    .terr-label img {
+      width: 36px; height: 36px; object-fit: contain; border-radius: 50%;
+      background: rgba(0,0,0,.55); border: 2px solid var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,.5);
+    }
+    .terr-label span {
+      font-family: var(--font-display, Bebas Neue, sans-serif);
+      font-size: 13px; letter-spacing: 2px; line-height: 1.1;
+      color: #fff; text-shadow: 0 1px 3px #000, 0 0 6px #000;
+      background: rgba(0,0,0,.45); padding: 1px 6px; border-radius: 3px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;
+    }
+    .terr-hq {
+      width: 18px; height: 18px; border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg); border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,.55);
+    }
+    .terr-list-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; margin-bottom: 8px;
+      background: var(--panel-2); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent); border-radius: 6px;
+      cursor: pointer; transition: border-color .15s, background .15s;
+    }
+    .terr-list-item:hover, .terr-list-item.active {
+      background: var(--panel-3); border-color: var(--accent);
+    }
+    .terr-list-item img {
+      width: 32px; height: 32px; border-radius: 50%; object-fit: contain;
+      background: rgba(0,0,0,.4); flex-shrink: 0;
+    }
+    .terr-list-item .terr-list-name {
+      flex: 1; font-weight: 600; font-size: 0.95rem; color: var(--text);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .terr-list-item .terr-list-actions { display: flex; gap: 4px; flex-shrink: 0; }
+    .terr-list-item .terr-list-actions button {
+      width: 28px; height: 28px; border-radius: 4px;
+      background: var(--panel-3); border: 1px solid var(--border-2);
+      color: var(--text-dim); cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .terr-list-item .terr-list-actions button:hover { color: var(--accent); border-color: var(--accent); }
+    .terr-list-item .terr-list-actions button.danger:hover { color: var(--danger); border-color: var(--danger); }
+    .terr-hint { font-size: 0.8rem; color: var(--muted, var(--text-faint)); margin-top: 10px; line-height: 1.4; }
+    .terr-draw-hud {
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 1100; display: none; gap: 8px; align-items: center;
+      background: rgba(20,23,29,.92); border: 1px solid var(--accent);
+      border-radius: 6px; padding: 8px 14px; color: var(--text);
+      font-size: 0.85rem; backdrop-filter: blur(8px);
+    }
+    .terr-draw-hud.on { display: flex; }
+    .terr-draw-hud button {
+      background: var(--accent); border: none; color: #111;
+      font-weight: 700; font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 1px; padding: 6px 12px; border-radius: 4px; cursor: pointer;
+    }
+    .terr-draw-hud button.cancel { background: transparent; border: 1px solid var(--border-2); color: var(--text-dim); }
+    .terr-empty { color: var(--muted, var(--text-faint)); font-size: 0.85rem; padding: 1rem 0; text-align: center; }
   </style>
 </head>
 <body class="portal-page">
@@ -139,6 +205,7 @@
       <!-- Map Tabs -->
       <div class="map-tabs">
         <button class="map-tab active" data-tab="infomap">Infomap</button>
+        <button class="map-tab" data-tab="territory">Territory</button>
         <button class="map-tab" data-tab="tdg">TDG Simulator</button>
       </div>
 
@@ -500,6 +567,118 @@
         </div>
       </div>
 
+      <!-- Territory Map Panel -->
+      <div class="map-panel" id="panel-territory">
+        <div class="map-embed" id="territoryEmbed">
+          <div id="territoryMap"></div>
+
+          <div class="map-switcher">
+            <button class="map-switcher-btn active" data-map="los_santos">Los Santos</button>
+            <button class="map-switcher-btn" data-map="cayo_perico">Cayo Perico</button>
+          </div>
+
+          <div class="map-controls">
+            <button class="map-btn" id="terrBtnFit" title="Fit map to view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+                <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+              </svg>
+            </button>
+            <button class="map-btn" data-edit-role="officer" id="terrBtnDraw" title="Draw zone polygon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 14l4-8 6 4 6-6"/><path d="M4 14l6 6 4-2 6 4"/>
+              </svg>
+            </button>
+            <button class="map-btn" data-edit-role="officer" id="terrBtnHq" title="Place HQ at center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>
+              </svg>
+            </button>
+            <button class="map-btn" data-edit-role="officer" id="terrBtnClear" title="Clear draft zone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+              </svg>
+            </button>
+            <button class="map-btn" id="terrBtnFull" title="Fullscreen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>
+              </svg>
+            </button>
+          </div>
+
+          <aside class="sidebar sidebar-transition" id="territorySidebar">
+            <header class="sidebar-header">
+              <div class="brand">
+                <div class="brand-title">Territories</div>
+                <div class="brand-sub">Gang zones &amp; HQs</div>
+              </div>
+              <div class="stats">
+                <div class="stat"><span class="stat-value" id="terrStatCount">0</span><span class="stat-label">Zones</span></div>
+              </div>
+              <img src="map-logo.png" alt="Rebel Hounds" class="brand-logo">
+            </header>
+
+            <div class="panel active" id="terrListPanel">
+              <div class="search-wrap">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+                </svg>
+                <input type="text" class="search-box" id="terrSearch" placeholder="Search gangs..." />
+              </div>
+              <div class="blip-list" id="terrList"></div>
+              <div data-edit-role="officer" style="margin-top: 12px;">
+                <button class="btn btn-primary btn-block" id="terrBtnNew">+ New Territory</button>
+              </div>
+              <p class="terr-hint" id="terrHint">Select a zone for details.</p>
+            </div>
+
+            <div class="panel" id="terrFormPanel">
+              <h3 class="form-title" id="terrFormTitle">New Territory</h3>
+              <input type="hidden" id="terrId" />
+              <div class="form-group">
+                <label>Gang name *</label>
+                <input type="text" id="terrName" placeholder="e.g. Vagos" required />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Zone color</label>
+                  <input type="color" id="terrColor" value="#c0392b" />
+                </div>
+                <div class="form-group">
+                  <label>HQ Y</label>
+                  <input type="number" step="any" id="terrHqLat" placeholder="optional" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>HQ X</label>
+                <input type="number" step="any" id="terrHqLng" placeholder="optional" />
+              </div>
+              <div class="form-group">
+                <label>Logo URL</label>
+                <input type="url" id="terrLogo" placeholder="https://... or patch.png" />
+              </div>
+              <div class="form-group">
+                <label>Notes</label>
+                <textarea id="terrNotes" rows="2" placeholder="Optional details..."></textarea>
+              </div>
+              <p class="terr-hint">Zone points: <b id="terrPtCount">0</b> (min 3). Use Draw Zone, then Close.</p>
+              <div class="btn-row">
+                <button class="btn btn-primary" id="terrBtnSave">Save Territory</button>
+                <button class="btn btn-secondary" id="terrBtnCancel">Cancel</button>
+              </div>
+              <button class="btn btn-danger" id="terrBtnDelete" style="display:none;margin-top:10px;">Delete Territory</button>
+              <p class="form-msg" id="terrMsg"></p>
+            </div>
+          </aside>
+
+          <button class="sidebar-toggle" id="terrSidebarToggle" title="Toggle sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
       <!-- TDG Simulator Panel -->
       <div class="map-panel" id="panel-tdg">
         <div style="text-align: center; padding: 3rem 1rem;">
@@ -540,6 +719,7 @@
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
   <script>window.MAP_API_BASE = 'api-map.php';</script>
   <script src="map-app.js?v=4"></script>
+  <script src="territory-map.js?v=1"></script>
   <script>
     // Map tab switching
     document.querySelectorAll('.map-tab').forEach(function(tab) {
@@ -547,7 +727,11 @@
         document.querySelectorAll('.map-tab').forEach(function(t) { t.classList.remove('active'); });
         document.querySelectorAll('.map-panel').forEach(function(p) { p.classList.remove('active'); });
         tab.classList.add('active');
-        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+        var panel = document.getElementById('panel-' + tab.dataset.tab);
+        if (panel) panel.classList.add('active');
+        if (tab.dataset.tab === 'territory' && window.rhmcTerritory) {
+          window.rhmcTerritory.refresh();
+        }
       });
     });
   </script>
