@@ -89,6 +89,16 @@
     .roster-field textarea, .roster-field input { width: 100%; background: #1a1a1a; border: 1px solid #333; color: #eee; padding: 0.5rem 0.6rem; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-body); }
     .roster-field textarea { min-height: 80px; resize: vertical; }
     .roster-modal-foot { display: flex; gap: 0.5rem; justify-content: flex-end; padding: 0.9rem 1.2rem; border-top: 1px solid #222; }
+    /* Chapters */
+    .chapter-tabs { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin: 0 auto 1.4rem; max-width: 1100px; }
+    .chapter-tab { font-family: var(--font-display); letter-spacing: 1.5px; font-size: 0.95rem; padding: 0.55rem 1.25rem; border-radius: 8px; border: 1px solid var(--border); background: var(--dark-2); color: var(--muted); cursor: pointer; transition: all 0.25s ease; }
+    .chapter-tab:hover { color: var(--text); border-color: var(--primary); transform: translateY(-2px); }
+    .chapter-tab.active { background: linear-gradient(135deg,#e0533d,#a93226); border-color: transparent; color: #fff; box-shadow: 0 4px 16px rgba(192,57,43,0.35); }
+    .chapter-count { display: inline-block; font-family: var(--font-body); font-size: 0.68rem; background: rgba(0,0,0,0.35); border-radius: 10px; padding: 0.05rem 0.45rem; margin-left: 0.45rem; vertical-align: 1px; }
+    #rosterTree { transition: opacity 0.18s ease, transform 0.18s ease; }
+    #rosterTree.tree-switching { opacity: 0; transform: translateY(10px); }
+    .chapter-manage-row { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .chapter-manage-row input[type="text"] { flex: 1; min-width: 160px; background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.45rem 0.6rem; border-radius: 6px; }
   </style>
 </head>
 <body class="portal-page">
@@ -161,7 +171,8 @@
         </div>
       </div>
       <div class="edit-banner" id="editBanner">EDIT MODE - Change rank to move someone, rename headers below, click a card to edit their file. Remember to Save.</div>
-      <div class="roster-toolbar"><span class="hint">Click a patch holder to open their file. Change rank in Edit mode to elevate/lower on the tree.</span></div>
+      <div class="roster-toolbar"><span class="hint">Pick a chapter to open its tree. Click a patch holder to open their file.</span></div>
+      <div class="chapter-tabs" id="chapterTabs"></div>
       <div id="rosterTree">Loading roster...</div>
       <div class="patch-area-foot"><button type="button" class="btn btn-outline btn-sm" id="patchLogout">Log Out</button></div>
     </section>
@@ -225,6 +236,33 @@
         if(!rosterData) return;
         if(!rosterData.levelLabels || typeof rosterData.levelLabels!=='object') rosterData.levelLabels={};
         Object.keys(DEFAULT_LEVEL_LABELS).forEach(function(k){ if(!rosterData.levelLabels[k]) rosterData.levelLabels[k]=DEFAULT_LEVEL_LABELS[k]; });
+      }
+      var DEFAULT_CHAPTERS=[
+        {id:'national',name:'National Hierarchy'},
+        {id:'nomad',name:'Nomad Chapter'},
+        {id:'mirror-park',name:'Mirror Park Chapter'},
+        {id:'sandy-shores',name:'Sandy Shores Chapter'}
+      ];
+      var activeChapter='national';
+      function ensureChapters(){
+        if(!rosterData) return;
+        if(!Array.isArray(rosterData.chapters) || !rosterData.chapters.length){
+          rosterData.chapters=DEFAULT_CHAPTERS.map(function(c){ return {id:c.id,name:c.name}; });
+        }
+        if(!chapterById(activeChapter)) activeChapter='national';
+      }
+      function chapterById(id){
+        if(!rosterData || !Array.isArray(rosterData.chapters)) return null;
+        for(var i=0;i<rosterData.chapters.length;i++){ if(rosterData.chapters[i].id===id) return rosterData.chapters[i]; }
+        return null;
+      }
+      function memberChapter(m){ var c=m&&m.chapter; return chapterById(c)?c:'national'; }
+      function chapterOptionsHtml(sel){
+        var html='';
+        (rosterData.chapters||[]).forEach(function(c){
+          html+='<option value="'+esc(c.id)+'"'+(c.id===sel?' selected':'')+'>'+esc(c.name)+'</option>';
+        });
+        return html;
       }
 
       function esc(s){var d=document.createElement('div');d.textContent=String(s==null?'':s);return d.innerHTML;}
@@ -324,10 +362,38 @@
         return html;
       }
 
+      function renderTabs(){
+        var tabs=document.getElementById('chapterTabs');
+        if(!tabs) return;
+        if(!rosterData||!Array.isArray(rosterData.chapters)){ tabs.innerHTML=''; return; }
+        var counts={};
+        (rosterData.members||[]).forEach(function(m){ var c=memberChapter(m); counts[c]=(counts[c]||0)+1; });
+        var html='';
+        rosterData.chapters.forEach(function(c){
+          html+='<button type="button" class="chapter-tab'+(c.id===activeChapter?' active':'')+'" data-chapter-tab="'+esc(c.id)+'">'+esc(c.name)+'<span class="chapter-count">'+(counts[c.id]||0)+'</span></button>';
+        });
+        tabs.innerHTML=html;
+      }
+      function switchChapter(id){
+        if(!chapterById(id) || id===activeChapter) return;
+        activeChapter=id;
+        renderTabs();
+        var container=document.getElementById('rosterTree');
+        var tabs=document.getElementById('chapterTabs');
+        if(container) container.classList.add('tree-switching');
+        setTimeout(function(){
+          render();
+          if(container) container.classList.remove('tree-switching');
+          if(tabs && tabs.scrollIntoView){ try{ tabs.scrollIntoView({behavior:'smooth',block:'nearest'}); }catch(e){} }
+        },190);
+      }
       function render(){
         var container=document.getElementById('rosterTree');
+        ensureChapters();
+        renderTabs();
         if(!rosterData||!rosterData.members){ container.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">No roster data</div>'; return; }
-        var members=rosterData.members.slice().sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
+        var members=rosterData.members.filter(function(m){ return memberChapter(m)===activeChapter; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
+        var emptyChapter=members.length===0;
         var byLevel={1:[],2:[],3:[],4:[],5:[],6:[]};
         members.forEach(function(m){
           var lvl=5;
@@ -353,7 +419,8 @@
           h+='<div class="member-rank '+rankClass(m.rank)+'">'+esc(m.rank)+'</div>';
           if(editMode){
             h+='<select data-rank-select data-id="'+esc(m.id)+'">'+rankOptionsHtml(m.rank)+'</select>';
-            h+='<div class="rank-hint">Change rank to move</div>';
+            h+='<select data-chapter-select data-id="'+esc(m.id)+'" style="margin-top:0.35rem;">'+chapterOptionsHtml(memberChapter(m))+'</select>';
+            h+='<div class="rank-hint">Rank moves level - chapter moves tree</div>';
           }
           h+='</div>';
           return h;
@@ -406,8 +473,17 @@
           }
         });
         html+='</div>';
+        if(emptyChapter){ html+='<div style="text-align:center;padding:1rem 0 0.5rem;color:var(--muted);font-size:0.85rem;">No patched members in this chapter yet.</div>'; }
         if(editMode){
-          html+='<div style="margin-top:1.6rem;background:var(--dark-2);border:1px dashed var(--border);border-radius:10px;padding:1.2rem;"><h4 style="font-family:var(--font-display);font-size:0.95rem;letter-spacing:1px;margin-bottom:0.7rem;">Add Patched Member</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;"><input type="text" id="newMemberName" placeholder="Full name *" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><input type="text" id="newMemberUsername" placeholder="Discord username" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><select id="newMemberRank" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;">'+RANK_ORDER.map(function(r){return '<option>'+esc(r)+'</option>';}).join('')+'</select><input type="date" id="newMemberJoined" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"></div><div style="display:flex;gap:0.5rem;margin-top:0.7rem;flex-wrap:wrap;"><input type="text" id="newMemberImage" placeholder="Photo URL" style="flex:1;min-width:180px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><input type="file" id="newMemberImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"><button type="button" class="btn btn-primary btn-sm" data-action="add-member">Add to Roster</button></div></div>';
+          html+='<div style="margin-top:1.6rem;background:var(--dark-2);border:1px dashed var(--border);border-radius:10px;padding:1.2rem;"><h4 style="font-family:var(--font-display);font-size:0.95rem;letter-spacing:1px;margin-bottom:0.7rem;">Add Patched Member</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;"><input type="text" id="newMemberName" placeholder="Full name *" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><input type="text" id="newMemberUsername" placeholder="Discord username" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><select id="newMemberRank" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;">'+RANK_ORDER.map(function(r){return '<option>'+esc(r)+'</option>';}).join('')+'</select><select id="newMemberChapter" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;">'+chapterOptionsHtml(activeChapter)+'</select><input type="date" id="newMemberJoined" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"></div><div style="display:flex;gap:0.5rem;margin-top:0.7rem;flex-wrap:wrap;"><input type="text" id="newMemberImage" placeholder="Photo URL" style="flex:1;min-width:180px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.45rem 0.6rem;border-radius:6px;"><input type="file" id="newMemberImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"><button type="button" class="btn btn-primary btn-sm" data-action="add-member">Add to Roster</button></div></div>';
+          html+='<div style="margin-top:1rem;background:var(--dark-2);border:1px dashed var(--border);border-radius:10px;padding:1.2rem;"><h4 style="font-family:var(--font-display);font-size:0.95rem;letter-spacing:1px;margin-bottom:0.7rem;">Manage Chapters</h4>';
+          (rosterData.chapters||[]).forEach(function(c){
+            html+='<div class="chapter-manage-row"><input type="text" data-chapter-name="'+esc(c.id)+'" value="'+esc(c.name)+'" placeholder="Chapter name">';
+            if(c.id!=='national'){ html+='<button type="button" class="btn btn-outline btn-sm" data-action="delete-chapter" data-id="'+esc(c.id)+'">Delete</button>'; }
+            else { html+='<span style="font-size:0.72rem;color:var(--muted);">Home chapter - cannot delete</span>'; }
+            html+='</div>';
+          });
+          html+='<div class="chapter-manage-row"><input type="text" id="newChapterName" placeholder="New chapter name"><button type="button" class="btn btn-primary btn-sm" data-action="add-chapter">Add Chapter</button></div></div>';
         }
         container.innerHTML=html;
         container.querySelectorAll('.member-card').forEach(function(card){
@@ -435,7 +511,7 @@
           if(!m.gallery) m.gallery=[];
           body.innerHTML=
             '<div class="roster-field"><label>Full Name</label><input type="text" id="modalNameInput" value="'+esc(m.name||'')+'" placeholder="Full display name"></div>'+
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Discord Username</label><input type="text" id="modalUsername" value="'+esc(m.username||'')+'" placeholder="@username"></div><div class="roster-field"><label>Rank</label><select id="modalRankSel">'+rankOptionsHtml(m.rank)+'</select></div></div>'+
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Discord Username</label><input type="text" id="modalUsername" value="'+esc(m.username||'')+'" placeholder="@username"></div><div class="roster-field"><label>Rank</label><select id="modalRankSel">'+rankOptionsHtml(m.rank)+'</select></div><div class="roster-field"><label>Chapter</label><select id="modalChapter">'+chapterOptionsHtml(memberChapter(m))+'</select></div></div>'+
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Joined Date</label><input type="date" id="modalJoined" value="'+esc((m.joined||'').split(" ")[0])+'"></div><div class="roster-field"><label>Status</label><select id="modalStatus"><option value="Active"'+(m.status==='Active'?' selected':'')+'>Active</option><option value="Retired"'+(m.status==='Retired'?' selected':'')+'>Retired</option><option value="On LOA"'+(m.status==='On LOA'?' selected':'')+'>On LOA</option></select></div></div>'+
             '<div class="roster-field"><label>Main Photo - URL or upload (transparent PNG keeps transparency)</label><div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;"><input type="text" id="modalImage" value="'+esc(m.image||'')+'" placeholder="https://..." style="flex:1;min-width:180px;"><input type="file" id="modalImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"></div><div id="modalImageNote" style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">Large photos are auto-resized. After choosing a file, click Save File below.</div></div>'+
             '<div class="roster-field"><label>Additional Pictures — gallery for this member</label><div id="modalGallery" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">'+(m.gallery&&m.gallery.length?m.gallery.map(function(url,i){return '<div style="position:relative;width:72px;height:72px;border-radius:6px;overflow:hidden;border:1px solid #333;"><img src="'+esc(url)+'" style="width:100%;height:100%;object-fit:cover;"><button type="button" data-action="remove-gallery-img" data-idx="'+i+'" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;">×</button></div>';}).join(''):'<span style="font-size:0.75rem;color:#777;">No extra pictures yet</span>')+'</div><div style="display:flex;gap:0.5rem;"><input type="text" id="modalGalleryUrl" placeholder="Paste image URL" style="flex:1;"><input type="file" id="modalGalleryFile" accept="image/*" style="font-size:0.75rem;max-width:150px;"><button type="button" class="btn btn-outline btn-sm" id="modalGalleryAdd">Add</button></div></div>'+
@@ -480,6 +556,12 @@
           var v=(el.value||'').trim();
           if(v) rosterData.levelLabels[k]=v;
         });
+        document.querySelectorAll('[data-chapter-name]').forEach(function(el){
+          var k=el.getAttribute('data-chapter-name');
+          var v=(el.value||'').trim();
+          var c=chapterById(k);
+          if(c && v) c.name=v;
+        });
         if(!persist(true)) return;
         exitEdit();
       }
@@ -487,6 +569,7 @@
       function useData(doc){
         rosterData=doc;
         ensureLevelLabels();
+        ensureChapters();
         render();
       }
 
@@ -551,6 +634,30 @@
           var gIdx=parseInt(e.target.getAttribute('data-idx'),10);
           if(activeMember && activeMember.gallery){ activeMember.gallery.splice(gIdx,1); if(persist()) openModal(activeMember.id); }
         }
+        if(e.target.closest && e.target.closest('[data-chapter-tab]')){
+          var tab=e.target.closest('[data-chapter-tab]');
+          switchChapter(tab.getAttribute('data-chapter-tab'));
+        }
+        if(e.target.getAttribute && e.target.getAttribute('data-action')==='add-chapter'){
+          var nameEl=document.getElementById('newChapterName');
+          var nm=nameEl?(nameEl.value||'').trim():'';
+          if(!nm){ alert('Chapter name required'); return; }
+          var nid='ch_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+          if(!Array.isArray(rosterData.chapters)) rosterData.chapters=[];
+          rosterData.chapters.push({id:nid,name:nm});
+          if(persist()){ activeChapter=nid; render(); }
+        }
+        if(e.target.getAttribute && e.target.getAttribute('data-action')==='delete-chapter'){
+          var delId=e.target.getAttribute('data-id');
+          if(!delId||delId==='national') return;
+          var dc=chapterById(delId);
+          if(!dc) return;
+          if(!confirm('Delete "'+dc.name+'"? Its members move to National Hierarchy.')) return;
+          (rosterData.members||[]).forEach(function(m){ if(m.chapter===delId) delete m.chapter; });
+          rosterData.chapters=rosterData.chapters.filter(function(c){ return c.id!==delId; });
+          if(activeChapter===delId) activeChapter='national';
+          if(persist()) render();
+        }
         if(e.target.id==='modalGalleryAdd'){
           var urlInp=document.getElementById('modalGalleryUrl');
           var fileInp=document.getElementById('modalGalleryFile');
@@ -563,6 +670,12 @@
         }
       });
       document.addEventListener('change', function(e){
+        if(e.target.hasAttribute && e.target.hasAttribute('data-chapter-select')){
+          var cid=e.target.getAttribute('data-id');
+          var cm=rosterData.members.find(function(x){ return String(x.id)===String(cid); });
+          if(cm){ if(e.target.value && e.target.value!=='national') cm.chapter=e.target.value; else delete cm.chapter; if(persist()) render(); }
+          return;
+        }
         if(e.target.hasAttribute('data-rank-select')){
           var id=e.target.getAttribute('data-id');
           var newRank=e.target.value;
@@ -608,6 +721,8 @@
         if(bio) activeMember.bio=bio.value;
         if(img) activeMember.image=(img.value||'').trim();
         if(rankSel) activeMember.rank=rankSel.value;
+        var chSel=document.getElementById('modalChapter');
+        if(chSel){ if(chSel.value && chSel.value!=='national') activeMember.chapter=chSel.value; else delete activeMember.chapter; }
         if(!persist(true)) return;
         closeModal();
         render();
@@ -652,7 +767,11 @@ document.addEventListener('click', function(e){
       return;
     }
     if(!stored.members) stored.members=[];
-    stored.members.push({ id:newId, name:name, username:username, rank:rank, status:'Active', joined:joined, contributions:'', memorableMoments:'', bio:'', image:img, gallery:[] });
+    var chEl=document.getElementById('newMemberChapter');
+    var ch=chEl?(chEl.value||'national'):'national';
+    var newMember={ id:newId, name:name, username:username, rank:rank, status:'Active', joined:joined, contributions:'', memorableMoments:'', bio:'', image:img, gallery:[] };
+    if(ch&&ch!=='national') newMember.chapter=ch;
+    stored.members.push(newMember);
     var env={updated:Date.now(), data:stored};
     try{ localStorage.setItem('rhmc_roster_data', JSON.stringify(env)); }
     catch(err){ alert('Could not save - browser storage is full. Try a smaller image.'); return; }
