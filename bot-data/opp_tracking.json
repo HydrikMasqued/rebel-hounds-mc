@@ -15,14 +15,6 @@
     "lastSeen": 1787808850368,
     "isOnline": false
   },
-  "S": {
-    "joinTime": 1787445232361,
-    "totalTime": 177286385,
-    "sessionCount": 33,
-    "lastSeen": 1787449132511,
-    "isOnline": false,
-    "firstSeen": 1781528229489
-  },
   "Star Light": {
     "firstSeen": 1786218278786,
     "joinTime": 1789419328887,
@@ -293,14 +285,6 @@
     "totalTime": 215583513,
     "sessionCount": 31,
     "lastSeen": 1789087512771,
-    "isOnline": false
-  },
-  "undertaker_aka_jay": {
-    "firstSeen": 1786220265398,
-    "joinTime": 1787443432246,
-    "totalTime": 142507184,
-    "sessionCount": 35,
-    "lastSeen": 1787450932619,
     "isOnline": false
   },
   "Oboth": {
@@ -2319,14 +2303,6 @@
     "lastSeen": 1789621538763,
     "isOnline": false
   },
-  "spit781": {
-    "firstSeen": 1786980511647,
-    "joinTime": 1787442832230,
-    "totalTime": 23400390,
-    "sessionCount": 5,
-    "lastSeen": 1787453032746,
-    "isOnline": false
-  },
   "Rooster702": {
     "firstSeen": 1787003011811,
     "joinTime": 1788142166416,
@@ -2429,14 +2405,6 @@
     "totalTime": 5339949,
     "sessionCount": 4,
     "lastSeen": 1787553537638,
-    "isOnline": false
-  },
-  "YaBoiTwitch": {
-    "firstSeen": 1787182419869,
-    "joinTime": 1787441632181,
-    "totalTime": 45901815,
-    "sessionCount": 18,
-    "lastSeen": 1787450032596,
     "isOnline": false
   },
   "ChillyFrog6538": {
@@ -2623,28 +2591,12 @@
     "lastSeen": 1789537234631,
     "isOnline": false
   },
-  "♥": {
-    "firstSeen": 1787434131959,
-    "joinTime": 1787447332439,
-    "totalTime": 8400255,
-    "sessionCount": 2,
-    "lastSeen": 1787448832500,
-    "isOnline": false
-  },
   "Kie": {
     "firstSeen": 1787436231982,
     "joinTime": 1789750545282,
     "totalTime": 394219005,
     "sessionCount": 48,
     "lastSeen": 1789753845467,
-    "isOnline": false
-  },
-  "Muddy_Pullout": {
-    "firstSeen": 1787440432149,
-    "joinTime": 1787443432246,
-    "totalTime": 11100562,
-    "sessionCount": 2,
-    "lastSeen": 1787453032746,
     "isOnline": false
   },
   "yurrrrr": {
@@ -4772,7 +4724,7 @@
     "joinTime": 1790017859080,
     "totalTime": 251412557,
     "sessionCount": 9,
-    "lastSeen": 1790037959505,
+    "lastSeen": 1790054760424,
     "isOnline": true
   }
 }
