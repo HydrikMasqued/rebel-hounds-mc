@@ -115,18 +115,12 @@ body {
 /* ===== DROPDOWN ===== */
 .nav-item {
   position: relative;
-}
-
-.nav-item > a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  cursor: pointer;
 }
 
-.nav-item > a::before {
-  content: '';
-  display: inline-block;
+.nav-caret {
   width: 0;
   height: 0;
   border-left: 4px solid transparent;
@@ -134,13 +128,19 @@ body {
   border-top: 5px solid currentColor;
   transition: transform 0.2s ease;
   margin-left: 2px;
-  position: static;
-  order: 2;
+  cursor: pointer;
+  flex-shrink: 0;
+  color: inherit;
 }
 
-.nav-item:hover > a::before {
+.nav-item:hover > .nav-caret {
   transform: rotate(180deg);
-  width: 0;
+  color: var(--text);
+}
+
+.nav-item > a.active + .nav-caret,
+.nav-item:hover > a.active + .nav-caret {
+  color: var(--primary);
 }
 
 .dropdown {
