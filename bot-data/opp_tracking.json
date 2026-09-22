@@ -15,14 +15,6 @@
     "lastSeen": 1787808850368,
     "isOnline": false
   },
-  "S": {
-    "joinTime": 1787445232361,
-    "totalTime": 177286385,
-    "sessionCount": 33,
-    "lastSeen": 1787449132511,
-    "isOnline": false,
-    "firstSeen": 1781528229489
-  },
   "Star Light": {
     "firstSeen": 1786218278786,
     "joinTime": 1789419328887,
@@ -293,14 +285,6 @@
     "totalTime": 215583513,
     "sessionCount": 31,
     "lastSeen": 1789087512771,
-    "isOnline": false
-  },
-  "undertaker_aka_jay": {
-    "firstSeen": 1786220265398,
-    "joinTime": 1787443432246,
-    "totalTime": 142507184,
-    "sessionCount": 35,
-    "lastSeen": 1787450932619,
     "isOnline": false
   },
   "Oboth": {
@@ -1647,14 +1631,6 @@
     "lastSeen": 1789073712068,
     "isOnline": false
   },
-  "B00g13man": {
-    "firstSeen": 1786333416259,
-    "joinTime": 1787504035168,
-    "totalTime": 294013957,
-    "sessionCount": 46,
-    "lastSeen": 1787511235484,
-    "isOnline": false
-  },
   "seth": {
     "firstSeen": 1786334316317,
     "joinTime": 1789700442721,
@@ -1901,14 +1877,6 @@
     "totalTime": 71703727,
     "sessionCount": 12,
     "lastSeen": 1788415479732,
-    "isOnline": false
-  },
-  "chicken noodle soupy": {
-    "firstSeen": 1786481886316,
-    "joinTime": 1787453332776,
-    "totalTime": 327315828,
-    "sessionCount": 42,
-    "lastSeen": 1787463533253,
     "isOnline": false
   },
   "Dan Hatter": {
@@ -2319,14 +2287,6 @@
     "lastSeen": 1789621538763,
     "isOnline": false
   },
-  "spit781": {
-    "firstSeen": 1786980511647,
-    "joinTime": 1787442832230,
-    "totalTime": 23400390,
-    "sessionCount": 5,
-    "lastSeen": 1787453032746,
-    "isOnline": false
-  },
   "Rooster702": {
     "firstSeen": 1787003011811,
     "joinTime": 1788142166416,
@@ -2429,14 +2389,6 @@
     "totalTime": 5339949,
     "sessionCount": 4,
     "lastSeen": 1787553537638,
-    "isOnline": false
-  },
-  "YaBoiTwitch": {
-    "firstSeen": 1787182419869,
-    "joinTime": 1787441632181,
-    "totalTime": 45901815,
-    "sessionCount": 18,
-    "lastSeen": 1787450032596,
     "isOnline": false
   },
   "ChillyFrog6538": {
@@ -2623,36 +2575,12 @@
     "lastSeen": 1789537234631,
     "isOnline": false
   },
-  "♥": {
-    "firstSeen": 1787434131959,
-    "joinTime": 1787447332439,
-    "totalTime": 8400255,
-    "sessionCount": 2,
-    "lastSeen": 1787448832500,
-    "isOnline": false
-  },
   "Kie": {
     "firstSeen": 1787436231982,
     "joinTime": 1789750545282,
     "totalTime": 394219005,
     "sessionCount": 48,
     "lastSeen": 1789753845467,
-    "isOnline": false
-  },
-  "Yuj3m": {
-    "firstSeen": 1787439232138,
-    "joinTime": 1787439232138,
-    "totalTime": 300006,
-    "sessionCount": 1,
-    "lastSeen": 1787439232138,
-    "isOnline": false
-  },
-  "Muddy_Pullout": {
-    "firstSeen": 1787440432149,
-    "joinTime": 1787443432246,
-    "totalTime": 11100562,
-    "sessionCount": 2,
-    "lastSeen": 1787453032746,
     "isOnline": false
   },
   "yurrrrr": {
@@ -2679,14 +2607,6 @@
     "lastSeen": 1788489883322,
     "isOnline": false
   },
-  "Fisher": {
-    "firstSeen": 1787475233780,
-    "joinTime": 1787475233780,
-    "totalTime": 900072,
-    "sessionCount": 1,
-    "lastSeen": 1787475833779,
-    "isOnline": false
-  },
   "Demonia ♡": {
     "firstSeen": 1787475533772,
     "joinTime": 1787542737137,
@@ -2709,14 +2629,6 @@
     "totalTime": 1500113,
     "sessionCount": 3,
     "lastSeen": 1787570038365,
-    "isOnline": false
-  },
-  "Sleepy": {
-    "firstSeen": 1787510335415,
-    "joinTime": 1787510335415,
-    "totalTime": 300047,
-    "sessionCount": 1,
-    "lastSeen": 1787510335415,
     "isOnline": false
   },
   "jacksontaylor1023": {
@@ -4777,10 +4689,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790017859080,
-    "totalTime": 251412557,
-    "sessionCount": 9,
-    "lastSeen": 1790028358943,
+    "joinTime": 1790104562913,
+    "totalTime": 336316232,
+    "sessionCount": 13,
+    "lastSeen": 1790112363226,
     "isOnline": true
   }
 }
