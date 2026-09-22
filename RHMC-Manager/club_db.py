@@ -19,6 +19,9 @@ TABLES = {
     "inventory": ["item", "category", "qty", "location", "condition", "assignedTo", "notes"],
     "bikes":     ["owner", "bike", "plate", "color", "status", "lastService", "mods", "notes"],
     "relationships": ["party_a", "party_b", "relation", "city", "since", "notes"],
+    "runs":         ["date", "type", "title", "lead", "attendees", "payout", "status", "notes"],
+    "attendance":   ["member", "date", "event", "present", "notes"],
+    "comms":        ["date", "channel", "sender", "message", "tags"],
 }
 
 NUMERIC = {"prospects": ["attendance"], "projects": ["progress"],
@@ -48,6 +51,8 @@ class ClubDB:
             self._import_club_files()
         elif self.is_empty():
             self._seed()
+        else:
+            self._backfill()
 
     def _ensure(self):
         cur = self.cx.cursor()
@@ -72,6 +77,98 @@ class ClubDB:
     def is_empty(self):
         cur = self.cx.cursor()
         return all(cur.execute("SELECT COUNT(*) FROM %s" % t).fetchone()[0] == 0 for t in TABLES)
+
+    def _backfill(self):
+        """Seed individual tables that are empty (for existing DBs that predate newer tables)."""
+        cur = self.cx.cursor()
+        for table in TABLES:
+            if cur.execute("SELECT COUNT(*) FROM %s" % table).fetchone()[0] == 0:
+                fn = getattr(self, "_seed_" + table, None)
+                if fn:
+                    fn()
+        self.cx.commit()
+
+    def _seed_members(self):
+        M = [
+            ("Jonathan \"Jay\" Charles", "Jay", "President", "Active", "555-0101", "jayreaper", "2025-09-01", "Paid", "Harley Fat Bob", "Founder. Church Sundays."),
+            ("Jason \"Escobar\" Castle", "Escobar", "Vice President", "Active", "", "d.bennett31", "2025-09-01", "Paid", "", ""),
+            ("Shepard", "Sergeant Stabby", "Sergeant At Arms", "Active", "", "shepardsky", "2025-09-01", "Paid", "", "Runs security details."),
+            ("Ember Davis", "Ember", "Secretary", "Active", "", "snow3976", "2025-09-01", "Paid", "", ""),
+            ("William Xander Reks", "Reks", "Treasurer", "Active", "", "panda_alleyway", "2025-09-01", "Paid", "", "Holds treasury."),
+            ("Olivia Newton", "Liv", "Road Captain", "Active", "", "", "2025-11-25", "Owes", "Sportster", ""),
+        ]
+        for m in M:
+            self.add("members", dict(zip(TABLES["members"], m)))
+
+    def _seed_projects(self):
+        self.add("projects", {"title": "Clubhouse meth-table upgrade", "category": "Business", "lead": "Reks", "status": "Active", "priority": "High", "start": "2026-08-20", "deadline": "2026-09-25", "progress": "60", "descr": "Need 40k + supplies. Assign runners."})
+        self.add("projects", {"title": "Charity ride - Grapeseed", "category": "Run / Event", "lead": "Olivia", "status": "Planning", "priority": "Normal", "start": "2026-09-05", "deadline": "2026-10-04", "progress": "20", "descr": "Route, flyers, prospect roadblock crew."})
+
+    def _seed_tasks(self):
+        self.add("tasks", {"title": "Collect September dues", "assignedTo": "Reks", "project": "", "priority": "High", "status": "Doing", "due": "2026-09-15", "notes": "$500 per patch."})
+        self.add("tasks", {"title": "Scout Paleto lab raid window", "assignedTo": "Shepard", "project": "", "priority": "Urgent", "status": "Todo", "due": "2026-09-12", "notes": "LEO patrol times."})
+        self.add("tasks", {"title": "Fix gate camera", "assignedTo": "Kilo (prospect)", "project": "Clubhouse meth-table upgrade", "priority": "Normal", "status": "Todo", "due": "2026-09-14", "notes": ""})
+
+    def _seed_gangs(self):
+        self.add("gangs", {"name": "The Lost MC (mirror crew)", "territory": "Stab City / Sandy", "attitude": "Tense", "city": "Vital RP", "strength": "12", "leader": "Unknown Prez", "business": "Chop shop", "weapons": "Pistols, sawed-off", "lastContact": "2026-08-28", "notes": "Bumped into us at Yellow Jack. Watching."})
+        self.add("gangs", {"name": "Vagos - East LS set", "territory": "Rancho", "attitude": "Neutral", "city": "Vital RP", "strength": "20", "leader": "?", "business": "Weed runs", "weapons": "SMGs reported", "lastContact": "", "notes": "Possible gun connect. Vet before dealing."})
+
+    def _seed_intel(self):
+        self.add("intel", {"subject": "Lost moving guns via Stab City docks", "category": "Gang", "source": "Informant G", "reliability": "Likely", "date": "2026-09-02", "linkedTo": "The Lost MC (mirror crew)", "action": "Verify with night watch", "details": "Two box trucks, late night, armed escort."})
+        self.add("intel", {"subject": "Fleeca on Great Ocean - weak roof access", "category": "Heist", "source": "Kilo", "reliability": "Rumor", "date": "2026-09-05", "linkedTo": "", "action": "Daytime recon photos", "details": "Janitor claims back door sticks."})
+        self.add("intel", {"subject": "Civilian Marta - nurse at Sandy", "category": "Civilian", "source": "Ember", "reliability": "Confirmed", "date": "2026-09-06", "linkedTo": "Marta Reyes", "action": "Keep friendly - patch-up off books", "details": "Will treat GSWs for cash."})
+
+    def _seed_heists(self):
+        self.add("heists", {"name": "Paleto Bay bonded truck", "target": "Group 6 truck, Paleto route", "status": "Planning", "difficulty": "Hard", "payout": "180000", "date": "2026-09-27", "crew": "Jay, Shepard, Escobar + driver TBD", "needs": "Hacker, getaway bikes", "notes": "Need LEO-shift intel first."})
+
+    def _seed_civilians(self):
+        self.add("civilians", {"name": "Marta Reyes", "role": "Nurse - Sandy Shores", "value": "Informant", "contact": "555-7788", "lastSeen": "2026-09-06", "gang": "None", "notes": "Off-books treatment. Paid cash. Protect identity."})
+        self.add("civilians", {"name": "Slick - car dealer", "role": "Dealer, Premium Deluxe", "value": "Client", "contact": "", "lastSeen": "2026-08-30", "gang": "", "notes": "Moves hot bikes, takes 15%. Reliable."})
+        self.add("civilians", {"name": "Deputy R. Cole", "role": "LSSD", "value": "LEO Watch", "contact": "", "lastSeen": "2026-09-01", "gang": "LEO", "notes": "Asks questions at Yellow Jack. Do not engage."})
+
+    def _seed_finance(self):
+        self.add("finance", {"date": "2026-09-01", "type": "in", "category": "Dues", "amount": "3500", "by": "August dues", "notes": "7 patches paid"})
+        self.add("finance", {"date": "2026-09-03", "type": "out", "category": "Upkeep", "amount": "1200", "by": "Reks", "notes": "Clubhouse rent + power"})
+        self.add("finance", {"date": "2026-09-05", "type": "in", "category": "Business", "amount": "8200", "by": "Table run", "notes": "Split to treasury"})
+        self.add("finance", {"date": "2026-09-07", "type": "out", "category": "Bikes/Parts", "amount": "900", "by": "Liv", "notes": "Sportster repairs"})
+
+    def _seed_inventory(self):
+        self.add("inventory", {"item": "Pistol Ammo (box)", "category": "Ammo", "qty": "40", "location": "Clubhouse", "condition": "New", "assignedTo": "Armory", "notes": "Count weekly"})
+        self.add("inventory", {"item": "Engine parts crate", "category": "Parts", "qty": "6", "location": "Storage Unit", "condition": "Good", "assignedTo": "", "notes": "For chop orders"})
+        self.add("inventory", {"item": "First aid kits", "category": "Supplies", "qty": "12", "location": "Clubhouse", "condition": "New", "assignedTo": "", "notes": "Restock via Marta connect"})
+        self.add("inventory", {"item": "Sawn-off (stash)", "category": "Weapons", "qty": "2", "location": "Van", "condition": "Good", "assignedTo": "Shepard", "notes": "Heist use only"})
+
+    def _seed_bikes(self):
+        self.add("bikes", {"owner": "Jonathan Jay Charles", "bike": "Harley Fat Bob 114", "plate": "HOUND01", "color": "Black / red", "status": "Road Ready", "lastService": "2026-08-20", "mods": "Stage 2, apes", "notes": ""})
+        self.add("bikes", {"owner": "Olivia Newton", "bike": "Sportster Iron 883", "plate": "HOUND22", "color": "Matte grey", "status": "In Shop", "lastService": "2026-09-07", "mods": "", "notes": "Waiting on forks"})
+        self.add("bikes", {"owner": "Club (prospect pool)", "bike": "Bagger - spare", "plate": "HOUND99", "color": "Black", "status": "Road Ready", "lastService": "2026-07-30", "mods": "", "notes": "Loaner for prospects"})
+
+    def _seed_deadlines(self):
+        self.add("deadlines", {"title": "Church - weekly", "date": "2026-09-13", "type": "Church", "owner": "Jay", "done": "No", "notes": "Sundays"})
+        self.add("deadlines", {"title": "Dues deadline", "date": "2026-09-15", "type": "Dues", "owner": "Reks", "done": "No", "notes": "$500 per patch"})
+        self.add("deadlines", {"title": "Turf payment - Stab City", "date": "2026-09-20", "type": "Turf", "owner": "Shepard", "done": "No", "notes": ""})
+
+    def _seed_relationships(self):
+        self.add("relationships", {"party_a": "Rebel Hounds MC", "party_b": "Vagos - East LS set", "relation": "Trade Partners", "city": "Vital RP", "since": "2026-08-01", "notes": "Gun connect via Slick. Keep it quiet."})
+        self.add("relationships", {"party_a": "Rebel Hounds MC", "party_b": "The Lost MC (mirror crew)", "relation": "Tense", "city": "Vital RP", "since": "2026-08-28", "notes": "Yellow Jack incident. No deals until it cools."})
+
+    def _seed_runs(self):
+        self.add("runs", {"date": "2026-09-07", "type": "Church", "title": "Weekly church", "lead": "Jay", "attendees": "Jay, Escobar, Shepard, Ember, Reks, Liv", "payout": "0", "status": "Done", "notes": "Standard agenda. Dues reminder."})
+        self.add("runs", {"date": "2026-09-10", "type": "Run", "title": "Supply run to Paleto", "lead": "Shepard", "attendees": "Shepard, Reks, Kilo", "payout": "3500", "status": "Done", "notes": "Clean run, no heat."})
+        self.add("runs", {"date": "2026-09-14", "type": "Business", "title": "Meth table pickup", "lead": "Reks", "attendees": "Reks, Liv", "payout": "8200", "status": "Done", "notes": "Split delivered to treasury."})
+
+    def _seed_attendance(self):
+        self.add("attendance", {"member": "Jonathan Jay Charles", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Jason Escobar Castle", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Shepard", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Ember Davis", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "William Xander Reks", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Olivia Newton", "date": "2026-09-07", "event": "Church", "present": "No", "notes": "Bike in shop"})
+
+    def _seed_comms(self):
+        self.add("comms", {"date": "2026-09-06 21:14", "channel": "Discord", "sender": "Jay", "message": "Church Sunday 8pm. Dues up.", "tags": "church,dues"})
+        self.add("comms", {"date": "2026-09-08 03:22", "channel": "Discord", "sender": "Shepard", "message": "Lost MC seen near Stab City docks. Two box trucks.", "tags": "intel,lost,warning"})
+        self.add("comms", {"date": "2026-09-10 19:45", "channel": "In Person", "sender": "Reks", "message": "Paleto run clean. Supplier confirmed next drop Thursday.", "tags": "business,supplier"})
 
     # ---- settings ----
     def get_setting(self, k, default=""):
@@ -210,6 +307,18 @@ class ClubDB:
         self.add("bikes", {"owner": "Jonathan Jay Charles", "bike": "Harley Fat Bob 114", "plate": "HOUND01", "color": "Black / red", "status": "Road Ready", "lastService": "2026-08-20", "mods": "Stage 2, apes", "notes": ""})
         self.add("bikes", {"owner": "Olivia Newton", "bike": "Sportster Iron 883", "plate": "HOUND22", "color": "Matte grey", "status": "In Shop", "lastService": "2026-09-07", "mods": "", "notes": "Waiting on forks"})
         self.add("bikes", {"owner": "Club (prospect pool)", "bike": "Bagger - spare", "plate": "HOUND99", "color": "Black", "status": "Road Ready", "lastService": "2026-07-30", "mods": "", "notes": "Loaner for prospects"})
+        self.add("runs", {"date": "2026-09-07", "type": "Church", "title": "Weekly church", "lead": "Jay", "attendees": "Jay, Escobar, Shepard, Ember, Reks, Liv", "payout": "0", "status": "Done", "notes": "Standard agenda. Dues reminder."})
+        self.add("runs", {"date": "2026-09-10", "type": "Run", "title": "Supply run to Paleto", "lead": "Shepard", "attendees": "Shepard, Reks, Kilo", "payout": "3500", "status": "Done", "notes": "Clean run, no heat."})
+        self.add("runs", {"date": "2026-09-14", "type": "Business", "title": "Meth table pickup", "lead": "Reks", "attendees": "Reks, Liv", "payout": "8200", "status": "Done", "notes": "Split delivered to treasury."})
+        self.add("attendance", {"member": "Jonathan Jay Charles", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Jason Escobar Castle", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Shepard", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Ember Davis", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "William Xander Reks", "date": "2026-09-07", "event": "Church", "present": "Yes", "notes": ""})
+        self.add("attendance", {"member": "Olivia Newton", "date": "2026-09-07", "event": "Church", "present": "No", "notes": "Bike in shop"})
+        self.add("comms", {"date": "2026-09-06 21:14", "channel": "Discord", "sender": "Jay", "message": "Church Sunday 8pm. Dues up.", "tags": "church,dues"})
+        self.add("comms", {"date": "2026-09-08 03:22", "channel": "Discord", "sender": "Shepard", "message": "Lost MC seen near Stab City docks. Two box trucks.", "tags": "intel,lost,warning"})
+        self.add("comms", {"date": "2026-09-10 19:45", "channel": "In Person", "sender": "Reks", "message": "Paleto run clean. Supplier confirmed next drop Thursday.", "tags": "business,supplier"})
 
     def _import_club_files(self):
         """Pull real roster/prospects from the club website folder if present."""
@@ -220,15 +329,19 @@ class ClubDB:
             if os.path.exists(rp):
                 with open(rp, encoding="utf-8") as f:
                     data = json.load(f)
-                if data.get("members"):
+                members = data.get("members", [])
+                if members:
                     self.cx.execute("DELETE FROM members")
-                for m in data.get("members", []):
-                    self.add("members", {
-                        "name": m.get("name") or m.get("username") or "Unknown",
-                        "callsign": m.get("username", ""), "rank": m.get("rank", "Full Patch"),
-                        "status": m.get("status", "Active"), "phone": "", "discord": m.get("username", ""),
-                        "joined": m.get("joined", ""), "duesPaid": "Owes", "bike": "",
-                        "notes": ((m.get("bio") or "") + " " + (m.get("contributions") or "")).strip()})
+                    for m in members:
+                        self.add("members", {
+                            "name": m.get("name") or m.get("username") or "Unknown",
+                            "callsign": m.get("username", ""), "rank": m.get("rank", "Full Patch"),
+                            "status": m.get("status", "Active"), "phone": "", "discord": m.get("username", ""),
+                            "joined": m.get("joined", ""), "duesPaid": "Owes", "bike": "",
+                            "notes": ((m.get("bio") or "") + " " + (m.get("contributions") or "")).strip()})
+                    # safety: never leave members empty
+                    if self.cx.execute("SELECT COUNT(*) FROM members").fetchone()[0] == 0:
+                        self._seed_members()
         except Exception:
             pass
         try:
@@ -236,18 +349,20 @@ class ClubDB:
             if os.path.exists(pp):
                 with open(pp, encoding="utf-8") as f:
                     data = json.load(f)
-                if data.get("prospects"):
+                prospects = data.get("prospects", [])
+                if prospects:
                     self.cx.execute("DELETE FROM prospects")
                     existing = set()
-                for x in data.get("prospects", []):
-                    if (x.get("name") or "") in existing:
-                        continue
-                    self.add("prospects", {
-                        "name": x.get("name", "Unknown"), "sponsor": x.get("sponsor", ""),
-                        "recruitedBy": x.get("recruitedBy", ""), "stage": "Prospect",
-                        "since": x.get("prospectSince", ""), "standing": x.get("standing", "Good"),
-                        "attendance": "50", "nextReview": x.get("nextReview", ""), "tasks": "",
-                        "notes": x.get("notes") or x.get("officerNote", "")})
+                    for x in prospects:
+                        if (x.get("name") or "") in existing:
+                            continue
+                        existing.add(x.get("name", ""))
+                        self.add("prospects", {
+                            "name": x.get("name", "Unknown"), "sponsor": x.get("sponsor", ""),
+                            "recruitedBy": x.get("recruitedBy", ""), "stage": "Prospect",
+                            "since": x.get("prospectSince", ""), "standing": x.get("standing", "Good"),
+                            "attendance": "50", "nextReview": x.get("nextReview", ""), "tasks": "",
+                            "notes": x.get("notes") or x.get("officerNote", "")})
         except Exception:
             pass
 

@@ -171,7 +171,13 @@ VIEW_INFO = {
 
 def base_dir():
     if getattr(sys, "frozen", False):
-        return os.path.dirname(sys.executable)
+        exe_dir = os.path.dirname(sys.executable)
+        if "Program Files" in exe_dir:
+            appdata = os.environ.get("APPDATA", os.path.expanduser("~"))
+            d = os.path.join(appdata, "RHMC-Manager")
+            os.makedirs(d, exist_ok=True)
+            return d
+        return exe_dir
     return os.path.dirname(os.path.abspath(__file__))
 
 
@@ -284,7 +290,7 @@ def slide_indicator(bar, target_y, ms=160):
 
 
 # ---------- sound + shared state ----------
-ACTIVE = {"db": None}  # live ClubDB handle, set at startup
+ACTIVE = {"db": None, "city": ""}  # live ClubDB handle + active city filter
 
 
 def sounds_on():
@@ -389,10 +395,11 @@ class EditorDialog(tk.Toplevel):
         btns = tk.Frame(self, bg=BG, padx=14, pady=10)
         btns.pack(fill="x")
         tk.Button(btns, text="Save", bg=RED, fg="white", relief="flat", padx=18, pady=4,
-                  command=self._ok, font=("Segoe UI", 10, "bold")).pack(side="right")
+                  command=self._auto_save, font=("Segoe UI", 10, "bold")).pack(side="right")
         tk.Button(btns, text="Cancel", bg=PANEL2, fg=FG, relief="flat", padx=14, pady=4,
                   command=self.destroy, font=("Segoe UI", 10)).pack(side="right", padx=8)
-        self.bind("<Escape>", lambda e: self.destroy())
+        self.bind("<Escape>", lambda e: self._auto_save())
+        self.protocol("WM_DELETE_WINDOW", self._auto_save)
         try:
             self.attributes("-alpha", 0.0)
             fade(self, 0.0, 1.0, 180)
@@ -402,16 +409,20 @@ class EditorDialog(tk.Toplevel):
         self.grab_set()
         self.wait_window(self)
 
-    def _ok(self):
+    def _collect(self):
         out = {}
-        table = self._table
-        for key, label, kind, opts, req in FIELDS[table]:
+        for key, label, kind, opts, req in FIELDS[self._table]:
             w = self.widgets[key]
             v = w.get("1.0", "end-1c").strip() if kind == "area" else w.get().strip()
-            if req and not v:
+            out[key] = v
+        return out
+
+    def _auto_save(self):
+        out = self._collect()
+        for key, label, kind, opts, req in FIELDS[self._table]:
+            if req and not out.get(key):
                 messagebox.showwarning("Required", label + " is required.", parent=self)
                 return
-            out[key] = v
         self.result = out
         self.destroy()
 
@@ -470,9 +481,9 @@ class ListView(tk.Frame):
             self.bal_lbl.pack(side="right", padx=10)
 
         cols = [c[0] for c in COLUMNS[table]]
-        self.tree = ttk.Treeview(self, columns=cols, show="headings", selectmode="browse", height=22)
+        self.tree = ttk.Treeview(self, columns=cols, show="headings", selectmode="extended", height=22)
         for key, head, w in COLUMNS[table]:
-            self.tree.heading(key, text=head)
+            self.tree.heading(key, text=head, command=lambda k=key: self._sort_by(k))
             self.tree.column(key, width=w, anchor="w")
         vsb = ttk.Scrollbar(self, orient="vertical", command=self.tree.yview)
         hsb = ttk.Scrollbar(self, orient="horizontal", command=self.tree.xview)
@@ -483,6 +494,12 @@ class ListView(tk.Frame):
         self.tree.bind("<Double-1>", lambda e: self.edit_rec())
         self.tree.tag_configure("over", background="#3d1512")
         self.tree.tag_configure("soon", background="#3a2f10")
+        self._sort_col = None
+        self._sort_rev = False
+        self.tree.bind("<Delete>", lambda e: self.del_rec())
+        self.tree.bind("<Shift-Delete>", lambda e: self.del_rec_fast())
+        self.bind("<Delete>", lambda e: self.del_rec())
+        self.bind("<Shift-Delete>", lambda e: self.del_rec_fast())
 
         bbox = tk.Frame(self, bg=BG)
         bbox.pack(fill="x", padx=8, pady=6)
@@ -501,7 +518,16 @@ class ListView(tk.Frame):
         for f, var in self.fvars.items():
             if var.get():
                 recs = [r for r in recs if (r.get(f) or "") == var.get()]
-        if self.table in ("deadlines", "tasks", "projects", "intel", "finance"):
+        acity = self.app.active_city()
+        if acity:
+            if self.table in ("gangs", "relationships"):
+                recs = [r for r in recs if (r.get("city") or "") == acity]
+            elif self.table == "intel":
+                gnames = [g["name"] for g in self.db.all("gangs") if g.get("city") == acity]
+                recs = [r for r in recs if (r.get("linkedTo") or "") in gnames or not r.get("linkedTo")]
+        if self._sort_col:
+            recs.sort(key=lambda r: (r.get(self._sort_col) or "").lower(), reverse=self._sort_rev)
+        elif self.table in ("deadlines", "tasks", "projects", "intel", "finance"):
             recs.sort(key=lambda r: (r.get("date") or r.get("due") or r.get("deadline") or "9999"), reverse=(self.table in ("intel", "finance")))
         return recs
 
@@ -570,6 +596,18 @@ class ListView(tk.Frame):
             return None
         return self.ids[self.tree.index(sel[0])]
 
+    def selected_all(self):
+        sel = self.tree.selection()
+        return [self.ids[self.tree.index(s)] for s in sel] if sel else []
+
+    def _sort_by(self, col):
+        if self._sort_col == col:
+            self._sort_rev = not self._sort_rev
+        else:
+            self._sort_col = col
+            self._sort_rev = False
+        self.refresh()
+
     def add_rec(self):
         data = open_editor(self, self.table)
         if data:
@@ -601,15 +639,34 @@ class ListView(tk.Frame):
             if now and not was:
                 self.app.toast("Deadline met ✓")
                 play_chime()
+                for i, r in enumerate(self.ids):
+                    if r == rid:
+                        iid = self.tree.get_children()[i] if i < len(self.tree.get_children()) else None
+                        if iid:
+                            row_flash(self.tree, iid, GOLD, 600)
+                        break
 
     def del_rec(self):
-        rid = self.selected()
-        if not rid:
+        rids = self.selected_all()
+        if not rids:
             return
-        if messagebox.askyesno("Delete", "Delete this record?", parent=self):
-            self.db.delete(self.table, rid)
+        msg = "Delete %d record(s)?" % len(rids) if len(rids) > 1 else "Delete this record?"
+        if messagebox.askyesno("Delete", msg, parent=self):
+            for rid in rids:
+                self.db.delete(self.table, rid)
             self.refresh()
-            self.app.toast("Deleted")
+            self.app.toast("Deleted %d record(s)" % len(rids))
+
+    def del_rec_fast(self):
+        """Shift+Delete: instant delete, no confirmation."""
+        rids = self.selected_all()
+        if not rids:
+            return
+        for rid in rids:
+            self.db.delete(self.table, rid)
+        self.refresh()
+        self.app.toast("Deleted %d record(s)" % len(rids))
+        play_chime()
 
     def patch_in(self):
         rid = self.selected()
@@ -702,20 +759,33 @@ class Dashboard(ScrollableFrame):
 
     def refresh(self):
         db = self.app.db
+        acity = self.app.active_city()
         members = [m for m in db.all("members") if m.get("status") == "Active"]
         prosp = [p for p in db.all("prospects") if p.get("stage") in ("Hangaround", "Prospect")]
         tasks = [t for t in db.all("tasks") if t.get("status") != "Done"]
         active = [p for p in db.all("projects") if p.get("status") == "Active"]
         bikes = db.all("bikes")
         ready = [b for b in bikes if b.get("status") == "Road Ready"]
+        if acity:
+            gangs = [g for g in db.all("gangs") if g.get("city") == acity]
+            rels = [r for r in db.all("relationships") if r.get("city") == acity]
+            intel = [i for i in db.all("intel")
+                     if (i.get("linkedTo") or "") in [g["name"] for g in gangs] or not i.get("linkedTo")]
+            city_label = acity.upper()
+        else:
+            gangs = db.all("gangs")
+            rels = db.all("relationships")
+            intel = db.all("intel")
+            city_label = "ALL CITIES"
         stats = [(len(members), "PATCHED", lambda v: str(int(v))),
                  (len(prosp), "PROSPECTS", lambda v: str(int(v))),
                  (len(tasks), "OPEN TASKS", lambda v: str(int(v))),
                  (db.balance(), "TREASURY", money),
-                 (len(active), "ACTIVE PROJECTS", lambda v: str(int(v)))]
-        for (n, l), (v, t, fmt) in zip(self.stat_lbls, stats):
+                 (len(gangs), "GANGS (" + city_label + ")", lambda v: str(int(v)))]
+        for idx, ((n, l), (v, t, fmt)) in enumerate(zip(self.stat_lbls, stats)):
             count_up(n, v, fmt)
             l.config(text=t)
+            self.after(300 + idx * 100, lambda lbl=l: pulse_label(lbl, GOLD, 400) if _alive(lbl) else None)
         n6, l6 = self.stat_lbls[5]
         count_up(n6, len(ready), lambda v: "%d/%d" % (int(v), len(bikes)))
         l6.config(text="BIKES READY")
@@ -729,8 +799,8 @@ class Dashboard(ScrollableFrame):
             self.boxes["Upcoming deadlines"].insert("end", "%s - %s (%s)" % (d.get("date"), d.get("title"), tag))
         for t in tasks[:12]:
             self.boxes["Open tasks"].insert("end", "[%s] %s (%s)" % (t.get("priority"), t.get("title"), t.get("assignedTo") or "unassigned"))
-        intel = sorted(db.all("intel"), key=lambda r: r.get("date") or "", reverse=True)
-        for i in intel[:12]:
+        intel_sorted = sorted(intel, key=lambda r: r.get("date") or "", reverse=True)
+        for i in intel_sorted[:12]:
             self.boxes["Latest intel"].insert("end", "[%s] %s" % (i.get("category"), i.get("subject")))
         fin = sorted(db.all("finance"), key=lambda r: r.get("date") or "", reverse=True)
         for f in fin[:12]:
@@ -738,7 +808,7 @@ class Dashboard(ScrollableFrame):
             self.boxes["Recent finance"].insert("end", "%s %s%s %s" % (f.get("date"), sign, money(f.get("amount")), f.get("category")))
         try:
             bits = ["%s %s" % (d.get("date"), d.get("title")) for d in dl[:5]]
-            bits += ["%s" % i.get("subject") for i in intel[:5]]
+            bits += ["%s" % i.get("subject") for i in intel_sorted[:5]]
             self.tick.itemconfig(self.tick_text, text="   •   ".join(bits) or "Ride safe.")
         except Exception:
             pass
@@ -747,11 +817,12 @@ class Dashboard(ScrollableFrame):
         try:
             if not _alive(self):
                 return
-            self.tick.move(self.tick_text, -2, 0)
+            self.tick.move(self.tick_text, -2.5, 0)
             box = self.tick.bbox(self.tick_text)
             if box and box[2] < 0:
                 self.tick.coords(self.tick_text, self.tick.winfo_width(), 13)
-            self.after(30, self._scroll_tick)
+                pulse_label(self.tick, "#ffd700", 300) if hasattr(self, 'tick') else None
+            self.after(28, self._scroll_tick)
         except Exception:
             pass
 
@@ -1002,6 +1073,12 @@ class MCApp(tk.Tk):
         self.geometry("1360x820")
         self.minsize(1080, 640)
         self.configure(bg=BG)
+        try:
+            ico = os.path.join(base_dir(), "app_icon.ico")
+            if os.path.exists(ico):
+                self.iconbitmap(ico)
+        except Exception:
+            pass
         self._base_scaling = self.tk.call("tk", "scaling")
         try:
             pct = int(db.get_setting("uiscale", "100") or 100)
@@ -1064,6 +1141,16 @@ class MCApp(tk.Tk):
         self.clock = tk.Label(top, text="", bg=BG, fg=MUTED)
         self.clock.pack(side="right")
         self._tick()
+        city_frame = tk.Frame(top, bg=PANEL, padx=8, pady=4)
+        city_frame.pack(side="right", padx=(0, 16))
+        tk.Label(city_frame, text="CITY:", bg=PANEL, fg=GOLD, font=("Segoe UI", 8, "bold")).pack(side="left", padx=(0, 4))
+        self.city_var = tk.StringVar(value="")
+        self.city_cb = ttk.Combobox(city_frame, textvariable=self.city_var,
+                                    values=["All Cities"] + city_names(),
+                                    width=16, state="readonly")
+        self.city_cb.pack(side="left")
+        self.city_cb.bind("<<ComboboxSelected>>", lambda e: self._switch_city())
+        ACTIVE["city"] = ""
 
         self.container = tk.Frame(right, bg=BG)
         self.container.pack(fill="both", expand=True)
@@ -1088,10 +1175,26 @@ class MCApp(tk.Tk):
             pass
         self._notified = set()
         self.after(8000, self._watch)
+        self.bind("<Control-n>", lambda e: self._shortcut_new())
+        self.bind("<Control-N>", lambda e: self._shortcut_new())
+        self.bind("<Control-e>", lambda e: self._shortcut_edit())
+        self.bind("<Control-E>", lambda e: self._shortcut_edit())
+        self.bind("<Control-s>", lambda e: self._shortcut_save())
+        self.bind("<Control-S>", lambda e: self._shortcut_save())
+        self.protocol("WM_DELETE_WINDOW", self._on_close)
 
     def _tick(self):
         self.clock.config(text=datetime.datetime.now().strftime("%a %d %b %Y  %H:%M:%S"))
         self.after(1000, self._tick)
+
+    def _switch_city(self):
+        sel = self.city_var.get()
+        ACTIVE["city"] = "" if sel == "All Cities" else sel
+        self.refresh_current()
+        pulse_label(self.title_lbl, GOLD, 300)
+
+    def active_city(self):
+        return ACTIVE.get("city", "")
 
     def show(self, key):
         self.current = key
@@ -1116,9 +1219,10 @@ class MCApp(tk.Tk):
             urg += sum(1 for t in self.db.all("tasks")
                        if t.get("status") != "Done" and (days_until(t.get("due")) or 99) < 0)
             self._urgent = urg > 0
+            dl_active = sum(1 for d in self.db.all("deadlines") if d.get("done") != "Yes")
             b = self.nav_btns.get("deadlines")
             if b:
-                b.config(text="Deadlines (%d)" % urg if urg else "Deadlines")
+                b.config(text="Deadlines (%d)" % dl_active if dl_active else "Deadlines")
         except Exception:
             pass
 
@@ -1215,25 +1319,33 @@ class MCApp(tk.Tk):
             pop.title("Club Alerts")
             pop.configure(bg=BG)
             pop.geometry("480x400")
+            try:
+                pop.attributes("-topmost", True)
+                pop.after(600, lambda: pop.attributes("-topmost", False) if _alive(pop) else None)
+            except Exception:
+                pass
             tk.Label(pop, text="CLUB ALERTS", bg=BG, fg=GOLD,
                      font=("Segoe UI", 13, "bold")).pack(pady=(12, 4))
             box = tk.Text(pop, bg=INK, fg=FG, relief="flat",
                           font=("Segoe UI", 10), height=15, width=54)
             box.pack(padx=12, pady=6, fill="both", expand=True)
             if overdue:
-                box.insert("end", "PAST DUE\n")
+                box.insert("end", "PAST DUE\n", "over")
                 for it in overdue:
-                    box.insert("end", "   ! " + it + "\n")
+                    box.insert("end", "   ! " + it + "\n", "over")
                 box.insert("end", "\n")
             if today:
-                box.insert("end", "DUE TODAY\n")
+                box.insert("end", "DUE TODAY\n", "today")
                 for it in today:
-                    box.insert("end", "   > " + it + "\n")
+                    box.insert("end", "   > " + it + "\n", "today")
                 box.insert("end", "\n")
             if soon:
-                box.insert("end", "COMING UP\n")
+                box.insert("end", "COMING UP\n", "soon")
                 for it in soon:
-                    box.insert("end", "   - " + it + "\n")
+                    box.insert("end", "   - " + it + "\n", "soon")
+            box.tag_config("over", foreground="#e74c3c")
+            box.tag_config("today", foreground=GOLD)
+            box.tag_config("soon", foreground="#e67e22")
             box.config(state="disabled")
             row = tk.Frame(pop, bg=BG)
             row.pack(pady=8)
@@ -1241,6 +1353,11 @@ class MCApp(tk.Tk):
                       command=lambda: (pop.destroy(), self.show("deadlines"))).pack(side="left", padx=5)
             tk.Button(row, text="Dismiss", bg=PANEL2, fg=FG, relief="flat", padx=14,
                       command=pop.destroy).pack(side="left", padx=5)
+            try:
+                pop.attributes("-alpha", 0.0)
+                fade(pop, 0.0, 1.0, 200)
+            except Exception:
+                pass
         except Exception:
             pass
 
@@ -1265,6 +1382,31 @@ class MCApp(tk.Tk):
         self.destroy()
         main(login_first=True)
 
+    def _shortcut_new(self):
+        v = self.views.get(self.current)
+        if hasattr(v, "add_rec"):
+            v.add_rec()
+
+    def _shortcut_edit(self):
+        v = self.views.get(self.current)
+        if hasattr(v, "edit_rec"):
+            v.edit_rec()
+
+    def _shortcut_save(self):
+        v = self.views.get(self.current)
+        if hasattr(v, "save"):
+            v.save()
+
+    def _on_close(self):
+        try:
+            bk = os.path.join(base_dir(), "backups")
+            os.makedirs(bk, exist_ok=True)
+            ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+            self.db.export_json(os.path.join(bk, "auto-%s.json" % ts))
+        except Exception:
+            pass
+        self.destroy()
+
 
 def login(root_db):
     win = tk.Toplevel()
@@ -1273,13 +1415,27 @@ def login(root_db):
     win.geometry("340x220")
     win.resizable(False, False)
     win.grab_set()
-    tk.Label(win, text="REBEL HOUNDS MC", bg=BG, fg=FG, font=("Segoe UI", 15, "bold")).pack(pady=(22, 0))
-    tk.Label(win, text="CLUB MANAGER - MEMBERS ONLY", bg=BG, fg=RED, font=("Segoe UI", 9, "bold")).pack()
+    title = tk.Label(win, text="", bg=BG, fg=FG, font=("Segoe UI", 15, "bold"))
+    title.pack(pady=(22, 0))
+    sub = tk.Label(win, text="", bg=BG, fg=RED, font=("Segoe UI", 9, "bold"))
+    sub.pack()
     pw = tk.Entry(win, show="*", width=28, bg=INK, fg=FG, insertbackground=FG,
                   relief="flat", justify="center", font=("Segoe UI", 12))
     pw.pack(pady=14, ipady=6)
     msg = tk.Label(win, text="Default passcode: hounds", bg=BG, fg=MUTED, font=("Segoe UI", 8))
     msg.pack()
+
+    def type_reveal(label, text, i=0):
+        if i <= len(text) and _alive(win):
+            label.config(text=text[:i])
+            win.after(30, type_reveal, label, text, i + 1)
+
+    win.after(100, lambda: type_reveal(title, "REBEL HOUNDS MC"))
+    win.after(400, lambda: type_reveal(sub, "CLUB MANAGER - MEMBERS ONLY"))
+    win.after(600, lambda: fade(pw, 0.0, 1.0, 200))
+    win.after(700, lambda: fade(msg, 0.0, 1.0, 150))
+    win.attributes("-alpha", 0.0)
+    fade(win, 0.0, 1.0, 200)
 
     ok = {"v": False}
 
@@ -1290,8 +1446,11 @@ def login(root_db):
         else:
             msg.config(text="Wrong passcode.", fg="#e74c3c")
             shake(win)
-    tk.Button(win, text="Enter Clubhouse", bg=RED, fg="white", relief="flat", padx=20, pady=4,
-              font=("Segoe UI", 10, "bold"), command=go).pack(pady=6)
+            flash_widget(pw, RED, 400)
+    btn = tk.Button(win, text="Enter Clubhouse", bg=RED, fg="white", relief="flat", padx=20, pady=4,
+                    font=("Segoe UI", 10, "bold"), command=go)
+    btn.pack(pady=6)
+    win.after(500, lambda: pulse_label(btn, "#e74c3c", 800) if _alive(btn) else None)
     pw.bind("<Return>", go)
     pw.focus()
     win.transient()
@@ -1300,30 +1459,42 @@ def login(root_db):
 
 
 def splash(parent):
-    """Animated startup splash with rolling progress bar."""
+    """Animated startup splash with rolling progress bar and staggered text."""
     sp = tk.Toplevel(parent)
     sp.overrideredirect(True)
     sp.configure(bg=INK)
     w, h = 440, 220
     sp.geometry("%dx%d+%d+%d" % (w, h, (sp.winfo_screenwidth() - w) // 2,
-                                 (sp.winfo_screenheight() - h) // 2))
-    tk.Label(sp, text="REBEL HOUNDS MC", bg=INK, fg=FG,
-             font=("Segoe UI", 22, "bold")).pack(pady=(36, 0))
-    tk.Label(sp, text="CLUB MANAGER", bg=INK, fg=RED,
-             font=("Segoe UI", 11, "bold")).pack()
+                                  (sp.winfo_screenheight() - h) // 2))
+    title = tk.Label(sp, text="", bg=INK, fg=FG,
+                     font=("Segoe UI", 22, "bold"))
+    title.pack(pady=(36, 0))
+    sub = tk.Label(sp, text="", bg=INK, fg=RED,
+                   font=("Segoe UI", 11, "bold"))
+    sub.pack()
     bar = ttk.Progressbar(sp, mode="indeterminate", length=300)
     bar.pack(pady=20)
     bar.start(10)
     msgs = ["Rolling out the bikes...", "Sweeping the clubhouse...",
             "Counting the treasury...", "Checking the turf..."]
-    st = tk.Label(sp, text=msgs[0], bg=INK, fg=MUTED, font=("Segoe UI", 9))
+    st = tk.Label(sp, text="", bg=INK, fg=MUTED, font=("Segoe UI", 9))
     st.pack()
 
-    def cycle(i=1):
-        if _alive(sp) and i < len(msgs):
-            st.config(text=msgs[i])
-            sp.after(350, cycle, i + 1)
-    sp.after(350, cycle)
+    def type_text(label, text, i=0):
+        if not _alive(sp) or i > len(text):
+            return
+        label.config(text=text[:i])
+        sp.after(25, type_text, label, text, i + 1)
+
+    sp.after(100, lambda: type_text(title, "REBEL HOUNDS MC"))
+    sp.after(500, lambda: type_text(sub, "CLUB MANAGER"))
+
+    def cycle(i=0):
+        if not _alive(sp) or i >= len(msgs):
+            return
+        type_text(st, msgs[i])
+        sp.after(400, cycle, i + 1)
+    sp.after(900, cycle)
     try:
         sp.attributes("-alpha", 0.0)
         fade(sp, 0.0, 1.0, 250)
