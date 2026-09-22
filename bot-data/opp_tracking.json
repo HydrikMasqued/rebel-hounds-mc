@@ -1631,14 +1631,6 @@
     "lastSeen": 1789073712068,
     "isOnline": false
   },
-  "B00g13man": {
-    "firstSeen": 1786333416259,
-    "joinTime": 1787504035168,
-    "totalTime": 294013957,
-    "sessionCount": 46,
-    "lastSeen": 1787511235484,
-    "isOnline": false
-  },
   "seth": {
     "firstSeen": 1786334316317,
     "joinTime": 1789700442721,
@@ -2637,14 +2629,6 @@
     "totalTime": 1500113,
     "sessionCount": 3,
     "lastSeen": 1787570038365,
-    "isOnline": false
-  },
-  "Sleepy": {
-    "firstSeen": 1787510335415,
-    "joinTime": 1787510335415,
-    "totalTime": 300047,
-    "sessionCount": 1,
-    "lastSeen": 1787510335415,
     "isOnline": false
   },
   "jacksontaylor1023": {
@@ -4705,10 +4689,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790088662156,
-    "totalTime": 320715463,
-    "sessionCount": 12,
-    "lastSeen": 1790100962724,
+    "joinTime": 1790104562913,
+    "totalTime": 336316232,
+    "sessionCount": 13,
+    "lastSeen": 1790112363226,
     "isOnline": true
   }
 }
