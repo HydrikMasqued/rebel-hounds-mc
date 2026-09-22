@@ -156,8 +156,8 @@
         </div>
         <div style="margin-left:auto;display:flex;gap:0.5rem;">
           <button class="btn btn-outline btn-sm" id="btnEditRoster" style="display:none;" data-edit-role="officer">Edit</button>
-          <button class="btn btn-primary btn-sm" id="btnSaveRoster" style="display:none;" data-edit-role="officer">Save</button>
-          <button class="btn btn-outline btn-sm" id="btnCancelRoster" style="display:none;" data-edit-role="officer">Cancel</button>
+          <button class="btn btn-primary btn-sm" id="btnSaveRoster" style="display:none;">Save</button>
+          <button class="btn btn-outline btn-sm" id="btnCancelRoster" style="display:none;">Cancel</button>
         </div>
       </div>
       <div class="edit-banner" id="editBanner">EDIT MODE - Change rank to move someone, rename headers below, click a card to edit their file. Remember to Save.</div>
@@ -471,7 +471,7 @@
       function closeModal(){ document.getElementById('rosterModal').classList.remove('open'); activeMember=null; }
 
       function enterEdit(){ editMode=true; document.getElementById('editBanner').classList.add('active'); document.getElementById('btnEditRoster').style.display='none'; document.getElementById('btnSaveRoster').style.display=''; document.getElementById('btnCancelRoster').style.display=''; render(); }
-      function exitEdit(){ editMode=false; document.getElementById('editBanner').classList.remove('active'); document.getElementById('btnEditRoster').style.display='none'; document.getElementById('btnSaveRoster').style.display='none'; document.getElementById('btnCancelRoster').style.display='none'; render(); }
+      function exitEdit(){ editMode=false; document.getElementById('editBanner').classList.remove('active'); document.getElementById('btnEditRoster').style.display=hasRole('officer')?'':'none'; document.getElementById('btnSaveRoster').style.display='none'; document.getElementById('btnCancelRoster').style.display='none'; render(); }
       function save(){
         // ranks already updated via selects - collect renamed headers
         if(!rosterData.levelLabels || typeof rosterData.levelLabels!=='object') rosterData.levelLabels={};
