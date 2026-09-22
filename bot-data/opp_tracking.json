@@ -1887,14 +1887,6 @@
     "lastSeen": 1788415479732,
     "isOnline": false
   },
-  "chicken noodle soupy": {
-    "firstSeen": 1786481886316,
-    "joinTime": 1787453332776,
-    "totalTime": 327315828,
-    "sessionCount": 42,
-    "lastSeen": 1787463533253,
-    "isOnline": false
-  },
   "Dan Hatter": {
     "firstSeen": 1786487286642,
     "joinTime": 1787793849620,
@@ -2621,14 +2613,6 @@
     "totalTime": 18300888,
     "sessionCount": 6,
     "lastSeen": 1788489883322,
-    "isOnline": false
-  },
-  "Fisher": {
-    "firstSeen": 1787475233780,
-    "joinTime": 1787475233780,
-    "totalTime": 900072,
-    "sessionCount": 1,
-    "lastSeen": 1787475833779,
     "isOnline": false
   },
   "Demonia ♡": {
@@ -4721,10 +4705,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790017859080,
-    "totalTime": 251412557,
-    "sessionCount": 9,
-    "lastSeen": 1790054760424,
+    "joinTime": 1790064961103,
+    "totalTime": 298214403,
+    "sessionCount": 10,
+    "lastSeen": 1790071561182,
     "isOnline": true
   }
 }
