@@ -927,14 +927,6 @@
     "lastSeen": 1789694142340,
     "isOnline": false
   },
-  "Not Nova": {
-    "firstSeen": 1786234966124,
-    "joinTime": 1787586839270,
-    "totalTime": 196555230,
-    "sessionCount": 24,
-    "lastSeen": 1787595539747,
-    "isOnline": false
-  },
   "Copes": {
     "firstSeen": 1786234966124,
     "joinTime": 1789699842631,
@@ -2645,14 +2637,6 @@
     "totalTime": 6600253,
     "sessionCount": 2,
     "lastSeen": 1787624341095,
-    "isOnline": false
-  },
-  "BluntSnaily0415": {
-    "firstSeen": 1787583839170,
-    "joinTime": 1787592539608,
-    "totalTime": 8700408,
-    "sessionCount": 2,
-    "lastSeen": 1787597939872,
     "isOnline": false
   },
   "besos para ti": {
@@ -4633,10 +4617,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790151665173,
-    "totalTime": 382818421,
-    "sessionCount": 14,
-    "lastSeen": 1790182266617,
+    "joinTime": 1790190967047,
+    "totalTime": 421820294,
+    "sessionCount": 15,
+    "lastSeen": 1790193067187,
     "isOnline": true
   }
 }
