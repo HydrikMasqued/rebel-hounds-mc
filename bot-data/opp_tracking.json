@@ -2471,14 +2471,6 @@
     "lastSeen": 1789626338970,
     "isOnline": false
   },
-  "|404| PFF Mason D.": {
-    "firstSeen": 1787366328535,
-    "joinTime": 1787559837932,
-    "totalTime": 77703710,
-    "sessionCount": 6,
-    "lastSeen": 1787559837932,
-    "isOnline": false
-  },
   "FamousGibz": {
     "firstSeen": 1787370228730,
     "joinTime": 1788050961954,
@@ -2599,14 +2591,6 @@
     "lastSeen": 1789064111573,
     "isOnline": false
   },
-  "Lowkey": {
-    "firstSeen": 1787498934848,
-    "joinTime": 1787570038365,
-    "totalTime": 1500113,
-    "sessionCount": 3,
-    "lastSeen": 1787570038365,
-    "isOnline": false
-  },
   "jacksontaylor1023": {
     "firstSeen": 1787510635462,
     "joinTime": 1789171816973,
@@ -2661,14 +2645,6 @@
     "totalTime": 6600253,
     "sessionCount": 2,
     "lastSeen": 1787624341095,
-    "isOnline": false
-  },
-  "MistGaming1771": {
-    "firstSeen": 1787555937738,
-    "joinTime": 1787555937738,
-    "totalTime": 3600158,
-    "sessionCount": 1,
-    "lastSeen": 1787558637874,
     "isOnline": false
   },
   "BluntSnaily0415": {
@@ -4657,10 +4633,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790104562913,
-    "totalTime": 336316232,
-    "sessionCount": 13,
-    "lastSeen": 1790145664877,
+    "joinTime": 1790151665173,
+    "totalTime": 382818421,
+    "sessionCount": 14,
+    "lastSeen": 1790165165706,
     "isOnline": true
   }
 }
