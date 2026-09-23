@@ -2159,14 +2159,6 @@
     "lastSeen": 1789706142957,
     "isOnline": false
   },
-  "drm": {
-    "firstSeen": 1786756699827,
-    "joinTime": 1787534336679,
-    "totalTime": 138306306,
-    "sessionCount": 22,
-    "lastSeen": 1787550537474,
-    "isOnline": false
-  },
   "HeathenHammer": {
     "firstSeen": 1786768700390,
     "joinTime": 1789099213390,
@@ -2381,14 +2373,6 @@
     "totalTime": 280213578,
     "sessionCount": 26,
     "lastSeen": 1788746996178,
-    "isOnline": false
-  },
-  "MISTA MAR": {
-    "firstSeen": 1787174319481,
-    "joinTime": 1787551737535,
-    "totalTime": 5339949,
-    "sessionCount": 4,
-    "lastSeen": 1787553537638,
     "isOnline": false
   },
   "ChillyFrog6538": {
@@ -2607,14 +2591,6 @@
     "lastSeen": 1788489883322,
     "isOnline": false
   },
-  "Demonia ♡": {
-    "firstSeen": 1787475533772,
-    "joinTime": 1787542737137,
-    "totalTime": 17100787,
-    "sessionCount": 2,
-    "lastSeen": 1787550537474,
-    "isOnline": false
-  },
   "SlowFish7275": {
     "firstSeen": 1787475833779,
     "joinTime": 1789064111573,
@@ -2677,14 +2653,6 @@
     "totalTime": 17202639,
     "sessionCount": 3,
     "lastSeen": 1788149966823,
-    "isOnline": false
-  },
-  "Pluto.": {
-    "firstSeen": 1787542737137,
-    "joinTime": 1787542737137,
-    "totalTime": 6900313,
-    "sessionCount": 1,
-    "lastSeen": 1787549337405,
     "isOnline": false
   },
   "MoodyGoose2163": {
@@ -4692,7 +4660,7 @@
     "joinTime": 1790104562913,
     "totalTime": 336316232,
     "sessionCount": 13,
-    "lastSeen": 1790127963893,
+    "lastSeen": 1790145664877,
     "isOnline": true
   }
 }
