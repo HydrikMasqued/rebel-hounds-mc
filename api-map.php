@@ -13,16 +13,26 @@ try {
         "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
         "name VARCHAR(200) NOT NULL DEFAULT '', " .
         "description TEXT, " .
+        "notes TEXT, " .
+        "meta JSON, " .
         "latitude DOUBLE NOT NULL DEFAULT 0, " .
         "longitude DOUBLE NOT NULL DEFAULT 0, " .
         "category_id INT UNSIGNED DEFAULT NULL, " .
         "icon VARCHAR(50) NOT NULL DEFAULT 'marker', " .
         "color VARCHAR(20) NOT NULL DEFAULT '#d4af37', " .
         "angle INT UNSIGNED NOT NULL DEFAULT 0, " .
+        "map_context VARCHAR(40) NOT NULL DEFAULT 'los_santos', " .
         "created_at VARCHAR(30) NOT NULL, " .
         "updated_at VARCHAR(30) NOT NULL" .
         ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
     );
+    foreach ([
+        "ALTER TABLE map_blips ADD COLUMN notes TEXT",
+        "ALTER TABLE map_blips ADD COLUMN meta JSON",
+        "ALTER TABLE map_blips ADD COLUMN map_context VARCHAR(40) NOT NULL DEFAULT 'los_santos'"
+    ] as $alterSql) {
+        try { $pdo->exec($alterSql); } catch (PDOException $e) {}
+    }
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS map_categories (" .
         "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
@@ -152,7 +162,7 @@ if ($m === 'GET') {
     }
     if ($resource === 'search' && isset($parts[1])) {
         $q = '%' . $parts[1] . '%';
-        $stmt = $pdo->prepare('SELECT * FROM map_blips WHERE name LIKE :q OR description LIKE :q ORDER BY id');
+        $stmt = $pdo->prepare('SELECT * FROM map_blips WHERE name LIKE :q OR description LIKE :q OR notes LIKE :q ORDER BY id');
         $stmt->execute([':q' => $q]);
         $rows = $stmt->fetchAll();
         foreach ($rows as &$r) { $r['latitude']=(float)$r['latitude']; $r['longitude']=(float)$r['longitude']; $r['category_id']=$r['category_id']!==null?(int)$r['category_id']:null; $r['angle']=(int)$r['angle']; }
@@ -171,17 +181,26 @@ if ($m === 'POST') {
     if ($resource === 'blips') {
         $name = trim($body['name'] ?? '');
         if (!$name) jerr('Name required');
-        $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, latitude, longitude, category_id, icon, color, angle, created_at, updated_at) VALUES (:n, :d, :lat, :lng, :cat, :icon, :col, :ang, :created, :updated)');
+        $meta = $body['meta'] ?? null;
+        if (is_array($meta)) {
+            $meta = json_encode(array_filter($meta, function($v) { return $v !== null && $v !== ''; }));
+        } elseif ($meta === '' || $meta === false) {
+            $meta = null;
+        }
+        $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, notes, meta, latitude, longitude, category_id, icon, color, angle, map_context, created_at, updated_at) VALUES (:n, :d, :notes, :meta, :lat, :lng, :cat, :icon, :col, :ang, :ctx, :created, :updated)');
         $now = date('c');
         $stmt->execute([
             ':n' => $name,
             ':d' => $body['description'] ?? '',
+            ':notes' => $body['notes'] ?? '',
+            ':meta' => $meta,
             ':lat' => (float)($body['latitude'] ?? 0),
             ':lng' => (float)($body['longitude'] ?? 0),
             ':cat' => $body['category_id'] ?? null,
             ':icon' => $body['icon'] ?? 'marker',
             ':col' => $body['color'] ?? '#d4af37',
-            ':ang' => (int)($body['angle'] ?? 0),
+            ':ang' => (int)($body['angle'] ?? $body['rotation'] ?? 0),
+            ':ctx' => $body['map_context'] ?? 'los_santos',
             ':created' => $now,
             ':updated' => $now
         ]);
@@ -239,11 +258,14 @@ if ($m === 'POST') {
         }
         foreach ($blips as $b) {
             if (empty($b['name']) || !is_numeric($b['latitude'] ?? null) || !is_numeric($b['longitude'] ?? null)) continue;
-            $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, latitude, longitude, category_id, icon, color, angle, created_at, updated_at) VALUES (:n,:d,:lat,:lng,:cat,:icon,:col,:ang,:c,:u)');
+            $metaImp = $b['meta'] ?? null;
+            if (is_array($metaImp)) $metaImp = json_encode($metaImp);
+            $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, notes, meta, latitude, longitude, category_id, icon, color, angle, map_context, created_at, updated_at) VALUES (:n,:d,:notes,:meta,:lat,:lng,:cat,:icon,:col,:ang,:ctx,:c,:u)');
             $stmt->execute([
-                ':n'=>$b['name'], ':d'=>$b['description']??'', ':lat'=>(float)$b['latitude'], ':lng'=>(float)$b['longitude'],
+                ':n'=>$b['name'], ':d'=>$b['description']??'', ':notes'=>$b['notes']??'', ':meta'=>$metaImp ?: null,
+                ':lat'=>(float)$b['latitude'], ':lng'=>(float)$b['longitude'],
                 ':cat'=>$b['category_id']??null, ':icon'=>$b['icon']??'marker', ':col'=>$b['color']??'#d4af37',
-                ':ang'=>(int)($b['angle']??0), ':c'=>date('c'), ':u'=>date('c')
+                ':ang'=>(int)($b['angle']??$b['rotation']??0), ':ctx'=>$b['map_context']??'los_santos', ':c'=>date('c'), ':u'=>date('c')
             ]);
             $imported++;
         }
@@ -261,14 +283,28 @@ if ($m === 'PUT') {
         if (!is_array($body)) jerr('Invalid data');
         $sets = [];
         $params = [':id' => $id];
-        foreach (['name','description','icon','color'] as $f) {
+        foreach (['name','description','notes','icon','color'] as $f) {
             if (isset($body[$f])) { $sets[] = "$f = :$f"; $params[":$f"] = $body[$f]; }
         }
         foreach (['latitude','longitude'] as $f) {
             if (isset($body[$f])) { $sets[] = "$f = :$f"; $params[":$f"] = (float)$body[$f]; }
         }
         if (isset($body['category_id'])) { $sets[]='category_id=:cat'; $params[':cat']=$body['category_id']; }
-        if (isset($body['angle'])) { $sets[]='angle=:ang'; $params[':ang']=(int)$body['angle']; }
+        if (array_key_exists('angle', $body) || array_key_exists('rotation', $body)) {
+            $rot = array_key_exists('angle', $body) ? $body['angle'] : $body['rotation'];
+            $sets[]='angle=:ang'; $params[':ang']=(int)($rot ?? 0);
+        }
+        if (isset($body['map_context'])) { $sets[]='map_context=:ctx'; $params[':ctx']=$body['map_context']; }
+        if (array_key_exists('meta', $body)) {
+            $meta = $body['meta'];
+            if (is_array($meta)) {
+                $meta = json_encode(array_filter($meta, function($v) { return $v !== null && $v !== ''; }));
+            } elseif ($meta === '' || $meta === false) {
+                $meta = null;
+            }
+            $sets[] = 'meta = :meta';
+            $params[':meta'] = $meta;
+        }
         $sets[] = 'updated_at = :updated';
         $params[':updated'] = date('c');
         if ($sets) {

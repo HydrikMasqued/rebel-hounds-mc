@@ -90,12 +90,15 @@ CREATE TABLE IF NOT EXISTS map_blips (
     id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(200) NOT NULL DEFAULT '',
     description TEXT,
+    notes       TEXT,
+    meta        JSON,
     latitude    DOUBLE NOT NULL DEFAULT 0,
     longitude   DOUBLE NOT NULL DEFAULT 0,
     category_id INT UNSIGNED DEFAULT NULL,
     icon        VARCHAR(50) NOT NULL DEFAULT 'marker',
     color       VARCHAR(20) NOT NULL DEFAULT '#d4af37',
     angle       INT UNSIGNED NOT NULL DEFAULT 0,
+    map_context VARCHAR(40) NOT NULL DEFAULT 'los_santos',
     created_at  VARCHAR(30) NOT NULL,
     updated_at  VARCHAR(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

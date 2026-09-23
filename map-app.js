@@ -396,6 +396,95 @@
       });
     }
 
+    function escapeHtml(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function parseBlipMeta(blip) {
+      if (!blip) return {};
+      if (blip.meta && typeof blip.meta === 'object' && !Array.isArray(blip.meta)) return blip.meta;
+      if (typeof blip.meta === 'string' && blip.meta.trim()) {
+        try {
+          var p = JSON.parse(blip.meta);
+          if (p && typeof p === 'object') return p;
+        } catch (e) {}
+      }
+      return {};
+    }
+
+    function formatNotes(text) {
+      if (!text) return '';
+      var lines = String(text).replace(/\r\n/g, '\n').split('\n');
+      var html = [];
+      var inList = false;
+      lines.forEach(function(raw) {
+        var line = raw.replace(/\t/g, '  ');
+        var trimmed = line.trim();
+        if (!trimmed) {
+          if (inList) { html.push('</ul>'); inList = false; }
+          html.push('<div class="notes-gap"></div>');
+          return;
+        }
+        var inline = escapeHtml(trimmed)
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/__(.+?)__/g, '<em>$1</em>');
+        var h = /^(#{1,3})\s+(.*)$/.exec(inline);
+        if (h) {
+          if (inList) { html.push('</ul>'); inList = false; }
+          html.push('<div class="notes-h">' + h[2] + '</div>');
+          return;
+        }
+        var li = /^[-*•]\s+(.*)$/.exec(inline) || /^\d+[.)]\s+(.*)$/.exec(inline);
+        if (li) {
+          if (!inList) { html.push('<ul class="notes-list">'); inList = true; }
+          html.push('<li>' + li[1] + '</li>');
+          return;
+        }
+        if (inList) { html.push('</ul>'); inList = false; }
+        html.push('<div class="notes-p">' + inline + '</div>');
+      });
+      if (inList) html.push('</ul>');
+      return html.join('');
+    }
+
+    function metaChips(blip) {
+      var m = parseBlipMeta(blip);
+      var chips = [];
+      if (m.type) chips.push('<span class="meta-chip">' + escapeHtml(m.type) + '</span>');
+      if (m.difficulty) {
+        var d = String(m.difficulty).toLowerCase();
+        var cls = d.indexOf('hard') !== -1 || d.indexOf('expert') !== -1 ? 'hard'
+          : d.indexOf('medium') !== -1 || d.indexOf('mod') !== -1 ? 'med' : 'easy';
+        chips.push('<span class="meta-chip meta-' + cls + '">' + escapeHtml(m.difficulty) + '</span>');
+      }
+      if (m.payout) chips.push('<span class="meta-chip meta-pay">' + escapeHtml(m.payout) + '</span>');
+      if (m.cooldown) chips.push('<span class="meta-chip">' + escapeHtml(m.cooldown) + '</span>');
+      if (m.requirements) chips.push('<span class="meta-chip meta-req">' + escapeHtml(m.requirements) + '</span>');
+      return chips.length ? '<div class="meta-chips">' + chips.join('') + '</div>' : '';
+    }
+
+    function blipPopupHtml(blip, category) {
+      var shortDesc = blip.description
+        ? '<div class="popup-desc">' + escapeHtml(blip.description) + '</div>'
+        : '';
+      var notesBlock = blip.notes
+        ? '<div class="popup-notes">' + formatNotes(blip.notes) + '</div>'
+        : '';
+      return (
+        '<div class="blip-popup">' +
+          '<div class="popup-title">' + escapeHtml(blip.name) + '</div>' +
+          (category ? '<div class="popup-cat" style="color:' + category.color + '">' + escapeHtml(category.name) + '</div>' : '') +
+          metaChips(blip) +
+          shortDesc +
+          notesBlock +
+          '<div class="popup-coords">Y: ' + Number(blip.latitude).toFixed(2) + ' &middot; X: ' + Number(blip.longitude).toFixed(2) + '</div>' +
+        '</div>'
+      );
+    }
+
     function blipMatchesCategory(b) {
       const matchesCat = !categoryFilter || String(b.category_id) === String(categoryFilter);
       const matchesMap = (b.map_context || 'los_santos') === currentMap;
@@ -404,9 +493,12 @@
 
     function renderBlips(filter = '') {
       blipLayer.clearLayers();
+      const q = filter.toLowerCase();
       const filtered = blips.filter(b =>
-        (((b.name || '') + '').toLowerCase().includes(filter.toLowerCase()) ||
-        (b.description || '').toLowerCase().includes(filter.toLowerCase())) &&
+        (((b.name || '') + '').toLowerCase().includes(q) ||
+        (b.description || '').toLowerCase().includes(q) ||
+        (b.notes || '').toLowerCase().includes(q) ||
+        JSON.stringify(parseBlipMeta(b)).toLowerCase().includes(q)) &&
         blipMatchesCategory(b)
       );
 
@@ -417,12 +509,7 @@
           draggable: true
         }).addTo(blipLayer);
 
-        marker.bindPopup(`
-          <strong>${escapeHtml(blip.name)}</strong><br/>
-          ${category ? `<span style="color:${category.color}">●</span> ${escapeHtml(category.name)}<br/>` : ''}
-          ${blip.description ? `<em style="white-space:pre-line">${escapeHtml(blip.description)}</em><br/>` : ''}
-          <small style="color:#8a93a0">Y: ${Number(blip.latitude).toFixed(2)} &middot; X: ${Number(blip.longitude).toFixed(2)}</small>
-        `);
+        marker.bindPopup(blipPopupHtml(blip, category), { maxWidth: 340, minWidth: 200 });
 
         marker.on('click', () => selectBlip(blip.id));
         marker.on('dragend', async () => {
@@ -431,6 +518,8 @@
             await api('/blips/' + blip.id, { method: 'PUT', body: JSON.stringify({
               name: blip.name,
               description: blip.description || '',
+              notes: blip.notes || '',
+              meta: parseBlipMeta(blip),
               latitude: pos.lat,
               longitude: pos.lng,
               category_id: blip.category_id || null,
@@ -452,9 +541,12 @@
 
     function renderBlipList(filter = '') {
       const list = document.getElementById('blipList');
+      const q = filter.toLowerCase();
       const filtered = blips.filter(b =>
-        (((b.name || '') + '').toLowerCase().includes(filter.toLowerCase()) ||
-        (b.description || '').toLowerCase().includes(filter.toLowerCase())) &&
+        (((b.name || '') + '').toLowerCase().includes(q) ||
+        (b.description || '').toLowerCase().includes(q) ||
+        (b.notes || '').toLowerCase().includes(q) ||
+        JSON.stringify(parseBlipMeta(b)).toLowerCase().includes(q)) &&
         blipMatchesCategory(b)
       ).sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
 
@@ -469,6 +561,8 @@
         const iconSvg = ICON_SVG[iconName] || ICON_SVG.marker;
         const color = category?.color || '#ffffff';
         const isSelected = blip.id === selectedBlipId;
+        const preview = (blip.notes || blip.description || '').replace(/\s+/g, ' ').trim();
+        const shortPreview = preview.length > 90 ? preview.slice(0, 90) + '...' : preview;
 
         return `
           <div class="blip-item ${isSelected ? 'selected' : ''}" data-id="${blip.id}">
@@ -478,7 +572,8 @@
             <div class="blip-info">
               <div class="blip-name">${escapeHtml(blip.name)}</div>
               <div class="blip-category">${category ? escapeHtml(category.name) : 'No category'}</div>
-              ${blip.description ? `<div class="blip-desc">${escapeHtml(blip.description)}</div>` : ''}
+              ${metaChips(blip)}
+              ${shortPreview ? `<div class="blip-desc">${escapeHtml(shortPreview)}</div>` : ''}
             </div>
             <div class="blip-actions">
               <button class="btn-icon" onclick="event.stopPropagation(); editBlip(${blip.id})" title="Edit">${ICON_EDIT}</button>
@@ -643,7 +738,8 @@
         <div class="quick-form">
           <div class="quick-form-title">Add blip &middot; Y ${latlng.lat.toFixed(2)}, X ${latlng.lng.toFixed(2)}</div>
           <input type="text" id="quickName" placeholder="Name *" />
-          <textarea id="quickDesc" rows="2" placeholder="Description (optional)"></textarea>
+          <input type="text" id="quickDesc" placeholder="Short summary (optional)" />
+          <textarea id="quickNotes" rows="5" placeholder="Detailed notes: steps, cooldown, access...&#10;Supports ## Heading, - bullet, **bold**"></textarea>
           <div class="cat-field">
             <select id="quickCategory">${categoryOptionsHtml()}</select>
             <button type="button" class="btn-new-cat" id="quickNewCat">+ New</button>
@@ -670,7 +766,7 @@
         </div>`;
       const content = wrap.firstElementChild;
 
-      const popup = L.popup({ autoPan: true, maxWidth: 280, closeButton: true })
+      const popup = L.popup({ autoPan: true, maxWidth: 340, minWidth: 220, closeButton: true })
         .setLatLng(latlng)
         .setContent(content)
         .openOn(map);
@@ -719,6 +815,7 @@
         await api('/blips', { method: 'POST', body: JSON.stringify({
           name,
           description: document.getElementById('quickDesc').value.trim(),
+          notes: (document.getElementById('quickNotes') || {}).value || '',
           latitude: quickLat,
           longitude: quickLng,
           category_id: document.getElementById('quickCategory').value || null,
@@ -865,7 +962,10 @@
         var all = lsGet('blips');
         var q = (parts[1] || '').toLowerCase();
         return Promise.resolve(all.filter(function(b) {
-          return b.name.toLowerCase().includes(q) || (b.description || '').toLowerCase().includes(q);
+          return b.name.toLowerCase().includes(q)
+            || (b.description || '').toLowerCase().includes(q)
+            || (b.notes || '').toLowerCase().includes(q)
+            || JSON.stringify(parseBlipMeta(b)).toLowerCase().includes(q);
         }));
       }
 
@@ -910,6 +1010,35 @@
     }
 
     // Blip CRUD
+    function readMetaFields(prefix) {
+      function val(id) {
+        var el = document.getElementById(id);
+        return el ? String(el.value || '').trim() : '';
+      }
+      return {
+        type: val(prefix + 'MetaType'),
+        difficulty: val(prefix + 'MetaDifficulty'),
+        payout: val(prefix + 'MetaPayout'),
+        cooldown: val(prefix + 'MetaCooldown'),
+        requirements: val(prefix + 'MetaRequirements')
+      };
+    }
+
+    function writeMetaFields(prefix, meta) {
+      var m = meta || {};
+      var map = {
+        MetaType: m.type || '',
+        MetaDifficulty: m.difficulty || '',
+        MetaPayout: m.payout || '',
+        MetaCooldown: m.cooldown || '',
+        MetaRequirements: m.requirements || ''
+      };
+      Object.keys(map).forEach(function(k) {
+        var el = document.getElementById(prefix + k);
+        if (el) el.value = map[k];
+      });
+    }
+
     function showBlipForm(blip = null) {
       document.getElementById('blipForm').style.display = blip ? 'none' : 'block';
       document.getElementById('blipEditForm').style.display = blip ? 'block' : 'none';
@@ -919,11 +1048,14 @@
         document.getElementById('editBlipId').value = blip.id;
         document.getElementById('editBlipName').value = blip.name;
         document.getElementById('editBlipDesc').value = blip.description || '';
+        var editNotes = document.getElementById('editBlipNotes');
+        if (editNotes) editNotes.value = blip.notes || '';
+        writeMetaFields('editBlip', parseBlipMeta(blip));
         document.getElementById('editBlipLat').value = blip.latitude;
         document.getElementById('editBlipLng').value = blip.longitude;
         document.getElementById('editBlipCategory').value = blip.category_id || '';
         editIcon = blip.icon || '';
-        editRotation = parseFloat(blip.rotation) || 0;
+        editRotation = parseFloat(blip.rotation) || parseFloat(blip.angle) || 0;
         initIconPicker('editIconPicker', editIcon, (icon) => { editIcon = icon; });
         const ea = document.getElementById('editAngle');
         const ev = document.getElementById('editAngleVal');
@@ -939,6 +1071,9 @@
         editRotation = 0;
         document.getElementById('blipName').value = '';
         document.getElementById('blipDesc').value = '';
+        var newNotes = document.getElementById('blipNotes');
+        if (newNotes) newNotes.value = '';
+        writeMetaFields('blip', {});
         document.getElementById('blipLat').value = map.getCenter().lat.toFixed(2);
         document.getElementById('blipLng').value = map.getCenter().lng.toFixed(2);
         document.getElementById('blipCategory').value = '';
@@ -951,10 +1086,13 @@
       const lat = parseFloat(document.getElementById('blipLat').value);
       const lng = parseFloat(document.getElementById('blipLng').value);
       if (!isFinite(lat) || !isFinite(lng)) return alert('Invalid coordinates');
+      const notesEl = document.getElementById('blipNotes');
 
       const blip = {
         name,
         description: document.getElementById('blipDesc').value.trim(),
+        notes: notesEl ? notesEl.value : '',
+        meta: readMetaFields('blip'),
         latitude: lat,
         longitude: lng,
         category_id: document.getElementById('blipCategory').value || null,
@@ -973,15 +1111,19 @@
     async function updateBlip() {
       const name = document.getElementById('editBlipName').value.trim();
       if (!name) return alert('Name is required');
+      const notesEl = document.getElementById('editBlipNotes');
 
       const blip = {
         name,
         description: document.getElementById('editBlipDesc').value.trim(),
+        notes: notesEl ? notesEl.value : '',
+        meta: readMetaFields('editBlip'),
         latitude: parseFloat(document.getElementById('editBlipLat').value),
         longitude: parseFloat(document.getElementById('editBlipLng').value),
         category_id: document.getElementById('editBlipCategory').value || null,
         icon: editIcon || null,
         rotation: editRotation,
+        angle: editRotation,
         map_context: currentMap
       };
 
@@ -1120,7 +1262,9 @@
         if (filter.length > 0) {
           const match = blips.find(b =>
             (((b.name || '') + '').toLowerCase().includes(filter)) ||
-            (b.description || '').toLowerCase().includes(filter)
+            (b.description || '').toLowerCase().includes(filter) ||
+            (b.notes || '').toLowerCase().includes(filter) ||
+            JSON.stringify(parseBlipMeta(b)).toLowerCase().includes(filter)
           );
           if (match && (match.map_context || 'los_santos') === currentMap) {
             map.setView([match.latitude, match.longitude], Math.max(map.getZoom(), 0), { animate: true });
@@ -1236,12 +1380,6 @@
       } else {
         document.exitFullscreen();
       }
-    }
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
     }
 
     // Exposed for inline onclick handlers in rendered lists (IIFE scope is invisible to them)
