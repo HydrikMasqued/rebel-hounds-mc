@@ -827,7 +827,7 @@
         addBlipMode = false;
         document.getElementById('btnAddBlip').classList.remove('active');
         document.getElementById('btnAddBlip').title = 'Add blip at center';
-        loadData();
+        await loadData();
       } catch (e) {
         alert('Failed to save: ' + e.message);
       }
@@ -847,6 +847,7 @@
     }
 
     async function api(endpoint, options) {
+      var method = (options && options.method) || 'GET';
       if (MAP_API_BASE) {
         try {
           var url = MAP_API_BASE + endpoint;
@@ -854,9 +855,23 @@
             headers: { 'Content-Type': 'application/json' },
             ...(options || {})
           });
-          if (!res.ok) throw new Error(await res.text());
-          return res.json();
-        } catch(e) { console.warn('[map] API failed, using localStorage:', e.message); }
+          if (!res.ok) {
+            var bodyText = '';
+            try { bodyText = await res.text(); } catch (e2) {}
+            var msg = bodyText;
+            try {
+              var parsed = JSON.parse(bodyText);
+              if (parsed && parsed.error) msg = parsed.error;
+            } catch (e3) {}
+            throw new Error((msg || 'Request failed') + ' (HTTP ' + res.status + ')');
+          }
+          return await res.json();
+        } catch (e) {
+          // Never silently fall back on writes — that makes saves look successful
+          // while only landing in localStorage, then vanish on the next server load.
+          if (method !== 'GET') throw e;
+          console.warn('[map] API failed, using localStorage:', e.message);
+        }
       }
       return lsApi(endpoint, options);
     }
@@ -1102,7 +1117,7 @@
       try {
         await api('/blips', { method: 'POST', body: JSON.stringify(blip) });
         showBlipForm();
-        loadData();
+        await loadData();
       } catch (e) {
         alert('Failed to save: ' + e.message);
       }
@@ -1130,7 +1145,7 @@
       try {
         await api('/blips/' + editingBlipId, { method: 'PUT', body: JSON.stringify(blip) });
         showBlipForm();
-        loadData();
+        await loadData();
       } catch (e) {
         alert('Failed to update: ' + e.message);
       }

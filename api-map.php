@@ -33,6 +33,17 @@ try {
     ] as $alterSql) {
         try { $pdo->exec($alterSql); } catch (PDOException $e) {}
     }
+    // Older MySQL/MariaDB may reject JSON; keep meta as text if needed.
+    try {
+        $hasMeta = false;
+        foreach ($pdo->query('SHOW COLUMNS FROM map_blips') as $col) {
+            if (($col['Field'] ?? '') === 'meta') { $hasMeta = true; break; }
+        }
+        if (!$hasMeta) {
+            try { $pdo->exec('ALTER TABLE map_blips ADD COLUMN meta JSON'); }
+            catch (PDOException $e) { $pdo->exec('ALTER TABLE map_blips ADD COLUMN meta TEXT'); }
+        }
+    } catch (PDOException $e) {}
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS map_categories (" .
         "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, " .
@@ -183,27 +194,36 @@ if ($m === 'POST') {
         if (!$name) jerr('Name required');
         $meta = $body['meta'] ?? null;
         if (is_array($meta)) {
-            $meta = json_encode(array_filter($meta, function($v) { return $v !== null && $v !== ''; }));
+            $filtered = array_filter($meta, function($v) { return $v !== null && $v !== ''; });
+            $meta = $filtered ? json_encode($filtered, JSON_UNESCAPED_UNICODE) : null;
         } elseif ($meta === '' || $meta === false) {
             $meta = null;
+        } elseif ($meta !== null && !is_string($meta)) {
+            $meta = json_encode($meta, JSON_UNESCAPED_UNICODE);
         }
-        $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, notes, meta, latitude, longitude, category_id, icon, color, angle, map_context, created_at, updated_at) VALUES (:n, :d, :notes, :meta, :lat, :lng, :cat, :icon, :col, :ang, :ctx, :created, :updated)');
         $now = date('c');
-        $stmt->execute([
-            ':n' => $name,
-            ':d' => $body['description'] ?? '',
-            ':notes' => $body['notes'] ?? '',
-            ':meta' => $meta,
-            ':lat' => (float)($body['latitude'] ?? 0),
-            ':lng' => (float)($body['longitude'] ?? 0),
-            ':cat' => $body['category_id'] ?? null,
-            ':icon' => $body['icon'] ?? 'marker',
-            ':col' => $body['color'] ?? '#d4af37',
-            ':ang' => (int)($body['angle'] ?? $body['rotation'] ?? 0),
-            ':ctx' => $body['map_context'] ?? 'los_santos',
-            ':created' => $now,
-            ':updated' => $now
-        ]);
+        try {
+            $stmt = $pdo->prepare('INSERT INTO map_blips (name, description, notes, meta, latitude, longitude, category_id, icon, color, angle, map_context, created_at, updated_at) VALUES (:n, :d, :notes, :meta, :lat, :lng, :cat, :icon, :col, :ang, :ctx, :created, :updated)');
+            $ok = $stmt->execute([
+                ':n' => $name,
+                ':d' => (string)($body['description'] ?? ''),
+                ':notes' => (string)($body['notes'] ?? ''),
+                ':meta' => $meta,
+                ':lat' => (float)($body['latitude'] ?? 0),
+                ':lng' => (float)($body['longitude'] ?? 0),
+                ':cat' => ($body['category_id'] === '' || $body['category_id'] === null) ? null : $body['category_id'],
+                ':icon' => $body['icon'] !== null && $body['icon'] !== '' ? $body['icon'] : 'marker',
+                ':col' => $body['color'] ?: '#d4af37',
+                ':ang' => (int)(isset($body['angle']) ? $body['angle'] : ($body['rotation'] ?? 0)),
+                ':ctx' => $body['map_context'] ?: 'los_santos',
+                ':created' => $now,
+                ':updated' => $now
+            ]);
+            if (!$ok) jerr('Insert failed', 500);
+        } catch (PDOException $e) {
+            error_log('blip insert failed: ' . $e->getMessage());
+            jerr('Blip insert failed: ' . $e->getMessage(), 500);
+        }
         $newId = $pdo->lastInsertId();
         jout(['id' => (int)$newId]);
     }
@@ -298,9 +318,12 @@ if ($m === 'PUT') {
         if (array_key_exists('meta', $body)) {
             $meta = $body['meta'];
             if (is_array($meta)) {
-                $meta = json_encode(array_filter($meta, function($v) { return $v !== null && $v !== ''; }));
+                $filtered = array_filter($meta, function($v) { return $v !== null && $v !== ''; });
+                $meta = $filtered ? json_encode($filtered, JSON_UNESCAPED_UNICODE) : null;
             } elseif ($meta === '' || $meta === false) {
                 $meta = null;
+            } elseif ($meta !== null && !is_string($meta)) {
+                $meta = json_encode($meta, JSON_UNESCAPED_UNICODE);
             }
             $sets[] = 'meta = :meta';
             $params[':meta'] = $meta;
@@ -308,8 +331,13 @@ if ($m === 'PUT') {
         $sets[] = 'updated_at = :updated';
         $params[':updated'] = date('c');
         if ($sets) {
-            $stmt = $pdo->prepare('UPDATE map_blips SET ' . implode(',', $sets) . ' WHERE id = :id');
-            $stmt->execute($params);
+            try {
+                $stmt = $pdo->prepare('UPDATE map_blips SET ' . implode(',', $sets) . ' WHERE id = :id');
+                $stmt->execute($params);
+            } catch (PDOException $e) {
+                error_log('blip update failed: ' . $e->getMessage());
+                jerr('Blip update failed: ' . $e->getMessage(), 500);
+            }
         }
         jout(['success'=>true]);
     }
