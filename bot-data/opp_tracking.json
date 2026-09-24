@@ -871,14 +871,6 @@
     "lastSeen": 1788086363686,
     "isOnline": false
   },
-  "Stimpy": {
-    "firstSeen": 1786233466084,
-    "joinTime": 1787685544118,
-    "totalTime": 18000759,
-    "sessionCount": 4,
-    "lastSeen": 1787687344225,
-    "isOnline": false
-  },
   "royedwards1": {
     "firstSeen": 1786233466084,
     "joinTime": 1788808799272,
@@ -1437,14 +1429,6 @@
     "totalTime": 27867452,
     "sessionCount": 7,
     "lastSeen": 1789085112660,
-    "isOnline": false
-  },
-  "MaverickZ": {
-    "firstSeen": 1786304014998,
-    "joinTime": 1787685544118,
-    "totalTime": 198009385,
-    "sessionCount": 32,
-    "lastSeen": 1787694544592,
     "isOnline": false
   },
   "CameronP234": {
@@ -2613,14 +2597,6 @@
     "totalTime": 17202639,
     "sessionCount": 3,
     "lastSeen": 1788149966823,
-    "isOnline": false
-  },
-  "besos para ti": {
-    "firstSeen": 1787605440212,
-    "joinTime": 1787690644421,
-    "totalTime": 21601109,
-    "sessionCount": 5,
-    "lastSeen": 1787692452413,
     "isOnline": false
   },
   "Roadside Homicide": {
@@ -4569,10 +4545,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790238069449,
-    "totalTime": 468622652,
-    "sessionCount": 16,
-    "lastSeen": 1790276471433,
+    "joinTime": 1790277371502,
+    "totalTime": 507624638,
+    "sessionCount": 17,
+    "lastSeen": 1790288171983,
     "isOnline": true
   }
 }

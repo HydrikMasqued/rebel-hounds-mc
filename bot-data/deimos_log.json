@@ -1,14 +1,4 @@
 [
-  "2026-09-23 21:29:16,491 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-23 21:29:19,558 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 3 seconds",
-  "2026-09-23 21:29:19,558 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 0h 0m",
-  "2026-09-23 21:29:20,137 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
-  "2026-09-23 21:29:20,137 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-23 21:29:22,773 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 2 seconds",
-  "2026-09-23 21:29:22,774 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 0h 0m",
-  "2026-09-23 21:29:44,791 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
-  "2026-09-23 21:29:44,791 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-23 21:53:44,013 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
   "2026-09-23 21:53:44,013 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-23 22:11:07,439 - utils.playtime_database - INFO - Started vital session for user 391042658912567296 in guild 889005510286786601",
   "2026-09-23 22:11:07,440 - cogs.playtime_tracker - INFO - Started vital playtime tracking for d.bennett31 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +188,15 @@
   "2026-09-24 18:45:14,924 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
   "2026-09-24 18:45:14,924 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-24 19:00:40,963 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
-  "2026-09-24 19:00:40,963 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-09-24 19:00:40,963 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-24 19:31:09,401 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 1828 seconds",
+  "2026-09-24 19:31:09,402 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 0h 30m",
+  "2026-09-24 19:48:06,924 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
+  "2026-09-24 19:48:06,924 - cogs.playtime_tracker - INFO - Started vital playtime tracking for couchpotatoe_01 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-24 19:48:15,686 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
+  "2026-09-24 19:48:15,686 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-24 19:48:17,250 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
+  "2026-09-24 19:48:17,251 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-24 20:19:31,225 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-24 21:14:50,705 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a."
 ]
