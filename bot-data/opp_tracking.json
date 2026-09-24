@@ -2655,14 +2655,6 @@
     "lastSeen": 1787703244918,
     "isOnline": false
   },
-  "QuickToad1538": {
-    "firstSeen": 1787611740484,
-    "joinTime": 1787612640563,
-    "totalTime": 2400121,
-    "sessionCount": 2,
-    "lastSeen": 1787614140608,
-    "isOnline": false
-  },
   "chicken noodle soup": {
     "firstSeen": 1787619540903,
     "joinTime": 1789240520357,
@@ -4620,7 +4612,7 @@
     "joinTime": 1790190967047,
     "totalTime": 421820294,
     "sessionCount": 15,
-    "lastSeen": 1790202367627,
+    "lastSeen": 1790210468041,
     "isOnline": true
   }
 }
