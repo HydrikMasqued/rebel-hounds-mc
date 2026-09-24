@@ -2663,14 +2663,6 @@
     "lastSeen": 1789005608713,
     "isOnline": false
   },
-  "SoggyOtter6229": {
-    "firstSeen": 1787632441501,
-    "joinTime": 1787632441501,
-    "totalTime": 9000481,
-    "sessionCount": 1,
-    "lastSeen": 1787641141975,
-    "isOnline": false
-  },
   "Arthur": {
     "firstSeen": 1787674143584,
     "joinTime": 1788725395199,
@@ -4585,10 +4577,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790190967047,
-    "totalTime": 421820294,
-    "sessionCount": 15,
-    "lastSeen": 1790227568879,
+    "joinTime": 1790238069449,
+    "totalTime": 468622652,
+    "sessionCount": 16,
+    "lastSeen": 1790244969859,
     "isOnline": true
   }
 }

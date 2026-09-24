@@ -1,9 +1,4 @@
 [
-  "2026-09-23 20:57:24,089 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 51m",
-  "2026-09-23 21:00:20,921 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 1976 seconds",
-  "2026-09-23 21:00:20,922 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 0h 32m",
-  "2026-09-23 21:00:20,923 - utils.playtime_database - INFO - Recorded weekly notification for user 361004934184828928 in guild 889005510286786601 (week 2026-39)",
-  "2026-09-23 21:00:20,923 - cogs.playtime_tracker - INFO - User snow3976 reached 6h weekly requirement!",
   "2026-09-23 21:00:23,707 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
   "2026-09-23 21:00:38,884 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 5053 seconds",
   "2026-09-23 21:00:38,884 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 1h 24m",
@@ -198,5 +193,10 @@
   "2026-09-24 04:22:12,914 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ravenmj420: 1h 23m",
   "2026-09-24 04:34:59,717 - cogs.contribution_verification - INFO - Added verification reactions to contribution from tragic1301",
   "2026-09-24 05:09:38,380 - cogs.contribution_verification - INFO - Deleted non-image contribution message from wicked1667",
-  "2026-09-24 05:09:41,184 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)"
+  "2026-09-24 05:09:41,184 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-09-24 05:46:15,137 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-24 08:38:44,527 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-24 09:17:40,398 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-24 09:24:22,694 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-24 10:10:17,957 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a."
 ]
