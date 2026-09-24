@@ -2111,14 +2111,6 @@
     "lastSeen": 1788626390155,
     "isOnline": false
   },
-  "MoodyNewt4634": {
-    "firstSeen": 1786736898877,
-    "joinTime": 1787677743749,
-    "totalTime": 35101559,
-    "sessionCount": 5,
-    "lastSeen": 1787684044061,
-    "isOnline": false
-  },
   "Chuleta": {
     "firstSeen": 1786743199166,
     "joinTime": 1789747845077,
@@ -4580,7 +4572,7 @@
     "joinTime": 1790238069449,
     "totalTime": 468622652,
     "sessionCount": 16,
-    "lastSeen": 1790262370662,
+    "lastSeen": 1790276471433,
     "isOnline": true
   }
 }
