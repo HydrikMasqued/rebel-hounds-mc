@@ -2487,14 +2487,6 @@
     "lastSeen": 1788843901051,
     "isOnline": false
   },
-  "E DOBBIN": {
-    "firstSeen": 1787404730409,
-    "joinTime": 1787699944782,
-    "totalTime": 20100982,
-    "sessionCount": 4,
-    "lastSeen": 1787701144811,
-    "isOnline": false
-  },
   "ivvi": {
     "firstSeen": 1787419131118,
     "joinTime": 1788160467362,
@@ -2597,14 +2589,6 @@
     "totalTime": 17202639,
     "sessionCount": 3,
     "lastSeen": 1788149966823,
-    "isOnline": false
-  },
-  "Roadside Homicide": {
-    "firstSeen": 1787607540280,
-    "joinTime": 1787693644563,
-    "totalTime": 17400766,
-    "sessionCount": 3,
-    "lastSeen": 1787703244918,
     "isOnline": false
   },
   "chicken noodle soup": {
@@ -4548,7 +4532,7 @@
     "joinTime": 1790277371502,
     "totalTime": 507624638,
     "sessionCount": 17,
-    "lastSeen": 1790288171983,
+    "lastSeen": 1790296272419,
     "isOnline": true
   }
 }
