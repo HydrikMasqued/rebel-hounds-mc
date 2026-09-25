@@ -1,15 +1,4 @@
 [
-  "2026-09-23 23:38:11,295 - cogs.contribution_verification - INFO - Deleted approved/rejected contribution 1551817709488963634 from channel",
-  "2026-09-23 23:38:14,521 - cogs.contribution_verification - INFO - Sent approved contribution DM to president 181143017619587073",
-  "2026-09-23 23:38:15,071 - cogs.contribution_verification - INFO - Posted approved contribution to leadership channel 1512987446483222639",
-  "2026-09-23 23:38:15,071 - cogs.contribution_verification - INFO - Contribution from mr_maximus approved by bdillon97",
-  "2026-09-23 23:38:15,273 - cogs.contribution_verification - INFO - Deleted approved/rejected contribution 1551916751535734835 from channel",
-  "2026-09-23 23:38:15,580 - cogs.contribution_verification - INFO - Sent approved contribution DM to president 181143017619587073",
-  "2026-09-23 23:38:16,665 - cogs.contribution_verification - INFO - Posted approved contribution to leadership channel 1512987446483222639",
-  "2026-09-23 23:38:16,665 - cogs.contribution_verification - INFO - Contribution from mr_maximus approved by bdillon97",
-  "2026-09-23 23:38:16,840 - cogs.contribution_verification - INFO - Deleted approved/rejected contribution 1552015304412893214 from channel",
-  "2026-09-23 23:38:20,315 - cogs.contribution_verification - INFO - Sent approved contribution DM to president 181143017619587073",
-  "2026-09-23 23:38:22,120 - cogs.contribution_verification - INFO - Posted approved contribution to leadership channel 1512987446483222639",
   "2026-09-23 23:38:22,120 - cogs.contribution_verification - INFO - Contribution from bdillon97 approved by bdillon97",
   "2026-09-23 23:38:22,321 - cogs.contribution_verification - INFO - Deleted approved/rejected contribution 1552141537142382602 from channel",
   "2026-09-23 23:42:43,979 - cogs.contribution_verification - INFO - Deleted non-image contribution message from bdillon97",
@@ -198,5 +187,16 @@
   "2026-09-25 17:41:50,620 - utils.playtime_database - INFO - Recorded weekly notification for user 391042658912567296 in guild 889005510286786601 (week 2026-39)",
   "2026-09-25 17:41:50,621 - cogs.playtime_tracker - INFO - User d.bennett31 reached 6h weekly requirement!",
   "2026-09-25 17:41:52,286 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
-  "2026-09-25 17:43:31,366 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a."
+  "2026-09-25 17:43:31,366 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-25 19:35:46,373 - utils.playtime_database - INFO - Started vital session for user 141748109116964864 in guild 889005510286786601",
+  "2026-09-25 19:35:46,373 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tsacas in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-25 19:35:52,663 - utils.playtime_database - INFO - Ended vital session for user 141748109116964864: 6 seconds",
+  "2026-09-25 19:35:52,664 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 0h 0m",
+  "2026-09-25 19:54:31,651 - utils.playtime_database - INFO - Started vital session for user 1105925237247316018 in guild 889005510286786601",
+  "2026-09-25 19:54:31,651 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ravenmj420 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-25 20:00:16,509 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 9978 seconds",
+  "2026-09-25 20:00:16,509 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 2h 46m",
+  "2026-09-25 20:22:12,803 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-25 20:28:12,413 - utils.playtime_database - INFO - Ended vital session for user 1105925237247316018: 2020 seconds",
+  "2026-09-25 20:28:12,414 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for ravenmj420: 0h 33m"
 ]
