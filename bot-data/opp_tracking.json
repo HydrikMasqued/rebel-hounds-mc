@@ -111,14 +111,6 @@
     "lastSeen": 1789059011370,
     "isOnline": false
   },
-  "Maximus": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1787698144748,
-    "totalTime": 440953950,
-    "sessionCount": 32,
-    "lastSeen": 1787715845578,
-    "isOnline": false
-  },
   "Vee": {
     "firstSeen": 1786218278786,
     "joinTime": 1788541486007,
@@ -253,14 +245,6 @@
     "totalTime": 186908884,
     "sessionCount": 20,
     "lastSeen": 1789251320935,
-    "isOnline": false
-  },
-  "Jayreaper": {
-    "firstSeen": 1786219965418,
-    "joinTime": 1787696944696,
-    "totalTime": 286513546,
-    "sessionCount": 41,
-    "lastSeen": 1787709545262,
     "isOnline": false
   },
   "Rebas": {
@@ -1351,14 +1335,6 @@
     "lastSeen": 1789108213827,
     "isOnline": false
   },
-  "CleverDeer1275": {
-    "firstSeen": 1786286914209,
-    "joinTime": 1787708645172,
-    "totalTime": 102304856,
-    "sessionCount": 11,
-    "lastSeen": 1787717045623,
-    "isOnline": false
-  },
   "its_yungrick802": {
     "firstSeen": 1786289914364,
     "joinTime": 1789338025039,
@@ -2023,14 +1999,6 @@
     "lastSeen": 1788163467472,
     "isOnline": false
   },
-  "QuietLizard6424": {
-    "firstSeen": 1786630093790,
-    "joinTime": 1787696644677,
-    "totalTime": 14700466,
-    "sessionCount": 3,
-    "lastSeen": 1787704745034,
-    "isOnline": false
-  },
   "HauntedRaptor": {
     "firstSeen": 1786640894192,
     "joinTime": 1789705842916,
@@ -2511,22 +2479,6 @@
     "lastSeen": 1789753845467,
     "isOnline": false
   },
-  "yurrrrr": {
-    "firstSeen": 1787448832500,
-    "joinTime": 1787705645039,
-    "totalTime": 27001453,
-    "sessionCount": 3,
-    "lastSeen": 1787718845732,
-    "isOnline": false
-  },
-  "issy": {
-    "firstSeen": 1787449132511,
-    "joinTime": 1787705645039,
-    "totalTime": 33601857,
-    "sessionCount": 8,
-    "lastSeen": 1787718845732,
-    "isOnline": false
-  },
   "Asher Zaa": {
     "firstSeen": 1787465033324,
     "joinTime": 1788487183242,
@@ -2637,30 +2589,6 @@
     "totalTime": 110705369,
     "sessionCount": 24,
     "lastSeen": 1788681292980,
-    "isOnline": false
-  },
-  "|404| PFF Mason D": {
-    "firstSeen": 1787704444992,
-    "joinTime": 1787704444992,
-    "totalTime": 13200687,
-    "sessionCount": 1,
-    "lastSeen": 1787717345668,
-    "isOnline": false
-  },
-  "amothical": {
-    "firstSeen": 1787710445310,
-    "joinTime": 1787710445310,
-    "totalTime": 900040,
-    "sessionCount": 1,
-    "lastSeen": 1787711045326,
-    "isOnline": false
-  },
-  "Cavan269": {
-    "firstSeen": 1787713445484,
-    "joinTime": 1787713445484,
-    "totalTime": 6000281,
-    "sessionCount": 1,
-    "lastSeen": 1787719145759,
     "isOnline": false
   },
   "llunde601": {
@@ -4532,7 +4460,7 @@
     "joinTime": 1790277371502,
     "totalTime": 507624638,
     "sessionCount": 17,
-    "lastSeen": 1790296272419,
+    "lastSeen": 1790313373348,
     "isOnline": true
   }
 }
