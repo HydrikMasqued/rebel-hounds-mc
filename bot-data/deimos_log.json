@@ -1,13 +1,4 @@
 [
-  "2026-09-24 20:19:31,225 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
-  "2026-09-24 21:14:50,705 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
-  "2026-09-24 22:32:00,219 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-09-24 22:32:00,220 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-24 22:33:41,054 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 100 seconds",
-  "2026-09-24 22:33:41,054 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 0h 1m",
-  "2026-09-24 22:35:18,662 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
-  "2026-09-24 22:35:18,662 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-24 22:36:44,650 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
   "2026-09-24 22:36:44,651 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-24 22:46:06,783 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
   "2026-09-24 22:46:06,783 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +189,14 @@
   "2026-09-26 05:11:42,977 - utils.church_database - INFO - Closed church interval for user 1425481575419613376 after 3s",
   "2026-09-26 05:11:42,977 - cogs.church_tracker - INFO - Church: swizzy188 left the Roundtable VC after 3s (session 6)",
   "2026-09-26 05:15:47,746 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 18112 seconds",
-  "2026-09-26 05:15:47,747 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 5h 1m"
+  "2026-09-26 05:15:47,747 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 5h 1m",
+  "2026-09-26 05:55:59,751 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
+  "2026-09-26 05:55:59,752 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-26 06:36:39,132 - utils.playtime_database - INFO - Started vital session for user 1425481575419613376 in guild 889005510286786601",
+  "2026-09-26 06:36:39,133 - cogs.playtime_tracker - INFO - Started vital playtime tracking for swizzy188 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-09-26 06:36:40,658 - utils.playtime_database - INFO - Ended vital session for user 1425481575419613376: 1 seconds",
+  "2026-09-26 06:36:40,659 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for swizzy188: 0h 0m",
+  "2026-09-26 07:22:10,853 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-09-26 08:22:53,551 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 8813 seconds",
+  "2026-09-26 08:22:53,552 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 2h 26m"
 ]

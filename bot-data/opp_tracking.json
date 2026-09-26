@@ -7,14 +7,6 @@
     "lastSeen": 1787879053792,
     "isOnline": false
   },
-  "8284": {
-    "firstSeen": 1786944509016,
-    "joinTime": 1787801350016,
-    "totalTime": 84004578,
-    "sessionCount": 12,
-    "lastSeen": 1787808850368,
-    "isOnline": false
-  },
   "Star Light": {
     "firstSeen": 1786218278786,
     "joinTime": 1789419328887,
@@ -4393,10 +4385,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790363776102,
-    "totalTime": 593429167,
-    "sessionCount": 19,
-    "lastSeen": 1790400377785,
+    "joinTime": 1790410578373,
+    "totalTime": 639931394,
+    "sessionCount": 20,
+    "lastSeen": 1790416878615,
     "isOnline": true
   }
 }
