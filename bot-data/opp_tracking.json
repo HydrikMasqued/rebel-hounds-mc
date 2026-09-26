@@ -1679,14 +1679,6 @@
     "lastSeen": 1788619489841,
     "isOnline": false
   },
-  "Mc?": {
-    "firstSeen": 1786399682281,
-    "joinTime": 1787837651819,
-    "totalTime": 51638685,
-    "sessionCount": 7,
-    "lastSeen": 1787851752465,
-    "isOnline": false
-  },
   "mini": {
     "firstSeen": 1786403282471,
     "joinTime": 1788999308417,
@@ -4372,7 +4364,7 @@
     "joinTime": 1790410578373,
     "totalTime": 639931394,
     "sessionCount": 20,
-    "lastSeen": 1790432180542,
+    "lastSeen": 1790444780032,
     "isOnline": true
   }
 }
