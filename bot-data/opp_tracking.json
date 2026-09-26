@@ -1823,14 +1823,6 @@
     "lastSeen": 1788415479732,
     "isOnline": false
   },
-  "Dan Hatter": {
-    "firstSeen": 1786487286642,
-    "joinTime": 1787793849620,
-    "totalTime": 6600379,
-    "sessionCount": 2,
-    "lastSeen": 1787797749866,
-    "isOnline": false
-  },
   "QuietToad7832": {
     "firstSeen": 1786489986793,
     "joinTime": 1787960957729,
@@ -1949,14 +1941,6 @@
     "totalTime": 452422105,
     "sessionCount": 45,
     "lastSeen": 1788747596203,
-    "isOnline": false
-  },
-  "lol": {
-    "firstSeen": 1786569490663,
-    "joinTime": 1787806150232,
-    "totalTime": 124506313,
-    "sessionCount": 19,
-    "lastSeen": 1787807950338,
     "isOnline": false
   },
   "Chloe": {
@@ -2621,14 +2605,6 @@
     "totalTime": 62403113,
     "sessionCount": 7,
     "lastSeen": 1789186817753,
-    "isOnline": false
-  },
-  "siah.cmrn": {
-    "firstSeen": 1787794149647,
-    "joinTime": 1787794149647,
-    "totalTime": 900032,
-    "sessionCount": 1,
-    "lastSeen": 1787794749649,
     "isOnline": false
   },
   "downbad": {
@@ -4420,7 +4396,7 @@
     "joinTime": 1790363776102,
     "totalTime": 593429167,
     "sessionCount": 19,
-    "lastSeen": 1790383276959,
+    "lastSeen": 1790400377785,
     "isOnline": true
   }
 }
