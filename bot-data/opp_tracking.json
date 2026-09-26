@@ -2647,22 +2647,6 @@
     "lastSeen": 1788063562572,
     "isOnline": false
   },
-  "Skittlezz/Brooklyn H.": {
-    "firstSeen": 1787823251442,
-    "joinTime": 1787826551295,
-    "totalTime": 5699912,
-    "sessionCount": 2,
-    "lastSeen": 1787828951420,
-    "isOnline": false
-  },
-  "     ": {
-    "firstSeen": 1787826551295,
-    "joinTime": 1787826551295,
-    "totalTime": 2700095,
-    "sessionCount": 1,
-    "lastSeen": 1787828951420,
-    "isOnline": false
-  },
   "Maverick": {
     "firstSeen": 1787868853279,
     "joinTime": 1789499732689,
@@ -4388,7 +4372,7 @@
     "joinTime": 1790410578373,
     "totalTime": 639931394,
     "sessionCount": 20,
-    "lastSeen": 1790416878615,
+    "lastSeen": 1790432180542,
     "isOnline": true
   }
 }
