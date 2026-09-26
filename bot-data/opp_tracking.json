@@ -1207,14 +1207,6 @@
     "lastSeen": 1789336224961,
     "isOnline": false
   },
-  "Blooptori": {
-    "firstSeen": 1786258713054,
-    "joinTime": 1787780648948,
-    "totalTime": 23400894,
-    "sessionCount": 7,
-    "lastSeen": 1787783049077,
-    "isOnline": false
-  },
   "ManLikeNoot": {
     "firstSeen": 1786258713054,
     "joinTime": 1788724795167,
@@ -2311,14 +2303,6 @@
     "lastSeen": 1788746996178,
     "isOnline": false
   },
-  "ChillyFrog6538": {
-    "firstSeen": 1787199220695,
-    "joinTime": 1787784549177,
-    "totalTime": 3300174,
-    "sessionCount": 2,
-    "lastSeen": 1787784549177,
-    "isOnline": false
-  },
   "JDot": {
     "firstSeen": 1787226521926,
     "joinTime": 1789745145007,
@@ -2591,14 +2575,6 @@
     "lastSeen": 1788681292980,
     "isOnline": false
   },
-  "llunde601": {
-    "firstSeen": 1787718545728,
-    "joinTime": 1787789949444,
-    "totalTime": 7800394,
-    "sessionCount": 5,
-    "lastSeen": 1787790249464,
-    "isOnline": false
-  },
   "JumpyMoth8879": {
     "firstSeen": 1787725146022,
     "joinTime": 1789664140866,
@@ -2621,14 +2597,6 @@
     "totalTime": 539126552,
     "sessionCount": 43,
     "lastSeen": 1789686641971,
-    "isOnline": false
-  },
-  "FuzzyGoose1938": {
-    "firstSeen": 1787780048906,
-    "joinTime": 1787780648948,
-    "totalTime": 9300494,
-    "sessionCount": 2,
-    "lastSeen": 1787789349410,
     "isOnline": false
   },
   "Mr_Maximus": {
@@ -4452,7 +4420,7 @@
     "joinTime": 1790363776102,
     "totalTime": 593429167,
     "sessionCount": 19,
-    "lastSeen": 1790374876625,
+    "lastSeen": 1790383276959,
     "isOnline": true
   }
 }
