@@ -1239,14 +1239,6 @@
     "lastSeen": 1789496432532,
     "isOnline": false
   },
-  "Thetina2411": {
-    "firstSeen": 1786273713737,
-    "joinTime": 1787921655778,
-    "totalTime": 39001773,
-    "sessionCount": 6,
-    "lastSeen": 1787936356538,
-    "isOnline": false
-  },
   "SharpRabbit3810": {
     "firstSeen": 1786277613873,
     "joinTime": 1789731644300,
@@ -4308,7 +4300,7 @@
     "joinTime": 1790450180281,
     "totalTime": 679233279,
     "sessionCount": 21,
-    "lastSeen": 1790522483884,
+    "lastSeen": 1790535684501,
     "isOnline": true
   }
 }
