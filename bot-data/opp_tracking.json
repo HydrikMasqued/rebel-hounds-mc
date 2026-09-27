@@ -1935,14 +1935,6 @@
     "lastSeen": 1789692642262,
     "isOnline": false
   },
-  "Bug": {
-    "firstSeen": 1786580891219,
-    "joinTime": 1787869453263,
-    "totalTime": 28501602,
-    "sessionCount": 5,
-    "lastSeen": 1787877553727,
-    "isOnline": false
-  },
   "Silent": {
     "firstSeen": 1786588691602,
     "joinTime": 1788307174396,
@@ -2645,22 +2637,6 @@
     "totalTime": 157609190,
     "sessionCount": 24,
     "lastSeen": 1789500632758,
-    "isOnline": false
-  },
-  "Licious": {
-    "firstSeen": 1787871853413,
-    "joinTime": 1787871853413,
-    "totalTime": 5700314,
-    "sessionCount": 1,
-    "lastSeen": 1787877253704,
-    "isOnline": false
-  },
-  "K1llerMiller": {
-    "firstSeen": 1787873353483,
-    "joinTime": 1787873353483,
-    "totalTime": 2100119,
-    "sessionCount": 1,
-    "lastSeen": 1787875153571,
     "isOnline": false
   },
   "seasalt8181": {
@@ -4364,7 +4340,7 @@
     "joinTime": 1790450180281,
     "totalTime": 679233279,
     "sessionCount": 21,
-    "lastSeen": 1790462480997,
+    "lastSeen": 1790470281404,
     "isOnline": true
   }
 }
