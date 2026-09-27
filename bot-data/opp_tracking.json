@@ -1383,14 +1383,6 @@
     "lastSeen": 1789348225462,
     "isOnline": false
   },
-  "Abner": {
-    "firstSeen": 1786307015122,
-    "joinTime": 1787944456950,
-    "totalTime": 3300116,
-    "sessionCount": 3,
-    "lastSeen": 1787946256966,
-    "isOnline": false
-  },
   "Milk": {
     "firstSeen": 1786307615149,
     "joinTime": 1789237520213,
@@ -1605,14 +1597,6 @@
     "totalTime": 422984234,
     "sessionCount": 57,
     "lastSeen": 1789695942453,
-    "isOnline": false
-  },
-  "KonaBright": {
-    "firstSeen": 1786385881566,
-    "joinTime": 1787941156838,
-    "totalTime": 21300937,
-    "sessionCount": 11,
-    "lastSeen": 1787943856897,
     "isOnline": false
   },
   "alexiadiaz127": {
@@ -2653,14 +2637,6 @@
     "totalTime": 431619405,
     "sessionCount": 39,
     "lastSeen": 1789239620304,
-    "isOnline": false
-  },
-  "Finch": {
-    "firstSeen": 1787945657006,
-    "joinTime": 1787945657006,
-    "totalTime": 299977,
-    "sessionCount": 1,
-    "lastSeen": 1787945657006,
     "isOnline": false
   },
   "Hunter": {
@@ -4297,10 +4273,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790450180281,
-    "totalTime": 679233279,
-    "sessionCount": 21,
-    "lastSeen": 1790535684501,
+    "joinTime": 1790536584561,
+    "totalTime": 765337498,
+    "sessionCount": 22,
+    "lastSeen": 1790546185075,
     "isOnline": true
   }
 }
