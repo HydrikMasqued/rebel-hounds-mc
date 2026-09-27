@@ -1,12 +1,4 @@
 {
-  "21": {
-    "firstSeen": 1787868553282,
-    "joinTime": 1787868553282,
-    "totalTime": 10800494,
-    "sessionCount": 1,
-    "lastSeen": 1787879053792,
-    "isOnline": false
-  },
   "Star Light": {
     "firstSeen": 1786218278786,
     "joinTime": 1789419328887,
@@ -2175,14 +2167,6 @@
     "lastSeen": 1788149966823,
     "isOnline": false
   },
-  "AblazedChaos": {
-    "firstSeen": 1787003311809,
-    "joinTime": 1787882353921,
-    "totalTime": 11722610,
-    "sessionCount": 3,
-    "lastSeen": 1787886254098,
-    "isOnline": false
-  },
   "fentdaddy": {
     "firstSeen": 1787003311809,
     "joinTime": 1788145466631,
@@ -4340,7 +4324,7 @@
     "joinTime": 1790450180281,
     "totalTime": 679233279,
     "sessionCount": 21,
-    "lastSeen": 1790470281404,
+    "lastSeen": 1790488282210,
     "isOnline": true
   }
 }
