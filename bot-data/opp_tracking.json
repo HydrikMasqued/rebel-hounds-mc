@@ -2647,14 +2647,6 @@
     "lastSeen": 1789699242601,
     "isOnline": false
   },
-  "DustyNewt8468": {
-    "firstSeen": 1787892854402,
-    "joinTime": 1787906055110,
-    "totalTime": 19200891,
-    "sessionCount": 3,
-    "lastSeen": 1787914155432,
-    "isOnline": false
-  },
   "J4Y": {
     "firstSeen": 1787918055600,
     "joinTime": 1789578036645,
@@ -4324,7 +4316,7 @@
     "joinTime": 1790450180281,
     "totalTime": 679233279,
     "sessionCount": 21,
-    "lastSeen": 1790488282210,
+    "lastSeen": 1790506283053,
     "isOnline": true
   }
 }
