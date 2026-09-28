@@ -1711,14 +1711,6 @@
     "lastSeen": 1789000808452,
     "isOnline": false
   },
-  "reuben12358": {
-    "firstSeen": 1786424283480,
-    "joinTime": 1787961557761,
-    "totalTime": 72903599,
-    "sessionCount": 9,
-    "lastSeen": 1787965758001,
-    "isOnline": false
-  },
   "Occultinq | Twitch": {
     "firstSeen": 1786424283480,
     "joinTime": 1789609838209,
@@ -1773,14 +1765,6 @@
     "totalTime": 71703727,
     "sessionCount": 12,
     "lastSeen": 1788415479732,
-    "isOnline": false
-  },
-  "QuietToad7832": {
-    "firstSeen": 1786489986793,
-    "joinTime": 1787960957729,
-    "totalTime": 144607349,
-    "sessionCount": 13,
-    "lastSeen": 1787971758265,
     "isOnline": false
   },
   "Stephb95": {
@@ -2551,14 +2535,6 @@
     "lastSeen": 1788483883024,
     "isOnline": false
   },
-  "FatRain723": {
-    "firstSeen": 1787799549955,
-    "joinTime": 1787963657887,
-    "totalTime": 15900742,
-    "sessionCount": 2,
-    "lastSeen": 1787970858225,
-    "isOnline": false
-  },
   "Badoop": {
     "firstSeen": 1787802250063,
     "joinTime": 1788069862889,
@@ -2661,14 +2637,6 @@
     "totalTime": 144007245,
     "sessionCount": 22,
     "lastSeen": 1788663592081,
-    "isOnline": false
-  },
-  "SlowFrog5148": {
-    "firstSeen": 1787970258185,
-    "joinTime": 1787970258185,
-    "totalTime": 9900485,
-    "sessionCount": 1,
-    "lastSeen": 1787979858619,
     "isOnline": false
   },
   "MrZepRyker": {
@@ -4276,7 +4244,7 @@
     "joinTime": 1790536584561,
     "totalTime": 765337498,
     "sessionCount": 22,
-    "lastSeen": 1790554585516,
+    "lastSeen": 1790573486518,
     "isOnline": true
   }
 }
