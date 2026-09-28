@@ -2687,14 +2687,6 @@
     "lastSeen": 1788125665594,
     "isOnline": false
   },
-  "James": {
-    "firstSeen": 1788037161174,
-    "joinTime": 1788037161174,
-    "totalTime": 900093,
-    "sessionCount": 1,
-    "lastSeen": 1788037761225,
-    "isOnline": false
-  },
   "AK_Powerful": {
     "firstSeen": 1788041361440,
     "joinTime": 1788749996299,
@@ -4193,10 +4185,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790583687009,
-    "totalTime": 811839931,
-    "sessionCount": 23,
-    "lastSeen": 1790622088916,
+    "joinTime": 1790622989009,
+    "totalTime": 850841912,
+    "sessionCount": 24,
+    "lastSeen": 1790639189649,
     "isOnline": true
   }
 }
