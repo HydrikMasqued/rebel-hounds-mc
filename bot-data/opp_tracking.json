@@ -1823,14 +1823,6 @@
     "lastSeen": 1789439429780,
     "isOnline": false
   },
-  "Angel Dust": {
-    "firstSeen": 1786511587810,
-    "joinTime": 1788064762633,
-    "totalTime": 28501584,
-    "sessionCount": 12,
-    "lastSeen": 1788068062767,
-    "isOnline": false
-  },
   "BoldBat3784": {
     "firstSeen": 1786515187989,
     "joinTime": 1788117565157,
@@ -2511,36 +2503,12 @@
     "lastSeen": 1788483883024,
     "isOnline": false
   },
-  "Badoop": {
-    "firstSeen": 1787802250063,
-    "joinTime": 1788069862889,
-    "totalTime": 20700966,
-    "sessionCount": 6,
-    "lastSeen": 1788071362897,
-    "isOnline": false
-  },
-  "Snakes_gaming": {
-    "firstSeen": 1787803750129,
-    "joinTime": 1788066562681,
-    "totalTime": 17100773,
-    "sessionCount": 9,
-    "lastSeen": 1788066862694,
-    "isOnline": false
-  },
   "BoldCat1940": {
     "firstSeen": 1787808850368,
     "joinTime": 1789620938691,
     "totalTime": 49202477,
     "sessionCount": 6,
     "lastSeen": 1789623038805,
-    "isOnline": false
-  },
-  "Voxel": {
-    "firstSeen": 1787809150375,
-    "joinTime": 1788061162463,
-    "totalTime": 3000120,
-    "sessionCount": 2,
-    "lastSeen": 1788063562572,
     "isOnline": false
   },
   "Maverick": {
@@ -2717,22 +2685,6 @@
     "totalTime": 87604496,
     "sessionCount": 12,
     "lastSeen": 1788837900751,
-    "isOnline": false
-  },
-  "J x r ": {
-    "firstSeen": 1788058162284,
-    "joinTime": 1788058162284,
-    "totalTime": 7800390,
-    "sessionCount": 1,
-    "lastSeen": 1788065662629,
-    "isOnline": false
-  },
-  "ihateyou": {
-    "firstSeen": 1788058462315,
-    "joinTime": 1788058462315,
-    "totalTime": 7500359,
-    "sessionCount": 1,
-    "lastSeen": 1788065662629,
     "isOnline": false
   },
   "Beau Arnette": {
@@ -4161,10 +4113,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790622989009,
-    "totalTime": 850841912,
-    "sessionCount": 24,
-    "lastSeen": 1790649990121,
+    "joinTime": 1790670091143,
+    "totalTime": 897343979,
+    "sessionCount": 25,
+    "lastSeen": 1790672491231,
     "isOnline": true
   }
 }
