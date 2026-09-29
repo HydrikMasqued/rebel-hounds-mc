@@ -2239,14 +2239,6 @@
     "lastSeen": 1789158916363,
     "isOnline": false
   },
-  "mickey lee": {
-    "firstSeen": 1787324926613,
-    "joinTime": 1788125665594,
-    "totalTime": 19200852,
-    "sessionCount": 2,
-    "lastSeen": 1788130165795,
-    "isOnline": false
-  },
   "klang": {
     "firstSeen": 1787357328167,
     "joinTime": 1789624238907,
@@ -2615,28 +2607,12 @@
     "lastSeen": 1788982807595,
     "isOnline": false
   },
-  "trav": {
-    "firstSeen": 1788035661155,
-    "joinTime": 1788121765442,
-    "totalTime": 22801175,
-    "sessionCount": 5,
-    "lastSeen": 1788125665594,
-    "isOnline": false
-  },
   "AK_Powerful": {
     "firstSeen": 1788041361440,
     "joinTime": 1788749996299,
     "totalTime": 64803219,
     "sessionCount": 10,
     "lastSeen": 1788765597029,
-    "isOnline": false
-  },
-  "Quickz": {
-    "firstSeen": 1788042861526,
-    "joinTime": 1788117565157,
-    "totalTime": 9900579,
-    "sessionCount": 3,
-    "lastSeen": 1788123265457,
     "isOnline": false
   },
   "radio": {
@@ -2725,14 +2701,6 @@
     "totalTime": 24901321,
     "sessionCount": 5,
     "lastSeen": 1788666892254,
-    "isOnline": false
-  },
-  "Zayd": {
-    "firstSeen": 1788123865511,
-    "joinTime": 1788123865511,
-    "totalTime": 2700106,
-    "sessionCount": 1,
-    "lastSeen": 1788126265616,
     "isOnline": false
   },
   "Senpai Hiroshima": {
@@ -4092,7 +4060,7 @@
     "joinTime": 1790710293115,
     "totalTime": 936945892,
     "sessionCount": 27,
-    "lastSeen": 1790712693356,
+    "lastSeen": 1790725293839,
     "isOnline": true
   }
 }
