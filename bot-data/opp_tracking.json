@@ -831,14 +831,6 @@
     "lastSeen": 1789729244210,
     "isOnline": false
   },
-  "SharpTurtle2624": {
-    "firstSeen": 1786233166051,
-    "joinTime": 1788080063459,
-    "totalTime": 399019833,
-    "sessionCount": 53,
-    "lastSeen": 1788086363686,
-    "isOnline": false
-  },
   "royedwards1": {
     "firstSeen": 1786233466084,
     "joinTime": 1788808799272,
@@ -1005,14 +997,6 @@
     "totalTime": 583010149,
     "sessionCount": 107,
     "lastSeen": 1789698042540,
-    "isOnline": false
-  },
-  "Evolve_Sn1p3z": {
-    "firstSeen": 1786240366382,
-    "joinTime": 1788101064425,
-    "totalTime": 130252188,
-    "sessionCount": 10,
-    "lastSeen": 1788101064425,
     "isOnline": false
   },
   "jett_clark99": {
@@ -2719,14 +2703,6 @@
     "lastSeen": 1789191317981,
     "isOnline": false
   },
-  "CBP": {
-    "firstSeen": 1788083063554,
-    "joinTime": 1788083063554,
-    "totalTime": 600004,
-    "sessionCount": 1,
-    "lastSeen": 1788083363552,
-    "isOnline": false
-  },
   "Raven": {
     "firstSeen": 1788103764601,
     "joinTime": 1789338925066,
@@ -4116,7 +4092,7 @@
     "joinTime": 1790670091143,
     "totalTime": 897343979,
     "sessionCount": 25,
-    "lastSeen": 1790672491231,
+    "lastSeen": 1790696492478,
     "isOnline": true
   }
 }
