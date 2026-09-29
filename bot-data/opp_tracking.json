@@ -1359,14 +1359,6 @@
     "lastSeen": 1789696242455,
     "isOnline": false
   },
-  "Los Juanos": {
-    "firstSeen": 1786299514786,
-    "joinTime": 1788050961954,
-    "totalTime": 6300310,
-    "sessionCount": 2,
-    "lastSeen": 1788054262084,
-    "isOnline": false
-  },
   "Saikoh": {
     "firstSeen": 1786303414975,
     "joinTime": 1789080612423,
@@ -2287,14 +2279,6 @@
     "lastSeen": 1789626338970,
     "isOnline": false
   },
-  "FamousGibz": {
-    "firstSeen": 1787370228730,
-    "joinTime": 1788050961954,
-    "totalTime": 4500220,
-    "sessionCount": 2,
-    "lastSeen": 1788054262084,
-    "isOnline": false
-  },
   "Sabrina": {
     "firstSeen": 1787373228855,
     "joinTime": 1789535434540,
@@ -2709,14 +2693,6 @@
     "totalTime": 14700829,
     "sessionCount": 6,
     "lastSeen": 1788679492871,
-    "isOnline": false
-  },
-  "Salty": {
-    "firstSeen": 1788051261963,
-    "joinTime": 1788051261963,
-    "totalTime": 1200061,
-    "sessionCount": 1,
-    "lastSeen": 1788052162018,
     "isOnline": false
   },
   "xXxTotecxXx": {
@@ -4188,7 +4164,7 @@
     "joinTime": 1790622989009,
     "totalTime": 850841912,
     "sessionCount": 24,
-    "lastSeen": 1790639189649,
+    "lastSeen": 1790649990121,
     "isOnline": true
   }
 }
