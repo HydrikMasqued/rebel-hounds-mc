@@ -2663,14 +2663,6 @@
     "lastSeen": 1788210569785,
     "isOnline": false
   },
-  "Khanny": {
-    "firstSeen": 1788191368820,
-    "joinTime": 1788191368820,
-    "totalTime": 600039,
-    "sessionCount": 1,
-    "lastSeen": 1788191668792,
-    "isOnline": false
-  },
   "Price": {
     "firstSeen": 1788197369108,
     "joinTime": 1788290973620,
@@ -3961,10 +3953,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790756495390,
-    "totalTime": 982848182,
-    "sessionCount": 28,
-    "lastSeen": 1790781396660,
+    "joinTime": 1790795797451,
+    "totalTime": 1021850253,
+    "sessionCount": 29,
+    "lastSeen": 1790798797692,
     "isOnline": true
   }
 }
