@@ -2015,14 +2015,6 @@
     "lastSeen": 1788709794472,
     "isOnline": false
   },
-  "Gamerzaap": {
-    "firstSeen": 1786922007922,
-    "joinTime": 1788171867857,
-    "totalTime": 13800659,
-    "sessionCount": 4,
-    "lastSeen": 1788176068070,
-    "isOnline": false
-  },
   "KelsIsPeachy": {
     "firstSeen": 1786926208096,
     "joinTime": 1789008008810,
@@ -3972,7 +3964,7 @@
     "joinTime": 1790756495390,
     "totalTime": 982848182,
     "sessionCount": 28,
-    "lastSeen": 1790757695482,
+    "lastSeen": 1790781396660,
     "isOnline": true
   }
 }
