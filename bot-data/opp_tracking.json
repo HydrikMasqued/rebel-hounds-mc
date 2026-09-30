@@ -1807,14 +1807,6 @@
     "lastSeen": 1789439429780,
     "isOnline": false
   },
-  "BoldBat3784": {
-    "firstSeen": 1786515187989,
-    "joinTime": 1788117565157,
-    "totalTime": 330916061,
-    "sessionCount": 50,
-    "lastSeen": 1788142466418,
-    "isOnline": false
-  },
   "Bells": {
     "firstSeen": 1786552089734,
     "joinTime": 1789648840129,
@@ -4060,7 +4052,7 @@
     "joinTime": 1790710293115,
     "totalTime": 936945892,
     "sessionCount": 27,
-    "lastSeen": 1790725293839,
+    "lastSeen": 1790734894326,
     "isOnline": true
   }
 }
