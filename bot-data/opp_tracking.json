@@ -431,14 +431,6 @@
     "lastSeen": 1789525534032,
     "isOnline": false
   },
-  "po": {
-    "firstSeen": 1786224465560,
-    "joinTime": 1788150266849,
-    "totalTime": 402301901,
-    "sessionCount": 55,
-    "lastSeen": 1788158067240,
-    "isOnline": false
-  },
   "SniffDaPomPom": {
     "firstSeen": 1786224465560,
     "joinTime": 1789753545412,
@@ -1847,14 +1839,6 @@
     "lastSeen": 1788312274682,
     "isOnline": false
   },
-  "SlowTurtle8895": {
-    "firstSeen": 1786594391974,
-    "joinTime": 1788158367245,
-    "totalTime": 86104242,
-    "sessionCount": 20,
-    "lastSeen": 1788163467472,
-    "isOnline": false
-  },
   "HauntedRaptor": {
     "firstSeen": 1786640894192,
     "joinTime": 1789705842916,
@@ -2071,22 +2055,6 @@
     "lastSeen": 1789621538763,
     "isOnline": false
   },
-  "Rooster702": {
-    "firstSeen": 1787003011811,
-    "joinTime": 1788142166416,
-    "totalTime": 30923660,
-    "sessionCount": 8,
-    "lastSeen": 1788149966823,
-    "isOnline": false
-  },
-  "fentdaddy": {
-    "firstSeen": 1787003311809,
-    "joinTime": 1788145466631,
-    "totalTime": 21037054,
-    "sessionCount": 7,
-    "lastSeen": 1788149366799,
-    "isOnline": false
-  },
   "Mr.Green": {
     "firstSeen": 1787029712972,
     "joinTime": 1789487732208,
@@ -2279,14 +2247,6 @@
     "lastSeen": 1788843901051,
     "isOnline": false
   },
-  "ivvi": {
-    "firstSeen": 1787419131118,
-    "joinTime": 1788160467362,
-    "totalTime": 46802534,
-    "sessionCount": 13,
-    "lastSeen": 1788163467472,
-    "isOnline": false
-  },
   "LampKord": {
     "firstSeen": 1787426631479,
     "joinTime": 1789517733685,
@@ -2357,14 +2317,6 @@
     "totalTime": 30301642,
     "sessionCount": 9,
     "lastSeen": 1788400778966,
-    "isOnline": false
-  },
-  "JumpyDeer0358": {
-    "firstSeen": 1787534036654,
-    "joinTime": 1788142964756,
-    "totalTime": 17202639,
-    "sessionCount": 3,
-    "lastSeen": 1788149966823,
     "isOnline": false
   },
   "chicken noodle soup": {
@@ -2647,14 +2599,6 @@
     "lastSeen": 1789282222417,
     "isOnline": false
   },
-  "Ricky LaFleur": {
-    "firstSeen": 1788063262555,
-    "joinTime": 1788137666231,
-    "totalTime": 11700544,
-    "sessionCount": 5,
-    "lastSeen": 1788143066444,
-    "isOnline": false
-  },
   "BigA": {
     "firstSeen": 1788068362797,
     "joinTime": 1789617938569,
@@ -2709,30 +2653,6 @@
     "totalTime": 136506909,
     "sessionCount": 43,
     "lastSeen": 1788746996178,
-    "isOnline": false
-  },
-  "standingbox_2": {
-    "firstSeen": 1788133165980,
-    "joinTime": 1788133165980,
-    "totalTime": 30001509,
-    "sessionCount": 1,
-    "lastSeen": 1788162867449,
-    "isOnline": false
-  },
-  "ITZJ": {
-    "firstSeen": 1788149666820,
-    "joinTime": 1788151766905,
-    "totalTime": 1200025,
-    "sessionCount": 3,
-    "lastSeen": 1788151766905,
-    "isOnline": false
-  },
-  "dux": {
-    "firstSeen": 1788150866852,
-    "joinTime": 1788154767085,
-    "totalTime": 1200143,
-    "sessionCount": 2,
-    "lastSeen": 1788155067100,
     "isOnline": false
   },
   "⋆｡°✩ AuroraSyn ✩°｡": {
@@ -4049,10 +3969,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790710293115,
-    "totalTime": 936945892,
-    "sessionCount": 27,
-    "lastSeen": 1790734894326,
+    "joinTime": 1790756495390,
+    "totalTime": 982848182,
+    "sessionCount": 28,
+    "lastSeen": 1790757695482,
     "isOnline": true
   }
 }
