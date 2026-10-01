@@ -1,11 +1,4 @@
 [
-  "2026-09-28 13:05:54,231 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 6082 seconds",
-  "2026-09-28 13:05:54,232 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 1h 41m",
-  "2026-09-28 13:26:38,318 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
-  "2026-09-28 15:25:03,750 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
-  "2026-09-28 15:25:03,750 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-09-28 15:42:58,623 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 1074 seconds",
-  "2026-09-28 15:42:58,623 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 0h 17m",
   "2026-09-28 15:44:14,007 - utils.playtime_database - INFO - Started vital session for user 1105925237247316018 in guild 889005510286786601",
   "2026-09-28 15:44:14,008 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ravenmj420 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-09-28 16:09:01,227 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
@@ -198,5 +191,12 @@
   "2026-10-01 06:13:07,844 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-01 08:10:31,717 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
   "2026-10-01 09:01:39,443 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 10111 seconds",
-  "2026-10-01 09:01:39,444 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 2h 48m"
+  "2026-10-01 09:01:39,444 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 2h 48m",
+  "2026-10-01 10:51:10,698 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-10-01 11:53:25,462 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-10-01 12:56:34,285 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-10-01 14:22:02,361 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-10-01 14:47:36,364 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-10-01 15:23:28,292 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-10-01 16:22:38,010 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a."
 ]
