@@ -2671,28 +2671,12 @@
     "lastSeen": 1788715494722,
     "isOnline": false
   },
-  "BreezyFrog5878": {
-    "firstSeen": 1788215670034,
-    "joinTime": 1788231270841,
-    "totalTime": 17400920,
-    "sessionCount": 2,
-    "lastSeen": 1788233370973,
-    "isOnline": false
-  },
   "yuisior701": {
     "firstSeen": 1788224970495,
     "joinTime": 1788785998066,
     "totalTime": 41303732,
     "sessionCount": 8,
     "lastSeen": 1788790198374,
-    "isOnline": false
-  },
-  "Bedo": {
-    "firstSeen": 1788236971125,
-    "joinTime": 1788236971125,
-    "totalTime": 4500198,
-    "sessionCount": 1,
-    "lastSeen": 1788241331062,
     "isOnline": false
   },
   "Nova": {
@@ -3937,10 +3921,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790795797451,
-    "totalTime": 1021850253,
-    "sessionCount": 29,
-    "lastSeen": 1790821298720,
+    "joinTime": 1790842599810,
+    "totalTime": 1068352570,
+    "sessionCount": 30,
+    "lastSeen": 1790845599929,
     "isOnline": true
   }
 }
