@@ -2679,14 +2679,6 @@
     "lastSeen": 1788233370973,
     "isOnline": false
   },
-  "Sicario": {
-    "firstSeen": 1788218370180,
-    "joinTime": 1788218370180,
-    "totalTime": 2100054,
-    "sessionCount": 1,
-    "lastSeen": 1788220170268,
-    "isOnline": false
-  },
   "yuisior701": {
     "firstSeen": 1788224970495,
     "joinTime": 1788785998066,
@@ -3948,7 +3940,7 @@
     "joinTime": 1790795797451,
     "totalTime": 1021850253,
     "sessionCount": 29,
-    "lastSeen": 1790811698282,
+    "lastSeen": 1790821298720,
     "isOnline": true
   }
 }
