@@ -2735,30 +2735,6 @@
     "lastSeen": 1789084512599,
     "isOnline": false
   },
-  "Jordan": {
-    "firstSeen": 1788364777278,
-    "joinTime": 1788377377836,
-    "totalTime": 6900385,
-    "sessionCount": 2,
-    "lastSeen": 1788379778000,
-    "isOnline": false
-  },
-  "Jammy": {
-    "firstSeen": 1788373477707,
-    "joinTime": 1788379778000,
-    "totalTime": 4500197,
-    "sessionCount": 2,
-    "lastSeen": 1788382478072,
-    "isOnline": false
-  },
-  "MisfortuneChuck": {
-    "firstSeen": 1788377077840,
-    "joinTime": 1788377077840,
-    "totalTime": 4500216,
-    "sessionCount": 1,
-    "lastSeen": 1788381278054,
-    "isOnline": false
-  },
   "BoldMouse2106": {
     "firstSeen": 1788395978724,
     "joinTime": 1788395978724,
@@ -3865,10 +3841,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790929303986,
-    "totalTime": 1154456736,
-    "sessionCount": 32,
-    "lastSeen": 1790963805719,
+    "joinTime": 1790968606042,
+    "totalTime": 1193458768,
+    "sessionCount": 33,
+    "lastSeen": 1790977306402,
     "isOnline": true
   }
 }
