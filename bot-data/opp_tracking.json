@@ -1831,14 +1831,6 @@
     "lastSeen": 1789692642262,
     "isOnline": false
   },
-  "Silent": {
-    "firstSeen": 1786588691602,
-    "joinTime": 1788307174396,
-    "totalTime": 25201296,
-    "sessionCount": 4,
-    "lastSeen": 1788312274682,
-    "isOnline": false
-  },
   "HauntedRaptor": {
     "firstSeen": 1786640894192,
     "joinTime": 1789705842916,
@@ -2663,14 +2655,6 @@
     "lastSeen": 1788790198374,
     "isOnline": false
   },
-  "Nova": {
-    "firstSeen": 1788258872180,
-    "joinTime": 1788310474566,
-    "totalTime": 3600174,
-    "sessionCount": 2,
-    "lastSeen": 1788311674610,
-    "isOnline": false
-  },
   "v a l k": {
     "firstSeen": 1788259472232,
     "joinTime": 1788406179207,
@@ -2757,14 +2741,6 @@
     "totalTime": 15900849,
     "sessionCount": 5,
     "lastSeen": 1789084512599,
-    "isOnline": false
-  },
-  "Sassy-Weenie": {
-    "firstSeen": 1788312874724,
-    "joinTime": 1788312874724,
-    "totalTime": 1199985,
-    "sessionCount": 1,
-    "lastSeen": 1788313774723,
     "isOnline": false
   },
   "Jordan": {
@@ -3900,7 +3876,7 @@
     "joinTime": 1790881901737,
     "totalTime": 1107354497,
     "sessionCount": 31,
-    "lastSeen": 1790901702657,
+    "lastSeen": 1790921503590,
     "isOnline": true
   }
 }
