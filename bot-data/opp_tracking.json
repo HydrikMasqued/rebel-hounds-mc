@@ -1919,14 +1919,6 @@
     "lastSeen": 1789185017679,
     "isOnline": false
   },
-  "HtDaKillSwitch": {
-    "firstSeen": 1786754299718,
-    "joinTime": 1788301774099,
-    "totalTime": 11100424,
-    "sessionCount": 3,
-    "lastSeen": 1788302974157,
-    "isOnline": false
-  },
   "IcyDeer8207": {
     "firstSeen": 1786754599714,
     "joinTime": 1789685741909,
@@ -3908,7 +3900,7 @@
     "joinTime": 1790881901737,
     "totalTime": 1107354497,
     "sessionCount": 31,
-    "lastSeen": 1790888502111,
+    "lastSeen": 1790901702657,
     "isOnline": true
   }
 }
