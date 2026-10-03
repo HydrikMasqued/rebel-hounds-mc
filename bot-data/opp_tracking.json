@@ -1711,14 +1711,6 @@
     "lastSeen": 1789596337547,
     "isOnline": false
   },
-  "John Wayne": {
-    "firstSeen": 1786480986284,
-    "joinTime": 1788410979458,
-    "totalTime": 71703727,
-    "sessionCount": 12,
-    "lastSeen": 1788415479732,
-    "isOnline": false
-  },
   "Stephb95": {
     "firstSeen": 1786491786828,
     "joinTime": 1789091412904,
@@ -3785,10 +3777,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1790968606042,
-    "totalTime": 1193458768,
-    "sessionCount": 33,
-    "lastSeen": 1791006107847,
+    "joinTime": 1791015408298,
+    "totalTime": 1239961016,
+    "sessionCount": 34,
+    "lastSeen": 1791023808729,
     "isOnline": true
   }
 }
