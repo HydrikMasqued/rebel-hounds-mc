@@ -2719,14 +2719,6 @@
     "lastSeen": 1789351825688,
     "isOnline": false
   },
-  "ƈค๓๓ץ": {
-    "firstSeen": 1788449681378,
-    "joinTime": 1788449681378,
-    "totalTime": 9900500,
-    "sessionCount": 1,
-    "lastSeen": 1788459281863,
-    "isOnline": false
-  },
   "Jacob Lawson": {
     "firstSeen": 1788459881923,
     "joinTime": 1788530385480,
@@ -3780,7 +3772,7 @@
     "joinTime": 1791015408298,
     "totalTime": 1239961016,
     "sessionCount": 34,
-    "lastSeen": 1791039109431,
+    "lastSeen": 1791051410019,
     "isOnline": true
   }
 }
