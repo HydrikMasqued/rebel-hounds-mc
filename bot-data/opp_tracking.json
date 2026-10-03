@@ -1351,14 +1351,6 @@
     "lastSeen": 1789301423297,
     "isOnline": false
   },
-  "Calybara": {
-    "firstSeen": 1786312115363,
-    "joinTime": 1788476082679,
-    "totalTime": 56402648,
-    "sessionCount": 11,
-    "lastSeen": 1788478482801,
-    "isOnline": false
-  },
   "Dougie": {
     "firstSeen": 1786312115363,
     "joinTime": 1789684841827,
@@ -2727,28 +2719,12 @@
     "lastSeen": 1788531585516,
     "isOnline": false
   },
-  "Lee": {
-    "firstSeen": 1788471282457,
-    "joinTime": 1788471282457,
-    "totalTime": 1800135,
-    "sessionCount": 1,
-    "lastSeen": 1788472782519,
-    "isOnline": false
-  },
   "DallasPayne": {
     "firstSeen": 1788471882494,
     "joinTime": 1788475782638,
     "totalTime": 13800685,
     "sessionCount": 2,
     "lastSeen": 1788487183242,
-    "isOnline": false
-  },
-  "SoggyMouse6962": {
-    "firstSeen": 1788476682732,
-    "joinTime": 1788476682732,
-    "totalTime": 2100097,
-    "sessionCount": 1,
-    "lastSeen": 1788478482801,
     "isOnline": false
   },
   "ElPinky": {
@@ -3772,7 +3748,7 @@
     "joinTime": 1791060110487,
     "totalTime": 1283463180,
     "sessionCount": 37,
-    "lastSeen": 1791062810524,
+    "lastSeen": 1791071810987,
     "isOnline": true
   }
 }
