@@ -15,14 +15,6 @@
     "lastSeen": 1789707943025,
     "isOnline": false
   },
-  "hiteklive": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1788388778406,
-    "totalTime": 585560231,
-    "sessionCount": 49,
-    "lastSeen": 1788400478939,
-    "isOnline": false
-  },
   "NotJaap": {
     "firstSeen": 1786218278786,
     "joinTime": 1789502432874,
@@ -53,14 +45,6 @@
     "totalTime": 525116763,
     "sessionCount": 64,
     "lastSeen": 1789242020525,
-    "isOnline": false
-  },
-  "OneToughGame": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1788401378982,
-    "totalTime": 146893501,
-    "sessionCount": 28,
-    "lastSeen": 1788404679142,
     "isOnline": false
   },
   "keipher26": {
@@ -2287,14 +2271,6 @@
     "lastSeen": 1788920404711,
     "isOnline": false
   },
-  "BroncoBoolin": {
-    "firstSeen": 1787533436631,
-    "joinTime": 1788400778966,
-    "totalTime": 30301642,
-    "sessionCount": 9,
-    "lastSeen": 1788400778966,
-    "isOnline": false
-  },
   "chicken noodle soup": {
     "firstSeen": 1787619540903,
     "joinTime": 1789240520357,
@@ -2655,14 +2631,6 @@
     "lastSeen": 1788790198374,
     "isOnline": false
   },
-  "v a l k": {
-    "firstSeen": 1788259472232,
-    "joinTime": 1788406179207,
-    "totalTime": 24601081,
-    "sessionCount": 5,
-    "lastSeen": 1788408579391,
-    "isOnline": false
-  },
   "Tony Green": {
     "firstSeen": 1788277473027,
     "joinTime": 1789177817307,
@@ -2735,14 +2703,6 @@
     "lastSeen": 1789084512599,
     "isOnline": false
   },
-  "BoldMouse2106": {
-    "firstSeen": 1788395978724,
-    "joinTime": 1788395978724,
-    "totalTime": 5400258,
-    "sessionCount": 1,
-    "lastSeen": 1788401078945,
-    "isOnline": false
-  },
   "ood": {
     "firstSeen": 1788399578916,
     "joinTime": 1789011609046,
@@ -2751,28 +2711,12 @@
     "lastSeen": 1789012209070,
     "isOnline": false
   },
-  "QuickGoose1007": {
-    "firstSeen": 1788403779109,
-    "joinTime": 1788403779109,
-    "totalTime": 300010,
-    "sessionCount": 1,
-    "lastSeen": 1788403779109,
-    "isOnline": false
-  },
   "mental": {
     "firstSeen": 1788404979149,
     "joinTime": 1789612538321,
     "totalTime": 213910665,
     "sessionCount": 17,
     "lastSeen": 1789617338543,
-    "isOnline": false
-  },
-  "Gamingwithjordy": {
-    "firstSeen": 1788406779264,
-    "joinTime": 1788406779264,
-    "totalTime": 900048,
-    "sessionCount": 1,
-    "lastSeen": 1788407379276,
     "isOnline": false
   },
   "QuickGoose6426": {
@@ -3844,7 +3788,7 @@
     "joinTime": 1790968606042,
     "totalTime": 1193458768,
     "sessionCount": 33,
-    "lastSeen": 1790988106993,
+    "lastSeen": 1791006107847,
     "isOnline": true
   }
 }
