@@ -1,14 +1,4 @@
 [
-  "2026-10-02 01:37:55,029 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
-  "2026-10-02 01:37:55,029 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-02 01:37:58,705 - utils.church_database - INFO - Opened church interval for loreviking in session 6",
-  "2026-10-02 01:37:58,705 - cogs.church_tracker - INFO - Church: loreviking joined the Roundtable VC (session 6)",
-  "2026-10-02 01:37:58,707 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 3 seconds",
-  "2026-10-02 01:37:58,708 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 0h 0m",
-  "2026-10-02 01:38:00,134 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
-  "2026-10-02 01:38:00,135 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-02 01:38:00,135 - utils.church_database - INFO - Closed church interval for user 319184811971575808 after 1s",
-  "2026-10-02 01:38:00,135 - cogs.church_tracker - INFO - Church: loreviking left the Roundtable VC after 1s (session 6)",
   "2026-10-02 01:42:41,368 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
   "2026-10-02 01:42:41,368 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-02 01:43:28,003 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
@@ -198,5 +188,15 @@
   "2026-10-03 17:51:36,070 - cogs.church_tracker - INFO - Church: jayreaper left the Roundtable VC after 1m 10s (session 6)",
   "2026-10-03 17:59:59,378 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
   "2026-10-03 17:59:59,378 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-03 18:02:05,272 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a."
+  "2026-10-03 18:02:05,272 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-10-03 19:48:27,863 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
+  "2026-10-03 19:48:27,864 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-03 20:59:53,698 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 4285 seconds",
+  "2026-10-03 20:59:53,698 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 1h 11m",
+  "2026-10-03 21:08:32,180 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 11312 seconds",
+  "2026-10-03 21:08:32,180 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 3h 8m",
+  "2026-10-03 21:22:30,179 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
+  "2026-10-03 21:22:30,180 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-03 21:26:34,058 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
+  "2026-10-03 21:26:34,058 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
