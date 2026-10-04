@@ -79,14 +79,6 @@
     "lastSeen": 1789059011370,
     "isOnline": false
   },
-  "Vee": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1788541486007,
-    "totalTime": 86036547,
-    "sessionCount": 15,
-    "lastSeen": 1788544186163,
-    "isOnline": false
-  },
   "AntiiKhrist": {
     "firstSeen": 1786218278786,
     "joinTime": 1788653991622,
@@ -3700,7 +3692,7 @@
     "joinTime": 1791101812432,
     "totalTime": 1324865120,
     "sessionCount": 38,
-    "lastSeen": 1791127313668,
+    "lastSeen": 1791139014293,
     "isOnline": true
   }
 }
