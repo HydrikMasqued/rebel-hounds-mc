@@ -2703,14 +2703,6 @@
     "lastSeen": 1788907504135,
     "isOnline": false
   },
-  "MoodyOtter8235": {
-    "firstSeen": 1788557386806,
-    "joinTime": 1788557386806,
-    "totalTime": 600002,
-    "sessionCount": 1,
-    "lastSeen": 1788557686806,
-    "isOnline": false
-  },
   "Pumpkin": {
     "firstSeen": 1788560987006,
     "joinTime": 1788560987006,
@@ -3689,10 +3681,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1791101812432,
-    "totalTime": 1324865120,
-    "sessionCount": 38,
-    "lastSeen": 1791139014293,
+    "joinTime": 1791144114618,
+    "totalTime": 1366867209,
+    "sessionCount": 39,
+    "lastSeen": 1791150714800,
     "isOnline": true
   }
 }
