@@ -1511,14 +1511,6 @@
     "lastSeen": 1789651240304,
     "isOnline": false
   },
-  "Frank": {
-    "firstSeen": 1786365817646,
-    "joinTime": 1788485983205,
-    "totalTime": 203072549,
-    "sessionCount": 23,
-    "lastSeen": 1788486283197,
-    "isOnline": false
-  },
   "pokefan563": {
     "firstSeen": 1786369717782,
     "joinTime": 1789609838209,
@@ -1749,14 +1741,6 @@
     "totalTime": 1154156733,
     "sessionCount": 176,
     "lastSeen": 1789718143556,
-    "isOnline": false
-  },
-  "SharpAnt6013": {
-    "firstSeen": 1786501387356,
-    "joinTime": 1788483283023,
-    "totalTime": 65103249,
-    "sessionCount": 8,
-    "lastSeen": 1788493183543,
     "isOnline": false
   },
   "sailjpg": {
@@ -2207,14 +2191,6 @@
     "lastSeen": 1789753845467,
     "isOnline": false
   },
-  "Asher Zaa": {
-    "firstSeen": 1787465033324,
-    "joinTime": 1788487183242,
-    "totalTime": 18300888,
-    "sessionCount": 6,
-    "lastSeen": 1788489883322,
-    "isOnline": false
-  },
   "SlowFish7275": {
     "firstSeen": 1787475833779,
     "joinTime": 1789064111573,
@@ -2349,14 +2325,6 @@
     "totalTime": 62403113,
     "sessionCount": 7,
     "lastSeen": 1789186817753,
-    "isOnline": false
-  },
-  "downbad": {
-    "firstSeen": 1787794749649,
-    "joinTime": 1788479682876,
-    "totalTime": 6000238,
-    "sessionCount": 4,
-    "lastSeen": 1788483883024,
     "isOnline": false
   },
   "BoldCat1940": {
@@ -2717,14 +2685,6 @@
     "totalTime": 19800966,
     "sessionCount": 4,
     "lastSeen": 1788531585516,
-    "isOnline": false
-  },
-  "DallasPayne": {
-    "firstSeen": 1788471882494,
-    "joinTime": 1788475782638,
-    "totalTime": 13800685,
-    "sessionCount": 2,
-    "lastSeen": 1788487183242,
     "isOnline": false
   },
   "ElPinky": {
@@ -3748,7 +3708,7 @@
     "joinTime": 1791060110487,
     "totalTime": 1283463180,
     "sessionCount": 37,
-    "lastSeen": 1791071810987,
+    "lastSeen": 1791085611672,
     "isOnline": true
   }
 }
