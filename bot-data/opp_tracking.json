@@ -2679,14 +2679,6 @@
     "lastSeen": 1789351825688,
     "isOnline": false
   },
-  "Jacob Lawson": {
-    "firstSeen": 1788459881923,
-    "joinTime": 1788530385480,
-    "totalTime": 19800966,
-    "sessionCount": 4,
-    "lastSeen": 1788531585516,
-    "isOnline": false
-  },
   "ElPinky": {
     "firstSeen": 1788481182923,
     "joinTime": 1788746096131,
@@ -3708,7 +3700,7 @@
     "joinTime": 1791101812432,
     "totalTime": 1324865120,
     "sessionCount": 38,
-    "lastSeen": 1791108712747,
+    "lastSeen": 1791127313668,
     "isOnline": true
   }
 }
