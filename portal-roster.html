@@ -433,6 +433,7 @@
             h+='<select data-rank-select data-id="'+esc(m.id)+'">'+rankOptionsHtml(m.rank)+'</select>';
             h+='<select data-chapter-select data-id="'+esc(m.id)+'" style="margin-top:0.35rem;">'+chapterOptionsHtml(memberChapter(m))+'</select>';
             h+='<div class="rank-hint">Rank moves level - chapter moves tree</div>';
+            h+='<button type="button" class="btn btn-outline btn-sm" data-action="delete-member" data-id="'+esc(m.id)+'" style="width:100%;margin-top:0.5rem;color:#ff6b6b;border-color:rgba(192,57,43,0.5);">Delete</button>';
           }
           h+='</div>';
           return h;
@@ -493,7 +494,7 @@
           html+='<div class="level-head"><h3 class="level-title">'+esc(getLevelLabel('outbad'))+'</h3><span class="level-count">'+outBad.length+'</span></div>';
           if(editMode){
             html+='<div style="margin:-0.2rem 0 0.8rem;"><input type="text" data-level-label="outbad" value="'+esc(getLevelLabel('outbad'))+'" placeholder="Header name" style="width:100%;max-width:280px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.8rem;"></div>';
-            html+='<div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;">Open a card and set their rank back (or Status to Active) to return them to the roster.</div>';
+            html+='<div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;">Set their rank back (or Status to Active) to return them to the roster, or Delete to remove them permanently.</div>';
           }
           html+='<div class="level-members">';
           outBad.forEach(function(m, midx){ html+=cardHtml(m, 6, midx, 'member-card outbad'); });
@@ -684,6 +685,14 @@
           rosterData.chapters=rosterData.chapters.filter(function(c){ return c.id!==delId; });
           if(activeChapter===delId) activeChapter='national';
           if(persist()) render();
+        }
+        if(e.target.getAttribute && e.target.getAttribute('data-action')==='delete-member'){
+          var dmId=e.target.getAttribute('data-id');
+          var dm=rosterData.members.find(function(x){ return String(x.id)===String(dmId); });
+          if(!dm) return;
+          if(!confirm('Delete "'+(dm.name||'')+'" from the roster permanently? This cannot be undone.')) return;
+          rosterData.members=rosterData.members.filter(function(x){ return String(x.id)!==String(dmId); });
+          if(persist(true)) render();
         }
         if(e.target.id==='modalGalleryAdd'){
           var urlInp=document.getElementById('modalGalleryUrl');
