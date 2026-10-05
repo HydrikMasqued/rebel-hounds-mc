@@ -2535,14 +2535,6 @@
     "lastSeen": 1788666892254,
     "isOnline": false
   },
-  "Senpai Hiroshima": {
-    "firstSeen": 1788127165639,
-    "joinTime": 1788549886419,
-    "totalTime": 63902995,
-    "sessionCount": 13,
-    "lastSeen": 1788559786921,
-    "isOnline": false
-  },
   " B. Katherine": {
     "firstSeen": 1788131365855,
     "joinTime": 1788745496125,
@@ -2709,14 +2701,6 @@
     "totalTime": 7500271,
     "sessionCount": 1,
     "lastSeen": 1788568187253,
-    "isOnline": false
-  },
-  "[/] --> Shite Cunt": {
-    "firstSeen": 1788562187055,
-    "joinTime": 1788562187055,
-    "totalTime": 1500006,
-    "sessionCount": 1,
-    "lastSeen": 1788563387054,
     "isOnline": false
   },
   "Shepard Carver": {
@@ -3684,7 +3668,7 @@
     "joinTime": 1791144114618,
     "totalTime": 1366867209,
     "sessionCount": 39,
-    "lastSeen": 1791150714800,
+    "lastSeen": 1791159415237,
     "isOnline": true
   }
 }

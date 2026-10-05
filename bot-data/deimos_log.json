@@ -1,14 +1,4 @@
 [
-  "2026-10-03 21:52:11,881 - cogs.contribution_verification - INFO - Deleted non-image contribution message from clintmonster",
-  "2026-10-03 22:03:16,540 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
-  "2026-10-03 22:03:16,540 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-03 22:14:41,439 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 3131 seconds",
-  "2026-10-03 22:14:41,441 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tragic1301: 0h 52m",
-  "2026-10-03 22:14:42,342 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
-  "2026-10-03 22:20:04,631 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
-  "2026-10-03 22:20:04,632 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-03 22:29:14,308 - utils.playtime_database - INFO - Ended vital session for user 1425481575419613376: 3312 seconds",
-  "2026-10-03 22:29:14,308 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for swizzy188: 0h 55m",
   "2026-10-03 22:33:28,587 - utils.playtime_database - INFO - Started vital session for user 141748109116964864 in guild 889005510286786601",
   "2026-10-03 22:33:28,587 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tsacas in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-03 22:36:24,125 - utils.playtime_database - INFO - Ended vital session for user 591781884179120130: 979 seconds",
@@ -198,5 +188,15 @@
   "2026-10-04 21:16:04,200 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
   "2026-10-04 21:16:04,200 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-04 21:50:11,238 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
-  "2026-10-04 21:50:11,238 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-10-04 21:50:11,238 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-04 22:08:47,442 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 6c916e607621c918cc6094780e336e9a.",
+  "2026-10-04 22:10:11,224 - utils.playtime_database - INFO - Started vital session for user 328219066793984010 in guild 889005510286786601",
+  "2026-10-04 22:10:11,224 - cogs.playtime_tracker - INFO - Started vital playtime tracking for pky in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-04 22:17:04,323 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 1613 seconds",
+  "2026-10-04 22:17:04,323 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 0h 26m",
+  "2026-10-04 22:58:02,246 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-10-04 22:58:08,277 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-10-04 22:58:08,279 - cogs.membership - INFO - Updated member Cas Krayton with rank Prospect",
+  "2026-10-04 22:59:53,268 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-10-05 00:05:00,997 - cogs.city_checkin - INFO - Weekly check-in reset - new week calendars posted (old weeks archived in DB)"
 ]
