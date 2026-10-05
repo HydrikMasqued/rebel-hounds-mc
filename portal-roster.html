@@ -653,8 +653,7 @@
 
       document.addEventListener('click', function(e){
         var card=e.target.closest('[data-open]');
-        if(card){
-          if(e.target.closest('select, input, textarea, button, a')) return;
+        if(card && !e.target.closest('select, input, textarea, button, a')){
           openModal(card.getAttribute('data-open'));
         }
         if(e.target.closest('#modalClose') || e.target.id==='rosterModal') closeModal();
@@ -686,8 +685,9 @@
           if(activeChapter===delId) activeChapter='national';
           if(persist()) render();
         }
-        if(e.target.getAttribute && e.target.getAttribute('data-action')==='delete-member'){
-          var dmId=e.target.getAttribute('data-id');
+        var dEl=e.target.closest && e.target.closest('[data-action="delete-member"]');
+        if(dEl){
+          var dmId=dEl.getAttribute('data-id');
           var dm=rosterData.members.find(function(x){ return String(x.id)===String(dmId); });
           if(!dm) return;
           if(!confirm('Delete "'+(dm.name||'')+'" from the roster permanently? This cannot be undone.')) return;
