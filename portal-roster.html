@@ -73,6 +73,7 @@
     .rank-full { background: rgba(255,255,255,0.06); color: #ddd; border: 1px solid #2a2a2a; }
     .rank-nomad { background: rgba(59,130,246,0.1); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
     .rank-life { background: rgba(255,255,255,0.04); color: #aaa; border: 1px dashed #333; }
+    .rank-excom { background: rgba(192,57,43,0.16); color: #ff6b6b; border: 1px solid rgba(192,57,43,0.4); }
     .member-card select { width: 100%; margin-top: 0.5rem; background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.25rem 0.4rem; border-radius: 4px; font-size: 0.75rem; }
     .member-card .rank-hint { font-size: 0.6rem; color: var(--muted); margin-top: 0.2rem; }
     /* Excommunicated / Out Bad */
@@ -179,7 +180,7 @@
           <button class="btn btn-outline btn-sm" id="btnCancelRoster" style="display:none;">Cancel</button>
         </div>
       </div>
-      <div class="edit-banner" id="editBanner">EDIT MODE - Change rank to move someone, rename headers below, click a card to edit their file. Set Status to Out Bad to move them to Excommunicated. Remember to Save.</div>
+      <div class="edit-banner" id="editBanner">EDIT MODE - Change rank to move someone, rename headers below, click a card to edit their file. Set rank to Excommunicated (or Status to Out Bad) to move them out. Remember to Save.</div>
       <div class="roster-toolbar"><span class="hint">Pick a chapter to open its tree. Click a patch holder to open their file.</span></div>
       <div class="chapter-tabs" id="chapterTabs"></div>
       <div id="rosterTree">Loading roster...</div>
@@ -225,7 +226,7 @@
       var editMode=false;
       var activeMember=null;
 
-      var RANK_ORDER=['President','Vice President','Sergeant At Arms','Secretary','Treasurer','Road Captain','Enforcer','Officer','Tailgunner','Full Patch','Nomad','Life Member'];
+      var RANK_ORDER=['President','Vice President','Sergeant At Arms','Secretary','Treasurer','Road Captain','Enforcer','Officer','Tailgunner','Full Patch','Nomad','Life Member','Excommunicated'];
       var LEVEL_MAP={
         1:['President'],
         2:['Vice President','Sergeant At Arms'],
@@ -361,6 +362,7 @@
         if(['Secretary','Treasurer','Road Captain','Enforcer','Officer'].indexOf(rank)>-1) return 'rank-officer';
         if(rank==='Nomad') return 'rank-nomad';
         if(rank==='Life Member') return 'rank-life';
+        if(rank==='Excommunicated') return 'rank-excom';
         return 'rank-full';
       }
       function rankOptionsHtml(sel){
@@ -376,7 +378,7 @@
         if(!tabs) return;
         if(!rosterData||!Array.isArray(rosterData.chapters)){ tabs.innerHTML=''; return; }
         var counts={};
-        (rosterData.members||[]).forEach(function(m){ if(m.status==='Out Bad') return; var c=memberChapter(m); counts[c]=(counts[c]||0)+1; });
+        (rosterData.members||[]).forEach(function(m){ if(m.status==='Out Bad' || m.rank==='Excommunicated') return; var c=memberChapter(m); counts[c]=(counts[c]||0)+1; });
         var html='';
         rosterData.chapters.forEach(function(c){
           html+='<button type="button" class="chapter-tab'+(c.id===activeChapter?' active':'')+'" data-chapter-tab="'+esc(c.id)+'">'+esc(c.name)+'<span class="chapter-count">'+(counts[c.id]||0)+'</span></button>';
@@ -401,8 +403,8 @@
         ensureChapters();
         renderTabs();
         if(!rosterData||!rosterData.members){ container.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">No roster data</div>'; return; }
-        var members=rosterData.members.filter(function(m){ return memberChapter(m)===activeChapter && m.status!=='Out Bad'; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
-        var outBad=rosterData.members.filter(function(m){ return m.status==='Out Bad'; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
+        var members=rosterData.members.filter(function(m){ return memberChapter(m)===activeChapter && m.status!=='Out Bad' && m.rank!=='Excommunicated'; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
+        var outBad=rosterData.members.filter(function(m){ return m.status==='Out Bad' || m.rank==='Excommunicated'; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
         var emptyChapter=members.length===0;
         var byLevel={1:[],2:[],3:[],4:[],5:[],6:[]};
         members.forEach(function(m){
@@ -491,7 +493,7 @@
           html+='<div class="level-head"><h3 class="level-title">'+esc(getLevelLabel('outbad'))+'</h3><span class="level-count">'+outBad.length+'</span></div>';
           if(editMode){
             html+='<div style="margin:-0.2rem 0 0.8rem;"><input type="text" data-level-label="outbad" value="'+esc(getLevelLabel('outbad'))+'" placeholder="Header name" style="width:100%;max-width:280px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.8rem;"></div>';
-            html+='<div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;">Open a card and set Status back to Active to return them to the roster.</div>';
+            html+='<div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;">Open a card and set their rank back (or Status to Active) to return them to the roster.</div>';
           }
           html+='<div class="level-members">';
           outBad.forEach(function(m, midx){ html+=cardHtml(m, 6, midx, 'member-card outbad'); });
