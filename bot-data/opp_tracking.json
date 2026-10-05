@@ -287,14 +287,6 @@
     "lastSeen": 1789715143441,
     "isOnline": false
   },
-  "Toxic Goat ": {
-    "firstSeen": 1786221465441,
-    "joinTime": 1788575987653,
-    "totalTime": 211408877,
-    "sessionCount": 39,
-    "lastSeen": 1788578687805,
-    "isOnline": false
-  },
   "Big Back Jack": {
     "firstSeen": 1786221765466,
     "joinTime": 1789755345461,
@@ -999,14 +991,6 @@
     "lastSeen": 1788729895381,
     "isOnline": false
   },
-  "Reaper": {
-    "firstSeen": 1786244012314,
-    "joinTime": 1788564287125,
-    "totalTime": 243012256,
-    "sessionCount": 21,
-    "lastSeen": 1788576287657,
-    "isOnline": false
-  },
   "Cherry": {
     "firstSeen": 1786244012314,
     "joinTime": 1789539934748,
@@ -1295,14 +1279,6 @@
     "lastSeen": 1789595137462,
     "isOnline": false
   },
-  "xSterBenx313": {
-    "firstSeen": 1786296814669,
-    "joinTime": 1788573287501,
-    "totalTime": 69303308,
-    "sessionCount": 10,
-    "lastSeen": 1788582588034,
-    "isOnline": false
-  },
   "WONDA": {
     "firstSeen": 1786297114669,
     "joinTime": 1789685141866,
@@ -1381,14 +1357,6 @@
     "totalTime": 397519501,
     "sessionCount": 49,
     "lastSeen": 1789755345461,
-    "isOnline": false
-  },
-  "BluntBat3071": {
-    "firstSeen": 1786316315545,
-    "joinTime": 1788573587503,
-    "totalTime": 92104516,
-    "sessionCount": 25,
-    "lastSeen": 1788575987653,
     "isOnline": false
   },
   "Neltice": {
@@ -2695,28 +2663,12 @@
     "lastSeen": 1788907504135,
     "isOnline": false
   },
-  "Pumpkin": {
-    "firstSeen": 1788560987006,
-    "joinTime": 1788560987006,
-    "totalTime": 7500271,
-    "sessionCount": 1,
-    "lastSeen": 1788568187253,
-    "isOnline": false
-  },
   "Shepard Carver": {
     "firstSeen": 1788563387054,
     "joinTime": 1789133715137,
     "totalTime": 164408011,
     "sessionCount": 15,
     "lastSeen": 1789138515452,
-    "isOnline": false
-  },
-  "Lorenzo": {
-    "firstSeen": 1788563387054,
-    "joinTime": 1788563387054,
-    "totalTime": 5100223,
-    "sessionCount": 1,
-    "lastSeen": 1788568187253,
     "isOnline": false
   },
   "FuzzyGoose5889": {
@@ -3668,7 +3620,7 @@
     "joinTime": 1791144114618,
     "totalTime": 1366867209,
     "sessionCount": 39,
-    "lastSeen": 1791159415237,
+    "lastSeen": 1791178916155,
     "isOnline": true
   }
 }

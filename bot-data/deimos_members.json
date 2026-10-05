@@ -219,13 +219,13 @@
     "id": 1209,
     "guild_id": 889005510286786600,
     "user_id": 1360830106335187000,
-    "discord_name": "𝙎𝙀𝙍𝙋𝙀𝙉𝙏",
+    "discord_name": "Serpent",
     "discord_username": "serpxntt_",
     "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-02 07:27:53",
-    "updated_at": "2026-09-16 22:38:59.705167"
+    "updated_at": "2026-10-04 10:03:29.640620"
   },
   {
     "id": 1237,
@@ -249,7 +249,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-18 22:03:24",
-    "updated_at": "2026-09-16 22:38:59.691317"
+    "updated_at": "2026-10-02 02:50:50.635043"
   },
   {
     "id": 1320,
@@ -305,11 +305,11 @@
     "user_id": 287694223707340800,
     "discord_name": "Reggie \"Eddy\" Matthews",
     "discord_username": "gingerbean2112",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-16 12:07:57",
-    "updated_at": "2026-09-16 22:38:59.696427"
+    "updated_at": "2026-09-26 03:35:17.017331"
   },
   {
     "id": 1417,
@@ -360,28 +360,16 @@
     "updated_at": "2026-09-16 22:38:59.709152"
   },
   {
-    "id": 1522,
-    "guild_id": 889005510286786600,
-    "user_id": 399697875002458100,
-    "discord_name": "Donna “ Luna “ Willow",
-    "discord_username": "lunaskribbs",
-    "rank": "Prospect",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-09-05 13:43:25",
-    "updated_at": "2026-09-16 22:38:59.704539"
-  },
-  {
     "id": 1523,
     "guild_id": 889005510286786600,
     "user_id": 1105925237247316000,
     "discord_name": "Raven Wolfram",
     "discord_username": "ravenmj420",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:43:46",
-    "updated_at": "2026-09-16 22:38:59.703248"
+    "updated_at": "2026-10-04 03:32:18.844611"
   },
   {
     "id": 1524,
@@ -454,5 +442,29 @@
     "is_on_loa": 0,
     "created_at": "2026-09-21 00:40:16",
     "updated_at": "2026-09-21 00:40:16.486831"
+  },
+  {
+    "id": 1656,
+    "guild_id": 889005510286786600,
+    "user_id": 399697875002458100,
+    "discord_name": "Donna “ Luna “ Willow",
+    "discord_username": "lunaskribbs",
+    "rank": "Full Patch",
+    "status": "Active",
+    "is_on_loa": 0,
+    "created_at": "2026-09-26 03:35:54",
+    "updated_at": "2026-09-26 03:35:54.837066"
+  },
+  {
+    "id": 1663,
+    "guild_id": 889005510286786600,
+    "user_id": 141748109116964860,
+    "discord_name": "Cas Krayton",
+    "discord_username": "tsacas",
+    "rank": "Prospect",
+    "status": "Active",
+    "is_on_loa": 0,
+    "created_at": "2026-10-04 22:58:08",
+    "updated_at": "2026-10-04 22:58:08.278696"
   }
 ]
