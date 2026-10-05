@@ -1535,14 +1535,6 @@
     "lastSeen": 1788998408329,
     "isOnline": false
   },
-  "ChaCha/Cali": {
-    "firstSeen": 1786398782245,
-    "joinTime": 1788616789773,
-    "totalTime": 50702485,
-    "sessionCount": 6,
-    "lastSeen": 1788619489841,
-    "isOnline": false
-  },
   "mini": {
     "firstSeen": 1786403282471,
     "joinTime": 1788999308417,
@@ -1751,14 +1743,6 @@
     "lastSeen": 1789710343149,
     "isOnline": false
   },
-  "Elis kokalaru": {
-    "firstSeen": 1786659795075,
-    "joinTime": 1788623690089,
-    "totalTime": 108005174,
-    "sessionCount": 25,
-    "lastSeen": 1788629090306,
-    "isOnline": false
-  },
   "Karim Vieira": {
     "firstSeen": 1786670295587,
     "joinTime": 1788747896213,
@@ -1797,14 +1781,6 @@
     "totalTime": 176708484,
     "sessionCount": 24,
     "lastSeen": 1789425629170,
-    "isOnline": false
-  },
-  "Habibeast": {
-    "firstSeen": 1786735098764,
-    "joinTime": 1788620389889,
-    "totalTime": 338416500,
-    "sessionCount": 42,
-    "lastSeen": 1788626390155,
     "isOnline": false
   },
   "Chuleta": {
@@ -2701,14 +2677,6 @@
     "totalTime": 91804227,
     "sessionCount": 11,
     "lastSeen": 1789755045466,
-    "isOnline": false
-  },
-  "ilhps": {
-    "firstSeen": 1788629090306,
-    "joinTime": 1788630290342,
-    "totalTime": 2700123,
-    "sessionCount": 2,
-    "lastSeen": 1788631790458,
     "isOnline": false
   },
   "Toast": {
@@ -3617,10 +3585,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1791188216570,
-    "totalTime": 1410669242,
-    "sessionCount": 40,
-    "lastSeen": 1791203817331,
+    "joinTime": 1791227818505,
+    "totalTime": 1449671184,
+    "sessionCount": 41,
+    "lastSeen": 1791232918864,
     "isOnline": true
   }
 }
