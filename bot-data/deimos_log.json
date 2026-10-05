@@ -1,15 +1,4 @@
 [
-  "2026-10-05 01:47:38,935 - __main__ - INFO - Gatekeeper#9516 has landed! (ID: 1408590443608019035)",
-  "2026-10-05 01:47:38,936 - __main__ - INFO - Bot is ready and connected to 2 guild(s)",
-  "2026-10-05 01:47:38,936 - utils.database - INFO - Initializing database tables",
-  "2026-10-05 01:47:38,940 - cogs.church_tracker - INFO - Reconciled church session 6: 0 member(s) currently in 𝐑𝐎𝐔𝐍𝐃𝐓𝐀𝐁𝐋𝐄",
-  "2026-10-05 01:47:38,940 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
-  "2026-10-05 01:47:38,940 - cogs.playtime_tracker - INFO - Started vital session for existing VC member: panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-05 01:47:38,943 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-10-05 01:47:38,943 - cogs.playtime_tracker - INFO - Started vital session for existing VC member: bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-05 01:47:38,944 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
-  "2026-10-05 01:47:38,944 - cogs.playtime_tracker - INFO - Started vital session for existing VC member: j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-05 01:47:38,945 - cogs.playtime_tracker - INFO - Processed 3 existing VC members for guild 𝐑𝐞𝐛𝐞𝐥 𝐇𝐨𝐮𝐧𝐝𝐬 𝐌𝐨𝐭𝐨𝐫𝐜𝐲𝐜𝐥𝐞 𝐂𝐥𝐮𝐛",
   "2026-10-05 01:47:38,948 - utils.database - INFO - Database tables initialized successfully",
   "2026-10-05 01:47:38,949 - __main__ - INFO - Database initialized for guild: 𝐑𝐞𝐛𝐞𝐥 𝐇𝐨𝐮𝐧𝐝𝐬 𝐌𝐨𝐭𝐨𝐫𝐜𝐲𝐜𝐥𝐞 𝐂𝐥𝐮𝐛 (ID: 889005510286786601)",
   "2026-10-05 01:47:38,949 - utils.database - INFO - Initializing database tables",
@@ -198,5 +187,16 @@
   "2026-10-05 03:59:16,204 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tsacas in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-05 03:59:35,154 - utils.playtime_database - INFO - Ended vital session for user 141748109116964864: 18 seconds",
   "2026-10-05 03:59:35,154 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 0h 0m",
-  "2026-10-05 05:31:50,460 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ca11737b540e0c22b099449bafa9f303."
+  "2026-10-05 05:31:50,460 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ca11737b540e0c22b099449bafa9f303.",
+  "2026-10-05 06:48:20,394 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
+  "2026-10-05 06:48:20,394 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-05 06:54:54,973 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 394 seconds",
+  "2026-10-05 06:54:54,973 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 0h 6m",
+  "2026-10-05 08:20:35,998 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ca11737b540e0c22b099449bafa9f303.",
+  "2026-10-05 10:59:36,190 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ca11737b540e0c22b099449bafa9f303.",
+  "2026-10-05 11:24:49,442 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ca11737b540e0c22b099449bafa9f303.",
+  "2026-10-05 11:50:36,029 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-05 11:50:36,029 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-05 11:56:00,669 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 324 seconds",
+  "2026-10-05 11:56:00,670 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 5m"
 ]
