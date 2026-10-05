@@ -75,6 +75,15 @@
     .rank-life { background: rgba(255,255,255,0.04); color: #aaa; border: 1px dashed #333; }
     .member-card select { width: 100%; margin-top: 0.5rem; background: var(--dark); border: 1px solid var(--border); color: var(--text); padding: 0.25rem 0.4rem; border-radius: 4px; font-size: 0.75rem; }
     .member-card .rank-hint { font-size: 0.6rem; color: var(--muted); margin-top: 0.2rem; }
+    /* Excommunicated / Out Bad */
+    .member-card.outbad { border-color: rgba(192,57,43,0.5); }
+    .member-card.outbad:hover { border-color: rgba(192,57,43,0.85); }
+    .member-card.outbad .member-avatar { filter: grayscale(1) brightness(0.7); }
+    .member-card.outbad .member-name { text-decoration: line-through; text-decoration-color: rgba(192,57,43,0.85); color: #b9b9b9; }
+    .member-card.outbad .member-rank { background: rgba(192,57,43,0.16); color: #ff6b6b; border: 1px solid rgba(192,57,43,0.4); }
+    .tree-level.outbad-level { border-color: rgba(192,57,43,0.42); background: linear-gradient(135deg, #170e0e 0%, #121212 100%); }
+    .tree-level.outbad-level .level-title { color: #ff6b6b; }
+    .tree-level.outbad-level .level-title::after { background: #ff6b6b; }
     /* Modal */
     .roster-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.72); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 1rem; }
     .roster-modal.open { display: flex; }
@@ -170,7 +179,7 @@
           <button class="btn btn-outline btn-sm" id="btnCancelRoster" style="display:none;">Cancel</button>
         </div>
       </div>
-      <div class="edit-banner" id="editBanner">EDIT MODE - Change rank to move someone, rename headers below, click a card to edit their file. Remember to Save.</div>
+      <div class="edit-banner" id="editBanner">EDIT MODE - Change rank to move someone, rename headers below, click a card to edit their file. Set Status to Out Bad to move them to Excommunicated. Remember to Save.</div>
       <div class="roster-toolbar"><span class="hint">Pick a chapter to open its tree. Click a patch holder to open their file.</span></div>
       <div class="chapter-tabs" id="chapterTabs"></div>
       <div id="rosterTree">Loading roster...</div>
@@ -225,8 +234,8 @@
         5:['Nomad'],
         6:['Life Member']
       };
-      var DEFAULT_LEVEL_LABELS={heads:'THREE HEADS',3:'OFFICERS',4:'PATCH HOLDERS',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)'};
-      var LEVEL_LABEL={1:'PRESIDENT',2:'VICE PRESIDENT / SERGEANT AT ARMS',3:'OFFICERS',4:'PATCH HOLDERS',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)'};
+      var DEFAULT_LEVEL_LABELS={heads:'THREE HEADS',3:'OFFICERS',4:'PATCH HOLDERS',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)',outbad:'EXCOMMUNICATED / OUT BAD'};
+      var LEVEL_LABEL={1:'PRESIDENT',2:'VICE PRESIDENT / SERGEANT AT ARMS',3:'OFFICERS',4:'PATCH HOLDERS',5:'NOMAD',6:'LIFE MEMBERS (RETIRED)',outbad:'EXCOMMUNICATED / OUT BAD'};
       function getLevelLabel(key){
         if(rosterData && rosterData.levelLabels && rosterData.levelLabels[key]) return rosterData.levelLabels[key];
         if(DEFAULT_LEVEL_LABELS[key]) return DEFAULT_LEVEL_LABELS[key];
@@ -367,7 +376,7 @@
         if(!tabs) return;
         if(!rosterData||!Array.isArray(rosterData.chapters)){ tabs.innerHTML=''; return; }
         var counts={};
-        (rosterData.members||[]).forEach(function(m){ var c=memberChapter(m); counts[c]=(counts[c]||0)+1; });
+        (rosterData.members||[]).forEach(function(m){ if(m.status==='Out Bad') return; var c=memberChapter(m); counts[c]=(counts[c]||0)+1; });
         var html='';
         rosterData.chapters.forEach(function(c){
           html+='<button type="button" class="chapter-tab'+(c.id===activeChapter?' active':'')+'" data-chapter-tab="'+esc(c.id)+'">'+esc(c.name)+'<span class="chapter-count">'+(counts[c.id]||0)+'</span></button>';
@@ -392,7 +401,8 @@
         ensureChapters();
         renderTabs();
         if(!rosterData||!rosterData.members){ container.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);">No roster data</div>'; return; }
-        var members=rosterData.members.filter(function(m){ return memberChapter(m)===activeChapter; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
+        var members=rosterData.members.filter(function(m){ return memberChapter(m)===activeChapter && m.status!=='Out Bad'; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
+        var outBad=rosterData.members.filter(function(m){ return m.status==='Out Bad'; }).sort(function(a,b){ var ia=RANK_ORDER.indexOf(a.rank), ib=RANK_ORDER.indexOf(b.rank); if(ia!==ib) return ia-ib; return (a.name||'').localeCompare(b.name||''); });
         var emptyChapter=members.length===0;
         var byLevel={1:[],2:[],3:[],4:[],5:[],6:[]};
         members.forEach(function(m){
@@ -408,10 +418,10 @@
         });
 
         var html='<div class="roster-tree">';
-        function cardHtml(m, lvl, cidx){
+        function cardHtml(m, lvl, cidx, forcedClass){
           var isPresident=m.rank==='President';
           var isHead=isPresident || ['Vice President','Sergeant At Arms'].indexOf(m.rank)>-1;
-          var cardClass=isPresident?'member-card head president':(isHead?'member-card head':(m.rank==='Life Member'?'member-card life':'member-card'));
+          var cardClass=forcedClass||(isPresident?'member-card head president':(isHead?'member-card head':(m.rank==='Life Member'?'member-card life':'member-card')));
           var h='<div class="'+cardClass+'" data-id="'+esc(m.id)+'" data-open="'+esc(m.id)+'" style="cursor:pointer;animation-delay:'+(0.14+lvl*0.08+cidx*0.035)+'s">';
           h+='<div class="member-avatar">'+(m.image?'<img src="'+esc(m.image)+'" alt="">':'&#128100;')+'</div>';
           h+='<div class="member-name" title="'+esc(m.name)+'">'+esc(m.name)+'</div>';
@@ -428,7 +438,9 @@
         var headsPres=(byLevel[1]||[]).slice();
         var headsSubs=(byLevel[2]||[]).slice().sort(function(a,b){ return RANK_ORDER.indexOf(a.rank)-RANK_ORDER.indexOf(b.rank); });
         var headsTotal=headsPres.length+headsSubs.length;
+        var renderedAny=false;
         if(headsTotal>0){
+          renderedAny=true;
           html+='<div class="tree-level heads-level" data-level="heads" style="animation-delay:0.14s">';
           html+='<div class="level-head"><h3 class="level-title">'+esc(getLevelLabel('heads'))+'</h3><span class="level-count">'+headsTotal+'</span></div>';
           if(editMode){ html+='<div style="margin:-0.2rem 0 0.8rem;"><input type="text" data-level-label="heads" value="'+esc(getLevelLabel('heads'))+'" placeholder="Header name" style="width:100%;max-width:280px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.8rem;"></div>'; }
@@ -460,6 +472,7 @@
         [3,4,5,6].forEach(function(lvl, idx){
           var list=byLevel[lvl];
           if(list.length===0) return;
+          renderedAny=true;
           html+='<div class="tree-level" data-level="'+lvl+'">';
           html+='<div class="level-head"><h3 class="level-title">'+esc(getLevelLabel(String(lvl)))+'</h3><span class="level-count">'+list.length+'</span></div>';
           if(editMode){ html+='<div style="margin:-0.2rem 0 0.8rem;"><input type="text" data-level-label="'+lvl+'" value="'+esc(getLevelLabel(String(lvl)))+'" placeholder="Header name" style="width:100%;max-width:280px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.8rem;"></div>'; }
@@ -472,6 +485,18 @@
             if(hasNext) html+='<div class="tree-connector"></div>';
           }
         });
+        if(outBad.length>0){
+          if(renderedAny) html+='<div class="tree-connector"></div>';
+          html+='<div class="tree-level outbad-level" data-level="outbad">';
+          html+='<div class="level-head"><h3 class="level-title">'+esc(getLevelLabel('outbad'))+'</h3><span class="level-count">'+outBad.length+'</span></div>';
+          if(editMode){
+            html+='<div style="margin:-0.2rem 0 0.8rem;"><input type="text" data-level-label="outbad" value="'+esc(getLevelLabel('outbad'))+'" placeholder="Header name" style="width:100%;max-width:280px;background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.8rem;"></div>';
+            html+='<div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;">Open a card and set Status back to Active to return them to the roster.</div>';
+          }
+          html+='<div class="level-members">';
+          outBad.forEach(function(m, midx){ html+=cardHtml(m, 6, midx, 'member-card outbad'); });
+          html+='</div></div>';
+        }
         html+='</div>';
         if(emptyChapter){ html+='<div style="text-align:center;padding:1rem 0 0.5rem;color:var(--muted);font-size:0.85rem;">No patched members in this chapter yet.</div>'; }
         if(editMode){
@@ -512,7 +537,7 @@
           body.innerHTML=
             '<div class="roster-field"><label>Full Name</label><input type="text" id="modalNameInput" value="'+esc(m.name||'')+'" placeholder="Full display name"></div>'+
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Discord Username</label><input type="text" id="modalUsername" value="'+esc(m.username||'')+'" placeholder="@username"></div><div class="roster-field"><label>Rank</label><select id="modalRankSel">'+rankOptionsHtml(m.rank)+'</select></div><div class="roster-field"><label>Chapter</label><select id="modalChapter">'+chapterOptionsHtml(memberChapter(m))+'</select></div></div>'+
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Joined Date</label><input type="date" id="modalJoined" value="'+esc((m.joined||'').split(" ")[0])+'"></div><div class="roster-field"><label>Status</label><select id="modalStatus"><option value="Active"'+(m.status==='Active'?' selected':'')+'>Active</option><option value="Retired"'+(m.status==='Retired'?' selected':'')+'>Retired</option><option value="On LOA"'+(m.status==='On LOA'?' selected':'')+'>On LOA</option></select></div></div>'+
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;"><div class="roster-field"><label>Joined Date</label><input type="date" id="modalJoined" value="'+esc((m.joined||'').split(" ")[0])+'"></div><div class="roster-field"><label>Status</label><select id="modalStatus"><option value="Active"'+(m.status==='Active'?' selected':'')+'>Active</option><option value="Retired"'+(m.status==='Retired'?' selected':'')+'>Retired</option><option value="On LOA"'+(m.status==='On LOA'?' selected':'')+'>On LOA</option><option value="Out Bad"'+(m.status==='Out Bad'?' selected':'')+'>Out Bad</option></select></div></div>'+
             '<div class="roster-field"><label>Main Photo - URL or upload (transparent PNG keeps transparency)</label><div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;"><input type="text" id="modalImage" value="'+esc(m.image||'')+'" placeholder="https://..." style="flex:1;min-width:180px;"><input type="file" id="modalImageFile" accept="image/*" style="font-size:0.75rem;max-width:160px;"></div><div id="modalImageNote" style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">Large photos are auto-resized. After choosing a file, click Save File below.</div></div>'+
             '<div class="roster-field"><label>Additional Pictures — gallery for this member</label><div id="modalGallery" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">'+(m.gallery&&m.gallery.length?m.gallery.map(function(url,i){return '<div style="position:relative;width:72px;height:72px;border-radius:6px;overflow:hidden;border:1px solid #333;"><img src="'+esc(url)+'" style="width:100%;height:100%;object-fit:cover;"><button type="button" data-action="remove-gallery-img" data-idx="'+i+'" style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;">×</button></div>';}).join(''):'<span style="font-size:0.75rem;color:#777;">No extra pictures yet</span>')+'</div><div style="display:flex;gap:0.5rem;"><input type="text" id="modalGalleryUrl" placeholder="Paste image URL" style="flex:1;"><input type="file" id="modalGalleryFile" accept="image/*" style="font-size:0.75rem;max-width:150px;"><button type="button" class="btn btn-outline btn-sm" id="modalGalleryAdd">Add</button></div></div>'+
             '<div class="roster-field"><label>What they did within the club</label><textarea id="modalContrib" placeholder="Roles, runs led, businesses, wars, mentoring...">'+esc(m.contributions||'')+'</textarea></div>'+
