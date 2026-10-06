@@ -79,14 +79,6 @@
     "lastSeen": 1789059011370,
     "isOnline": false
   },
-  "AntiiKhrist": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1788653991622,
-    "totalTime": 939878515,
-    "sessionCount": 91,
-    "lastSeen": 1788661791995,
-    "isOnline": false
-  },
   "Miles Mercer": {
     "firstSeen": 1786218278786,
     "joinTime": 1789741244762,
@@ -855,14 +847,6 @@
     "lastSeen": 1789439129761,
     "isOnline": false
   },
-  "nSkyzzz": {
-    "firstSeen": 1786235566152,
-    "joinTime": 1788668092335,
-    "totalTime": 156415702,
-    "sessionCount": 18,
-    "lastSeen": 1788669592405,
-    "isOnline": false
-  },
   "fruit": {
     "firstSeen": 1786235566152,
     "joinTime": 1789357825951,
@@ -1037,14 +1021,6 @@
     "totalTime": 410720013,
     "sessionCount": 84,
     "lastSeen": 1789698042540,
-    "isOnline": false
-  },
-  "Hepy65_TTV": {
-    "firstSeen": 1786248512576,
-    "joinTime": 1788645891177,
-    "totalTime": 729003126,
-    "sessionCount": 63,
-    "lastSeen": 1788660891925,
     "isOnline": false
   },
   "Mcflexington": {
@@ -1549,14 +1525,6 @@
     "totalTime": 26401270,
     "sessionCount": 5,
     "lastSeen": 1788764097008,
-    "isOnline": false
-  },
-  "CroctheBot": {
-    "firstSeen": 1786411682911,
-    "joinTime": 1788667192258,
-    "totalTime": 30001440,
-    "sessionCount": 9,
-    "lastSeen": 1788668992413,
     "isOnline": false
   },
   "Sourmsg420": {
@@ -2295,14 +2263,6 @@
     "lastSeen": 1789239620304,
     "isOnline": false
   },
-  "BIG$": {
-    "firstSeen": 1787968158099,
-    "joinTime": 1788653691632,
-    "totalTime": 144007245,
-    "sessionCount": 22,
-    "lastSeen": 1788663592081,
-    "isOnline": false
-  },
   "MrZepRyker": {
     "firstSeen": 1787978658576,
     "joinTime": 1788756896621,
@@ -2375,14 +2335,6 @@
     "lastSeen": 1788765597029,
     "isOnline": false
   },
-  "radio": {
-    "firstSeen": 1788044961621,
-    "joinTime": 1788679192836,
-    "totalTime": 14700829,
-    "sessionCount": 6,
-    "lastSeen": 1788679492871,
-    "isOnline": false
-  },
   "xXxTotecxXx": {
     "firstSeen": 1788051561984,
     "joinTime": 1788754196459,
@@ -2445,14 +2397,6 @@
     "totalTime": 146407037,
     "sessionCount": 31,
     "lastSeen": 1789239620304,
-    "isOnline": false
-  },
-  "ozski": {
-    "firstSeen": 1788118765230,
-    "joinTime": 1788659991890,
-    "totalTime": 24901321,
-    "sessionCount": 5,
-    "lastSeen": 1788666892254,
     "isOnline": false
   },
   " B. Katherine": {
@@ -2677,30 +2621,6 @@
     "totalTime": 3900148,
     "sessionCount": 3,
     "lastSeen": 1788807599252,
-    "isOnline": false
-  },
-  "Enk": {
-    "firstSeen": 1788657591799,
-    "joinTime": 1788657591799,
-    "totalTime": 900034,
-    "sessionCount": 1,
-    "lastSeen": 1788658191828,
-    "isOnline": false
-  },
-  "Unspoken": {
-    "firstSeen": 1788663892081,
-    "joinTime": 1788664792148,
-    "totalTime": 13200638,
-    "sessionCount": 2,
-    "lastSeen": 1788677092748,
-    "isOnline": false
-  },
-  "faceless215/kick": {
-    "firstSeen": 1788664792148,
-    "joinTime": 1788665392293,
-    "totalTime": 2399992,
-    "sessionCount": 2,
-    "lastSeen": 1788667192258,
     "isOnline": false
   },
   "VRSkye": {
@@ -3548,7 +3468,7 @@
     "joinTime": 1791227818505,
     "totalTime": 1449671184,
     "sessionCount": 41,
-    "lastSeen": 1791250019659,
+    "lastSeen": 1791272820805,
     "isOnline": true
   }
 }
