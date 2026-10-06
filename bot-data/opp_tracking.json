@@ -2151,14 +2151,6 @@
     "lastSeen": 1789614038433,
     "isOnline": false
   },
-  "Drm": {
-    "firstSeen": 1787699644781,
-    "joinTime": 1788680392914,
-    "totalTime": 110705369,
-    "sessionCount": 24,
-    "lastSeen": 1788681292980,
-    "isOnline": false
-  },
   "JumpyMoth8879": {
     "firstSeen": 1787725146022,
     "joinTime": 1789664140866,
@@ -2621,14 +2613,6 @@
     "totalTime": 3900148,
     "sessionCount": 3,
     "lastSeen": 1788807599252,
-    "isOnline": false
-  },
-  "VRSkye": {
-    "firstSeen": 1788674392621,
-    "joinTime": 1788677692782,
-    "totalTime": 7800415,
-    "sessionCount": 2,
-    "lastSeen": 1788681893047,
     "isOnline": false
   },
   "Burt": {
@@ -3465,10 +3449,10 @@
   },
   "Player": {
     "firstSeen": 1789760745799,
-    "joinTime": 1791227818505,
-    "totalTime": 1449671184,
-    "sessionCount": 41,
-    "lastSeen": 1791272820805,
+    "joinTime": 1791274620875,
+    "totalTime": 1496173492,
+    "sessionCount": 42,
+    "lastSeen": 1791296821939,
     "isOnline": true
   }
 }
