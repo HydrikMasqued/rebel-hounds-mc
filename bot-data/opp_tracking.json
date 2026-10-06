@@ -1831,14 +1831,6 @@
     "lastSeen": 1789348225462,
     "isOnline": false
   },
-  "SoggyAnt3447": {
-    "firstSeen": 1786919307759,
-    "joinTime": 1788709194442,
-    "totalTime": 38101919,
-    "sessionCount": 10,
-    "lastSeen": 1788709794472,
-    "isOnline": false
-  },
   "KelsIsPeachy": {
     "firstSeen": 1786926208096,
     "joinTime": 1789008008810,
@@ -3452,7 +3444,7 @@
     "joinTime": 1791274620875,
     "totalTime": 1496173492,
     "sessionCount": 42,
-    "lastSeen": 1791296821939,
+    "lastSeen": 1791304022256,
     "isOnline": true
   }
 }
