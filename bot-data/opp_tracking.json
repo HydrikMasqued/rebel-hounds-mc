@@ -87,14 +87,6 @@
     "lastSeen": 1788661791995,
     "isOnline": false
   },
-  "testiclelyspeaking": {
-    "firstSeen": 1786218278786,
-    "joinTime": 1788652191560,
-    "totalTime": 607657419,
-    "sessionCount": 102,
-    "lastSeen": 1788652491557,
-    "isOnline": false
-  },
   "Miles Mercer": {
     "firstSeen": 1786218278786,
     "joinTime": 1789741244762,
@@ -1839,14 +1831,6 @@
     "lastSeen": 1789694142340,
     "isOnline": false
   },
-  "Tommy Twotone": {
-    "firstSeen": 1786893206517,
-    "joinTime": 1788655491723,
-    "totalTime": 10500426,
-    "sessionCount": 5,
-    "lastSeen": 1788656391730,
-    "isOnline": false
-  },
   "beebo": {
     "firstSeen": 1786895906655,
     "joinTime": 1788708594390,
@@ -1965,14 +1949,6 @@
     "totalTime": 1206056178,
     "sessionCount": 133,
     "lastSeen": 1789740344776,
-    "isOnline": false
-  },
-  "TripNipMcGee": {
-    "firstSeen": 1787093315732,
-    "joinTime": 1788652791563,
-    "totalTime": 10200536,
-    "sessionCount": 4,
-    "lastSeen": 1788652791563,
     "isOnline": false
   },
   "Psychoqueen": {
@@ -2693,22 +2669,6 @@
     "totalTime": 97504922,
     "sessionCount": 13,
     "lastSeen": 1789699542618,
-    "isOnline": false
-  },
-  "Cakes": {
-    "firstSeen": 1788646191186,
-    "joinTime": 1788646191186,
-    "totalTime": 300018,
-    "sessionCount": 1,
-    "lastSeen": 1788646191186,
-    "isOnline": false
-  },
-  "Carlos Wolfram": {
-    "firstSeen": 1788647691287,
-    "joinTime": 1788647691287,
-    "totalTime": 6000345,
-    "sessionCount": 1,
-    "lastSeen": 1788653391599,
     "isOnline": false
   },
   "smoke trees": {
@@ -3588,7 +3548,7 @@
     "joinTime": 1791227818505,
     "totalTime": 1449671184,
     "sessionCount": 41,
-    "lastSeen": 1791232918864,
+    "lastSeen": 1791250019659,
     "isOnline": true
   }
 }
