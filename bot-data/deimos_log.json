@@ -1,15 +1,4 @@
 [
-  "2026-10-07 21:58:07,042 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tsacas in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-07 22:09:28,089 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
-  "2026-10-07 22:31:09,802 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
-  "2026-10-07 22:31:09,802 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-07 22:43:35,351 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-07 22:47:50,971 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-07 22:48:04,111 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-07 22:52:24,900 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ca11737b540e0c22b099449bafa9f303.",
-  "2026-10-07 23:03:52,851 - cogs.contribution_verification - INFO - Added verification reactions to contribution from mr_maximus",
-  "2026-10-07 23:26:10,843 - utils.playtime_database - INFO - Started vital session for user 1105925237247316018 in guild 889005510286786601",
-  "2026-10-07 23:26:10,844 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ravenmj420 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-07 23:29:37,305 - utils.playtime_database - INFO - Ended vital session for user 141748109116964864: 5490 seconds",
   "2026-10-07 23:29:37,305 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 1h 31m",
   "2026-10-07 23:42:31,785 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
@@ -198,5 +187,16 @@
   "2026-10-09 14:22:38,194 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 58m",
   "2026-10-09 14:46:14,468 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6.",
   "2026-10-09 15:20:59,556 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6.",
-  "2026-10-09 16:03:57,491 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6."
+  "2026-10-09 16:03:57,491 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6.",
+  "2026-10-09 17:53:11,655 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6.",
+  "2026-10-09 21:20:20,335 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-10-09 21:20:20,335 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-09 21:27:43,717 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
+  "2026-10-09 21:27:43,718 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-09 21:28:36,390 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
+  "2026-10-09 21:28:36,390 - cogs.playtime_tracker - INFO - Started vital playtime tracking for couchpotatoe_01 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-09 21:28:46,263 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
+  "2026-10-09 21:28:46,263 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-09 21:32:25,290 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
+  "2026-10-09 21:32:25,290 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
