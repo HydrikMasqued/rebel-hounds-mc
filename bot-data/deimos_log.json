@@ -1,9 +1,4 @@
 [
-  "2026-10-09 06:59:52,331 - __main__ - INFO - Bot is shutting down...",
-  "2026-10-09 06:59:52,331 - __main__ - INFO - API server stopped",
-  "2026-10-09 06:59:52,331 - __main__ - INFO - LOA expiration check task cancelled",
-  "2026-10-09 06:59:52,332 - utils.database - INFO - Database connection closed",
-  "2026-10-09 06:59:52,334 - utils.playtime_database - INFO - Playtime database connection closed",
   "2026-10-09 06:59:52,334 - cogs.playtime_tracker - INFO - Playtime tracker unloaded",
   "2026-10-09 06:59:52,334 - cogs.contribution_verification - INFO - Contribution verification cog unloaded",
   "2026-10-09 06:59:52,336 - utils.church_database - INFO - Church database connection closed",
@@ -198,5 +193,10 @@
   "2026-10-10 05:51:53,041 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 4211 seconds",
   "2026-10-10 05:51:53,041 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 1h 10m",
   "2026-10-10 05:59:41,384 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6.",
-  "2026-10-10 06:19:10,934 - cogs.contribution_verification - INFO - Added verification reactions to contribution from mr_maximus"
+  "2026-10-10 06:19:10,934 - cogs.contribution_verification - INFO - Added verification reactions to contribution from mr_maximus",
+  "2026-10-10 07:25:15,977 - utils.playtime_database - INFO - Ended vital session for user 287694223707340800: 35852 seconds",
+  "2026-10-10 07:25:15,977 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for gingerbean2112: 9h 57m",
+  "2026-10-10 07:28:35,257 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6.",
+  "2026-10-10 09:03:34,461 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6.",
+  "2026-10-10 12:14:46,547 - discord.gateway - INFO - Shard ID None has successfully RESUMED session a250ea91bcd868d890ceff9577b4f2a6."
 ]
