@@ -1,7 +1,4 @@
 [
-  "2026-10-10 16:12:35,795 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4af033e0db97240b12bc7bc713e71287).",
-  "2026-10-10 16:12:37,825 - __main__ - INFO - LOA expiration check task is ready to start",
-  "2026-10-10 16:12:37,826 - __main__ - INFO - Gatekeeper#9516 has landed! (ID: 1408590443608019035)",
   "2026-10-10 16:12:37,826 - __main__ - INFO - Bot is ready and connected to 2 guild(s)",
   "2026-10-10 16:12:37,826 - utils.database - INFO - Initializing database tables",
   "2026-10-10 16:12:37,831 - cogs.church_tracker - INFO - Reconciled church session 6: 0 member(s) currently in 𝐑𝐎𝐔𝐍𝐃𝐓𝐀𝐁𝐋𝐄",
@@ -198,5 +195,8 @@
   "2026-10-11 07:07:30,349 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 1h 48m",
   "2026-10-11 09:10:44,187 - cogs.direct_messaging - WARNING - DM relay skipped for user 294127733401976832: channel 1336076859166691449 not found in guild 889005510286786601",
   "2026-10-11 09:38:56,574 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
-  "2026-10-11 10:07:52,847 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287."
+  "2026-10-11 10:07:52,847 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
+  "2026-10-11 12:47:55,198 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
+  "2026-10-11 13:58:12,430 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-10-11 15:29:27,069 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287."
 ]
