@@ -1,13 +1,4 @@
 [
-  "2026-10-10 16:12:37,826 - __main__ - INFO - Bot is ready and connected to 2 guild(s)",
-  "2026-10-10 16:12:37,826 - utils.database - INFO - Initializing database tables",
-  "2026-10-10 16:12:37,831 - cogs.church_tracker - INFO - Reconciled church session 6: 0 member(s) currently in 𝐑𝐎𝐔𝐍𝐃𝐓𝐀𝐁𝐋𝐄",
-  "2026-10-10 16:12:37,835 - utils.database - INFO - Database tables initialized successfully",
-  "2026-10-10 16:12:37,836 - __main__ - INFO - Database initialized for guild: 𝐑𝐞𝐛𝐞𝐥 𝐇𝐨𝐮𝐧𝐝𝐬 𝐌𝐨𝐭𝐨𝐫𝐜𝐲𝐜𝐥𝐞 𝐂𝐥𝐮𝐛 (ID: 889005510286786601)",
-  "2026-10-10 16:12:37,836 - utils.database - INFO - Initializing database tables",
-  "2026-10-10 16:12:37,840 - utils.database - INFO - Database tables initialized successfully",
-  "2026-10-10 16:12:37,840 - __main__ - INFO - Database initialized for guild: Test Server 3 (ID: 1396144378271109221)",
-  "2026-10-10 16:12:40,061 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-10-10 16:12:40,323 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-10-10 16:12:40,324 - cogs.contribution_verification - INFO - Found 0 pending contributions",
   "2026-10-10 16:22:46,431 - utils.playtime_database - INFO - Started vital session for user 907399102717886517 in guild 889005510286786601",
@@ -198,5 +189,14 @@
   "2026-10-11 10:07:52,847 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
   "2026-10-11 12:47:55,198 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
   "2026-10-11 13:58:12,430 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
-  "2026-10-11 15:29:27,069 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287."
+  "2026-10-11 15:29:27,069 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
+  "2026-10-11 17:36:30,627 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
+  "2026-10-11 18:34:02,973 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
+  "2026-10-11 18:48:58,038 - utils.playtime_database - INFO - Started vital session for user 241703203068968960 in guild 889005510286786601",
+  "2026-10-11 18:48:58,038 - cogs.playtime_tracker - INFO - Started vital playtime tracking for vaelisthatlivingdeadgirl in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-11 19:13:32,918 - utils.playtime_database - INFO - Ended vital session for user 241703203068968960: 1474 seconds",
+  "2026-10-11 19:13:32,919 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for vaelisthatlivingdeadgirl: 0h 24m",
+  "2026-10-11 19:13:32,920 - utils.playtime_database - INFO - Recorded weekly notification for user 241703203068968960 in guild 889005510286786601 (week 2026-41)",
+  "2026-10-11 19:13:32,921 - cogs.playtime_tracker - INFO - User vaelisthatlivingdeadgirl reached 6h weekly requirement!",
+  "2026-10-11 19:13:35,783 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073"
 ]
