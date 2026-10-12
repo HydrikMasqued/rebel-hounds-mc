@@ -9,7 +9,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.713049"
+    "updated_at": "2026-10-12 01:55:28.356205"
   },
   {
     "id": 4,
@@ -21,7 +21,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.693229"
+    "updated_at": "2026-10-12 01:55:28.336286"
   },
   {
     "id": 5,
@@ -33,7 +33,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.688395"
+    "updated_at": "2026-10-12 01:55:28.332298"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.690559"
+    "updated_at": "2026-10-12 01:55:28.333251"
   },
   {
     "id": 10,
@@ -57,19 +57,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.698306"
-  },
-  {
-    "id": 13,
-    "guild_id": 889005510286786600,
-    "user_id": 326529501209034750,
-    "discord_name": "Logan Ryder",
-    "discord_username": "chszr",
-    "rank": "Enforcer",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.707218"
+    "updated_at": "2026-10-12 02:04:28.155537"
   },
   {
     "id": 14,
@@ -81,7 +69,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.707961"
+    "updated_at": "2026-10-12 01:55:28.351489"
   },
   {
     "id": 17,
@@ -93,7 +81,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.712395"
+    "updated_at": "2026-10-12 01:55:28.355635"
   },
   {
     "id": 365,
@@ -105,7 +93,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-11-25 02:34:30",
-    "updated_at": "2026-09-16 22:38:59.692561"
+    "updated_at": "2026-10-12 01:55:28.335518"
   },
   {
     "id": 436,
@@ -117,7 +105,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-12-08 23:39:53",
-    "updated_at": "2026-09-16 22:38:59.710453"
+    "updated_at": "2026-10-12 01:55:28.353913"
   },
   {
     "id": 782,
@@ -129,7 +117,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-02-09 09:58:45",
-    "updated_at": "2026-09-16 22:38:59.695042"
+    "updated_at": "2026-10-12 01:55:28.338439"
   },
   {
     "id": 1000,
@@ -141,7 +129,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-03-22 05:15:09",
-    "updated_at": "2026-09-16 22:38:59.691955"
+    "updated_at": "2026-10-12 02:31:18.393873"
   },
   {
     "id": 1060,
@@ -153,7 +141,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-04-14 05:52:27",
-    "updated_at": "2026-09-16 22:38:59.700186"
+    "updated_at": "2026-10-12 01:55:28.344567"
   },
   {
     "id": 1154,
@@ -162,10 +150,10 @@
     "discord_name": "Besnik Hoxha",
     "discord_username": "tragic1301",
     "rank": "Enforcer",
-    "status": "Active",
-    "is_on_loa": 0,
+    "status": "LOA",
+    "is_on_loa": 1,
     "created_at": "2026-06-07 01:12:32",
-    "updated_at": "2026-09-16 22:38:59.695766"
+    "updated_at": "2026-10-12 01:55:28.339106"
   },
   {
     "id": 1175,
@@ -177,7 +165,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-10 00:01:39",
-    "updated_at": "2026-09-16 22:38:59.711724"
+    "updated_at": "2026-10-12 01:55:28.355094"
   },
   {
     "id": 1178,
@@ -189,7 +177,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-14 03:21:03",
-    "updated_at": "2026-09-16 22:38:59.694429"
+    "updated_at": "2026-10-12 01:55:28.337746"
   },
   {
     "id": 1188,
@@ -201,7 +189,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:05",
-    "updated_at": "2026-09-16 22:38:59.697700"
+    "updated_at": "2026-10-12 01:55:28.341874"
   },
   {
     "id": 1189,
@@ -213,7 +201,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:23",
-    "updated_at": "2026-09-16 22:38:59.702007"
+    "updated_at": "2026-10-12 01:55:28.346501"
   },
   {
     "id": 1209,
@@ -225,7 +213,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-02 07:27:53",
-    "updated_at": "2026-10-04 10:03:29.640620"
+    "updated_at": "2026-10-12 01:55:28.350019"
   },
   {
     "id": 1237,
@@ -237,7 +225,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-05 00:35:46",
-    "updated_at": "2026-09-16 22:38:59.709747"
+    "updated_at": "2026-10-12 01:55:28.353329"
   },
   {
     "id": 1297,
@@ -249,19 +237,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-18 22:03:24",
-    "updated_at": "2026-10-02 02:50:50.635043"
-  },
-  {
-    "id": 1320,
-    "guild_id": 889005510286786600,
-    "user_id": 244964132288200700,
-    "discord_name": "Buck JOMS",
-    "discord_username": "buck4117",
-    "rank": "Full Patch",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-07-20 06:50:06",
-    "updated_at": "2026-09-16 22:38:59.697019"
+    "updated_at": "2026-10-12 01:55:28.334007"
   },
   {
     "id": 1321,
@@ -273,19 +249,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-20 06:50:39",
-    "updated_at": "2026-09-16 22:38:59.708542"
-  },
-  {
-    "id": 1403,
-    "guild_id": 889005510286786600,
-    "user_id": 916720223112003600,
-    "discord_name": "𝒥𝒶𝓍ℴ𝓃 𝒦𝓇𝒶𝓎𝓉ℴ𝓃",
-    "discord_username": "sov3re1gn_kan0.",
-    "rank": "Prospect",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-08-06 02:02:59",
-    "updated_at": "2026-09-16 22:38:59.706383"
+    "updated_at": "2026-10-12 01:55:28.352192"
   },
   {
     "id": 1413,
@@ -297,7 +261,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-12 16:20:30",
-    "updated_at": "2026-09-16 22:38:59.705725"
+    "updated_at": "2026-10-12 01:55:28.350809"
   },
   {
     "id": 1416,
@@ -309,7 +273,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-16 12:07:57",
-    "updated_at": "2026-09-26 03:35:17.017331"
+    "updated_at": "2026-10-12 01:55:28.339742"
   },
   {
     "id": 1417,
@@ -317,23 +281,23 @@
     "user_id": 907399102717886500,
     "discord_name": "Benji Krayton-Bucketts",
     "discord_username": "clintmonster",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-18 20:43:11",
-    "updated_at": "2026-09-16 22:38:59.711110"
+    "updated_at": "2026-10-12 01:55:28.354546"
   },
   {
     "id": 1420,
     "guild_id": 889005510286786600,
     "user_id": 1537997564950089700,
-    "discord_name": "-𝒥𝒦 | ℬ𝒰𝒢𝒵-",
+    "discord_name": "[𝐑𝐇𝐌𝐂] 𝐁𝐮𝐠𝐳",
     "discord_username": "j4xx.kryt",
     "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-19 20:39:46",
-    "updated_at": "2026-09-16 22:38:59.699575"
+    "updated_at": "2026-10-12 01:55:28.343956"
   },
   {
     "id": 1452,
@@ -341,11 +305,11 @@
     "user_id": 361581703355039740,
     "discord_name": "JokerB",
     "discord_username": "jokerb",
-    "rank": "Full Patch",
+    "rank": "Nomad",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-25 18:59:35",
-    "updated_at": "2026-09-16 22:38:59.701414"
+    "updated_at": "2026-10-12 02:02:18.235134"
   },
   {
     "id": 1453,
@@ -357,19 +321,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-26 22:15:07",
-    "updated_at": "2026-09-16 22:38:59.709152"
+    "updated_at": "2026-10-12 01:55:28.352756"
   },
   {
     "id": 1523,
     "guild_id": 889005510286786600,
     "user_id": 1105925237247316000,
-    "discord_name": "Raven Wolfram",
+    "discord_name": "Raven \"Free Bird\" Wolfram",
     "discord_username": "ravenmj420",
     "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:43:46",
-    "updated_at": "2026-10-04 03:32:18.844611"
+    "updated_at": "2026-10-12 01:55:28.347866"
   },
   {
     "id": 1524,
@@ -377,11 +341,11 @@
     "user_id": 1158839908966871000,
     "discord_name": "Barry Wolfram",
     "discord_username": "lactose.the.intolerant6969",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:06",
-    "updated_at": "2026-09-16 22:38:59.702641"
+    "updated_at": "2026-10-12 01:55:28.347187"
   },
   {
     "id": 1525,
@@ -389,11 +353,11 @@
     "user_id": 937444062150152200,
     "discord_name": "Carlos Wolfram",
     "discord_username": "donit1178",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:18",
-    "updated_at": "2026-09-16 22:38:59.693810"
+    "updated_at": "2026-10-12 01:55:28.337015"
   },
   {
     "id": 1526,
@@ -401,11 +365,11 @@
     "user_id": 328219066793984000,
     "discord_name": "Dick \"Posh Wank\" Schwett",
     "discord_username": "pky",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:27",
-    "updated_at": "2026-09-16 22:38:59.703864"
+    "updated_at": "2026-10-12 01:55:28.348569"
   },
   {
     "id": 1567,
@@ -417,7 +381,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-06 16:37:50",
-    "updated_at": "2026-09-16 22:38:59.698857"
+    "updated_at": "2026-10-12 01:55:28.343241"
   },
   {
     "id": 1611,
@@ -429,19 +393,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-11 15:34:14",
-    "updated_at": "2026-09-16 22:38:59.700817"
-  },
-  {
-    "id": 1652,
-    "guild_id": 889005510286786600,
-    "user_id": 238365055412994050,
-    "discord_name": "Amira",
-    "discord_username": "vikt0rr",
-    "rank": null,
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-09-21 00:40:16",
-    "updated_at": "2026-09-21 00:40:16.486831"
+    "updated_at": "2026-10-12 01:55:28.345226"
   },
   {
     "id": 1656,
@@ -453,7 +405,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-26 03:35:54",
-    "updated_at": "2026-09-26 03:35:54.837066"
+    "updated_at": "2026-10-12 01:55:28.349276"
   },
   {
     "id": 1663,
@@ -465,6 +417,6 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-10-04 22:58:08",
-    "updated_at": "2026-10-04 22:58:08.278696"
+    "updated_at": "2026-10-12 01:55:28.341178"
   }
 ]
