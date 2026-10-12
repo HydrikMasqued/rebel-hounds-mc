@@ -1,14 +1,4 @@
 [
-  "2026-10-10 23:47:24,810 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-10 23:47:24,812 - cogs.membership - INFO - Updated member Dick \"Posh Wank\" Schwett with rank Full Patch",
-  "2026-10-10 23:47:26,013 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-10 23:47:26,015 - cogs.membership - INFO - Updated member Dick \"Posh Wank\" Schwett with rank Full Patch",
-  "2026-10-10 23:47:27,267 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-10 23:47:27,268 - cogs.membership - INFO - Updated member Dick \"Posh Wank\" Schwett with rank Full Patch",
-  "2026-10-10 23:47:27,767 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-10 23:47:27,768 - cogs.membership - INFO - Updated member Dick \"Posh Wank\" Schwett with rank Full Patch",
-  "2026-10-10 23:48:37,833 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
-  "2026-10-10 23:52:15,308 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
   "2026-10-10 23:52:15,308 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-10 23:52:21,178 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
   "2026-10-10 23:52:21,178 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +188,15 @@
   "2026-10-12 02:31:55,694 - __main__ - INFO - Database initialized for guild: Test Server 3 (ID: 1396144378271109221)",
   "2026-10-12 02:31:57,952 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-10-12 02:31:58,166 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
-  "2026-10-12 02:31:58,166 - cogs.contribution_verification - INFO - Found 0 pending contributions"
+  "2026-10-12 02:31:58,166 - cogs.contribution_verification - INFO - Found 0 pending contributions",
+  "2026-10-12 05:48:14,055 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
+  "2026-10-12 05:48:14,055 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-12 06:21:22,849 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-12 07:59:06,070 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 7852 seconds",
+  "2026-10-12 07:59:06,070 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 2h 10m",
+  "2026-10-12 08:05:04,177 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
+  "2026-10-12 08:05:04,177 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-12 08:15:24,862 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-12 09:11:38,691 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-12 09:42:21,941 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a."
 ]
