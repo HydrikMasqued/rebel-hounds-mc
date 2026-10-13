@@ -1,11 +1,4 @@
 [
-  "2026-10-11 00:49:59,099 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-10-11 00:49:59,099 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-11 00:50:00,739 - utils.playtime_database - INFO - Started vital session for user 141748109116964864 in guild 889005510286786601",
-  "2026-10-11 00:50:00,740 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tsacas in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-11 00:51:06,421 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 67 seconds",
-  "2026-10-11 00:51:06,422 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 0h 1m",
-  "2026-10-11 00:52:47,431 - utils.playtime_database - INFO - Ended vital session for user 141748109116964864: 166 seconds",
   "2026-10-11 00:52:47,431 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 0h 2m",
   "2026-10-11 02:24:56,310 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
   "2026-10-11 05:18:54,095 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
@@ -198,5 +191,12 @@
   "2026-10-13 00:52:49,856 - cogs.playtime_tracker - INFO - User donit1178 reached 6h weekly requirement!",
   "2026-10-13 00:52:52,315 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
   "2026-10-13 01:18:46,887 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
-  "2026-10-13 01:18:46,887 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-10-13 01:18:46,887 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-13 03:08:33,410 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-13 05:03:44,061 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 13497 seconds",
+  "2026-10-13 05:03:44,062 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 3h 44m",
+  "2026-10-13 06:18:00,202 - utils.playtime_database - INFO - Ended vital session for user 141748109116964864: 21262 seconds",
+  "2026-10-13 06:18:00,203 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 5h 54m",
+  "2026-10-13 06:20:40,185 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-13 07:55:33,137 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a."
 ]
