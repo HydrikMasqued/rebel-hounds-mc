@@ -1,8 +1,4 @@
 [
-  "2026-10-11 00:52:47,431 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 0h 2m",
-  "2026-10-11 02:24:56,310 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
-  "2026-10-11 05:18:54,095 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
-  "2026-10-11 05:18:54,096 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-11 05:45:50,947 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4af033e0db97240b12bc7bc713e71287.",
   "2026-10-11 06:56:20,459 - utils.loa_notifications - INFO - Updated membership status for Besnik Hoxha (ID: 591781884179120130) - LOA: True",
   "2026-10-11 06:56:20,461 - utils.loa_notifications - WARNING - LOA notification channel 1336076859166691449 not found in guild 889005510286786601",
@@ -198,5 +194,9 @@
   "2026-10-13 06:18:00,202 - utils.playtime_database - INFO - Ended vital session for user 141748109116964864: 21262 seconds",
   "2026-10-13 06:18:00,203 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 5h 54m",
   "2026-10-13 06:20:40,185 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
-  "2026-10-13 07:55:33,137 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a."
+  "2026-10-13 07:55:33,137 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-13 08:25:54,384 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-13 10:42:38,458 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-13 12:15:23,481 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a.",
+  "2026-10-13 13:57:28,805 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 3d3e337e50c6d66cb6e6d2da098c287a."
 ]
