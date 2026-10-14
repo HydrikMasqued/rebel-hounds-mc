@@ -1,12 +1,4 @@
 [
-  "2026-10-13 22:19:13,050 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-13 22:26:42,088 - utils.playtime_database - INFO - Started vital session for user 391042658912567296 in guild 889005510286786601",
-  "2026-10-13 22:26:42,088 - cogs.playtime_tracker - INFO - Started vital playtime tracking for d.bennett31 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-13 22:31:39,500 - utils.playtime_database - INFO - Started vital session for user 1105925237247316018 in guild 889005510286786601",
-  "2026-10-13 22:31:39,501 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ravenmj420 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-13 22:36:23,115 - cogs.contribution_verification - INFO - Added verification reactions to contribution from tsacas",
-  "2026-10-13 22:46:44,638 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 2977 seconds",
-  "2026-10-13 22:46:44,639 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 49m",
   "2026-10-13 22:46:44,640 - utils.playtime_database - INFO - Recorded weekly notification for user 1537997564950089800 in guild 889005510286786601 (week 2026-42)",
   "2026-10-13 22:46:44,640 - cogs.playtime_tracker - INFO - User j4xx.kryt reached 6h weekly requirement!",
   "2026-10-13 22:46:46,624 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
@@ -198,5 +190,13 @@
   "2026-10-14 02:36:18,681 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
   "2026-10-14 02:36:18,681 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-14 02:51:15,663 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 7199 seconds",
-  "2026-10-14 02:51:15,664 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 1h 59m"
+  "2026-10-14 02:51:15,664 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 1h 59m",
+  "2026-10-14 03:35:06,707 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-14 04:02:01,064 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-14 04:23:49,429 - utils.playtime_database - INFO - Ended vital session for user 399697875002458122: 12753 seconds",
+  "2026-10-14 04:23:49,430 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lunaskribbs: 3h 32m",
+  "2026-10-14 04:24:47,590 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 6508 seconds",
+  "2026-10-14 04:24:47,591 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 1h 48m",
+  "2026-10-14 06:27:58,021 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-14 07:40:50,753 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2."
 ]
