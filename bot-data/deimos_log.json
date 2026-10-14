@@ -1,7 +1,4 @@
 [
-  "2026-10-13 23:51:56,718 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-13 23:59:04,181 - utils.playtime_database - INFO - Ended vital session for user 141748109116964864: 7508 seconds",
-  "2026-10-13 23:59:04,182 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for tsacas: 2h 5m",
   "2026-10-14 00:03:55,584 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
   "2026-10-14 00:03:55,585 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-14 00:09:51,470 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 355 seconds",
@@ -198,5 +195,8 @@
   "2026-10-14 14:52:29,444 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
   "2026-10-14 15:56:40,986 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
   "2026-10-14 16:44:36,683 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
-  "2026-10-14 17:08:56,098 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2."
+  "2026-10-14 17:08:56,098 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-14 19:59:19,856 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-14 20:33:19,171 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-14 21:40:50,028 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2."
 ]
