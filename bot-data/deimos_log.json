@@ -1,9 +1,4 @@
 [
-  "2026-10-14 00:51:08,734 - __main__ - INFO - Bot shutdown complete",
-  "2026-10-14 00:51:13,047 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported",
-  "2026-10-14 00:51:13,047 - discord.client - WARNING - davey is not installed, voice will NOT be supported",
-  "2026-10-14 00:51:13,047 - utils.database - INFO - Database manager initialized with path: data/thanatos.db",
-  "2026-10-14 00:51:13,047 - __main__ - INFO - Database manager initialized",
   "2026-10-14 00:51:13,048 - __main__ - INFO - Time parser initialized",
   "2026-10-14 00:51:13,048 - __main__ - INFO - LOA notification manager initialized",
   "2026-10-14 00:51:13,048 - utils.api - INFO - API key loaded: th3ZzxMX...",
@@ -198,5 +193,10 @@
   "2026-10-15 13:52:03,815 - cogs.membership - INFO - Updated member Serpent with rank Full Patch",
   "2026-10-15 13:52:04,997 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
   "2026-10-15 13:52:04,999 - cogs.membership - INFO - Updated member Serpent with rank Full Patch",
-  "2026-10-15 13:53:16,366 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)"
+  "2026-10-15 13:53:16,366 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-10-15 14:37:41,119 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-15 17:26:06,814 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-15 17:26:06,814 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-15 17:26:48,931 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-15 18:15:52,655 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2."
 ]
