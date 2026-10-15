@@ -1,6 +1,4 @@
 [
-  "2026-10-14 00:51:13,048 - __main__ - INFO - Time parser initialized",
-  "2026-10-14 00:51:13,048 - __main__ - INFO - LOA notification manager initialized",
   "2026-10-14 00:51:13,048 - utils.api - INFO - API key loaded: th3ZzxMX...",
   "2026-10-14 00:51:13,048 - __main__ - INFO - Starting Gatekeeper Bot...",
   "2026-10-14 00:51:13,049 - discord.client - INFO - logging in using static token",
@@ -198,5 +196,7 @@
   "2026-10-15 17:26:06,814 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
   "2026-10-15 17:26:06,814 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-15 17:26:48,931 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
-  "2026-10-15 18:15:52,655 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2."
+  "2026-10-15 18:15:52,655 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-15 19:37:31,900 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 7885 seconds",
+  "2026-10-15 19:37:31,900 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 2h 11m"
 ]
