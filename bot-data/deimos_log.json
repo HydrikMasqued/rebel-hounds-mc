@@ -1,13 +1,4 @@
 [
-  "2026-10-14 00:51:13,048 - utils.api - INFO - API key loaded: th3ZzxMX...",
-  "2026-10-14 00:51:13,048 - __main__ - INFO - Starting Gatekeeper Bot...",
-  "2026-10-14 00:51:13,049 - discord.client - INFO - logging in using static token",
-  "2026-10-14 00:51:13,465 - utils.database - INFO - Initializing database tables",
-  "2026-10-14 00:51:13,468 - utils.database - INFO - Shared database connection established",
-  "2026-10-14 00:51:13,476 - utils.database - INFO - Database tables initialized successfully",
-  "2026-10-14 00:51:13,476 - __main__ - INFO - Database initialized in setup hook",
-  "2026-10-14 00:51:13,483 - __main__ - INFO - Successfully loaded cogs.loa_system",
-  "2026-10-14 00:51:13,485 - __main__ - INFO - Successfully loaded cogs.membership",
   "2026-10-14 00:51:13,490 - __main__ - INFO - Successfully loaded cogs.configuration",
   "2026-10-14 00:51:13,494 - cogs.direct_messaging - INFO - Loaded 54 saved DM conversation(s)",
   "2026-10-14 00:51:13,494 - __main__ - INFO - Successfully loaded cogs.direct_messaging",
@@ -198,5 +189,14 @@
   "2026-10-15 17:26:48,931 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
   "2026-10-15 18:15:52,655 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
   "2026-10-15 19:37:31,900 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 7885 seconds",
-  "2026-10-15 19:37:31,900 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 2h 11m"
+  "2026-10-15 19:37:31,900 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 2h 11m",
+  "2026-10-15 22:00:35,481 - utils.playtime_database - INFO - Started vital session for user 420309961931751424 in guild 889005510286786601",
+  "2026-10-15 22:00:35,482 - cogs.playtime_tracker - INFO - Started vital playtime tracking for mr_maximus in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-15 22:00:38,108 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
+  "2026-10-15 22:00:38,108 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-15 22:07:03,840 - cogs.contribution_verification - INFO - Added verification reactions to contribution from clintmonster",
+  "2026-10-15 22:11:03,153 - utils.playtime_database - INFO - Ended vital session for user 420309961931751424: 627 seconds",
+  "2026-10-15 22:11:03,153 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for mr_maximus: 0h 10m",
+  "2026-10-15 22:12:10,255 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2.",
+  "2026-10-15 22:26:19,902 - discord.gateway - INFO - Shard ID None has successfully RESUMED session bdfba9d041223921ee146bc58df385d2."
 ]
