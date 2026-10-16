@@ -1,12 +1,4 @@
 [
-  "2026-10-15 23:45:23,770 - __main__ - INFO - Database manager initialized",
-  "2026-10-15 23:45:23,770 - __main__ - INFO - Time parser initialized",
-  "2026-10-15 23:45:23,770 - __main__ - INFO - LOA notification manager initialized",
-  "2026-10-15 23:45:23,771 - utils.api - INFO - API key loaded: th3ZzxMX...",
-  "2026-10-15 23:45:23,771 - __main__ - INFO - Starting Gatekeeper Bot...",
-  "2026-10-15 23:45:23,771 - discord.client - INFO - logging in using static token",
-  "2026-10-15 23:45:24,690 - utils.database - INFO - Initializing database tables",
-  "2026-10-15 23:45:24,694 - utils.database - INFO - Shared database connection established",
   "2026-10-15 23:45:24,698 - utils.database - INFO - Database tables initialized successfully",
   "2026-10-15 23:45:24,698 - __main__ - INFO - Database initialized in setup hook",
   "2026-10-15 23:45:24,707 - __main__ - INFO - Successfully loaded cogs.loa_system",
@@ -198,5 +190,13 @@
   "2026-10-16 07:10:31,152 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
   "2026-10-16 07:44:33,952 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
   "2026-10-16 08:32:50,603 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
-  "2026-10-16 09:03:28,947 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88."
+  "2026-10-16 09:03:28,947 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 11:43:51,455 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 12:42:16,924 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 13:08:32,641 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 14:06:59,061 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 15:08:59,121 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
+  "2026-10-16 15:08:59,121 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-16 15:09:01,598 - utils.playtime_database - INFO - Ended vital session for user 287694223707340800: 2 seconds",
+  "2026-10-16 15:09:01,598 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for gingerbean2112: 0h 0m"
 ]
