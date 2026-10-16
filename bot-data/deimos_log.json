@@ -1,13 +1,4 @@
 [
-  "2026-10-15 23:45:24,741 - cogs.contribution_verification - INFO - Loaded contribution config - Channel: 1469837549416485015, Leadership: 1512987446483222639",
-  "2026-10-15 23:45:24,741 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
-  "2026-10-15 23:45:24,741 - cogs.contribution_verification - INFO - Contribution timeout check task started",
-  "2026-10-15 23:45:24,741 - __main__ - INFO - Successfully loaded cogs.contribution_verification",
-  "2026-10-15 23:45:24,745 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
-  "2026-10-15 23:45:24,745 - cogs.church_tracker - INFO - Loaded church config - Roundtable VC: 1272947209612296304, confirm timeout: 10m",
-  "2026-10-15 23:45:24,746 - cogs.church_tracker - INFO - Church tracker initialized",
-  "2026-10-15 23:45:24,746 - utils.church_database - INFO - Initializing church database tables",
-  "2026-10-15 23:45:24,748 - utils.church_database - INFO - Shared church database connection established",
   "2026-10-15 23:45:24,750 - utils.church_database - INFO - Church database tables initialized successfully",
   "2026-10-15 23:45:24,750 - cogs.church_tracker - INFO - Church database initialized",
   "2026-10-15 23:45:24,750 - cogs.church_tracker - INFO - Church confirmation expiry task started",
@@ -198,5 +189,14 @@
   "2026-10-16 18:37:43,889 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 6133 seconds",
   "2026-10-16 18:37:43,890 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 1h 42m",
   "2026-10-16 18:49:12,151 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
-  "2026-10-16 18:49:12,152 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-10-16 18:49:12,152 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-16 19:23:12,738 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 2040 seconds",
+  "2026-10-16 19:23:12,739 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 34m",
+  "2026-10-16 19:27:26,327 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-16 19:27:26,327 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-16 19:41:57,684 - utils.playtime_database - INFO - Ended vital session for user 907399102717886517: 3893 seconds",
+  "2026-10-16 19:41:57,684 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for clintmonster: 1h 4m",
+  "2026-10-16 20:12:43,045 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 2716 seconds",
+  "2026-10-16 20:12:43,046 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 45m",
+  "2026-10-16 21:09:32,423 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88."
 ]
