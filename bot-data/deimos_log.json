@@ -1,13 +1,4 @@
 [
-  "2026-10-15 23:45:19,565 - __main__ - INFO - API server stopped",
-  "2026-10-15 23:45:19,566 - __main__ - INFO - LOA expiration check task cancelled",
-  "2026-10-15 23:45:19,567 - utils.database - INFO - Database connection closed",
-  "2026-10-15 23:45:19,569 - utils.playtime_database - INFO - Playtime database connection closed",
-  "2026-10-15 23:45:19,569 - cogs.playtime_tracker - INFO - Playtime tracker unloaded",
-  "2026-10-15 23:45:19,569 - cogs.contribution_verification - INFO - Contribution verification cog unloaded",
-  "2026-10-15 23:45:19,571 - utils.church_database - INFO - Church database connection closed",
-  "2026-10-15 23:45:19,571 - cogs.church_tracker - INFO - Church tracker unloaded",
-  "2026-10-15 23:45:19,574 - utils.playtime_database - INFO - Playtime database connection closed",
   "2026-10-15 23:45:19,580 - __main__ - INFO - Bot shutdown complete",
   "2026-10-15 23:45:23,769 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported",
   "2026-10-15 23:45:23,769 - discord.client - WARNING - davey is not installed, voice will NOT be supported",
@@ -198,5 +189,14 @@
   "2026-10-15 23:51:08,392 - cogs.contribution_verification - INFO - Found 0 pending contributions",
   "2026-10-15 23:51:09,364 - cogs.board - ERROR - Could not post board panel: 'ThreadWithMessage' object has no attribute 'id'",
   "2026-10-15 23:58:14,559 - cogs.board - ERROR - Could not post board panel: 'ThreadWithMessage' object has no attribute 'id'",
-  "2026-10-16 01:30:39,863 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88."
+  "2026-10-16 01:30:39,863 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 01:54:52,729 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 01:56:42,590 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 02:00:09,068 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 02:14:37,341 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-10-16 02:41:54,266 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 10248 seconds",
+  "2026-10-16 02:41:54,266 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 2h 50m",
+  "2026-10-16 04:11:08,785 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 04:44:51,239 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-16 05:02:25,507 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88."
 ]
