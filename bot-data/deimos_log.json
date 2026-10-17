@@ -1,10 +1,4 @@
 [
-  "2026-10-17 10:44:01,503 - utils.church_database - INFO - Closed church interval for user 580324615583170561 after 9908s",
-  "2026-10-17 10:44:01,503 - cogs.church_tracker - INFO - Church: nr1dishwasher left the Roundtable VC after 2h 45m (session 6)",
-  "2026-10-17 10:45:39,425 - __main__ - INFO - Bot is shutting down...",
-  "2026-10-17 10:45:39,425 - __main__ - INFO - API server stopped",
-  "2026-10-17 10:45:39,425 - __main__ - INFO - LOA expiration check task cancelled",
-  "2026-10-17 10:45:39,426 - utils.database - INFO - Database connection closed",
   "2026-10-17 10:45:39,428 - utils.playtime_database - INFO - Playtime database connection closed",
   "2026-10-17 10:45:39,428 - cogs.playtime_tracker - INFO - Playtime tracker unloaded",
   "2026-10-17 10:45:39,428 - cogs.contribution_verification - INFO - Contribution verification cog unloaded",
@@ -198,5 +192,11 @@
   "2026-10-17 13:49:28,471 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-10-17 13:49:28,799 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-10-17 13:49:28,799 - cogs.contribution_verification - INFO - Found 0 pending contributions",
-  "2026-10-17 13:49:29,515 - cogs.board - ERROR - Could not post board panel: 'ThreadWithMessage' object has no attribute 'id'"
+  "2026-10-17 13:49:29,515 - cogs.board - ERROR - Could not post board panel: 'ThreadWithMessage' object has no attribute 'id'",
+  "2026-10-17 15:10:18,962 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-10-17 15:10:18,963 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-17 15:45:15,577 - utils.playtime_database - INFO - Started vital session for user 907399102717886517 in guild 889005510286786601",
+  "2026-10-17 15:45:15,577 - cogs.playtime_tracker - INFO - Started vital playtime tracking for clintmonster in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-17 16:16:37,341 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-17 16:16:37,342 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
