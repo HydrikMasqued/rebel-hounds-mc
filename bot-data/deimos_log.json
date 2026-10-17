@@ -1,13 +1,4 @@
 [
-  "2026-10-15 23:45:24,759 - cogs.city_checkin - INFO - Persistent checkin views registered",
-  "2026-10-15 23:45:24,759 - __main__ - INFO - Successfully loaded cogs.city_checkin",
-  "2026-10-15 23:45:24,761 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
-  "2026-10-15 23:45:24,761 - utils.playtime_database - INFO - Initializing playtime database tables",
-  "2026-10-15 23:45:24,763 - utils.playtime_database - INFO - Shared playtime database connection established",
-  "2026-10-15 23:45:24,765 - utils.playtime_database - INFO - Database migration check complete",
-  "2026-10-15 23:45:24,766 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
-  "2026-10-15 23:45:24,769 - utils.checkin_database - INFO - Checkin database initialized",
-  "2026-10-15 23:45:24,769 - cogs.activity - INFO - Activity tracker initialized",
   "2026-10-15 23:45:24,770 - __main__ - INFO - Successfully loaded cogs.activity",
   "2026-10-15 23:45:24,778 - utils.tasks_database - INFO - Tasks database initialized",
   "2026-10-15 23:45:24,778 - cogs.tasks - INFO - Task persistent views registered",
@@ -198,5 +189,14 @@
   "2026-10-16 22:58:20,284 - utils.playtime_database - INFO - Ended vital session for user 328219066793984010: 3706 seconds",
   "2026-10-16 22:58:20,284 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for pky: 1h 1m",
   "2026-10-16 23:08:52,037 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 4685 seconds",
-  "2026-10-16 23:08:52,038 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 1h 18m"
+  "2026-10-16 23:08:52,038 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 1h 18m",
+  "2026-10-16 23:57:16,090 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-10-16 23:57:16,091 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-17 00:15:09,369 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-17 00:15:09,369 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-17 00:24:30,850 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 1634 seconds",
+  "2026-10-17 00:24:30,851 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 0h 27m",
+  "2026-10-17 00:35:21,340 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-17 01:02:46,842 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88.",
+  "2026-10-17 01:30:47,531 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c41d3b65961af56af5985e2c64461d88."
 ]
