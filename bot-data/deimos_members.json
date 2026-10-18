@@ -150,10 +150,10 @@
     "discord_name": "Besnik Hoxha",
     "discord_username": "tragic1301",
     "rank": "Enforcer",
-    "status": "LOA",
-    "is_on_loa": 1,
+    "status": "Active",
+    "is_on_loa": 0,
     "created_at": "2026-06-07 01:12:32",
-    "updated_at": "2026-10-12 01:55:28.339106"
+    "updated_at": "2026-10-18 06:56:26.223460"
   },
   {
     "id": 1175,
