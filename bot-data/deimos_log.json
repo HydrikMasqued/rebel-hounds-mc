@@ -1,7 +1,4 @@
 [
-  "2026-10-18 00:06:35,659 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
-  "2026-10-18 00:06:35,659 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-18 00:07:40,082 - utils.playtime_database - INFO - Started vital session for user 591781884179120130 in guild 889005510286786601",
   "2026-10-18 00:07:40,082 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-18 00:10:04,038 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
   "2026-10-18 00:10:04,038 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +195,8 @@
   "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
   "  File \"/home/container/.local/lib/python3.12/site-packages/discord/webhook/async_.py\", line 224, in request",
   "    raise NotFound(response, data)",
-  "discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction"
+  "discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction",
+  "2026-10-18 22:38:51,104 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-18 22:52:08,295 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-18 22:52:08,296 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
