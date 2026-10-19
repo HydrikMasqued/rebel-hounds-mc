@@ -1,14 +1,4 @@
 [
-  "2026-10-18 00:07:40,082 - cogs.playtime_tracker - INFO - Started vital playtime tracking for tragic1301 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-18 00:10:04,038 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
-  "2026-10-18 00:10:04,038 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-18 00:11:02,701 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-10-18 00:11:02,701 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-18 00:19:58,357 - utils.playtime_database - INFO - Started vital session for user 294127733401976832 in guild 889005510286786601",
-  "2026-10-18 00:19:58,357 - cogs.playtime_tracker - INFO - Started vital playtime tracking for rushy313 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-18 00:20:17,753 - utils.playtime_database - INFO - Started vital session for user 516233696844578846 in guild 889005510286786601",
-  "2026-10-18 00:20:17,753 - cogs.playtime_tracker - INFO - Started vital playtime tracking for thorikan in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-18 00:23:08,755 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
   "2026-10-18 00:23:08,755 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-18 00:28:53,482 - utils.playtime_database - INFO - Started vital session for user 1105925237247316018 in guild 889005510286786601",
   "2026-10-18 00:28:53,482 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ravenmj420 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
@@ -198,5 +188,15 @@
   "discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction",
   "2026-10-18 22:38:51,104 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
   "2026-10-18 22:52:08,295 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
-  "2026-10-18 22:52:08,296 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-10-18 22:52:08,296 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-19 00:05:01,137 - cogs.city_checkin - INFO - Weekly check-in reset - new week calendars posted (old weeks archived in DB)",
+  "2026-10-19 01:23:34,418 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-10-19 01:23:34,421 - cogs.membership - INFO - Updated member Serpent with rank Secretary",
+  "2026-10-19 01:23:34,968 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-10-19 01:23:34,970 - cogs.membership - INFO - Updated member Serpent with rank Secretary",
+  "2026-10-19 01:23:40,226 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-10-19 01:24:39,770 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-10-19 01:24:39,772 - cogs.membership - INFO - Updated member Serpent with rank Full Patch",
+  "2026-10-19 01:24:40,968 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-10-19 01:24:40,970 - cogs.membership - INFO - Updated member Serpent with rank Full Patch"
 ]
