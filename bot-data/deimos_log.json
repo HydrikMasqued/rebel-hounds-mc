@@ -1,13 +1,4 @@
 [
-  "2026-10-18 20:03:12,673 - utils.church_database - INFO - Started church session 7 in guild 889005510286786601",
-  "2026-10-18 20:03:12,910 - cogs.church_tracker - INFO - Record thread 1561469723521192028 opened for session 7",
-  "2026-10-18 21:13:56,157 - cogs.church_tracker - ERROR - Vote failed: 404 Not Found (error code: 10062): Unknown interaction",
-  "Traceback (most recent call last):",
-  "  File \"/home/container/cogs/church_tracker.py\", line 1363, in cast_vote",
-  "    await interaction.response.send_message(f\"Voted **{label}**.\", ephemeral=True)",
-  "  File \"/home/container/.local/lib/python3.12/site-packages/discord/interactions.py\", line 1085, in send_message",
-  "    data = await adapter.create_interaction_response(",
-  "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
   "  File \"/home/container/.local/lib/python3.12/site-packages/discord/webhook/async_.py\", line 224, in request",
   "    raise NotFound(response, data)",
   "discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction",
@@ -198,5 +189,14 @@
   "2026-10-21 09:21:02,107 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
   "2026-10-21 09:21:02,107 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-21 09:52:48,869 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
-  "2026-10-21 10:30:28,272 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843."
+  "2026-10-21 10:30:28,272 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 11:13:11,767 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 6729 seconds",
+  "2026-10-21 11:13:11,768 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 1h 52m",
+  "2026-10-21 11:13:11,769 - utils.playtime_database - INFO - Recorded weekly notification for user 937444062150152254 in guild 889005510286786601 (week 2026-43)",
+  "2026-10-21 11:13:11,769 - cogs.playtime_tracker - INFO - User donit1178 reached 6h weekly requirement!",
+  "2026-10-21 11:13:13,896 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
+  "2026-10-21 11:18:39,920 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 11:58:36,089 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 13:43:36,556 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 14:00:18,826 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843."
 ]
