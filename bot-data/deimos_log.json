@@ -1,11 +1,4 @@
 [
-  "2026-10-18 19:47:40,226 - __main__ - INFO - Database initialized for guild: 𝐑𝐞𝐛𝐞𝐥 𝐇𝐨𝐮𝐧𝐝𝐬 𝐌𝐨𝐭𝐨𝐫𝐜𝐲𝐜𝐥𝐞 𝐂𝐥𝐮𝐛 (ID: 889005510286786601)",
-  "2026-10-18 19:47:40,227 - utils.database - INFO - Initializing database tables",
-  "2026-10-18 19:47:40,232 - utils.database - INFO - Database tables initialized successfully",
-  "2026-10-18 19:47:40,233 - __main__ - INFO - Database initialized for guild: Test Server 3 (ID: 1396144378271109221)",
-  "2026-10-18 19:47:42,473 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
-  "2026-10-18 19:47:42,737 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
-  "2026-10-18 19:47:42,737 - cogs.contribution_verification - INFO - Found 0 pending contributions",
   "2026-10-18 20:03:12,673 - utils.church_database - INFO - Started church session 7 in guild 889005510286786601",
   "2026-10-18 20:03:12,910 - cogs.church_tracker - INFO - Record thread 1561469723521192028 opened for session 7",
   "2026-10-18 21:13:56,157 - cogs.church_tracker - ERROR - Vote failed: 404 Not Found (error code: 10062): Unknown interaction",
@@ -198,5 +191,12 @@
   "2026-10-21 03:53:51,735 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
   "2026-10-21 03:56:45,428 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 7825 seconds",
   "2026-10-21 03:56:45,429 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 2h 10m",
-  "2026-10-21 04:17:00,182 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843."
+  "2026-10-21 04:17:00,182 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 06:02:52,913 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 07:15:18,982 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 08:53:49,979 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 09:21:02,107 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
+  "2026-10-21 09:21:02,107 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-21 09:52:48,869 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 10:30:28,272 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843."
 ]
