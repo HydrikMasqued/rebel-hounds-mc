@@ -1,9 +1,4 @@
 [
-  "2026-10-18 22:52:08,295 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
-  "2026-10-18 22:52:08,296 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-19 00:05:01,137 - cogs.city_checkin - INFO - Weekly check-in reset - new week calendars posted (old weeks archived in DB)",
-  "2026-10-19 01:23:34,418 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-10-19 01:23:34,421 - cogs.membership - INFO - Updated member Serpent with rank Secretary",
   "2026-10-19 01:23:34,968 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
   "2026-10-19 01:23:34,970 - cogs.membership - INFO - Updated member Serpent with rank Secretary",
   "2026-10-19 01:23:40,226 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
@@ -198,5 +193,10 @@
   "2026-10-21 15:52:51,700 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
   "2026-10-21 18:41:06,572 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
   "2026-10-21 20:28:02,420 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
-  "2026-10-21 22:04:18,457 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843."
+  "2026-10-21 22:04:18,457 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 23:01:18,674 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-21 23:18:51,950 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-22 00:15:12,553 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-22 00:34:25,380 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-22 00:34:25,380 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
