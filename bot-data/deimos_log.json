@@ -1,11 +1,4 @@
 [
-  "2026-10-21 02:47:41,733 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 7141 seconds",
-  "2026-10-21 02:47:41,733 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 1h 59m",
-  "2026-10-21 02:58:41,695 - utils.playtime_database - INFO - Ended vital session for user 181143017619587073: 12679 seconds",
-  "2026-10-21 02:58:41,696 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for jayreaper: 3h 31m",
-  "2026-10-21 02:59:58,262 - utils.playtime_database - INFO - Started vital session for user 181143017619587073 in guild 889005510286786601",
-  "2026-10-21 02:59:58,262 - cogs.playtime_tracker - INFO - Started vital playtime tracking for jayreaper in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-21 03:17:49,382 - utils.playtime_database - INFO - Ended vital session for user 260165392209674250: 11223 seconds",
   "2026-10-21 03:17:49,382 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for shepardsky: 3h 7m",
   "2026-10-21 03:18:20,060 - utils.playtime_database - INFO - Ended vital session for user 140312416687751168: 3064 seconds",
   "2026-10-21 03:18:20,061 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for wicked1667: 0h 51m",
@@ -198,5 +191,12 @@
   "2026-10-23 04:03:11,702 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 2h 32m",
   "2026-10-23 05:18:09,277 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
   "2026-10-23 05:34:29,153 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
-  "2026-10-23 09:23:05,104 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843."
+  "2026-10-23 09:23:05,104 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-23 12:52:14,777 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-23 13:14:16,774 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-23 14:00:20,036 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
+  "2026-10-23 14:43:30,098 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-10-23 14:43:30,099 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-23 15:05:16,440 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 1306 seconds",
+  "2026-10-23 15:05:16,441 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 0h 21m"
 ]
