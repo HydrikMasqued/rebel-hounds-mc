@@ -1,15 +1,4 @@
 [
-  "2026-10-24 16:07:44,456 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 7085d21bf6b150cbb649900a9a283843.",
-  "2026-10-24 17:09:24,269 - __main__ - INFO - Bot is shutting down...",
-  "2026-10-24 17:09:24,269 - __main__ - INFO - API server stopped",
-  "2026-10-24 17:09:24,269 - __main__ - INFO - LOA expiration check task cancelled",
-  "2026-10-24 17:09:24,272 - utils.database - INFO - Database connection closed",
-  "2026-10-24 17:09:24,274 - utils.playtime_database - INFO - Playtime database connection closed",
-  "2026-10-24 17:09:24,274 - cogs.playtime_tracker - INFO - Playtime tracker unloaded",
-  "2026-10-24 17:09:24,274 - cogs.contribution_verification - INFO - Contribution verification cog unloaded",
-  "2026-10-24 17:09:24,276 - utils.church_database - INFO - Church database connection closed",
-  "2026-10-24 17:09:24,277 - cogs.church_tracker - INFO - Church tracker unloaded",
-  "2026-10-24 17:09:24,282 - utils.playtime_database - INFO - Playtime database connection closed",
   "2026-10-24 17:09:24,289 - __main__ - INFO - Bot shutdown complete",
   "2026-10-24 17:09:29,402 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported",
   "2026-10-24 17:09:29,403 - discord.client - WARNING - davey is not installed, voice will NOT be supported",
@@ -198,5 +187,16 @@
   "2026-10-24 17:33:16,704 - cogs.church_tracker - WARNING - Could not retire church panel 1563605216538918933: 400 Bad Request (error code: 50006): Cannot send an empty message",
   "2026-10-24 17:33:17,056 - cogs.church_tracker - INFO - Record thread 1563605215289016420 archived and locked",
   "2026-10-24 17:33:17,056 - cogs.church_tracker - INFO - Church session 8 ended by jayreaper - 0 attendee(s), duration 4m 21s",
-  "2026-10-24 17:33:34,505 - cogs.church_tracker - INFO - Church start cancelled by user 181143017619587073"
+  "2026-10-24 17:33:34,505 - cogs.church_tracker - INFO - Church start cancelled by user 181143017619587073",
+  "2026-10-24 19:08:36,008 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-24 20:06:52,495 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
+  "2026-10-24 20:06:52,495 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-24 20:07:41,021 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-10-24 20:07:41,021 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-24 20:07:51,787 - utils.playtime_database - INFO - Started vital session for user 399697875002458122 in guild 889005510286786601",
+  "2026-10-24 20:07:51,788 - cogs.playtime_tracker - INFO - Started vital playtime tracking for lunaskribbs in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-24 20:11:34,228 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 281 seconds",
+  "2026-10-24 20:11:34,229 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 0h 4m",
+  "2026-10-24 20:11:56,837 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
+  "2026-10-24 20:11:56,838 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
