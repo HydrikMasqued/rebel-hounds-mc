@@ -1,13 +1,4 @@
 [
-  "2026-10-24 17:09:24,289 - __main__ - INFO - Bot shutdown complete",
-  "2026-10-24 17:09:29,402 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported",
-  "2026-10-24 17:09:29,403 - discord.client - WARNING - davey is not installed, voice will NOT be supported",
-  "2026-10-24 17:09:29,403 - utils.database - INFO - Database manager initialized with path: data/thanatos.db",
-  "2026-10-24 17:09:29,403 - __main__ - INFO - Database manager initialized",
-  "2026-10-24 17:09:29,403 - __main__ - INFO - Time parser initialized",
-  "2026-10-24 17:09:29,403 - __main__ - INFO - LOA notification manager initialized",
-  "2026-10-24 17:09:29,404 - utils.api - INFO - API key loaded: th3ZzxMX...",
-  "2026-10-24 17:09:29,404 - __main__ - INFO - Starting Gatekeeper Bot...",
   "2026-10-24 17:09:29,404 - discord.client - INFO - logging in using static token",
   "2026-10-24 17:09:29,968 - utils.database - INFO - Initializing database tables",
   "2026-10-24 17:09:29,970 - utils.database - INFO - Shared database connection established",
@@ -198,5 +189,14 @@
   "2026-10-24 20:11:34,228 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 281 seconds",
   "2026-10-24 20:11:34,229 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 0h 4m",
   "2026-10-24 20:11:56,837 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
-  "2026-10-24 20:11:56,838 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-10-24 20:11:56,838 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-24 21:28:29,721 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-24 21:51:58,897 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 6002 seconds",
+  "2026-10-24 21:51:58,898 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 1h 40m",
+  "2026-10-24 21:52:32,532 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 6291 seconds",
+  "2026-10-24 21:52:32,533 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 1h 44m",
+  "2026-10-24 21:53:21,747 - utils.playtime_database - INFO - Ended vital session for user 399697875002458122: 6329 seconds",
+  "2026-10-24 21:53:21,747 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for lunaskribbs: 1h 45m",
+  "2026-10-24 22:27:31,449 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-24 23:01:35,758 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f."
 ]
