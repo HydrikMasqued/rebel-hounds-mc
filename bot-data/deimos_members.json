@@ -9,7 +9,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-10-12 01:55:28.356205"
+    "updated_at": "2026-10-22 18:14:25.102125"
   },
   {
     "id": 4,
@@ -21,7 +21,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-10-12 01:55:28.336286"
+    "updated_at": "2026-10-22 18:14:25.081179"
   },
   {
     "id": 5,
@@ -33,7 +33,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-10-12 01:55:28.332298"
+    "updated_at": "2026-10-22 18:14:25.082654"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-10-12 01:55:28.333251"
+    "updated_at": "2026-10-22 18:14:25.084016"
   },
   {
     "id": 10,
@@ -57,7 +57,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-10-12 02:04:28.155537"
+    "updated_at": "2026-10-22 18:14:25.079694"
   },
   {
     "id": 14,
@@ -69,7 +69,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-10-12 01:55:28.351489"
+    "updated_at": "2026-10-22 18:14:25.081983"
   },
   {
     "id": 17,
@@ -81,7 +81,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-10-12 01:55:28.355635"
+    "updated_at": "2026-10-22 18:14:25.101205"
   },
   {
     "id": 365,
@@ -93,7 +93,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-11-25 02:34:30",
-    "updated_at": "2026-10-12 01:55:28.335518"
+    "updated_at": "2026-10-22 18:14:25.084795"
   },
   {
     "id": 436,
@@ -105,7 +105,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-12-08 23:39:53",
-    "updated_at": "2026-10-12 01:55:28.353913"
+    "updated_at": "2026-10-22 18:14:25.099585"
   },
   {
     "id": 782,
@@ -117,7 +117,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-02-09 09:58:45",
-    "updated_at": "2026-10-12 01:55:28.338439"
+    "updated_at": "2026-10-22 18:14:25.087070"
   },
   {
     "id": 1000,
@@ -129,31 +129,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-03-22 05:15:09",
-    "updated_at": "2026-10-12 02:31:18.393873"
-  },
-  {
-    "id": 1060,
-    "guild_id": 889005510286786600,
-    "user_id": 241703203068968960,
-    "discord_name": "Vaelis (That living dead girl)",
-    "discord_username": "vaelisthatlivingdeadgirl",
-    "rank": "Full Patch",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-04-14 05:52:27",
-    "updated_at": "2026-10-12 01:55:28.344567"
-  },
-  {
-    "id": 1154,
-    "guild_id": 889005510286786600,
-    "user_id": 591781884179120100,
-    "discord_name": "Besnik Hoxha",
-    "discord_username": "tragic1301",
-    "rank": "Enforcer",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-06-07 01:12:32",
-    "updated_at": "2026-10-18 06:56:26.223460"
+    "updated_at": "2026-10-22 18:14:25.078916"
   },
   {
     "id": 1175,
@@ -165,7 +141,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-10 00:01:39",
-    "updated_at": "2026-10-12 01:55:28.355094"
+    "updated_at": "2026-10-22 18:14:25.100441"
   },
   {
     "id": 1178,
@@ -177,7 +153,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-14 03:21:03",
-    "updated_at": "2026-10-12 01:55:28.337746"
+    "updated_at": "2026-10-22 18:14:25.086320"
   },
   {
     "id": 1188,
@@ -189,7 +165,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:05",
-    "updated_at": "2026-10-12 01:55:28.341874"
+    "updated_at": "2026-10-22 18:14:25.088686"
   },
   {
     "id": 1189,
@@ -201,7 +177,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:23",
-    "updated_at": "2026-10-12 01:55:28.346501"
+    "updated_at": "2026-10-22 18:14:25.092443"
   },
   {
     "id": 1209,
@@ -213,7 +189,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-02 07:27:53",
-    "updated_at": "2026-10-17 03:11:11.512100"
+    "updated_at": "2026-10-23 23:30:14.718060"
   },
   {
     "id": 1237,
@@ -225,7 +201,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-05 00:35:46",
-    "updated_at": "2026-10-12 01:55:28.353329"
+    "updated_at": "2026-10-22 18:14:25.098689"
   },
   {
     "id": 1297,
@@ -237,7 +213,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-18 22:03:24",
-    "updated_at": "2026-10-12 01:55:28.334007"
+    "updated_at": "2026-10-22 18:14:25.083329"
   },
   {
     "id": 1321,
@@ -249,7 +225,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-20 06:50:39",
-    "updated_at": "2026-10-12 01:55:28.352192"
+    "updated_at": "2026-10-22 18:14:25.097983"
   },
   {
     "id": 1413,
@@ -261,7 +237,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-12 16:20:30",
-    "updated_at": "2026-10-12 01:55:28.350809"
+    "updated_at": "2026-10-22 18:14:25.097159"
   },
   {
     "id": 1416,
@@ -273,19 +249,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-16 12:07:57",
-    "updated_at": "2026-10-12 01:55:28.339742"
-  },
-  {
-    "id": 1417,
-    "guild_id": 889005510286786600,
-    "user_id": 907399102717886500,
-    "discord_name": "Benji Krayton-Bucketts",
-    "discord_username": "clintmonster",
-    "rank": "Full Patch",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-08-18 20:43:11",
-    "updated_at": "2026-10-12 01:55:28.354546"
+    "updated_at": "2026-10-22 18:14:25.087845"
   },
   {
     "id": 1420,
@@ -297,7 +261,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-19 20:39:46",
-    "updated_at": "2026-10-12 01:55:28.343956"
+    "updated_at": "2026-10-22 18:14:25.090196"
   },
   {
     "id": 1452,
@@ -309,7 +273,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-25 18:59:35",
-    "updated_at": "2026-10-12 02:02:18.235134"
+    "updated_at": "2026-10-22 18:14:25.091723"
   },
   {
     "id": 1453,
@@ -321,7 +285,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-26 22:15:07",
-    "updated_at": "2026-10-12 01:55:28.352756"
+    "updated_at": "2026-10-22 18:14:25.080394"
   },
   {
     "id": 1523,
@@ -333,7 +297,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:43:46",
-    "updated_at": "2026-10-12 01:55:28.347866"
+    "updated_at": "2026-10-22 18:14:25.094053"
   },
   {
     "id": 1524,
@@ -345,7 +309,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:06",
-    "updated_at": "2026-10-12 01:55:28.347187"
+    "updated_at": "2026-10-22 18:14:25.093202"
   },
   {
     "id": 1525,
@@ -357,7 +321,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:18",
-    "updated_at": "2026-10-12 01:55:28.337015"
+    "updated_at": "2026-10-22 18:14:25.085518"
   },
   {
     "id": 1526,
@@ -369,7 +333,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:27",
-    "updated_at": "2026-10-12 01:55:28.348569"
+    "updated_at": "2026-10-22 18:14:25.094857"
   },
   {
     "id": 1567,
@@ -381,7 +345,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-06 16:37:50",
-    "updated_at": "2026-10-12 01:55:28.343241"
+    "updated_at": "2026-10-22 18:14:25.089428"
   },
   {
     "id": 1611,
@@ -393,7 +357,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-11 15:34:14",
-    "updated_at": "2026-10-12 01:55:28.345226"
+    "updated_at": "2026-10-22 18:14:25.090902"
   },
   {
     "id": 1656,
@@ -405,18 +369,18 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-26 03:35:54",
-    "updated_at": "2026-10-12 01:55:28.349276"
+    "updated_at": "2026-10-22 18:14:25.095621"
   },
   {
-    "id": 1663,
+    "id": 1792,
     "guild_id": 889005510286786600,
-    "user_id": 141748109116964860,
-    "discord_name": "Cas Krayton",
-    "discord_username": "tsacas",
-    "rank": "Prospect",
+    "user_id": 241703203068968960,
+    "discord_name": "Vaelis (That living dead girl)",
+    "discord_username": "vaelisthatlivingdeadgirl",
+    "rank": "Nomad",
     "status": "Active",
     "is_on_loa": 0,
-    "created_at": "2026-10-04 22:58:08",
-    "updated_at": "2026-10-12 01:55:28.341178"
+    "created_at": "2026-10-20 07:04:01",
+    "updated_at": "2026-10-22 18:14:25.102811"
   }
 ]
