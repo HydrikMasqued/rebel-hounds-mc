@@ -1,8 +1,4 @@
 [
-  "2026-10-24 17:09:30,049 - cogs.church_tracker - INFO - Church database initialized",
-  "2026-10-24 17:09:30,049 - cogs.church_tracker - INFO - Church vote + control views registered",
-  "2026-10-24 17:09:30,049 - cogs.church_tracker - INFO - Church confirmation expiry task started",
-  "2026-10-24 17:09:30,049 - __main__ - INFO - Successfully loaded cogs.church_tracker",
   "2026-10-24 17:09:30,050 - __main__ - INFO - Successfully loaded cogs.website_sync",
   "2026-10-24 17:09:30,060 - cogs.city_checkin - INFO - Checkin channels - Vital: 1551714971040219156, AllPro: 1551714892589834382",
   "2026-10-24 17:09:30,060 - cogs.city_checkin - INFO - City checkin cog initialized",
@@ -198,5 +194,9 @@
   "2026-10-25 04:34:41,970 - utils.playtime_database - INFO - Ended vital session for user 319184811971575808: 1601 seconds",
   "2026-10-25 04:34:41,970 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for loreviking: 0h 26m",
   "2026-10-25 05:35:36,918 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
-  "2026-10-25 05:58:39,361 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f."
+  "2026-10-25 05:58:39,361 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-25 07:02:09,684 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-25 10:46:11,440 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-25 11:14:35,619 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
+  "2026-10-25 11:14:35,619 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
