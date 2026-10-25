@@ -1,13 +1,4 @@
 [
-  "2026-10-24 17:09:30,064 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
-  "2026-10-24 17:09:30,064 - utils.playtime_database - INFO - Initializing playtime database tables",
-  "2026-10-24 17:09:30,066 - utils.playtime_database - INFO - Shared playtime database connection established",
-  "2026-10-24 17:09:30,069 - utils.playtime_database - INFO - Database migration check complete",
-  "2026-10-24 17:09:30,070 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
-  "2026-10-24 17:09:30,072 - utils.checkin_database - INFO - Checkin database initialized",
-  "2026-10-24 17:09:30,072 - cogs.activity - INFO - Activity tracker initialized",
-  "2026-10-24 17:09:30,072 - __main__ - INFO - Successfully loaded cogs.activity",
-  "2026-10-24 17:09:30,077 - utils.tasks_database - INFO - Tasks database initialized",
   "2026-10-24 17:09:30,077 - cogs.tasks - INFO - Task persistent views registered",
   "2026-10-24 17:09:30,077 - __main__ - INFO - Successfully loaded cogs.tasks",
   "2026-10-24 17:09:30,080 - __main__ - INFO - Successfully loaded cogs.prospect_vote",
@@ -198,5 +189,14 @@
   "2026-10-25 13:47:22,145 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 2h 32m",
   "2026-10-25 14:16:37,211 - utils.playtime_database - INFO - Started vital session for user 1537997564950089800 in guild 889005510286786601",
   "2026-10-25 14:16:37,211 - cogs.playtime_tracker - INFO - Started vital playtime tracking for j4xx.kryt in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-25 14:49:29,143 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f."
+  "2026-10-25 14:49:29,143 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-25 15:09:50,355 - utils.playtime_database - INFO - Ended vital session for user 1537997564950089800: 3193 seconds",
+  "2026-10-25 15:09:50,355 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for j4xx.kryt: 0h 53m",
+  "2026-10-25 15:19:12,304 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-25 16:47:00,642 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-25 17:14:22,179 - utils.playtime_database - INFO - Started vital session for user 1105925237247316018 in guild 889005510286786601",
+  "2026-10-25 17:14:22,179 - cogs.playtime_tracker - INFO - Started vital playtime tracking for ravenmj420 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-10-25 18:00:45,489 - discord.gateway - INFO - Shard ID None has successfully RESUMED session d703189e967818fcb9e91656a751b95f.",
+  "2026-10-25 18:15:19,311 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-10-25 18:15:19,311 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
