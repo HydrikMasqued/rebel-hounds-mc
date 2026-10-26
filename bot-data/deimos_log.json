@@ -1,8 +1,4 @@
 [
-  "2026-10-26 03:15:34,257 - discord.client - INFO - logging in using static token",
-  "2026-10-26 03:15:35,175 - utils.database - INFO - Initializing database tables",
-  "2026-10-26 03:15:35,178 - utils.database - INFO - Shared database connection established",
-  "2026-10-26 03:15:35,182 - utils.database - INFO - Database tables initialized successfully",
   "2026-10-26 03:15:35,182 - __main__ - INFO - Database initialized in setup hook",
   "2026-10-26 03:15:35,203 - __main__ - INFO - Successfully loaded cogs.loa_system",
   "2026-10-26 03:15:35,205 - __main__ - INFO - Successfully loaded cogs.membership",
@@ -198,5 +194,9 @@
   "2026-10-26 04:47:39,494 - utils.playtime_database - INFO - Ended vital session for user 1045815013614559313: 519 seconds",
   "2026-10-26 04:47:39,495 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for bdillon97: 0h 8m",
   "2026-10-26 04:47:41,571 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 4742 seconds",
-  "2026-10-26 04:47:41,571 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 1h 19m"
+  "2026-10-26 04:47:41,571 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 1h 19m",
+  "2026-10-26 06:23:15,555 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 21eb3a6d24aa28fb0227ec76e77a49d2.",
+  "2026-10-26 06:58:21,222 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 21eb3a6d24aa28fb0227ec76e77a49d2.",
+  "2026-10-26 09:20:00,506 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 21eb3a6d24aa28fb0227ec76e77a49d2.",
+  "2026-10-26 10:26:23,069 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)"
 ]
