@@ -1,6 +1,4 @@
 [
-  "2026-10-26 22:08:53,619 - cogs.church_tracker - INFO - Church database initialized",
-  "2026-10-26 22:08:53,620 - cogs.church_tracker - INFO - Church vote + control views registered",
   "2026-10-26 22:08:53,621 - cogs.church_tracker - INFO - Church confirmation expiry task started",
   "2026-10-26 22:08:53,621 - __main__ - INFO - Successfully loaded cogs.church_tracker",
   "2026-10-26 22:08:53,622 - __main__ - INFO - Successfully loaded cogs.website_sync",
@@ -198,5 +196,7 @@
   "2026-10-28 01:30:34,452 - cogs.playtime_tracker - INFO - User donit1178 reached 6h weekly requirement!",
   "2026-10-28 01:30:39,454 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
   "2026-10-28 02:20:51,356 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
-  "2026-10-28 02:43:35,047 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4."
+  "2026-10-28 02:43:35,047 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-28 06:03:56,813 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-28 09:42:05,354 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4."
 ]
