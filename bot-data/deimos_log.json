@@ -1,6 +1,4 @@
 [
-  "2026-10-26 22:08:53,621 - cogs.church_tracker - INFO - Church confirmation expiry task started",
-  "2026-10-26 22:08:53,621 - __main__ - INFO - Successfully loaded cogs.church_tracker",
   "2026-10-26 22:08:53,622 - __main__ - INFO - Successfully loaded cogs.website_sync",
   "2026-10-26 22:08:53,624 - cogs.city_checkin - INFO - Checkin channels - Vital: 1551714971040219156, AllPro: 1551714892589834382",
   "2026-10-26 22:08:53,624 - cogs.city_checkin - INFO - City checkin cog initialized",
@@ -198,5 +196,7 @@
   "2026-10-28 02:20:51,356 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
   "2026-10-28 02:43:35,047 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
   "2026-10-28 06:03:56,813 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
-  "2026-10-28 09:42:05,354 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4."
+  "2026-10-28 09:42:05,354 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-28 12:05:57,231 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-28 14:46:00,099 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4."
 ]
