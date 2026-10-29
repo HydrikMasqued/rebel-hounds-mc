@@ -1,11 +1,4 @@
 [
-  "2026-10-27 00:08:34,400 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 7177 seconds",
-  "2026-10-27 00:08:34,401 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 1h 59m",
-  "2026-10-27 00:09:17,207 - utils.playtime_database - INFO - Started vital session for user 937444062150152254 in guild 889005510286786601",
-  "2026-10-27 00:09:17,207 - cogs.playtime_tracker - INFO - Started vital playtime tracking for donit1178 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
-  "2026-10-27 00:23:25,455 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
-  "2026-10-27 00:28:33,176 - utils.playtime_database - INFO - Started vital session for user 140312416687751168 in guild 889005510286786601",
-  "2026-10-27 00:28:33,176 - cogs.playtime_tracker - INFO - Started vital playtime tracking for wicked1667 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
   "2026-10-27 00:38:34,384 - utils.playtime_database - INFO - Ended vital session for user 367316570180943892: 6312 seconds",
   "2026-10-27 00:38:34,384 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for panda_alleyway: 1h 45m",
   "2026-10-27 00:38:37,857 - utils.playtime_database - INFO - Ended vital session for user 287694223707340800: 6243 seconds",
@@ -198,5 +191,12 @@
   "2026-10-29 02:11:21,008 - cogs.playtime_tracker - INFO - Sent activity notification to user 181143017619587073",
   "2026-10-29 02:20:50,164 - utils.playtime_database - INFO - Ended vital session for user 937444062150152254: 13860 seconds",
   "2026-10-29 02:20:50,165 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for donit1178: 3h 51m",
-  "2026-10-29 04:37:19,577 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4."
+  "2026-10-29 04:37:19,577 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-29 08:19:22,885 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-29 08:49:47,442 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-29 10:26:39,373 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-29 10:51:59,246 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 8e24d4221cd224ca5d3715fac79714d4.",
+  "2026-10-29 12:53:44,071 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-10-29 12:53:44,074 - cogs.membership - INFO - Updated member Reggie \"Eddy\" Matthews with rank Full Patch",
+  "2026-10-29 12:54:56,905 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)"
 ]
