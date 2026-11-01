@@ -1,6 +1,4 @@
 [
-  "2026-10-31 23:23:33,041 - utils.church_database - INFO - Church database connection closed",
-  "2026-10-31 23:23:33,041 - cogs.church_tracker - INFO - Church tracker unloaded",
   "2026-10-31 23:23:33,045 - utils.playtime_database - INFO - Playtime database connection closed",
   "2026-10-31 23:23:33,052 - __main__ - INFO - Bot shutdown complete",
   "2026-10-31 23:23:37,781 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported",
@@ -198,5 +196,7 @@
   "2026-11-01 13:23:38,053 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-11-01 13:23:38,290 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-11-01 13:23:38,290 - cogs.contribution_verification - INFO - Found 0 pending contributions",
-  "2026-11-01 13:23:41,678 - cogs.command_menu - INFO - Command menu panel refreshed"
+  "2026-11-01 13:23:41,678 - cogs.command_menu - INFO - Command menu panel refreshed",
+  "2026-11-01 15:40:21,721 - discord.gateway - INFO - Shard ID None has successfully RESUMED session dd7c083d2883d4c4cd62cf42fa4160d6.",
+  "2026-11-01 17:23:29,791 - discord.gateway - INFO - Shard ID None has successfully RESUMED session dd7c083d2883d4c4cd62cf42fa4160d6."
 ]
