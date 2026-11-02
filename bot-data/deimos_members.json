@@ -9,7 +9,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.713049"
+    "updated_at": "2026-11-01 19:36:55.131460"
   },
   {
     "id": 4,
@@ -21,7 +21,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.693229"
+    "updated_at": "2026-11-01 19:36:55.107571"
   },
   {
     "id": 5,
@@ -33,7 +33,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.688395"
+    "updated_at": "2026-11-01 19:36:55.102767"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.690559"
+    "updated_at": "2026-11-01 19:36:55.104664"
   },
   {
     "id": 10,
@@ -57,19 +57,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.698306"
-  },
-  {
-    "id": 13,
-    "guild_id": 889005510286786600,
-    "user_id": 326529501209034750,
-    "discord_name": "Logan Ryder",
-    "discord_username": "chszr",
-    "rank": "Enforcer",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.707218"
+    "updated_at": "2026-11-01 19:36:55.113347"
   },
   {
     "id": 14,
@@ -81,7 +69,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.707961"
+    "updated_at": "2026-11-01 19:36:55.125153"
   },
   {
     "id": 17,
@@ -93,7 +81,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-09-16 22:38:59.712395"
+    "updated_at": "2026-11-01 19:36:55.130840"
   },
   {
     "id": 365,
@@ -105,7 +93,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-11-25 02:34:30",
-    "updated_at": "2026-09-16 22:38:59.692561"
+    "updated_at": "2026-11-01 19:36:55.106700"
   },
   {
     "id": 436,
@@ -113,11 +101,11 @@
     "user_id": 908481561161240600,
     "discord_name": "Sid Dempsey",
     "discord_username": "syx0666",
-    "rank": "Tailgunner",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-12-08 23:39:53",
-    "updated_at": "2026-09-16 22:38:59.710453"
+    "updated_at": "2026-11-01 19:36:55.128779"
   },
   {
     "id": 782,
@@ -129,7 +117,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-02-09 09:58:45",
-    "updated_at": "2026-09-16 22:38:59.695042"
+    "updated_at": "2026-11-01 19:36:55.109552"
   },
   {
     "id": 1000,
@@ -141,31 +129,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-03-22 05:15:09",
-    "updated_at": "2026-09-16 22:38:59.691955"
-  },
-  {
-    "id": 1060,
-    "guild_id": 889005510286786600,
-    "user_id": 241703203068968960,
-    "discord_name": "Vaelis (That living dead girl)",
-    "discord_username": "vaelisthatlivingdeadgirl",
-    "rank": "Full Patch",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-04-14 05:52:27",
-    "updated_at": "2026-09-16 22:38:59.700186"
-  },
-  {
-    "id": 1154,
-    "guild_id": 889005510286786600,
-    "user_id": 591781884179120100,
-    "discord_name": "Besnik Hoxha",
-    "discord_username": "tragic1301",
-    "rank": "Enforcer",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-06-07 01:12:32",
-    "updated_at": "2026-09-16 22:38:59.695766"
+    "updated_at": "2026-11-01 19:36:55.105994"
   },
   {
     "id": 1175,
@@ -177,7 +141,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-10 00:01:39",
-    "updated_at": "2026-09-16 22:38:59.711724"
+    "updated_at": "2026-11-01 19:36:55.129822"
   },
   {
     "id": 1178,
@@ -189,7 +153,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-14 03:21:03",
-    "updated_at": "2026-09-16 22:38:59.694429"
+    "updated_at": "2026-11-01 19:36:55.108858"
   },
   {
     "id": 1188,
@@ -201,7 +165,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:05",
-    "updated_at": "2026-09-16 22:38:59.697700"
+    "updated_at": "2026-11-01 19:36:55.112617"
   },
   {
     "id": 1189,
@@ -213,19 +177,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:23",
-    "updated_at": "2026-09-16 22:38:59.702007"
+    "updated_at": "2026-11-01 19:36:55.118437"
   },
   {
     "id": 1209,
     "guild_id": 889005510286786600,
     "user_id": 1360830106335187000,
-    "discord_name": "𝙎𝙀𝙍𝙋𝙀𝙉𝙏",
+    "discord_name": "Serpent",
     "discord_username": "serpxntt_",
-    "rank": "Full Patch",
+    "rank": "Enforcer",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-02 07:27:53",
-    "updated_at": "2026-09-16 22:38:59.705167"
+    "updated_at": "2026-11-01 19:36:55.123672"
   },
   {
     "id": 1237,
@@ -237,7 +201,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-05 00:35:46",
-    "updated_at": "2026-09-16 22:38:59.709747"
+    "updated_at": "2026-11-01 19:36:55.127896"
   },
   {
     "id": 1297,
@@ -249,19 +213,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-18 22:03:24",
-    "updated_at": "2026-09-16 22:38:59.691317"
-  },
-  {
-    "id": 1320,
-    "guild_id": 889005510286786600,
-    "user_id": 244964132288200700,
-    "discord_name": "Buck JOMS",
-    "discord_username": "buck4117",
-    "rank": "Full Patch",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-07-20 06:50:06",
-    "updated_at": "2026-09-16 22:38:59.697019"
+    "updated_at": "2026-11-01 19:36:55.105309"
   },
   {
     "id": 1321,
@@ -273,19 +225,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-20 06:50:39",
-    "updated_at": "2026-09-16 22:38:59.708542"
-  },
-  {
-    "id": 1403,
-    "guild_id": 889005510286786600,
-    "user_id": 916720223112003600,
-    "discord_name": "𝒥𝒶𝓍ℴ𝓃 𝒦𝓇𝒶𝓎𝓉ℴ𝓃",
-    "discord_username": "sov3re1gn_kan0.",
-    "rank": "Prospect",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-08-06 02:02:59",
-    "updated_at": "2026-09-16 22:38:59.706383"
+    "updated_at": "2026-11-01 19:36:55.126391"
   },
   {
     "id": 1413,
@@ -297,7 +237,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-12 16:20:30",
-    "updated_at": "2026-09-16 22:38:59.705725"
+    "updated_at": "2026-11-01 19:36:55.124367"
   },
   {
     "id": 1416,
@@ -305,35 +245,23 @@
     "user_id": 287694223707340800,
     "discord_name": "Reggie \"Eddy\" Matthews",
     "discord_username": "gingerbean2112",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-16 12:07:57",
-    "updated_at": "2026-09-16 22:38:59.696427"
-  },
-  {
-    "id": 1417,
-    "guild_id": 889005510286786600,
-    "user_id": 907399102717886500,
-    "discord_name": "Benji Krayton-Bucketts",
-    "discord_username": "clintmonster",
-    "rank": "Prospect",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-08-18 20:43:11",
-    "updated_at": "2026-09-16 22:38:59.711110"
+    "updated_at": "2026-11-01 19:36:55.110873"
   },
   {
     "id": 1420,
     "guild_id": 889005510286786600,
     "user_id": 1537997564950089700,
-    "discord_name": "-𝒥𝒦 | ℬ𝒰𝒢𝒵-",
+    "discord_name": "[𝐑𝐇𝐌𝐂] kctheproblem",
     "discord_username": "j4xx.kryt",
     "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-19 20:39:46",
-    "updated_at": "2026-09-16 22:38:59.699575"
+    "updated_at": "2026-11-01 19:36:55.114982"
   },
   {
     "id": 1452,
@@ -341,11 +269,11 @@
     "user_id": 361581703355039740,
     "discord_name": "JokerB",
     "discord_username": "jokerb",
-    "rank": "Full Patch",
+    "rank": "Nomad",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-25 18:59:35",
-    "updated_at": "2026-09-16 22:38:59.701414"
+    "updated_at": "2026-11-01 19:36:55.117663"
   },
   {
     "id": 1453,
@@ -357,31 +285,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-26 22:15:07",
-    "updated_at": "2026-09-16 22:38:59.709152"
-  },
-  {
-    "id": 1522,
-    "guild_id": 889005510286786600,
-    "user_id": 399697875002458100,
-    "discord_name": "Donna “ Luna “ Willow",
-    "discord_username": "lunaskribbs",
-    "rank": "Prospect",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-09-05 13:43:25",
-    "updated_at": "2026-09-16 22:38:59.704539"
+    "updated_at": "2026-11-01 19:36:55.127194"
   },
   {
     "id": 1523,
     "guild_id": 889005510286786600,
     "user_id": 1105925237247316000,
-    "discord_name": "Raven Wolfram",
+    "discord_name": "Raven \"Free Bird\" Wolfram",
     "discord_username": "ravenmj420",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:43:46",
-    "updated_at": "2026-09-16 22:38:59.703248"
+    "updated_at": "2026-11-01 19:36:55.121331"
   },
   {
     "id": 1524,
@@ -389,11 +305,11 @@
     "user_id": 1158839908966871000,
     "discord_name": "Barry Wolfram",
     "discord_username": "lactose.the.intolerant6969",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:06",
-    "updated_at": "2026-09-16 22:38:59.702641"
+    "updated_at": "2026-11-01 19:36:55.119169"
   },
   {
     "id": 1525,
@@ -401,11 +317,11 @@
     "user_id": 937444062150152200,
     "discord_name": "Carlos Wolfram",
     "discord_username": "donit1178",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:18",
-    "updated_at": "2026-09-16 22:38:59.693810"
+    "updated_at": "2026-11-01 19:36:55.108170"
   },
   {
     "id": 1526,
@@ -413,11 +329,11 @@
     "user_id": 328219066793984000,
     "discord_name": "Dick \"Posh Wank\" Schwett",
     "discord_username": "pky",
-    "rank": "Prospect",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:27",
-    "updated_at": "2026-09-16 22:38:59.703864"
+    "updated_at": "2026-11-01 19:36:55.122089"
   },
   {
     "id": 1567,
@@ -429,7 +345,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-06 16:37:50",
-    "updated_at": "2026-09-16 22:38:59.698857"
+    "updated_at": "2026-11-01 19:36:55.114294"
   },
   {
     "id": 1611,
@@ -441,18 +357,30 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-11 15:34:14",
-    "updated_at": "2026-09-16 22:38:59.700817"
+    "updated_at": "2026-11-01 19:36:55.116820"
   },
   {
-    "id": 1652,
+    "id": 1656,
     "guild_id": 889005510286786600,
-    "user_id": 238365055412994050,
-    "discord_name": "Amira",
-    "discord_username": "vikt0rr",
-    "rank": null,
+    "user_id": 399697875002458100,
+    "discord_name": "Donna “ Luna “ Willow",
+    "discord_username": "lunaskribbs",
+    "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
-    "created_at": "2026-09-21 00:40:16",
-    "updated_at": "2026-09-21 00:40:16.486831"
+    "created_at": "2026-09-26 03:35:54",
+    "updated_at": "2026-11-01 19:36:55.122849"
+  },
+  {
+    "id": 1792,
+    "guild_id": 889005510286786600,
+    "user_id": 241703203068968960,
+    "discord_name": "Vaelis (That living dead girl)",
+    "discord_username": "vaelisthatlivingdeadgirl",
+    "rank": "Nomad",
+    "status": "Active",
+    "is_on_loa": 0,
+    "created_at": "2026-10-20 07:04:01",
+    "updated_at": "2026-11-01 19:36:55.116073"
   }
 ]
