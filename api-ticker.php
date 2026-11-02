@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/db.php';
+require __DIR__ . '/auth-require.php';
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
@@ -36,6 +37,7 @@ if ($method === 'GET') {
 }
 
 if ($method === 'POST') {
+    requireRole('owner');
     $data = json_decode(file_get_contents('php://input'), true);
     if (!is_array($data) || !isset($data['items']) || !is_array($data['items'])) {
         jerr('Invalid data');

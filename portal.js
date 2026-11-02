@@ -198,3 +198,34 @@ if (patchLogout) {
     setPatchAuth(false);
   }
 })();
+
+/* ---- Owner site announcement banner (shown on portal pages while enabled) ---- */
+(function loadAnnouncement() {
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = String(s == null ? '' : s);
+    return d.innerHTML;
+  }
+  fetch('api-admin.php?action=settings', { cache: 'no-store' })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var a = d && d.announcement;
+      if (!a || !a.enabled || !a.text) return;
+      if (document.getElementById('rhAnnouncement')) return;
+      var bar = document.createElement('div');
+      bar.id = 'rhAnnouncement';
+      bar.style.cssText = 'background:rgba(192,57,43,0.14);border-bottom:1px solid rgba(192,57,43,0.45);color:#f2d9d5;font-size:0.85rem;padding:0.7rem 2.6rem 0.7rem 1.25rem;text-align:center;position:relative;z-index:900;';
+      bar.innerHTML = esc(a.text);
+      var close = document.createElement('button');
+      close.type = 'button';
+      close.setAttribute('aria-label', 'Dismiss announcement');
+      close.innerHTML = '&times;';
+      close.style.cssText = 'position:absolute;right:0.6rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#f2d9d5;font-size:1.3rem;line-height:1;cursor:pointer;padding:0.2rem 0.4rem;';
+      close.addEventListener('click', function() { bar.remove(); });
+      bar.appendChild(close);
+      var nav = document.getElementById('navbar') || document.querySelector('.navbar');
+      if (nav && nav.parentNode) nav.parentNode.insertBefore(bar, nav.nextSibling);
+      else document.body.insertBefore(bar, document.body.firstChild);
+    })
+    .catch(function() { /* announcement optional - ignore failures */ });
+})();

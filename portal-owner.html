@@ -125,6 +125,10 @@
       <!-- Tab Bar -->
       <div class="owner-tabs">
         <button class="owner-tab active" data-tab="overview">Overview</button>
+        <button class="owner-tab" data-tab="users">Users</button>
+        <button class="owner-tab" data-tab="settings">Settings</button>
+        <button class="owner-tab" data-tab="backup">Backup</button>
+        <button class="owner-tab" data-tab="health">Health</button>
         <button class="owner-tab" data-tab="sections">Sections</button>
         <button class="owner-tab" data-tab="finance">Finance</button>
         <button class="owner-tab" data-tab="logs">Logs</button>
@@ -139,10 +143,83 @@
           <div class="owner-stat"><div class="num" id="statMembers">-</div><div class="label">Members</div></div>
           <div class="owner-stat"><div class="num" id="statBadges">-</div><div class="label">Badges</div></div>
           <div class="owner-stat"><div class="num" id="statTotalEarned">-</div><div class="label">Total Earned</div></div>
+          <div class="owner-stat"><div class="num" id="statAccounts">-</div><div class="label">Accounts</div></div>
+          <div class="owner-stat"><div class="num" id="statDbSize">-</div><div class="label">DB Size</div></div>
         </div>
         <div class="portal-section" style="margin-top:1rem;">
           <h3 class="portal-section-title" style="display:flex;align-items:center;gap:0.5rem;">LAST LOG ENTRY <button class="refresh-btn" id="refreshOverview">Refresh</button></h3>
           <div id="overviewLastLog" style="font-size:0.8rem;color:var(--muted);padding:0.5rem 0;">Loading...</div>
+        </div>
+      </div>
+
+      <!-- Users Tab -->
+      <div class="owner-tab-panel" id="tab-users">
+        <div class="portal-section">
+          <h3 class="portal-section-title" style="display:flex;align-items:center;gap:0.5rem;">ACCOUNTS <button class="refresh-btn" id="refreshUsers">Refresh</button></h3>
+          <div id="usersContent" style="overflow-x:auto;">Loading accounts...</div>
+        </div>
+        <div class="portal-section">
+          <h3 class="portal-section-title">ADD ACCOUNT</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.6rem;">
+            <input type="text" id="newUserName" placeholder="Username (3-32 chars)" style="background:var(--dark-2);border:1px solid var(--border);color:var(--text);padding:0.5rem 0.7rem;border-radius:6px;font-size:0.85rem;">
+            <input type="text" id="newUserDisplay" placeholder="Display name" style="background:var(--dark-2);border:1px solid var(--border);color:var(--text);padding:0.5rem 0.7rem;border-radius:6px;font-size:0.85rem;">
+            <select id="newUserRole" style="background:var(--dark-2);border:1px solid var(--border);color:var(--text);padding:0.5rem 0.7rem;border-radius:6px;font-size:0.85rem;">
+              <option value="prospect">Prospect</option>
+              <option value="patched" selected>Patched</option>
+              <option value="officer">Officer</option>
+              <option value="owner">Owner</option>
+            </select>
+            <input type="password" id="newUserPass" placeholder="Password (min 8 chars)" style="background:var(--dark-2);border:1px solid var(--border);color:var(--text);padding:0.5rem 0.7rem;border-radius:6px;font-size:0.85rem;">
+          </div>
+          <button class="refresh-btn" id="addUserBtn" style="margin-top:0.75rem;border-color:var(--primary);color:var(--primary);">Create Account</button>
+          <div id="usersMsg" style="font-size:0.78rem;margin-top:0.5rem;"></div>
+        </div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div class="owner-tab-panel" id="tab-settings">
+        <div class="portal-section">
+          <h3 class="portal-section-title" style="display:flex;align-items:center;gap:0.5rem;">HOMEPAGE TICKER <button class="refresh-btn" id="refreshSettings">Reload</button></h3>
+          <div id="tickerEditor">Loading ticker...</div>
+          <button class="refresh-btn" id="saveTickerBtn" style="margin-top:0.75rem;border-color:var(--primary);color:var(--primary);">Save Ticker</button>
+          <div id="tickerMsg" style="font-size:0.78rem;margin-top:0.5rem;"></div>
+        </div>
+        <div class="portal-section">
+          <h3 class="portal-section-title">SITE ANNOUNCEMENT</h3>
+          <p style="font-size:0.78rem;color:var(--muted);margin:0 0 0.6rem;">Banner shown at the top of portal pages while enabled.</p>
+          <textarea id="announcementText" rows="3" placeholder="Announcement text..." style="width:100%;background:var(--dark-2);border:1px solid var(--border);color:var(--text);padding:0.6rem;border-radius:6px;font-size:0.85rem;font-family:var(--font-body);resize:vertical;"></textarea>
+          <div style="display:flex;align-items:center;gap:1rem;margin-top:0.6rem;flex-wrap:wrap;">
+            <label style="font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;"><input type="checkbox" id="announcementEnabled"> Show banner</label>
+            <button class="refresh-btn" id="saveAnnouncementBtn" style="border-color:var(--primary);color:var(--primary);">Save Announcement</button>
+            <div id="announcementMsg" style="font-size:0.78rem;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backup Tab -->
+      <div class="owner-tab-panel" id="tab-backup">
+        <div class="portal-section">
+          <h3 class="portal-section-title" style="display:flex;align-items:center;gap:0.5rem;">DATA STORES <button class="refresh-btn" id="refreshBackup">Refresh</button></h3>
+          <div id="backupStores" style="overflow-x:auto;">Loading store info...</div>
+        </div>
+        <div class="portal-section">
+          <h3 class="portal-section-title">BACKUP / RESTORE</h3>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+            <button class="refresh-btn" id="fullBackupBtn" style="border-color:var(--primary);color:var(--primary);">Download Full Backup</button>
+            <label class="refresh-btn" style="cursor:pointer;">Restore From File<input type="file" id="restoreFile" accept=".json,application/json" style="display:none;"></label>
+          </div>
+          <div id="backupMsg" style="font-size:0.78rem;margin-top:0.6rem;"></div>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;">Backup includes roster, prospects, badges, finance, ticker and site settings. Restoring overwrites current data with the file contents.</p>
+        </div>
+      </div>
+
+      <!-- Health Tab -->
+      <div class="owner-tab-panel" id="tab-health">
+        <div class="portal-section">
+          <h3 class="portal-section-title" style="display:flex;align-items:center;gap:0.5rem;">SYSTEM HEALTH <button class="refresh-btn" id="refreshHealth">Refresh</button></h3>
+          <div class="owner-stat-grid" id="healthStats"></div>
+          <div id="healthTables" style="overflow-x:auto;"></div>
+          <div id="healthMedia" style="margin-top:1rem;"></div>
         </div>
       </div>
 
@@ -234,7 +311,7 @@
   </footer>
 
   <script src="auth-widget.js"></script>
-  <script src="portal.js?v=5"></script>
+  <script src="portal.js?v=6"></script>
   <script src="track.js"></script>
   <script>
     (function() {
@@ -245,7 +322,7 @@
         return function(s) { d.textContent = String(s == null ? '' : s); return d.innerHTML; };
       })();
 
-      var loaded = { overview: false, sections: false, finance: false, logs: false, analytics: false, archived: false };
+      var loaded = { overview: false, sections: false, finance: false, logs: false, analytics: false, archived: false, users: false, settings: false, backup: false, health: false };
 
       document.querySelectorAll('.owner-tab').forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -260,6 +337,10 @@
           if (!loaded[tab]) {
             loaded[tab] = true;
             if (tab === 'overview') loadOverview();
+            else if (tab === 'users') loadUsers();
+            else if (tab === 'settings') loadSettings();
+            else if (tab === 'backup') loadBackup();
+            else if (tab === 'health') loadHealth();
             else if (tab === 'sections') loadPresidents();
             else if (tab === 'finance') loadFinance();
             else if (tab === 'logs') loadLogs();
@@ -274,6 +355,14 @@
       function fmt(ts) {
         if (!ts) return '-';
         try { return new Date(ts).toLocaleString(); } catch(e) { return String(ts); }
+      }
+
+      function fmtBytes(n) {
+        if (n == null || isNaN(n)) return '-';
+        if (n < 1024) return n + ' B';
+        if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
+        if (n < 1073741824) return (n / 1048576).toFixed(1) + ' MB';
+        return (n / 1073741824).toFixed(2) + ' GB';
       }
 
       function loadOverview() {
@@ -325,6 +414,17 @@
             logEl.textContent = 'No log entries found.';
           }
         }).catch(function() { logEl.textContent = 'Unable to load logs.'; });
+
+        fetch('api-admin.php?action=health&t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
+          if (!d || d.error) throw new Error('health');
+          document.getElementById('statAccounts').textContent = (d.counts && d.counts.users != null) ? d.counts.users : '-';
+          var bytes = 0;
+          (d.tables || []).forEach(function(t) { bytes += t.bytes || 0; });
+          document.getElementById('statDbSize').textContent = fmtBytes(bytes);
+        }).catch(function() {
+          document.getElementById('statAccounts').textContent = '-';
+          document.getElementById('statDbSize').textContent = '-';
+        });
       }
 
       document.getElementById('refreshOverview').addEventListener('click', function() {
@@ -381,6 +481,344 @@
           setTimeout(function() { URL.revokeObjectURL(a.href); a.remove(); }, 500);
         });
       });
+
+      /* ===== Users ===== */
+      function userRoleOptions(sel) {
+        return ['prospect', 'patched', 'officer', 'owner'].map(function(r) {
+          return '<option value="' + r + '"' + (r === sel ? ' selected' : '') + '>' + r.charAt(0).toUpperCase() + r.slice(1) + '</option>';
+        }).join('');
+      }
+
+      function loadUsers() {
+        var el = document.getElementById('usersContent');
+        el.innerHTML = 'Loading accounts...';
+        fetch('api-users.php?t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
+          var users = (d && d.users) ? d.users : [];
+          if (!users.length) { el.innerHTML = '<div style="padding:1rem;color:var(--muted);">No accounts found.</div>'; return; }
+          var html = '<table class="log-table"><thead><tr><th>Username</th><th>Display Name</th><th>Role</th><th>Created</th><th>Actions</th></tr></thead><tbody>';
+          users.forEach(function(u) {
+            html += '<tr>';
+            html += '<td><strong>' + esc(u.username) + '</strong></td>';
+            html += '<td><input type="text" value="' + esc(u.display_name || '') + '" data-user-display="' + esc(u.id) + '" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.5rem;border-radius:4px;font-size:0.78rem;width:140px;"></td>';
+            html += '<td><select data-user-role="' + esc(u.id) + '" style="background:var(--dark);border:1px solid var(--border);color:var(--text);padding:0.3rem 0.45rem;border-radius:4px;font-size:0.78rem;">' + userRoleOptions(u.role) + '</select></td>';
+            html += '<td>' + esc(fmt(u.created_at)) + '</td>';
+            html += '<td style="white-space:nowrap;"><button class="refresh-btn" data-user-pw="' + esc(u.id) + '">Reset PW</button> <button class="refresh-btn" data-user-del="' + esc(u.id) + '" style="border-color:#e74c3c;color:#e74c3c;">Delete</button></td>';
+            html += '</tr>';
+          });
+          html += '</tbody></table>';
+          el.innerHTML = html;
+        }).catch(function() {
+          el.innerHTML = '<div style="padding:1rem;color:var(--muted);">Unable to load accounts.</div>';
+        });
+      }
+
+      function userMsg(text, ok) {
+        var el = document.getElementById('usersMsg');
+        if (el) {
+          el.textContent = text || '';
+          el.style.color = ok ? 'var(--primary)' : '#e74c3c';
+        }
+      }
+
+      document.getElementById('refreshUsers').addEventListener('click', loadUsers);
+
+      document.getElementById('addUserBtn').addEventListener('click', function() {
+        var name = (document.getElementById('newUserName').value || '').trim();
+        var disp = (document.getElementById('newUserDisplay').value || '').trim();
+        var role = document.getElementById('newUserRole').value;
+        var pass = document.getElementById('newUserPass').value || '';
+        if (!name) { userMsg('Username required.', false); return; }
+        if (pass.length < 8) { userMsg('Password must be at least 8 characters.', false); return; }
+        fetch('api-users.php', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: name, password: pass, role: role, display_name: disp })
+        }).then(function(r) { return r.json(); }).then(function(d) {
+          if (d && d.error) { userMsg(d.error, false); return; }
+          userMsg('Account created.', true);
+          document.getElementById('newUserName').value = '';
+          document.getElementById('newUserDisplay').value = '';
+          document.getElementById('newUserPass').value = '';
+          loadUsers();
+        }).catch(function() { userMsg('Request failed - try again.', false); });
+      });
+
+      document.getElementById('usersContent').addEventListener('change', function(e) {
+        var t = e.target;
+        if (t.hasAttribute && t.hasAttribute('data-user-role')) {
+          fetch('api-users.php', {
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: Number(t.getAttribute('data-user-role')), role: t.value })
+          }).then(function(r) { return r.json(); }).then(function(d) {
+            if (d && d.error) { userMsg(d.error, false); loadUsers(); }
+            else userMsg('Role updated.', true);
+          }).catch(function() { userMsg('Role update failed.', false); });
+        }
+        if (t.hasAttribute && t.hasAttribute('data-user-display')) {
+          fetch('api-users.php', {
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: Number(t.getAttribute('data-user-display')), display_name: t.value })
+          }).then(function(r) { return r.json(); }).then(function(d) {
+            if (d && d.error) userMsg(d.error, false);
+            else userMsg('Name updated.', true);
+          }).catch(function() { userMsg('Name update failed.', false); });
+        }
+      });
+
+      document.getElementById('usersContent').addEventListener('click', function(e) {
+        var t = e.target;
+        if (!t.getAttribute) return;
+        var pwId = t.getAttribute('data-user-pw');
+        if (pwId) {
+          var np = prompt('New password for this account (min 8 chars):');
+          if (!np) return;
+          if (np.length < 8) { userMsg('Password must be at least 8 characters.', false); return; }
+          fetch('api-users.php', {
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: Number(pwId), password: np })
+          }).then(function(r) { return r.json(); }).then(function(d) {
+            if (d && d.error) userMsg(d.error, false);
+            else userMsg('Password reset.', true);
+          }).catch(function() { userMsg('Password reset failed.', false); });
+        }
+        var delId = t.getAttribute('data-user-del');
+        if (delId) {
+          if (!confirm('Delete this account permanently? This cannot be undone.')) return;
+          fetch('api-users.php?id=' + encodeURIComponent(delId), { method: 'DELETE' })
+            .then(function(r) { return r.json(); })
+            .then(function(d) {
+              if (d && d.error) { userMsg(d.error, false); return; }
+              userMsg('Account deleted.', true);
+              loadUsers();
+            }).catch(function() { userMsg('Delete failed.', false); });
+        }
+      });
+
+      /* ===== Settings: ticker + announcement ===== */
+      var tickerState = null;
+
+      function renderTickerEditor() {
+        var el = document.getElementById('tickerEditor');
+        if (!tickerState) { el.textContent = 'No ticker data.'; return; }
+        var html = '<div style="display:flex;flex-wrap:wrap;gap:0.5rem;">';
+        tickerState.items.forEach(function(w, i) {
+          html += '<span style="display:inline-flex;align-items:center;gap:0.35rem;background:var(--dark-2);border:1px solid var(--border);border-radius:6px;padding:0.35rem 0.6rem;">';
+          html += '<input type="text" value="' + esc(w) + '" maxlength="40" data-ticker-idx="' + i + '" style="background:none;border:none;color:var(--text);font-size:0.85rem;width:130px;outline:none;">';
+          html += '<button type="button" data-ticker-rm="' + i + '" title="Remove" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:1.05rem;line-height:1;">&times;</button>';
+          html += '</span>';
+        });
+        html += '</div>';
+        html += '<div style="display:flex;align-items:center;gap:0.8rem;margin-top:0.8rem;flex-wrap:wrap;">';
+        html += '<label style="font-size:0.78rem;color:var(--muted);">Separator <input type="text" id="tickerSepInput" maxlength="4" value="' + esc(tickerState.sep) + '" style="width:64px;background:var(--dark-2);border:1px solid var(--border);color:var(--text);padding:0.35rem 0.5rem;border-radius:4px;"></label>';
+        html += '<button class="refresh-btn" id="tickerAddWord">Add Word</button>';
+        html += '<span style="font-size:0.72rem;color:var(--muted);">Max 12 words, 40 chars each.</span>';
+        html += '</div>';
+        el.innerHTML = html;
+      }
+
+      function syncTickerInputs() {
+        if (!tickerState) return;
+        document.querySelectorAll('[data-ticker-idx]').forEach(function(inp) {
+          var i = parseInt(inp.getAttribute('data-ticker-idx'), 10);
+          if (!isNaN(i) && tickerState.items[i] !== undefined) tickerState.items[i] = inp.value;
+        });
+        var sepEl = document.getElementById('tickerSepInput');
+        if (sepEl) tickerState.sep = sepEl.value;
+      }
+
+      function loadSettings() {
+        var el = document.getElementById('tickerEditor');
+        el.textContent = 'Loading ticker...';
+        fetch('api-ticker.php?t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
+          tickerState = {
+            sep: (d && d.sep) ? d.sep : '*',
+            items: (d && Array.isArray(d.items)) ? d.items.slice() : []
+          };
+          renderTickerEditor();
+        }).catch(function() { el.textContent = 'Unable to load ticker.'; });
+
+        fetch('api-admin.php?action=settings&t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
+          var a = (d && d.announcement) ? d.announcement : {};
+          document.getElementById('announcementText').value = a.text || '';
+          document.getElementById('announcementEnabled').checked = !!a.enabled;
+        }).catch(function() {});
+      }
+
+      document.getElementById('tickerEditor').addEventListener('click', function(e) {
+        var t = e.target;
+        if (!t.getAttribute) return;
+        if (t.id === 'tickerAddWord') {
+          syncTickerInputs();
+          if (!tickerState) return;
+          if (tickerState.items.length >= 12) { document.getElementById('tickerMsg').textContent = 'Ticker is full (12 words max).'; return; }
+          tickerState.items.push('NEW WORD');
+          renderTickerEditor();
+          return;
+        }
+        var rm = t.getAttribute('data-ticker-rm');
+        if (rm !== null && rm !== undefined && rm !== '') {
+          syncTickerInputs();
+          tickerState.items.splice(parseInt(rm, 10), 1);
+          renderTickerEditor();
+        }
+      });
+
+      document.getElementById('saveTickerBtn').addEventListener('click', function() {
+        syncTickerInputs();
+        var msg = document.getElementById('tickerMsg');
+        if (!tickerState) { msg.textContent = 'No ticker data.'; return; }
+        var words = tickerState.items.map(function(w) { return String(w).trim(); }).filter(Boolean);
+        if (!words.length) { msg.textContent = 'Add at least one word.'; return; }
+        msg.textContent = 'Saving...';
+        fetch('api-ticker.php', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sep: tickerState.sep, items: words })
+        }).then(function(r) { return r.json(); }).then(function(d) {
+          if (d && d.error) { msg.textContent = d.error; msg.style.color = '#e74c3c'; return; }
+          msg.textContent = 'Ticker saved.'; msg.style.color = 'var(--primary)';
+          tickerState.items = words;
+          renderTickerEditor();
+        }).catch(function() { msg.textContent = 'Save failed - try again.'; msg.style.color = '#e74c3c'; });
+      });
+
+      document.getElementById('saveAnnouncementBtn').addEventListener('click', function() {
+        var msg = document.getElementById('announcementMsg');
+        var text = (document.getElementById('announcementText').value || '').trim();
+        var enabled = document.getElementById('announcementEnabled').checked;
+        if (enabled && !text) { msg.textContent = 'Enter announcement text or uncheck the box.'; msg.style.color = '#e74c3c'; return; }
+        msg.textContent = 'Saving...'; msg.style.color = 'var(--muted)';
+        fetch('api-admin.php?action=settings', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ announcement: { text: text, enabled: enabled } })
+        }).then(function(r) { return r.json(); }).then(function(d) {
+          if (d && d.error) { msg.textContent = d.error; msg.style.color = '#e74c3c'; return; }
+          msg.textContent = 'Announcement saved.'; msg.style.color = 'var(--primary)';
+        }).catch(function() { msg.textContent = 'Save failed - try again.'; msg.style.color = '#e74c3c'; });
+      });
+
+      document.getElementById('refreshSettings').addEventListener('click', loadSettings);
+
+      /* ===== Backup / Restore ===== */
+      function loadBackup() {
+        var el = document.getElementById('backupStores');
+        el.innerHTML = 'Loading store info...';
+        fetch('api-admin.php?action=health&t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
+          if (!d || d.error) throw new Error('health');
+          var stores = d.stores || [];
+          if (!stores.length) { el.innerHTML = '<div style="padding:1rem;color:var(--muted);">No data stores yet.</div>'; return; }
+          var html = '<table class="log-table"><thead><tr><th>Store</th><th>Size</th><th>Last Updated</th></tr></thead><tbody>';
+          stores.forEach(function(s) {
+            var ts = s.updated > 20000000000 ? s.updated : s.updated * 1000;
+            html += '<tr><td><strong>' + esc(s.key) + '</strong></td><td>' + esc(fmtBytes(s.bytes)) + '</td><td>' + esc(s.updated ? fmt(ts) : 'never') + '</td></tr>';
+          });
+          html += '</tbody></table>';
+          el.innerHTML = html;
+        }).catch(function() {
+          el.innerHTML = '<div style="padding:1rem;color:var(--muted);">Unable to load store info.</div>';
+        });
+      }
+
+      document.getElementById('refreshBackup').addEventListener('click', loadBackup);
+
+      document.getElementById('fullBackupBtn').addEventListener('click', function() {
+        var msg = document.getElementById('backupMsg');
+        msg.textContent = 'Building backup...'; msg.style.color = 'var(--muted)';
+        fetch('api-admin.php?action=backup&t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
+          if (!d || d.error) { msg.textContent = (d && d.error) || 'Backup failed.'; msg.style.color = '#e74c3c'; return; }
+          var blob = new Blob([JSON.stringify(d, null, 2)], { type: 'application/json' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'rhmc-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(function() { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+          msg.textContent = 'Backup downloaded.'; msg.style.color = 'var(--primary)';
+        }).catch(function() { msg.textContent = 'Backup failed - try again.'; msg.style.color = '#e74c3c'; });
+      });
+
+      document.getElementById('restoreFile').addEventListener('change', function(e) {
+        var file = e.target.files && e.target.files[0];
+        var msg = document.getElementById('backupMsg');
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+          var parsed = null;
+          try { parsed = JSON.parse(ev.target.result); } catch (err) {
+            msg.textContent = 'File is not valid JSON.'; msg.style.color = '#e74c3c';
+            e.target.value = '';
+            return;
+          }
+          if (!parsed || typeof parsed !== 'object' || (!parsed.stores && !parsed.data)) {
+            msg.textContent = 'File is not a RHMC backup.'; msg.style.color = '#e74c3c';
+            e.target.value = '';
+            return;
+          }
+          // Accept both backup shapes: {stores:{key:{data}}} or legacy {data:{key:data}}
+          var payload = { stores: parsed.stores || parsed.data || {}, ticker: parsed.ticker || null, settings: parsed.settings || null };
+          if (!confirm('Restore this backup? Current data for the listed stores will be overwritten.')) {
+            e.target.value = '';
+            return;
+          }
+          msg.textContent = 'Restoring...'; msg.style.color = 'var(--muted)';
+          fetch('api-admin.php?action=restore', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }).then(function(r) { return r.json(); }).then(function(d) {
+            e.target.value = '';
+            if (d && d.error) { msg.textContent = d.error; msg.style.color = '#e74c3c'; return; }
+            var names = (d && d.restored && d.restored.stores) ? d.restored.stores.join(', ') : '';
+            msg.textContent = 'Restored: ' + (names || 'nothing') + (d && d.restored && d.restored.ticker ? ' + ticker' : '') + (d && d.restored && d.restored.settings ? ' + settings' : '') + '.';
+            msg.style.color = 'var(--primary)';
+            loadBackup();
+          }).catch(function() {
+            e.target.value = '';
+            msg.textContent = 'Restore failed - try again.'; msg.style.color = '#e74c3c';
+          });
+        };
+        reader.readAsText(file);
+      });
+
+      /* ===== Health ===== */
+      function loadHealth() {
+        var statsEl = document.getElementById('healthStats');
+        var tablesEl = document.getElementById('healthTables');
+        var mediaEl = document.getElementById('healthMedia');
+        statsEl.innerHTML = '<div class="owner-stat"><div class="num">-</div><div class="label">Loading</div></div>';
+        tablesEl.innerHTML = '';
+        mediaEl.innerHTML = '';
+        fetch('api-admin.php?action=health&t=' + Date.now()).then(function(r) { return r.json(); }).then(function(d) {
+          if (!d || d.error) throw new Error('health');
+          var rows = 0, bytes = 0;
+          (d.tables || []).forEach(function(t) { rows += t.rows || 0; bytes += t.bytes || 0; });
+
+          var html = '<div class="owner-stat"><div class="num" style="color:#1b5e20;">OK</div><div class="label">Database</div></div>';
+          html += '<div class="owner-stat"><div class="num">' + esc(d.php || '-') + '</div><div class="label">PHP Version</div></div>';
+          html += '<div class="owner-stat"><div class="num">' + esc(rows) + '</div><div class="label">Total Rows</div></div>';
+          html += '<div class="owner-stat"><div class="num">' + esc(fmtBytes(bytes)) + '</div><div class="label">Data Size</div></div>';
+          html += '<div class="owner-stat"><div class="num">' + esc((d.counts && d.counts.users) || 0) + '</div><div class="label">Accounts</div></div>';
+          html += '<div class="owner-stat"><div class="num">' + esc((d.counts && d.counts.site_logs) || 0) + '</div><div class="label">Log Entries</div></div>';
+          statsEl.innerHTML = html;
+
+          if ((d.tables || []).length) {
+            var th = '<table class="log-table"><thead><tr><th>Table</th><th>Rows</th><th>Size</th></tr></thead><tbody>';
+            d.tables.forEach(function(t) {
+              th += '<tr><td>' + esc(t.name) + '</td><td>' + esc(t.rows) + '</td><td>' + esc(fmtBytes(t.bytes)) + '</td></tr>';
+            });
+            th += '</tbody></table>';
+            tablesEl.innerHTML = th;
+          }
+
+          var m = d.media || { files: 0, bytes: 0 };
+          var mh = '<div style="font-size:0.82rem;color:var(--muted);">Media uploads: <strong style="color:var(--text);">' + esc(m.files) + '</strong> files (' + esc(fmtBytes(m.bytes)) + ')</div>';
+          if (d.last_log) {
+            mh += '<div style="font-size:0.82rem;color:var(--muted);margin-top:0.35rem;">Last action: <strong style="color:var(--text);">' + esc(d.last_log.action || '') + '</strong> by ' + esc(d.last_log.username || '-') + ' &bull; ' + esc(fmt(d.last_log.ts)) + '</div>';
+          }
+          mediaEl.innerHTML = mh;
+        }).catch(function() {
+          statsEl.innerHTML = '<div class="owner-stat"><div class="num" style="color:#e74c3c;">DOWN</div><div class="label">Database</div></div>';
+        });
+      }
+
+      document.getElementById('refreshHealth').addEventListener('click', loadHealth);
 
       function loadFinance() {
         var el = document.getElementById('financeContent');
