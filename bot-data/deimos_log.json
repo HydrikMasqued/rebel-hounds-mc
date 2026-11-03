@@ -1,14 +1,4 @@
 [
-  "2026-11-02 03:15:39,629 - cogs.playtime_tracker - INFO - Playtime notifications enabled - Notify user: 181143017619587073, Requirement: 6h",
-  "2026-11-02 03:15:39,629 - cogs.playtime_tracker - INFO - Playtime tracker initialized with dual-channel support",
-  "2026-11-02 03:15:39,629 - utils.playtime_database - INFO - Initializing playtime database tables",
-  "2026-11-02 03:15:39,631 - utils.playtime_database - INFO - Shared playtime database connection established",
-  "2026-11-02 03:15:39,633 - utils.playtime_database - INFO - Database migration check complete",
-  "2026-11-02 03:15:39,634 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
-  "2026-11-02 03:15:39,634 - cogs.playtime_tracker - INFO - Playtime database initialized",
-  "2026-11-02 03:15:39,634 - cogs.playtime_tracker - INFO - Monthly reset task started",
-  "2026-11-02 03:15:39,635 - __main__ - INFO - Successfully loaded cogs.playtime_tracker",
-  "2026-11-02 03:15:39,643 - cogs.contribution_verification - INFO - Loaded contribution config - Channel: 1469837549416485015, Leadership: 1512987446483222639",
   "2026-11-02 03:15:39,643 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
   "2026-11-02 03:15:39,643 - cogs.contribution_verification - INFO - Contribution timeout check task started",
   "2026-11-02 03:15:39,643 - __main__ - INFO - Successfully loaded cogs.contribution_verification",
@@ -198,5 +188,15 @@
   "2026-11-02 09:58:35,687 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
   "2026-11-02 10:28:41,132 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
   "2026-11-02 13:49:26,437 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
-  "2026-11-02 17:33:21,315 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410."
+  "2026-11-02 17:33:21,315 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-02 20:26:23,450 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-02 21:58:54,209 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-02 23:05:42,592 - discord.ext.commands.bot - ERROR - Ignoring exception in command None",
+  "discord.ext.commands.errors.CommandNotFound: Command \"mplay\" is not found",
+  "2026-11-02 23:19:23,423 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-03 00:20:53,116 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (nick-changed)",
+  "2026-11-03 00:21:17,285 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (nick-changed)",
+  "2026-11-03 00:21:47,895 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (nick-changed)",
+  "2026-11-03 00:22:05,642 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (nick-changed)",
+  "2026-11-03 00:22:16,806 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410."
 ]
