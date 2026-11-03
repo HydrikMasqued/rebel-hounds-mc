@@ -1,10 +1,4 @@
 [
-  "2026-11-02 03:15:39,695 - __main__ - INFO - Successfully loaded cogs.church_tracker",
-  "2026-11-02 03:15:39,696 - __main__ - INFO - Successfully loaded cogs.website_sync",
-  "2026-11-02 03:15:39,705 - cogs.city_checkin - INFO - Checkin channels - Vital: 1551714971040219156, AllPro: 1551714892589834382",
-  "2026-11-02 03:15:39,705 - cogs.city_checkin - INFO - City checkin cog initialized",
-  "2026-11-02 03:15:39,707 - utils.checkin_database - INFO - Checkin database initialized",
-  "2026-11-02 03:15:39,708 - cogs.city_checkin - INFO - Persistent checkin views registered",
   "2026-11-02 03:15:39,708 - __main__ - INFO - Successfully loaded cogs.city_checkin",
   "2026-11-02 03:15:39,712 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
   "2026-11-02 03:15:39,713 - utils.playtime_database - INFO - Initializing playtime database tables",
@@ -198,5 +192,11 @@
   "2026-11-03 02:35:51,369 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 3889 seconds",
   "2026-11-03 02:35:51,370 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 1h 4m",
   "2026-11-03 03:27:13,128 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
-  "2026-11-03 04:48:54,235 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410."
+  "2026-11-03 04:48:54,235 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-03 08:27:08,493 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-03 12:15:53,680 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-03 13:02:36,019 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-03 13:26:58,944 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 9cfefbdd368f4c4badfa664d4c1d9410.",
+  "2026-11-03 15:14:17,890 - utils.playtime_database - INFO - Started vital session for user 319184811971575808 in guild 889005510286786601",
+  "2026-11-03 15:14:17,890 - cogs.playtime_tracker - INFO - Started vital playtime tracking for loreviking in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
