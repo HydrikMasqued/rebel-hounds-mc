@@ -1,15 +1,4 @@
 [
-  "2026-11-04 01:38:06,673 - cogs.playtime_tracker - INFO - Playtime database initialized",
-  "2026-11-04 01:38:06,673 - cogs.playtime_tracker - INFO - Monthly reset task started",
-  "2026-11-04 01:38:06,674 - __main__ - INFO - Successfully loaded cogs.playtime_tracker",
-  "2026-11-04 01:38:06,682 - cogs.contribution_verification - INFO - Loaded contribution config - Channel: 1469837549416485015, Leadership: 1512987446483222639",
-  "2026-11-04 01:38:06,682 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
-  "2026-11-04 01:38:06,682 - cogs.contribution_verification - INFO - Contribution timeout check task started",
-  "2026-11-04 01:38:06,682 - __main__ - INFO - Successfully loaded cogs.contribution_verification",
-  "2026-11-04 01:38:06,727 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
-  "2026-11-04 01:38:06,727 - cogs.church_tracker - INFO - Loaded church config - Roundtable VC: 1272947209612296304, confirm timeout: 10m",
-  "2026-11-04 01:38:06,728 - cogs.church_tracker - INFO - Church tracker initialized",
-  "2026-11-04 01:38:06,728 - utils.church_database - INFO - Initializing church database tables",
   "2026-11-04 01:38:06,730 - utils.church_database - INFO - Shared church database connection established",
   "2026-11-04 01:38:06,735 - utils.church_database - INFO - Church database tables initialized successfully",
   "2026-11-04 01:38:06,735 - cogs.church_tracker - INFO - Church database initialized",
@@ -198,5 +187,16 @@
   "2026-11-04 14:08:41,592 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 73860549cbf8e0df61d3e57c371a7972.",
   "2026-11-04 14:24:13,241 - aiohttp.access - INFO - 104.152.52.215 [04/Nov/2026:14:24:13 +0000] \"UNKNOWN / HTTP/1.0\" 400 200 \"-\" \"-\"",
   "2026-11-04 14:24:13,430 - aiohttp.access - INFO - 104.152.52.225 [04/Nov/2026:14:24:13 +0000] \"GET / HTTP/1.1\" 200 27556 \"-\" \"curl/7.61.1\"",
-  "2026-11-04 14:24:13,711 - aiohttp.access - INFO - 104.152.52.225 [04/Nov/2026:14:24:13 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\""
+  "2026-11-04 14:24:13,711 - aiohttp.access - INFO - 104.152.52.225 [04/Nov/2026:14:24:13 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\"",
+  "2026-11-04 17:59:56,699 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 73860549cbf8e0df61d3e57c371a7972.",
+  "2026-11-04 18:27:34,844 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 73860549cbf8e0df61d3e57c371a7972.",
+  "2026-11-04 19:31:56,145 - utils.playtime_database - INFO - Started vital session for user 1045815013614559313 in guild 889005510286786601",
+  "2026-11-04 19:31:56,145 - cogs.playtime_tracker - INFO - Started vital playtime tracking for bdillon97 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-11-04 20:41:08,495 - utils.playtime_database - INFO - Started vital session for user 367316570180943892 in guild 889005510286786601",
+  "2026-11-04 20:41:08,495 - cogs.playtime_tracker - INFO - Started vital playtime tracking for panda_alleyway in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-11-04 20:41:51,029 - utils.playtime_database - INFO - Started vital session for user 287694223707340800 in guild 889005510286786601",
+  "2026-11-04 20:41:51,029 - cogs.playtime_tracker - INFO - Started vital playtime tracking for gingerbean2112 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-11-04 20:53:09,546 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 73860549cbf8e0df61d3e57c371a7972.",
+  "2026-11-04 21:21:31,234 - utils.playtime_database - INFO - Started vital session for user 975162499303358524 in guild 889005510286786601",
+  "2026-11-04 21:21:31,234 - cogs.playtime_tracker - INFO - Started vital playtime tracking for couchpotatoe_01 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
