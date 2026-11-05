@@ -1,14 +1,4 @@
 [
-  "2026-11-05 03:49:12,033 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518060732825075784 responded with 429. Retrying in 0.64 seconds.",
-  "2026-11-05 03:49:13,022 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518060668505559090 responded with 429. Retrying in 0.65 seconds.",
-  "2026-11-05 03:49:14,101 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518059980467732620 responded with 429. Retrying in 0.56 seconds.",
-  "2026-11-05 03:51:15,130 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517934875850571798 responded with 429. Retrying in 0.80 seconds.",
-  "2026-11-05 03:51:16,385 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931861605617674 responded with 429. Retrying in 0.54 seconds.",
-  "2026-11-05 03:51:17,316 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931846216843374 responded with 429. Retrying in 0.63 seconds.",
-  "2026-11-05 03:51:18,291 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931826553815142 responded with 429. Retrying in 0.64 seconds.",
-  "2026-11-05 03:51:19,392 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931805901197475 responded with 429. Retrying in 0.57 seconds.",
-  "2026-11-05 03:51:20,377 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931748216803511 responded with 429. Retrying in 0.56 seconds.",
-  "2026-11-05 03:51:21,279 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931719410581675 responded with 429. Retrying in 0.65 seconds.",
   "2026-11-05 03:51:22,261 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931710912790789 responded with 429. Retrying in 0.66 seconds.",
   "2026-11-05 03:51:23,252 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931701253181621 responded with 429. Retrying in 0.68 seconds.",
   "2026-11-05 03:51:24,336 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1517931651831693463 responded with 429. Retrying in 0.59 seconds.",
@@ -198,5 +188,15 @@
   "2026-11-05 13:47:55,957 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
   "2026-11-05 14:31:53,552 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
   "2026-11-05 16:24:55,107 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
-  "2026-11-05 16:24:55,107 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
+  "2026-11-05 16:24:55,107 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)",
+  "2026-11-05 16:45:47,735 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-11-05 17:17:00,909 - utils.playtime_database - INFO - Ended vital session for user 361004934184828928: 3125 seconds",
+  "2026-11-05 17:17:00,909 - cogs.playtime_tracker - INFO - Ended vital playtime tracking for snow3976: 0h 52m",
+  "2026-11-05 17:17:00,910 - cogs.playtime_tracker - INFO - Loaded playtime channel config - Vital: 1267079320564924400, All Pro: 1267079320564924400 (Elyxir retired)",
+  "2026-11-05 17:17:00,910 - cogs.playtime_tracker - INFO - Playtime notifications enabled - Notify user: 181143017619587070, Requirement: 4h",
+  "2026-11-05 17:20:27,195 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 17:35:56,438 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 18:10:49,472 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 19:30:00,428 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 20:29:23,231 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1."
 ]
