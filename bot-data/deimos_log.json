@@ -1,12 +1,4 @@
 [
-  "2026-11-05 03:49:03,993 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518061352093089943 responded with 429. Retrying in 0.67 seconds.",
-  "2026-11-05 03:49:05,034 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518061330874110033 responded with 429. Retrying in 0.64 seconds.",
-  "2026-11-05 03:49:06,081 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518061315522826331 responded with 429. Retrying in 0.58 seconds.",
-  "2026-11-05 03:49:07,012 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518061281817530489 responded with 429. Retrying in 0.66 seconds.",
-  "2026-11-05 03:49:08,041 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518061182236364870 responded with 429. Retrying in 0.63 seconds.",
-  "2026-11-05 03:49:09,053 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518061169208987778 responded with 429. Retrying in 0.61 seconds.",
-  "2026-11-05 03:49:10,032 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518061167925268560 responded with 429. Retrying in 0.63 seconds.",
-  "2026-11-05 03:49:11,002 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518060862768943227 responded with 429. Retrying in 0.66 seconds.",
   "2026-11-05 03:49:12,033 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518060732825075784 responded with 429. Retrying in 0.64 seconds.",
   "2026-11-05 03:49:13,022 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518060668505559090 responded with 429. Retrying in 0.65 seconds.",
   "2026-11-05 03:49:14,101 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1512987446483222639/messages/1518059980467732620 responded with 429. Retrying in 0.56 seconds.",
@@ -198,5 +190,13 @@
   "  File \"/home/container/.local/lib/python3.12/site-packages/discord/webhook/async_.py\", line 226, in request",
   "    raise HTTPException(response, data)",
   "discord.errors.HTTPException: 401 Unauthorized (error code: 50027): Invalid Webhook Token",
-  "2026-11-05 05:36:56,745 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1."
+  "2026-11-05 05:36:56,745 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 08:33:45,937 - aiohttp.access - INFO - 85.217.149.66 [05/Nov/2026:08:33:45 +0000] \"GET / HTTP/1.1\" 200 28834 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-05 08:33:46,129 - aiohttp.access - INFO - 85.217.149.66 [05/Nov/2026:08:33:46 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-05 08:41:05,583 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 11:03:27,746 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 13:47:55,957 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-11-05 14:31:53,552 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 15fdb9463f23486b962e15f5e4d015d1.",
+  "2026-11-05 16:24:55,107 - utils.playtime_database - INFO - Started vital session for user 361004934184828928 in guild 889005510286786601",
+  "2026-11-05 16:24:55,107 - cogs.playtime_tracker - INFO - Started vital playtime tracking for snow3976 in 𝐈𝐍 𝐂𝐈𝐓𝐘 𝐕𝐂 (𝐌𝐔𝐓𝐄 & 𝐃𝐄𝐀𝐅𝐄𝐍)"
 ]
