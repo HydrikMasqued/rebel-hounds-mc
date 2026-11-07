@@ -1,12 +1,4 @@
 [
-  "2026-11-06 06:16:49,306 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524151367915274472 responded with 429. Retrying in 0.47 seconds.",
-  "2026-11-06 06:16:50,155 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524151247614251190 responded with 429. Retrying in 0.63 seconds.",
-  "2026-11-06 06:16:51,134 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524151116957356062 responded with 429. Retrying in 0.64 seconds.",
-  "2026-11-06 06:16:52,289 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524148765718741043 responded with 429. Retrying in 0.49 seconds.",
-  "2026-11-06 06:18:52,616 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524104846943191152 responded with 429. Retrying in 0.73 seconds.",
-  "2026-11-06 06:18:53,834 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524072277044498473 responded with 429. Retrying in 0.51 seconds.",
-  "2026-11-06 06:18:54,743 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524068820392870030 responded with 429. Retrying in 0.60 seconds.",
-  "2026-11-06 06:18:55,686 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524045617012146176 responded with 429. Retrying in 0.66 seconds.",
   "2026-11-06 06:18:56,827 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524044842982965389 responded with 429. Retrying in 0.53 seconds.",
   "2026-11-06 06:18:57,698 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524039632616951849 responded with 429. Retrying in 0.65 seconds.",
   "2026-11-06 06:18:58,952 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523999167788224592 responded with 429. Retrying in 0.41 seconds.",
@@ -198,5 +190,13 @@
   "2026-11-07 17:31:14,855 - aiohttp.access - INFO - 92.40.172.72 [07/Nov/2026:17:31:14 +0000] \"GET /api/manage?guild=889005510286786601&kind=loa HTTP/1.1\" 200 171 \"http://217.154.38.118:5028/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36\"",
   "2026-11-07 17:31:14,857 - aiohttp.access - INFO - 92.40.172.72 [07/Nov/2026:17:31:14 +0000] \"GET /api/manage?guild=889005510286786601&kind=reports HTTP/1.1\" 200 171 \"http://217.154.38.118:5028/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36\"",
   "2026-11-07 17:31:14,858 - aiohttp.access - INFO - 92.40.172.72 [07/Nov/2026:17:31:14 +0000] \"GET /api/manage?guild=889005510286786601&kind=tasks HTTP/1.1\" 200 171 \"http://217.154.38.118:5028/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36\"",
-  "2026-11-07 17:31:14,916 - aiohttp.access - INFO - 92.40.172.72 [07/Nov/2026:17:31:14 +0000] \"GET /api/archives HTTP/1.1\" 200 3421 \"http://217.154.38.118:5028/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36\""
+  "2026-11-07 17:31:14,916 - aiohttp.access - INFO - 92.40.172.72 [07/Nov/2026:17:31:14 +0000] \"GET /api/archives HTTP/1.1\" 200 3421 \"http://217.154.38.118:5028/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36\"",
+  "2026-11-07 19:45:02,628 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
+  "2026-11-07 19:45:32,388 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-07 19:46:17,330 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-07 19:46:51,337 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-07 19:48:14,825 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-11-07 20:25:43,977 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 20:57:12,335 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 21:14:08,166 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868."
 ]
