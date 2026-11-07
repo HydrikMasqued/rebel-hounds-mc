@@ -1,8 +1,4 @@
 [
-  "2026-11-06 06:14:13,924 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524592716728500406 responded with 429. Retrying in 0.50 seconds.",
-  "2026-11-06 06:14:14,925 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524591608392056903 responded with 429. Retrying in 0.50 seconds.",
-  "2026-11-06 06:14:15,894 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524591593099624509 responded with 429. Retrying in 0.53 seconds.",
-  "2026-11-06 06:14:16,771 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524591176710357014 responded with 429. Retrying in 0.66 seconds.",
   "2026-11-06 06:14:18,058 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524591114173022258 responded with 429. Retrying in 0.37 seconds.",
   "2026-11-06 06:14:18,818 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524580342009434132 responded with 429. Retrying in 0.61 seconds.",
   "2026-11-06 06:16:19,988 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524545307977842708 responded with 429. Retrying in 0.79 seconds.",
@@ -198,5 +194,9 @@
   "2026-11-06 20:36:42,887 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
   "2026-11-06 23:49:55,416 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
   "2026-11-07 00:06:04,144 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
-  "2026-11-07 00:25:42,654 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868."
+  "2026-11-07 00:25:42,654 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 01:26:02,766 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 02:13:07,615 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 05:51:35,921 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 06:15:15,214 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868."
 ]
