@@ -1,9 +1,4 @@
 [
-  "2026-11-06 06:14:18,058 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524591114173022258 responded with 429. Retrying in 0.37 seconds.",
-  "2026-11-06 06:14:18,818 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524580342009434132 responded with 429. Retrying in 0.61 seconds.",
-  "2026-11-06 06:16:19,988 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524545307977842708 responded with 429. Retrying in 0.79 seconds.",
-  "2026-11-06 06:16:21,280 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524544747279089674 responded with 429. Retrying in 0.51 seconds.",
-  "2026-11-06 06:16:22,148 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524539483263860786 responded with 429. Retrying in 0.63 seconds.",
   "2026-11-06 06:16:23,320 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524536659310412037 responded with 429. Retrying in 0.45 seconds.",
   "2026-11-06 06:16:24,107 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524535024001613906 responded with 429. Retrying in 0.67 seconds.",
   "2026-11-06 06:16:25,374 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524529823056134285 responded with 429. Retrying in 0.41 seconds.",
@@ -198,5 +193,10 @@
   "2026-11-07 01:26:02,766 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
   "2026-11-07 02:13:07,615 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
   "2026-11-07 05:51:35,921 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
-  "2026-11-07 06:15:15,214 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868."
+  "2026-11-07 06:15:15,214 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 07:23:13,574 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 08:42:20,813 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 11:23:56,197 - aiohttp.access - INFO - 85.217.149.56 [07/Nov/2026:11:23:56 +0000] \"GET / HTTP/1.1\" 200 28834 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-07 11:23:56,362 - aiohttp.access - INFO - 85.217.149.56 [07/Nov/2026:11:23:56 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-07 11:30:56,317 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868."
 ]
