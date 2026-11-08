@@ -1,8 +1,4 @@
 [
-  "2026-11-06 06:18:56,827 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524044842982965389 responded with 429. Retrying in 0.53 seconds.",
-  "2026-11-06 06:18:57,698 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1524039632616951849 responded with 429. Retrying in 0.65 seconds.",
-  "2026-11-06 06:18:58,952 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523999167788224592 responded with 429. Retrying in 0.41 seconds.",
-  "2026-11-06 06:18:59,677 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523996321273610351 responded with 429. Retrying in 0.67 seconds.",
   "2026-11-06 06:19:00,898 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523965459580326052 responded with 429. Retrying in 0.45 seconds.",
   "2026-11-06 06:19:01,737 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523965392962195456 responded with 429. Retrying in 0.61 seconds.",
   "2026-11-06 06:19:02,734 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523963765559918633 responded with 429. Retrying in 0.61 seconds.",
@@ -198,5 +194,9 @@
   "2026-11-07 19:48:14,825 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
   "2026-11-07 20:25:43,977 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
   "2026-11-07 20:57:12,335 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
-  "2026-11-07 21:14:08,166 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868."
+  "2026-11-07 21:14:08,166 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 23:15:28,730 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 23:46:34,119 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-07 23:55:07,292 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
+  "2026-11-07 23:55:39,480 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)"
 ]
