@@ -1,12 +1,4 @@
 [
-  "2026-11-06 06:19:00,898 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523965459580326052 responded with 429. Retrying in 0.45 seconds.",
-  "2026-11-06 06:19:01,737 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523965392962195456 responded with 429. Retrying in 0.61 seconds.",
-  "2026-11-06 06:19:02,734 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523963765559918633 responded with 429. Retrying in 0.61 seconds.",
-  "2026-11-06 06:19:03,869 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523961742303166535 responded with 429. Retrying in 0.48 seconds.",
-  "2026-11-06 06:19:04,762 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523958016284823663 responded with 429. Retrying in 0.59 seconds.",
-  "2026-11-06 06:19:05,890 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523957187137896468 responded with 429. Retrying in 0.46 seconds.",
-  "2026-11-06 06:19:06,782 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523957059370877068 responded with 429. Retrying in 0.57 seconds.",
-  "2026-11-06 06:19:07,662 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523956942299725824 responded with 429. Retrying in 0.68 seconds.",
   "2026-11-06 06:19:08,890 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523940392439910541 responded with 429. Retrying in 0.46 seconds.",
   "2026-11-06 06:19:09,697 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523940296184827905 responded with 429. Retrying in 0.65 seconds.",
   "2026-11-06 06:19:10,915 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1474909848603725834/messages/1523894446691848302 responded with 429. Retrying in 0.43 seconds.",
@@ -198,5 +190,13 @@
   "2026-11-07 23:15:28,730 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
   "2026-11-07 23:46:34,119 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
   "2026-11-07 23:55:07,292 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
-  "2026-11-07 23:55:39,480 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)"
+  "2026-11-07 23:55:39,480 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-08 01:42:19,732 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-join)",
+  "2026-11-08 01:42:30,263 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-08 02:13:02,691 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-08 02:28:39,826 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-08 02:31:34,569 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-08 03:44:42,634 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-08 04:52:09,992 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868.",
+  "2026-11-08 07:01:31,444 - discord.gateway - INFO - Shard ID None has successfully RESUMED session f770701bf2adc139cc027aa303294868."
 ]
