@@ -1,12 +1,4 @@
 [
-  "2026-11-08 10:55:23,749 - utils.database - INFO - Initializing database tables",
-  "2026-11-08 10:55:23,753 - utils.database - INFO - Database tables initialized successfully",
-  "2026-11-08 10:55:23,754 - __main__ - INFO - Database initialized for guild: RHMC Deathsquad (ID: 1564959749676597258)",
-  "2026-11-08 10:55:23,754 - utils.database - INFO - Initializing database tables",
-  "2026-11-08 10:55:23,758 - utils.database - INFO - Database tables initialized successfully",
-  "2026-11-08 10:55:23,758 - __main__ - INFO - Database initialized for guild: RHMC Primer Inter Pares (ID: 1566034199066968136)",
-  "2026-11-08 10:55:25,586 - utils.tunnel - INFO - panel tunnel is live: https://stores-comments-acre-gdp.trycloudflare.com",
-  "2026-11-08 10:55:25,587 - cogs.web_dashboard - INFO - dashboard address is now https://stores-comments-acre-gdp.trycloudflare.com",
   "2026-11-08 10:55:25,885 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-11-08 10:55:26,110 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-11-08 10:55:26,110 - cogs.contribution_verification - INFO - Found 0 pending contributions",
@@ -198,5 +190,13 @@
   "2026-11-08 16:39:41,198 - aiohttp.access - INFO - 127.0.0.1 [08/Nov/2026:16:39:41 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\"",
   "2026-11-08 17:19:18,978 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97c522192b6414b45fdfc24431f1553e.",
   "2026-11-08 17:31:07,461 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
-  "2026-11-08 18:31:07,467 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'"
+  "2026-11-08 18:31:07,467 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
+  "2026-11-08 19:02:24,744 - aiohttp.access - INFO - 127.0.0.1 [08/Nov/2026:19:02:24 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"python-requests/2.34.2\"",
+  "2026-11-08 19:31:07,471 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
+  "2026-11-08 20:29:04,529 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97c522192b6414b45fdfc24431f1553e.",
+  "2026-11-08 20:31:07,464 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
+  "2026-11-08 21:08:23,246 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97c522192b6414b45fdfc24431f1553e.",
+  "2026-11-08 21:31:07,455 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
+  "2026-11-08 21:31:57,815 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97c522192b6414b45fdfc24431f1553e.",
+  "2026-11-08 22:31:07,453 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'"
 ]
