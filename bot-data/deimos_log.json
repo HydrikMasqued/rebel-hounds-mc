@@ -1,9 +1,4 @@
 [
-  "2026-11-08 10:55:25,885 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
-  "2026-11-08 10:55:26,110 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
-  "2026-11-08 10:55:26,110 - cogs.contribution_verification - INFO - Found 0 pending contributions",
-  "2026-11-08 10:55:28,934 - utils.panels - WARNING - panel edit failed (Message.edit() got an unexpected keyword argument 'files'); reposting cleanly",
-  "2026-11-08 10:55:28,943 - utils.panels - WARNING - panel edit failed (Message.edit() got an unexpected keyword argument 'files'); reposting cleanly",
   "2026-11-08 10:55:29,944 - utils.panels - INFO - panel sweep removed 1 stale copy/copies of ('Leave of Absence',)",
   "2026-11-08 10:55:29,945 - cogs.action_panel - INFO - Action panel (loa) posted",
   "2026-11-08 10:55:30,160 - utils.panels - INFO - panel sweep removed 1 stale copy/copies of ('Command Menu',)",
@@ -198,5 +193,10 @@
   "2026-11-08 21:08:23,246 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97c522192b6414b45fdfc24431f1553e.",
   "2026-11-08 21:31:07,455 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
   "2026-11-08 21:31:57,815 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97c522192b6414b45fdfc24431f1553e.",
-  "2026-11-08 22:31:07,453 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'"
+  "2026-11-08 22:31:07,453 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
+  "2026-11-08 23:31:07,466 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
+  "2026-11-09 00:31:07,467 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'",
+  "2026-11-09 00:31:09,115 - cogs.city_checkin - INFO - Weekly check-in reset - new week calendars posted (old weeks archived in DB) — reset weekday 0, 00:00 UTC",
+  "2026-11-09 01:17:22,598 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97c522192b6414b45fdfc24431f1553e.",
+  "2026-11-09 01:31:07,482 - cogs.playtime_tracker - ERROR - stale-month archive failed: 'PlaytimeDatabase' object has no attribute 'archive_stale_months'"
 ]
