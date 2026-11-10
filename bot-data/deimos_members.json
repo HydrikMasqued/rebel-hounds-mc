@@ -9,7 +9,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-01 19:36:55.131460"
+    "updated_at": "2026-11-10 01:42:00.224398"
   },
   {
     "id": 4,
@@ -21,7 +21,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-01 19:36:55.107571"
+    "updated_at": "2026-11-10 01:42:00.211709"
   },
   {
     "id": 5,
@@ -33,7 +33,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-02 00:33:57.761494"
+    "updated_at": "2026-11-10 01:42:00.209495"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-01 19:36:55.104664"
+    "updated_at": "2026-11-10 01:42:00.210081"
   },
   {
     "id": 10,
@@ -57,7 +57,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-01 19:36:55.113347"
+    "updated_at": "2026-11-10 01:42:00.214381"
   },
   {
     "id": 14,
@@ -69,7 +69,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-01 19:36:55.125153"
+    "updated_at": "2026-11-10 01:42:00.208403"
   },
   {
     "id": 17,
@@ -81,7 +81,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-01 19:36:55.130840"
+    "updated_at": "2026-11-10 01:42:00.223816"
   },
   {
     "id": 365,
@@ -93,7 +93,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-11-25 02:34:30",
-    "updated_at": "2026-11-01 19:36:55.106700"
+    "updated_at": "2026-11-10 01:42:00.211166"
   },
   {
     "id": 436,
@@ -101,11 +101,11 @@
     "user_id": 908481561161240600,
     "discord_name": "Sid Dempsey",
     "discord_username": "syx0666",
-    "rank": "Full Patch",
+    "rank": "Nomad",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2025-12-08 23:39:53",
-    "updated_at": "2026-11-01 19:36:55.128779"
+    "updated_at": "2026-11-10 02:34:22.180811"
   },
   {
     "id": 782,
@@ -117,7 +117,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-02-09 09:58:45",
-    "updated_at": "2026-11-01 19:36:55.109552"
+    "updated_at": "2026-11-10 01:42:00.213216"
   },
   {
     "id": 1000,
@@ -129,7 +129,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-03-22 05:15:09",
-    "updated_at": "2026-11-01 19:36:55.105994"
+    "updated_at": "2026-11-10 01:42:00.210583"
   },
   {
     "id": 1175,
@@ -141,7 +141,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-10 00:01:39",
-    "updated_at": "2026-11-01 19:36:55.129822"
+    "updated_at": "2026-11-10 01:42:00.223288"
   },
   {
     "id": 1178,
@@ -153,7 +153,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-14 03:21:03",
-    "updated_at": "2026-11-01 19:36:55.108858"
+    "updated_at": "2026-11-10 01:42:00.212651"
   },
   {
     "id": 1188,
@@ -165,7 +165,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:05",
-    "updated_at": "2026-11-01 19:36:55.112617"
+    "updated_at": "2026-11-10 01:42:00.213807"
   },
   {
     "id": 1189,
@@ -177,7 +177,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-06-18 11:14:23",
-    "updated_at": "2026-11-01 19:36:55.118437"
+    "updated_at": "2026-11-10 01:42:00.216954"
   },
   {
     "id": 1209,
@@ -189,7 +189,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-02 07:27:53",
-    "updated_at": "2026-11-01 19:36:55.123672"
+    "updated_at": "2026-11-10 01:42:00.219822"
   },
   {
     "id": 1237,
@@ -201,7 +201,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-05 00:35:46",
-    "updated_at": "2026-11-01 19:36:55.127896"
+    "updated_at": "2026-11-10 01:42:00.222162"
   },
   {
     "id": 1297,
@@ -213,7 +213,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-18 22:03:24",
-    "updated_at": "2026-11-05 01:13:51.760985"
+    "updated_at": "2026-11-10 01:42:00.208978"
   },
   {
     "id": 1321,
@@ -225,7 +225,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-07-20 06:50:39",
-    "updated_at": "2026-11-01 19:36:55.126391"
+    "updated_at": "2026-11-10 01:42:00.221039"
   },
   {
     "id": 1413,
@@ -237,7 +237,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-12 16:20:30",
-    "updated_at": "2026-11-01 19:36:55.124367"
+    "updated_at": "2026-11-10 01:42:00.220402"
   },
   {
     "id": 1416,
@@ -249,19 +249,19 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-16 12:07:57",
-    "updated_at": "2026-11-05 01:13:37.961890"
+    "updated_at": "2026-11-10 01:42:00.207851"
   },
   {
     "id": 1420,
     "guild_id": 889005510286786600,
     "user_id": 1537997564950089700,
-    "discord_name": "[𝐑𝐇𝐌𝐂] kctheproblem",
+    "discord_name": "[𝐑𝐇𝐌𝐂] KcDaProblem",
     "discord_username": "j4xx.kryt",
     "rank": "Full Patch",
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-19 20:39:46",
-    "updated_at": "2026-11-01 19:36:55.114982"
+    "updated_at": "2026-11-10 01:42:00.205913"
   },
   {
     "id": 1452,
@@ -273,7 +273,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-25 18:59:35",
-    "updated_at": "2026-11-01 19:36:55.117663"
+    "updated_at": "2026-11-10 01:42:00.216380"
   },
   {
     "id": 1453,
@@ -285,7 +285,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-08-26 22:15:07",
-    "updated_at": "2026-11-01 19:36:55.127194"
+    "updated_at": "2026-11-10 01:42:00.221597"
   },
   {
     "id": 1523,
@@ -297,7 +297,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:43:46",
-    "updated_at": "2026-11-01 19:36:55.121331"
+    "updated_at": "2026-11-10 01:42:00.218309"
   },
   {
     "id": 1524,
@@ -309,7 +309,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:06",
-    "updated_at": "2026-11-01 19:36:55.119169"
+    "updated_at": "2026-11-10 01:42:00.217616"
   },
   {
     "id": 1525,
@@ -321,7 +321,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:18",
-    "updated_at": "2026-11-01 19:36:55.108170"
+    "updated_at": "2026-11-10 01:42:00.206732"
   },
   {
     "id": 1526,
@@ -333,7 +333,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-05 13:44:27",
-    "updated_at": "2026-11-01 19:36:55.122089"
+    "updated_at": "2026-11-10 01:42:00.219119"
   },
   {
     "id": 1567,
@@ -345,19 +345,7 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-06 16:37:50",
-    "updated_at": "2026-11-01 19:36:55.114294"
-  },
-  {
-    "id": 1611,
-    "guild_id": 889005510286786600,
-    "user_id": 1541598890221113300,
-    "discord_name": "Erich Von Manstein",
-    "discord_username": "notmeserp1",
-    "rank": "Full Patch",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-09-11 15:34:14",
-    "updated_at": "2026-11-01 19:36:55.116820"
+    "updated_at": "2026-11-10 01:42:00.214898"
   },
   {
     "id": 1656,
@@ -369,18 +357,6 @@
     "status": "Active",
     "is_on_loa": 0,
     "created_at": "2026-09-26 03:35:54",
-    "updated_at": "2026-11-01 19:36:55.122849"
-  },
-  {
-    "id": 1792,
-    "guild_id": 889005510286786600,
-    "user_id": 241703203068968960,
-    "discord_name": "Vaelis (That living dead girl)",
-    "discord_username": "vaelisthatlivingdeadgirl",
-    "rank": "Nomad",
-    "status": "Active",
-    "is_on_loa": 0,
-    "created_at": "2026-10-20 07:04:01",
-    "updated_at": "2026-11-01 19:36:55.116073"
+    "updated_at": "2026-11-10 01:42:00.207321"
   }
 ]
