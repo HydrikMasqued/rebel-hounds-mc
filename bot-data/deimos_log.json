@@ -1,8 +1,4 @@
 [
-  "2026-11-10 01:39:30,282 - __main__ - INFO - Database initialized for guild: RHMC Development (ID: 1564805973367984128)",
-  "2026-11-10 01:39:30,283 - utils.database - INFO - Initializing database tables",
-  "2026-11-10 01:39:30,288 - utils.database - INFO - Database tables initialized successfully",
-  "2026-11-10 01:39:30,288 - __main__ - INFO - Database initialized for guild: RHMC Deathsquad (ID: 1564959749676597258)",
   "2026-11-10 01:39:30,288 - utils.database - INFO - Initializing database tables",
   "2026-11-10 01:39:30,293 - utils.database - INFO - Database tables initialized successfully",
   "2026-11-10 01:39:30,293 - __main__ - INFO - Database initialized for guild: RHMC Primer Inter Pares (ID: 1566034199066968136)",
@@ -198,5 +194,9 @@
   "2026-11-10 14:36:50,515 - aiohttp.access - INFO - 127.0.0.1 [10/Nov/2026:14:36:50 +0000] \"GET /api/me HTTP/1.1\" 401 195 \"https://quantum-highland-pre-marsh.trycloudflare.com/\" \"Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36\"",
   "2026-11-10 14:36:50,705 - aiohttp.access - INFO - 127.0.0.1 [10/Nov/2026:14:36:50 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"https://quantum-highland-pre-marsh.trycloudflare.com/\" \"Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36\"",
   "2026-11-10 16:04:47,802 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 47fda292558f45fe8bf487a3968e4fa3.",
-  "2026-11-10 17:00:14,753 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 47fda292558f45fe8bf487a3968e4fa3."
+  "2026-11-10 17:00:14,753 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 47fda292558f45fe8bf487a3968e4fa3.",
+  "2026-11-10 17:32:07,547 - aiohttp.access - INFO - 85.217.149.46 [10/Nov/2026:17:32:07 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-10 17:32:07,711 - aiohttp.access - INFO - 85.217.149.46 [10/Nov/2026:17:32:07 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-10 19:18:03,590 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 47fda292558f45fe8bf487a3968e4fa3.",
+  "2026-11-10 21:47:37,886 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 47fda292558f45fe8bf487a3968e4fa3."
 ]
