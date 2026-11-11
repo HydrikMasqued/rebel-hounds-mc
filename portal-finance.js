@@ -7,8 +7,12 @@ let financeData = {
   categories: [],
   transactions: [],
   budgets: [],
+  cities: [],
   summary: {}
 };
+
+// Active city filter: 'all' shows every city combined
+let activeCity = 'all';
 
 // Chart instances
 let incomeExpenseChart = null;
@@ -21,6 +25,9 @@ const STORAGE_KEY_BUDGETS = 'rh_finance_budgets';
 
 // Default categories
 const DEFAULT_CATEGORIES = ['Dues & Fees', 'Events & Activities', 'Equipment & Gear', 'Maintenance', 'Other'];
+
+// Default cities (chapters) - rename or add more in the UI
+const DEFAULT_CITIES = ['Vital', 'All Pro'];
 
 // ============================================================
 // INITIALIZATION
@@ -46,7 +53,8 @@ function initFinanceDashboard() {
 function cleanupFinanceDashboard() {
   if (incomeExpenseChart) { incomeExpenseChart.destroy(); incomeExpenseChart = null; }
   if (categoryChart) { categoryChart.destroy(); categoryChart = null; }
-  financeData = { categories: [], transactions: [], budgets: [], summary: {} };
+  financeData = { categories: [], transactions: [], budgets: [], cities: [], summary: {} };
+  activeCity = 'all';
   const dashboard = document.getElementById('finDashboard');
   if (dashboard) dashboard.classList.add('hidden');
 }
@@ -95,7 +103,8 @@ function saveFinanceToServer() {
     data: {
       categories: financeData.categories,
       transactions: financeData.transactions,
-      budgets: financeData.budgets
+      budgets: financeData.budgets,
+      cities: financeData.cities
     }
   };
   writeLocalFinance(env);
@@ -128,14 +137,18 @@ function loadData() {
       financeData.categories = merged.categories && merged.categories.length ? merged.categories : [...DEFAULT_CATEGORIES];
       financeData.transactions = merged.transactions || [];
       financeData.budgets = merged.budgets || [];
+      financeData.cities = merged.cities && merged.cities.length ? merged.cities : [...DEFAULT_CITIES];
     } else {
       financeData.categories = [...DEFAULT_CATEGORIES];
       financeData.transactions = [];
       financeData.budgets = [];
+      financeData.cities = [...DEFAULT_CITIES];
     }
 
-    financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+    recalcSummary();
     updateAllCategoryDropdowns();
+    updateCityDropdowns();
+    renderCityTabs();
     renderDashboard();
     showLoading(false);
   });
@@ -151,10 +164,14 @@ function resetAllData() {
   financeData.categories = [...DEFAULT_CATEGORIES];
   financeData.transactions = [];
   financeData.budgets = [];
+  financeData.cities = [...DEFAULT_CITIES];
+  activeCity = 'all';
   financeData.summary = calculateSummary([], []);
   saveFinanceToServer();
   
   updateAllCategoryDropdowns();
+  updateCityDropdowns();
+  renderCityTabs();
   renderDashboard();
   alert('All data has been cleared.');
 }
@@ -257,7 +274,7 @@ function renameCategory(index) {
   saveCategories();
   saveTransactions();
   saveBudgets();
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  recalcSummary();
   updateAllCategoryDropdowns();
   renderDashboard();
 }
@@ -288,14 +305,167 @@ function deleteCategory(index) {
   saveCategories();
   saveTransactions();
   saveBudgets();
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  recalcSummary();
   updateAllCategoryDropdowns();
+  renderDashboard();
+}
+
+// ============================================================
+// CITY / CHAPTER MANAGEMENT
+// ============================================================
+
+function isOfficer() {
+  return typeof hasRole === 'function' ? hasRole('officer') : true;
+}
+
+function getScopedTransactions() {
+  if (activeCity === 'all') return financeData.transactions;
+  return financeData.transactions.filter(t => (t.city || '') === activeCity);
+}
+
+function getScopedBudgets() {
+  if (activeCity === 'all') return financeData.budgets;
+  return financeData.budgets.filter(b => (b.city || '') === activeCity);
+}
+
+function cityLabel(city) {
+  return city && String(city).trim() ? city : 'Unassigned';
+}
+
+function escAttr(s) {
+  return escapeHtml(s).replace(/"/g, '&quot;');
+}
+
+function renderCityTabs() {
+  const container = document.getElementById('finCityTabs');
+  if (!container) return;
+  const counts = {};
+  financeData.transactions.forEach(t => {
+    const k = t.city || '';
+    counts[k] = (counts[k] || 0) + 1;
+  });
+  const mkTab = (value, label) => {
+    const count = value === 'all' ? financeData.transactions.length : (counts[value] || 0);
+    return '<button type="button" class="fin-city-tab' + (activeCity === value ? ' active' : '') + '" data-city-tab="' + escAttr(value) + '">' +
+      escapeHtml(label) + '<span class="fin-city-count">' + count + '</span></button>';
+  };
+  let html = mkTab('all', 'All Cities');
+  financeData.cities.forEach(c => { html += mkTab(c, c); });
+  if (isOfficer()) html += '<button type="button" class="fin-city-tab fin-city-manage-btn" id="finCityManageBtn">Manage</button>';
+  container.innerHTML = html;
+}
+
+function switchCity(value) {
+  activeCity = value;
+  financeData.summary = calculateSummary(getScopedTransactions(), getScopedBudgets());
+  renderCityTabs();
+  renderDashboard();
+}
+
+function updateCityDropdowns() {
+  const options = (selected, allowUnassigned) => {
+    let html = allowUnassigned ? '<option value="">Unassigned</option>' : '';
+    financeData.cities.forEach(c => {
+      html += '<option value="' + escAttr(c) + '"' + (c === selected ? ' selected' : '') + '>' + escapeHtml(c) + '</option>';
+    });
+    return html;
+  };
+  const addCity = document.getElementById('finCity');
+  if (addCity) {
+    const def = activeCity !== 'all' ? activeCity : (financeData.cities[0] || '');
+    addCity.innerHTML = options(def, false);
+  }
+  const editCity = document.getElementById('editTransCity');
+  if (editCity) editCity.innerHTML = options(editCity.value, true);
+  const addBudgetCity = document.getElementById('finBudgetCity');
+  if (addBudgetCity) {
+    const def = activeCity !== 'all' ? activeCity : (financeData.cities[0] || '');
+    addBudgetCity.innerHTML = options(def, false);
+  }
+  const editBudgetCity = document.getElementById('editBudgetCity');
+  if (editBudgetCity) editBudgetCity.innerHTML = options(editBudgetCity.value, true);
+}
+
+function renderCityManager() {
+  const row = document.getElementById('finCityEditRow');
+  if (!row) return;
+  if (financeData.cities.length === 0) {
+    row.innerHTML = '<p class="fin-no-data">No cities yet. Add one below.</p>';
+    return;
+  }
+  row.innerHTML = financeData.cities.map((c, i) =>
+    '<span class="fin-city-edit-item">' +
+    '<input type="text" value="' + escAttr(c) + '" data-city-rename="' + i + '" maxlength="30">' +
+    '<button type="button" class="fin-action-btn fin-delete-btn" data-city-delete="' + i + '" title="Delete">&times;</button>' +
+    '</span>'
+  ).join('');
+}
+
+function addCity() {
+  const input = document.getElementById('finNewCity');
+  const name = (input.value || '').trim();
+  if (!name) { alert('Please enter a city name.'); return; }
+  if (financeData.cities.some(c => c.toLowerCase() === name.toLowerCase())) {
+    alert('This city already exists.');
+    return;
+  }
+  financeData.cities.push(name);
+  saveFinanceToServer();
+  updateCityDropdowns();
+  renderCityManager();
+  renderCityTabs();
+  input.value = '';
+}
+
+function renameCity(index, newName) {
+  const oldName = financeData.cities[index];
+  const name = (newName || '').trim();
+  if (!oldName || !name || name === oldName) { renderCityManager(); return; }
+  if (financeData.cities.some((c, i) => i !== index && c.toLowerCase() === name.toLowerCase())) {
+    alert('A city with this name already exists.');
+    renderCityManager();
+    return;
+  }
+  financeData.cities[index] = name;
+  financeData.transactions.forEach(t => { if ((t.city || '') === oldName) t.city = name; });
+  financeData.budgets.forEach(b => { if ((b.city || '') === oldName) b.city = name; });
+  if (activeCity === oldName) activeCity = name;
+  financeData.summary = calculateSummary(getScopedTransactions(), getScopedBudgets());
+  saveFinanceToServer();
+  updateCityDropdowns();
+  renderCityManager();
+  renderCityTabs();
+  renderDashboard();
+}
+
+function deleteCity(index) {
+  const name = financeData.cities[index];
+  if (!name) return;
+  const txCount = financeData.transactions.filter(t => (t.city || '') === name).length;
+  const budgetCount = financeData.budgets.filter(b => (b.city || '') === name).length;
+  let message = 'Delete city "' + name + '"?';
+  if (txCount > 0) message += '\n\n' + txCount + ' transaction(s) in this city will become Unassigned.';
+  if (budgetCount > 0) message += '\n' + budgetCount + ' budget(s) in this city will become Unassigned.';
+  if (!confirm(message)) return;
+  financeData.cities.splice(index, 1);
+  financeData.transactions.forEach(t => { if ((t.city || '') === name) t.city = ''; });
+  financeData.budgets.forEach(b => { if ((b.city || '') === name) b.city = ''; });
+  if (activeCity === name) activeCity = 'all';
+  financeData.summary = calculateSummary(getScopedTransactions(), getScopedBudgets());
+  saveFinanceToServer();
+  updateCityDropdowns();
+  renderCityManager();
+  renderCityTabs();
   renderDashboard();
 }
 
 // ============================================================
 // CALCULATIONS
 // ============================================================
+
+function recalcSummary() {
+  financeData.summary = calculateSummary(getScopedTransactions(), getScopedBudgets());
+}
 
 function calculateSummary(transactions, budgets) {
   const now = new Date();
@@ -338,7 +508,7 @@ function getMonthlyData(months) {
     labels.push(date.toLocaleDateString('en-US', { month: 'short' }));
     
     let monthIncome = 0, monthExpenses = 0;
-    financeData.transactions.forEach(t => {
+    getScopedTransactions().forEach(t => {
       const tDate = new Date(t.date);
       const amount = parseFloat(t.amount) || 0;
       if (tDate.getMonth() === date.getMonth() && tDate.getFullYear() === date.getFullYear()) {
@@ -355,7 +525,7 @@ function getMonthlyData(months) {
 
 function getCategoryBreakdown() {
   const breakdown = {};
-  financeData.transactions.filter(t => t.type === 'Expense').forEach(t => {
+  getScopedTransactions().filter(t => t.type === 'Expense').forEach(t => {
     const category = t.category || 'Other';
     breakdown[category] = (breakdown[category] || 0) + (parseFloat(t.amount) || 0);
   });
@@ -363,7 +533,7 @@ function getCategoryBreakdown() {
 }
 
 function getFilteredTransactions(filters = {}) {
-  let filtered = [...financeData.transactions];
+  let filtered = [...getScopedTransactions()];
   if (filters.category) filtered = filtered.filter(t => t.category === filters.category);
   if (filters.type) filtered = filtered.filter(t => t.type === filters.type);
   filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -375,6 +545,7 @@ function getFilteredTransactions(filters = {}) {
 // ============================================================
 
 function renderDashboard() {
+  renderCityTabs();
   renderOverviewCards();
   renderCharts();
   renderBudgetProgress();
@@ -450,12 +621,13 @@ function renderBudgetProgress() {
   const container = document.getElementById('finBudgetGrid');
   if (!container) return;
   
-  if (financeData.budgets.length === 0) {
+  const budgets = getScopedBudgets();
+  if (budgets.length === 0) {
     container.innerHTML = '<p class="fin-no-data">No budgets set. Add one below.</p>';
     return;
   }
   
-  container.innerHTML = financeData.budgets.map(budget => {
+  container.innerHTML = budgets.map(budget => {
     const category = budget.category || 'Unknown';
     const monthlyLimit = parseFloat(budget.monthlyLimit) || 0;
     const annualLimit = parseFloat(budget.annualLimit) || 0;
@@ -471,7 +643,7 @@ function renderBudgetProgress() {
     return `
       <div class="fin-budget-item">
         <div class="fin-budget-header">
-          <span class="fin-budget-category">${escapeHtml(category)}</span>
+          <span class="fin-budget-category">${escapeHtml(category)}${activeCity === 'all' && budget.city ? ' <span class="fin-budget-city">(${escapeHtml(budget.city)})</span>' : ''}</span>
           <span class="fin-budget-amounts">$${spent.toLocaleString()} / $${limit.toLocaleString()}</span>
         </div>
         <div class="fin-budget-bar"><div class="fin-budget-fill ${statusClass}" style="width: ${percentage}%"></div></div>
@@ -497,7 +669,7 @@ function renderTransactions(filters = {}) {
   const display = filtered.slice(0, 50);
   
   if (display.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" class="fin-no-data">No transactions found</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" class="fin-no-data">No transactions found</td></tr>';
     if (countEl) countEl.textContent = 'No transactions';
     return;
   }
@@ -509,6 +681,7 @@ function renderTransactions(filters = {}) {
         <td>${formatDate(t.date)}</td>
         <td><span class="fin-type-badge ${typeClass}">${escapeHtml(t.type)}</span></td>
         <td>${escapeHtml(t.category)}</td>
+        <td>${escapeHtml(cityLabel(t.city))}</td>
         <td class="${typeClass}">${formatCurrency(t.amount)}</td>
         <td>${escapeHtml(t.description)}</td>
         <td>${escapeHtml(t.member)}</td>
@@ -532,7 +705,7 @@ function renderTransactions(filters = {}) {
 
 function addTransaction(data) {
   financeData.transactions.unshift({ id: Date.now().toString(), ...data });
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  recalcSummary();
   updateBudgetSpent();
   saveTransactions();
   saveBudgets();
@@ -543,10 +716,12 @@ function editTransaction(id) {
   const t = financeData.transactions.find(x => x.id === id);
   if (!t) return;
   
+  updateCityDropdowns();
   document.getElementById('editTransId').value = t.id;
   document.getElementById('editTransDate').value = t.date;
   document.getElementById('editTransType').value = t.type;
   document.getElementById('editTransCategory').value = t.category;
+  document.getElementById('editTransCity').value = t.city || '';
   document.getElementById('editTransAmount').value = t.amount;
   document.getElementById('editTransDescription').value = t.description;
   document.getElementById('editTransMember').value = t.member;
@@ -562,11 +737,12 @@ function saveEditedTransaction() {
   t.date = document.getElementById('editTransDate').value;
   t.type = document.getElementById('editTransType').value;
   t.category = document.getElementById('editTransCategory').value;
+  t.city = document.getElementById('editTransCity').value;
   t.amount = parseFloat(document.getElementById('editTransAmount').value);
   t.description = document.getElementById('editTransDescription').value;
   t.member = document.getElementById('editTransMember').value;
   
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  recalcSummary();
   updateBudgetSpent();
   saveTransactions();
   saveBudgets();
@@ -577,7 +753,7 @@ function saveEditedTransaction() {
 function deleteTransaction(id) {
   if (!confirm('Delete this transaction?')) return;
   financeData.transactions = financeData.transactions.filter(t => t.id !== id);
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  recalcSummary();
   updateBudgetSpent();
   saveTransactions();
   saveBudgets();
@@ -590,16 +766,18 @@ function deleteTransaction(id) {
 
 function addBudget() {
   const category = document.getElementById('finBudgetCategory').value;
+  const city = document.getElementById('finBudgetCity') ? document.getElementById('finBudgetCity').value : '';
   const monthly = parseFloat(document.getElementById('finBudgetMonthly').value) || 0;
   const annual = parseFloat(document.getElementById('finBudgetAnnual').value) || 0;
   
   if (!category) { alert('Please select a category.'); return; }
-  if (financeData.budgets.some(b => b.category === category)) { alert('A budget for this category already exists.'); return; }
+  if (financeData.budgets.some(b => b.category === category && (b.city || '') === city)) { alert('A budget for this category already exists in this city.'); return; }
   if (monthly === 0 && annual === 0) { alert('Please enter at least one budget limit.'); return; }
   
   financeData.budgets.push({
     id: Date.now().toString(),
     category,
+    city,
     monthlyLimit: monthly,
     annualLimit: annual,
     spent: 0
@@ -618,8 +796,10 @@ function editBudget(id) {
   const b = financeData.budgets.find(x => x.id === id);
   if (!b) return;
   
+  updateCityDropdowns();
   document.getElementById('editBudgetId').value = b.id;
   document.getElementById('editBudgetCategory').value = b.category;
+  document.getElementById('editBudgetCity').value = b.city || '';
   document.getElementById('editBudgetMonthly').value = b.monthlyLimit || '';
   document.getElementById('editBudgetAnnual').value = b.annualLimit || '';
   
@@ -633,8 +813,9 @@ function saveEditedBudget() {
   
   b.monthlyLimit = parseFloat(document.getElementById('editBudgetMonthly').value) || 0;
   b.annualLimit = parseFloat(document.getElementById('editBudgetAnnual').value) || 0;
+  if (document.getElementById('editBudgetCity')) b.city = document.getElementById('editBudgetCity').value;
   
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  recalcSummary();
   saveBudgets();
   renderDashboard();
   document.getElementById('editBudgetModal').classList.remove('active');
@@ -643,7 +824,7 @@ function saveEditedBudget() {
 function deleteBudget(id) {
   if (!confirm('Delete this budget?')) return;
   financeData.budgets = financeData.budgets.filter(b => b.id !== id);
-  financeData.summary = calculateSummary(financeData.transactions, financeData.budgets);
+  recalcSummary();
   saveBudgets();
   renderDashboard();
 }
@@ -651,7 +832,7 @@ function deleteBudget(id) {
 function updateBudgetSpent() {
   financeData.budgets.forEach(budget => {
     budget.spent = financeData.transactions
-      .filter(t => t.type === 'Expense' && t.category === budget.category)
+      .filter(t => t.type === 'Expense' && t.category === budget.category && (t.city || '') === (budget.city || ''))
       .reduce((sum, t) => sum + (parseFloat(t.amount) || 0), 0);
   });
 }
@@ -667,6 +848,34 @@ function setupEventListeners() {
   document.getElementById('finResetBtn')?.addEventListener('click', resetAllData);
   document.getElementById('finAddCategory')?.addEventListener('click', addCategory);
   document.getElementById('finAddBudget')?.addEventListener('click', addBudget);
+  
+  // City tabs + manager
+  document.getElementById('finCityTabs')?.addEventListener('click', (e) => {
+    const tab = e.target.closest('[data-city-tab]');
+    if (tab) { switchCity(tab.getAttribute('data-city-tab')); return; }
+    if (e.target.closest('#finCityManageBtn')) {
+      const mgr = document.getElementById('finCityManager');
+      if (mgr) {
+        mgr.classList.toggle('hidden');
+        if (!mgr.classList.contains('hidden')) renderCityManager();
+      }
+    }
+  });
+  document.getElementById('finAddCity')?.addEventListener('click', addCity);
+  document.getElementById('finNewCity')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); addCity(); }
+  });
+  const cityEditRow = document.getElementById('finCityEditRow');
+  if (cityEditRow) {
+    cityEditRow.addEventListener('change', (e) => {
+      const idx = e.target.getAttribute('data-city-rename');
+      if (idx !== null && idx !== undefined && idx !== '') renameCity(parseInt(idx, 10), e.target.value);
+    });
+    cityEditRow.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-city-delete]');
+      if (btn) deleteCity(parseInt(btn.getAttribute('data-city-delete'), 10));
+    });
+  }
   
   // Enter key for new category
   document.getElementById('finNewCategory')?.addEventListener('keypress', (e) => {
@@ -706,6 +915,7 @@ function handleTransactionSubmit(e) {
     date: document.getElementById('finDate').value,
     type: document.getElementById('finType').value,
     category: document.getElementById('finCategory').value,
+    city: document.getElementById('finCity') ? document.getElementById('finCity').value : '',
     amount: parseFloat(document.getElementById('finAmount').value),
     description: document.getElementById('finDescription').value,
     member: document.getElementById('finMember').value,

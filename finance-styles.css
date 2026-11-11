@@ -756,3 +756,104 @@
   background: #c0392b;
   color: white;
 }
+
+/* ===== City Sub-Tabs ===== */
+.fin-city-tabs {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.fin-city-tab {
+  font-family: var(--font-display), 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  font-size: 0.95rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--dark-2);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.fin-city-tab:hover {
+  color: var(--text);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.fin-city-tab.active {
+  background: linear-gradient(135deg, #e0533d, #a93226);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(192, 57, 43, 0.35);
+}
+
+.fin-city-count {
+  display: inline-block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.68rem;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  padding: 0.05rem 0.45rem;
+  margin-left: 0.45rem;
+  vertical-align: 1px;
+}
+
+.fin-budget-city {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.fin-city-manage-btn {
+  border-style: dashed;
+}
+
+.fin-city-manager {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: -0.75rem 0 1.5rem;
+}
+
+.fin-city-manager-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.fin-city-manager-row:last-child {
+  margin-bottom: 0;
+}
+
+.fin-city-manager-row input {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  min-width: 160px;
+}
+
+.fin-city-edit-item {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+}
+
+.fin-city-edit-item input {
+  min-width: 130px;
+  border: none;
+  background: transparent;
+  padding: 0.2rem;
+}
