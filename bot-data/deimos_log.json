@@ -1,8 +1,4 @@
 [
-  "2026-11-12 02:26:12,573 - utils.panels - WARNING - panel edit failed (Message.edit() got an unexpected keyword argument 'files'); reposting cleanly",
-  "2026-11-12 02:26:13,604 - utils.panels - INFO - panel sweep removed 1 stale copy/copies of ('Reports',)",
-  "2026-11-12 02:26:13,605 - cogs.action_panel - INFO - Action panel (reports) posted",
-  "2026-11-12 02:26:13,843 - utils.panels - WARNING - panel edit failed (Message.edit() got an unexpected keyword argument 'files'); reposting cleanly",
   "2026-11-12 02:26:14,921 - utils.panels - INFO - panel sweep removed 1 stale copy/copies of ('Task Manager',)",
   "2026-11-12 02:26:14,922 - cogs.action_panel - INFO - Action panel (tasks) posted",
   "2026-11-12 02:26:15,141 - utils.panels - WARNING - panel edit failed (Message.edit() got an unexpected keyword argument 'files'); reposting cleanly",
@@ -198,5 +194,9 @@
   "2026-11-12 17:29:18,989 - aiohttp.access - INFO - 127.0.0.1 [12/Nov/2026:17:29:18 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36\"",
   "2026-11-12 17:29:19,363 - aiohttp.access - INFO - 127.0.0.1 [12/Nov/2026:17:29:19 +0000] \"GET /api/me HTTP/1.1\" 401 195 \"https://pants-phentermine-linux-frequent.trycloudflare.com/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36\"",
   "2026-11-12 18:17:00,818 - aiohttp.access - INFO - 31.14.32.4 [12/Nov/2026:18:17:00 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
-  "2026-11-12 18:17:00,970 - aiohttp.access - INFO - 31.14.32.4 [12/Nov/2026:18:17:00 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\""
+  "2026-11-12 18:17:00,970 - aiohttp.access - INFO - 31.14.32.4 [12/Nov/2026:18:17:00 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-12 19:13:24,812 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-12 20:21:01,560 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-12 21:08:58,264 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-12 22:38:58,599 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
