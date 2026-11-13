@@ -1,14 +1,4 @@
 [
-  "2026-11-12 03:07:10,404 - utils.api - INFO - API key loaded: th3ZzxMX...",
-  "2026-11-12 03:07:10,404 - __main__ - INFO - Starting Gatekeeper Bot...",
-  "2026-11-12 03:07:10,430 - discord.client - INFO - logging in using static token",
-  "2026-11-12 03:07:10,837 - utils.database - INFO - Initializing database tables",
-  "2026-11-12 03:07:10,839 - utils.database - INFO - Shared database connection established",
-  "2026-11-12 03:07:10,843 - utils.database - INFO - Database tables initialized successfully",
-  "2026-11-12 03:07:10,844 - __main__ - INFO - Database initialized in setup hook",
-  "2026-11-12 03:07:10,862 - utils.loa_database - INFO - LOA database manager initialized with path: /home/container/data/loa.db",
-  "2026-11-12 03:07:10,862 - cogs.loa_system - INFO - LOASystem cog initialized",
-  "2026-11-12 03:07:10,862 - utils.loa_database - INFO - Initializing LOA database tables",
   "2026-11-12 03:07:10,863 - utils.loa_database - INFO - Shared LOA database connection established",
   "2026-11-12 03:07:10,864 - utils.loa_database - INFO - LOA database tables initialized successfully",
   "2026-11-12 03:07:10,865 - __main__ - INFO - Successfully loaded cogs.loa_system",
@@ -198,5 +188,15 @@
   "2026-11-13 14:17:04,687 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
   "2026-11-13 14:17:04,690 - cogs.membership - INFO - Updated member Xan Xcient with rank Full Patch",
   "2026-11-13 14:17:15,080 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
-  "2026-11-13 14:53:55,876 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-13 14:53:55,876 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 16:50:16,006 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 18:16:59,164 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 18:28:57,079 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 18:38:16,206 - aiohttp.access - INFO - 31.14.32.4 [13/Nov/2026:18:38:16 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-13 18:38:16,339 - aiohttp.access - INFO - 31.14.32.4 [13/Nov/2026:18:38:16 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-13 19:30:56,002 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-13 19:30:56,004 - cogs.membership - INFO - Updated member Rushyyy [ROMMEL HIMSELF] with rank Full Patch",
+  "2026-11-13 19:31:15,080 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-11-13 19:41:32,252 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 20:22:14,851 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
