@@ -1,15 +1,4 @@
 [
-  "2026-11-12 02:26:14,921 - utils.panels - INFO - panel sweep removed 1 stale copy/copies of ('Task Manager',)",
-  "2026-11-12 02:26:14,922 - cogs.action_panel - INFO - Action panel (tasks) posted",
-  "2026-11-12 02:26:15,141 - utils.panels - WARNING - panel edit failed (Message.edit() got an unexpected keyword argument 'files'); reposting cleanly",
-  "2026-11-12 02:26:16,268 - utils.panels - INFO - panel sweep removed 1 stale copy/copies of ('Server Setup',)",
-  "2026-11-12 02:26:16,268 - cogs.action_panel - INFO - Action panel (setup) posted",
-  "2026-11-12 02:26:48,394 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-11-12 02:26:48,397 - cogs.membership - INFO - Updated member James 'Jay' Guerrero with rank President",
-  "2026-11-12 02:27:39,179 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-11-12 02:27:39,181 - cogs.membership - INFO - Updated member James 'Jay' Guerrero with rank President",
-  "2026-11-12 02:27:41,562 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
-  "2026-11-12 02:27:41,563 - cogs.membership - INFO - Updated member James 'Jay' Guerrero with rank President",
   "2026-11-12 02:28:06,193 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
   "2026-11-12 03:07:04,198 - __main__ - INFO - Bot is shutting down...",
   "2026-11-12 03:07:04,198 - __main__ - INFO - API server stopped",
@@ -198,5 +187,16 @@
   "2026-11-12 19:13:24,812 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-12 20:21:01,560 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-12 21:08:58,264 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
-  "2026-11-12 22:38:58,599 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-12 22:38:58,599 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 01:05:35,731 - aiohttp.access - INFO - 127.0.0.1 [13/Nov/2026:01:05:35 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-13 01:05:35,975 - aiohttp.access - INFO - 127.0.0.1 [13/Nov/2026:01:05:35 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-13 01:37:48,730 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 02:09:36,553 - aiohttp.access - INFO - 127.0.0.1 [13/Nov/2026:02:09:36 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-13 02:09:36,554 - aiohttp.access - INFO - 127.0.0.1 [13/Nov/2026:02:09:36 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-13 02:29:56,209 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 03:07:15,007 - utils.jobs - INFO - job 1794539235-7cb9 started: maintenance nightly backup + export retention",
+  "2026-11-13 03:07:15,078 - utils.backup - INFO - backup written: gatekeeper-2026-11-13-nightly.zip (466.7 KB, 11 database(s))",
+  "2026-11-13 03:36:37,678 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 04:18:48,386 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-13 05:21:49,778 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
