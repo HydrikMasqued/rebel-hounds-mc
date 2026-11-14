@@ -1,9 +1,4 @@
 [
-  "2026-11-12 03:07:10,953 - cogs.playtime_tracker - INFO - Monthly reset task started",
-  "2026-11-12 03:07:10,953 - __main__ - INFO - Successfully loaded cogs.playtime_tracker",
-  "2026-11-12 03:07:10,963 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
-  "2026-11-12 03:07:10,964 - cogs.contribution_verification - INFO - Contribution timeout check task started",
-  "2026-11-12 03:07:10,964 - __main__ - INFO - Successfully loaded cogs.contribution_verification",
   "2026-11-12 03:07:11,008 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
   "2026-11-12 03:07:11,008 - cogs.church_tracker - INFO - Church tracker initialized",
   "2026-11-12 03:07:11,008 - utils.church_database - INFO - Initializing church database tables",
@@ -198,5 +193,10 @@
   "2026-11-14 12:46:11,160 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-14 13:23:12,844 - aiohttp.access - INFO - 104.152.52.100 [14/Nov/2026:13:23:12 +0000] \"UNKNOWN / HTTP/1.0\" 400 200 \"-\" \"-\"",
   "2026-11-14 13:23:13,411 - aiohttp.access - INFO - 104.152.52.123 [14/Nov/2026:13:23:13 +0000] \"GET / HTTP/1.1\" 200 29764 \"-\" \"curl/7.61.1\"",
-  "2026-11-14 13:23:13,705 - aiohttp.access - INFO - 104.152.52.123 [14/Nov/2026:13:23:13 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\""
+  "2026-11-14 13:23:13,705 - aiohttp.access - INFO - 104.152.52.123 [14/Nov/2026:13:23:13 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\"",
+  "2026-11-14 14:58:58,847 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 17:40:03,932 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 17:57:29,033 - aiohttp.access - INFO - 85.217.149.46 [14/Nov/2026:17:57:29 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-14 17:57:29,198 - aiohttp.access - INFO - 85.217.149.46 [14/Nov/2026:17:57:29 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-14 18:22:04,009 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
