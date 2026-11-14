@@ -1,9 +1,4 @@
 [
-  "2026-11-12 03:07:10,946 - utils.playtime_database - INFO - Initializing playtime database tables",
-  "2026-11-12 03:07:10,948 - utils.playtime_database - INFO - Shared playtime database connection established",
-  "2026-11-12 03:07:10,951 - utils.playtime_database - INFO - Database migration check complete",
-  "2026-11-12 03:07:10,952 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
-  "2026-11-12 03:07:10,952 - cogs.playtime_tracker - INFO - Playtime database initialized",
   "2026-11-12 03:07:10,953 - cogs.playtime_tracker - INFO - Monthly reset task started",
   "2026-11-12 03:07:10,953 - __main__ - INFO - Successfully loaded cogs.playtime_tracker",
   "2026-11-12 03:07:10,963 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
@@ -198,5 +193,10 @@
   "2026-11-14 03:07:14,998 - utils.jobs - INFO - job 1794625634-c79c started: maintenance nightly backup + export retention",
   "2026-11-14 03:07:15,067 - utils.backup - INFO - backup written: gatekeeper-2026-11-14-nightly.zip (470.8 KB, 11 database(s))",
   "2026-11-14 06:02:17,973 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
-  "2026-11-14 07:22:45,929 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-14 07:22:45,929 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 11:13:27,079 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 12:46:11,160 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 13:23:12,844 - aiohttp.access - INFO - 104.152.52.100 [14/Nov/2026:13:23:12 +0000] \"UNKNOWN / HTTP/1.0\" 400 200 \"-\" \"-\"",
+  "2026-11-14 13:23:13,411 - aiohttp.access - INFO - 104.152.52.123 [14/Nov/2026:13:23:13 +0000] \"GET / HTTP/1.1\" 200 29764 \"-\" \"curl/7.61.1\"",
+  "2026-11-14 13:23:13,705 - aiohttp.access - INFO - 104.152.52.123 [14/Nov/2026:13:23:13 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\""
 ]
