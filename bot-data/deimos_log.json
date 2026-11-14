@@ -1,10 +1,4 @@
 [
-  "2026-11-12 03:07:10,915 - __main__ - INFO - Successfully loaded cogs.direct_messaging",
-  "2026-11-12 03:07:10,923 - __main__ - INFO - Successfully loaded cogs.time_converter",
-  "2026-11-12 03:07:10,945 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
-  "2026-11-12 03:07:10,946 - cogs.playtime_tracker - INFO - Loaded playtime channel config - Vital: 1267079320564924400, All Pro: 1267079320564924400 (Elyxir retired)",
-  "2026-11-12 03:07:10,946 - cogs.playtime_tracker - INFO - Playtime notifications enabled - Notify user: 181143017619587070, Requirement: 4h",
-  "2026-11-12 03:07:10,946 - cogs.playtime_tracker - INFO - Playtime tracker initialized with dual-channel support",
   "2026-11-12 03:07:10,946 - utils.playtime_database - INFO - Initializing playtime database tables",
   "2026-11-12 03:07:10,948 - utils.playtime_database - INFO - Shared playtime database connection established",
   "2026-11-12 03:07:10,951 - utils.playtime_database - INFO - Database migration check complete",
@@ -198,5 +192,11 @@
   "2026-11-14 00:44:18,721 - aiohttp.access - INFO - 127.0.0.1 [14/Nov/2026:00:44:18 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
   "2026-11-14 00:44:18,724 - aiohttp.access - INFO - 127.0.0.1 [14/Nov/2026:00:44:18 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
   "2026-11-14 00:55:39,702 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
-  "2026-11-14 01:04:51,798 - aiohttp.access - INFO - 127.0.0.1 [14/Nov/2026:01:04:51 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\""
+  "2026-11-14 01:04:51,798 - aiohttp.access - INFO - 127.0.0.1 [14/Nov/2026:01:04:51 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-14 01:47:25,223 - aiohttp.access - INFO - 127.0.0.1 [14/Nov/2026:01:47:25 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-14 02:07:43,990 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 03:07:14,998 - utils.jobs - INFO - job 1794625634-c79c started: maintenance nightly backup + export retention",
+  "2026-11-14 03:07:15,067 - utils.backup - INFO - backup written: gatekeeper-2026-11-14-nightly.zip (470.8 KB, 11 database(s))",
+  "2026-11-14 06:02:17,973 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 07:22:45,929 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
