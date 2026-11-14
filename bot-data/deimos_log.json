@@ -1,12 +1,4 @@
 [
-  "2026-11-12 03:07:11,008 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
-  "2026-11-12 03:07:11,008 - cogs.church_tracker - INFO - Church tracker initialized",
-  "2026-11-12 03:07:11,008 - utils.church_database - INFO - Initializing church database tables",
-  "2026-11-12 03:07:11,011 - utils.church_database - INFO - Shared church database connection established",
-  "2026-11-12 03:07:11,016 - utils.church_database - INFO - Church database tables initialized successfully",
-  "2026-11-12 03:07:11,016 - cogs.church_tracker - INFO - Church database initialized",
-  "2026-11-12 03:07:11,016 - cogs.church_tracker - ERROR - Failed to register church views: View is not persistent. Items need to have a custom_id set and View must have no timeout",
-  "2026-11-12 03:07:11,016 - cogs.church_tracker - INFO - Church confirmation expiry task started",
   "2026-11-12 03:07:11,016 - __main__ - INFO - Successfully loaded cogs.church_tracker",
   "2026-11-12 03:07:11,032 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
   "2026-11-12 03:07:11,032 - utils.church_database - INFO - Initializing church database tables",
@@ -198,5 +190,13 @@
   "2026-11-14 17:40:03,932 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-14 17:57:29,033 - aiohttp.access - INFO - 85.217.149.46 [14/Nov/2026:17:57:29 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
   "2026-11-14 17:57:29,198 - aiohttp.access - INFO - 85.217.149.46 [14/Nov/2026:17:57:29 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
-  "2026-11-14 18:22:04,009 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-14 18:22:04,009 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 20:05:29,074 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 21:31:39,781 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 22:21:55,858 - utils.loa_notifications - INFO - Updated membership status for Donna “ Luna “ Willow (ID: 399697875002458122) - LOA: True",
+  "2026-11-14 22:21:55,859 - utils.loa_notifications - WARNING - LOA notification channel 1336076859166691449 not found in guild 889005510286786601",
+  "2026-11-14 22:21:56,856 - utils.loa_notifications - INFO - Sent LOA DM notification to user 181143017619587073",
+  "2026-11-14 22:23:15,080 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-11-14 22:31:51,219 - cogs.direct_messaging - WARNING - DM relay skipped for user 294127733401976832: channel 1336076859166691449 inaccessible in guild 889005510286786601 (NotFound)",
+  "2026-11-14 22:34:55,261 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
