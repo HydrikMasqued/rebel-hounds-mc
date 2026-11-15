@@ -1,10 +1,4 @@
 [
-  "2026-11-12 03:07:11,068 - utils.loa_database - INFO - Shared LOA database connection established",
-  "2026-11-12 03:07:11,069 - utils.loa_database - INFO - LOA database tables initialized successfully",
-  "2026-11-12 03:07:11,069 - cogs.treasury - WARNING - Could not re-register treasury views: View is not persistent. Items need to have a custom_id set and View must have no timeout",
-  "2026-11-12 03:07:11,069 - __main__ - INFO - Successfully loaded cogs.treasury",
-  "2026-11-12 03:07:11,077 - cogs.committees - WARNING - Could not re-register committee views: View is not persistent. Items need to have a custom_id set and View must have no timeout",
-  "2026-11-12 03:07:11,077 - __main__ - INFO - Successfully loaded cogs.committees",
   "2026-11-12 03:07:11,078 - __main__ - INFO - Successfully loaded cogs.website_sync",
   "2026-11-12 03:07:11,110 - cogs.city_checkin - INFO - City checkin cog initialized",
   "2026-11-12 03:07:11,113 - utils.checkin_database - INFO - Checkin database initialized",
@@ -198,5 +192,11 @@
   "2026-11-15 00:43:52,412 - aiohttp.access - INFO - 127.0.0.1 [15/Nov/2026:00:43:52 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
   "2026-11-15 00:49:24,850 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
   "2026-11-15 00:49:24,851 - cogs.membership - INFO - Updated member Drew Jackson with rank Enforcer",
-  "2026-11-15 00:51:15,081 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)"
+  "2026-11-15 00:51:15,081 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-11-15 03:07:14,997 - utils.jobs - INFO - job 1794712034-21c4 started: maintenance nightly backup + export retention",
+  "2026-11-15 03:07:15,064 - utils.backup - INFO - backup written: gatekeeper-2026-11-15-nightly.zip (476.9 KB, 11 database(s))",
+  "2026-11-15 03:42:43,854 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 04:30:34,670 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 05:01:50,848 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 08:20:35,302 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
