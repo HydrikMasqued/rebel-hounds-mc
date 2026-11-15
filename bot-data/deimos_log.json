@@ -1,7 +1,4 @@
 [
-  "2026-11-12 03:07:11,078 - __main__ - INFO - Successfully loaded cogs.website_sync",
-  "2026-11-12 03:07:11,110 - cogs.city_checkin - INFO - City checkin cog initialized",
-  "2026-11-12 03:07:11,113 - utils.checkin_database - INFO - Checkin database initialized",
   "2026-11-12 03:07:11,113 - cogs.city_checkin - INFO - Persistent checkin views registered",
   "2026-11-12 03:07:11,113 - __main__ - INFO - Successfully loaded cogs.city_checkin",
   "2026-11-12 03:07:11,121 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
@@ -198,5 +195,8 @@
   "2026-11-15 03:42:43,854 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-15 04:30:34,670 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-15 05:01:50,848 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
-  "2026-11-15 08:20:35,302 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-15 08:20:35,302 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 11:20:09,159 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 13:36:03,443 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 16:04:34,688 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
