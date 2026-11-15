@@ -1,14 +1,4 @@
 [
-  "2026-11-12 03:07:11,113 - cogs.city_checkin - INFO - Persistent checkin views registered",
-  "2026-11-12 03:07:11,113 - __main__ - INFO - Successfully loaded cogs.city_checkin",
-  "2026-11-12 03:07:11,121 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
-  "2026-11-12 03:07:11,121 - utils.playtime_database - INFO - Initializing playtime database tables",
-  "2026-11-12 03:07:11,123 - utils.playtime_database - INFO - Shared playtime database connection established",
-  "2026-11-12 03:07:11,125 - utils.playtime_database - INFO - Database migration check complete",
-  "2026-11-12 03:07:11,126 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
-  "2026-11-12 03:07:11,129 - utils.checkin_database - INFO - Checkin database initialized",
-  "2026-11-12 03:07:11,129 - cogs.activity - INFO - Activity tracker initialized",
-  "2026-11-12 03:07:11,129 - __main__ - INFO - Successfully loaded cogs.activity",
   "2026-11-12 03:07:11,140 - utils.tasks_database - INFO - Tasks database initialized",
   "2026-11-12 03:07:11,140 - cogs.tasks - INFO - Task persistent views registered",
   "2026-11-12 03:07:11,140 - __main__ - INFO - Successfully loaded cogs.tasks",
@@ -198,5 +188,15 @@
   "2026-11-15 08:20:35,302 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-15 11:20:09,159 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-15 13:36:03,443 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
-  "2026-11-15 16:04:34,688 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-15 16:04:34,688 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 18:21:22,556 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 18:42:52,254 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-15 18:42:52,256 - cogs.membership - INFO - Updated member Barry Wolfram with rank Full Patch",
+  "2026-11-15 18:43:15,080 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-11-15 20:07:15,006 - cogs.treasury - INFO - Treasury: no rates set — no obligations created",
+  "2026-11-15 20:07:15,971 - cogs.treasury - INFO - Treasury: no rates set — no obligations created",
+  "2026-11-15 20:07:16,804 - cogs.treasury - INFO - Treasury: no rates set — no obligations created",
+  "2026-11-15 20:07:17,622 - cogs.treasury - INFO - Treasury: no rates set — no obligations created",
+  "2026-11-15 20:07:18,725 - cogs.treasury - INFO - Treasury: no rates set — no obligations created",
+  "2026-11-15 20:07:19,564 - cogs.treasury - INFO - Treasury: no rates set — no obligations created"
 ]
