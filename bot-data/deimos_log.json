@@ -1,12 +1,4 @@
 [
-  "2026-11-12 03:07:11,016 - __main__ - INFO - Successfully loaded cogs.church_tracker",
-  "2026-11-12 03:07:11,032 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
-  "2026-11-12 03:07:11,032 - utils.church_database - INFO - Initializing church database tables",
-  "2026-11-12 03:07:11,035 - utils.church_database - INFO - Shared church database connection established",
-  "2026-11-12 03:07:11,040 - utils.church_database - INFO - Church database tables initialized successfully",
-  "2026-11-12 03:07:11,040 - __main__ - INFO - Successfully loaded cogs.meetings",
-  "2026-11-12 03:07:11,064 - utils.loa_database - INFO - LOA database manager initialized with path: data/loa.db",
-  "2026-11-12 03:07:11,067 - utils.loa_database - INFO - Initializing LOA database tables",
   "2026-11-12 03:07:11,068 - utils.loa_database - INFO - Shared LOA database connection established",
   "2026-11-12 03:07:11,069 - utils.loa_database - INFO - LOA database tables initialized successfully",
   "2026-11-12 03:07:11,069 - cogs.treasury - WARNING - Could not re-register treasury views: View is not persistent. Items need to have a custom_id set and View must have no timeout",
@@ -198,5 +190,13 @@
   "2026-11-14 22:21:56,856 - utils.loa_notifications - INFO - Sent LOA DM notification to user 181143017619587073",
   "2026-11-14 22:23:15,080 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
   "2026-11-14 22:31:51,219 - cogs.direct_messaging - WARNING - DM relay skipped for user 294127733401976832: channel 1336076859166691449 inaccessible in guild 889005510286786601 (NotFound)",
-  "2026-11-14 22:34:55,261 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-14 22:34:55,261 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-14 23:35:17,933 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 00:05:35,643 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-15 00:42:13,035 - aiohttp.access - INFO - 127.0.0.1 [15/Nov/2026:00:42:13 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-15 00:43:52,411 - aiohttp.access - INFO - 127.0.0.1 [15/Nov/2026:00:43:52 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-15 00:43:52,412 - aiohttp.access - INFO - 127.0.0.1 [15/Nov/2026:00:43:52 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-15 00:49:24,850 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (roles-changed)",
+  "2026-11-15 00:49:24,851 - cogs.membership - INFO - Updated member Drew Jackson with rank Enforcer",
+  "2026-11-15 00:51:15,081 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)"
 ]
