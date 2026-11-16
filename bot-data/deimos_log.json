@@ -1,10 +1,4 @@
 [
-  "2026-11-12 03:07:11,256 - __main__ - INFO - Successfully loaded cogs.web_dashboard",
-  "2026-11-12 03:07:11,265 - utils.checkin_database - INFO - Checkin database initialized",
-  "2026-11-12 03:07:11,265 - __main__ - INFO - Successfully loaded cogs.events",
-  "2026-11-12 03:07:11,265 - __main__ - INFO - LOA expiration check task started",
-  "2026-11-12 03:07:11,266 - utils.api - INFO - Thanatos API running on port 8080",
-  "2026-11-12 03:07:11,266 - __main__ - INFO - API server started",
   "2026-11-12 03:07:11,866 - __main__ - INFO - Force synced 48 global slash command(s)",
   "2026-11-12 03:07:12,378 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4130fb909f11d280429fe34fbf40eaf3).",
   "2026-11-12 03:07:14,995 - __main__ - INFO - Gatekeeper#9516 has landed! (ID: 1408590443608019035)",
@@ -198,5 +192,11 @@
   "2026-11-16 03:07:15,002 - utils.jobs - INFO - job 1794798435-de5e started: maintenance nightly backup + export retention",
   "2026-11-16 03:07:15,081 - utils.backup - INFO - backup written: gatekeeper-2026-11-16-nightly.zip (488.4 KB, 11 database(s))",
   "2026-11-16 03:13:20,892 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
-  "2026-11-16 05:22:44,708 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-16 05:22:44,708 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 08:22:39,443 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 08:39:47,663 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 10:25:34,794 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 10:33:21,055 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 14:20:40,687 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 16:54:20,635 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
