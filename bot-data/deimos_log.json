@@ -1,10 +1,4 @@
 [
-  "2026-11-12 03:07:11,201 - __main__ - INFO - Successfully loaded cogs.control_panel",
-  "2026-11-12 03:07:11,207 - cogs.action_panel - INFO - Action panel cog initialized",
-  "2026-11-12 03:07:11,208 - __main__ - INFO - Successfully loaded cogs.action_panel",
-  "2026-11-12 03:07:11,243 - __main__ - INFO - Successfully loaded cogs.chat_archive",
-  "2026-11-12 03:07:11,254 - cogs.web_dashboard - INFO - Dashboard web server listening on port 5028",
-  "2026-11-12 03:07:11,256 - utils.tunnel - INFO - cloudflared tunnel starting",
   "2026-11-12 03:07:11,256 - __main__ - INFO - Successfully loaded cogs.web_dashboard",
   "2026-11-12 03:07:11,265 - utils.checkin_database - INFO - Checkin database initialized",
   "2026-11-12 03:07:11,265 - __main__ - INFO - Successfully loaded cogs.events",
@@ -198,5 +192,11 @@
   "2026-11-15 23:54:48,522 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
   "2026-11-16 00:07:16,704 - cogs.city_checkin - INFO - Weekly check-in reset - new week calendars posted (old weeks archived in DB) — reset weekday 0, 00:00 UTC",
   "2026-11-16 00:40:12,099 - aiohttp.access - INFO - 127.0.0.1 [16/Nov/2026:00:40:12 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
-  "2026-11-16 00:52:22,578 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-16 00:52:22,578 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 01:23:28,480 - aiohttp.access - INFO - 127.0.0.1 [16/Nov/2026:01:23:28 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-16 01:23:28,481 - aiohttp.access - INFO - 127.0.0.1 [16/Nov/2026:01:23:28 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-16 03:07:15,002 - utils.jobs - INFO - job 1794798435-de5e started: maintenance nightly backup + export retention",
+  "2026-11-16 03:07:15,081 - utils.backup - INFO - backup written: gatekeeper-2026-11-16-nightly.zip (488.4 KB, 11 database(s))",
+  "2026-11-16 03:13:20,892 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-16 05:22:44,708 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
