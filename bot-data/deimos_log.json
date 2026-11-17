@@ -1,14 +1,4 @@
 [
-  "2026-11-12 03:07:15,117 - utils.database - INFO - Database tables initialized successfully",
-  "2026-11-12 03:07:15,118 - __main__ - INFO - Database initialized for guild: RHMC Deathsquad (ID: 1564959749676597258)",
-  "2026-11-12 03:07:15,118 - utils.database - INFO - Initializing database tables",
-  "2026-11-12 03:07:15,122 - utils.database - INFO - Database tables initialized successfully",
-  "2026-11-12 03:07:15,122 - __main__ - INFO - Database initialized for guild: RHMC Primer Inter Pares (ID: 1566034199066968136)",
-  "2026-11-12 03:07:15,615 - utils.panels - WARNING - panel edit failed (Message.edit() got an unexpected keyword argument 'files'); reposting cleanly",
-  "2026-11-12 03:07:16,161 - utils.tunnel - INFO - panel tunnel is live: https://pants-phentermine-linux-frequent.trycloudflare.com",
-  "2026-11-12 03:07:16,163 - cogs.web_dashboard - INFO - dashboard address is now https://pants-phentermine-linux-frequent.trycloudflare.com",
-  "2026-11-12 03:07:17,228 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
-  "2026-11-12 03:07:17,261 - utils.panels - INFO - panel sweep removed 1 stale copy/copies of ('Committees',)",
   "2026-11-12 03:07:17,262 - cogs.committees - INFO - Committee panel live in #roles",
   "2026-11-12 03:07:17,527 - cogs.contribution_verification - INFO - Scanned 𝐂𝐎𝐍𝐓𝐑𝐈𝐁𝐔𝐓𝐈𝐎𝐍𝐒 for pending contributions",
   "2026-11-12 03:07:17,528 - cogs.contribution_verification - INFO - Found 0 pending contributions",
@@ -198,5 +188,15 @@
   "2026-11-17 03:07:15,001 - utils.jobs - INFO - job 1794884835-16f0 started: maintenance nightly backup + export retention",
   "2026-11-17 03:07:15,087 - utils.backup - INFO - backup written: gatekeeper-2026-11-17-nightly.zip (488.6 KB, 11 database(s))",
   "2026-11-17 05:26:17,752 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
-  "2026-11-17 07:43:14,053 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
+  "2026-11-17 07:43:14,053 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-17 08:43:15,691 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-17 08:44:15,912 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-17 11:16:12,087 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-17 11:51:01,693 - aiohttp.access - INFO - 104.152.52.104 [17/Nov/2026:11:51:01 +0000] \"UNKNOWN / HTTP/1.0\" 400 200 \"-\" \"-\"",
+  "2026-11-17 11:51:01,882 - aiohttp.access - INFO - 104.152.52.103 [17/Nov/2026:11:51:01 +0000] \"GET / HTTP/1.1\" 200 29764 \"-\" \"curl/7.61.1\"",
+  "2026-11-17 11:51:02,164 - aiohttp.access - INFO - 104.152.52.103 [17/Nov/2026:11:51:02 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\"",
+  "2026-11-17 12:12:10,078 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-17 13:11:19,130 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-17 13:54:55,181 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3.",
+  "2026-11-17 15:48:40,324 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4130fb909f11d280429fe34fbf40eaf3."
 ]
