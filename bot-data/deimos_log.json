@@ -1,11 +1,4 @@
 [
-  "               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-  "  File \"/home/container/.local/lib/python3.12/site-packages/discord/webhook/async_.py\", line 226, in request",
-  "    raise HTTPException(response, data)",
-  "discord.errors.HTTPException: 400 Bad Request (error code: 50035): Invalid Form Body",
-  "In data.components.4.components.0: Value of field \"type\" must be one of (4,).",
-  "2026-11-18 01:19:50,644 - __main__ - INFO - Bot is shutting down...",
-  "2026-11-18 01:19:50,644 - __main__ - INFO - API server stopped",
   "2026-11-18 01:19:50,644 - __main__ - INFO - LOA expiration check task cancelled",
   "2026-11-18 01:19:50,647 - utils.database - INFO - Database connection closed",
   "2026-11-18 01:19:50,648 - utils.loa_database - INFO - LOA database connection closed",
@@ -198,5 +191,12 @@
   "2026-11-19 08:16:37,038 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
   "2026-11-19 08:39:17,646 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
   "2026-11-19 10:06:39,226 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
-  "2026-11-19 12:01:57,854 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d."
+  "2026-11-19 12:01:57,854 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-19 13:02:58,398 - aiohttp.access - INFO - 104.152.52.201 [19/Nov/2026:13:02:58 +0000] \"UNKNOWN / HTTP/1.0\" 400 200 \"-\" \"-\"",
+  "2026-11-19 13:02:58,583 - aiohttp.access - INFO - 104.152.52.202 [19/Nov/2026:13:02:58 +0000] \"GET / HTTP/1.1\" 200 29764 \"-\" \"curl/7.61.1\"",
+  "2026-11-19 13:02:58,859 - aiohttp.access - INFO - 104.152.52.202 [19/Nov/2026:13:02:58 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\"",
+  "2026-11-19 14:45:36,539 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-19 17:23:38,548 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-19 19:12:14,962 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-19 19:15:06,983 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d."
 ]
