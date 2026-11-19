@@ -1,15 +1,4 @@
 [
-  "Traceback (most recent call last):",
-  "  File \"/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py\", line 598, in _scheduled_task",
-  "    await item.callback(interaction)",
-  "  File \"/home/container/cogs/action_panel.py\", line 317, in create_btn",
-  "    \"Run this in a server.\", ephemeral=True)",
-  "  File \"/home/container/.local/lib/python3.12/site-packages/discord/interactions.py\", line 1300, in send_modal",
-  "    response = await adapter.create_interaction_response(",
-  "               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-  "  File \"/home/container/.local/lib/python3.12/site-packages/discord/webhook/async_.py\", line 226, in request",
-  "    raise HTTPException(response, data)",
-  "discord.errors.HTTPException: 400 Bad Request (error code: 50035): Invalid Form Body",
   "In data.components.4.components.0: Value of field \"type\" must be one of (4,).",
   "2026-11-18 01:19:39,866 - discord.ui.view - ERROR - Ignoring exception in view <TasksPanelView timeout=None children=5> for item <Button style=<ButtonStyle.danger: 4> url=None disabled=False label='Create Task' emoji=None row=0 sku_id=None id=None>",
   "Traceback (most recent call last):",
@@ -198,5 +187,16 @@
   "2026-11-18 14:17:42,647 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
   "2026-11-18 17:33:32,303 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
   "2026-11-18 19:34:19,205 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
-  "2026-11-18 21:33:40,839 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d."
+  "2026-11-18 21:33:40,839 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-18 22:55:16,889 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-18 23:40:15,760 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-18 23:57:31,953 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-19 00:28:46,161 - aiohttp.access - INFO - 85.217.140.44 [19/Nov/2026:00:28:46 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-19 00:28:46,187 - aiohttp.access - INFO - 85.217.140.44 [19/Nov/2026:00:28:46 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-19 01:20:01,416 - utils.jobs - INFO - job 1795051201-743e started: maintenance nightly backup + export retention",
+  "2026-11-19 01:20:01,501 - utils.backup - INFO - backup written: gatekeeper-2026-11-19-nightly.zip (465.5 KB, 11 database(s))",
+  "2026-11-19 02:44:52,064 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-19 03:07:33,660 - aiohttp.access - INFO - 127.0.0.1 [19/Nov/2026:03:07:33 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-19 03:07:33,669 - aiohttp.access - INFO - 127.0.0.1 [19/Nov/2026:03:07:33 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://personal-wagner-ship-initiated.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-19 03:26:32,265 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d."
 ]
