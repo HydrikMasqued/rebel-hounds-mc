@@ -1,14 +1,4 @@
 [
-  "2026-11-18 01:19:57,493 - utils.loa_database - INFO - Initializing LOA database tables",
-  "2026-11-18 01:19:57,495 - utils.loa_database - INFO - Shared LOA database connection established",
-  "2026-11-18 01:19:57,496 - utils.loa_database - INFO - LOA database tables initialized successfully",
-  "2026-11-18 01:19:57,496 - __main__ - INFO - Successfully loaded cogs.loa_system",
-  "2026-11-18 01:19:57,503 - __main__ - INFO - Successfully loaded cogs.membership",
-  "2026-11-18 01:19:57,526 - __main__ - INFO - Successfully loaded cogs.configuration",
-  "2026-11-18 01:19:57,543 - cogs.direct_messaging - INFO - Loaded 55 saved DM conversation(s)",
-  "2026-11-18 01:19:57,543 - __main__ - INFO - Successfully loaded cogs.direct_messaging",
-  "2026-11-18 01:19:57,551 - __main__ - INFO - Successfully loaded cogs.time_converter",
-  "2026-11-18 01:19:57,573 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
   "2026-11-18 01:19:57,573 - cogs.playtime_tracker - INFO - Loaded playtime channel config - Vital: 1267079320564924400, All Pro: 1267079320564924400 (Elyxir retired)",
   "2026-11-18 01:19:57,573 - cogs.playtime_tracker - INFO - Playtime notifications enabled - Notify user: 181143017619587070, Requirement: 4h",
   "2026-11-18 01:19:57,573 - cogs.playtime_tracker - INFO - Playtime tracker initialized with dual-channel support",
@@ -198,5 +188,15 @@
   "2026-11-20 17:12:55,976 - utils.loa_notifications - INFO - Updated membership status for William Xander Reks (ID: 367316570180943892) - LOA: True",
   "2026-11-20 17:12:55,977 - utils.loa_notifications - WARNING - LOA notification channel 1336076859166691449 not found in guild 889005510286786601",
   "2026-11-20 17:12:56,627 - utils.loa_notifications - INFO - Sent LOA DM notification to user 181143017619587073",
-  "2026-11-20 17:14:01,502 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)"
+  "2026-11-20 17:14:01,502 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-11-20 18:49:35,881 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-20 18:58:41,757 - utils.loa_notifications - INFO - Updated membership status for Olivia Newton (ID: 1045815013614559313) - LOA: True",
+  "2026-11-20 18:58:41,758 - utils.loa_notifications - WARNING - LOA notification channel 1336076859166691449 not found in guild 889005510286786601",
+  "2026-11-20 18:58:42,083 - utils.loa_notifications - INFO - Sent LOA DM notification to user 181143017619587073",
+  "2026-11-20 19:00:01,502 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (db-change)",
+  "2026-11-20 19:35:51,761 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-20 21:12:07,240 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-20 22:16:08,618 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d.",
+  "2026-11-20 23:02:04,091 - cogs.board - INFO - Task #7 closed (timed out)",
+  "2026-11-20 23:06:45,588 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 61c4721648e25d1fde4580b53386915d."
 ]
