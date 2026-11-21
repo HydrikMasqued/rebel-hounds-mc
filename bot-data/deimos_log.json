@@ -1,13 +1,4 @@
 [
-  "2026-11-21 11:24:10,514 - utils.tasks_database - INFO - Tasks database initialized",
-  "2026-11-21 11:24:10,517 - __main__ - INFO - Successfully loaded cogs.board",
-  "2026-11-21 11:24:10,538 - cogs.command_menu - INFO - Command menu cog initialized",
-  "2026-11-21 11:24:10,541 - __main__ - INFO - Successfully loaded cogs.command_menu",
-  "2026-11-21 11:24:10,548 - __main__ - INFO - Successfully loaded cogs.control_panel",
-  "2026-11-21 11:24:10,579 - cogs.action_panel - INFO - Action panel cog initialized",
-  "2026-11-21 11:24:10,580 - __main__ - INFO - Successfully loaded cogs.action_panel",
-  "2026-11-21 11:24:10,604 - __main__ - INFO - Successfully loaded cogs.chat_archive",
-  "2026-11-21 11:24:10,618 - cogs.web_dashboard - INFO - Dashboard web server listening on port 5028",
   "2026-11-21 11:24:10,622 - utils.tunnel - INFO - cloudflared tunnel starting",
   "2026-11-21 11:24:10,622 - __main__ - INFO - Successfully loaded cogs.web_dashboard",
   "2026-11-21 11:24:10,673 - utils.checkin_database - INFO - Checkin database initialized",
@@ -198,5 +189,14 @@
   "2026-11-21 16:11:57,426 - utils.jobs - INFO - job 1795277517-11e5 started: export category test",
   "2026-11-21 16:11:58,040 - cogs.chat_archive - INFO - category site push skipped: not configured",
   "2026-11-21 16:24:27,277 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
-  "2026-11-21 18:21:10,760 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
+  "2026-11-21 18:21:10,760 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-21 20:15:36,348 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (nick-changed)",
+  "2026-11-21 20:39:29,957 - aiohttp.access - INFO - 127.0.0.1 [21/Nov/2026:20:39:29 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (compatible)\"",
+  "2026-11-21 20:39:29,958 - aiohttp.access - INFO - 127.0.0.1 [21/Nov/2026:20:39:29 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (compatible)\"",
+  "2026-11-21 21:46:51,206 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-21 22:28:37,566 - aiohttp.access - INFO - 127.0.0.1 [21/Nov/2026:22:28:37 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"RecordedFuture Global Inventory Crawler\"",
+  "2026-11-21 22:33:10,093 - aiohttp.access - INFO - 127.0.0.1 [21/Nov/2026:22:33:10 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\"",
+  "2026-11-21 22:33:47,235 - aiohttp.access - INFO - 127.0.0.1 [21/Nov/2026:22:33:47 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36\"",
+  "2026-11-21 22:33:47,871 - aiohttp.access - INFO - 127.0.0.1 [21/Nov/2026:22:33:47 +0000] \"GET /api/me HTTP/1.1\" 401 195 \"https://disc-presentation-clarity-brothers.trycloudflare.com/\" \"Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36\"",
+  "2026-11-21 22:33:47,876 - aiohttp.access - INFO - 127.0.0.1 [21/Nov/2026:22:33:47 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"https://disc-presentation-clarity-brothers.trycloudflare.com/\" \"Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36\""
 ]
