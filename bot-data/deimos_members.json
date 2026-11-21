@@ -42,10 +42,10 @@
     "discord_name": "William Xander Reks",
     "discord_username": "panda_alleyway",
     "rank": "Treasurer",
-    "status": "Active",
-    "is_on_loa": 0,
+    "status": "LOA",
+    "is_on_loa": 1,
     "created_at": "2025-09-01 01:16:57",
-    "updated_at": "2026-11-10 01:42:00.210081"
+    "updated_at": "2026-11-20 17:12:55.976299"
   },
   {
     "id": 10,
@@ -90,10 +90,10 @@
     "discord_name": "Olivia Newton",
     "discord_username": "bdillon97",
     "rank": "Road Captain",
-    "status": "Active",
-    "is_on_loa": 0,
+    "status": "LOA",
+    "is_on_loa": 1,
     "created_at": "2025-11-25 02:34:30",
-    "updated_at": "2026-11-13 08:44:28.977366"
+    "updated_at": "2026-11-20 18:58:41.757100"
   },
   {
     "id": 436,
