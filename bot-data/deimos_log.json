@@ -1,8 +1,4 @@
 [
-  "2026-11-21 11:24:10,674 - utils.api - INFO - Thanatos API running on port 8080",
-  "2026-11-21 11:24:10,674 - __main__ - INFO - API server started",
-  "2026-11-21 11:24:11,114 - __main__ - INFO - Force synced 48 global slash command(s)",
-  "2026-11-21 11:24:11,589 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4420d7be3bcbb8eb59df1cb65786f76c).",
   "2026-11-21 11:24:14,221 - __main__ - INFO - Gatekeeper#9516 has landed! (ID: 1408590443608019035)",
   "2026-11-21 11:24:14,221 - __main__ - INFO - Bot is ready and connected to 6 guild(s)",
   "2026-11-21 11:24:14,221 - utils.database - INFO - Initializing database tables",
@@ -198,5 +194,9 @@
   "2026-11-22 00:58:18,042 - aiohttp.access - INFO - 127.0.0.1 [22/Nov/2026:00:58:18 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://disc-presentation-clarity-brothers.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
   "2026-11-22 01:22:19,831 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-22 02:44:22,418 - aiohttp.access - INFO - 85.217.149.65 [22/Nov/2026:02:44:22 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
-  "2026-11-22 02:44:22,595 - aiohttp.access - INFO - 85.217.149.65 [22/Nov/2026:02:44:22 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\""
+  "2026-11-22 02:44:22,595 - aiohttp.access - INFO - 85.217.149.65 [22/Nov/2026:02:44:22 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-22 05:17:56,960 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-22 06:39:35,285 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-22 09:38:12,520 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-22 11:06:27,361 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
