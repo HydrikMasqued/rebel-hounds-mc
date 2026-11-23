@@ -1,11 +1,4 @@
 [
-  "2026-11-21 11:24:16,690 - cogs.contribution_verification - INFO - Found 0 pending contributions",
-  "2026-11-21 11:24:20,309 - cogs.action_panel - INFO - Action panel (loa) refreshed",
-  "2026-11-21 11:24:21,332 - cogs.action_panel - INFO - Action panel (reports) refreshed",
-  "2026-11-21 11:24:22,211 - cogs.action_panel - INFO - Action panel (tasks) refreshed",
-  "2026-11-21 11:24:23,225 - cogs.command_menu - INFO - Command menu panel refreshed",
-  "2026-11-21 11:24:23,820 - cogs.action_panel - INFO - Action panel (setup) refreshed",
-  "2026-11-21 13:18:34,567 - __main__ - INFO - Bot is shutting down...",
   "2026-11-21 13:18:34,567 - __main__ - INFO - API server stopped",
   "2026-11-21 13:18:34,568 - __main__ - INFO - LOA expiration check task cancelled",
   "2026-11-21 13:18:34,569 - utils.database - INFO - Database connection closed",
@@ -198,5 +191,12 @@
   "2026-11-22 20:08:53,205 - cogs.treasury - INFO - Treasury: no rates set — no obligations created",
   "2026-11-22 20:15:19,129 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-22 22:31:14,564 - aiohttp.access - INFO - 127.0.0.1 [22/Nov/2026:22:31:14 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\"",
-  "2026-11-22 22:58:40,614 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
+  "2026-11-22 22:58:40,614 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 00:18:48,710 - cogs.city_checkin - INFO - Weekly check-in reset - new week calendars posted (old weeks archived in DB) — reset weekday 0, 00:00 UTC",
+  "2026-11-23 01:37:43,158 - aiohttp.access - INFO - 127.0.0.1 [23/Nov/2026:01:37:43 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-23 01:37:43,897 - aiohttp.access - INFO - 127.0.0.1 [23/Nov/2026:01:37:43 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://disc-presentation-clarity-brothers.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-23 02:16:07,405 - aiohttp.access - INFO - 85.217.149.8 [23/Nov/2026:02:16:07 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-23 02:16:07,572 - aiohttp.access - INFO - 85.217.149.8 [23/Nov/2026:02:16:07 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-23 02:21:57,658 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 03:54:10,482 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
