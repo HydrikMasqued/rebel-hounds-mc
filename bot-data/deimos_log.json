@@ -1,14 +1,4 @@
 [
-  "2026-11-21 13:18:34,567 - __main__ - INFO - API server stopped",
-  "2026-11-21 13:18:34,568 - __main__ - INFO - LOA expiration check task cancelled",
-  "2026-11-21 13:18:34,569 - utils.database - INFO - Database connection closed",
-  "2026-11-21 13:18:34,570 - utils.loa_database - INFO - LOA database connection closed",
-  "2026-11-21 13:18:34,572 - utils.playtime_database - INFO - Playtime database connection closed",
-  "2026-11-21 13:18:34,572 - cogs.playtime_tracker - INFO - Playtime tracker unloaded",
-  "2026-11-21 13:18:34,573 - cogs.contribution_verification - INFO - Contribution verification cog unloaded",
-  "2026-11-21 13:18:34,574 - utils.church_database - INFO - Church database connection closed",
-  "2026-11-21 13:18:34,574 - cogs.church_tracker - INFO - Church tracker unloaded",
-  "2026-11-21 13:18:34,575 - utils.church_database - INFO - Church database connection closed",
   "2026-11-21 13:18:34,577 - utils.loa_database - INFO - LOA database connection closed",
   "2026-11-21 13:18:34,579 - utils.playtime_database - INFO - Playtime database connection closed",
   "2026-11-21 13:18:34,586 - __main__ - INFO - Bot shutdown complete",
@@ -198,5 +188,15 @@
   "2026-11-23 02:16:07,405 - aiohttp.access - INFO - 85.217.149.8 [23/Nov/2026:02:16:07 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
   "2026-11-23 02:16:07,572 - aiohttp.access - INFO - 85.217.149.8 [23/Nov/2026:02:16:07 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
   "2026-11-23 02:21:57,658 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
-  "2026-11-23 03:54:10,482 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
+  "2026-11-23 03:54:10,482 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 06:08:13,880 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 09:13:51,628 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 10:36:16,786 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 11:14:26,602 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 11:35:35,853 - aiohttp.access - INFO - 104.152.52.211 [23/Nov/2026:11:35:35 +0000] \"UNKNOWN / HTTP/1.0\" 400 200 \"-\" \"-\"",
+  "2026-11-23 11:35:36,445 - aiohttp.access - INFO - 104.152.52.205 [23/Nov/2026:11:35:36 +0000] \"GET / HTTP/1.1\" 200 29764 \"-\" \"curl/7.61.1\"",
+  "2026-11-23 11:35:36,733 - aiohttp.access - INFO - 104.152.52.205 [23/Nov/2026:11:35:36 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\"",
+  "2026-11-23 13:18:46,915 - utils.jobs - INFO - job 1795439926-7488 started: maintenance nightly backup + export retention",
+  "2026-11-23 13:18:46,979 - utils.backup - INFO - backup written: gatekeeper-2026-11-23-nightly.zip (472.0 KB, 11 database(s))",
+  "2026-11-23 14:18:43,936 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
