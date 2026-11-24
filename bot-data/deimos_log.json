@@ -1,15 +1,4 @@
 [
-  "2026-11-21 13:18:34,577 - utils.loa_database - INFO - LOA database connection closed",
-  "2026-11-21 13:18:34,579 - utils.playtime_database - INFO - Playtime database connection closed",
-  "2026-11-21 13:18:34,586 - __main__ - INFO - Bot shutdown complete",
-  "2026-11-21 13:18:42,163 - discord.client - WARNING - davey is not installed, voice will NOT be supported",
-  "2026-11-21 13:18:42,163 - utils.database - INFO - Database manager initialized with path: data/thanatos.db",
-  "2026-11-21 13:18:42,164 - __main__ - INFO - Database manager initialized",
-  "2026-11-21 13:18:42,164 - __main__ - INFO - Time parser initialized",
-  "2026-11-21 13:18:42,164 - __main__ - INFO - LOA notification manager initialized",
-  "2026-11-21 13:18:42,164 - utils.api - INFO - API key loaded: th3ZzxMX...",
-  "2026-11-21 13:18:42,165 - __main__ - INFO - Starting Gatekeeper Bot...",
-  "2026-11-21 13:18:42,165 - discord.client - INFO - logging in using static token",
   "2026-11-21 13:18:42,710 - utils.database - INFO - Initializing database tables",
   "2026-11-21 13:18:42,712 - utils.database - INFO - Shared database connection established",
   "2026-11-21 13:18:42,717 - utils.database - INFO - Database tables initialized successfully",
@@ -198,5 +187,16 @@
   "2026-11-23 11:35:36,733 - aiohttp.access - INFO - 104.152.52.205 [23/Nov/2026:11:35:36 +0000] \"GET /favicon.ico HTTP/1.1\" 404 193 \"-\" \"curl/7.61.1\"",
   "2026-11-23 13:18:46,915 - utils.jobs - INFO - job 1795439926-7488 started: maintenance nightly backup + export retention",
   "2026-11-23 13:18:46,979 - utils.backup - INFO - backup written: gatekeeper-2026-11-23-nightly.zip (472.0 KB, 11 database(s))",
-  "2026-11-23 14:18:43,936 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
+  "2026-11-23 14:18:43,936 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 16:05:01,765 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 19:27:31,781 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 20:45:11,374 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 22:24:17,011 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-23 22:33:29,657 - aiohttp.access - INFO - 127.0.0.1 [23/Nov/2026:22:33:29 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\"",
+  "2026-11-23 23:59:23,019 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (nick-changed)",
+  "2026-11-23 23:59:27,659 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (nick-changed)",
+  "2026-11-24 00:12:47,331 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-24 00:47:02,361 - aiohttp.access - INFO - 127.0.0.1 [24/Nov/2026:00:47:02 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-24 00:47:02,362 - aiohttp.access - INFO - 127.0.0.1 [24/Nov/2026:00:47:02 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://disc-presentation-clarity-brothers.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-24 01:37:43,730 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
