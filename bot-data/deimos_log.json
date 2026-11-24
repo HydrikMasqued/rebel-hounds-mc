@@ -1,10 +1,4 @@
 [
-  "2026-11-21 13:18:42,803 - __main__ - INFO - Successfully loaded cogs.time_converter",
-  "2026-11-21 13:18:42,822 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
-  "2026-11-21 13:18:42,823 - cogs.playtime_tracker - INFO - Loaded playtime channel config - Vital: 1267079320564924400, All Pro: 1267079320564924400 (Elyxir retired)",
-  "2026-11-21 13:18:42,823 - cogs.playtime_tracker - INFO - Playtime notifications enabled - Notify user: 181143017619587070, Requirement: 4h",
-  "2026-11-21 13:18:42,823 - cogs.playtime_tracker - INFO - Playtime tracker initialized with dual-channel support",
-  "2026-11-21 13:18:42,823 - utils.playtime_database - INFO - Initializing playtime database tables",
   "2026-11-21 13:18:42,825 - utils.playtime_database - INFO - Shared playtime database connection established",
   "2026-11-21 13:18:42,827 - utils.playtime_database - INFO - Database migration check complete",
   "2026-11-21 13:18:42,828 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
@@ -198,5 +192,11 @@
   "2026-11-24 08:25:16,219 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-24 08:56:12,644 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-24 09:42:28,987 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
-  "2026-11-24 10:16:40,499 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
+  "2026-11-24 10:16:40,499 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-24 13:02:07,219 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-24 13:18:46,891 - utils.jobs - INFO - job 1795526326-4dbc started: maintenance nightly backup + export retention",
+  "2026-11-24 13:18:46,960 - utils.backup - INFO - backup written: gatekeeper-2026-11-24-nightly.zip (472.0 KB, 11 database(s))",
+  "2026-11-24 14:29:39,720 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-24 16:52:43,721 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-24 20:30:40,660 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
