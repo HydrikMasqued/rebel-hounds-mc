@@ -1,10 +1,4 @@
 [
-  "2026-11-21 13:18:42,825 - utils.playtime_database - INFO - Shared playtime database connection established",
-  "2026-11-21 13:18:42,827 - utils.playtime_database - INFO - Database migration check complete",
-  "2026-11-21 13:18:42,828 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
-  "2026-11-21 13:18:42,828 - cogs.playtime_tracker - INFO - Playtime database initialized",
-  "2026-11-21 13:18:42,829 - cogs.playtime_tracker - INFO - Monthly reset task started",
-  "2026-11-21 13:18:42,829 - __main__ - INFO - Successfully loaded cogs.playtime_tracker",
   "2026-11-21 13:18:42,838 - cogs.contribution_verification - INFO - Contribution verification cog initialized",
   "2026-11-21 13:18:42,838 - cogs.contribution_verification - INFO - Contribution timeout check task started",
   "2026-11-21 13:18:42,839 - __main__ - INFO - Successfully loaded cogs.contribution_verification",
@@ -198,5 +192,11 @@
   "2026-11-24 13:18:46,960 - utils.backup - INFO - backup written: gatekeeper-2026-11-24-nightly.zip (472.0 KB, 11 database(s))",
   "2026-11-24 14:29:39,720 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-24 16:52:43,721 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
-  "2026-11-24 20:30:40,660 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
+  "2026-11-24 20:30:40,660 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-25 00:23:16,133 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-25 01:21:48,294 - cogs.website_sync - WARNING - [website_sync] missing github_token in website_sync.json; skipping (member-remove)",
+  "2026-11-25 02:13:17,055 - aiohttp.access - INFO - 127.0.0.1 [25/Nov/2026:02:13:17 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://closed-eight-exact-cambridge.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-25 02:13:17,322 - aiohttp.access - INFO - 127.0.0.1 [25/Nov/2026:02:13:17 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-25 03:05:56,113 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-25 04:28:19,754 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
