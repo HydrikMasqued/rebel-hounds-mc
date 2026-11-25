@@ -1,9 +1,4 @@
 [
-  "2026-11-21 13:18:42,917 - utils.church_database - INFO - Church database manager initialized with path: data/church.db",
-  "2026-11-21 13:18:42,917 - utils.church_database - INFO - Initializing church database tables",
-  "2026-11-21 13:18:42,919 - utils.church_database - INFO - Shared church database connection established",
-  "2026-11-21 13:18:42,925 - utils.church_database - INFO - Church database tables initialized successfully",
-  "2026-11-21 13:18:42,925 - __main__ - INFO - Successfully loaded cogs.meetings",
   "2026-11-21 13:18:42,964 - utils.loa_database - INFO - LOA database manager initialized with path: data/loa.db",
   "2026-11-21 13:18:42,967 - utils.loa_database - INFO - Initializing LOA database tables",
   "2026-11-21 13:18:42,968 - utils.loa_database - INFO - Shared LOA database connection established",
@@ -198,5 +193,10 @@
   "2026-11-25 12:01:41,569 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-25 13:09:12,559 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-25 13:18:46,915 - utils.jobs - INFO - job 1795612726-62d2 started: maintenance nightly backup + export retention",
-  "2026-11-25 13:18:47,001 - utils.backup - INFO - backup written: gatekeeper-2026-11-25-nightly.zip (472.0 KB, 11 database(s))"
+  "2026-11-25 13:18:47,001 - utils.backup - INFO - backup written: gatekeeper-2026-11-25-nightly.zip (472.0 KB, 11 database(s))",
+  "2026-11-25 14:48:56,940 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-25 17:43:16,479 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-25 18:34:40,441 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-25 19:16:39,691 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-25 22:47:01,820 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
