@@ -1,14 +1,4 @@
 [
-  "2026-11-21 13:18:42,964 - utils.loa_database - INFO - LOA database manager initialized with path: data/loa.db",
-  "2026-11-21 13:18:42,967 - utils.loa_database - INFO - Initializing LOA database tables",
-  "2026-11-21 13:18:42,968 - utils.loa_database - INFO - Shared LOA database connection established",
-  "2026-11-21 13:18:42,969 - utils.loa_database - INFO - LOA database tables initialized successfully",
-  "2026-11-21 13:18:42,970 - __main__ - INFO - Successfully loaded cogs.treasury",
-  "2026-11-21 13:18:42,976 - __main__ - INFO - Successfully loaded cogs.committees",
-  "2026-11-21 13:18:42,977 - __main__ - INFO - Successfully loaded cogs.website_sync",
-  "2026-11-21 13:18:42,991 - cogs.city_checkin - INFO - City checkin cog initialized",
-  "2026-11-21 13:18:42,994 - utils.checkin_database - INFO - Checkin database initialized",
-  "2026-11-21 13:18:42,994 - cogs.city_checkin - INFO - Persistent checkin views registered",
   "2026-11-21 13:18:42,994 - __main__ - INFO - Successfully loaded cogs.city_checkin",
   "2026-11-21 13:18:43,000 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
   "2026-11-21 13:18:43,000 - utils.playtime_database - INFO - Initializing playtime database tables",
@@ -198,5 +188,15 @@
   "2026-11-25 17:43:16,479 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-25 18:34:40,441 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
   "2026-11-25 19:16:39,691 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
-  "2026-11-25 22:47:01,820 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
+  "2026-11-25 22:47:01,820 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 00:12:15,821 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 01:19:02,255 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 01:31:43,981 - aiohttp.access - INFO - 127.0.0.1 [26/Nov/2026:01:31:43 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-26 01:31:44,186 - aiohttp.access - INFO - 127.0.0.1 [26/Nov/2026:01:31:44 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://closed-eight-exact-cambridge.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-26 03:02:52,124 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 03:08:40,553 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 03:10:49,037 - aiohttp.access - INFO - 127.0.0.1 [26/Nov/2026:03:10:49 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-26 03:10:49,038 - aiohttp.access - INFO - 127.0.0.1 [26/Nov/2026:03:10:49 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://closed-eight-exact-cambridge.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
+  "2026-11-26 04:58:18,516 - aiohttp.access - INFO - 31.14.32.4 [26/Nov/2026:04:58:18 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-26 04:58:18,695 - aiohttp.access - INFO - 31.14.32.4 [26/Nov/2026:04:58:18 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\""
 ]
