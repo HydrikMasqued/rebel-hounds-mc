@@ -1,12 +1,4 @@
 [
-  "2026-11-21 13:18:42,994 - __main__ - INFO - Successfully loaded cogs.city_checkin",
-  "2026-11-21 13:18:43,000 - utils.playtime_database - INFO - Playtime database manager initialized with path: data/playtime.db",
-  "2026-11-21 13:18:43,000 - utils.playtime_database - INFO - Initializing playtime database tables",
-  "2026-11-21 13:18:43,001 - utils.playtime_database - INFO - Shared playtime database connection established",
-  "2026-11-21 13:18:43,003 - utils.playtime_database - INFO - Database migration check complete",
-  "2026-11-21 13:18:43,004 - utils.playtime_database - INFO - Playtime database tables initialized successfully",
-  "2026-11-21 13:18:43,007 - utils.checkin_database - INFO - Checkin database initialized",
-  "2026-11-21 13:18:43,007 - cogs.activity - INFO - Activity tracker initialized",
   "2026-11-21 13:18:43,007 - __main__ - INFO - Successfully loaded cogs.activity",
   "2026-11-21 13:18:43,022 - utils.tasks_database - INFO - Tasks database initialized",
   "2026-11-21 13:18:43,022 - cogs.tasks - INFO - Task persistent views registered",
@@ -198,5 +190,13 @@
   "2026-11-26 03:10:49,037 - aiohttp.access - INFO - 127.0.0.1 [26/Nov/2026:03:10:49 +0000] \"HEAD / HTTP/1.1\" 200 155 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
   "2026-11-26 03:10:49,038 - aiohttp.access - INFO - 127.0.0.1 [26/Nov/2026:03:10:49 +0000] \"HEAD / HTTP/1.1\" 200 155 \"http://closed-eight-exact-cambridge.trycloudflare.com\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)\"",
   "2026-11-26 04:58:18,516 - aiohttp.access - INFO - 31.14.32.4 [26/Nov/2026:04:58:18 +0000] \"GET / HTTP/1.1\" 200 29745 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
-  "2026-11-26 04:58:18,695 - aiohttp.access - INFO - 31.14.32.4 [26/Nov/2026:04:58:18 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\""
+  "2026-11-26 04:58:18,695 - aiohttp.access - INFO - 31.14.32.4 [26/Nov/2026:04:58:18 +0000] \"GET /favicon.ico HTTP/1.1\" 404 174 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 ModatScanner/1.2 (+https://modat.io/)\"",
+  "2026-11-26 05:33:57,613 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 07:17:11,098 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 09:14:15,131 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 11:56:55,528 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 13:18:46,888 - utils.jobs - INFO - job 1795699126-cdeb started: maintenance nightly backup + export retention",
+  "2026-11-26 13:18:46,959 - utils.backup - INFO - backup written: gatekeeper-2026-11-26-nightly.zip (472.0 KB, 11 database(s))",
+  "2026-11-26 13:44:25,972 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9.",
+  "2026-11-26 14:03:31,938 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 951722155b264732f1b1dee8782d84d9."
 ]
